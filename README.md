@@ -1,6 +1,6 @@
 # Eirhub
 
-Repository for Healthcare website (Software Engineering project)
+Repository for Healthcare webapp (Software Engineering project)
 
 # Want to Contribute?
 
