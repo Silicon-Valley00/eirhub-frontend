@@ -1,0 +1,12 @@
+{
+	"scripts": {
+		"install-all": "sh ./bin/install.sh",
+		"isntall-windows": ".\\bin\\install.cmd"
+	},
+	"devDependencies": {
+		"eslint": "^8.18.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"prettier": "^2.7.1"
+	}
+}
