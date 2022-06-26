@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import signUp from '../images/femaleDoctor.jpg'
 import signIn from '../images/maleDoctor.jpg'
+import { FaRegUser} from 'react-icons/fa'
+import { MdOutlineVpnKey} from 'react-icons/md'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { HiOutlineMail} from 'react-icons/hi'
 
 function Startpage() {
     /*Code below handles switch in startpages and modal */
@@ -226,6 +230,7 @@ function Startpage() {
                         <h2 className="title">Sign In</h2>
                         {/* <div className="server-message"></div> */}
                         <div className="input-field">
+                            <i><FaRegUser /></i>
                             <input
                                 type="text"
                                 id="login-username"
@@ -234,12 +239,14 @@ function Startpage() {
                             />
                         </div>
                         <div className="input-field">
+                            <i><MdOutlineVpnKey /></i>
                             <input
                                 type="password"
                                 id="login-password"
                                 placeholder="Password"
                                 ref={signinPassword}
                             />
+                            <i><AiOutlineEye /></i>
                         </div>
                         <input
                             type="submit"
@@ -259,6 +266,7 @@ function Startpage() {
                         <h2 className="title">Sign Up</h2>
                         {/* <!-- <div className="server-message"></div> --> */}
                         <div className="input-field">
+                            <i><FaRegUser/></i>
                             <input
                                 type="text"
                                 id="username"
@@ -268,6 +276,7 @@ function Startpage() {
                         </div>
 
                         <div className="input-field">
+                            <i><HiOutlineMail/></i>
                             <input
                                 type="email"
                                 id="email"
@@ -277,21 +286,25 @@ function Startpage() {
                         </div>
                         <div className="msg-two"></div>
                         <div className="input-field">
+                            <i><MdOutlineVpnKey/></i>
                             <input
                                 type="password"
                                 id="password1"
                                 placeholder="Password"
                                 ref={signupPassword}
                             />
+                            <i><AiOutlineEye/></i>
                         </div>
 
                         <div className="input-field">
+                            <i><MdOutlineVpnKey /></i>
                             <input
                                 type="password"
                                 id="password2"
                                 placeholder="Confirm Password"
                                 ref={signupPasswordconfirm}
                             />
+                            <i><AiOutlineEye/></i>
                         </div>
 
                         <input
@@ -346,22 +359,4 @@ function Startpage() {
 }
 
 export default Startpage;
-
-// const Login = () => {
-//     return (
-//         <div>
-//             <h2>Login</h2>
-//             <form action="">
-//                 <input type="text" placeholder="name"/>
-//                 <input type="email" placeholder="email"/>
-//                 <input type="password" placeholder="password"/>
-//                 <input type="radio"/>
-//             </form>
-
-//         </div>
-//     )
-// }
-
-// export default Login
-
 
