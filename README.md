@@ -1,11 +1,10 @@
 # Eirhub
 
-Repository for Healthcare website (Software Engineering project)
+Repository for Healthcare webapp (Software Engineering project)
 
 # Want to Contribute?
 
-After forking and cloning this repository,
-
+Instructions:
 1. Run `npm run install-all` in the project root to install all dependencies.
    -  If you are on Windows, use `npm run install-windows`.
    -  If neither works, you will have to run `npm install` or `npm i` in root, client(frontend), and server(backend) directories.
