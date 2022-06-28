@@ -1,14 +1,15 @@
 import React from 'react';
 import logo from '../logo.svg';
+import './navbar.css';
 
 const Navbar = () => {
    return (
-      <nav>
+      <nav id="nav">
          <div id="img">
-            <img src={logo} alt="" />
+            <img src={logo} alt="" height={50} width={200} />
          </div>
          <div>
-            <ul>
+            <ul id="nav-links">
                <li>Home</li>
                <li>Our Services</li>
                <li>Find a doctor</li>
