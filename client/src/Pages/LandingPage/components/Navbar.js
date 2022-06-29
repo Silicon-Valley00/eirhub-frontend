@@ -15,7 +15,6 @@ const Navbar = () => {
          <div id="img">
             <img src={logo} alt="" height={50} width={200} />
          </div>
-
          <div className={sidebar ? 'link-container active' : 'link-container'}>
             {/* Close icon */}
             <div>
@@ -40,9 +39,15 @@ const Navbar = () => {
                </div>
             </div>
          </div>
-
          {/* menu icon */}
-         <img src={menu} alt="" height={30} width={30} onClick={showSidebar} />
+         <img
+            src={menu}
+            alt=""
+            height={30}
+            width={30}
+            id="menu"
+            onClick={showSidebar}
+         />
       </nav>
    );
 };
