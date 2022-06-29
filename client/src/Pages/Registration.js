@@ -14,10 +14,6 @@ function Registration() {
    const signupPassword = useRef();
    const signupPasswordconfirm = useRef();
 
-   // Handles state of buttons
-   const [login, setLogin] = useState(true);
-   const [register, setRegister] = useState(true);
-
    // Handles error state of input boxes
    const [loginUserError, setLoginUserError] = useState(null);
    const [loginPasswordError, setLoginPasswordError] = useState(null);
@@ -29,8 +25,8 @@ function Registration() {
    const [registerPasswordTwoError, setRegisterPasswordTwoError] =
       useState(null);
 
-   var pattern = /^[a-zA-Z ]+$/;
-   var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+   const pattern = /^[a-zA-Z ]+$/;
+   const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
    //Handles page switch for signin page
    function pageChangeSignin() {
@@ -41,18 +37,16 @@ function Registration() {
       changePageHandler(false);
    }
 
+   // Functions below check user credentials in each form input
    function handleLoginUser() {
       let enteredSignInName = signinUser.current.value;
 
       if (enteredSignInName === '') {
          setLoginUserError(true);
-         enableLoginButton();
       } else if (enteredSignInName.match(pattern)) {
          setLoginUserError(false);
-         enableLoginButton();
       } else {
          setLoginUserError(true);
-         enableLoginButton();
       }
    }
 
@@ -61,13 +55,10 @@ function Registration() {
 
       if (enteredSignInPassword === '') {
          setLoginPasswordError(true);
-         enableLoginButton();
       } else if (enteredSignInPassword.length < 8) {
          setLoginPasswordError(true);
-         enableLoginButton();
       } else {
          setLoginPasswordError(false);
-         enableLoginButton();
       }
    }
 
@@ -76,13 +67,10 @@ function Registration() {
 
       if (enteredSignUpName === '') {
          setRegisterUserError(true);
-         enableRegisterButton();
       } else if (enteredSignUpName.match(pattern)) {
          setRegisterUserError(false);
-         enableRegisterButton();
       } else {
          setRegisterUserError(true);
-         enableRegisterButton();
       }
    }
 
@@ -91,13 +79,10 @@ function Registration() {
 
       if (enteredSignUpEmail === '') {
          setRegisterEmailError(true);
-         enableRegisterButton();
       } else if (enteredSignUpEmail.match(emailPattern)) {
          setRegisterEmailError(false);
-         enableRegisterButton();
       } else {
          setRegisterEmailError(true);
-         enableRegisterButton();
       }
    }
 
@@ -106,13 +91,10 @@ function Registration() {
 
       if (enteredSignUpPassword === '') {
          setRegisterPasswordOneError(true);
-         enableRegisterButton();
       } else if (enteredSignUpPassword.length < 8) {
          setRegisterPasswordOneError(true);
-         enableRegisterButton();
       } else {
          setRegisterPasswordOneError(false);
-         enableRegisterButton();
       }
    }
 
@@ -122,43 +104,13 @@ function Registration() {
 
       if (enteredSignUpPasswordconfirm === '') {
          setRegisterPasswordTwoError(true);
-         enableRegisterButton();
       } else if (enteredSignUpPassword !== enteredSignUpPasswordconfirm) {
          setRegisterPasswordTwoError(true);
-         enableRegisterButton();
       } else {
          setRegisterPasswordTwoError(false);
-         enableRegisterButton();
       }
    }
 
-   function enableRegisterButton() {
-      if (
-         ((registerUserError === registerEmailError) ===
-            registerPasswordOneError) ===
-            registerPasswordTwoError &&
-         registerUserError !== true &&
-         registerEmailError !== true &&
-         registerPasswordOneError !== true &&
-         registerPasswordTwoError !== true
-      ) {
-         setRegister(false); //Enable button
-      } else {
-         setRegister(true);
-      }
-   }
-
-   function enableLoginButton() {
-      if (
-         loginUserError === loginPasswordError &&
-         loginUserError !== true &&
-         loginPasswordError !== true
-      ) {
-         setLogin(false); //Enable button
-      } else {
-         setLogin(true);
-      }
-   }
    // function handles user data
    function submitSigninHandler() {
       let enteredSignInName = signinUser.current.value;
@@ -202,8 +154,6 @@ function Registration() {
             signupEmail={signupEmail}
             signupPassword={signupPassword}
             signupPasswordconfirm={signupPasswordconfirm}
-            login={login}
-            register={register}
             loginUserError={loginUserError}
             loginPasswordError={loginPasswordError}
             registerUserError={registerUserError}
@@ -216,6 +166,8 @@ function Registration() {
             handleRegisterEmail={handleRegisterEmail}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
+            // enableRegisterButton={enableRegisterButton}
+            // enableLoginButton={enableLoginButton}
          />
       </>
    );
