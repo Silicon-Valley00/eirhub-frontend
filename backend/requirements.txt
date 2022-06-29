@@ -11,5 +11,5 @@ SQLAlchemy==1.4.39
 Werkzeug==2.1.2
 zipp==3.8.0
 flask==2.1.2
-dotenv==0.0.5
+python-dotenv==0.20.0
 pymysql==1.0.2
