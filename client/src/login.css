@@ -6,22 +6,48 @@
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 body {
-   background-color: #c8d8e4;
+   overflow: hidden;
+   background-color: #c9cdd3;
+
+   animation: changecolor 10s infinite;
+   animation-fill-mode: both;
+}
+
+@keyframes changecolor {
+   0% {
+      background-color: #ecf3fe;
+   }
+
+   25% {
+      background-color: #bfd2e0;
+   }
+
+   50% {
+      background-color: #dee5eb;
+   }
+
+   75% {
+      background-color: #c5d2db;
+   }
+
+   100% {
+      background-color: #c0daee;
+   }
 }
 
 /* Global */
 .container {
-   background-color: rgba(255, 255, 255, 0.5);
+   background-color: rgba(255, 255, 255, 0.3);
    margin: 5% auto;
    border-radius: 5rem;
-   /* box-shadow: 2px 2px 2px  grey; */
+   box-shadow: 0 10px 6px -6px #777;
    position: relative;
-   width: 80%;
+   width: 70%;
    min-height: 80vh;
    overflow: hidden;
 }
 .container:before {
-   background-color: #52ab98;
+   background-color: #05a6c2;
    content: '';
    position: absolute;
    width: 2000px;
@@ -89,7 +115,6 @@ form.sign-up-form {
    justify-content: center;
    font-size: 2rem;
 }
-
 .input-field input {
    background: none;
    outline: none;
@@ -100,13 +125,23 @@ form.sign-up-form {
    color: #333;
    width: 90%;
 }
+/*displaying error message*/
+span {
+   display: none;
+   color: red;
+   text-align: center;
+   width: 300px;
+   font-size: 0.8rem;
+}
 .input-field i {
-   color: #aaa;
+   color: rgba(0, 0, 0, 0.5);
    margin: auto 20px;
+   font-size: 80%;
 }
 .error i {
-   color: #aaa;
+   color: rgba(0, 0, 0, 0.5);
    margin: auto 20px;
+   font-size: 80%;
 }
 .error {
    max-width: 380px;
@@ -120,7 +155,9 @@ form.sign-up-form {
    align-items: center;
    justify-content: center;
    font-size: 2rem;
-   border: 1.5px solid rgba(252, 2, 2, 0.726);
+   box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5);
+   -moz-box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5);
+   -webkit-box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5);
 }
 .error input {
    background: none;
@@ -183,15 +220,15 @@ form.sign-up-form {
    outline: none;
    border-radius: 49px;
    cursor: pointer;
-   background-color: #52ab98;
+   background-color: #0d3f58;
    color: #fff;
    text-transform: uppercase;
    font-weight: 500;
    margin: 10px 0;
-   transition: 0.5s;
 }
 .btn:hover {
    background-color: #2b6777;
+   transition: background-color 0.5s ease-out;
 }
 .btn-inactive {
    width: 150px;
@@ -200,7 +237,7 @@ form.sign-up-form {
    outline: none;
    border-radius: 49px;
    cursor: not-allowed;
-   background-color: #a7c5bf;
+   background-color: #8b9da7;
    color: #fff;
    text-transform: uppercase;
    font-weight: 500;
