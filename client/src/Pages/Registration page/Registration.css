@@ -7,12 +7,13 @@
 }
 .body {
    overflow: hidden;
-   background-color: #c9cdd3;
-   animation: changecolor 10s infinite;
-   animation-fill-mode: both;
+   /* background-color: #c9cdd3; */
+
+   /* animation: changecolor 10s infinite;
+   animation-fill-mode: both; */
 }
 
-@keyframes changecolor {
+/* @keyframes changecolor {
    0% {
       background-color: #ecf3fe;
    }
@@ -32,7 +33,7 @@
    100% {
       background-color: #c0daee;
    }
-}
+} */
 
 /* Global */
 .container {

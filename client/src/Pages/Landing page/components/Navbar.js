@@ -29,17 +29,15 @@ const Navbar = () => {
             </div>
             <div className="left-div">
                <ul id="nav-links">
-                  <li>Home</li>
-                  <li>Our Services</li>
-                  <li>Find a doctor</li>
-                  <li>How it Works</li>
+                  <li className="each">Home</li>
+                  <li className="each">Our Services</li>
+                  <li className="each">Find a doctor</li>
+                  <li className="each">How it Works</li>
                </ul>
                <div id="signup">
-                  <ul id="nav-links-two">
-                     <li>Sign up</li>
-                     <li>|</li>
-                     <li>Login</li>
-                  </ul>
+                  <p>
+                     Sign Up <span id="separator">|</span> Login
+                  </p>
                </div>
             </div>
          </div>
