@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import signUp from '../images/femaleDoctor.jpg';
-import signIn from '../images/maleDoctor.jpg';
+import signUp from '../images/imagetwo.svg';
+import signIn from '../images/imageone.svg';
 import { FaRegUser } from 'react-icons/fa';
 import { MdOutlineVpnKey } from 'react-icons/md';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -39,7 +39,7 @@ function Startpage(props) {
                         id="login-username"
                         placeholder="Username"
                         ref={props.signinUser}
-                        onKeyUp={() => {
+                        onChange={() => {
                            props.handleLoginUser();
                         }}
                      />
@@ -57,7 +57,7 @@ function Startpage(props) {
                         id="login-password"
                         placeholder="Password"
                         ref={props.signinPassword}
-                        onKeyUp={() => {
+                        onChange={() => {
                            props.handleLoginPassword();
                         }}
                      />
@@ -74,9 +74,17 @@ function Startpage(props) {
                      id="login-submit"
                      value="Login"
                      className={
-                        props.login ? 'btn-inactive solid' : 'btn solid'
+                        props.loginUserError === true ||
+                        props.loginPasswordError === true ||
+                        props.loginPasswordError === null
+                           ? 'btn-inactive solid'
+                           : 'btn solid'
                      }
-                     disabled={props.login}
+                     disabled={
+                        props.loginUserError === true ||
+                        props.loginPasswordError === true ||
+                        props.loginPasswordError === null
+                     }
                      onClick={() => {
                         props.submitSigninHandler();
                      }}
@@ -104,7 +112,7 @@ function Startpage(props) {
                         id="username"
                         placeholder="Username"
                         ref={props.signupUser}
-                        onKeyUp={() => {
+                        onChange={() => {
                            props.handleRegisterUser();
                         }}
                      />
@@ -123,7 +131,7 @@ function Startpage(props) {
                         id="email"
                         placeholder="Email"
                         ref={props.signupEmail}
-                        onKeyUp={() => {
+                        onChange={() => {
                            props.handleRegisterEmail();
                         }}
                      />
@@ -142,7 +150,7 @@ function Startpage(props) {
                         id="password1"
                         placeholder="Password"
                         ref={props.signupPassword}
-                        onKeyUp={() => {
+                        onChange={() => {
                            props.handleRegisterPassword();
                         }}
                      />
@@ -168,7 +176,7 @@ function Startpage(props) {
                         id="password2"
                         placeholder="Confirm Password"
                         ref={props.signupPasswordconfirm}
-                        onKeyUp={() => {
+                        onChange={() => {
                            props.handleRegisterPasswordConfirm();
                         }}
                      />
@@ -186,9 +194,21 @@ function Startpage(props) {
                      id="submit-btn"
                      value="Register"
                      className={
-                        props.register ? 'btn-inactive solid' : 'btn solid'
+                        props.registerUserError === true ||
+                        props.registerEmailError === true ||
+                        props.registerPasswordOneError === true ||
+                        props.registerPasswordTwoError === true ||
+                        props.registerPasswordTwoError === null
+                           ? 'btn-inactive solid'
+                           : 'btn solid'
                      }
-                     disabled={props.register}
+                     disabled={
+                        props.registerUserError === true ||
+                        props.registerEmailError === true ||
+                        props.registerPasswordOneError === true ||
+                        props.registerPasswordTwoError === true ||
+                        props.registerPasswordTwoError === null
+                     }
                      onClick={() => {
                         props.submitSigninHandler();
                      }}
