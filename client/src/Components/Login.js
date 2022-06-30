@@ -44,6 +44,9 @@ function Startpage(props) {
                         }}
                      />
                   </div>
+                  <span className="usernameerror">
+                     Lorem Ipsum is simply dummy text of the printing.
+                  </span>
                   <div
                      className={
                         props.loginPasswordError ? 'error' : 'input-field'
@@ -69,6 +72,9 @@ function Startpage(props) {
                         )}
                      </i>
                   </div>
+                  <span className="passworderror">
+                     Lorem Ipsum is simply dummy text of the printing.
+                  </span>
                   <input
                      type="submit"
                      id="login-submit"
@@ -117,6 +123,10 @@ function Startpage(props) {
                         }}
                      />
                   </div>
+                  {/* error message  */}
+                  <span className="ussignup">
+                     Lorem Ipsum is simply dummy text of the printing.
+                  </span>
 
                   <div
                      className={
@@ -136,6 +146,9 @@ function Startpage(props) {
                         }}
                      />
                   </div>
+                  <span className="emsignup">
+                     Lorem Ipsum is simply dummy text of the printing.
+                  </span>
                   <div className="msg-two"></div>
                   <div
                      className={
@@ -162,6 +175,9 @@ function Startpage(props) {
                         )}
                      </i>
                   </div>
+                  <span className="ps1signup">
+                     Lorem Ipsum is simply dummy text of the printing.
+                  </span>
 
                   <div
                      className={
@@ -188,6 +204,9 @@ function Startpage(props) {
                         )}
                      </i>
                   </div>
+                  <span className="ps2signup">
+                     Lorem Ipsum is simply dummy text of the printing.
+                  </span>
 
                   <input
                      type="submit"

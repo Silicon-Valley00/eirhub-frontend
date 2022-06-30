@@ -115,7 +115,6 @@ form.sign-up-form {
    justify-content: center;
    font-size: 2rem;
 }
-
 .input-field input {
    background: none;
    outline: none;
@@ -125,6 +124,13 @@ form.sign-up-form {
    font-size: 1.1rem;
    color: #333;
    width: 90%;
+}
+/*displaying error message*/
+span {
+   color: red;
+   text-align: center;
+   width: 300px;
+   font-size: 0.8rem;
 }
 .input-field i {
    color: rgba(0, 0, 0, 0.5);
