@@ -127,6 +127,7 @@ form.sign-up-form {
 }
 /*displaying error message*/
 span {
+   display: none;
    color: red;
    text-align: center;
    width: 300px;
