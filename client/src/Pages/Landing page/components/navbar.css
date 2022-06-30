@@ -15,15 +15,20 @@
    position: fixed;
    width: 100%;
    background-color: #ecf3fe;
-   height: 3rem;
+   min-height: 3rem;
+   top: 0;
+   z-index: 1;
 }
 
 #img {
+   cursor: pointer;
 }
 
 /* nav-links */
 #nav-links {
    display: block;
+   position: relative;
+   left: 15rem;
 }
 
 .link-container {
@@ -59,9 +64,9 @@ li {
    color: var(--white);
 }
 
-#signup {
-   margin-top: 2rem;
-   color: var(--white);
+#signup ul li {
+   display: inline-block;
+   padding: 1rem;
 }
 
 /* ===================================================mobile style============== */

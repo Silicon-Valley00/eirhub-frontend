@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../logo.svg';
+import logo from '../../../images/logo.svg';
 import './navbar.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
@@ -35,7 +35,11 @@ const Navbar = () => {
                   <li>How it Works</li>
                </ul>
                <div id="signup">
-                  <p>Sign Up | Login</p>
+                  <ul id="nav-links-two">
+                     <li>Sign up</li>
+                     <li>|</li>
+                     <li>Login</li>
+                  </ul>
                </div>
             </div>
          </div>
