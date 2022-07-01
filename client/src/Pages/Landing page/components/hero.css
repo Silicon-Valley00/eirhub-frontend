@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
+
 :root {
    --white: #ffffff;
    --gray: #ecf3fe;
@@ -11,10 +13,12 @@
    min-height: 100vh;
    padding-top: 6rem;
    background-color: var(--gray);
+   padding-left: 4rem;
+   padding-right: 4rem;
 }
 
 .hero-container {
-   width: 90.5%;
+   width: 100%;
    display: block;
    margin: 0 auto;
    max-height: 100%;
@@ -22,13 +26,14 @@
 
 .hero-content {
    padding-top: 2rem;
-   width: 55%;
+   width: 50%;
    height: 60vh;
    float: left;
 }
 
 .content-title h1 {
-   font-size: 3.5rem;
+   font-family: 'Poppins', sans-serif;
+   font-size: 3rem;
 }
 .content-info {
    padding-top: 1.2rem;
@@ -54,13 +59,32 @@
    font-size: 1.1rem;
 }
 
-.hero-image {
-   width: 40%;
-   float: right;
-   height: 80vh;
+/* ========================== mobile view ========================= */
+
+@media (min-width: 320px) and (max-width: 960px) {
+   #hero-body {
+      background-image: url('../../../assets/maleDoctor.jpg');
+      background-repeat: no-repeat;
+      background-position: 5% 65px;
+      background-size: cover;
+      width: 100%;
+   }
+
+   .hero-image {
+      display: none;
+   }
 }
 
-.hero-image img {
-   width: 100%;
-   height: 100%;
+@media screen and (min-width: 960px) {
+   .hero-image {
+      padding-top: 2rem;
+      width: 50%;
+      float: right;
+      height: 100vh;
+      padding-right: 20px;
+   }
+
+   .hero-image img {
+      width: 100%;
+   }
 }

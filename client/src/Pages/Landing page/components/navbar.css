@@ -112,12 +112,15 @@ li {
       align-items: center;
       justify-content: center;
       column-gap: 2rem;
+      background-color: red;
    }
 
    li {
       color: var(--midcol);
    }
-
+   li.each {
+      white-space: nowrap;
+   }
    .left-div {
       display: flex;
       align-items: center;
@@ -134,6 +137,11 @@ li {
    #separator {
       margin-left: 0.5em;
       margin-right: 0.5em;
+   }
+   #signup {
+      width: auto;
+      white-space: nowrap;
+      margin-left: 3px;
    }
 }
 
