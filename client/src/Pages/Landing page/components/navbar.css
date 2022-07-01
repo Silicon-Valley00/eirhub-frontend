@@ -17,16 +17,18 @@
    position: fixed;
    width: 100%;
    background-color: #ecf3fe;
+<<<<<<< HEAD
    min-height: 3rem;
    top: 0;
    z-index: 1;
+=======
+   height: 3rem;
+>>>>>>> 9085f94 (working navbar)
 }
 
 /* nav-links */
 #nav-links {
    display: block;
-   position: relative;
-   left: 15rem;
 }
 
 .link-container {
