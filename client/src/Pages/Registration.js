@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Login from '../Components/Login.js';
+import Alert from '../Components/Alert'
 
 function Registration() {
    // Handles state of page switch
@@ -25,6 +26,10 @@ function Registration() {
    const [registerPasswordTwoError, setRegisterPasswordTwoError] =
       useState(null);
 
+
+   const [alert, setAlert] = useState({ show: false, msg: '' })
+
+
    const pattern = /^[a-zA-Z ]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
@@ -37,24 +42,32 @@ function Registration() {
       changePageHandler(false);
    }
 
+   const showAlert = (show = false, msg = "") => {
+      console.log(alert)
+      setAlert({ show, msg })
+   }
+
    // Functions below check user credentials in each form input
    function handleLoginUser() {
       let enteredSignInName = signinUser.current.value;
 
       if (enteredSignInName === '') {
          setLoginUserError(true);
+         showAlert(true,'Sign in name cannot be empty');
       } else if (enteredSignInName.match(pattern)) {
          setLoginUserError(false);
       } else {
          setLoginUserError(true);
+         showAlert(true,'Sign in name is wrong');
       }
    }
-
+   
    function handleLoginPassword() {
       let enteredSignInPassword = signinPassword.current.value;
-
+      
       if (enteredSignInPassword === '') {
          setLoginPasswordError(true);
+         showAlert(true,'Sign in password cannot be empty');
       } else if (enteredSignInPassword.length < 8) {
          setLoginPasswordError(true);
       } else {
@@ -166,6 +179,7 @@ function Registration() {
             handleRegisterEmail={handleRegisterEmail}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
+            {...alert}
             // enableRegisterButton={enableRegisterButton}
             // enableLoginButton={enableLoginButton}
          />

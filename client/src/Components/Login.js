@@ -5,12 +5,15 @@ import { FaRegUser } from 'react-icons/fa';
 import { MdOutlineVpnKey } from 'react-icons/md';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { HiOutlineMail } from 'react-icons/hi';
+import Alert from './Alert'
 
 function Startpage(props) {
    /* Code below handles user inputs, checks and form submissions */
    const [hidePassword, setHidePassword] = useState(true);
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
+
+
 
    return (
       <div
@@ -44,11 +47,15 @@ function Startpage(props) {
                         }}
                      />
                   </div>
+                  
+                  {props.loginUserError && <div className='show'>
+                     <p>{props.msg}</p>
+                  </div>}
                   <div
                      className={
                         props.loginPasswordError ? 'error' : 'input-field'
                      }
-                  >
+                     >
                      <i>
                         <MdOutlineVpnKey />
                      </i>
@@ -60,15 +67,16 @@ function Startpage(props) {
                         onChange={() => {
                            props.handleLoginPassword();
                         }}
-                     />
+                        />
                      <i onClick={() => setHidePassword(!hidePassword)}>
                         {hidePassword ? (
                            <AiOutlineEye />
-                        ) : (
-                           <AiOutlineEyeInvisible />
-                        )}
+                           ) : (
+                              <AiOutlineEyeInvisible />
+                              )}
                      </i>
                   </div>
+                     {props.loginPasswordError && props.show && <Alert {...props}/>}
                   <input
                      type="submit"
                      id="login-submit"

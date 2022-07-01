@@ -7,13 +7,13 @@
 }
 body {
    overflow: hidden;
-   background-color: #c9cdd3;
+   background-color: #c0daee;
 
-   animation: changecolor 10s infinite;
-   animation-fill-mode: both;
+   /* animation: changecolor 10s infinite; */
+   /* animation-fill-mode: both; */
 }
 
-@keyframes changecolor {
+/* @keyframes changecolor {
    0% {
       background-color: #ecf3fe;
    }
@@ -33,7 +33,7 @@ body {
    100% {
       background-color: #c0daee;
    }
-}
+} */
 
 /* Global */
 .container {
@@ -148,9 +148,10 @@ form.sign-up-form {
    align-items: center;
    justify-content: center;
    font-size: 2rem;
-   box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5);
-   -moz-box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5);
-   -webkit-box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5);
+   border:0.1px solid red;
+   /* box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5); */
+   /* -moz-box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5); */
+   /* -webkit-box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5); */
 }
 .error input {
    background: none;
@@ -428,4 +429,14 @@ div a {
    .container.sign-up-mode:before {
       bottom: 28%;
    }
+}
+
+
+/* Alert */
+.show {
+   /* background-color: rgb(245, 52, 52); */
+   font-size: 0.7rem;
+   border-radius: 5px;
+   /* padding: 0.2rem; */
+
 }
