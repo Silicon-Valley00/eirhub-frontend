@@ -35,22 +35,27 @@
    height: 45vh;
    width: 25%;
    border-radius: 14px;
-   box-shadow: 0 0 5px var(--midcol);
-   transition: height 500ms ease-in-out;
+   box-shadow: 3px 3px 25px -10px var(--midcol);
 }
-.services-doctor-box:hover {
+/* .services-doctor-box:hover {
    height: 47vh;
-}
+} */
 .services-doctor-image {
    width: 100%;
    height: 70%;
    border-top-left-radius: 14px;
    border-top-right-radius: 14px;
+   transition: height 500ms ease-in-out;
+
    background-color: var(--midcol);
 }
 .services-doctor-image img {
+   background-position: cover;
    width: 100%;
    height: 100%;
+}
+.services-doctor-image:hover {
+   height: 75%;
 }
 .services-doctor-info {
    width: 95%;
@@ -97,12 +102,47 @@
    background-color: var(--lightcol);
    height: 30vh;
    border-radius: 2.5rem;
+   overflow-x: hidden;
+}
+.services-message::before {
+   content: '';
+   position: absolute;
+   width: 200px;
+   height: 200px;
+   border-radius: 45%;
+   background-color: rgba(255, 255, 255, 0.4);
+   left: 92rem;
+   top: 79rem;
+}
+.services-message::after {
+   content: '';
+   position: absolute;
+   width: 280px;
+   height: 280px;
+   border-radius: 50%;
+   border-radius: 50%;
+   border: 2px solid var(--white);
+   background-color: rgba(255, 255, 255, 0);
+   left: 88rem;
+   top: 77rem;
 }
 .services-message-box {
    width: 85%;
    margin: 0 auto;
    padding: 0.5rem 0;
    height: 100%;
+}
+.services-message-box::after {
+   content: '';
+   position: absolute;
+   width: 350px;
+   height: 350px;
+   border-radius: 50%;
+   border-radius: 50%;
+   border: 2px solid var(--white);
+   background-color: rgba(255, 255, 255, 0);
+   left: -9rem;
+   top: 92rem;
 }
 
 .services-message-info {

@@ -1,6 +1,8 @@
 import React from 'react';
 import landingpageImage from '../../../assets/landingpage design.png';
 import './hero.css';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css/animate.min.css';
 
 const Hero = () => {
    return (
@@ -8,7 +10,7 @@ const Hero = () => {
          <div className="hero-container">
             <div className="hero-content">
                <div className="content-title">
-                  <h1>Lets Help You Connect You With The Best Doctors</h1>
+                  <h1>Lets Help Connect You With The Best Doctors</h1>
                </div>
                <div className="content-info">
                   <p>
