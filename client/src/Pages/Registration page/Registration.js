@@ -1,15 +1,15 @@
 import React, { useState, useRef } from 'react';
-import Login from './components/Login.js';
-import Signup from './components/Signup.js';
-import './Registration.css';
+import Signup from './components/Signup'
+// import './Registration.css';
+import Login from './components/Login';
 
 function Registration() {
    // Handles state of page switch
    const [changePage, changePageHandler] = useState(true);
 
    // User sign in refs
-   const signinUser = useRef();
-   const signinPassword = useRef();
+   const loginUser = useRef();
+   const loginPassword = useRef();
    // User sign up refs
    const signupUser = useRef();
    const signupEmail = useRef();
@@ -34,8 +34,8 @@ function Registration() {
    const pattern = /^[a-zA-Z ]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-   //Handles page switch for signin page
-   function pageChangeSignin() {
+   //Handles page switch for login page
+   function pageChangelogin() {
       changePageHandler(true);
    }
    //Handles page switch for signup page
@@ -50,12 +50,12 @@ function Registration() {
 
    // Functions below check user credentials in each form input
    function handleLoginUser() {
-      let enteredSignInName = signinUser.current.value;
+      let enteredloginName = loginUser.current.value;
 
-      if (enteredSignInName === '') {
+      if (enteredloginName === '') {
          setLoginUserError(true);
          showAlert(true,'Sign in name cannot be empty');
-      } else if (enteredSignInName.match(pattern)) {
+      } else if (enteredloginName.match(pattern)) {
          setLoginUserError(false);
       } else {
          setLoginUserError(true);
@@ -64,15 +64,16 @@ function Registration() {
    }
    
    function handleLoginPassword() {
-      let enteredSignInPassword = signinPassword.current.value;
+      let enteredloginPassword = loginPassword.current.value;
       
-      if (enteredSignInPassword === '') {
+      if (enteredloginPassword === '') {
          setLoginPasswordError(true);
          showAlert(true,'Sign in password cannot be empty');
-      } else if (enteredSignInPassword.length < 8) {
+      } else if (enteredloginPassword.length < 8) {
          setLoginPasswordError(true);
       } else {
          setLoginPasswordError(false);
+         showAlert(true,'Sign in password is wrong');
       }
    }
 
@@ -126,9 +127,9 @@ function Registration() {
    }
 
    // function handles user data
-   function submitSigninHandler() {
-      let enteredSignInName = signinUser.current.value;
-      let enteredSignInPassword = signinPassword.current.value;
+   function submitLoginHandler() {
+      let enteredloginName = loginUser.current.value;
+      let enteredloginPassword = loginPassword.current.value;
 
       let enteredSignUpName = signupUser.current.value;
       let enteredSignUpEmail = signupEmail.current.value;
@@ -137,11 +138,11 @@ function Registration() {
       if (changePage) {
          //sends user validated credentials
 
-         const signinData = {
-            name: enteredSignInName,
-            password: enteredSignInPassword,
+         const loginData = {
+            name: enteredloginName,
+            password: enteredloginPassword,
          };
-         console.log(signinData);
+         console.log(loginData);
       } else {
          //Sends validated sign up user credentials
 
@@ -158,33 +159,35 @@ function Registration() {
    return (
       <>
          {/*<Login
-            submitSigninHandler={submitSigninHandler}
-            pageChangeSignin={pageChangeSignin}
+            pageChangelogin={pageChangelogin}
             pageChangeSignup={pageChangeSignup}
             changePage={changePage}
-            signinUser={signinUser}
-            signinPassword={signinPassword}
-            signupUser={signupUser}
             signupEmail={signupEmail}
             signupPassword={signupPassword}
             signupPasswordconfirm={signupPasswordconfirm}
-            loginUserError={loginUserError}
-            loginPasswordError={loginPasswordError}
             registerUserError={registerUserError}
             registerEmailError={registerEmailError}
             registerPasswordOneError={registerPasswordOneError}
             registerPasswordTwoError={registerPasswordTwoError}
-            handleLoginUser={handleLoginUser}
-            handleLoginPassword={handleLoginPassword}
             handleRegisterUser={handleRegisterUser}
             handleRegisterEmail={handleRegisterEmail}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-            {...alert}
             // enableRegisterButton={enableRegisterButton}
             // enableLoginButton={enableLoginButton}
-   />*/}
-         <Signup />
+         />*/}
+         {/* <Signup/> */}
+         <Login
+         submitLoginHandler={submitLoginHandler}
+         loginUser={loginUser}
+         handleLoginUser={handleLoginUser}
+         handleLoginPassword={handleLoginPassword}
+         loginPassword={loginPassword}
+         signupUser={signupUser}
+         loginUserError={loginUserError}
+         loginPasswordError={loginPasswordError}
+         {...alert}
+         />
       </>
    );
 }

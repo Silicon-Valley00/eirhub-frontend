@@ -68,7 +68,7 @@
    top: 0;
    left: 0;
 }
-.signin-signup {
+.login-signup {
    position: absolute;
    top: 50%;
    left: 75%;
@@ -329,7 +329,7 @@ div a {
 .container.sign-up-mode .right-panel {
    pointer-events: all;
 }
-.container.sign-up-mode .signin-signup {
+.container.sign-up-mode .login-signup {
    left: 25%;
 }
 .container.sign-up-mode form.sign-in-form {
@@ -356,7 +356,7 @@ div a {
       top: initial;
       transition: 2s ease-in-out;
    }
-   .signin-signup {
+   .login-signup {
       width: 100%;
       left: 50%;
       top: 95%;
@@ -412,7 +412,7 @@ div a {
    .container.sign-up-mode .left-panel .content {
       transform: translateY(-300px);
    }
-   .container.sign-up-mode .signin-signup {
+   .container.sign-up-mode .login-signup {
       top: 5%;
       transform: translate(-50%, 0);
       left: 50%;
@@ -438,12 +438,3 @@ div a {
    }
 }
 
-
-/* Alert */
-.show {
-   /* background-color: rgb(245, 52, 52); */
-   font-size: 0.7rem;
-   border-radius: 5px;
-   /* padding: 0.2rem; */
-
-}
