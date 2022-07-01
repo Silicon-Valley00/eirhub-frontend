@@ -1,3 +1,18 @@
+/* CSS Start for sigh up modal manipulation */
+.modal {
+   /* position: relative; */
+   /* display: flex;
+   justify-content: center;
+   align-items: center; */
+   width: 100%;
+   min-height: 100vh;
+}
+.modal#blur.active {
+   filter: blur(20px);
+   /* pointer-events: none; */
+   /* user-select: none; */
+}
+/* CSS End for signp up modal manipulation */
 * {
    margin: 0;
    padding: 0;

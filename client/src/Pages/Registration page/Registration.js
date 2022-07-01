@@ -4,6 +4,11 @@ import Signup from './components/Signup'
 import Login from './components/Login';
 
 function Registration() {
+   // Modal change
+   const [modal, setModal] = useState(false);
+   function handleModal() {
+      setModal(!modal);
+   }
    // Handles state of page switch
    const [changePage, changePageHandler] = useState(true);
 
@@ -188,7 +193,18 @@ function Registration() {
          loginPasswordError={loginPasswordError}
          {...alert}
          />
-      </>
+         {/* <div
+            id="blur"
+            className={['modal', modal && 'active']
+               .filter((e) => !!e)
+               .join(' ')}
+            // onClick={handleModal}
+         >
+            <button onClick={handleModal}>Open sign up</button>
+         </div>
+         <Signup modal={modal} />
+      </> */}
+         {/* put yours below*/}
    );
 }
 export default Registration;
