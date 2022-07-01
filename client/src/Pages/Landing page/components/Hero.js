@@ -10,7 +10,7 @@ const Hero = () => {
          <div className="hero-container">
             <div className="hero-content">
                <div className="content-title">
-                  <h1>Lets Help Connect You With The Best Doctors</h1>
+                  <h1>Lets Help You Connect You With The Best Doctors</h1>
                </div>
                <div className="content-info">
                   <p>

@@ -17,12 +17,16 @@
    position: fixed;
    width: 100%;
    background-color: #ecf3fe;
-   height: 3rem;
+   min-height: 3rem;
+   top: 0;
+   z-index: 1;
 }
 
 /* nav-links */
 #nav-links {
    display: block;
+   position: relative;
+   left: 15rem;
 }
 
 .link-container {

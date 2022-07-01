@@ -8,8 +8,8 @@
 
 #hero-body {
    width: 100%;
-   min-height: 100vh;
-   padding-top: 6rem;
+   min-height: 80vh;
+   margin-top: 4rem;
    background-color: var(--gray);
 }
 
