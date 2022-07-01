@@ -1,7 +1,5 @@
-import './login.css';
-import Login from './Components/Login';
-import Registration from './Pages/Registration';
-import LandingPage from './Pages/LandingPage/LandingPage';
+import Registration from './Pages/Registration page/Registration';
+import LandingPage from './Pages/Landing page/LandingPage';
 
 function App() {
    return (

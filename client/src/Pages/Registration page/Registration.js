@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import Login from '../Components/Login.js';
+import Login from './componenets/Login.js';
+import './Registration.css';
 
 function Registration() {
    // Handles state of page switch
