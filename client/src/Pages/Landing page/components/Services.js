@@ -1,6 +1,7 @@
 import React from 'react';
 import './services.css';
-import hero from '../../../images/imageone.svg';
+import docProfileImageOne from '../../../assets/doc profile 1.png';
+import docProfileImageTwo from '../../../assets/doctor profile 2.png';
 
 const Services = () => {
    return (
@@ -12,7 +13,7 @@ const Services = () => {
             <div className="services-doctors-box">
                <div className="services-doctor-box">
                   <div className="services-doctor-image">
-                     {/*<img src={hero} alt="Doctor's-image" />*/}
+                     <img src={docProfileImageOne} alt="Doctor's-image" />
                   </div>
                   <div className="services-doctor-info">
                      <h4>Dr. Jaine Huaffmann</h4>
@@ -21,7 +22,7 @@ const Services = () => {
                </div>
                <div className="services-doctor-box">
                   <div className="services-doctor-image">
-                     {/*<img src={hero} alt="Doctor's-image" />*/}
+                     <img src={docProfileImageTwo} alt="Doctor's-image" />
                   </div>
                   <div className="services-doctor-info">
                      <h4>Dr. Micheal Asempa</h4>
@@ -30,7 +31,7 @@ const Services = () => {
                </div>
                <div className="services-doctor-box">
                   <div className="services-doctor-image">
-                     {/*<img src={hero} alt="Doctor's-image" />*/}
+                     <img src={docProfileImageOne} alt="Doctor's-image" />
                   </div>
                   <div className="services-doctor-info">
                      <h4>Dr. Diane Elinam</h4>

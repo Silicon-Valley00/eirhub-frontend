@@ -1,5 +1,5 @@
 import React from 'react';
-import hero from '../../../images/imageone.svg';
+import landingpageImage from '../../../assets/landingpage design.png';
 import './hero.css';
 
 const Hero = () => {
@@ -22,7 +22,7 @@ const Hero = () => {
                </div>
             </div>
             <div className="hero-image">
-               <img src={hero} alt={'Hero-image'} />
+               <img src={landingpageImage} alt={'Hero-image'} />
             </div>
          </div>
       </section>
