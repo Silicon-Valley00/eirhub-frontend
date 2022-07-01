@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
-import Login from '../Components/Login.js';
+import Login from './components/Login.js';
+import Signup from './components/Signup.js';
+import './Registration.css';
 
 function Registration() {
    // Handles state of page switch
@@ -143,7 +145,7 @@ function Registration() {
 
    return (
       <>
-         <Login
+         {/*<Login
             submitSigninHandler={submitSigninHandler}
             pageChangeSignin={pageChangeSignin}
             pageChangeSignup={pageChangeSignup}
@@ -168,7 +170,8 @@ function Registration() {
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
             // enableRegisterButton={enableRegisterButton}
             // enableLoginButton={enableLoginButton}
-         />
+   />*/}
+         <Signup />
       </>
    );
 }
