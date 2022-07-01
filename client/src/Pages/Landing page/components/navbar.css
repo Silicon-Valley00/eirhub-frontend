@@ -6,9 +6,6 @@
    --deepcol: #0d3f58;
 }
 
-* {
-   color: var(--midcol);
-}
 /* main nav */
 #nav {
    padding: 2rem;
@@ -43,7 +40,6 @@
    align-items: right;
    justify-content: right;
    background-color: var(--lightcol);
-   color: var(--white);
    position: absolute;
    right: -100%;
    top: 0;
@@ -65,6 +61,7 @@ li {
    cursor: pointer;
    list-style-type: none;
    margin-top: 2rem;
+   color: var(--white);
 }
 
 #signup ul li {
@@ -78,6 +75,10 @@ li {
 
 /* ===================================================tablet style============== */
 @media screen and (min-width: 960px) {
+   * {
+      color: var(--midcol);
+   }
+
    #nav {
       display: flex;
       align-items: center;
@@ -97,7 +98,6 @@ li {
       background-color: var(--gray);
       align-items: center;
       justify-content: center;
-      color: var(--lightcol);
       height: 3rem;
       padding: 0;
       padding-bottom: 1.6rem;
@@ -111,6 +111,10 @@ li {
       align-items: center;
       justify-content: center;
       column-gap: 2rem;
+   }
+
+   li {
+      color: var(--midcol);
    }
 
    .left-div {
