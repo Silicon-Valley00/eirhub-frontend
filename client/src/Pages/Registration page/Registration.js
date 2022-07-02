@@ -36,7 +36,6 @@ function Registration() {
       useState(null);
 
 
-   const [alert, setAlert] = useState({ show: false, msg: '' })
 
    // Handles error messages of input boxes
    const [registerNameErrorMessage, setRegisterNameErrorMessage] = useState('');
