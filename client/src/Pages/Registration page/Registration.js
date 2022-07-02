@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import Login from './components/Login.js';
-import Signup from './components/Signup.js';
-import './Registration.css';
+import Signup from './components/Signup'
+// import './Registration.css';
+import Login from './components/Login';
 
 function Registration() {
    // Modal change
@@ -13,8 +13,8 @@ function Registration() {
    const [changePage, changePageHandler] = useState(true);
 
    // User sign in refs
-   const signinUser = useRef();
-   const signinPassword = useRef();
+   const loginEmail = useRef();
+   const loginPassword = useRef();
    // User sign up refs
    const signupFirstname = useRef();
    const signupLastname = useRef();
@@ -24,7 +24,7 @@ function Registration() {
    const signupDate = useRef();
 
    // Handles error state of input boxes
-   const [loginUserError, setLoginUserError] = useState(null);
+   const [loginEmailError, setloginEmailError] = useState(null);
    const [loginPasswordError, setLoginPasswordError] = useState(null);
 
    const [registerNameError, setRegisterNameError] = useState(null);
@@ -35,7 +35,9 @@ function Registration() {
    const [registerPasswordTwoError, setRegisterPasswordTwoError] =
       useState(null);
 
-   // Handles erreo messages of input boxes
+
+
+   // Handles error messages of input boxes
    const [registerNameErrorMessage, setRegisterNameErrorMessage] = useState('');
    const [registerDateErrorMessage, setRegisterDateErrorMessage] = useState('');
    const [registerEmailErrorMessage, setRegisterEmailErrorMessage] =
@@ -44,12 +46,14 @@ function Registration() {
       useState('');
    const [registerPasswordTwoErrorMessage, setRegisterPasswordTwoErrorMessage] =
       useState('');
+   const [loginEmailErrorMessage,setloginEmailErrorMessage] =  useState('')
+   const [loginPasswordErrorMessage,setLoginPasswordErrorMessage]= useState('')
 
    const pattern = /^[a-zA-Z ]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-   //Handles page switch for signin page
-   function pageChangeSignin() {
+   //Handles page switch for login page
+   function pageChangelogin() {
       changePageHandler(true);
    }
    //Handles page switch for signup page
@@ -57,26 +61,32 @@ function Registration() {
       changePageHandler(false);
    }
 
-   // Functions below check user credentials in login form
-   function handleLoginUser() {
-      let enteredSignInName = signinUser.current.value;
 
-      if (enteredSignInName === '') {
-         setLoginUserError(true);
-      } else if (enteredSignInName.match(pattern)) {
-         setLoginUserError(false);
+
+   // Functions below check user credentials in each form input
+   function handleloginEmail() {
+      let enteredloginName = loginEmail.current.value;
+
+      if (enteredloginName === '') {
+         setloginEmailError(true);
+         setloginEmailErrorMessage('Email required')
+      } else if (enteredloginName.match(emailPattern)) {
+         setloginEmailError(false);
       } else {
-         setLoginUserError(true);
+         setloginEmailError(true);
+         setloginEmailErrorMessage('Email format not valid')
       }
    }
-
+   
    function handleLoginPassword() {
-      let enteredSignInPassword = signinPassword.current.value;
-
-      if (enteredSignInPassword === '') {
+      let enteredloginPassword = loginPassword.current.value;
+      
+      if (enteredloginPassword === '') {
          setLoginPasswordError(true);
-      } else if (enteredSignInPassword.length < 8) {
+         setLoginPasswordErrorMessage('Password required')
+      } else if (enteredloginPassword.length < 8) {
          setLoginPasswordError(true);
+         setLoginPasswordErrorMessage('Password must be at least 8 characters long')
       } else {
          setLoginPasswordError(false);
       }
@@ -108,11 +118,13 @@ function Registration() {
       if (enteredSignUpEmail === '') {
          setRegisterEmailErrorMessage('Email required');
          setRegisterEmailError(true);
+
       } else if (enteredSignUpEmail.match(emailPattern)) {
          setRegisterEmailError(false);
       } else {
          setRegisterEmailErrorMessage('Email format not valid');
          setRegisterEmailError(true);
+
       }
    }
    function handleRegisterDate() {
@@ -132,6 +144,7 @@ function Registration() {
       if (enteredSignUpPassword === '') {
          setRegisterPasswordOneErrorMessage('Password required');
          setRegisterPasswordOneError(true);
+
       } else if (enteredSignUpPassword.length < 8) {
          setRegisterPasswordOneErrorMessage(
             'Password must be at least 8 characters long'
@@ -159,6 +172,7 @@ function Registration() {
          setRegisterPasswordOneError(true);
       } else {
          setRegisterPasswordOneError(false);
+
       }
    }
 
@@ -169,18 +183,20 @@ function Registration() {
       if (enteredSignUpPasswordconfirm === '') {
          setRegisterPasswordTwoErrorMessage('Confirm password required');
          setRegisterPasswordTwoError(true);
+
       } else if (enteredSignUpPassword !== enteredSignUpPasswordconfirm) {
          setRegisterPasswordTwoErrorMessage('Passwords do not match');
          setRegisterPasswordTwoError(true);
       } else {
          setRegisterPasswordTwoError(false);
+
       }
    }
 
    // function handles user data
-   function submitSigninHandler() {
-      let enteredSignInName = signinUser.current.value;
-      let enteredSignInPassword = signinPassword.current.value;
+   function submitLoginHandler() {
+      let enteredloginName = loginEmail.current.value;
+      let enteredloginPassword = loginPassword.current.value;
 
       let enteredSignUpFirstname = signupFirstname.current.value;
       let enteredSignUpLastname = signupLastname.current.value;
@@ -191,11 +207,11 @@ function Registration() {
       if (changePage) {
          //sends user validated credentials
 
-         const signinData = {
-            name: enteredSignInName,
-            password: enteredSignInPassword,
+         const loginData = {
+            name: enteredloginName,
+            password: enteredloginPassword,
          };
-         console.log(signinData);
+         console.log(loginData);
       } else {
          //Sends validated sign up user credentials
 
@@ -214,36 +230,37 @@ function Registration() {
    return (
       <>
          {/*<Login
-            submitSigninHandler={submitSigninHandler}
-            pageChangeSignin={pageChangeSignin}
+            pageChangelogin={pageChangelogin}
             pageChangeSignup={pageChangeSignup}
             changePage={changePage}
-            signinUser={signinUser}
-            signinPassword={signinPassword}
-            signupUser={signupUser}
             signupEmail={signupEmail}
             signupPassword={signupPassword}
             signupPasswordconfirm={signupPasswordconfirm}
-            loginUserError={loginUserError}
-            loginPasswordError={loginPasswordError}
             registerUserError={registerUserError}
             registerEmailError={registerEmailError}
             registerPasswordOneError={registerPasswordOneError}
             registerPasswordTwoError={registerPasswordTwoError}
-            handleLoginUser={handleLoginUser}
-            handleLoginPassword={handleLoginPassword}
             handleRegisterUser={handleRegisterUser}
             handleRegisterEmail={handleRegisterEmail}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
             // enableRegisterButton={enableRegisterButton}
             // enableLoginButton={enableLoginButton}
-   />*/}
-         <div
+         />*/}
+         <Login
+         submitLoginHandler={submitLoginHandler}
+         loginEmail={loginEmail}
+         handleloginEmail={handleloginEmail}
+         handleLoginPassword={handleLoginPassword}
+         loginPassword={loginPassword}
+         loginEmailError={loginEmailError}
+         loginPasswordError={loginPasswordError}
+         loginEmailErrorMessage={loginEmailErrorMessage}
+         loginPasswordErrorMessage={loginPasswordErrorMessage}
+         />
+         {/* <div
             id="blur"
-            className={['modal', modal && 'active']
-               .filter((e) => !!e)
-               .join(' ')}
+            className={`modal ${modal && 'modal'}`}
             // onClick={handleModal}
          >
             <button onClick={handleModal}>Open sign up</button>
@@ -271,9 +288,9 @@ function Registration() {
             handleRegisterDate={handleRegisterDate}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-         />
-         {/* put yours below*/}
-      </>
+         /> */}
+         {/* put yours below */}
+      </> 
    );
 }
 export default Registration;
