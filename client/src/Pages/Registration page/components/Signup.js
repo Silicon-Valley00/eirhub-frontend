@@ -1,6 +1,6 @@
 import React from 'react';
 import './signup.css';
-import signUp from '../../../images/imagetwo.svg';
+import signUp from '../../../images/signupimage.svg';
 import { FaRegUser } from 'react-icons/fa';
 import { MdOutlineVpnKey } from 'react-icons/md';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';

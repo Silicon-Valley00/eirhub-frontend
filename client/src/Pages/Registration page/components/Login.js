@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import signUp from '../../../images/imagetwo.svg';
-import signIn from '../../../images/imageone.svg';
 import { FaRegUser } from 'react-icons/fa';
 import { MdOutlineVpnKey } from 'react-icons/md';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -261,7 +259,6 @@ function Startpage(props) {
                         Sign Up
                      </button>
                   </div>
-                  <img src={signUp} className="image" alt="Sign up logo" />
                </div>
                <div className="panel right-panel">
                   <div className="content">
@@ -280,7 +277,7 @@ function Startpage(props) {
                         Sign In
                      </button>
                   </div>
-                  <img src={signIn} className="image" alt="Sign in logo" />
+                  {/*<img src={signIn} className="image" alt="Sign in logo" />*/}
                </div>
             </div>
          </div>
