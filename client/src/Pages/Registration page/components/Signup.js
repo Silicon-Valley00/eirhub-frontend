@@ -8,6 +8,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 import Alert from './Alert'
 
 function Signup(props) {
+   const {msg,show} = props
    return (
       <section className="signup-body">
          <div id="signup-content" className={props.modal ? 'active' : ''}>
