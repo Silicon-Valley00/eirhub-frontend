@@ -4,6 +4,11 @@ import Signup from './components/Signup.js';
 import './Registration.css';
 
 function Registration() {
+   // Modal change
+   const [modal, setModal] = useState(false);
+   function handleModal() {
+      setModal(!modal);
+   }
    // Handles state of page switch
    const [changePage, changePageHandler] = useState(true);
 
@@ -171,7 +176,17 @@ function Registration() {
             // enableRegisterButton={enableRegisterButton}
             // enableLoginButton={enableLoginButton}
    />*/}
-         <Signup />
+         <div
+            id="blur"
+            className={['modal', modal && 'active']
+               .filter((e) => !!e)
+               .join(' ')}
+            // onClick={handleModal}
+         >
+            <button onClick={handleModal}>Open sign up</button>
+         </div>
+         <Signup modal={modal} />
+         {/* put yours below*/}
       </>
    );
 }
