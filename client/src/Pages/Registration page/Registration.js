@@ -13,7 +13,7 @@ function Registration() {
    const [changePage, changePageHandler] = useState(true);
 
    // User sign in refs
-   const loginUser = useRef();
+   const loginEmail = useRef();
    const loginPassword = useRef();
    // User sign up refs
    const signupFirstname = useRef();
@@ -24,7 +24,7 @@ function Registration() {
    const signupDate = useRef();
 
    // Handles error state of input boxes
-   const [loginUserError, setLoginUserError] = useState(null);
+   const [loginEmailError, setloginEmailError] = useState(null);
    const [loginPasswordError, setLoginPasswordError] = useState(null);
 
    const [registerNameError, setRegisterNameError] = useState(null);
@@ -47,6 +47,8 @@ function Registration() {
       useState('');
    const [registerPasswordTwoErrorMessage, setRegisterPasswordTwoErrorMessage] =
       useState('');
+   const [loginEmailErrorMessage,setloginEmailErrorMessage] =  useState('')
+   const [loginPasswordErrorMessage,setLoginPasswordErrorMessage]= useState('')
 
    const pattern = /^[a-zA-Z ]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -60,23 +62,20 @@ function Registration() {
       changePageHandler(false);
    }
 
-   const showAlert = (show = false, msg = "") => {
-      console.log(alert)
-      setAlert({ show, msg })
-   }
+
 
    // Functions below check user credentials in each form input
-   function handleLoginUser() {
-      let enteredloginName = loginUser.current.value;
+   function handleloginEmail() {
+      let enteredloginName = loginEmail.current.value;
 
       if (enteredloginName === '') {
-         setLoginUserError(true);
-         showAlert(true,'Login name cannot be empty');
-      } else if (enteredloginName.match(pattern)) {
-         setLoginUserError(false);
+         setloginEmailError(true);
+         setloginEmailErrorMessage('Email required')
+      } else if (enteredloginName.match(emailPattern)) {
+         setloginEmailError(false);
       } else {
-         setLoginUserError(true);
-         showAlert(true,'Login name is wrong');
+         setloginEmailError(true);
+         setloginEmailErrorMessage('Email format not valid')
       }
    }
    
@@ -85,12 +84,12 @@ function Registration() {
       
       if (enteredloginPassword === '') {
          setLoginPasswordError(true);
-         showAlert(true,'Login password cannot be empty');
+         setLoginPasswordErrorMessage('Password required')
       } else if (enteredloginPassword.length < 8) {
          setLoginPasswordError(true);
+         setLoginPasswordErrorMessage('Password must be at least 8 characters long')
       } else {
          setLoginPasswordError(false);
-         showAlert(true,'Login password is wrong');
       }
    }
 
@@ -197,7 +196,7 @@ function Registration() {
 
    // function handles user data
    function submitLoginHandler() {
-      let enteredloginName = loginUser.current.value;
+      let enteredloginName = loginEmail.current.value;
       let enteredloginPassword = loginPassword.current.value;
 
       let enteredSignUpFirstname = signupFirstname.current.value;
@@ -249,23 +248,20 @@ function Registration() {
             // enableRegisterButton={enableRegisterButton}
             // enableLoginButton={enableLoginButton}
          />*/}
-         {/* <Signup/> */}
-         {/* <Login
+         <Login
          submitLoginHandler={submitLoginHandler}
-         loginUser={loginUser}
-         handleLoginUser={handleLoginUser}
+         loginEmail={loginEmail}
+         handleloginEmail={handleloginEmail}
          handleLoginPassword={handleLoginPassword}
          loginPassword={loginPassword}
-         signupUser={signupUser}
-         loginUserError={loginUserError}
+         loginEmailError={loginEmailError}
          loginPasswordError={loginPasswordError}
-         {...alert}
-         /> */}
-         <div
+         loginEmailErrorMessage={loginEmailErrorMessage}
+         loginPasswordErrorMessage={loginPasswordErrorMessage}
+         />
+         {/* <div
             id="blur"
-            className={['modal', modal && 'active']
-               .filter((e) => !!e)
-               .join(' ')}
+            className={`modal ${modal && 'modal'}`}
             // onClick={handleModal}
          >
             <button onClick={handleModal}>Open sign up</button>
@@ -293,7 +289,7 @@ function Registration() {
             handleRegisterDate={handleRegisterDate}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-         />
+         /> */}
          {/* put yours below */}
       </> 
    );

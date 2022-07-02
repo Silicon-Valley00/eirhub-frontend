@@ -60,7 +60,6 @@ function Signup(props) {
                                  }}
                               />
                            </div>
-                           {props.registerUserError && <Alert show={show} msg={msg} />}
                         </div>
                         <div className="signup-form-box-name">
                            <label htmlFor="lastname"> Lastname</label>
@@ -207,8 +206,8 @@ function Signup(props) {
                               {hidePasswordOne ? (
                                  <AiOutlineEye />
                               ) : (
-                                 <AiOutlineEyeInvisible />
-                              )}
+                                    <AiOutlineEyeInvisible />
+                                 )}
                            </i>
                         </div>
                      </div>
@@ -257,8 +256,8 @@ function Signup(props) {
                               {hidePasswordTwo ? (
                                  <AiOutlineEye />
                               ) : (
-                                 <AiOutlineEyeInvisible />
-                              )}
+                                    <AiOutlineEyeInvisible />
+                                 )}
                            </i>
                         </div>
                      </div>
@@ -281,11 +280,11 @@ function Signup(props) {
                            value="Create Account"
                            className={
                               props.registerNameError === true ||
-                              props.registerEmailError === true ||
-                              props.registerDateError === true ||
-                              props.registerPasswordOneError === true ||
-                              props.registerPasswordTwoError === true ||
-                              props.registerPasswordTwoError === null
+                                 props.registerEmailError === true ||
+                                 props.registerDateError === true ||
+                                 props.registerPasswordOneError === true ||
+                                 props.registerPasswordTwoError === true ||
+                                 props.registerPasswordTwoError === null
                                  ? 'signup-btn-inactive '
                                  : 'signup-btn'
                            }
