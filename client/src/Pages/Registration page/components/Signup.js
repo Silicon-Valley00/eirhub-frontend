@@ -5,6 +5,7 @@ import { FaRegUser } from 'react-icons/fa';
 import { MdOutlineVpnKey } from 'react-icons/md';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { HiOutlineMail } from 'react-icons/hi';
+import Alert from './Alert'
 
 function Signup(props) {
    return (
@@ -44,6 +45,7 @@ function Signup(props) {
                                  placeholder="Enter Firstname"
                               />
                            </div>
+                           {props.registerUserError && <Alert show={show} msg={msg} />}
                         </div>
                         <div className="signup-form-box-name">
                            <label htmlFor="lastname"> Lastname</label>

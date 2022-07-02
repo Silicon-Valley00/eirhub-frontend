@@ -7,10 +7,13 @@
    --light-blue:#05a6c2;
    --dark-blue:#2b6777;
    --text-color:#0d3f58;
+   --padding: 1.5rem;
+   --text-padding:10px;
 }
 
 
 * {
+   border: none;
    margin: 0;
    padding: 0;
    box-sizing: border-box;
@@ -24,16 +27,17 @@ body {
 
 .login-container {
    justify-self: center;
-   padding: 3rem;
+   border-radius: var(--radius);
+   justify-self: center;
+   padding: var(--padding);
    color: var(--text-color);
    background-color: var(--white);
-   height: 728px;
-   width: 1118px;
-   /* margin: auto; */
+   height: 80vh;
+   width: 70vw;
+   margin: auto;
    display: grid;
-   
    grid-template-columns: 2fr  3fr;
-   gap: 2rem;
+   gap: 1rem;
 }
 
 
@@ -42,10 +46,10 @@ body {
    display: flex;
    flex-direction: column;
    justify-content: center;
-   padding: 3rem;
+   padding: var(--padding);
    /* align-items: center; */
    /* margin: auto; */
-   /* height: 100%; */
+   height: 90%;
 }
 
 .login-form > *{
@@ -53,6 +57,42 @@ body {
    margin: 10px auto;
    width: 100%;
 }
+.right-side {
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   /* align-items: center; */
+   background-color: var(--light-blue);
+   border-top-right-radius: var(--radius);
+   border-bottom-right-radius: var(--radius);
+   padding: var(--padding);
+}
+.right-side>*:not(:first-child) {
+   margin: auto;
+}
+
+.right-side >h1 {
+   color: var(--white);
+   font-weight: 400;
+}
+.right-side>p {
+   font-size: 2rem;
+   
+}
+
+
+.password-reset {
+   color: var(--light-blue);
+   font-size: 0.7rem;
+   text-align: right;
+}
+
+.signup-toggle {
+   padding: var(--text-padding);
+   font-size: 0.7rem;
+}
+
 .input-field {
    height: var(--height);
    border: 1px solid grey;
@@ -61,10 +101,11 @@ body {
    /* justify-content: space-around; */
    align-items: center;
    height: var(--height);
-   padding: 10px;
+   /* padding: var(--text-padding); */
 }
 .input-field >* {
    margin: 5px;
+   border: none;
 }
 .error {
    border: 1px solid red;
@@ -74,6 +115,9 @@ body {
    flex-direction: column;
    align-items: center;
    justify-content: center;
+}
+h1 {
+   font-size: 2rem;
 }
 
 .btn {
@@ -85,15 +129,18 @@ body {
    /* margin: auto; */
 }
 
-input {
-   /* padding: 10px 0; */
+.input-field>input{
+   /* padding: var(--text-padding) 0; */
    border: none;
    width: 100%;
+   height: 100%;
+   padding: auto;
 }
 
 a {
    color: var(--light-blue);
 }
+
 
 
 

@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import signUpImg from '../../../images/imagetwo.svg';
-import loginImg from '../../../images/imageone.svg';
 import { FaRegUser, FaShower } from 'react-icons/fa';
 import { MdOutlineVpnKey } from 'react-icons/md';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { HiOutlineMail } from 'react-icons/hi';
 import Alert from './Alert'
 import './login.css'
+import loginImage from '../../../images/loginimage.svg'
 
 function Login(props) {
     /* Code below handles user inputs, checks and form submissions */
@@ -25,14 +24,13 @@ function Login(props) {
                             }}
                             className="login-form"
                         >
-                            <h2 className="title">Welcome Back</h2>
+                            <h1 className="title">Welcome Back</h1>
                             <p>Please enter your details</p>
                             {/* <div className="server-message"></div> */}
                             <h3>Email</h3>
                             <div
-                                className={
-                                    loginUserError ? 'error' : 'input-field'
-                                }
+                                    className = {`input-field ${loginPasswordError && 'error'}`}
+
                             >
                                 <i>
                                     <FaRegUser />
@@ -73,6 +71,9 @@ function Login(props) {
                                 </i>
                             </div>
                             {loginPasswordError && <Alert show={show} msg={msg} />}
+                                <div className="password-reset">
+                                    <a href="">Forgot password?</a>
+                                    </div>
                             <div className="submit">
 
                             <input
@@ -82,7 +83,7 @@ function Login(props) {
                                 className={
                                     loginUserError ||
                                         loginPasswordError
-                                        ? 'btn-inactive solid'
+                                        ? 'btn inactive'
                                         : 'btn solid'
                                     }
                                     disabled={
@@ -94,14 +95,17 @@ function Login(props) {
                                         submitLoginHandler();
                                     }}
                                     />
+                                    <div className="signup-toggle">
                                     <p>New Here ? <a href="">Sign up</a></p>
+                                    </div>
                             </div>
                         </form>
 
                    </div>
-            <div className="sideimage">
+            <div className="right-side">
                <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
+               <img src={loginImage} alt=""/>
            </div>
         </section>
     );

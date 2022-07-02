@@ -59,12 +59,12 @@ function Registration() {
 
       if (enteredloginName === '') {
          setLoginUserError(true);
-         showAlert(true,'Sign in name cannot be empty');
+         showAlert(true,'Login name cannot be empty');
       } else if (enteredloginName.match(pattern)) {
          setLoginUserError(false);
       } else {
          setLoginUserError(true);
-         showAlert(true,'Sign in name is wrong');
+         showAlert(true,'Login name is wrong');
       }
    }
    
@@ -73,12 +73,12 @@ function Registration() {
       
       if (enteredloginPassword === '') {
          setLoginPasswordError(true);
-         showAlert(true,'Sign in password cannot be empty');
+         showAlert(true,'Login password cannot be empty');
       } else if (enteredloginPassword.length < 8) {
          setLoginPasswordError(true);
       } else {
          setLoginPasswordError(false);
-         showAlert(true,'Sign in password is wrong');
+         showAlert(true,'Login password is wrong');
       }
    }
 
@@ -87,10 +87,14 @@ function Registration() {
 
       if (enteredSignUpName === '') {
          setRegisterUserError(true);
+         showAlert(true, 'Name field cannot be empty');
+
       } else if (enteredSignUpName.match(pattern)) {
          setRegisterUserError(false);
       } else {
          setRegisterUserError(true);
+         showAlert(true, 'Name field is wrong');
+
       }
    }
 
@@ -99,10 +103,14 @@ function Registration() {
 
       if (enteredSignUpEmail === '') {
          setRegisterEmailError(true);
+         showAlert(true, 'Email field cannot be empty');
+
       } else if (enteredSignUpEmail.match(emailPattern)) {
          setRegisterEmailError(false);
       } else {
          setRegisterEmailError(true);
+         showAlert(true, 'Email is wrong');
+
       }
    }
 
@@ -111,10 +119,14 @@ function Registration() {
 
       if (enteredSignUpPassword === '') {
          setRegisterPasswordOneError(true);
+         showAlert(true, 'Sign up password cannot be empty');
+
       } else if (enteredSignUpPassword.length < 8) {
          setRegisterPasswordOneError(true);
       } else {
          setRegisterPasswordOneError(false);
+         showAlert(true, 'Sign up password is wrong');
+
       }
    }
 
@@ -124,10 +136,14 @@ function Registration() {
 
       if (enteredSignUpPasswordconfirm === '') {
          setRegisterPasswordTwoError(true);
+         showAlert(true, 'Password cannot be empty');
+
       } else if (enteredSignUpPassword !== enteredSignUpPasswordconfirm) {
          setRegisterPasswordTwoError(true);
       } else {
          setRegisterPasswordTwoError(false);
+         showAlert(true, 'Password is wrong');
+
       }
    }
 
@@ -203,8 +219,8 @@ function Registration() {
             <button onClick={handleModal}>Open sign up</button>
          </div>
          <Signup modal={modal} />
-      </> */}
          {/* put yours below*/}
+      </> 
    );
 }
 export default Registration;
