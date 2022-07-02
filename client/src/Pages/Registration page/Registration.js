@@ -16,19 +16,16 @@ function Registration() {
    const loginEmail = useRef();
    const loginPassword = useRef();
    // User sign up refs
-   const signupFirstname = useRef();
-   const signupLastname = useRef();
+   const signupUser = useRef();
    const signupEmail = useRef();
    const signupPassword = useRef();
    const signupPasswordconfirm = useRef();
-   const signupDate = useRef();
 
    // Handles error state of input boxes
    const [loginEmailError, setloginEmailError] = useState(null);
    const [loginPasswordError, setLoginPasswordError] = useState(null);
 
-   const [registerNameError, setRegisterNameError] = useState(null);
-   const [registerDateError, setRegisterDateError] = useState(null);
+   const [registerUserError, setRegisterUserError] = useState(null);
    const [registerEmailError, setRegisterEmailError] = useState(null);
    const [registerPasswordOneError, setRegisterPasswordOneError] =
       useState(null);
@@ -93,23 +90,19 @@ function Registration() {
       }
    }
 
-   // Functions below check user credentials in login form
    function handleRegisterUser() {
-      let enteredSignUpFirstname = signupFirstname.current.value;
-      let enteredSignUpLastname = signupLastname.current.value;
+      let enteredSignUpName = signupUser.current.value;
 
-      if (enteredSignUpFirstname === '' || enteredSignUpLastname === '') {
-         setRegisterNameErrorMessage('Full name required');
-         setRegisterNameError(true);
-      } else if (
-         enteredSignUpFirstname.match(pattern) &&
-         enteredSignUpLastname.match(pattern)
-      ) {
-         setRegisterNameError(false);
+      if (enteredSignUpName === '') {
+         setRegisterUserError(true);
+         showAlert(true, 'Name field cannot be empty');
+
+      } else if (enteredSignUpName.match(pattern)) {
+         setRegisterUserError(false);
       } else {
-         setRegisterNameErrorMessage('Name must have only letters');
+         setRegisterUserError(true);
+         showAlert(true, 'Name field is wrong');
 
-         setRegisterNameError(true);
       }
    }
 
@@ -117,25 +110,15 @@ function Registration() {
       let enteredSignUpEmail = signupEmail.current.value;
 
       if (enteredSignUpEmail === '') {
-         setRegisterEmailErrorMessage('Email required');
          setRegisterEmailError(true);
+         showAlert(true, 'Email field cannot be empty');
 
       } else if (enteredSignUpEmail.match(emailPattern)) {
          setRegisterEmailError(false);
       } else {
-         setRegisterEmailErrorMessage('Email format not valid');
          setRegisterEmailError(true);
+         showAlert(true, 'Email is wrong');
 
-      }
-   }
-   function handleRegisterDate() {
-      let enteredSignUpDate = signupDate.current.value;
-
-      if (enteredSignUpDate === '') {
-         setRegisterDateErrorMessage('Date required');
-         setRegisterDateError(true);
-      } else {
-         setRegisterDateError(false);
       }
    }
 
@@ -143,36 +126,14 @@ function Registration() {
       let enteredSignUpPassword = signupPassword.current.value;
 
       if (enteredSignUpPassword === '') {
-         setRegisterPasswordOneErrorMessage('Password required');
          setRegisterPasswordOneError(true);
+         showAlert(true, 'Sign up password cannot be empty');
 
       } else if (enteredSignUpPassword.length < 8) {
-         setRegisterPasswordOneErrorMessage(
-            'Password must be at least 8 characters long'
-         );
-         setRegisterPasswordOneError(true);
-      } else if (enteredSignUpPassword.search(/[0-9]/) === -1) {
-         setRegisterPasswordOneErrorMessage(
-            'Password must contain at least a number'
-         );
-         setRegisterPasswordOneError(true);
-      } else if (enteredSignUpPassword.search(/[a-z]/) === -1) {
-         setRegisterPasswordOneErrorMessage(
-            'Password must contain at least a lowercase character'
-         );
-         setRegisterPasswordOneError(true);
-      } else if (enteredSignUpPassword.search(/[A-Z]/) === -1) {
-         setRegisterPasswordOneErrorMessage(
-            'Password must contain at least an uppercase character'
-         );
-         setRegisterPasswordOneError(true);
-      } else if (enteredSignUpPassword.search(/[,./;%^&*<>?:|]/) === -1) {
-         setRegisterPasswordOneErrorMessage(
-            'Password must contain at least a special character'
-         );
          setRegisterPasswordOneError(true);
       } else {
          setRegisterPasswordOneError(false);
+         showAlert(true, 'Sign up password is wrong');
 
       }
    }
@@ -182,14 +143,14 @@ function Registration() {
       let enteredSignUpPassword = signupPassword.current.value;
 
       if (enteredSignUpPasswordconfirm === '') {
-         setRegisterPasswordTwoErrorMessage('Confirm password required');
          setRegisterPasswordTwoError(true);
+         showAlert(true, 'Password cannot be empty');
 
       } else if (enteredSignUpPassword !== enteredSignUpPasswordconfirm) {
-         setRegisterPasswordTwoErrorMessage('Passwords do not match');
          setRegisterPasswordTwoError(true);
       } else {
          setRegisterPasswordTwoError(false);
+         showAlert(true, 'Password is wrong');
 
       }
    }
@@ -199,9 +160,7 @@ function Registration() {
       let enteredloginName = loginEmail.current.value;
       let enteredloginPassword = loginPassword.current.value;
 
-      let enteredSignUpFirstname = signupFirstname.current.value;
-      let enteredSignUpLastname = signupLastname.current.value;
-      let enteredSignUpDate = signupDate.current.value;
+      let enteredSignUpName = signupUser.current.value;
       let enteredSignUpEmail = signupEmail.current.value;
       let enteredSignUpPassword = signupPassword.current.value;
       let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
@@ -217,9 +176,7 @@ function Registration() {
          //Sends validated sign up user credentials
 
          const signupData = {
-            firstname: enteredSignUpFirstname,
-            lastname: enteredSignUpLastname,
-            dateOfBirth: enteredSignUpDate,
+            name: enteredSignUpName,
             email: enteredSignUpEmail,
             password: enteredSignUpPassword,
          };
@@ -266,6 +223,7 @@ function Registration() {
          >
             <button onClick={handleModal}>Open sign up</button>
          </div>
+<<<<<<< HEAD
          <Signup
             modal={modal}
             signupFirstname={signupFirstname}
@@ -291,6 +249,10 @@ function Registration() {
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          /> */}
          {/* put yours below */}
+=======
+         <Signup modal={modal} />
+         {/* put yours below*/}
+>>>>>>> parent of ea633a6 (maxwell's changes pulled)
       </> 
    );
 }
