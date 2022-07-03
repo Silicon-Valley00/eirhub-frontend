@@ -1,8 +1,6 @@
 import React from 'react';
 import landingpageImage from '../../../assets/landingpage design.png';
 import './hero.css';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
-import 'animate.css/animate.min.css';
 
 const Hero = () => {
    return (
