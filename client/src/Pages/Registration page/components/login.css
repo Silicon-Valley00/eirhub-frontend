@@ -127,24 +127,11 @@ h1 {
    width: 50%;
    border-radius: var(--field-radius);
    /* margin: auto; */
-   text-transform: uppercase;
-}
-.solid:hover {
-   background-color: var(--text-color);
-   transition: background-color 0.5s ease-out;
-   cursor: pointer;
-}
-
-.inactive {
-   background-color: var(--light-blue);
-   opacity: 0.5;
-   color: white;
 }
 
 .input-field>input{
    /* padding: var(--text-padding) 0; */
    border: none;
-   outline: none;
    width: 100%;
    height: 100%;
    padding: auto;
