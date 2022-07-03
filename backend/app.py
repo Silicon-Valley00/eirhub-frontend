@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
+from User.Person.personmodel import Person
 
 app = Flask(__name__)
 load_dotenv()
@@ -29,27 +30,44 @@ class Student(Base):
 try:
     engine.connect()
     Base.metadata.create_all(engine)
-    new = Student("Albus severus Potter","Potions") #
-    new2 = Student('Leta Lestrange','DADA')
-    session.add(new)
-    session.add(new2)
+    # new = Student("Albus severus Potter","Potions") #
+    # new2 = Student('Leta Lestrange','DADA')
+    # session.add(new)
+    # session.add(new2)
     session.commit()
-    session.close()
-    print("Done")
+    # session.close()
+    print("Database Successfully Connected")
 except Exception as e:
-    print(e)
+    print('Database connection failed: %s'%(e))
 # Echo for debugging for the moment
 
 @app.route("/home",methods = ['GET'])
 def home():
     session = Session()
     print('Home: DB Connection Successful')
-    students = session.query(Student).all() 
+    newPerson = Person("Rowan","Atkinson","Jnr","34","kdfkxjdflm",
+    "Rowan@gmail.com","rowan","22/07/2016","H3tyru","rrt","National ID"
+    ,"Ghanaian","4/07/21","4/05/22")
+    #session.add(new)
+    session.add(newPerson)
+    students = session.query(student).all()
+
     for student in students:
      return  student.name
    
+@app.route("/person",methods = ["GET"]) 
+def person():
+    for person in session.query(Person).all():
+        return person.user_email
 
-
+@app.route("/doctor/<int:id>", methods=['GET', 'POST'])
+def doctor(id):
+    for i in doctors:
+        for num, info in i.items():
+            if id == num:
+                return jsonify(info)
+    else:
+        return "ID not found"
 
 if __name__ == "__main__":
     app.run(debug=True)
