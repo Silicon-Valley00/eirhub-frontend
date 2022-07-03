@@ -45,18 +45,8 @@ function Login(props) {
                                     }}
                                 />
                             </div>
-                            <div
-                                className={
-                                    props.registerNameError
-                                        ? 'error-message-box'
-                                        : 'no-error-message-box'
-                                }
-                            >
-                                <i>
-                                    <IoWarning />
-                                </i>
-                                <p>{props.registerNameErrorMessage}</p>
-                            </div>                            <h3>Password</h3>
+                            {loginUserError && <Alert show={show} msg={msg} />}
+                            <h3>Password</h3>
                             <div
                                 className={`input-field ${loginPasswordError && 'error'}`}
                                 >
@@ -80,18 +70,8 @@ function Login(props) {
                                             )}
                                 </i>
                             </div>
-                            <div
-                                className={
-                                    props.registerNameError
-                                        ? 'error-message-box'
-                                        : 'no-error-message-box'
-                                }
-                            >
-                                <i>
-                                    <IoWarning />
-                                </i>
-                                <p>{props.registerNameErrorMessage}</p>
-                            </div>                                <div className="password-reset">
+                            {loginPasswordError && <Alert show={show} msg={msg} />}
+                                <div className="password-reset">
                                     <a href="">Forgot password?</a>
                                     </div>
                             <div className="submit">
