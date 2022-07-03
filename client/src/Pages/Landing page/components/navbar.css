@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
+
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+}
+
+/* main nav */
+#nav {
+   padding: 2rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   position: fixed;
+   width: 100%;
+   background-color: #ecf3fe;
+   height: 3rem;
+}
+
+/* nav-links */
+#nav-links {
+   display: block;
+}
+
+.link-container {
+   display: flex;
+   flex-direction: column;
+   text-align: right;
+   height: 100vh;
+   width: 73%;
+   align-items: right;
+   justify-content: right;
+   background-color: var(--lightcol);
+   position: absolute;
+   right: -100%;
+   top: 0;
+   padding-top: 2rem;
+   padding-left: 2rem;
+   padding-right: 5rem;
+   transition: all;
+   transition-duration: 500ms;
+   /* display: none; */
+}
+
+.link-container.active {
+   right: 0;
+   transition: all;
+   transition-duration: 500ms;
+}
+
+li {
+   cursor: pointer;
+   list-style-type: none;
+   margin-top: 2rem;
+   color: var(--white);
+   font-family: 'Poppins', sans-serif;
+}
+
+#signup {
+   margin-top: 2rem;
+   color: var(--white);
+   cursor: pointer;
+}
+
+#signup p {
+   font-weight: 500;
+   font-family: 'Poppins', sans-serif;
+   letter-spacing: 0.05em;
+}
+
+/* ===================================================mobile style============== */
+@media screen and (min-width: 640px) {
+}
+
+/* ===================================================tablet style============== */
+@media screen and (min-width: 960px) {
+   * {
+      color: var(--midcol);
+   }
+
+   #nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      height: 3rem;
+      background-color: var(--gray);
+   }
+
+   .link-container {
+      display: flex;
+      /* flex-direction: row; */
+      width: 100%;
+      /* text-align: center; */
+      position: unset;
+      background-color: var(--gray);
+      align-items: center;
+      justify-content: center;
+      height: 3rem;
+      padding: 0;
+      padding-bottom: 1.6rem;
+      padding-left: 7rem;
+      margin-left: 3px;
+   }
+
+   #nav-links {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 2rem;
+      background-color: red;
+   }
+
+   li {
+      color: var(--midcol);
+   }
+   li.each {
+      white-space: nowrap;
+   }
+   .left-div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+   }
+   #close {
+      display: none;
+   }
+   #menu {
+      display: none;
+   }
+
+   #separator {
+      margin-left: 0.5em;
+      margin-right: 0.5em;
+   }
+   #signup {
+      width: auto;
+      white-space: nowrap;
+      margin-left: 3px;
+   }
+}
+
+/* ===================================================desktop style============== */
+@media screen and (min-width: 1024px) {
+   #nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 4rem;
+      padding-right: 4rem;
+   }
+
+   #nav-links {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 5rem;
+      width: 90%;
+   }
+
+   li.each {
+      white-space: nowrap;
+   }
+
+   #signup {
+      width: auto;
+      white-space: nowrap;
+   }
+}

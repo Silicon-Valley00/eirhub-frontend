@@ -4,8 +4,8 @@
    /* display: flex;
    justify-content: center;
    align-items: center; */
-   width: 100%;
-   min-height: 100vh;
+   /* width: 100%;
+   min-height: 100vh; */
 }
 .modal#blur.active {
    filter: blur(20px);
@@ -21,11 +21,11 @@
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 body {
-   overflow: hidden;
-   background-color: #c0daee;
+   /* overflow: hidden; */
+   /* background-color: #c9cdd3; */
 
-   /* animation: changecolor 10s infinite; */
-   /* animation-fill-mode: both; */
+   /* animation: changecolor 10s infinite;
+   animation-fill-mode: both; */
 }
 
 /* @keyframes changecolor {
@@ -170,7 +170,7 @@ span {
    align-items: center;
    justify-content: center;
    font-size: 2rem;
-   border:0.1px solid red;
+   border: 0.1px solid red;
    /* box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5); */
    /* -moz-box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5); */
    /* -webkit-box-shadow: 0 0.5px 5px rgba(252, 2, 2, 0.5); */
@@ -452,4 +452,3 @@ div a {
       bottom: 28%;
    }
 }
-
