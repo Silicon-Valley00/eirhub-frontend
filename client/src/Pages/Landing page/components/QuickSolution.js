@@ -1,5 +1,5 @@
 import React from 'react';
-import './quickSolution.module.css';
+import styles from './quickSolution.module.css';
 
 const items = [
    {
@@ -20,21 +20,21 @@ const items = [
 ];
 const QuickSolution = () => {
    return (
-      <main className="main">
-         <div className="title">
+      <main className={styles.main}>
+         <div className={styles.title}>
             <p>a quick solution for</p>
             <p>scheduling with a doctor</p>
          </div>
 
-         <div className="cards">
+         <div className={styles.cards}>
             {React.Children.toArray(
                items.map((item) => {
                   return (
-                     <div className="card">
-                        <div className="icon">
+                     <div className={styles.card}>
+                        <div className={styles.icon}>
                            <img src={item.profile_pic} alt="Icon" />
                         </div>
-                        <div className="info">
+                        <div className={styles.info}>
                            <h4>{item.name}</h4>
                            <p>{item.profession}</p>
                         </div>

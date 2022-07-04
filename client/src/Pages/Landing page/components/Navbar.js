@@ -41,9 +41,11 @@ const Navbar = () => {
                   <li className={styles.each}>How it Works</li>
                </ul>
                <div id={styles.signup}>
-                  <p>
-                     Sign Up <span id={styles.separator}>|</span> Login
-                  </p>
+                  <ul className={styles.signup_list}>
+                     <li>Sign Up</li>
+                     <li id={styles.separator}>|</li>
+                     <li>Login</li>
+                  </ul>
                </div>
             </div>
          </div>

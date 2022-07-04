@@ -59,9 +59,15 @@ li {
    cursor: pointer;
    list-style-type: none;
    margin-top: 2rem;
-   color: var(--white);
    font-family: 'Poppins', sans-serif;
-   font-size: 15pt;
+}
+
+.left {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: right;
+   width: 100%;
 }
 
 #signup {
@@ -69,11 +75,14 @@ li {
    color: var(--white);
 }
 
-#signup p {
+#signup .signup_list {
    font-weight: 500;
    font-family: 'Poppins', sans-serif;
    letter-spacing: 0.05em;
    cursor: pointer;
+   display: flex;
+   align-items: center;
+   color: var(--deepcol);
 }
 
 /* ===================================================mobile style============== */
@@ -84,6 +93,7 @@ li {
 
    .each {
       font-size: 12pt;
+      color: var(--white);
    }
 }
 
@@ -138,6 +148,7 @@ li {
    }
    .left {
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: space-between;
       width: 100%;
@@ -152,6 +163,7 @@ li {
    #separator {
       margin-left: 0.5em;
       margin-right: 0.5em;
+      cursor: default;
    }
    #signup {
       white-space: nowrap;
@@ -193,11 +205,16 @@ li {
 
    li.each {
       white-space: nowrap;
+      font-size: 12pt;
    }
 
    #signup {
       width: auto;
       white-space: nowrap;
+   }
+
+   .signup_list {
+      font-size: 12pt;
    }
 }
 

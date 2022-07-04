@@ -1,5 +1,6 @@
 .main {
    padding: 5%;
+   background-color: var(--white);
 }
 .title {
    display: flex;
@@ -22,7 +23,7 @@
    display: grid;
    grid-template-columns: repeat(1, 1fr);
    gap: 10px;
-   background: red;
+
    width: 100%;
 }
 
