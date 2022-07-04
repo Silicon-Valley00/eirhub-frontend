@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Registration from '../Registration page/Registration';
+import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import Services from './components/Services';
@@ -33,6 +34,7 @@ const LandingPage = () => {
                handleModalSignup={handleModalSignup}
             />
             <Hero />
+            <Footer></Footer>
 
             {/* <Services /> */}
          </div>
