@@ -9,16 +9,15 @@ import { IoCalendar } from 'react-icons/io5';
 import { IoWarning } from 'react-icons/io5';
 
 function Signup(props) {
-   const { msg, show } = props
    // Handles password visibilty
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    return (
       <section className="signup-body">
-         <div id="signup-content" className={props.modal ? 'active' : ''}>
+         <div id="signup-content" className={props.modalSignup ? 'active' : ''}>
             <div className="signup-container">
                <div className="left-region">
-                  <h3>Eirhub</h3>
+                  <h3 onClick={() => props.handleModalsClose()}>Eirhub</h3>
                   <div className="left-region-info-one">
                      <p>Sign up today and get in touch</p>
                   </div>
@@ -206,8 +205,8 @@ function Signup(props) {
                               {hidePasswordOne ? (
                                  <AiOutlineEye />
                               ) : (
-                                    <AiOutlineEyeInvisible />
-                                 )}
+                                 <AiOutlineEyeInvisible />
+                              )}
                            </i>
                         </div>
                      </div>
@@ -256,8 +255,8 @@ function Signup(props) {
                               {hidePasswordTwo ? (
                                  <AiOutlineEye />
                               ) : (
-                                    <AiOutlineEyeInvisible />
-                                 )}
+                                 <AiOutlineEyeInvisible />
+                              )}
                            </i>
                         </div>
                      </div>
@@ -280,11 +279,15 @@ function Signup(props) {
                            value="Create Account"
                            className={
                               props.registerNameError === true ||
-                                 props.registerEmailError === true ||
-                                 props.registerDateError === true ||
-                                 props.registerPasswordOneError === true ||
-                                 props.registerPasswordTwoError === true ||
-                                 props.registerPasswordTwoError === null
+                              props.registerEmailError === true ||
+                              props.registerDateError === true ||
+                              props.registerPasswordOneError === true ||
+                              props.registerPasswordTwoError === true ||
+                              props.registerNameError === null ||
+                              props.registerEmailError === null ||
+                              props.registerDateError === null ||
+                              props.registerPasswordOneError === null ||
+                              props.registerPasswordTwoError === null
                                  ? 'signup-btn-inactive '
                                  : 'signup-btn'
                            }
@@ -294,6 +297,10 @@ function Signup(props) {
                               props.registerDateError === true ||
                               props.registerPasswordOneError === true ||
                               props.registerPasswordTwoError === true ||
+                              props.registerNameError === null ||
+                              props.registerEmailError === null ||
+                              props.registerDateError === null ||
+                              props.registerPasswordOneError === null ||
                               props.registerPasswordTwoError === null
                            }
                         />

@@ -1,17 +1,9 @@
 import React, { useState, useRef } from 'react';
-import Signup from './components/Signup'
+import Signup from './components/Signup';
 // import './Registration.css';
 import Login from './components/Login';
 
-function Registration() {
-   // Modal change
-   const [modal, setModal] = useState(false);
-   function handleModal() {
-      setModal(!modal);
-   }
-   // Handles state of page switch
-   const [changePage, changePageHandler] = useState(true);
-
+function Registration(props) {
    // User sign in refs
    const loginEmail = useRef();
    const loginPassword = useRef();
@@ -35,8 +27,6 @@ function Registration() {
    const [registerPasswordTwoError, setRegisterPasswordTwoError] =
       useState(null);
 
-
-
    // Handles error messages of input boxes
    const [registerNameErrorMessage, setRegisterNameErrorMessage] = useState('');
    const [registerDateErrorMessage, setRegisterDateErrorMessage] = useState('');
@@ -46,22 +36,12 @@ function Registration() {
       useState('');
    const [registerPasswordTwoErrorMessage, setRegisterPasswordTwoErrorMessage] =
       useState('');
-   const [loginEmailErrorMessage,setloginEmailErrorMessage] =  useState('')
-   const [loginPasswordErrorMessage,setLoginPasswordErrorMessage]= useState('')
+   const [loginEmailErrorMessage, setloginEmailErrorMessage] = useState('');
+   const [loginPasswordErrorMessage, setLoginPasswordErrorMessage] =
+      useState('');
 
    const pattern = /^[a-zA-Z ]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-   //Handles page switch for login page
-   function pageChangelogin() {
-      changePageHandler(true);
-   }
-   //Handles page switch for signup page
-   function pageChangeSignup() {
-      changePageHandler(false);
-   }
-
-
 
    // Functions below check user credentials in each form input
    function handleloginEmail() {
@@ -69,24 +49,27 @@ function Registration() {
 
       if (enteredloginName === '') {
          setloginEmailError(true);
-         setloginEmailErrorMessage('Email required')
+         setloginEmailErrorMessage('Email required');
       } else if (enteredloginName.match(emailPattern)) {
          setloginEmailError(false);
       } else {
          setloginEmailError(true);
-         setloginEmailErrorMessage('Email format not valid')
+         setloginEmailErrorMessage('Email format not valid');
       }
    }
-   
+
    function handleLoginPassword() {
       let enteredloginPassword = loginPassword.current.value;
-      
+
       if (enteredloginPassword === '') {
+         setLoginPasswordErrorMessage('Password required');
          setLoginPasswordError(true);
-         setLoginPasswordErrorMessage('Password required')
       } else if (enteredloginPassword.length < 8) {
+         setLoginPasswordErrorMessage(
+            'Password must be at least 8 characters long'
+         );
+
          setLoginPasswordError(true);
-         setLoginPasswordErrorMessage('Password must be at least 8 characters long')
       } else {
          setLoginPasswordError(false);
       }
@@ -118,13 +101,11 @@ function Registration() {
       if (enteredSignUpEmail === '') {
          setRegisterEmailErrorMessage('Email required');
          setRegisterEmailError(true);
-
       } else if (enteredSignUpEmail.match(emailPattern)) {
          setRegisterEmailError(false);
       } else {
          setRegisterEmailErrorMessage('Email format not valid');
          setRegisterEmailError(true);
-
       }
    }
    function handleRegisterDate() {
@@ -144,7 +125,6 @@ function Registration() {
       if (enteredSignUpPassword === '') {
          setRegisterPasswordOneErrorMessage('Password required');
          setRegisterPasswordOneError(true);
-
       } else if (enteredSignUpPassword.length < 8) {
          setRegisterPasswordOneErrorMessage(
             'Password must be at least 8 characters long'
@@ -172,7 +152,6 @@ function Registration() {
          setRegisterPasswordOneError(true);
       } else {
          setRegisterPasswordOneError(false);
-
       }
    }
 
@@ -183,13 +162,11 @@ function Registration() {
       if (enteredSignUpPasswordconfirm === '') {
          setRegisterPasswordTwoErrorMessage('Confirm password required');
          setRegisterPasswordTwoError(true);
-
       } else if (enteredSignUpPassword !== enteredSignUpPasswordconfirm) {
          setRegisterPasswordTwoErrorMessage('Passwords do not match');
          setRegisterPasswordTwoError(true);
       } else {
          setRegisterPasswordTwoError(false);
-
       }
    }
 
@@ -204,7 +181,7 @@ function Registration() {
       let enteredSignUpEmail = signupEmail.current.value;
       let enteredSignUpPassword = signupPassword.current.value;
       let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
-      if (changePage) {
+      if (props.modalLogin) {
          //sends user validated credentials
 
          const loginData = {
@@ -212,7 +189,7 @@ function Registration() {
             password: enteredloginPassword,
          };
          console.log(loginData);
-      } else {
+      } else if (props.modalSignup) {
          //Sends validated sign up user credentials
 
          const signupData = {
@@ -229,44 +206,23 @@ function Registration() {
 
    return (
       <>
-         {/*<Login
-            pageChangelogin={pageChangelogin}
-            pageChangeSignup={pageChangeSignup}
-            changePage={changePage}
-            signupEmail={signupEmail}
-            signupPassword={signupPassword}
-            signupPasswordconfirm={signupPasswordconfirm}
-            registerUserError={registerUserError}
-            registerEmailError={registerEmailError}
-            registerPasswordOneError={registerPasswordOneError}
-            registerPasswordTwoError={registerPasswordTwoError}
-            handleRegisterUser={handleRegisterUser}
-            handleRegisterEmail={handleRegisterEmail}
-            handleRegisterPassword={handleRegisterPassword}
-            handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-            // enableRegisterButton={enableRegisterButton}
-            // enableLoginButton={enableLoginButton}
-         />*/}
          <Login
-         submitLoginHandler={submitLoginHandler}
-         loginEmail={loginEmail}
-         handleloginEmail={handleloginEmail}
-         handleLoginPassword={handleLoginPassword}
-         loginPassword={loginPassword}
-         loginEmailError={loginEmailError}
-         loginPasswordError={loginPasswordError}
-         loginEmailErrorMessage={loginEmailErrorMessage}
-         loginPasswordErrorMessage={loginPasswordErrorMessage}
+            modalLogin={props.modalLogin}
+            handleModalsClose={props.handleModalsClose}
+            submitLoginHandler={submitLoginHandler}
+            loginEmail={loginEmail}
+            handleloginEmail={handleloginEmail}
+            handleLoginPassword={handleLoginPassword}
+            loginPassword={loginPassword}
+            loginEmailError={loginEmailError}
+            loginPasswordError={loginPasswordError}
+            loginEmailErrorMessage={loginEmailErrorMessage}
+            loginPasswordErrorMessage={loginPasswordErrorMessage}
          />
-         {/* <div
-            id="blur"
-            className={`modal ${modal && 'modal'}`}
-            // onClick={handleModal}
-         >
-            <button onClick={handleModal}>Open sign up</button>
-         </div>
+
          <Signup
-            modal={modal}
+            modalSignup={props.modalSignup}
+            handleModalsClose={props.handleModalsClose}
             signupFirstname={signupFirstname}
             signupLastname={signupLastname}
             signupEmail={signupEmail}
@@ -288,9 +244,8 @@ function Registration() {
             handleRegisterDate={handleRegisterDate}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-         /> */}
-         {/* put yours below */}
-      </> 
+         />
+      </>
    );
 }
 export default Registration;

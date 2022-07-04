@@ -4,8 +4,8 @@
    /* display: flex;
    justify-content: center;
    align-items: center; */
-   width: 100%;
-   min-height: 100vh;
+   /* width: 100%;
+   min-height: 100vh; */
 }
 .modal#blur.active {
    filter: blur(20px);
@@ -21,11 +21,11 @@
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 body {
-   overflow: hidden;
-   background-color: #c0daee;
+   /* overflow: hidden; */
+   /* background-color: #c9cdd3; */
 
-   /* animation: changecolor 10s infinite; */
-   /* animation-fill-mode: both; */
+   /* animation: changecolor 10s infinite;
+   animation-fill-mode: both; */
 }
 
 /* @keyframes changecolor {

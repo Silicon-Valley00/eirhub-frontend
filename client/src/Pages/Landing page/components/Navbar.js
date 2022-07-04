@@ -4,7 +4,7 @@ import './navbar.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
 
-const Navbar = () => {
+const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
 
    const showSidebar = () => setSidebar(!sidebar);
@@ -31,8 +31,15 @@ const Navbar = () => {
                <ul id="nav-links">
                   <li className="each">Home</li>
                   <li className="each">Our Services</li>
-                  <li className="each">Find a doctor</li>
-                  <li className="each">How it Works</li>
+                  <li className="each" onClick={() => props.handleModalLogin()}>
+                     Find a doctor
+                  </li>
+                  <li
+                     className="each"
+                     onClick={() => props.handleModalSignup()}
+                  >
+                     How it Works
+                  </li>
                </ul>
                <div id="signup">
                   <p>

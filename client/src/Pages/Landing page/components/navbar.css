@@ -62,6 +62,7 @@ li {
 #signup {
    margin-top: 2rem;
    color: var(--white);
+   cursor: pointer;
 }
 
 #signup p {
