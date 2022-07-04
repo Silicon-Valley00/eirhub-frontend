@@ -17,6 +17,7 @@ class Person(Base):
     type_of_id = Column('type_of_id',String(50))
     id_number = Column('id_number',String(50))
     nationality = Column('nationality',String(50))
+    # Removed here because it is auto generated in Database.
     # created_at = Column('created_at',String(50))
     # updated_at = Column('updated_at',String(50))
 
@@ -35,5 +36,3 @@ class Person(Base):
         self.type_of_id = type_of_id
         self.id_number = id_number
         self.nationality = nationality
-        # self.created_at = created_at
-        # self.updated_at = updated_at
