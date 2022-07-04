@@ -18,14 +18,15 @@
    width: 100%;
    background-color: #ecf3fe;
    height: 3rem;
+   z-index: 1;
 }
 
 /* nav-links */
-#nav-links {
+#nav_links {
    display: block;
 }
 
-.link-container {
+.linkContainer {
    display: flex;
    flex-direction: column;
    text-align: right;
@@ -45,7 +46,7 @@
    /* display: none; */
 }
 
-.link-container.active {
+.linkContainer.active {
    right: 0;
    transition: all;
    transition-duration: 500ms;
@@ -71,7 +72,10 @@ li {
 }
 
 /* ===================================================mobile style============== */
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 300px) {
+   #img img {
+      width: 7rem;
+   }
 }
 
 /* ===================================================tablet style============== */
@@ -90,7 +94,7 @@ li {
       background-color: var(--gray);
    }
 
-   .link-container {
+   .linkContainer {
       display: flex;
       /* flex-direction: row; */
       width: 100%;
@@ -106,13 +110,12 @@ li {
       margin-left: 3px;
    }
 
-   #nav-links {
+   #nav_links {
       list-style-type: none;
       display: flex;
       align-items: center;
       justify-content: center;
       column-gap: 2rem;
-      background-color: red;
    }
 
    li {
@@ -121,7 +124,7 @@ li {
    li.each {
       white-space: nowrap;
    }
-   .left-div {
+   .left {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -150,18 +153,27 @@ li {
    #nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-cent;
       padding-left: 4rem;
       padding-right: 4rem;
+      position: fixed;
    }
 
-   #nav-links {
+   #nav_links {
       list-style-type: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-right: 5rem;
+      margin-right: 10%;
       width: 90%;
+   }
+
+   .linkContainer {
+      margin-right: 30%;
+   }
+
+   .left {
+      width: auto;
    }
 
    li.each {
@@ -170,6 +182,46 @@ li {
 
    #signup {
       width: auto;
+      padding-right: 15%;
+      white-space: nowrap;
+   }
+}
+
+@media (min-width: 1200px) {
+   #nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-cent;
+      padding-left: 4rem;
+      padding-right: 4rem;
+      position: fixed;
+   }
+
+   #nav_links {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 40%;
+      width: 90%;
+   }
+
+   .linkContainer {
+      margin-right: 20%;
+      margin-left: 8rem;
+   }
+
+   .left {
+      width: auto;
+   }
+
+   li.each {
+      white-space: nowrap;
+   }
+
+   #signup {
+      width: auto;
+      padding-right: 15%;
       white-space: nowrap;
    }
 }

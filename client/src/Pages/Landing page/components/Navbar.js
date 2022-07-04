@@ -15,7 +15,7 @@ const Navbar = () => {
          <div id="img">
             <img src={logo} alt="" height={50} width={200} />
          </div>
-         <div className={sidebar ? 'link-container active' : 'link-container'}>
+         <div className={sidebar ? 'linkContainer active' : 'linkContainer'}>
             {/* Close icon */}
             <div>
                <img
@@ -27,8 +27,8 @@ const Navbar = () => {
                   onClick={showSidebar}
                />
             </div>
-            <div className="left-div">
-               <ul id="nav-links">
+            <div className="left">
+               <ul id="nav_links">
                   <li className="each">Home</li>
                   <li className="each">Our Services</li>
                   <li className="each">Find a doctor</li>

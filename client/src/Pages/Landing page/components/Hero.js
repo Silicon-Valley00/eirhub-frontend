@@ -1,27 +1,34 @@
 import React from 'react';
 import landingpageImage from '../../../assets/landingpage design.png';
-import './hero.css';
+import heroStyles from './hero.module.css';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import 'animate.css/animate.min.css';
 
 const Hero = () => {
    return (
-      <section id="hero-body">
-         <div className="hero-container">
-            <div className="hero-content">
-               <div className="content-title">
-                  <h1>Lets Help Connect You With The Best Doctors</h1>
+      <section id={heroStyles.hero_body}>
+         <div id={heroStyles.overlay}></div>
+         <div className={heroStyles.hero_container}>
+            <div className={heroStyles.hero_content}>
+               <div className={heroStyles.content_title}>
+                  <h1>Let's Help Connect You With The Best Doctors</h1>
                </div>
-               <div className="content-info">
+               <div className={heroStyles.content_info}>
                   <p>
                      EirHub helps patients get quick access to experienced
                      practitioners and helps increase the visibility of these
                      practitioners.
                   </p>
                </div>
-               <div className="content-button">
+
+               {/* BUG: Button is messed up during resize */}
+
+               <div className={heroStyles.content_button}>
                   <input value={'Book an Appointment'} type={'submit'} />
                </div>
             </div>
-            <div className="hero-image">
+            {/* REVIEW: SHift image a little bit */}
+            <div className={heroStyles.hero_image}>
                <img src={landingpageImage} alt="Hero" />
             </div>
          </div>
