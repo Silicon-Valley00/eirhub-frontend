@@ -45,7 +45,7 @@ def home():
     print('Home: DB Connection Successful')
     newPerson = Person("Rowan","Atkinson","Jnr","34","kdfkxjdflm",
     "Rowan@gmail.com","rowan","22/07/2016","H3tyru","rrt","National ID"
-    ,"Ghanaian","4/07/21","4/05/22")
+    ,"Ghanaian")
     session.add(newPerson)
     session.commit()
     session.close()
