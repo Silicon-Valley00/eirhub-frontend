@@ -30,12 +30,10 @@ class Student(Base):
 try:
     engine.connect()
     Base.metadata.create_all(engine)
-    # new = Student("Albus severus Potter","Potions") #
-    # new2 = Student('Leta Lestrange','DADA')
-    # session.add(new)
-    # session.add(new2)
+    new = Student("Albus severus Potter","Potions") #
+    session.add(new)
     session.commit()
-    # session.close()
+    session.close()
     print("Database Successfully Connected")
 except Exception as e:
     print('Database connection failed: %s'%(e))
@@ -48,12 +46,13 @@ def home():
     newPerson = Person("Rowan","Atkinson","Jnr","34","kdfkxjdflm",
     "Rowan@gmail.com","rowan","22/07/2016","H3tyru","rrt","National ID"
     ,"Ghanaian","4/07/21","4/05/22")
-    #session.add(new)
     session.add(newPerson)
-    students = session.query(student).all()
+    session.commit()
+    session.close()
+    people = session.query(Person).all()
 
-    for student in students:
-     return  student.name
+    
+    return (f'{people[-1].first_name}')
    
 @app.route("/person",methods = ["GET"]) 
 def person():
