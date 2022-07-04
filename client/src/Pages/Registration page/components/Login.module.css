@@ -20,7 +20,7 @@
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#login-section {
+.loginSection {
    position: relative;
    display: flex;
    justify-content: center;
@@ -29,7 +29,7 @@
    height: 100%;
 }
 
-#login-container {
+#loginContainer {
    position: fixed;
    top: 50%;
    left: 50%;
@@ -51,13 +51,13 @@
    opacity: 0;
    transition: visibility 500ms ease-in-out;
 }
-#login-container.active {
+#loginContainer.active {
    visibility: visible;
    opacity: 1;
    transition: visibility 500ms ease-in-out;
 }
 
-.login-body {
+.loginBody {
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -67,11 +67,11 @@
    height: 90%;
 }
 
-.login-form > * {
+.loginForm > * {
    margin: 10px auto;
    width: 100%;
 }
-.right-side {
+.rightSide {
    height: 100%;
    display: flex;
    flex-direction: column;
@@ -81,31 +81,32 @@
    border-top-right-radius: var(--radius);
    border-bottom-right-radius: var(--radius);
    padding: var(--padding);
+   width: 100%;
 }
-.right-side > *:not(:first-child) {
+.rightSide > *:not(:first-child) {
    margin: auto;
 }
 
-.right-side > h1 {
+.rightSide > h1 {
    color: var(--white);
    font-weight: 400;
 }
-.right-side > p {
+.rightSide > p {
    font-size: 2rem;
 }
 
-.password-reset {
+.passwordReset {
    color: var(--light-blue);
    font-size: 0.7rem;
    text-align: right;
 }
 
-.signup-toggle {
+.signupToggle {
    padding: var(--text-padding);
    font-size: 0.7rem;
 }
 
-.input-field {
+.inputField {
    height: var(--height);
    border: 1px solid grey;
    border-radius: var(--field-radius);
@@ -115,12 +116,9 @@
    height: var(--height);
    /* padding: var(--text-padding); */
 }
-.input-field > * {
+.inputField > * {
    margin: 5px;
    border: none;
-}
-.error {
-   border: 1px solid red;
 }
 .submit {
    display: flex;
@@ -153,7 +151,7 @@ h1 {
    color: white;
 }
 
-.input-field > input {
+.inputField > input {
    /* padding: var(--text-padding) 0; */
    border: none;
    outline: none;
@@ -166,10 +164,40 @@ a {
    color: var(--light-blue);
 }
 
-/* Alert */
-.show {
-   /* background-color: rgb(245, 52, 52); */
-   font-size: 0.7rem;
-   border-radius: 5px;
-   /* padding: 0.2rem; */
+/* Error */
+.errorMessageBox {
+   width: 100%;
+   height: 25px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-size: 12px;
+   color: red;
+}
+
+.errorMessageBox p {
+   color: red;
+   width: 93%;
+}
+
+.errorMessageBox i{
+   fill: red;
+   width: 7%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 100%;
+}
+
+.noErrorMessageBox {
+   width: 100%;
+   height: 25px;
+}
+
+.noErrorMessageBox i {
+   display: none;
+}
+
+.noErrorMessageBox p {
+   display: none;
 }
