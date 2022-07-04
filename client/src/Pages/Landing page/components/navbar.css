@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
+
 :root {
    --white: #ffffff;
    --gray: #ecf3fe;
@@ -15,23 +17,16 @@
    position: fixed;
    width: 100%;
    background-color: #ecf3fe;
-   min-height: 3rem;
-   top: 0;
+   height: 3rem;
    z-index: 1;
 }
 
-#img {
-   cursor: pointer;
-}
-
 /* nav-links */
-#nav-links {
+#nav_links {
    display: block;
-   position: relative;
-   left: 15rem;
 }
 
-.link-container {
+.linkContainer {
    display: flex;
    flex-direction: column;
    text-align: right;
@@ -51,7 +46,7 @@
    /* display: none; */
 }
 
-.link-container.active {
+.linkContainer.active {
    right: 0;
    transition: all;
    transition-duration: 500ms;
@@ -62,15 +57,25 @@ li {
    list-style-type: none;
    margin-top: 2rem;
    color: var(--white);
+   font-family: 'Poppins', sans-serif;
 }
 
-#signup ul li {
-   display: inline-block;
-   padding: 1rem;
+#signup {
+   margin-top: 2rem;
+   color: var(--white);
+}
+
+#signup p {
+   font-weight: 500;
+   font-family: 'Poppins', sans-serif;
+   letter-spacing: 0.05em;
 }
 
 /* ===================================================mobile style============== */
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 300px) {
+   #img img {
+      width: 7rem;
+   }
 }
 
 /* ===================================================tablet style============== */
@@ -89,7 +94,7 @@ li {
       background-color: var(--gray);
    }
 
-   .link-container {
+   .linkContainer {
       display: flex;
       /* flex-direction: row; */
       width: 100%;
@@ -105,7 +110,7 @@ li {
       margin-left: 3px;
    }
 
-   #nav-links {
+   #nav_links {
       list-style-type: none;
       display: flex;
       align-items: center;
@@ -116,8 +121,10 @@ li {
    li {
       color: var(--midcol);
    }
-
-   .left-div {
+   li.each {
+      white-space: nowrap;
+   }
+   .left {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -129,6 +136,16 @@ li {
    #menu {
       display: none;
    }
+
+   #separator {
+      margin-left: 0.5em;
+      margin-right: 0.5em;
+   }
+   #signup {
+      width: auto;
+      white-space: nowrap;
+      margin-left: 3px;
+   }
 }
 
 /* ===================================================desktop style============== */
@@ -136,15 +153,75 @@ li {
    #nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-cent;
       padding-left: 4rem;
       padding-right: 4rem;
+      position: fixed;
    }
 
-   #nav-links {
+   #nav_links {
       list-style-type: none;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-right: 10%;
+      width: 90%;
+   }
+
+   .linkContainer {
+      margin-right: 30%;
+   }
+
+   .left {
+      width: auto;
+   }
+
+   li.each {
+      white-space: nowrap;
+   }
+
+   #signup {
+      width: auto;
+      padding-right: 15%;
+      white-space: nowrap;
+   }
+}
+
+@media (min-width: 1200px) {
+   #nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-cent;
+      padding-left: 4rem;
+      padding-right: 4rem;
+      position: fixed;
+   }
+
+   #nav_links {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 40%;
+      width: 90%;
+   }
+
+   .linkContainer {
+      margin-right: 20%;
+      margin-left: 8rem;
+   }
+
+   .left {
+      width: auto;
+   }
+
+   li.each {
+      white-space: nowrap;
+   }
+
+   #signup {
+      width: auto;
+      padding-right: 15%;
+      white-space: nowrap;
    }
 }
