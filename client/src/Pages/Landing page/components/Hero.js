@@ -24,7 +24,7 @@ const Hero = () => {
                {/* BUG: Button is messed up during resize */}
 
                <div className={heroStyles.content_button}>
-                  <input value={'Book an Appointment'} type={'submit'} />
+                  <button>Book an appointment</button>
                </div>
             </div>
             {/* REVIEW: SHift image a little bit */}
