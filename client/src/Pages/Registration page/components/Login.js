@@ -11,9 +11,9 @@ function Login(props) {
    const [hidePassword, setHidePassword] = useState(true);
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
-   console.log(props);
    const {
       handleModalsClose,
+      handleModalSignup,
       submitLoginHandler,
       loginEmailErrorMessage,
       loginPasswordErrorMessage,
@@ -122,12 +122,15 @@ function Login(props) {
                            loginPasswordError
                         }
                         onClick={() => {
-                           submitLoginHandler();
+                           props.submitUserCredentialsHandler();
                         }}
                      />
                      <div className="signup-toggle">
                         <p>
-                           New Here ? <a href="">Sign up</a>
+                           New Here ?{' '}
+                           <a href="" onClick={() => handleModalSignup()}>
+                              Sign up
+                           </a>
                         </p>
                      </div>
                   </div>

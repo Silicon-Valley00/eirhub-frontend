@@ -3,15 +3,15 @@ import Registration from '../Registration page/Registration';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import Services from './components/Services';
-import './Landingpage.css';
+import styles from './Landingpage.module.css';
 
 const LandingPage = () => {
    const [modalSignup, setModalSignup] = useState(false);
    const [modalLogin, setModalLogin] = useState(false);
 
    function handleModalSignup() {
-      setModalSignup(true);
       setModalLogin(false);
+      setModalSignup(true);
    }
    function handleModalLogin() {
       setModalSignup(false);
@@ -24,8 +24,8 @@ const LandingPage = () => {
    return (
       <>
          <div
-            id="blur"
-            className={modalLogin || modalSignup ? 'active' : ''}
+            id={styles.blur}
+            className={modalLogin || modalSignup ? styles.active : ''}
             handleModalsClose={handleModalsClose}
          >
             <Navbar
@@ -40,6 +40,8 @@ const LandingPage = () => {
             modalLogin={modalLogin}
             modalSignup={modalSignup}
             handleModalsClose={handleModalsClose}
+            handleModalLogin={handleModalLogin}
+            handleModalSignup={handleModalSignup}
          />
       </>
    );

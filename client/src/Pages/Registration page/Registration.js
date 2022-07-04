@@ -171,7 +171,7 @@ function Registration(props) {
    }
 
    // function handles user data
-   function submitLoginHandler() {
+   function submitUserCredentialsHandler() {
       let enteredloginName = loginEmail.current.value;
       let enteredloginPassword = loginPassword.current.value;
 
@@ -208,8 +208,9 @@ function Registration(props) {
       <>
          <Login
             modalLogin={props.modalLogin}
+            handleModalSignup={props.handleModalSignup}
             handleModalsClose={props.handleModalsClose}
-            submitLoginHandler={submitLoginHandler}
+            submitUserCredentialsHandler={submitUserCredentialsHandler}
             loginEmail={loginEmail}
             handleloginEmail={handleloginEmail}
             handleLoginPassword={handleLoginPassword}
@@ -222,7 +223,9 @@ function Registration(props) {
 
          <Signup
             modalSignup={props.modalSignup}
+            handleModalLogin={props.handleModalLogin}
             handleModalsClose={props.handleModalsClose}
+            submitUserCredentialsHandler={submitUserCredentialsHandler}
             signupFirstname={signupFirstname}
             signupLastname={signupLastname}
             signupEmail={signupEmail}

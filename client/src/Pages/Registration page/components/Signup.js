@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './signup.css';
+import styles from './signup.module.css';
 import signUp from '../../../images/signupimage.svg';
 import { FaRegUser } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -13,36 +13,39 @@ function Signup(props) {
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    return (
-      <section className="signup-body">
-         <div id="signup-content" className={props.modalSignup ? 'active' : ''}>
-            <div className="signup-container">
-               <div className="left-region">
+      <section className={styles.signupBody}>
+         <div
+            id={styles.signupContent}
+            className={props.modalSignup ? styles.active : ''}
+         >
+            <div className={styles.signupContainer}>
+               <div className={styles.leftRegion}>
                   <h3 onClick={() => props.handleModalsClose()}>Eirhub</h3>
-                  <div className="left-region-info-one">
+                  <div className={styles.leftRegionInfoOne}>
                      <p>Sign up today and get in touch</p>
                   </div>
 
-                  <div className="left-region-info-two">
+                  <div className={styles.leftRegionInfoTwo}>
                      <p> with doctors you can trust</p>
                   </div>
-                  <div className="left-region-image">
+                  <div className={styles.leftRegionImage}>
                      <img src={signUp} alt="Sign-up image" />
                   </div>
                </div>
-               <div className="right-region">
-                  <div className="signup-form-title">
+               <div className={styles.rightRegion}>
+                  <div className={styles.signupFormTitle}>
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
                   </div>
-                  <div className="signup-form">
-                     <div className="signup-form-box-names">
-                        <div className="signup-form-box-name">
+                  <div className={styles.signupForm}>
+                     <div className={styles.signupFormBoxNames}>
+                        <div className={styles.signupFormBoxName}>
                            <label htmlFor="firstname"> Firstname</label>
                            <div
                               className={
                                  props.registerNameError
-                                    ? 'signup-form-box-name-inputs-error'
-                                    : 'signup-form-box-name-inputs'
+                                    ? styles.signupFormBoxNameInputsError
+                                    : styles.signupFormBoxNameInputs
                               }
                            >
                               <i>
@@ -60,13 +63,13 @@ function Signup(props) {
                               />
                            </div>
                         </div>
-                        <div className="signup-form-box-name">
+                        <div className={styles.signupFormBoxName}>
                            <label htmlFor="lastname"> Lastname</label>
                            <div
                               className={
                                  props.registerNameError
-                                    ? 'signup-form-box-name-inputs-error'
-                                    : 'signup-form-box-name-inputs'
+                                    ? styles.signupFormBoxNameInputsError
+                                    : styles.signupFormBoxNameInputs
                               }
                            >
                               <i>
@@ -88,8 +91,8 @@ function Signup(props) {
                      <div
                         className={
                            props.registerNameError
-                              ? 'error-message-box'
-                              : 'no-error-message-box'
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
                         }
                      >
                         <i>
@@ -97,13 +100,13 @@ function Signup(props) {
                         </i>
                         <p>{props.registerNameErrorMessage}</p>
                      </div>
-                     <div className="signup-form-box">
-                        <label htmlFor="date"> Date</label>
+                     <div className={styles.signupFormBox}>
+                        <label htmlFor="date"> Date of Birth</label>
                         <div
                            className={
                               props.registerDateError
-                                 ? 'signup-form-box-inputs-error'
-                                 : 'signup-form-box-inputs'
+                                 ? styles.signupFormBoxNameInputsError
+                                 : styles.signupFormBoxNameInputs
                            }
                         >
                            <i>
@@ -130,8 +133,8 @@ function Signup(props) {
                      <div
                         className={
                            props.registerDateError
-                              ? 'error-message-box'
-                              : 'no-error-message-box'
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
                         }
                      >
                         <i>
@@ -139,13 +142,13 @@ function Signup(props) {
                         </i>
                         <p>{props.registerDateErrorMessage}</p>
                      </div>
-                     <div className="signup-form-box">
+                     <div className={styles.signupFormBox}>
                         <label htmlFor="email"> Email</label>
                         <div
                            className={
                               props.registerEmailError
-                                 ? 'signup-form-box-inputs-error'
-                                 : 'signup-form-box-inputs'
+                                 ? styles.signupFormBoxNameInputsError
+                                 : styles.signupFormBoxNameInputs
                            }
                         >
                            <i>
@@ -166,8 +169,8 @@ function Signup(props) {
                      <div
                         className={
                            props.registerEmailError
-                              ? 'error-message-box'
-                              : 'no-error-message-box'
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
                         }
                      >
                         <i>
@@ -175,13 +178,13 @@ function Signup(props) {
                         </i>
                         <p>{props.registerEmailErrorMessage}</p>
                      </div>
-                     <div className="signup-form-box">
+                     <div className={styles.signupFormBox}>
                         <label htmlFor="passwordone"> Password</label>
                         <div
                            className={
                               props.registerPasswordOneError
-                                 ? 'signup-form-box-inputs-error'
-                                 : 'signup-form-box-inputs'
+                                 ? styles.signupFormBoxNameInputsError
+                                 : styles.signupFormBoxNameInputs
                            }
                         >
                            <i>
@@ -213,8 +216,8 @@ function Signup(props) {
                      <div
                         className={
                            props.registerPasswordOneError
-                              ? 'error-message-box'
-                              : 'no-error-message-box'
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
                         }
                      >
                         <i>
@@ -223,15 +226,15 @@ function Signup(props) {
                         <p>{props.registerPasswordOneErrorMessage}</p>
                      </div>
 
-                     <div className="signup-form-box">
+                     <div className={styles.signupFormBox}>
                         <label htmlFor="passwordconfirm">
                            Confirm Password
                         </label>
                         <div
                            className={
                               props.registerPasswordTwoError
-                                 ? 'signup-form-box-inputs-error'
-                                 : 'signup-form-box-inputs'
+                                 ? styles.signupFormBoxNameInputsError
+                                 : styles.signupFormBoxNameInputs
                            }
                         >
                            <i>
@@ -263,8 +266,8 @@ function Signup(props) {
                      <div
                         className={
                            props.registerPasswordTwoError
-                              ? 'error-message-box'
-                              : 'no-error-message-box'
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
                         }
                      >
                         <i>
@@ -272,7 +275,7 @@ function Signup(props) {
                         </i>
                         <p>{props.registerPasswordTwoErrorMessage}</p>
                      </div>
-                     <div className="signup-form-button">
+                     <div className={styles.signupFormButton}>
                         <input
                            type="submit"
                            id="submit-btn"
@@ -288,8 +291,8 @@ function Signup(props) {
                               props.registerDateError === null ||
                               props.registerPasswordOneError === null ||
                               props.registerPasswordTwoError === null
-                                 ? 'signup-btn-inactive '
-                                 : 'signup-btn'
+                                 ? styles.signupBtnInactive
+                                 : styles.signupBtn
                            }
                            disabled={
                               props.registerNameError === true ||
@@ -303,11 +306,19 @@ function Signup(props) {
                               props.registerPasswordOneError === null ||
                               props.registerPasswordTwoError === null
                            }
+                           onClick={() => {
+                              props.submitUserCredentialsHandler();
+                           }}
                         />
                      </div>
-                     <div className="signup-form-message">
+                     <div className={styles.signupFormMessage}>
                         <p>Already have an account?</p>
-                        <p id="signup-form-message-p">Login</p>
+                        <p
+                           id={styles.signupFormMessageP}
+                           onClick={() => props.handleModalLogin()}
+                        >
+                           Login
+                        </p>
                      </div>
                   </div>
                </div>
