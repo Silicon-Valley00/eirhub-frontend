@@ -9,9 +9,7 @@
 }
 
 /* main nav */
-* {
-   font-family: 'Poppins', sans-serif;
-}
+
 #nav {
    padding: 2rem;
    display: flex;
@@ -55,7 +53,14 @@
    transition-duration: 500ms;
 }
 
-li {
+/* li {
+   cursor: pointer;
+   list-style-type: none;
+   margin-top: 2rem;
+   font-family: 'Poppins', sans-serif;
+} */
+
+.each {
    cursor: pointer;
    list-style-type: none;
    margin-top: 2rem;
@@ -65,14 +70,16 @@ li {
 .left {
    display: flex;
    flex-direction: column;
-   align-items: center;
-   justify-content: right;
+
    width: 100%;
 }
 
 #signup {
    padding-top: 2rem;
    color: var(--white);
+   display: flex;
+   align-items: center;
+   justify-content: end;
 }
 
 #signup .signup_list {
@@ -83,6 +90,12 @@ li {
    display: flex;
    align-items: center;
    color: var(--deepcol);
+   list-style-type: none;
+   white-space: nowrap;
+}
+
+.separator {
+   cursor: default;
 }
 
 /* ===================================================mobile style============== */
@@ -99,10 +112,6 @@ li {
 
 /* ===================================================tablet style============== */
 @media (min-width: 960px) {
-   * {
-      color: var(--midcol);
-   }
-
    #nav {
       display: flex;
       align-items: center;
@@ -135,6 +144,7 @@ li {
       align-items: center;
       justify-content: center;
       column-gap: 2rem;
+      margin-bottom: 2rem;
    }
 
    /* #nav_links li {
@@ -191,19 +201,7 @@ li {
       width: 90%;
    }
 
-   /* .linkContainer {
-      margin-right: 30%;
-   } */
-
-   /* .left {
-      width: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #000;
-   } */
-
-   li.each {
+   .each {
       white-space: nowrap;
       font-size: 12pt;
    }
@@ -217,42 +215,3 @@ li {
       font-size: 12pt;
    }
 }
-
-/* @media (min-width: 1200px) {
-   #nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-cent;
-      padding-left: 4rem;
-      padding-right: 4rem;
-      position: fixed;
-   }
-
-   #nav_links {
-      list-style-type: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 40%;
-      width: 90%;
-   }
-
-   .linkContainer {
-      margin-right: 20%;
-      margin-left: 8rem;
-   }
-
-   .left {
-      width: auto;
-   }
-
-   li.each {
-      white-space: nowrap;
-   }
-
-   #signup {
-      width: auto;
-      padding-right: 15%;
-      white-space: nowrap;
-   }
-} */
