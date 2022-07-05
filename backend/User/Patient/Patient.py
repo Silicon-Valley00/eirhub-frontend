@@ -1,5 +1,5 @@
 from sqlalchemy import Column,Integer,String,Date,ForeignKey,Float
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base,relationship
 
 Base = declarative_base()
 
@@ -15,11 +15,8 @@ class Patient(Base):
     location = Column(String(100),nullable = True)
     
     
-    def __init__(self,idPatient,weight,health_details_id,guardian_id,height,location):
-        self.idPatient = idPatient
+    def __init__(self,weight,height,location):
         self.weight = weight
         self.height = height  
-        self.health_details_id = health_details_id
-        self.guardian_id = guardian_id
         self.location = location
 
