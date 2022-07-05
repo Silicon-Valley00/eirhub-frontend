@@ -9,6 +9,7 @@
 }
 
 /* main nav */
+
 #nav {
    padding: 2rem;
    display: flex;
@@ -52,38 +53,65 @@
    transition-duration: 500ms;
 }
 
-li {
+/* li {
    cursor: pointer;
    list-style-type: none;
    margin-top: 2rem;
-   color: var(--white);
    font-family: 'Poppins', sans-serif;
+} */
+
+.each {
+   cursor: pointer;
+   list-style-type: none;
+   margin-top: 2rem;
+   font-family: 'Poppins', sans-serif;
+}
+
+.left {
+   display: flex;
+   flex-direction: column;
+
+   width: 100%;
 }
 
 #signup {
-   margin-top: 2rem;
+   padding-top: 2rem;
    color: var(--white);
+   display: flex;
+   align-items: center;
+   justify-content: end;
 }
 
-#signup p {
+#signup .signup_list {
    font-weight: 500;
    font-family: 'Poppins', sans-serif;
    letter-spacing: 0.05em;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   color: var(--deepcol);
+   list-style-type: none;
+   white-space: nowrap;
+}
+
+.separator {
+   cursor: default;
 }
 
 /* ===================================================mobile style============== */
-@media screen and (min-width: 300px) {
+@media (min-width: 300px) {
    #img img {
       width: 7rem;
+   }
+
+   .each {
+      font-size: 12pt;
+      color: var(--white);
    }
 }
 
 /* ===================================================tablet style============== */
-@media screen and (min-width: 960px) {
-   * {
-      color: var(--midcol);
-   }
-
+@media (min-width: 960px) {
    #nav {
       display: flex;
       align-items: center;
@@ -105,7 +133,7 @@ li {
       justify-content: center;
       height: 3rem;
       padding: 0;
-      padding-bottom: 1.6rem;
+      /* padding-bottom: 1.6rem; */
       padding-left: 7rem;
       margin-left: 3px;
    }
@@ -116,16 +144,21 @@ li {
       align-items: center;
       justify-content: center;
       column-gap: 2rem;
+      margin-bottom: 2rem;
    }
 
-   li {
+   /* #nav_links li {
       color: var(--midcol);
-   }
-   li.each {
+      font-size: medium;
+   } */
+   .each {
       white-space: nowrap;
+      color: var(--midcol);
+      font-size: medium;
    }
    .left {
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: space-between;
       width: 100%;
@@ -140,16 +173,16 @@ li {
    #separator {
       margin-left: 0.5em;
       margin-right: 0.5em;
+      cursor: default;
    }
    #signup {
-      width: auto;
       white-space: nowrap;
-      margin-left: 3px;
+      margin-top: -2rem;
    }
 }
 
 /* ===================================================desktop style============== */
-@media screen and (min-width: 1024px) {
+@media (min-width: 1024px) {
    #nav {
       display: flex;
       align-items: center;
@@ -164,64 +197,21 @@ li {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 10%;
+      /* margin-right: 10%; */
       width: 90%;
    }
 
-   .linkContainer {
-      margin-right: 30%;
-   }
-
-   .left {
-      width: auto;
-   }
-
-   li.each {
+   .each {
       white-space: nowrap;
+      font-size: 12pt;
    }
 
    #signup {
       width: auto;
-      padding-right: 15%;
-      white-space: nowrap;
-   }
-}
-
-@media (min-width: 1200px) {
-   #nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-cent;
-      padding-left: 4rem;
-      padding-right: 4rem;
-      position: fixed;
-   }
-
-   #nav_links {
-      list-style-type: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 40%;
-      width: 90%;
-   }
-
-   .linkContainer {
-      margin-right: 20%;
-      margin-left: 8rem;
-   }
-
-   .left {
-      width: auto;
-   }
-
-   li.each {
       white-space: nowrap;
    }
 
-   #signup {
-      width: auto;
-      padding-right: 15%;
-      white-space: nowrap;
+   .signup_list {
+      font-size: 12pt;
    }
 }

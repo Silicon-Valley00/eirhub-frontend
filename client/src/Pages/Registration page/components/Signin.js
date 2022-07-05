@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import signUp from '../../../images/imagetwo.svg';
-import signIn from '../../../images/imageone.svg';
+import login from '../../../images/imageone.svg';
 import { FaRegUser } from 'react-icons/fa';
 import { MdOutlineVpnKey } from 'react-icons/md';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -20,7 +20,7 @@ function Startpage(props) {
                .join(' ')}
          >
             <div className="forms-container">
-               <div className="signin-signup">
+               <div className="login-signup">
                   <form
                      onSubmit={(e) => {
                         e.preventDefault();
@@ -41,12 +41,16 @@ function Startpage(props) {
                            type="text"
                            id="login-username"
                            placeholder="Username"
-                           ref={props.signinUser}
+                           ref={props.loginUser}
                            onChange={() => {
                               props.handleLoginUser();
                            }}
                         />
                      </div>
+
+                     <span className="usernameerror">
+                        Lorem Ipsum is simply dummy text of the printing.
+                     </span>
                      <div
                         className={
                            props.loginPasswordError ? 'error' : 'input-field'
@@ -59,7 +63,7 @@ function Startpage(props) {
                            type={hidePassword ? 'password' : 'text'}
                            id="login-password"
                            placeholder="Password"
-                           ref={props.signinPassword}
+                           ref={props.loginPassword}
                            onChange={() => {
                               props.handleLoginPassword();
                            }}
@@ -72,6 +76,9 @@ function Startpage(props) {
                            )}
                         </i>
                      </div>
+                     <span className="passworderror">
+                        Lorem Ipsum is simply dummy text of the printing.
+                     </span>
                      <input
                         type="submit"
                         id="login-submit"
@@ -89,7 +96,7 @@ function Startpage(props) {
                            props.loginPasswordError === null
                         }
                         onClick={() => {
-                           props.submitSigninHandler();
+                           props.submitloginHandler();
                         }}
                      />
                   </form>
@@ -120,6 +127,10 @@ function Startpage(props) {
                            }}
                         />
                      </div>
+                     {/* error message  */}
+                     <span className="ussignup">
+                        Lorem Ipsum is simply dummy text of the printing.
+                     </span>
 
                      <div
                         className={
@@ -139,6 +150,9 @@ function Startpage(props) {
                            }}
                         />
                      </div>
+                     <span className="emsignup">
+                        Lorem Ipsum is simply dummy text of the printing.
+                     </span>
                      <div className="msg-two"></div>
                      <div
                         className={
@@ -167,6 +181,9 @@ function Startpage(props) {
                            )}
                         </i>
                      </div>
+                     <span className="ps1signup">
+                        Lorem Ipsum is simply dummy text of the printing.
+                     </span>
 
                      <div
                         className={
@@ -195,6 +212,9 @@ function Startpage(props) {
                            )}
                         </i>
                      </div>
+                     <span className="ps2signup">
+                        Lorem Ipsum is simply dummy text of the printing.
+                     </span>
 
                      <input
                         type="submit"
@@ -217,7 +237,7 @@ function Startpage(props) {
                            props.registerPasswordTwoError === null
                         }
                         onClick={() => {
-                           props.submitSigninHandler();
+                           props.submitloginHandler();
                         }}
                      />
                   </form>
@@ -255,13 +275,13 @@ function Startpage(props) {
                         className="btn transparent"
                         id="sign-in-btn"
                         onClick={() => {
-                           props.pageChangeSignin();
+                           props.pageChangelogin();
                         }}
                      >
                         Sign In
                      </button>
                   </div>
-                  <img src={signIn} className="image" alt="Sign in logo" />
+                  <img src={login} className="image" alt="Sign in logo" />
                </div>
             </div>
          </div>
