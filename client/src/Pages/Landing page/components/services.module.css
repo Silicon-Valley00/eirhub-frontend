@@ -27,22 +27,27 @@
 .services_button {
    width: 100%;
    display: flex;
+   flex-direction: column;
    align-items: center;
    justify-content: center;
    padding: 10px;
 }
 
-.services_button input {
+.services_button_input {
    padding: 10px;
    width: 23rem;
    background-color: var(--lightcol);
    color: var(--white);
    font-family: 'Poppins', sans-serif;
    font-weight: bold;
-   font-size: 14pt;
+   font-size: 12pt;
    border: 0;
    border-radius: 10px;
    letter-spacing: 0.2px;
+}
+
+.services_message {
+   display: none;
 }
 
 @media (min-width: 320px) {
@@ -145,5 +150,81 @@
       justify-content: center;
       align-items: center;
       width: 100%;
+   }
+
+   .services_message {
+      display: block;
+      padding: 2rem;
+      padding-left: 6rem;
+      padding-right: 6rem;
+   }
+
+   .services_message_box {
+      display: flex;
+      position: relative;
+      background: var(--lightcol);
+
+      border-radius: 35px;
+   }
+
+   .services_message_info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-left: 10rem;
+      padding-bottom: 3rem;
+   }
+
+   .services_ad {
+      color: var(--white);
+      font-size: 22pt;
+      font-weight: 700;
+      width: 65%;
+      padding-top: 3rem;
+   }
+
+   .message_btn {
+      color: var(--lightcol);
+      padding: 10px;
+      width: 40%;
+      border-radius: 5px;
+      background: var(--white);
+   }
+
+   .circle_1 {
+      position: absolute;
+      bottom: -2rem;
+      left: -7rem;
+      height: 12rem;
+      width: 12rem;
+      border-radius: 50%;
+      border: 1px solid var(--white);
+      background: transparent;
+   }
+
+   .circle_2 {
+      position: absolute;
+      right: -5rem;
+      top: -4.3rem;
+      height: 15rem;
+      width: 14rem;
+      border-radius: 50%;
+      background: transparent;
+
+      border: 1px solid var(--white);
+   }
+
+   .square {
+      position: relative;
+      width: 40%;
+   }
+   .square_2 {
+      position: absolute;
+      right: 0;
+      height: 8rem;
+      width: 7rem;
+      border-radius: 0 0 0 90px;
+      background: var(--white);
+      opacity: 40%;
    }
 }

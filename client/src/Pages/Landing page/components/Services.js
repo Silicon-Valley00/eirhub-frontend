@@ -49,13 +49,28 @@ const Services = () => {
             </div>
 
             <div className={Styles.services_button}>
-               <input value={'Find A Doctor'} type={'submit'} />
+               <input
+                  value={'Find A Doctor'}
+                  type={'submit'}
+                  className={Styles.services_button_input}
+               />
             </div>
 
+            {/* Box that displays and ad and book an appointment */}
             <div className={Styles.services_message}>
                <div className={Styles.services_message_box}>
                   <div className={Styles.services_message_info}>
-                     <h4>Dont Delay Care For You and those You Love. </h4>
+                     <h4 className={Styles.services_ad}>
+                        Don't Delay Care For You and those You Love.{' '}
+                     </h4>
+                     <button className={Styles.message_btn}>
+                        Book an Appointment
+                     </button>
+                     <div className={Styles.circle_1}></div>
+                  </div>
+                  <div className={Styles.circle_2}></div>
+                  <div className={Styles.square}>
+                     <div className={Styles.square_2}></div>
                   </div>
                </div>
             </div>
