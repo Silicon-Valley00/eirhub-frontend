@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './quickSolution.module.css';
+import groupdoc from '../../../assets/TeamOfDoctors.png';
 import { GiLabCoat } from 'react-icons/gi';
 import { BsFillCalendar2CheckFill, BsFillStarFill } from 'react-icons/bs';
 import { CgArrowLongRight } from 'react-icons/cg';
@@ -53,14 +54,20 @@ const QuickSolution = () => {
 
          <section className={styles.join_us}>
             {/* left div */}
-            <div>
-               <p>Join us!</p>
-               <p>We seek to provide easy accessible services to everyone</p>
-               <button>Contact us</button>
+            <div className={styles.left__div}>
+               <p className={styles.firstp}>Join us!</p>
+               <p className={styles.secondp}>
+                  We seek to provide easy accessible services to everyone
+               </p>
+               <div className={styles.btn}>
+                  <button className={styles.contact__btn}>Contact us</button>
+               </div>
             </div>
 
             {/* right div with image */}
-            <div className={styles.groupdocpic}></div>
+            <div className={styles.groupdocpic}>
+               <img src={groupdoc} alt="" className={styles.groupdoc} />
+            </div>
          </section>
       </main>
    );

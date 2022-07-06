@@ -16,6 +16,8 @@
    font-weight: bold;
    letter-spacing: 0.4px;
    color: var(--deepcol);
+   font-size: x-large;
+   text-align: center;
 }
 
 .cards {
@@ -58,6 +60,47 @@
    color: var(--lightcol);
 }
 
+.join_us {
+   padding-top: 5rem;
+}
+
+.groupdocpic {
+   display: none;
+}
+
+.firstp {
+   text-transform: uppercase;
+   color: var(--lightcol);
+}
+
+.secondp {
+   text-transform: capitalize;
+   font-size: x-large;
+   font-weight: 600;
+   color: var(--deepcol);
+}
+
+.left__div {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   justify-content: center;
+}
+
+.btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding-top: 1rem;
+}
+.contact__btn {
+   padding: 5px;
+   background-color: var(--lightcol);
+   width: 15rem;
+   color: var(--white);
+   border-radius: 5px;
+}
+
 @media (min-width: 600px) {
    .cards {
       grid-template-columns: repeat(2, 1fr);
@@ -70,10 +113,6 @@
    .join_us {
       display: flex;
    }
-
-   .groupdocpic {
-      background-image: url('../../../assets/TeamOfDoctors.png');
-   }
 }
 
 @media (min-width: 900px) {
@@ -84,5 +123,25 @@
    .title {
       font-size: xx-large;
       padding-bottom: 30px;
+   }
+}
+
+@media (min-width: 1024px) {
+   .groupdocpic {
+      display: block;
+      width: 60%;
+   }
+
+   .left__div {
+      width: 40%;
+   }
+   .groupdoc {
+      object-fit: fill;
+      width: 100%;
+      border-radius: 0 15px 15px 0;
+   }
+
+   .btn {
+      display: block;
    }
 }
