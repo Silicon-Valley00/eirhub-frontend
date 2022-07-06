@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../../images/logo.svg';
-import './navbar.css';
+import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
 
@@ -10,41 +10,42 @@ const Navbar = (props) => {
    const showSidebar = () => setSidebar(!sidebar);
 
    return (
-      <nav id="nav">
+      <nav id={styles.nav}>
          {/* Logo */}
-         <div id="img">
+         <div id={styles.img}>
             <img src={logo} alt="" height={50} width={200} />
          </div>
-         <div className={sidebar ? 'link-container active' : 'link-container'}>
+         <div
+            className={
+               sidebar
+                  ? `${styles.linkContainer} ${styles.active}`
+                  : `${styles.linkContainer}`
+            }
+         >
             {/* Close icon */}
             <div>
                <img
                   src={close}
                   alt=""
-                  id="close"
+                  id={styles.close}
                   height={30}
                   width={30}
                   onClick={showSidebar}
                />
             </div>
-            <div className="left-div">
-               <ul id="nav-links">
-                  <li className="each">Home</li>
-                  <li className="each">Our Services</li>
-                  <li className="each" onClick={() => props.handleModalLogin()}>
-                     Find a doctor
-                  </li>
-                  <li
-                     className="each"
-                     onClick={() => props.handleModalSignup()}
-                  >
-                     How it Works
-                  </li>
+            <div className={styles.left}>
+               <ul id={styles.nav_links}>
+                  <li className={styles.each}>Home</li>
+                  <li className={styles.each}>Our Services</li>
+                  <li className={styles.each}>Find a doctor</li>
+                  <li className={styles.each}>How it Works</li>
                </ul>
-               <div id="signup">
-                  <p>
-                     Sign Up <span id="separator">|</span> Login
-                  </p>
+               <div id={styles.signup}>
+                  <ul className={styles.signup_list}>
+                     <li onClick={() => props.handleModalSignup()}>Sign Up</li>
+                     <li id={styles.separator}>|</li>
+                     <li onClick={() => props.handleModalLogin()}>Login</li>
+                  </ul>
                </div>
             </div>
          </div>
@@ -54,7 +55,7 @@ const Navbar = (props) => {
             alt=""
             height={30}
             width={30}
-            id="menu"
+            id={styles.menu}
             onClick={showSidebar}
          />
       </nav>

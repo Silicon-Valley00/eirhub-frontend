@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../images/signupimage.svg';
-import { FaRegUser } from 'react-icons/fa';
+import { FaRegUser, FaTimes } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
@@ -9,11 +9,16 @@ import { IoCalendar } from 'react-icons/io5';
 import { IoWarning } from 'react-icons/io5';
 
 function Signup(props) {
-   // Handles password visibilty
+   // Handles password visibiltya
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
+   // Handles server error
+   const [isError, setIsError] = useState(true);
+   const [errorMessage, setErrorMessage] = useState(
+      'Sign up failed. Try again.'
+   );
    return (
-      <section className={styles.signupBody}>
+      <div className={styles.signupBody}>
          <div
             id={styles.signupContent}
             className={props.modalSignup ? styles.active : ''}
@@ -33,8 +38,16 @@ function Signup(props) {
                   </div>
                </div>
                <div className={styles.rightRegion}>
+                  <div className={isError ? styles.error : styles.noerror}>
+                     <p>{errorMessage}</p>
+                     <i onclick={() => setIsError(!isError)}>
+                        <FaTimes />
+                     </i>
+                  </div>
                   <div className={styles.signupFormTitle}>
-                     <h3>Create New Account</h3>
+                     <h3 onclick={() => setIsError(!isError)}>
+                        Create New Account
+                     </h3>
                      <p>Take control of your health today</p>
                   </div>
                   <div className={styles.signupForm}>
@@ -105,8 +118,8 @@ function Signup(props) {
                         <div
                            className={
                               props.registerDateError
-                                 ? styles.signupFormBoxNameInputsError
-                                 : styles.signupFormBoxNameInputs
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
                            }
                         >
                            <i>
@@ -147,8 +160,8 @@ function Signup(props) {
                         <div
                            className={
                               props.registerEmailError
-                                 ? styles.signupFormBoxNameInputsError
-                                 : styles.signupFormBoxNameInputs
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
                            }
                         >
                            <i>
@@ -183,8 +196,8 @@ function Signup(props) {
                         <div
                            className={
                               props.registerPasswordOneError
-                                 ? styles.signupFormBoxNameInputsError
-                                 : styles.signupFormBoxNameInputs
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
                            }
                         >
                            <i>
@@ -233,8 +246,8 @@ function Signup(props) {
                         <div
                            className={
                               props.registerPasswordTwoError
-                                 ? styles.signupFormBoxNameInputsError
-                                 : styles.signupFormBoxNameInputs
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
                            }
                         >
                            <i>
@@ -324,7 +337,7 @@ function Signup(props) {
                </div>
             </div>
          </div>
-      </section>
+      </div>
    );
 }
 

@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
+
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+}
+
+* {
+   font-family: 'Poppins', sans-serif;
+}
+
+#hero_body {
+   width: 100%;
+   height: 40rem;
+   padding-top: 6rem;
+   background-color: var(--gray);
+   padding-left: 4rem;
+   padding-right: 4rem;
+}
+
+.hero_container {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 0 auto;
+   max-height: 100%;
+}
+
+.hero_content {
+   padding-top: 2rem;
+   width: 50%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.content_title h1 {
+   font-family: 'Poppins', sans-serif;
+}
+.content_info {
+   padding-top: 1.2rem;
+}
+.content_info p {
+   font-size: 2rem;
+}
+
+.content_button {
+   padding-top: 1.2rem;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.content_button button {
+   display: block;
+   width: 60%;
+   padding: 1% 5% 1% 5%;
+   font-weight: 500;
+   color: var(--white);
+   background-color: var(--lightcol);
+   border: none;
+   border-radius: 4px;
+   outline: none;
+   cursor: pointer;
+   font-size: 10px;
+   white-space: nowrap;
+   font-family: 'Poppins', sans-serif;
+   letter-spacing: 0.3px;
+}
+
+.hero_image {
+   padding-top: 2rem;
+   width: 50%;
+   max-height: 100%;
+   padding-right: 20px;
+}
+
+.hero_image img {
+   width: 100%;
+}
+
+/* ========================== mobile view ========================= */
+@media (min-width: 200px) and (max-width: 368px) {
+   #hero_body {
+      background-image: url('../../../assets/maleDoctor.jpg');
+      background-repeat: no-repeat;
+      background-position: 40% 65px;
+      background-size: cover;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* padding-bottom: 10rem; */
+   }
+
+   #overlay {
+      position: absolute;
+      inset: 0;
+      background-color: black;
+      opacity: 85%;
+   }
+
+   .hero_content {
+      position: absolute;
+      color: var(--gray);
+      width: 80%;
+      height: max-content;
+      right: 37px;
+      top: 100px;
+   }
+
+   .content-title h1 {
+      font-size: 20px;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+   }
+
+   .content_info p {
+      font-size: 13pt;
+      font-family: 'Poppins', sans-serif;
+
+      width: 100%;
+   }
+
+   .hero_image {
+      display: none;
+   }
+}
+
+@media (min-width: 368px) and (max-width: 959px) {
+   #hero_body {
+      background-image: url('../../../assets/maleDoctor.jpg');
+      background-repeat: no-repeat;
+      background-position: 30% 65px;
+      background-size: cover;
+      width: 100%;
+      position: relative;
+   }
+
+   #overlay {
+      position: absolute;
+      inset: 0;
+      background-color: black;
+      opacity: 85%;
+   }
+
+   .hero_content {
+      position: absolute;
+      color: var(--gray);
+      width: 80%;
+      height: max-content;
+      right: 40px;
+      top: 200px;
+   }
+
+   .content_title h1 {
+      font-size: 28pt;
+      font-family: 'Poppins', sans-serif;
+   }
+
+   .content_info p {
+      font-size: 13pt;
+      font-family: 'Poppins', sans-serif;
+   }
+
+   .hero_image {
+      display: none;
+   }
+
+   .content_button button {
+      width: 10rem;
+   }
+}
+
+@media (min-width: 600px) {
+}
+
+@media (min-width: 960px) {
+   .hero-image {
+      padding-top: 2rem;
+      width: 50%;
+      float: right;
+      /* height: 100vh; */
+      padding-right: 20px;
+   }
+
+   .hero_image img {
+      width: 100%;
+      overflow: hidden;
+   }
+
+   .content_info p {
+      font-size: 17pt;
+   }
+}
+
+@media (min-width: 1200px) {
+   #hero_body {
+      width: 100%;
+      height: 47rem;
+      padding-bottom: 4rem;
+      background-color: var(--gray);
+      padding-left: 4rem;
+      padding-right: 4rem;
+   }
+
+   .hero_image {
+      padding-top: 2rem;
+      width: 50%;
+      float: right;
+      /* height: 41.2rem; */
+      overflow: hidden;
+
+      padding-right: 20px;
+   }
+
+   .hero_image img {
+      width: 100%;
+      overflow: hidden;
+   }
+
+   .hero_content {
+      padding-bottom: 7rem;
+   }
+}

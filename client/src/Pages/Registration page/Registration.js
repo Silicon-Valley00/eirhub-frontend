@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import Signup from './components/Signup';
-// import './Registration.css';
 import Login from './components/Login';
 
 function Registration(props) {
