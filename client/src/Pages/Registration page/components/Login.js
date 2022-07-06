@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import './login.css';
+import loginStyles from './login.module.css';
 import loginImage from '../../../images/loginimage.svg';
 import { IoWarning } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
@@ -23,15 +23,16 @@ function Login(props) {
       loginPasswordError,
       loginEmail,
       loginEmailError,
-      msg,
-      show,
       signupUser,
    } = props;
 
    return (
-      <section id="login-section">
-         <div id="login-container" className={props.modalLogin ? 'active' : ''}>
-            <div className="login-body">
+      <section id={loginStyles.loginSection}>
+         <div
+            id={loginStyles.loginContainer}
+            className={props.modalLogin ? loginStyles.active : ''}
+         >
+            <div className={loginStyles.loginBody}>
                <form
                   onSubmit={(e) => {
                      e.preventDefault();
@@ -41,13 +42,18 @@ function Login(props) {
                   <h1 className="title">Welcome Back</h1>
                   <p>Please enter your details</p>
                   <h3>Email</h3>
-                  <div className={`input-field ${loginEmailError && 'error'}`}>
+                  <div
+                     className={
+                        loginStyles.inputField ||
+                        (loginEmailError && loginStyles.error)
+                     }
+                  >
                      <i>
                         <IoIosMail />
                      </i>
                      <input
                         type="text"
-                        id="login-username"
+                        id={loginStyles.loginUsername}
                         placeholder="someone@example.com"
                         ref={loginEmail}
                         onChange={() => {
@@ -58,8 +64,8 @@ function Login(props) {
                   <div
                      className={
                         loginEmailError
-                           ? 'error-message-box'
-                           : 'no-error-message-box'
+                           ? loginStyles.errorMessageBox
+                           : loginStyles.noErrorMessageBox
                      }
                   >
                      <i>
@@ -69,14 +75,17 @@ function Login(props) {
                   </div>
                   <h3>Password</h3>
                   <div
-                     className={`input-field ${loginPasswordError && 'error'}`}
+                     className={
+                        loginStyles.inputField ||
+                        (loginPasswordError && loginStyles.error)
+                     }
                   >
                      <i>
                         <RiLockPasswordFill />
                      </i>
                      <input
                         type={hidePassword ? 'password' : 'text'}
-                        id="login-password"
+                        id={loginStyles.loginPassword}
                         placeholder="Enter your password"
                         ref={loginPassword}
                         onChange={() => {
@@ -94,8 +103,8 @@ function Login(props) {
                   <div
                      className={
                         loginPasswordError
-                           ? 'error-message-box'
-                           : 'no-error-message-box'
+                           ? loginStyles.errorMessageBox
+                           : loginStyles.noErrorMessageBox
                      }
                   >
                      <i>
@@ -103,18 +112,18 @@ function Login(props) {
                      </i>
                      <p>{loginPasswordErrorMessage}</p>
                   </div>
-                  <div className="password-reset">
+                  <div className={loginStyles.passwordReset}>
                      <a href="">Forgot password?</a>
                   </div>
-                  <div className="submit">
+                  <div className={loginStyles.submit}>
                      <input
                         type="submit"
-                        id="login-submit"
+                        id={loginStyles.loginSubmit}
                         value="login"
                         className={
                            loginEmailError || loginPasswordError
-                              ? 'btn inactive'
-                              : 'btn solid'
+                              ? loginStyles.btn && loginStyles.inactive
+                              : loginStyles.btn && loginStyles.solid
                         }
                         disabled={
                            loginEmailError ||
@@ -125,7 +134,7 @@ function Login(props) {
                            props.submitUserCredentialsHandler();
                         }}
                      />
-                     <div className="signup-toggle">
+                     <div className={loginStyles.signupToggle}>
                         <p>
                            New Here ?{' '}
                            <a href="" onClick={() => handleModalSignup()}>
@@ -136,7 +145,7 @@ function Login(props) {
                   </div>
                </form>
             </div>
-            <div className="right-side">
+            <div className={loginStyles.rightSide}>
                <h1
                   onClick={() => {
                      handleModalsClose();
