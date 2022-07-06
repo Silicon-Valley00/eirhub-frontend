@@ -11,6 +11,7 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from User.Person.personmodel import Person
 from User.Doctor.doctormodel import Doctor
+from User.Hospital.hospitalModel import Hospital
 
 
 app = Flask(__name__)
@@ -84,6 +85,18 @@ def getDoctorById(id):
                 return jsonify(info)
     else:
         return "ID not found"
+
+#Test Route for hospital model
+@app.route("/hospital",methods = ['GET']) 
+def hospitals():
+    lhopital = Hospital("KATH","Kumasi","Pediatrics,Osteopathy,Cardiology",1097) 
+    session = Session()
+    # session.add(lhopital)
+    # session.commit()
+    # session.close()
+    hospital = session.query(Hospital).all()
+
+    return  (f'{hospital[3].location}')
 
 
 
