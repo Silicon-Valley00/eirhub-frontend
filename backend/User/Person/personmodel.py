@@ -12,7 +12,7 @@ class Person(Base):
     user_email = Column('user_email',String(50))
     # user_name = Column('password',String(50))
     user_password = Column('user_password',String(50))
-    date_of_birth = Column('date_of_birth',Date)
+    date_of_birth = Column('date_of_birth',String(50))
     house_address = Column('house_address',String(50))
     type_of_id = Column('type_of_id',String(50))
     id_number = Column('id_number',String(50))
