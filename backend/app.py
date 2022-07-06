@@ -10,6 +10,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from User.Person.personmodel import Person
+from User.Doctor.doctormodel import Doctor
 
 
 app = Flask(__name__)
@@ -50,6 +51,12 @@ class Student(Base):
 def home():
     return "Welcome to EirHub"
 
+# Test Route
+@app.route("/doctore", methods = ['GET'])
+def doctor():
+    session = Session()
+    doctor = session.query(Doctor)
+    return f'Hwllo {doctor}'
 
 # Test Route
 @app.route("/person",methods = ["GET"]) 
