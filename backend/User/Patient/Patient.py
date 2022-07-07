@@ -2,6 +2,8 @@ from enum import auto
 from tkinter import CASCADE
 from sqlalchemy import Column,Integer,String,Date,ForeignKey,Float
 from sqlalchemy.orm import declarative_base,relationship
+from Guardian.GuardianDetails import GuardianDetails
+from HealthDetailsModel import HealthDetails
 
 Base = declarative_base()
 
