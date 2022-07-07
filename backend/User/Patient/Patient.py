@@ -11,6 +11,7 @@ class Patient(Base):
     #documentation :  https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html
     health_details_id = Column(Integer, ForeignKey('Health_Details.health_details_id'),unique=True,nullable=True)
     guardian_id = Column(Integer, ForeignKey('Guardian_Details.guardian_id'),unique=True,nullable=True)
+    #What happens to a uniqu Guardian id when i am a single parent of two children who are patients?
     weight = Column(Float, nullable = True)
     height = Column(Float, nullable = True)
     location = Column(String(100),nullable = True)

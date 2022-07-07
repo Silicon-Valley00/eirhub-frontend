@@ -10,6 +10,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from User.Person.personmodel import Person
+from User.Person import personservice
 
 
 app = Flask(__name__)
@@ -19,17 +20,6 @@ Session = sessionmaker(bind=engine)
 session = Session()
 meta = MetaData()
 Base = declarative_base()
-
-#Create a student class that translates into the student table
-class Student(Base):
-    __tablename__ = "students"
-    id = Column(Integer,primary_key = True)
-    name = Column('name',String(20))
-    course = Column('course',String(50))
-
-    def __init__ (self,name,course):
-        self.name = name
-        self.course = course
 
 # Database Connection not needed right now. Commented out for now
 # try:
@@ -101,10 +91,21 @@ def signup():
             personId = session.query(Person.idPerson).filter(Person.user_email == req['user_email'], Person.id_number == req['id_number']).first()
             returnPerson = session.query(Person).get(personId)
             session.commit()
-            return str(returnPerson.idPerson),200 #StatusCode
+            return str(returnPerson.idPerson),200  #StatusCode
         else:
             return 'Error: Content-Type Error',400
 
+
+
+@app.route("/login",methods=['GET'])
+def login():
+    req = request.json
+    if request.method == "GET":
+        content_type = request.headers.get('Content-Type')
+        if (content_type == 'application/json'):
+            return personservice.userLogin(session=Session(),email=req["email"],password=req["password"])
+        else:
+            return "Bad Request Error",400
 
 
 # Testing out session and query commands.

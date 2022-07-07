@@ -17,12 +17,12 @@ class Person(Base):
     type_of_id = Column('type_of_id',String(50))
     id_number = Column('id_number',String(50))
     nationality = Column('nationality',String(50))
-    created_at = Column('created_at',String(50))
-    updated_at = Column('updated_at',String(50))
+    # created_at = Column('created_at',String(50))
+    # updated_at = Column('updated_at',String(50))
 
 
 
-    def __init__ (self,first_name,middle_name,last_name,age,person_image,user_email,user_password,date_of_birth,house_address,type_of_id,id_number,nationality,created_at,updated_at):
+    def __init__ (self,first_name,middle_name,last_name,age,person_image,user_email,user_password,date_of_birth,house_address,type_of_id,id_number,nationality):
         self.first_name = first_name
         self.middle_name = middle_name
         self.last_name = last_name
@@ -35,5 +35,5 @@ class Person(Base):
         self.type_of_id = type_of_id
         self.id_number = id_number
         self.nationality = nationality
-        self.created_at = created_at
-        self.updated_at = updated_at
+        # self.created_at = created_at
+        # self.updated_at = updated_at

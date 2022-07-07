@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 class Person(Base):
     __tablename__ = "Person"
-    idPerson = Column(Integer,primary_key = True)
+    idPerson = Column(Integer, primary_key=True, unique = True,nullable = False, autoincrement = True)
     first_name = Column('first_name',String(20))
     middle_name = Column('middle_name',String(50))
     last_name = Column('last_name',String(50))
