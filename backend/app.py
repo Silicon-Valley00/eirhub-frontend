@@ -2,7 +2,6 @@ import http
 import os
 import string
 from flask import Flask,jsonify,request
-from cryptography.fernet import Fernet
 from werkzeug.security import generate_password_hash,check_password_hash
 
 
