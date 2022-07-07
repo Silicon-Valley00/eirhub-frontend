@@ -37,6 +37,7 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   color: var(--deepcol);
 }
 
 .content__title {
@@ -56,10 +57,10 @@
    align-items: center;
    justify-content: center;
 }
-.content_button button {
+
+.content__button {
    display: block;
-   width: 60%;
-   height: 2.5rem;
+   width: 80%;
    padding: 10px;
    font-weight: 500;
    color: var(--white);
@@ -69,8 +70,7 @@
    border-radius: 4px;
    outline: none;
    cursor: pointer;
-   font-size: 10px;
-   white-space: nowrap;
+   font-size: 16px;
    font-family: 'Poppins', sans-serif;
    letter-spacing: 0.3px;
 }
@@ -87,7 +87,7 @@
 }
 
 /* ========================== mobile view ========================= */
-@media (min-width: 200px) and (max-width: 368px) {
+@media (max-width: 368px) {
    #hero_body {
       background-image: url('../../../assets/maleDoctor.jpg');
       background-repeat: no-repeat;
@@ -175,7 +175,7 @@
    }
 
    .content__button {
-      width: 10rem;
+      width: 20rem;
    }
 }
 
@@ -187,6 +187,10 @@
       height: max-content;
       right: 40px;
       top: 200px;
+   }
+
+   .content_button {
+      display: block;
    }
 }
 
@@ -213,6 +217,12 @@
    }
 }
 
+@media (min-width: 1024px) {
+   .content__buttton {
+      width: 20rem;
+   }
+}
+
 @media (min-width: 1200px) {
    #hero_body {
       width: 100%;
@@ -221,6 +231,16 @@
       background-color: var(--gray);
       padding-left: 4rem;
       padding-right: 4rem;
+   }
+
+   .content__title {
+      font-size: 30pt;
+      font-weight: 600;
+   }
+
+   .content__title {
+      font-size: 30pt;
+      font-weight: 600;
    }
 
    .hero_image {
