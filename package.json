@@ -22,5 +22,8 @@
    "lint-staged": {
       "*.js": "eslint --cache --fix",
       "*.{js, json, html, css, md}": "prettier --write"
+   },
+   "dependencies": {
+      "react-router-dom": "^6.3.0"
    }
 }
