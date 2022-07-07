@@ -30,7 +30,7 @@
    top: 0;
    padding-top: 2rem;
    padding-left: 2rem;
-   padding-right: 5rem;
+   padding-right: 2rem;
    transition: all;
    transition-duration: 500ms;
    /* display: none; */
@@ -45,9 +45,12 @@
 .each {
    cursor: pointer;
    list-style-type: none;
-   margin-top: 2rem;
    font-family: var(--mainfont);
    font-weight: 600;
+   height: 4rem;
+   display: flex;
+   align-items: center;
+   border-bottom: 1px solid var(--gray);
 }
 
 .left {
@@ -62,7 +65,7 @@
    color: var(--white);
    display: flex;
    align-items: center;
-   justify-content: end;
+   justify-content: center;
 }
 
 .signup_list {
@@ -129,7 +132,6 @@
       align-items: center;
       justify-content: center;
       column-gap: 1rem;
-      margin-bottom: 2rem;
    }
 
    .each {
@@ -137,6 +139,11 @@
       color: var(--midcol);
       font-size: 12px;
       font-weight: 500;
+      height: 0;
+   }
+
+   .each:hover {
+      color: var(--lightcol);
    }
 
    .left {
@@ -162,6 +169,14 @@
    #signup {
       white-space: nowrap;
       margin-top: -2rem;
+   }
+
+   .signup_item {
+      font-size: 12px;
+   }
+
+   .signup_item:hover {
+      color: var(--lightcol);
    }
 }
 
@@ -207,7 +222,7 @@
       white-space: nowrap;
    }
 
-   .signup_list {
+   .signup_item {
       font-size: 12pt;
    }
 }
