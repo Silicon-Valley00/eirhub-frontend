@@ -21,7 +21,7 @@
    flex-direction: column;
    text-align: right;
    height: 100vh;
-   width: 73%;
+   width: 100%;
    align-items: right;
    justify-content: right;
    background-color: var(--lightcol);
@@ -46,7 +46,8 @@
    cursor: pointer;
    list-style-type: none;
    margin-top: 2rem;
-   font-family: 'Poppins', sans-serif;
+   font-family: var(--mainfont);
+   font-weight: 600;
 }
 
 .left {
@@ -98,7 +99,7 @@
 }
 
 /* ===================================================tablet style============== */
-@media (min-width: 960px) {
+@media (min-width: 768px) {
    #nav {
       display: flex;
       align-items: center;
@@ -119,7 +120,7 @@
       height: 3rem;
       padding: 0;
       padding-left: 4rem;
-      margin-left: 3rem;
+      margin-left: 0;
    }
 
    #nav_links {
@@ -134,14 +135,17 @@
    .each {
       white-space: nowrap;
       color: var(--midcol);
-      font-size: medium;
+      font-size: 12px;
+      font-weight: 500;
    }
+
    .left {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      padding-left: 5%;
    }
    #close {
       display: none;
@@ -161,7 +165,11 @@
    }
 }
 
-/* ===================================================desktop style============== */
+@media (min-width: 890px) {
+   .left {
+      padding-left: 4rem;
+   }
+} /* ===================================================desktop style============== */
 @media (min-width: 1024px) {
    #img img {
       width: 10rem;
