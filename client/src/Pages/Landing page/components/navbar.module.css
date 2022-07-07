@@ -1,15 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
-
-:root {
-   --white: #ffffff;
-   --gray: #ecf3fe;
-   --lightcol: #05a6c2;
-   --midcol: #2b6777;
-   --deepcol: #0d3f58;
-}
-
 /* main nav */
-
 #nav {
    padding: 2rem;
    display: flex;
@@ -17,7 +6,7 @@
    justify-content: space-between;
    position: fixed;
    width: 100%;
-   background-color: #ecf3fe;
+   background-color: var(--gray);
    height: 3rem;
    z-index: 1;
 }
@@ -53,13 +42,6 @@
    transition-duration: 500ms;
 }
 
-/* li {
-   cursor: pointer;
-   list-style-type: none;
-   margin-top: 2rem;
-   font-family: 'Poppins', sans-serif;
-} */
-
 .each {
    cursor: pointer;
    list-style-type: none;
@@ -70,28 +52,33 @@
 .left {
    display: flex;
    flex-direction: column;
-
    width: 100%;
 }
 
 #signup {
    padding-top: 2rem;
+   font-family: var(--mainfont);
    color: var(--white);
    display: flex;
    align-items: center;
    justify-content: end;
 }
 
-#signup .signup_list {
+.signup_list {
    font-weight: 500;
-   font-family: 'Poppins', sans-serif;
+   font-family: var(--mainfont);
    letter-spacing: 0.05em;
-   cursor: pointer;
    display: flex;
+   gap: 4px;
    align-items: center;
    color: var(--deepcol);
    list-style-type: none;
    white-space: nowrap;
+}
+
+.signup_item {
+   font-family: var(--mainfont);
+   cursor: pointer;
 }
 
 .separator {
@@ -124,16 +111,13 @@
 
    .linkContainer {
       display: flex;
-      /* flex-direction: row; */
       width: 100%;
-      /* text-align: center; */
       position: unset;
       background-color: var(--gray);
       align-items: center;
       justify-content: center;
       height: 3rem;
       padding: 0;
-      /* padding-bottom: 1.6rem; */
       padding-left: 4rem;
       margin-left: 3rem;
    }
@@ -147,10 +131,6 @@
       margin-bottom: 2rem;
    }
 
-   /* #nav_links li {
-      color: var(--midcol);
-      font-size: medium;
-   } */
    .each {
       white-space: nowrap;
       color: var(--midcol);
@@ -200,7 +180,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      /* margin-right: 10%; */
       width: 90%;
       column-gap: 2rem;
    }
