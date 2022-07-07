@@ -1,10 +1,10 @@
-import LandingPage from './Pages/Landing page/LandingPage';
 import './App.css';
+import UserDasboard from './Pages/User Dasboard/UserDasboard';
 
 function App() {
    return (
       <div>
-         <LandingPage />
+         <UserDasboard />
       </div>
    );
 }

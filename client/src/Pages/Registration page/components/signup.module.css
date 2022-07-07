@@ -395,6 +395,8 @@
    opacity: 1;
    transition: visibility 500ms ease-in-out;
    transition-delay: 500ms;
+}
+.loader.btnActive i {
    animation: spin 1.3s ease-in-out infinite;
 }
 @keyframes spin {

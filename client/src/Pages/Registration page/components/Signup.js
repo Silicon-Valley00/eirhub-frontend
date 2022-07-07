@@ -358,7 +358,9 @@ function Signup(props) {
                                     : styles.loader
                               }
                            >
-                              <BiLoaderAlt />
+                              <i>
+                                 <BiLoaderAlt />
+                              </i>
                            </div>
                         </button>
                      </div>
