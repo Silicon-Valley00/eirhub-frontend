@@ -11,10 +11,12 @@ const Hero = () => {
          <div className={heroStyles.hero_container}>
             <div className={heroStyles.hero_content}>
                <div className={heroStyles.content_title}>
-                  <h1>Let's Help Connect You With The Best Doctors</h1>
+                  <h1 className={heroStyles.content__title}>
+                     Let's Help Connect You With The Best Doctors
+                  </h1>
                </div>
                <div className={heroStyles.content_info}>
-                  <p>
+                  <p className={heroStyles.content__info}>
                      EirHub helps patients get quick access to experienced
                      practitioners and helps increase the visibility of these
                      practitioners.
@@ -22,12 +24,18 @@ const Hero = () => {
                </div>
 
                <div className={heroStyles.content_button}>
-                  <button>Book an appointment</button>
+                  <button className={heroStyles.content__button}>
+                     Book an appointment
+                  </button>
                </div>
             </div>
 
             <div className={heroStyles.hero_image}>
-               <img src={landingpageImage} alt="Hero" />
+               <img
+                  src={landingpageImage}
+                  alt="Hero"
+                  className={heroStyles.hero__image}
+               />
             </div>
          </div>
       </section>

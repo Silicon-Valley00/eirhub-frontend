@@ -12,7 +12,7 @@ const LandingPage = () => {
          <Hero />
          <QuickSolution />
          <Services />
-         <Footer />
+         {/* <Footer /> */}
       </div>
    );
 };
