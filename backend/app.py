@@ -11,6 +11,8 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from User.Person.personmodel import Person
 from User.Person import personservice
+from User.Doctor.doctormodel import Doctor
+from User.Hospital.hospitalModel import Hospital
 
 
 app = Flask(__name__)
@@ -40,6 +42,12 @@ Base = declarative_base()
 def home():
     return "Welcome to EirHub"
 
+# Test Route
+@app.route("/doctore", methods = ['GET'])
+def doctor():
+    session = Session()
+    doctor = session.query(Doctor)
+    return f'Hello {doctor}'
 
 # Test Route
 @app.route("/person",methods = ["GET"]) 
@@ -67,6 +75,18 @@ def getDoctorById(id):
                 return jsonify(info)
     else:
         return "ID not found"
+
+#Test Route for hospital model
+@app.route("/hospital",methods = ['GET']) 
+def hospitals():
+    lhopital = Hospital("KATH","Kumasi","Pediatrics,Osteopathy,Cardiology",1097) 
+    session = Session()
+    # session.add(lhopital)
+    # session.commit()
+    # session.close()
+    hospital = session.query(Hospital).all()
+
+    return  (f'{hospital[3].location}')
 
 
 
