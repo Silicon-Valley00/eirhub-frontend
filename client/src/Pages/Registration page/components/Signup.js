@@ -7,8 +7,13 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
 import { IoCalendar } from 'react-icons/io5';
 import { IoWarning } from 'react-icons/io5';
+import { BiLoaderAlt } from 'react-icons/bi';
 
 function Signup(props) {
+   // handles button changes
+   const [btnValue, setBtnValue] = useState('Create Account');
+   const [btnActive, setBtnActive] = useState(false);
+   // btnActive is for when button can  be clicked to create account. This would be set to false when an error occurs
    // Handles password visibiltya
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
@@ -20,12 +25,19 @@ function Signup(props) {
    return (
       <div className={styles.signupBody}>
          <div
+            className={styles.closeModal}
+            onClick={() => props.handleModalsClose()}
+         >
+            <FaTimes />
+         </div>
+
+         <div
             id={styles.signupContent}
             className={props.modalSignup ? styles.active : ''}
          >
             <div className={styles.signupContainer}>
                <div className={styles.leftRegion}>
-                  <h3 onClick={() => props.handleModalsClose()}>Eirhub</h3>
+                  <h3>Eirhub</h3>
                   <div className={styles.leftRegionInfoOne}>
                      <p>Sign up today and get in touch</p>
                   </div>
@@ -40,14 +52,16 @@ function Signup(props) {
                <div className={styles.rightRegion}>
                   <div className={isError ? styles.error : styles.noerror}>
                      <p>{errorMessage}</p>
-                     <i onclick={() => setIsError(!isError)}>
+                     <i
+                        onClick={() => {
+                           setIsError(false);
+                        }}
+                     >
                         <FaTimes />
                      </i>
                   </div>
                   <div className={styles.signupFormTitle}>
-                     <h3 onclick={() => setIsError(!isError)}>
-                        Create New Account
-                     </h3>
+                     <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
                   </div>
                   <div className={styles.signupForm}>
@@ -73,6 +87,7 @@ function Signup(props) {
                                  onChange={() => {
                                     props.handleRegisterUser();
                                  }}
+                                 disabled={btnActive}
                               />
                            </div>
                         </div>
@@ -97,6 +112,7 @@ function Signup(props) {
                                  onChange={() => {
                                     props.handleRegisterUser();
                                  }}
+                                 disabled={btnActive}
                               />
                            </div>
                         </div>
@@ -140,6 +156,7 @@ function Signup(props) {
                               onChange={() => {
                                  props.handleRegisterDate();
                               }}
+                              disabled={btnActive}
                            />
                         </div>
                      </div>
@@ -171,11 +188,12 @@ function Signup(props) {
                               name="email"
                               type="email"
                               id="email"
-                              placeholder="Enter mail"
+                              placeholder="someone@example.com"
                               ref={props.signupEmail}
                               onChange={() => {
                                  props.handleRegisterEmail();
                               }}
+                              disabled={btnActive}
                            />
                         </div>
                      </div>
@@ -212,6 +230,7 @@ function Signup(props) {
                               onChange={() => {
                                  props.handleRegisterPassword();
                               }}
+                              disabled={btnActive}
                            />
                            <i
                               onClick={() =>
@@ -262,6 +281,7 @@ function Signup(props) {
                               onChange={() => {
                                  props.handleRegisterPasswordConfirm();
                               }}
+                              disabled={btnActive}
                            />
                            <i
                               onClick={() =>
@@ -289,10 +309,13 @@ function Signup(props) {
                         <p>{props.registerPasswordTwoErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormButton}>
-                        <input
-                           type="submit"
+                        <button
                            id="submit-btn"
-                           value="Create Account"
+                           // className={
+                           //    btnActive
+                           //       ? `${styles.signupBtn} ${styles.btnActive}`
+                           //       : styles.signupBtn
+                           // }
                            className={
                               props.registerNameError === true ||
                               props.registerEmailError === true ||
@@ -305,6 +328,8 @@ function Signup(props) {
                               props.registerPasswordOneError === null ||
                               props.registerPasswordTwoError === null
                                  ? styles.signupBtnInactive
+                                 : btnActive
+                                 ? `${styles.signupBtn} ${styles.btnActive}`
                                  : styles.signupBtn
                            }
                            disabled={
@@ -320,9 +345,22 @@ function Signup(props) {
                               props.registerPasswordTwoError === null
                            }
                            onClick={() => {
+                              setBtnValue('Creating Account');
+                              setBtnActive(true);
                               props.submitUserCredentialsHandler();
                            }}
-                        />
+                        >
+                           <p>{btnValue}</p>
+                           <div
+                              className={
+                                 btnActive
+                                    ? `${styles.loader} ${styles.btnActive}`
+                                    : styles.loader
+                              }
+                           >
+                              <BiLoaderAlt />
+                           </div>
+                        </button>
                      </div>
                      <div className={styles.signupFormMessage}>
                         <p>Already have an account?</p>
