@@ -1,6 +1,6 @@
 # Eirhub
 
-Repository for Healthcare webapp (Software Engineering project)
+Repository for Healthcare webapp (Year 3 Semester 2 Software Engineering project)
 
 
 # Contributors
