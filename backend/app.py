@@ -3,6 +3,8 @@ import os
 import string
 from flask import Flask,jsonify,request
 from cryptography.fernet import Fernet
+from werkzeug.security import generate_password_hash,check_password_hash
+
 
 from sqlalchemy import create_engine,Table,MetaData,Column,Integer,String
 from flask_sqlalchemy import SQLAlchemy
@@ -10,8 +12,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from User.Person.personmodel import Person
-from User.Person import personservice
 from User.Doctor.doctormodel import Doctor
+from User.Person import personservice
 from User.Hospital.hospitalModel import Hospital
 
 
@@ -24,16 +26,16 @@ meta = MetaData()
 Base = declarative_base()
 
 # Database Connection not needed right now. Commented out for now
-# try:
-#     engine.connect()
-#     Base.metadata.create_all(engine)
-#     new = Student("Albus severus Potter","Potions") #
-#     # session.add(new)
-#     session.commit()
-#     session.close()
-#     print("Database Successfully Connected")
-# except Exception as e:
-#     print('Database connection failed: %s'%(e))
+try:
+    engine.connect()
+    Base.metadata.create_all(engine)
+    # new = Student("Albus severus Potter","Potions") #
+    # session.add(new)
+    session.commit()
+    session.close()
+    print("Database Successfully Connected")
+except Exception as e:
+    print('Database connection failed: %s'%(e))
 # Echo for debugging for the moment
 
 
@@ -41,19 +43,6 @@ Base = declarative_base()
 @app.route("/",methods = ['GET'])
 def home():
     return "Welcome to EirHub"
-
-# Test Route
-@app.route("/doctore", methods = ['GET'])
-def doctor():
-    session = Session()
-    doctor = session.query(Doctor)
-    return f'Hello {doctor}'
-
-# Test Route
-@app.route("/person",methods = ["GET"]) 
-def person():
-    for person in session.query(Person).all():
-        return person.user_email
 
 
 # Test Route
@@ -99,10 +88,8 @@ def signup():
         content_type = request.headers.get('Content-Type')
         if (content_type == 'application/json'):
             req = request.json
-            secretKey = str(os.getenv('SECRET_KEY'))
-            cipher_suite = Fernet(secretKey)
-            encryptedPassword = cipher_suite.encrypt(bytes(req['password'],'ascii'))
-            newPerson = Person(req['first_name'],req['middle_name'],req['last_name'],req['age'],req['person_image'],req['user_email'],encryptedPassword,req['date_of_birth'],req['house_address'],req['type_of_id'],req['id_number'],req['nationality'])
+            passwordHash = generate_password_hash(req["password"])
+            newPerson = Person(req['first_name'],req['middle_name'],req['last_name'],req['age'],req['person_image'],req['user_email'],passwordHash,req['date_of_birth'],req['house_address'],req['type_of_id'],req['id_number'],req['nationality'])
             try: 
                 session.add(newPerson)
                 session.commit()
@@ -116,31 +103,58 @@ def signup():
             return 'Error: Content-Type Error',400
 
 
-
+# User Authentication for Login Flow
+#Test with already existing details: 
+#{
+#     "email":"niiodartey10@gmail.com",
+#     "password":"WhatTheFuckTHough5757?"
+# }
 @app.route("/login",methods=['GET'])
 def login():
     req = request.json
     if request.method == "GET":
         content_type = request.headers.get('Content-Type')
         if (content_type == 'application/json'):
-            return personservice.userLogin(session=Session(),email=req["email"],password=req["password"])
+            # return (personservice.userLogin(session=Session(),email=req["email"],password=req["password"]))
+            email = req["email"]
+            password = req["password"]
+    #Check Email 
+            try:
+                idPerson = session.query(Person.idPerson).filter(Person.user_email == email).first()
+                if(idPerson):
+                    personDetail = session.query(Person).get(idPerson)
+                    session.commit()
+                    #Check Password after user email has been verified
+                    try :
+                        userPasswordHash =  str(personDetail.user_password)
+                        if(check_password_hash(str(userPasswordHash),password)):
+                            userObject = {"firstname":str(personDetail.first_name)}
+                            userObject["lastname"] = str(personDetail.last_name)
+                            userObject["middlename"] = str(personDetail.last_name)
+                            userObject["age"] = str(personDetail.last_name)
+                            userObject["lastname"] = str(personDetail.last_name)
+                            userObject["lastname"] = str(personDetail.last_name)
+                            userObject["person_image"] = str(personDetail.person_image)
+                            userObject["user_email"] = str(personDetail.user_email)
+                            # user_name = Column('password',String(50))
+                            # date_of_birth = Column('date_of_birth',String(50))
+                            # house_address = Column('house_address',String(50))
+                            # type_of_id = Column('type_of_id',String(50))
+                            # id_number = Column('id_number',String(50))
+                            # nationality = Column('nationality',String(50))
+                            # userObject[""]
+                            return (userObject),200  #StatusCode  #Also make this entire response a json object.
+                        else:
+                            return("Incorrect Password. Kindly Try again") #Check Status Code for wrong login 
+                    except Exception as e:
+                        return("Connection Error : %s",(e)),400
+                else:
+                    return("User not registered.Do you want to sign up?"),200 #Check Status Code for wrong login
+            except Exception as e:
+                print(e)
+                return("Connection Error: Check your network connection"),400
         else:
             return "Bad Request Error",400
-
-
-# Testing out session and query commands.
-@app.route("/call",methods = ['GET']) 
-def getUser():
-    session = Session()
-    personId = session.query(Person.idPerson).filter(Person.user_email == "leta@gmail.com").first()
-    print(personId)
-    printable = session.query(Person).get(personId)
-    # filter(Person.user_email == "leta@gmail.com").first()
-    print(printable.first_name)
-    session.commit()
-    # session.close()
-    # session.expire_on_commit(False)
-    return (f'{printable.first_name}')
 
 
 if __name__ == "__main__":
