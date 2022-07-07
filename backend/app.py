@@ -57,7 +57,7 @@ def home():
 def doctor():
     session = Session()
     doctor = session.query(Doctor)
-    return f'Hwllo {doctor}'
+    return f'Hello {doctor}'
 
 # Test Route
 @app.route("/person",methods = ["GET"]) 

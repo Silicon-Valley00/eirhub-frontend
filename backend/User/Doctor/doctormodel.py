@@ -8,7 +8,7 @@ class Doctor(Base):
     idHospital = Column(Integer, ForeignKey('Person.idPerson'))
     doctor_ratings = Column('doctor_ratings',Float(1))
     doctor_specialities= Column('doctor_specialities',String(100))
-    license_number = Column('license_number', String(45))
+    license_number = Column('license_number', String(45),unique = True)
    
 
 
