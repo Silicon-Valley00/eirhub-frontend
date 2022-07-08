@@ -1,0 +1,203 @@
+:root {
+   --radius: 25px;
+   --height: 40px;
+   --white: #fff;
+   --field-radius: 8px;
+   --bleached-blue: #ecf3fe;
+   --light-blue: #05a6c2;
+   --dark-blue: #2b6777;
+   --text-color: #0d3f58;
+   --padding: 1.5rem;
+   --text-padding: 10px;
+}
+
+* {
+   border: none;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.loginSection {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+}
+
+#loginContainer {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   justify-self: center;
+   border-radius: var(--radius);
+   justify-self: center;
+   padding: var(--padding);
+   color: var(--text-color);
+   background-color: var(--white);
+   height: 80vh;
+   width: 70vw;
+   margin: auto;
+   display: grid;
+   grid-template-columns: 2fr 3fr;
+   gap: 1rem;
+   border: 2px solid red;
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 500ms ease-in-out;
+}
+#loginContainer.active {
+   visibility: visible;
+   opacity: 1;
+   transition: visibility 500ms ease-in-out;
+}
+
+.loginBody {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding: var(--padding);
+   /* align-items: center; */
+   /* margin: auto; */
+   height: 90%;
+}
+
+.loginForm > * {
+   margin: 10px auto;
+   width: 100%;
+}
+.rightSide {
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   /* align-items: center; */
+   background-color: var(--light-blue);
+   border-top-right-radius: var(--radius);
+   border-bottom-right-radius: var(--radius);
+   padding: var(--padding);
+   width: 100%;
+}
+.rightSide > *:not(:first-child) {
+   margin: auto;
+}
+
+.rightSide > h1 {
+   color: var(--white);
+   font-weight: 400;
+}
+.rightSide > p {
+   font-size: 2rem;
+}
+
+.passwordReset {
+   color: var(--light-blue);
+   font-size: 0.7rem;
+   text-align: right;
+}
+
+.signupToggle {
+   padding: var(--text-padding);
+   font-size: 0.7rem;
+}
+
+.inputField {
+   height: var(--height);
+   border: 1px solid grey;
+   border-radius: var(--field-radius);
+   display: flex;
+   /* justify-content: space-around; */
+   align-items: center;
+   height: var(--height);
+   /* padding: var(--text-padding); */
+}
+.inputField > * {
+   margin: 5px;
+   border: none;
+}
+.submit {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+h1 {
+   font-size: 2rem;
+}
+
+.btn {
+   color: white;
+   background-color: var(--light-blue);
+   height: var(--height);
+   width: 50%;
+   border-radius: var(--field-radius);
+   /* margin: auto; */
+   text-transform: uppercase;
+}
+.solid:hover {
+   background-color: var(--text-color);
+   transition: background-color 0.5s ease-out;
+   cursor: pointer;
+}
+
+.inactive {
+   background-color: var(--light-blue);
+   opacity: 0.5;
+   color: white;
+}
+
+.inputField > input {
+   /* padding: var(--text-padding) 0; */
+   border: none;
+   outline: none;
+   width: 100%;
+   height: 100%;
+   padding: auto;
+}
+
+a {
+   color: var(--light-blue);
+}
+
+/* Error */
+.errorMessageBox {
+   width: 100%;
+   height: 25px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-size: 12px;
+   color: red;
+}
+
+.errorMessageBox p {
+   color: red;
+   width: 93%;
+}
+
+.errorMessageBox i{
+   fill: red;
+   width: 7%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 100%;
+}
+
+.noErrorMessageBox {
+   width: 100%;
+   height: 25px;
+}
+
+.noErrorMessageBox i {
+   display: none;
+}
+
+.noErrorMessageBox p {
+   display: none;
+}
