@@ -3,8 +3,6 @@ import Styles from './services.module.css';
 import docOne from '../../../assets/docProfileImage3.svg';
 import docTwo from '../../../assets/docProfileImage4.svg';
 import docThree from '../../../assets/docProfileImage1.svg';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
-import 'animate.css/animate.min.css';
 
 const details = [
    {
@@ -39,8 +37,12 @@ const Services = () => {
                               <img src={detail.profile_pic} alt="Doctor" />
                            </div>
                            <div className={Styles.services_doctor_info}>
-                              <h4>{detail.name}</h4>
-                              <p>{detail.profession}</p>
+                              <h4 className={Styles.services_doctor_info_h4}>
+                                 {detail.name}
+                              </h4>
+                              <p className={Styles.services_doctor_info_p}>
+                                 {detail.profession}
+                              </p>
                            </div>
                         </div>
                      );

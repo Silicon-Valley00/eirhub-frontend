@@ -42,9 +42,9 @@ const Navbar = () => {
                </ul>
                <div id={styles.signup}>
                   <ul className={styles.signup_list}>
-                     <li>Sign Up</li>
+                     <li className={styles.signup_item}>Sign Up</li>
                      <li id={styles.separator}>|</li>
-                     <li>Login</li>
+                     <li className={styles.signup_item}>Login</li>
                   </ul>
                </div>
             </div>

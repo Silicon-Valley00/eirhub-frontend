@@ -1,14 +1,17 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
 
-body {
+* {
    margin: 0;
-   font-family: 'Poppins', sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   background-color: white;
+   box-sizing: border-box;
+   border: none;
 }
 
-code {
-   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-} */
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+   --mainfont: 'Poppins', sans-serif;
+   --xl_title: 40px;
+}

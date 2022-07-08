@@ -41,7 +41,7 @@ const QuickSolution = () => {
                         <p className={styles.heading}>{item.heading}</p>
                         <p className={styles.about}>{item.about}</p>
                         <p className={styles.LearnMore}>
-                           Learn more{' '}
+                           Learn more
                            <CgArrowLongRight className={styles.arrow} />
                         </p>
                      </div>
