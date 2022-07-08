@@ -108,10 +108,10 @@ def signup():
 #     "email":"niiodartey10@gmail.com",
 #     "password":"WhatTheFuckTHough5757?"
 # }
-@app.route("/login",methods=['GET'])
+@app.route("/login",methods=['POST'])
 def login():
     req = request.json
-    if request.method == "GET":
+    if request.method == "POST":
         content_type = request.headers.get('Content-Type')
         if (content_type == 'application/json'):
             # return (personservice.userLogin(session=Session(),email=req["email"],password=req["password"]))
@@ -128,20 +128,13 @@ def login():
                         userPasswordHash =  str(personDetail.user_password)
                         if(check_password_hash(str(userPasswordHash),password)):
                             userObject = {"firstname":str(personDetail.first_name)}
+                            userObject["middlename"] = str(personDetail.middle_name)
                             userObject["lastname"] = str(personDetail.last_name)
-                            userObject["middlename"] = str(personDetail.last_name)
-                            userObject["age"] = str(personDetail.last_name)
-                            userObject["lastname"] = str(personDetail.last_name)
-                            userObject["lastname"] = str(personDetail.last_name)
+                            userObject["age"] = str(personDetail.age)
                             userObject["person_image"] = str(personDetail.person_image)
                             userObject["user_email"] = str(personDetail.user_email)
-                            # user_name = Column('password',String(50))
-                            # date_of_birth = Column('date_of_birth',String(50))
-                            # house_address = Column('house_address',String(50))
-                            # type_of_id = Column('type_of_id',String(50))
-                            # id_number = Column('id_number',String(50))
-                            # nationality = Column('nationality',String(50))
-                            # userObject[""]
+                            userObject["date_of_birth"] = str(personDetail.date_of_birth)
+                            userObject["house_address"] = str(personDetail.house_address)
                             return (userObject),200  #StatusCode  #Also make this entire response a json object.
                         else:
                             return("Incorrect Password. Kindly Try again") #Check Status Code for wrong login 
