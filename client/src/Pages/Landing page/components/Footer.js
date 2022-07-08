@@ -3,9 +3,24 @@ import { FaTwitter } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
 import footerStyle from '../components/footer.module.css';
+import { IoIosArrowDown } from 'react-icons/io';
+import { IoIosArrowUp } from 'react-icons/io';
+
 const Footer = () => {
+   //setting state to show list items with onClick.
+   const [showServices, setShowServices] = useState(true);
+   const [showSupport, setShowSupport] = useState(true);
+
+   //toggle onclick only in 756px screen width
+   const toggleDropdown = ({ state, setState }) => {
+      const screenSize = window.innerWidth;
+      if (screenSize <= 756) setState(!state);
+      return;
+   };
+
    return (
       <footer>
+         {/* logo div*/}
          <div className={footerStyle.logo}>
             <span className={footerStyle.logo}>Eirhub</span>
             <p className={footerStyle.logo}>
@@ -25,66 +40,114 @@ const Footer = () => {
                </span>
             </div>
          </div>
-         <div className={footerStyle.ourservices}>
-            <h2>Our services</h2>
-            <ul className={footerStyle.dropdown1}>
-               <li>
-                  <a href="#">Health Consultant</a>
-               </li>
-               <li>
-                  <a href="#">Find Doctor</a>
-               </li>
-               <li>
-                  <a href="#">E-Pharmacy</a>
-               </li>
-               <li>
-                  <a href="#">Health Tips</a>
-               </li>
-               <li>
-                  <a href="#">Blog</a>
-               </li>
-            </ul>
+         <div className={footerStyle.fourservices}>
+            <h2
+               onClick={() =>
+                  //toggling with onclick
+                  toggleDropdown({
+                     state: showServices,
+                     setState: setShowServices,
+                  })
+               }
+               className={footerStyle.fheader}
+            >
+               Our services
+                {/*Trigger image if showServices is false*/}
+         { !showServices ?<IoIosArrowDown
+                  className={footerStyle.fmobilehide1}
+               />
+               :<IoIosArrowUp
+                  className={footerStyle.fmobilehide2}
+               />}
+            </h2>
+               {showServices &&(<ul className={footerStyle.fdropdown}>
+                  <li className={footerStyle.flist}>
+                     Health Consultant
+                  </li>
+                  <li className={footerStyle.flist}>
+                     Find Doctor
+                  </li>
+                  <li className={footerStyle.flist}>
+                    E-Pharmacy
+                  </li>
+                  <li className={footerStyle.flist}>
+                     Health Tips
+                  </li>
+                  <li className={footerStyle.flist}>
+                     Blog
+                  </li>
+               </ul>
+               )}
          </div>
-         <div className={footerStyle.support}>
-            <h2>Support</h2>
-            <ul className={footerStyle.dropdown2}>
-               <li>
-                  <a href="#">Find a Doctor</a>
-               </li>
-               <li>
-                  <a href="#">How it Works</a>
-               </li>
-               <li>
-                  <a href="#">Book Appointment</a>
-               </li>
-               <li>
-                  <a href="#">Register</a>
-               </li>
-               <li>
-                  <a href="#">FAQ</a>
-               </li>
-               <li>
-                  <a href="#">Terms of Use</a>
-               </li>
-            </ul>
+
+ {/* support div*/}
+         <div className={footerStyle.fsupport}>
+            <h2
+               onClick={() =>
+                  toggleDropdown({
+                     state: showSupport,
+                     setState: setShowSupport,
+                  })
+               }
+               className={footerStyle.fheader}
+            >
+               Support
+                { !showSupport ?<IoIosArrowDown
+                  className={footerStyle.fmobilehide1}
+               />
+               :<IoIosArrowUp
+                  className={footerStyle.fmobilehide2}
+               />}
+            </h2>
+            {showSupport && (
+               <ul className={footerStyle.fdropdown}>
+                  <li className={footerStyle.flist}>
+                        Find a Doctor
+                  </li>
+                  <li className={footerStyle.flist}>
+                        How it Works
+                  </li>
+                  <li className={footerStyle.flist}>
+                     
+                        Book Appointment
+                     
+                  </li>
+                  <li className={footerStyle.flist}>
+                     
+                        Register
+                  
+                  </li>
+                  <li className={footerStyle.flist}>
+               
+                        FAQ
+         
+                  </li>
+                  <li className={footerStyle.flist}>
+                     
+                        Terms of Use
+   
+                  </li>
+               </ul>
+            )}
          </div>
-         <div className={footerStyle.contact}>
-            <h2>Contact us</h2>
-            <ul>
-               <li>
-                  <a href="#">+(233) 576 678 238</a>
+          {/*Contact*/}
+         <div className={footerStyle.fcontact}>
+            <h2 className={footerStyle.fheader}>Contact us</h2>
+            <ul className={footerStyle.fdropdown}>
+               <li className={footerStyle.flist}>
+                  +(233) 576 678 238
                </li>
             </ul>
-            <ul>
-               <li>
-                  <a href="#">info@Eirhub.com</a>
+            <ul className={footerStyle.fdropdown}>
+               <li className={footerStyle.flist}>
+                  info@Eirhub.com
                </li>
             </ul>
-            <ul>
-               <li>
-                  <a href="#">
-                     17 Maple Avenue<br></br> Kumasi, Ghana{' '}
-                  </a>
+            <ul className={footerStyle.fdropdown}>
+               <li className={footerStyle.flist}>
+                  
+                     17 Maple Avenue<br></br> Kumasi, Ghana
+
                </li>
             </ul>
          </div>
