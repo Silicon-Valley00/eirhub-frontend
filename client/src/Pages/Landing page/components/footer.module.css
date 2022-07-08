@@ -90,6 +90,9 @@ footer {
    line-height: 1.8;
    margin: 0;
 }
+.fdropdown{
+   padding-left: 0;
+}
 .fcontact .flist {
    margin-bottom: 20px;
 }
