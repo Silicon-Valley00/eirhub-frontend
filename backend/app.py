@@ -148,6 +148,15 @@ def login():
         else:
             return "Bad Request Error",400
 
+@app.route("/doctor",methods = ['GET'])
+def doctors():
+    session = Session()
+
+    doctor = session.query(Doctor).all()
+
+    return  (doctor)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
