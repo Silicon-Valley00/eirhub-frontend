@@ -12,7 +12,7 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from User.Person.personmodel import Person
 from User.Doctor.doctormodel import Doctor
-from User.Person import personservice
+from User.Patient.patientModel import Patient
 from User.Hospital.hospitalModel import Hospital
 
 
@@ -75,6 +75,26 @@ def hospitals():
     hospital = session.query(Hospital).all()
 
     return  (f'{hospital[3].location}')
+
+#Test Route for hospital model
+@app.route("/patient",methods = ['GET']) 
+def patient():
+    new_patient = Patient(75,1.90,"Bantama")
+    session = Session()
+    session.add(new_patient)
+    session.commit()
+    session.close()
+    patient = session.query(Patient).all()
+
+    return  (f'{patient[0].location}')
+
+
+#Route for getting patients based on id
+@app.route("/patient/<id>",methods = ['GET'])
+def getIdPatient(id):
+    patient = session.query(Patient).get(id)
+    return str(patient.location)
+
 
 
 
