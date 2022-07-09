@@ -7,3 +7,5 @@ Document to track Decision Making : [Silicon Valley - EirHub Decision Document](
 # Contributors
 ## Add your name 
 - Rexford Machu : Project Manager
+- Kwabena Darkwa Obeng-Yeboah: System Analyst
+
