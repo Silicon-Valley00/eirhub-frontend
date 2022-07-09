@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
-from User.Person.personmodel import Person
+from User.Person.personModel import Person
 from User.Doctor.doctormodel import Doctor
 from User.Patient.patientModel import Patient
 from User.Hospital.hospitalModel import Hospital
