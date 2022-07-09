@@ -1,23 +1,23 @@
+#documentation for foreign keys:  https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html
 from enum import auto
-from tkinter import CASCADE
 from sqlalchemy import Column,Integer,String,Date,ForeignKey,Float
 from sqlalchemy.orm import declarative_base,relationship
-from Guardian.GuardianDetails import GuardianDetails
-from HealthDetailsModel import HealthDetails
 
 Base = declarative_base()
 
 class Patient(Base):
     __tablename__ = 'Patient'
-    idPatient = Column(Integer, primary_key=True, unique = True,nullable = False, autoincrement = True)
-    #these are Foreign keys to the primary keys of the health details and guardian tables:
-    #documentation :  https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html
-    health_details_id = Column(Integer, ForeignKey('Health_Details.health_details_id'),unique=True,nullable=True,ondelete = CASCADE)
-    guardian_id = Column(Integer, ForeignKey('Guardian_Details.guardian_id'),unique=False,nullable=True,ondelete = CASCADE)
-     #What happens to a uniqu Guardian id when i am a single parent of two children who are patients?
-    weight = Column(Float, nullable = True)
-    height = Column(Float, nullable = True)
-    location = Column(String(100),nullable = True)
+    idPatient = Column("idPatient", Integer, primary_key=True, unique = True,nullable = False, autoincrement = True)
+    health_details_id = Column("health_details_id", Integer, ForeignKey('Health_Details.health_details_id', ondelete="CASCADE", onupdate="CASCADE"),unique=True,nullable=True)
+    #one to many relationships with other tables
+    health_details = relationship("Health_Details",back_populates = "health_detail")
+    patient = relationship("Person",back_populates = "patients")
+    idpatient = relationship("Report",back_populates = "idPatients")
+    
+    guardian_id = Column("guardian_id", Integer, ForeignKey('Guardian_Details.guardian_id',ondelete = "CASCADE",onupdate = "CASCADE"),unique=False,nullable=True)
+    weight = Column("weight",Float, nullable = True)
+    height = Column("height",Float, nullable = True)
+    location = Column("location",String(100),nullable = True)
     
     
     def __init__(self,weight,height,location):

@@ -18,8 +18,7 @@ class GuardianDetails(Base):
     
     
 
-    def __init__(self, Guardian_id, guardian_first_name, guardian_last_name, guardian_email, guardian_phone_number):
-        self.Guardian_id = Guardian_id
+    def __init__(self, guardian_first_name, guardian_last_name, guardian_email, guardian_phone_number):
         self.guardian_first_name = guardian_first_name
         self.guardian_last_name = guardian_last_name
         self.guardian_email = guardian_email
