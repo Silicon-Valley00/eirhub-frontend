@@ -2,6 +2,7 @@ import React from 'react';
 import landingpageImage from '../../../assets/landingpage design.png';
 import heroStyles from './hero.module.css';
 import 'animate.css/animate.min.css';
+import Typewriter from 'typewriter-effect';
 
 const Hero = () => {
    return (
@@ -16,9 +17,20 @@ const Hero = () => {
                </div>
                <div className={heroStyles.content_info}>
                   <p className={heroStyles.content__info}>
-                     EirHub helps patients get quick access to experienced
-                     practitioners and helps increase the visibility of these
-                     practitioners.
+                     <Typewriter
+                        options={{ loop: true, delay: 75 }}
+                        onInit={(typewriter) => {
+                           typewriter
+                              .pauseFor(2500)
+                              .typeString('EirHub helps patients')
+                              .pauseFor(300)
+                              .deleteChars(8)
+                              .typeString(
+                                 ' <Strong>patients</Strong> get quick access to experienced practitioners and helps increase the visibility of these  practitioners.'
+                              )
+                              .start();
+                        }}
+                     />
                   </p>
                </div>
 
