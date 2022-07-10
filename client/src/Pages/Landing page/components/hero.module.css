@@ -187,10 +187,6 @@
       right: 40px;
       top: 200px;
    }
-
-   .content_button {
-      display: block;
-   }
 }
 
 @media (min-width: 960px) {
