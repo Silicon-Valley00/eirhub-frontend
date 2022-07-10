@@ -18,10 +18,10 @@ const Hero = () => {
                <div className={heroStyles.content_info}>
                   <p className={heroStyles.content__info}>
                      <Typewriter
-                        options={{ loop: true, delay: 75 }}
+                        options={{ loop: false, delay: 20 }}
                         onInit={(typewriter) => {
                            typewriter
-                              .pauseFor(2500)
+                              .pauseFor(500)
                               .typeString('EirHub helps patients')
                               .pauseFor(300)
                               .deleteChars(8)
