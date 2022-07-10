@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './userdashboard.module.css';
 import { GrClose } from 'react-icons/gr';
 import { MdSpaceDashboard, MdMenu } from 'react-icons/md';
@@ -11,18 +11,23 @@ import { CgPill } from 'react-icons/cg';
 import { RiHeartPulseFill } from 'react-icons/ri';
 import { GiMedicalThermometer } from 'react-icons/gi';
 import { HiDotsVertical } from 'react-icons/hi';
-import glucometer from '../../assets/glucometer.svg';
+import glucometer from '../../images/Glucometer.svg';
 
 function UserDashboard() {
+   const [openMenu, setOpenMenu] = useState(false);
    return (
       <div className={styles.container}>
-         <aside>
+         <aside className={openMenu ? styles.active : ''}>
             <div className={styles.top}>
                <div className={styles.logo}>
                   <h2>Eirhub</h2>
                </div>
                <div className={styles.close} id={styles.closeBtn}>
-                  <i>
+                  <i
+                     onClick={() => {
+                        setOpenMenu(false);
+                     }}
+                  >
                      <GrClose />
                   </i>
                </div>
@@ -117,7 +122,7 @@ function UserDashboard() {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>32.7°C</h4>
+                        <h4>32.7 °C</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -287,7 +292,11 @@ function UserDashboard() {
          <div className={styles.right}>
             <div className={styles.profile}>
                <div className={styles.menu} id={styles.menuBtn}>
-                  <i>
+                  <i
+                     onClick={() => {
+                        setOpenMenu(true);
+                     }}
+                  >
                      <MdMenu />
                   </i>
                </div>
