@@ -116,6 +116,7 @@ h1 {
    box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
    overflow: hidden;
    position: relative;
+   cursor: pointer;
 }
 .btnActive {
    background-color: var(--text-color);
@@ -172,14 +173,12 @@ h1 {
    cursor: not-allowed;
    background-color: #a5cfd6;
    width: 60%;
-   /* height: 100%; */
    border: none;
    outline: none;
    border-radius: 40px;
    color: #fff;
    text-transform: uppercase;
    font-weight: 500;
-   margin-top: -0.4rem;
    font-size: 75%;
    text-align: center;
    box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
@@ -325,7 +324,7 @@ font-size: 100%;
    .loginBody {
       width: 100%;
       max-width: 350px;
-      /* margin: auto; */
+      padding: 0;
    }
    .rightSide{
       display: none;
