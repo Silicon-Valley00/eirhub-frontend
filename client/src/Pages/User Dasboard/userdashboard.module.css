@@ -12,6 +12,7 @@ body {
    --deepcol: #0d3f58;
    --tablehead: #c2c9d1;
    --iconred: #dd7678;
+   --iconback: #f7eef0;
 }
 
 * {
@@ -31,13 +32,11 @@ body {
    margin: 0 auto;
    gap: 1rem;
    grid-template-columns: 14rem auto 18rem;
-   /* background-color: var(--gray); */
 }
 
 /* ASIDE */
 .container aside {
    height: 100vh;
-   /* background-color: var(--white); */
 }
 
 .container aside .top {
@@ -45,8 +44,6 @@ body {
    display: flex;
    justify-content: space-around;
    align-items: center;
-   margin-top: 1rem;
-   border: 2px solid yellow;
 }
 aside .logo {
    display: flex;
@@ -54,6 +51,8 @@ aside .logo {
 }
 aside .logo h2 {
    color: var(--lightcol);
+   font-weight: 400;
+   font-size: 2rem;
 }
 
 aside .close {
@@ -61,7 +60,6 @@ aside .close {
 }
 
 aside .sidebar {
-   /* background: var(--midcol); */
    display: flex;
    flex-direction: column;
    height: 86vh;
@@ -72,13 +70,14 @@ aside h3 {
    font-weight: 500;
    margin-top: -0.2rem;
    color: var(--midcol);
+   font-size: 1.2rem;
 }
 aside ul li {
    display: flex;
    color: var(--midcol);
    margin-left: 2rem;
    gap: 1rem;
-   height: 3.7rem;
+   height: 3.2rem;
    position: relative;
    transition: all 300ms ease;
    align-items: center;
@@ -92,13 +91,13 @@ aside .sidebar span.icons {
 }
 aside .sidebar li:nth-child(6) {
    position: absolute;
-   bottom: 6rem;
-   width: 100%;
+   bottom: 3rem;
+   width: 86.5%;
 }
 aside .sidebar li:nth-child(7) {
    position: absolute;
-   bottom: 2rem;
-   width: 100%;
+   width: 86.5%;
+   bottom: 0rem;
 }
 
 aside .sidebar li.active {
@@ -141,13 +140,15 @@ main .vitalsBox {
 }
 main .vitalsBox .vitals {
    background-color: var(--white);
-   padding: 1.5rem 1rem;
+   padding: 1.3rem 1rem;
    border-radius: 1rem;
    box-shadow: 0 2px 4px 0 #0d3f58;
-   transition: all 300ms ease;
-   height: 10rem;
+   transition: box-shadow 300ms ease;
+   height: 9rem;
+   min-height: 9rem;
 }
 main .vitalsBox .vitals:hover {
+   transition-delay: 100ms;
    box-shadow: none;
 }
 
@@ -166,6 +167,9 @@ main .vitalsBox .vitals:hover {
 }
 .vitalsDetails .vitalsIcon i {
    font-size: 150%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 .vitalsDetails .vitalsReadings {
    width: 60%;
@@ -182,14 +186,13 @@ main .vitalsBox .vitals:hover {
    width: 100%;
 }
 .vitalsTitle h4 {
-   font-size: 120%;
+   font-size: 1rem;
    color: var(--midcol);
    margin-top: 0.1rem;
-   font-weight: 600;
+   font-weight: 700;
 }
 .vitalsInfo {
    width: 100%;
-   /* height: 38%; */
    -webkit-line-clamp: 2;
    text-overflow: ellipsis;
    display: -webkit-box;
@@ -213,7 +216,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsReadings {
 main#midsection .vitalsBox .vitals:nth-child(1) .vitalsDetails .vitalsIcon,
 main#midsection .vitalsBox .vitals:nth-child(3) .vitalsDetails .vitalsIcon,
 main#midsection .vitalsBox .vitals:nth-child(4) .vitalsDetails .vitalsIcon {
-   background-color: #f7eef0;
+   background-color: var(--iconback);
 }
 main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon {
    background-color: var(--gray);
@@ -226,4 +229,385 @@ main#midsection .vitalsBox .vitals:nth-child(4) .vitalsDetails .vitalsIcon i {
 }
 main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    color: var(--lightcol);
+}
+
+/* MEDICATIONS */
+.medicationBox {
+   margin-top: 1rem;
+}
+.medicationBox h2 {
+   margin-bottom: 0.2rem;
+   color: var(--midcol);
+   font-weight: 500;
+   font-size: 1.2rem;
+}
+.medicationTable {
+   width: 100%;
+   height: 10rem;
+   background-color: white;
+   /* display: grid; */
+   justify-content: center;
+   align-items: center;
+   table-layout: fixed;
+   overflow: auto;
+   border-radius: 1rem;
+   outline: 1px solid #e1e5ee;
+}
+
+.medicationBox table {
+   background: var(--white);
+   padding: 1rem;
+   border-collapse: collapse;
+   border-spacing: 0px;
+   min-width: 100%;
+   width: 100%;
+   table-layout: fixed;
+   height: 100%;
+}
+.medicationBox table thead {
+   box-shadow: 0 1px 4px #e1e5ee;
+   position: sticky;
+   top: 0;
+   background: var(--white);
+   z-index: 1;
+}
+
+.medicationBox table tbody td {
+   height: 2rem;
+   min-height: 2rem;
+   max-height: 2rem;
+   color: var(--midcol);
+   font-weight: 500;
+   padding: 0.3rem 0.9rem;
+   font-size: 0.8rem;
+}
+.medicationBox table tbody td:nth-child(1) {
+   text-align: left;
+   width: 100%;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+.medicationBox table tbody td:nth-child(2),
+.medicationBox table tbody td:nth-child(3) {
+   text-align: center;
+}
+.medicationBox table tbody td:nth-child(4) {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.medicationBox tbody td input[type='checkbox'] {
+   position: relative;
+}
+.medicationBox tbody td input[type='checkbox']::before {
+   position: absolute;
+   content: '';
+   width: 150%;
+   height: 150%;
+   background-color: var(--white);
+   border: 1px solid var(--midcol);
+   border-radius: 50%;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   cursor: pointer;
+   transition: all 300ms ease;
+}
+.medicationBox tbody td input[type='checkbox']:checked::before {
+   background-color: var(--midcol);
+   border: 1px solid var(--midcol);
+}
+.medicationBox tbody td input[type='checkbox']:checked::after {
+   position: absolute;
+   content: '';
+   color: var(--white);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.medicationBox table thead th {
+   color: var(--tablehead);
+   font-weight: 500;
+   text-transform: capitalize;
+   padding: 0.4rem 1rem;
+   letter-spacing: 0.1rem;
+   font-size: 0.8rem;
+}
+.medicationBox table thead th:nth-child(1) {
+   width: 40%;
+   text-align: left;
+}
+.medicationBox table thead th:nth-child(2) {
+   width: 20%;
+}
+.medicationBox table thead th:nth-child(3) {
+   width: 30%;
+}
+.medicationBox table thead th:nth-child(4) {
+   width: 10%;
+}
+
+.medicationBox tbody tr:nth-child(even) {
+   background-color: var(--gray);
+   width: 100%;
+}
+
+/* APPOINTMENTS */
+
+.appointmentsBox {
+   margin-top: 1rem;
+}
+.appointmentsBox h2 {
+   margin-bottom: 0.2rem;
+   color: var(--midcol);
+   font-weight: 500;
+   font-size: 1.2rem;
+}
+.appointmentTable {
+   width: 100%;
+   height: 12rem;
+   background-color: white;
+   /* display: grid; */
+   justify-content: center;
+   align-items: center;
+   table-layout: fixed;
+   overflow-y: auto;
+   border-radius: 1rem;
+   outline: 1px solid #e1e5ee;
+}
+
+.appointmentsBox table {
+   background: var(--white);
+   padding: 1rem;
+   border-collapse: collapse;
+   border-spacing: 0px;
+   min-width: 100%;
+   width: 100%;
+   table-layout: fixed;
+   height: 100%;
+}
+.appointmentsBox table thead {
+   box-shadow: 0 1px 4px #e1e5ee;
+   position: sticky;
+   top: 0;
+   background: var(--white);
+}
+
+.appointmentsBox table tbody td {
+   height: 2rem;
+   min-height: 2rem;
+   max-height: 2rem;
+   color: var(--midcol);
+   font-weight: 500;
+   padding: 0.3rem 0.9rem;
+   font-size: 0.8rem;
+}
+.appointmentsBox table tbody td:nth-child(1) div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+   border-radius: 50%;
+   background-color: var(--deepcol);
+}
+
+.appointmentsBox table tbody td:nth-child(3) {
+   text-align: center;
+}
+
+.appointmentsBox table thead th {
+   color: var(--tablehead);
+   font-weight: 500;
+   text-transform: capitalize;
+   padding: 0.4rem 1rem;
+   letter-spacing: 0.1rem;
+   font-size: 0.8rem;
+}
+.appointmentsBox table thead th:nth-child(1) {
+   width: 8%;
+}
+.appointmentsBox table thead th:nth-child(2) {
+   width: 30%;
+   text-align: left;
+}
+.appointmentsBox table thead th:nth-child(3) {
+   width: 30%;
+   text-align: center;
+}
+.appointmentsBox table thead th:nth-child(4) {
+   width: 20%;
+   text-align: left;
+}
+.appointmentsBox table thead th:nth-child(5) {
+   width: 12%;
+   text-align: left;
+}
+
+.appointmentsBox tbody tr:nth-child(even) {
+   background-color: var(--gray);
+}
+
+.medicationTable::-webkit-scrollbar,
+.appointmentsTable::-webkit-scrollbar {
+   width: 0.5rem;
+   cursor: pointer;
+}
+.medicationTable::-webkit-scrollbar-track,
+.appointmentsTable::-webkit-scrollbar-track {
+   margin: 20px;
+   cursor: pointer;
+
+   -webkit-box-shadow: inset 0 0 10px var(--white);
+}
+.medicationTable::-webkit-scrollbar-thumb,
+.appointmentsTable::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+}
+
+/* RIGHTSIDE */
+.right {
+   margin-top: 0.4rem;
+}
+.right .profile {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   text-align: right;
+   gap: 2rem;
+   border: 2px solid red;
+}
+.menu {
+   display: none;
+}
+
+.profileImage {
+   width: 3rem;
+   height: 3rem;
+   border-radius: 50%;
+   background: var(--midcol);
+}
+
+.info {
+   font-size: 1rem;
+   color: var(--deepcol);
+   font-weight: 700;
+}
+
+.calendar {
+   margin-top: 1rem;
+   background-color: var(--gray);
+   height: 13rem;
+   width: 100%;
+}
+
+.recentNotifications {
+   margin-top: 0.7rem;
+}
+.recentNotifications h2 {
+   margin-bottom: 0.2rem;
+   color: var(--midcol);
+   font-weight: 500;
+   font-size: 1.5rem;
+   text-align: center;
+}
+
+.notificationBox {
+   height: 22.5rem;
+   min-height: 22.5rem;
+   max-height: 22.5rem;
+   width: 100%;
+   overflow: auto;
+}
+
+.notifications {
+   width: 100%;
+   height: 7rem;
+   max-height: 7rem;
+   min-height: 7rem;
+   margin-bottom: 0.4rem;
+   padding: 0.7rem;
+   background-color: var(--gray);
+   border-radius: 1rem;
+}
+.notificationsHeadings {
+   height: 40%;
+   display: flex;
+   justify-content: space-between;
+}
+.notificationsImage {
+   width: 12%;
+   height: 90%;
+   border-radius: 5rem;
+   background: var(--deepcol);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.notificationsInfo {
+   display: block;
+   width: 70%;
+   text-align: left;
+}
+.notificationsInfo h3 {
+   font-size: 0.9rem;
+   font-weight: 500;
+   color: var(--midcol);
+   font-weight: 700;
+}
+.notificationsInfo p {
+   font-size: 0.5rem;
+   color: var(--midcol);
+   font-weight: 700;
+}
+.notificationsOption {
+   width: 6%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.notificationsOption i {
+   font-size: 100%;
+   margin-bottom: 1.1rem;
+}
+.notificationsMessage {
+   height: 54%;
+   width: 100%;
+   -webkit-line-clamp: 3;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   font-size: 0.7rem;
+   color: var(--midcol);
+   font-weight: 700;
+}
+
+/* MEADIA QUERIES */
+
+@media screen and (max-width: 1200px) {
+   .container {
+      width: 94%;
+      grid-template-columns: 7rem auto 18rem;
+   }
+   .aside .log h2 {
+      display: none;
+   }
+   aside h3 {
+      display: none;
+   }
+   aside ul li {
+      width: 5.6rem;
+   }
+   aside .sidebar li:last-child {
+      position: relative;
+      margin-top: 1.8rem;
+   }
+   main .vitalsBox {
+      grid-template-columns: 1fr;
+      gap: 0;
+   }
 }
