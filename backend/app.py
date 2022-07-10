@@ -10,10 +10,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
-from User.Person.personModel import Person
-from User.Doctor.doctormodel import Doctor
-from User.Patient.patientModel import Patient
-from User.Hospital.hospitalModel import Hospital
+from User.Person.PersonModel import Person
+from User.Doctor.DoctorModel import Doctor
+from User.Patient.PatientModel import Patient
+from User.Hospital.HospitalModel import Hospital
 
 # result = session.query(Customer).join(Invoice).filter(Invoice.amount == 8500)
 # for row in result:
@@ -92,7 +92,7 @@ def patient():
 
 #Route for getting patients based on id
 @app.route("/patient/<id>",methods = ['GET'])
-def getIdPatient(id):
+def getPatientById(id):
     patient = session.query(Patient).get(id)
     return str(patient.location)
 
