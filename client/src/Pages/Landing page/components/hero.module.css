@@ -194,7 +194,7 @@
 }
 
 @media (min-width: 960px) {
-   .hero-image {
+   .hero_image {
       padding-top: 2rem;
       width: 50%;
       float: right;
@@ -213,6 +213,7 @@
 
    .content__info {
       font-size: 17pt;
+      height: 7rem;
    }
 }
 
