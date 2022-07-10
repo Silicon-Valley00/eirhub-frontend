@@ -1,3 +1,6 @@
+*{
+   font-family: 'Poppins', sans-serif;
+}
 #blur.active {
    filter: blur(5px);
    pointer-events: none;

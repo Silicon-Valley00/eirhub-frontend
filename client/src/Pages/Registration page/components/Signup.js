@@ -5,8 +5,7 @@ import { FaRegUser, FaTimes } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
-import { IoCalendar } from 'react-icons/io5';
-import { IoWarning } from 'react-icons/io5';
+import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
 
 function Signup(props) {
@@ -28,7 +27,9 @@ function Signup(props) {
             className={styles.closeModal}
             onClick={() => props.handleModalsClose()}
          >
-            <FaTimes />
+            <i className={styles.closeIcon}>
+               <IoCloseOutline />
+            </i>
          </div>
 
          <div
@@ -52,13 +53,13 @@ function Signup(props) {
                <div className={styles.rightRegion}>
                   <div className={isError ? styles.error : styles.noerror}>
                      <p>{errorMessage}</p>
-                     <i
+                     {/* <i className={styles.closeIcon}
                         onClick={() => {
                            setIsError(false);
                         }}
-                     >
-                        <FaTimes />
-                     </i>
+                     > */}
+                     <IoCloseOutline />
+                     {/* </i> */}
                   </div>
                   <div className={styles.signupFormTitle}>
                      <h3>Create New Account</h3>
