@@ -11,34 +11,182 @@
    width: 100%;
 }
 
-.title p {
+.caption {
    text-transform: capitalize;
    font-weight: bold;
    letter-spacing: 0.4px;
    color: var(--deepcol);
-   font-size: large;
+   font-size: x-large;
+   text-align: center;
+   font-family: var(--mainfont);
 }
 
 .cards {
    display: grid;
    grid-template-columns: repeat(1, 1fr);
-   gap: 10px;
-
+   gap: 3rem;
    width: 100%;
 }
 
 .card {
    background-color: var(--white);
+   box-shadow: 1px 4px 6px 1px rgba(54, 52, 52, 0.6),
+      5px 5px 4px 2px rgba(162, 161, 161, 0.1);
+   border-radius: 20px;
+   height: 16rem;
+   padding: 2rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   color: var(--deepcol);
+}
+
+.setCol {
+   fill: var(--lightcol);
+   font-size: 2rem;
+}
+
+.heading {
+   font-weight: bold;
+}
+
+.LearnMore {
+   display: flex;
+   align-items: center;
+   gap: 6px;
+   color: var(--lightcol);
+   font-family: var(--mainfont);
+}
+
+.join_us {
+   font-family: var(--mainfont);
+   padding-top: 5rem;
+}
+
+.groupdocpic {
+   display: none;
+}
+
+.firstp {
+   text-transform: uppercase;
+   color: var(--lightcol);
+}
+
+.secondp {
+   text-transform: capitalize;
+   font-family: var(--mainfont);
+   font-size: x-large;
+   font-weight: 600;
+   color: var(--deepcol);
+}
+
+.left__div {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   justify-content: center;
+}
+
+.btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding-top: 1rem;
+}
+
+.contact__btn {
+   padding: 5px;
+   background-color: var(--lightcol);
+   width: 15rem;
+   color: var(--white);
+   border-radius: 5px;
+   font-size: 15px;
+   font-family: var(--mainfont);
 }
 
 @media (min-width: 600px) {
+   .caption {
+      font-size: 30px;
+   }
+
    .cards {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
+      padding: 5rem;
+   }
+
+   .card {
+      height: 17rem;
+   }
+
+   .title {
+      font-size: x-large;
+   }
+
+   .join_us {
+      display: flex;
    }
 }
 
 @media (min-width: 900px) {
+   .caption {
+      font-size: 35px;
+   }
+
    .cards {
       grid-template-columns: repeat(3, 1fr);
+      gap: 5rem;
+      padding: initial;
+   }
+
+   .card {
+      height: 18rem;
+   }
+
+   .title {
+      font-size: xx-large;
+      padding-bottom: 30px;
+   }
+}
+
+@media (min-width: 1024px) {
+   .caption {
+      font-size: var(--xl_title);
+   }
+
+   .groupdocpic {
+      display: block;
+      width: 60%;
+   }
+
+   .card {
+      height: 19rem;
+   }
+
+   .heading {
+      font-size: 24px;
+      font-weight: 800;
+   }
+
+   .about {
+      font-size: 16px;
+   }
+
+   .left__div {
+      width: 40%;
+   }
+
+   .secondp {
+      font-size: var(--xl_title);
+      font-family: var(--mainfont);
+   }
+
+   .groupdoc {
+      object-fit: fill;
+      width: 100%;
+      border-radius: 0 15px 15px 0;
+   }
+
+   .btn {
+      display: block;
    }
 }

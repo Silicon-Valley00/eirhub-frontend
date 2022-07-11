@@ -42,9 +42,9 @@ const Navbar = (props) => {
                </ul>
                <div id={styles.signup}>
                   <ul className={styles.signup_list}>
-                     <li onClick={() => props.handleModalSignup()}>Sign Up</li>
+                     <li className={styles.signup_item}>Sign Up</li>
                      <li id={styles.separator}>|</li>
-                     <li onClick={() => props.handleModalLogin()}>Login</li>
+                     <li className={styles.signup_item}>Login</li>
                   </ul>
                </div>
             </div>
