@@ -1,26 +1,43 @@
 import React, { useState } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../images/signupimage.svg';
-import { FaRegUser } from 'react-icons/fa';
+import { FaRegUser, FaTimes } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
-import { IoCalendar } from 'react-icons/io5';
-import { IoWarning } from 'react-icons/io5';
+import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
+import { BiLoaderAlt } from 'react-icons/bi';
 
 function Signup(props) {
-   // Handles password visibilty
+   // handles button changes
+   const [btnValue, setBtnValue] = useState('Create Account');
+   const [btnActive, setBtnActive] = useState(false);
+   // btnActive is for when button can  be clicked to create account. This would be set to false when an error occurs
+   // Handles password visibility
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
+   // Handles server error
+   const [isError, setIsError] = useState(true);
+   const [errorMessage, setErrorMessage] = useState(
+      'Email already in use. Want to login?'
+   );
    return (
-      <section className={styles.signupBody}>
+      <div className={styles.signupBody}>
          <div
             id={styles.signupContent}
             className={props.modalSignup ? styles.active : ''}
          >
+            <div
+               className={styles.closeModal}
+               onClick={() => props.handleModalsClose()}
+            >
+               <i>
+                  <IoCloseOutline />
+               </i>
+            </div>
             <div className={styles.signupContainer}>
                <div className={styles.leftRegion}>
-                  <h3 onClick={() => props.handleModalsClose()}>Eirhub</h3>
+                  <h3>Eirhub</h3>
                   <div className={styles.leftRegionInfoOne}>
                      <p>Sign up today and get in touch</p>
                   </div>
@@ -33,6 +50,17 @@ function Signup(props) {
                   </div>
                </div>
                <div className={styles.rightRegion}>
+                  <div className={isError ? styles.error : styles.noerror}>
+                     <p>{errorMessage}</p>
+                     <i
+                        className={styles.closeIcon}
+                        onClick={() => {
+                           setIsError(false);
+                        }}
+                     >
+                        <IoCloseOutline />
+                     </i>
+                  </div>
                   <div className={styles.signupFormTitle}>
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
@@ -60,6 +88,7 @@ function Signup(props) {
                                  onChange={() => {
                                     props.handleRegisterUser();
                                  }}
+                                 disabled={btnActive}
                               />
                            </div>
                         </div>
@@ -84,6 +113,7 @@ function Signup(props) {
                                  onChange={() => {
                                     props.handleRegisterUser();
                                  }}
+                                 disabled={btnActive}
                               />
                            </div>
                         </div>
@@ -105,8 +135,8 @@ function Signup(props) {
                         <div
                            className={
                               props.registerDateError
-                                 ? styles.signupFormBoxNameInputsError
-                                 : styles.signupFormBoxNameInputs
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
                            }
                         >
                            <i>
@@ -127,6 +157,7 @@ function Signup(props) {
                               onChange={() => {
                                  props.handleRegisterDate();
                               }}
+                              disabled={btnActive}
                            />
                         </div>
                      </div>
@@ -147,8 +178,8 @@ function Signup(props) {
                         <div
                            className={
                               props.registerEmailError
-                                 ? styles.signupFormBoxNameInputsError
-                                 : styles.signupFormBoxNameInputs
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
                            }
                         >
                            <i>
@@ -158,11 +189,12 @@ function Signup(props) {
                               name="email"
                               type="email"
                               id="email"
-                              placeholder="Enter mail"
+                              placeholder="someone@example.com"
                               ref={props.signupEmail}
                               onChange={() => {
                                  props.handleRegisterEmail();
                               }}
+                              disabled={btnActive}
                            />
                         </div>
                      </div>
@@ -183,8 +215,8 @@ function Signup(props) {
                         <div
                            className={
                               props.registerPasswordOneError
-                                 ? styles.signupFormBoxNameInputsError
-                                 : styles.signupFormBoxNameInputs
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
                            }
                         >
                            <i>
@@ -199,6 +231,7 @@ function Signup(props) {
                               onChange={() => {
                                  props.handleRegisterPassword();
                               }}
+                              disabled={btnActive}
                            />
                            <i
                               onClick={() =>
@@ -233,8 +266,8 @@ function Signup(props) {
                         <div
                            className={
                               props.registerPasswordTwoError
-                                 ? styles.signupFormBoxNameInputsError
-                                 : styles.signupFormBoxNameInputs
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
                            }
                         >
                            <i>
@@ -249,6 +282,7 @@ function Signup(props) {
                               onChange={() => {
                                  props.handleRegisterPasswordConfirm();
                               }}
+                              disabled={btnActive}
                            />
                            <i
                               onClick={() =>
@@ -276,10 +310,13 @@ function Signup(props) {
                         <p>{props.registerPasswordTwoErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormButton}>
-                        <input
-                           type="submit"
+                        <button
                            id="submit-btn"
-                           value="Create Account"
+                           // className={
+                           //    btnActive
+                           //       ? `${styles.signupBtn} ${styles.btnActive}`
+                           //       : styles.signupBtn
+                           // }
                            className={
                               props.registerNameError === true ||
                               props.registerEmailError === true ||
@@ -292,6 +329,8 @@ function Signup(props) {
                               props.registerPasswordOneError === null ||
                               props.registerPasswordTwoError === null
                                  ? styles.signupBtnInactive
+                                 : btnActive
+                                 ? `${styles.signupBtn} ${styles.btnActive}`
                                  : styles.signupBtn
                            }
                            disabled={
@@ -307,9 +346,24 @@ function Signup(props) {
                               props.registerPasswordTwoError === null
                            }
                            onClick={() => {
+                              setBtnValue('Creating Account');
+                              setBtnActive(true);
                               props.submitUserCredentialsHandler();
                            }}
-                        />
+                        >
+                           <p>{btnValue}</p>
+                           <div
+                              className={
+                                 btnActive
+                                    ? `${styles.loader} ${styles.btnActive}`
+                                    : styles.loader
+                              }
+                           >
+                              <i>
+                                 <BiLoaderAlt />
+                              </i>
+                           </div>
+                        </button>
                      </div>
                      <div className={styles.signupFormMessage}>
                         <p>Already have an account?</p>
@@ -324,7 +378,7 @@ function Signup(props) {
                </div>
             </div>
          </div>
-      </section>
+      </div>
    );
 }
 

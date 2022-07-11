@@ -1,28 +1,51 @@
 import React from 'react';
 import landingpageImage from '../../../assets/landingpage design.png';
-import './hero.css';
+import heroStyles from './hero.module.css';
+import Typewriter from 'typewriter-effect';
 
 const Hero = () => {
    return (
-      <section id="hero-body">
-         <div className="hero-container">
-            <div className="hero-content">
-               <div className="content-title">
-                  <h1>Lets Help Connect You With The Best Doctors</h1>
+      <section id={heroStyles.hero_body}>
+         <div id={heroStyles.overlay}></div>
+         <div className={heroStyles.hero_container}>
+            <div className={heroStyles.hero_content}>
+               <div className={heroStyles.content_title}>
+                  <h1 className={heroStyles.content__title}>
+                     Let's Help Connect You With The Best Doctors
+                  </h1>
                </div>
-               <div className="content-info">
-                  <p>
-                     EirHub helps patients get quick access to experienced
-                     practitioners and helps increase the visibility of these
-                     practitioners.
+               <div className={heroStyles.content_info}>
+                  <p className={heroStyles.content__info}>
+                     <Typewriter
+                        options={{ loop: false, delay: 20 }}
+                        onInit={(typewriter) => {
+                           typewriter
+                              .pauseFor(500)
+                              .typeString('EirHub helps patients')
+                              .pauseFor(300)
+                              .deleteChars(8)
+                              .typeString(
+                                 ' <Strong>patients</Strong> get quick access to experienced practitioners and helps increase the visibility of these  practitioners.'
+                              )
+                              .start();
+                        }}
+                     />
                   </p>
                </div>
-               <div className="content-button">
-                  <input value={'Book an Appointment'} type={'submit'} />
+
+               <div className={heroStyles.content_button}>
+                  <button className={heroStyles.content__button}>
+                     Book an appointment
+                  </button>
                </div>
             </div>
-            <div className="hero-image">
-               <img src={landingpageImage} alt="Hero" />
+
+            <div className={heroStyles.hero_image}>
+               <img
+                  src={landingpageImage}
+                  alt="Hero"
+                  className={heroStyles.hero__image}
+               />
             </div>
          </div>
       </section>

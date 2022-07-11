@@ -1,74 +1,84 @@
-// import React from 'react';
-// import './services.css';
-// import docProfileImageOne from '../../../assets/doc profile 1.png';
-// import docProfileImageTwo from '../../../assets/doctor profile 2.png';
-// import { AnimationOnScroll } from 'react-animation-on-scroll';
-// import 'animate.css/animate.min.css';
+import React from 'react';
+import Styles from './services.module.css';
+import docOne from '../../../assets/docProfileImage3.svg';
+import docTwo from '../../../assets/docProfileImage4.svg';
+import docThree from '../../../assets/docProfileImage1.svg';
 
-// const Services = () => {
-//    return (
-//       <section id="services-body">
-//          <div className="services-container" data-aos={'slide up'}>
-//             <div className="services-title">
-//                <AnimationOnScroll animateIn="animate__fadeInUp">
-//                   <h2>Meet Our Doctors</h2>
-//                </AnimationOnScroll>
-//             </div>
-//             <AnimationOnScroll animateIn="animate__fadeInUp">
-//                <div className="services-doctors-box">
-//                   <div className="services-doctor-box">
-//                      <div className="services-doctor-image">
-//                         <img src={docProfileImageOne} alt="Doctor's-image" />
-//                      </div>
-//                      <div className="services-doctor-info">
-//                         <h4>Dr. Jaine Huaffmann</h4>
-//                         <p>Restorative Dentist</p>
-//                      </div>
-//                   </div>
-//                   <div className="services-doctor-box">
-//                      <div className="services-doctor-image">
-//                         <img src={docProfileImageTwo} alt="Doctor's-image" />
-//                      </div>
-//                      <div className="services-doctor-info">
-//                         <h4>Dr. Micheal Asempa</h4>
-//                         <p>Cardiac Surgeon</p>
-//                      </div>
-//                   </div>
-//                   <div className="services-doctor-box">
-//                      <div className="services-doctor-image">
-//                         <img src={docProfileImageOne} alt="Doctor's-image" />
-//                      </div>
-//                      <div className="services-doctor-info">
-//                         <h4>Dr. Diane Elinam</h4>
-//                         <p>Gynaecologist</p>
-//                      </div>
-//                   </div>
-//                </div>
-//             </AnimationOnScroll>
+const details = [
+   {
+      name: 'Dr. Jaine Huaffmann',
+      profession: 'Restorative Dentist',
+      profile_pic: docOne,
+   },
+   {
+      name: 'Dr. Micheal Asempa',
+      profession: 'Cardiac Surgeon',
+      profile_pic: docTwo,
+   },
+   {
+      name: 'Dr. Diane Elinam',
+      profession: 'Gynaecologist',
+      profile_pic: docThree,
+   },
+];
 
-//             <AnimationOnScroll animateIn="animate__fadeInUp">
-//                <div className="services-button">
-//                   <input value={'Find A Doctor'} type={'submit'} />
-//                </div>
-//             </AnimationOnScroll>
+const Services = () => {
+   return (
+      <section id={Styles.services_body}>
+         <div className={Styles.services_container} data-aos={'slide up'}>
+            <div className={Styles.services_title}>Meet Our Parteners</div>
 
-//             <div className="services-message">
-//                <div className="services-message-box">
-//                   <div className="services-message-info">
-//                      <AnimationOnScroll animateIn="animate__fadeInUp">
-//                         <h4>Dont Delay Care For You and those You Love. </h4>
-//                      </AnimationOnScroll>
-//                   </div>
-//                   <AnimationOnScroll animateIn="animate__fadeInUp">
-//                      <div className="services-message-button">
-//                         <input value={'Book an Appointment'} type={'submit'} />
-//                      </div>
-//                   </AnimationOnScroll>
-//                </div>
-//             </div>
-//          </div>
-//       </section>
-//    );
-// };
+            <div className={Styles.services_doctors_box}>
+               {React.Children.toArray(
+                  details.map((detail) => {
+                     return (
+                        <div className={Styles.card}>
+                           <div className={Styles.img}>
+                              <img src={detail.profile_pic} alt="Doctor" />
+                           </div>
+                           <div className={Styles.services_doctor_info}>
+                              <h4 className={Styles.services_doctor_info_h4}>
+                                 {detail.name}
+                              </h4>
+                              <p className={Styles.services_doctor_info_p}>
+                                 {detail.profession}
+                              </p>
+                           </div>
+                        </div>
+                     );
+                  })
+               )}
+            </div>
 
-// export default Services;
+            <div className={Styles.services_button}>
+               <input
+                  value={'Find A Doctor'}
+                  type={'submit'}
+                  className={Styles.services_button_input}
+               />
+            </div>
+
+            {/* Box that displays and ad and book an appointment */}
+            <div className={Styles.services_message}>
+               <div className={Styles.services_message_box}>
+                  <div className={Styles.services_message_info}>
+                     <h4 className={Styles.services_ad}>
+                        Don't Delay Care For You and those You Love.{' '}
+                     </h4>
+                     <button className={Styles.message_btn}>
+                        Book an Appointment
+                     </button>
+                     <div className={Styles.circle_1}></div>
+                  </div>
+                  <div className={Styles.circle_2}></div>
+                  <div className={Styles.square}>
+                     <div className={Styles.square_2}></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   );
+};
+
+export default Services;

@@ -18,15 +18,6 @@
 # #     print(personId)
 # #     return True
 
-#     # key = b'pRmgMa8T0INjEAfksaq2aafzoZXEuwKI7wDe4c1F8AY='
-#     # cipher_suite = Fernet(key)
-#     # encryptThis = cipher_suite.encrypt(b'Word')
-#     # print(encryptThis,person.age)
-#     # # ciphered_text = b'gAAAAABaHvk3g8IG4cln7g5HCulppy1bAPVuhtskVcgPXRyytx6RkIqjcI0mAMA7Oy_56T6J0dk-yjxI_WlZtjxnUBbR-EvoQa_oqCKoQJFbv_uc2WdXMSI='
-#     # # unciphered_text = (cipher_suite.decrypt(ciphered_text))
-#     # # print(unciphered_text)
-#     # return 200 #return a HTTP code based on try catch.
-
 
 
 # #Write function for checking Person Email.

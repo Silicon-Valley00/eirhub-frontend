@@ -5,8 +5,7 @@ Base = declarative_base()
 class Report(Base):
     __tablename__ = "Report"
     report_id = Column(Integer, primary_key=True, unique = True,nullable = False, autoincrement = True)
-    idPatient = Column(Integer,ForeignKey('Patient.idPatient', ondelete='RESTRICT',onupdate = 'RESTRICT'))
-    idPatients = relationship('Patient', back_populates='idpatient')
+    idPatient = Column(Integer,ForeignKey('Patient.idPatient', nullable=False, ondelete='CASCADE'))
     report_type = Column('report_type',String(50))
     description = Column('description',String(200))
     medicine_and_dosage = Column('medicine_and_dosage',String(200))

@@ -1,3 +1,10 @@
+* {
+   border: none;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+}
 .signupBody {
    position: relative;
    display: flex;
@@ -14,38 +21,45 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 1118px;
-   height: 728px;
-   background-color: #ffffff;
+   width: 55rem;
+   height: 35rem;
+   background: linear-gradient(222deg, #ffffff, #f8f7f7);
    border-radius: 2rem;
    visibility: hidden;
    opacity: 0;
    transition: visibility 500ms ease-in-out;
-   /* animation: changecolor 10s infinite; */
    animation-fill-mode: both;
-   border: 2px solid red;
+   /* border: 2px solid red; */
+   z-index: 1;
+   box-shadow: 5px 5px 10px #d6d6d6, -5px -5px 10px #ffffff;
 }
 
-@keyframes changecolor {
-   0% {
-      background-color: #ecf3fe;
-   }
-
-   25% {
-      background-color: #bfd2e0;
-   }
-
-   50% {
-      background-color: #dee5eb;
-   }
-
-   75% {
-      background-color: #c5d2db;
-   }
-
-   100% {
-      background-color: #c0daee;
-   }
+.closeModal {
+   position: absolute;
+   top: -10%;
+   left: 50%;
+   background: #ffffff;
+   width: 3%;
+   height: 5%;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   cursor: pointer;
+   font-weight: 900;
+   font-size: 150%;
+   padding: 1%;
+}
+.closeModal i {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   font-weight: 900;
+   font-size: 100%;
 }
 #signupContent.active {
    visibility: visible;
@@ -53,21 +67,22 @@
    transition: visibility 500ms ease-in-out;
 }
 .signupContainer {
-   width: 1060px;
-   height: 680px;
+   width: 95%;
+   height: 95%;
 }
 
 .leftRegion {
-   width: 656px;
+   width: 60%;
    height: 100%;
    border-bottom-left-radius: 2rem;
    border-top-left-radius: 2rem;
-   padding: 2.5rem 5rem;
+   padding: 2.5rem 2.5rem;
    float: left;
    background-color: #05a6c2;
 }
+
 .leftRegion h3 {
-   font-size: 30px;
+   font-size: 1.5rem;
    color: #ffffff;
 }
 .leftRegionInfoOne {
@@ -77,7 +92,7 @@
 
 .leftRegionInfoOne p {
    margin-top: 0.5rem;
-   font-size: 30px;
+   font-size: 1.5rem;
    color: #0d3f58;
    font-weight: 700;
 }
@@ -88,13 +103,13 @@
 
 .leftRegionInfoTwo p {
    margin-top: 0.5rem;
-   font-size: 30px;
+   font-size: 1.5rem;
    color: #0d3f58;
    font-weight: 700;
 }
 .leftRegionImage {
    width: 100%;
-   height: 470px;
+   height: 70%;
 }
 .leftRegionImage img {
    width: 100%;
@@ -103,130 +118,124 @@
 
 .rightRegion {
    float: right;
-   width: 402px;
+   width: 40%;
    height: 100%;
    padding: 0 1.5rem;
 }
-.signupFormTitle {
-   margin-top: 3rem;
+.error {
+   height: 2rem;
+   background: rgb(253, 252, 252);
+   border: 1.5px solid red;
+   color: red;
+   display: flex;
+   justify-content: space-between;
+   border-radius: 5px;
+   padding: 0 0.5rem;
 }
+
+.error p {
+   color: red;
+   font-weight: 600;
+   width: 93%;
+   font-size: 0.8rem;
+   float: left;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.error i {
+   color: red;
+   width: 6%;
+   float: right;
+   font-size: 150%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-bottom: 0.9rem;
+   cursor: pointer;
+}
+.noerror {
+   height: 2rem;
+}
+.noerror p {
+   display: none;
+}
+.noerror i {
+   display: none;
+}
+
 .signupFormTitle h3 {
    color: #0d3f58;
-   font-size: 24px;
-   font-weight: 700;
+   font-size: 1.5rem;
+   font-weight: 600;
 }
 .signupFormTitle p {
    color: #678696;
-   font-size: 12px;
+   font-size: 0.7rem;
 }
 
 .signupForm {
    width: 100%;
-   height: 83%;
+   height: 84%;
    margin-top: 0.5rem;
 }
 
 .signupFormBox {
    width: 100%;
-   height: 65px;
+   height: 13.5%;
 }
 .signupFormBox label {
    color: #0d3f58;
    width: 100%;
-   height: 10px;
-   font-size: 14px;
-   font-weight: 750;
+   font-size: 0.8rem;
+   font-weight: 500;
 }
 .signupFormBoxInputs {
    width: 100%;
-   height: 40px;
+   height: 2rem;
    border-radius: 5px;
-   padding: 1rem 0;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 2rem;
    border: 0.2px solid #678696;
 }
-.signupFormBoxInputs input {
-   background: none;
-   outline: none;
-   border: none;
-   height: 40px;
-   line-height: 1;
-   font-weight: 600;
-   font-size: 1.1rem;
-   color: #678696;
-   width: 90%;
-}
 
-.signupFormBoxInputs i {
-   color: #678696;
-   font-size: 60%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: 10%;
-}
 .signupFormBoxInputsError {
    width: 100%;
-   height: 40px;
+   height: 2rem;
    border-radius: 5px;
-   padding: 1rem 0;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 2rem;
    border: 0.2px solid red;
-}
-.signupFormBoxInputsError input {
-   background: none;
-   outline: none;
-   border: none;
-   height: 40px;
-   line-height: 1;
-   font-weight: 600;
-   font-size: 1.1rem;
-   color: #678696;
-   width: 90%;
-}
-
-.signupFormBoxInputsError i {
-   color: #678696;
-   font-size: 60%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: 10%;
 }
 
 .signupFormBoxNames {
    width: 100%;
-   height: 65px;
+   height: 13.5%;
    display: flex;
    justify-content: space-between;
 }
 .signupFormBoxName {
    width: 49%;
-   height: 65px;
+   height: 100%;
 }
 
 .signupFormBoxName label {
    color: #0d3f58;
    width: 100%;
    height: 10px;
-   font-size: 14px;
-   font-weight: 750;
+   font-size: 0.8rem;
+   font-weight: 500;
 }
 .signupFormBoxNameInputs {
    width: 100%;
-   height: 40px;
+   height: 2rem;
    border-radius: 5px;
-   padding: 1rem 0;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 2rem;
    border: 0.2px solid #678696;
 }
 
@@ -234,10 +243,10 @@
    background: none;
    outline: none;
    border: none;
-   height: 40px;
+   height: 100%;
    line-height: 1;
-   font-weight: 600;
-   font-size: 1.1rem;
+   font-weight: 200;
+   font-size: 0.9rem;
    color: #678696;
    width: 85%;
 }
@@ -247,46 +256,46 @@
    align-items: center;
    justify-content: center;
    width: 15%;
-   font-size: 50%;
+   font-size: 90%;
+   height: 100%;
 }
-.signupFormBox .signupFormBoxNameInputs input {
+.signupFormBox .signupFormBoxInputs input {
    background: none;
    outline: none;
    border: none;
-   height: 40px;
+   height: 100%;
    line-height: 1;
-   font-weight: 600;
-   font-size: 1.1rem;
+   font-weight: 200;
+   font-size: 0.9rem;
    color: #678696;
    width: 90%;
 }
-.signupFormBox .signupFormBoxNameInputs i {
+.signupFormBox .signupFormBoxInputs i {
    color: #678696;
+   font-size: 90%;
    display: flex;
    align-items: center;
    justify-content: center;
    width: 10%;
-   font-size: 60%;
+   height: 100%;
 }
 .signupFormBoxNameInputsError {
    width: 100%;
-   height: 40px;
+   height: 2rem;
    border-radius: 5px;
-   padding: 1rem 0;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 2rem;
    border: 0.2px solid red;
 }
 .signupFormBoxName .signupFormBoxNameInputsError input {
    background: none;
    outline: none;
    border: none;
-   height: 40px;
+   height: 100%;
    line-height: 1;
-   font-weight: 600;
-   font-size: 1.1rem;
+   font-weight: 200;
+   font-size: 0.9rem;
    color: #678696;
    width: 85%;
 }
@@ -296,31 +305,33 @@
    align-items: center;
    justify-content: center;
    width: 15%;
-   font-size: 60%;
+   font-size: 90%;
+   height: 100%;
 }
-.signupFormBox .signupFormBoxNameInputsError input {
+.signupFormBox .signupFormBoxInputsError input {
    background: none;
    outline: none;
    border: none;
-   height: 40px;
+   height: 100%;
    line-height: 1;
-   font-weight: 600;
-   font-size: 1.1rem;
+   font-weight: 200;
+   font-size: 0.9rem;
    color: #678696;
    width: 90%;
 }
-.signupFormBox .signupFormBoxNameInputsError i {
+.signupFormBox .signupFormBoxInputsError i {
    color: #678696;
+   font-size: 90%;
    display: flex;
    align-items: center;
    justify-content: center;
    width: 10%;
-   font-size: 60%;
+   height: 100%;
 }
 
 .signupFormButton {
    width: 100%;
-   height: 49px;
+   height: 2rem;
    margin-top: 0.5rem;
    display: flex;
    align-items: center;
@@ -329,62 +340,121 @@
 
 .signupBtn {
    width: 60%;
-   height: 40px;
+   height: 100%;
    border: none;
    outline: none;
-   border-radius: 10px;
+   border-radius: 5rem;
    cursor: pointer;
    background-color: #05a6c2;
    color: #fff;
    text-transform: uppercase;
    font-weight: 500;
-   margin: 5px 0;
-   padding: 0rem 3rem;
+   margin-top: -0.4rem;
+   font-size: 75%;
+   text-align: center;
+   box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
+   overflow: hidden;
+   position: relative;
 }
-.signupBtn:hover {
+.loader {
+   width: 20%;
+   height: 100%;
+   border-radius: 4rem;
+   position: absolute;
+   top: 0;
+   right: -5%;
+   background: #0d3f58;
+   box-shadow: 0 0 12px -2px rgba(0, 0, 0, 0.5);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 120%;
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 1000ms ease-in-out;
+}
+.btnActive {
+   background: #0d3f58;
+   transition: color 1000ms ease-in-out;
+}
+.btnActive p {
+   margin-right: 15%;
+   transition: 500ms ease-in-out;
+}
+.loader.btnActive {
+   right: 0;
+   visibility: visible;
+   opacity: 1;
+   transition: visibility 500ms ease-in-out;
+   transition-delay: 500ms;
+}
+.loader.btnActive i {
+   animation: spin 1.3s ease-in-out infinite;
+   height: 52%;
+}
+@keyframes spin {
+   100% {
+      transform: rotate(360deg);
+   }
+}
+/* .signupBtn:hover {
    background-color: #31c0da;
    transition: background-color 0.5s ease-out;
-}
+} */
 .signupBtnInactive {
-   width: 60%;
-   height: 40px;
-   border: none;
-   outline: none;
-   border-radius: 10px;
    cursor: not-allowed;
    background-color: #a5cfd6;
+
+   width: 60%;
+   height: 100%;
+   border: none;
+   outline: none;
+   border-radius: 40px;
+
    color: #fff;
    text-transform: uppercase;
    font-weight: 500;
-   margin: 20px 0;
+   margin-top: -0.4rem;
+   font-size: 75%;
+   text-align: center;
+   box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
+   overflow: hidden;
+   position: relative;
+}
+.signupBtnInactive .loader.btnActive {
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 1000ms ease-in-out;
 }
 
 .signupFormMessage {
-   margin-top: 12px;
    width: 100%;
    display: flex;
    align-items: center;
    justify-content: center;
+   margin-top: 0.4rem;
 }
 .signupFormMessage p {
-   font-size: 12px;
+   font-size: 0.75rem;
    color: #678696;
    font-weight: 300;
 }
 #signupFormMessageP {
-   font-size: 12px;
+   font-size: 0.75;
    font-weight: 400;
    color: #05a6c2;
    cursor: pointer;
 }
+
 .errorMessageBox {
    width: 100%;
-   height: 25px;
+   height: 1rem;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 12px;
+   font-size: 0.6rem;
    color: red;
+   margin-top: -2%;
 }
 .errorMessageBox p {
    color: red;
@@ -398,9 +468,11 @@
    justify-content: center;
    font-size: 100%;
 }
+
 .noErrorMessageBox {
    width: 100%;
-   height: 25px;
+   height: 1rem;
+   margin-top: -2%;
 }
 .noErrorMessageBox i {
    display: none;
@@ -410,416 +482,585 @@
 }
 
 /* Media sizes */
+
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
-   .signupBody {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100vh;
-      height: 100vh;
-      border: 2px solid red;
-   }
    #signupContent {
-      position: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); */
-      width: 100vh;
-      height: 80vh;
-      background-color: #ffffff;
-      border-radius: 2rem;
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 500ms ease-in-out;
-      /* animation: changecolor 10s infinite; */
-      animation-fill-mode: both;
-      border: 2px solid red;
+      width: 85%;
+      height: 80%;
    }
-
-   @keyframes changecolor {
-      0% {
-         background-color: #ecf3fe;
-      }
-
-      25% {
-         background-color: #bfd2e0;
-      }
-
-      50% {
-         background-color: #dee5eb;
-      }
-
-      75% {
-         background-color: #c5d2db;
-      }
-
-      100% {
-         background-color: #c0daee;
-      }
-   }
-   #signupContent.active {
-      visibility: visible;
-      opacity: 1;
-      transition: visibility 500ms ease-in-out;
-   }
-   .signupContainer {
-      width: 106px;
-      height: 68px;
+   .closeModal {
+      width: 3%;
+      height: 5%;
+      font-size: 150%;
+      padding: 1%;
    }
 
    .leftRegion {
-      width: 656px;
+      width: 55%;
       height: 100%;
-      border-bottom-left-radius: 2rem;
-      border-top-left-radius: 2rem;
-      padding: 2.5rem 5rem;
-      float: left;
-      background-color: #05a6c2;
+      border-bottom-left-radius: 7%;
+      border-top-left-radius: 7%;
+      padding: 4% 4%;
    }
+
    .leftRegion h3 {
-      font-size: 30px;
-      color: #ffffff;
+      font-size: 130%;
    }
    .leftRegionInfoOne {
-      position: relative;
       left: 1rem;
    }
 
    .leftRegionInfoOne p {
-      margin-top: 0.5rem;
-      font-size: 30px;
-      color: #0d3f58;
-      font-weight: 700;
+      font-size: 110%;
    }
    .leftRegionInfoTwo {
       position: relative;
-      left: 2.5rem;
    }
 
    .leftRegionInfoTwo p {
-      margin-top: 0.5rem;
-      font-size: 30px;
-      color: #0d3f58;
-      font-weight: 700;
-   }
-   .leftRegionImage {
-      width: 100%;
-      height: 470px;
-   }
-   .leftRegionImage img {
-      width: 100%;
-      height: 100%;
+      font-size: 110%;
    }
 
    .rightRegion {
-      float: right;
-      width: 402px;
-      height: 100%;
-      padding: 0 1.5rem;
+      padding: 0 0;
    }
-   .signupFormTitle {
-      margin-top: 3rem;
+
+   .error {
+      height: 6%;
+      padding: 0 1%;
+   }
+   .error p {
+      width: 93%;
+      font-size: 70%;
+   }
+
+   .error i {
+      padding-bottom: 4%;
+   }
+
+   .noerror {
+      height: 6%;
    }
    .signupFormTitle h3 {
-      color: #0d3f58;
-      font-size: 24px;
+      font-size: 120%;
       font-weight: 700;
    }
    .signupFormTitle p {
-      color: #678696;
-      font-size: 12px;
+      font-size: 60%;
    }
 
    .signupForm {
-      width: 100%;
-      height: 83%;
-      margin-top: 0.5rem;
+      margin-top: 2%;
    }
 
    .signupFormBox {
-      width: 100%;
-      height: 65px;
+      height: 12%;
    }
    .signupFormBox label {
-      color: #0d3f58;
-      width: 100%;
-      height: 10px;
-      font-size: 14px;
-      font-weight: 750;
+      position: relative;
+      top: -20%;
+      font-size: 70%;
    }
    .signupFormBoxInputs {
-      width: 100%;
-      height: 40px;
-      border-radius: 5px;
-      padding: 1rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 2rem;
-      border: 0.2px solid #678696;
-   }
-   .signupFormBoxInputs input {
-      background: none;
-      outline: none;
-      border: none;
-      height: 40px;
-      line-height: 1;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #678696;
-      width: 90%;
-   }
-
-   .signupFormBoxInputs i {
-      color: #678696;
-      font-size: 60%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 10%;
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
    }
    .signupFormBoxInputsError {
-      width: 100%;
-      height: 40px;
-      border-radius: 5px;
-      padding: 1rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 2rem;
-      border: 0.2px solid red;
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
    }
-   .signupFormBoxInputsError input {
-      background: none;
-      outline: none;
-      border: none;
-      height: 40px;
-      line-height: 1;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #678696;
-      width: 90%;
-   }
-
-   .signupFormBoxInputsError i {
-      color: #678696;
-      font-size: 60%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 10%;
-   }
-
    .signupFormBoxNames {
-      width: 100%;
-      height: 65px;
-      display: flex;
-      justify-content: space-between;
+      height: 12%;
    }
-   .signupFormBoxName {
-      width: 49%;
-      height: 65px;
-   }
-
    .signupFormBoxName label {
-      color: #0d3f58;
-      width: 100%;
-      height: 10px;
-      font-size: 14px;
-      font-weight: 750;
+      position: relative;
+      top: -20%;
+      font-size: 70%;
    }
    .signupFormBoxNameInputs {
-      width: 100%;
-      height: 40px;
-      border-radius: 5px;
-      padding: 1rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 2rem;
-      border: 0.2px solid #678696;
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxName .signupFormBoxNameInputs input {
+      font-size: 80%;
    }
 
-   .signupFormBoxName .signupFormBoxNameInputs input {
-      background: none;
-      outline: none;
-      border: none;
-      height: 40px;
-      line-height: 1;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #678696;
-      width: 85%;
-   }
-   .signupFormBoxName .signupFormBoxNameInputs i {
-      color: #678696;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 15%;
-      font-size: 50%;
-   }
-   .signupFormBox .signupFormBoxNameInputs input {
-      background: none;
-      outline: none;
-      border: none;
-      height: 40px;
-      line-height: 1;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #678696;
-      width: 90%;
-   }
-   .signupFormBox .signupFormBoxNameInputs i {
-      color: #678696;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 10%;
-      font-size: 60%;
+   .signupFormBox .signupFormBoxInputs input {
+      font-size: 80%;
    }
    .signupFormBoxNameInputsError {
-      width: 100%;
-      height: 40px;
-      border-radius: 5px;
-      padding: 1rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 2rem;
-      border: 0.2px solid red;
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
    }
    .signupFormBoxName .signupFormBoxNameInputsError input {
-      background: none;
-      outline: none;
-      border: none;
-      height: 40px;
-      line-height: 1;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #678696;
-      width: 85%;
-   }
-   .signupFormBoxName .signupFormBoxNameInputsError i {
-      color: #678696;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 15%;
-      font-size: 60%;
-   }
-   .signupFormBox .signupFormBoxNameInputsError input {
-      background: none;
-      outline: none;
-      border: none;
-      height: 40px;
-      line-height: 1;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #678696;
-      width: 90%;
-   }
-   .signupFormBox .signupFormBoxNameInputsError i {
-      color: #678696;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 10%;
-      font-size: 60%;
+      font-size: 80%;
    }
 
+   .signupFormBox .signupFormBoxInputsError input {
+      font-size: 80%;
+   }
    .signupFormButton {
       width: 100%;
-      height: 49px;
+      height: 8%;
       margin-top: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+   }
+   .signupBtn {
+      margin-top: 1%;
+   }
+   .signupBtnInactive {
+      margin-top: 1%;
+   }
+   .signupFormMessage {
+      margin-top: 2%;
+   }
+   .signupFormMessage p {
+      font-size: 60%;
+   }
+   #signupFormMessageP {
+      font-size: 60%;
+   }
+   .errorMessageBox {
+      height: 5%;
+      font-size: 55%;
+      margin-top: -3.5%;
+   }
+   .noErrorMessageBox {
+      height: 5%;
+      margin-top: -3.5%;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+   #signupContent {
+      width: 85%;
+      height: 80%;
+   }
+   .closeModal {
+      width: 3%;
+      height: 5%;
+      font-size: 150%;
+      padding: 1%;
    }
 
-   .signupBtn {
-      width: 60%;
-      height: 40px;
-      border: none;
-      outline: none;
-      border-radius: 10px;
-      cursor: pointer;
-      background-color: #05a6c2;
-      color: #fff;
-      text-transform: uppercase;
-      font-weight: 500;
-      margin: 5px 0;
-      padding: 0rem 3rem;
+   .leftRegion {
+      width: 55%;
+      height: 100%;
+      border-bottom-left-radius: 7%;
+      border-top-left-radius: 7%;
+      padding: 4% 4%;
    }
-   .signupBtn:hover {
-      background-color: #31c0da;
-      transition: background-color 0.5s ease-out;
+
+   .leftRegion h3 {
+      font-size: 130%;
+   }
+   .leftRegionInfoOne {
+      left: 1rem;
+   }
+
+   .leftRegionInfoOne p {
+      font-size: 110%;
+   }
+   .leftRegionInfoTwo {
+      position: relative;
+   }
+
+   .leftRegionInfoTwo p {
+      font-size: 110%;
+   }
+
+   .rightRegion {
+      padding: 0 0;
+   }
+
+   .error {
+      height: 6%;
+      padding: 0 1%;
+   }
+   .error p {
+      width: 93%;
+      font-size: 70%;
+   }
+
+   .error i {
+      padding-bottom: 4%;
+   }
+
+   .noerror {
+      height: 6%;
+   }
+   .signupFormTitle h3 {
+      font-size: 120%;
+      font-weight: 700;
+   }
+   .signupFormTitle p {
+      font-size: 60%;
+   }
+
+   .signupForm {
+      margin-top: 2%;
+   }
+
+   .signupFormBox {
+      height: 12%;
+   }
+   .signupFormBox label {
+      position: relative;
+      top: -20%;
+      font-size: 70%;
+   }
+   .signupFormBoxInputs {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxInputsError {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxNames {
+      height: 12%;
+   }
+   .signupFormBoxName label {
+      position: relative;
+      top: -20%;
+      font-size: 70%;
+   }
+   .signupFormBoxNameInputs {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxName .signupFormBoxNameInputs input {
+      font-size: 80%;
+   }
+
+   .signupFormBox .signupFormBoxInputs input {
+      font-size: 80%;
+   }
+   .signupFormBoxNameInputsError {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxName .signupFormBoxNameInputsError input {
+      font-size: 80%;
+   }
+
+   .signupFormBox .signupFormBoxInputsError input {
+      font-size: 80%;
+   }
+   .signupFormButton {
+      width: 100%;
+      height: 8%;
+      margin-top: 0.5rem;
+   }
+   .signupBtn {
+      width: 70%;
+      margin-top: 1%;
+   }
+   .signupBtnInactive {
+      margin-top: 1%;
+   }
+   .signupFormMessage {
+      margin-top: 2%;
+   }
+   .signupFormMessage p {
+      font-size: 60%;
+   }
+   #signupFormMessageP {
+      font-size: 60%;
+   }
+   .errorMessageBox {
+      height: 5%;
+      font-size: 55%;
+      margin-top: -2%;
+   }
+   .noErrorMessageBox {
+      height: 5%;
+      margin-top: -2%;
+   }
+}
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   #signupContent {
+      width: 70%;
+      height: 90%;
+      border-radius: 5%;
+   }
+
+   .leftRegion {
+      display: none;
+   }
+
+   .rightRegion {
+      float: none;
+      width: 90%;
+      margin: 0 auto;
+      padding: 0 0;
+   }
+
+   .error {
+      height: 6%;
+      padding: 0 1%;
+   }
+   .error p {
+      width: 93%;
+      font-size: 70%;
+   }
+
+   .error i {
+      padding-bottom: 2%;
+   }
+   .noerror {
+      height: 6%;
+   }
+
+   .signupFormTitle h3 {
+      font-size: 120%;
+      font-weight: 700;
+   }
+   .signupFormTitle p {
+      font-size: 60%;
+   }
+
+   .signupForm {
+      margin-top: 5%;
+   }
+
+   .signupFormBox {
+      height: 12%;
+   }
+   .signupFormBox label {
+      position: relative;
+      top: -20%;
+      font-size: 70%;
+   }
+   .signupFormBoxInputs {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxInputsError {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxNames {
+      height: 12%;
+   }
+   .signupFormBoxName label {
+      position: relative;
+      top: -20%;
+      font-size: 70%;
+   }
+   .signupFormBoxNameInputs {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxName .signupFormBoxNameInputs input {
+      font-size: 80%;
+   }
+
+   .signupFormBox .signupFormBoxInputs input {
+      font-size: 80%;
+   }
+   .signupFormBoxNameInputsError {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxName .signupFormBoxNameInputsError input {
+      font-size: 80%;
+   }
+
+   .signupFormBox .signupFormBoxInputsError input {
+      font-size: 80%;
+   }
+   .signupFormButton {
+      width: 100%;
+      height: 8%;
+      margin-top: 0.5rem;
+   }
+   .signupBtn {
+      margin-top: -1%;
+      font-size: 70%;
+      width: 60%;
    }
    .signupBtnInactive {
       width: 60%;
-      height: 40px;
-      border: none;
-      outline: none;
-      border-radius: 10px;
-      cursor: not-allowed;
-      background-color: #a5cfd6;
-      color: #fff;
-      text-transform: uppercase;
-      font-weight: 500;
-      margin: 20px 0;
+      margin-top: -1%;
+      font-size: 70%;
    }
-
    .signupFormMessage {
-      margin-top: 12px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin-top: 0.5%;
    }
    .signupFormMessage p {
-      font-size: 12px;
-      color: #678696;
-      font-weight: 300;
+      font-size: 60%;
    }
    #signupFormMessageP {
-      font-size: 12px;
-      font-weight: 400;
-      color: #05a6c2;
-      cursor: pointer;
+      font-size: 60%;
    }
    .errorMessageBox {
-      width: 100%;
-      height: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      color: red;
-   }
-   .errorMessageBox p {
-      color: red;
-      width: 93%;
-   }
-   .errorMessageBox i {
-      fill: red;
-      width: 7%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 100%;
+      height: 5%;
+      font-size: 55%;
+      margin-top: -3.5%;
    }
    .noErrorMessageBox {
+      height: 5%;
+      margin-top: -3.5%;
+   }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   #signupContent {
+      width: 90%;
+      height: 90%;
+      border-radius: 5%;
+   }
+
+   .leftRegion {
+      display: none;
+   }
+
+   .rightRegion {
+      float: none;
+      width: 90%;
+      margin: 0 auto;
+      padding: 0 0;
+   }
+
+   .error {
+      height: 6%;
+      padding: 0 1%;
+   }
+   .error p {
+      width: 93%;
+      font-size: 70%;
+   }
+
+   .error i {
+      padding-bottom: 4%;
+   }
+   .noerror {
+      height: 6%;
+   }
+
+   .signupFormTitle h3 {
+      font-size: 120%;
+      font-weight: 700;
+   }
+   .signupFormTitle p {
+      font-size: 60%;
+   }
+
+   .signupForm {
+      margin-top: 5%;
+   }
+
+   .signupFormBox {
+      height: 12%;
+   }
+   .signupFormBox label {
+      position: relative;
+      top: -20%;
+      font-size: 70%;
+   }
+   .signupFormBoxInputs {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxInputsError {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxNames {
+      height: 12%;
+   }
+   .signupFormBoxName label {
+      position: relative;
+      top: -20%;
+      font-size: 70%;
+   }
+   .signupFormBoxNameInputs {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxName .signupFormBoxNameInputs input {
+      font-size: 80%;
+   }
+
+   .signupFormBox .signupFormBoxInputs input {
+      font-size: 80%;
+   }
+   .signupFormBoxNameInputsError {
+      position: relative;
+      top: -20%;
+      height: 60%;
+      border-radius: 0.25rem;
+   }
+   .signupFormBoxName .signupFormBoxNameInputsError input {
+      font-size: 80%;
+   }
+
+   .signupFormBox .signupFormBoxInputsError input {
+      font-size: 80%;
+   }
+   .signupFormButton {
       width: 100%;
-      height: 25px;
+      height: 8%;
+      margin-top: 0.5rem;
    }
-   .noErrorMessageBox i {
-      display: none;
+   .signupBtn {
+      margin-top: 0.5%;
+      font-size: 70%;
+      width: 70%;
    }
-   .noErrorMessageBox p {
-      display: none;
+   .signupBtnInactive {
+      margin-top: 1%;
+      font-size: 70%;
+      width: 70%;
+   }
+   .loader {
+      border-radius: 60px;
+   }
+   .signupFormMessage {
+      margin-top: 1.5%;
+   }
+   .signupFormMessage p {
+      font-size: 60%;
+   }
+   #signupFormMessageP {
+      font-size: 60%;
+   }
+   .errorMessageBox {
+      height: 5%;
+      font-size: 55%;
+      margin-top: -5%;
+   }
+   .noErrorMessageBox {
+      margin-top: -5%;
+      height: 5%;
    }
 }

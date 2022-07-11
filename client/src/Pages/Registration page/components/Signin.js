@@ -47,7 +47,7 @@ function Startpage(props) {
                            }}
                         />
                      </div>
-                     
+
                      <span className="usernameerror">
                         Lorem Ipsum is simply dummy text of the printing.
                      </span>

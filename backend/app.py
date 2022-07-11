@@ -12,10 +12,13 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from User.Person.personmodel import Person
 from User.Doctor.doctormodel import Doctor
-from User.Person import personservice
+from User.Patient.patientModel import Patient
 from User.Hospital.hospitalModel import Hospital
 
-
+# result = session.query(Customer).join(Invoice).filter(Invoice.amount == 8500)
+# for row in result:
+#    for inv in row.invoices:
+#       print (row.id, row.name, inv.invno, inv.amount)
 app = Flask(__name__)
 load_dotenv()
 engine = create_engine( os.getenv('dbconnectionstring'))#establish a connection with the database
@@ -28,8 +31,6 @@ Base = declarative_base()
 try:
     engine.connect()
     Base.metadata.create_all(engine)
-    # new = Student("Albus severus Potter","Potions") #
-    # session.add(new)
     session.commit()
     session.close()
     print("Database Successfully Connected")
@@ -76,17 +77,44 @@ def hospitals():
 
     return  (f'{hospital[3].location}')
 
+#Test Route for hospital model
+@app.route("/patient",methods = ['GET']) 
+def patient():
+    new_patient = Patient(75,1.90,"Bantama")
+    session = Session()
+    session.add(new_patient)
+    session.commit()
+    session.close()
+    patient = session.query(Patient).all()
+
+    return  (f'{patient[0].location}')
+
+
+#Route for getting patients based on id
+@app.route("/patient/<id>",methods = ['GET'])
+def getPatientById(id):
+    patient = session.query(Patient).get(id)
+    return str(patient.location)
+
+
 
 
 
 # Will move signup into a service function later. Currently cleaning
 @app.route("/signup",methods = ['POST'])
-def signup():
+def userSignup():
     session = Session()
     if request.method == 'POST':
         content_type = request.headers.get('Content-Type')
         if (content_type == 'application/json'):
             req = request.json
+            email = req["user_email"]
+            idPerson = session.query(Person.idPerson).filter(Person.user_email == email).first()
+            if(idPerson):
+                return ({
+                    'status': False,
+                    'msg':"User already registered. Do you want to login?"
+                }),200
             passwordHash = generate_password_hash(req["password"])
             newPerson = Person(req['first_name'],req['middle_name'],req['last_name'],req['age'],req['person_image'],req['user_email'],passwordHash,req['date_of_birth'],req['house_address'],req['type_of_id'],req['id_number'],req['nationality'])
             try: 
@@ -97,7 +125,10 @@ def signup():
             personId = session.query(Person.idPerson).filter(Person.user_email == req['user_email'], Person.id_number == req['id_number']).first()
             returnPerson = session.query(Person).get(personId)
             session.commit()
-            return str(returnPerson.idPerson),200  #StatusCode
+            return ({
+                'msg':str(returnPerson.idPerson),
+                'status':True
+            }),200  #StatusCode
         else:
             return 'Error: Content-Type Error',400
 
@@ -108,10 +139,10 @@ def signup():
 #     "email":"niiodartey10@gmail.com",
 #     "password":"WhatTheFuckTHough5757?"
 # }
-@app.route("/login",methods=['GET'])
-def login():
+@app.route("/login",methods=['POST'])
+def userLogin():
     req = request.json
-    if request.method == "GET":
+    if request.method == "POST":
         content_type = request.headers.get('Content-Type')
         if (content_type == 'application/json'):
             # return (personservice.userLogin(session=Session(),email=req["email"],password=req["password"]))
@@ -127,28 +158,32 @@ def login():
                     try :
                         userPasswordHash =  str(personDetail.user_password)
                         if(check_password_hash(str(userPasswordHash),password)):
-                            userObject = {"firstname":str(personDetail.first_name)}
-                            userObject["lastname"] = str(personDetail.last_name)
-                            userObject["middlename"] = str(personDetail.last_name)
-                            userObject["age"] = str(personDetail.last_name)
-                            userObject["lastname"] = str(personDetail.last_name)
-                            userObject["lastname"] = str(personDetail.last_name)
+                            userObject = {"first_name":str(personDetail.first_name)}
+                            userObject["middle_name"] = str(personDetail.middle_name)
+                            userObject["last_name"] = str(personDetail.last_name)
+                            userObject["age"] = str(personDetail.age)
                             userObject["person_image"] = str(personDetail.person_image)
                             userObject["user_email"] = str(personDetail.user_email)
-                            # user_name = Column('password',String(50))
-                            # date_of_birth = Column('date_of_birth',String(50))
-                            # house_address = Column('house_address',String(50))
-                            # type_of_id = Column('type_of_id',String(50))
-                            # id_number = Column('id_number',String(50))
-                            # nationality = Column('nationality',String(50))
-                            # userObject[""]
-                            return (userObject),200  #StatusCode  #Also make this entire response a json object.
+                            userObject["date_of_birth"] = str(personDetail.date_of_birth)
+                            userObject["house_address"] = str(personDetail.house_address)
+                            return ({
+                                'status': True,
+                                'user':userObject
+                            }),200  #StatusCode  #Also make this entire response a json object.
                         else:
-                            return("Incorrect Password. Kindly Try again") #Check Status Code for wrong login 
+                            return({
+                                'status': False,
+                                'msg':"Incorrect Password. Kindly Try again"
+                            }),200 #Check Status Code for wrong login 
                     except Exception as e:
                         return("Connection Error : %s",(e)),400
                 else:
-                    return("User not registered.Do you want to sign up?"),200 #Check Status Code for wrong login
+                    return(
+                        {
+                        'status': False,
+                        'msg':"User not registered.Do you want to sign up?"
+                        }
+                    ),200 #Check Status Code for wrong login
             except Exception as e:
                 print(e)
                 return("Connection Error: Check your network connection"),400

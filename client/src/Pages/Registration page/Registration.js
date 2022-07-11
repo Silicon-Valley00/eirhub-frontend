@@ -1,7 +1,12 @@
 import React, { useState, useRef } from 'react';
 import Signup from './components/Signup';
-// import './Registration.css';
 import Login from './components/Login';
+import axios from 'axios';
+
+// Database configuration
+const api = axios.create({
+   baseURL: 'http://127.0.0.1:5000/',
+});
 
 function Registration(props) {
    // User sign in refs
@@ -189,6 +194,7 @@ function Registration(props) {
             password: enteredloginPassword,
          };
          console.log(loginData);
+         submitCredentials('login', loginData);
       } else if (props.modalSignup) {
          //Sends validated sign up user credentials
 
@@ -201,7 +207,33 @@ function Registration(props) {
          };
 
          console.log(signupData);
+         console.log('start');
+         submitCredentials('signup', signupData);
+         console.log('end');
       }
+   }
+
+   function submitCredentials(path, data) {
+      axios({
+         method: 'post',
+         url: `http://127.0.0.1:5000/${path}`,
+         data: { data },
+      })
+         .then((response) => {
+            if (response.status === 200) {
+               console.log('good', response);
+            }
+         })
+         .catch((error) => {
+            if (error.response) {
+               console.log('data', error.response.data);
+            } else if (error.request) {
+               console.log('request', error.request);
+            } else {
+               console.log(error);
+               console.log('message', error.message);
+            }
+         });
    }
 
    return (
