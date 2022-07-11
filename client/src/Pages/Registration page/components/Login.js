@@ -32,9 +32,7 @@ function Login(props) {
    } = props;
 
    const [isError, setIsError] = useState(true);
-   const [errorMessage, setErrorMessage] = useState(
-      'Sign up failed. Try again.'
-   );
+   const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
    return (
       <section id={loginStyles.loginSection}>
@@ -92,7 +90,7 @@ function Login(props) {
                            : loginStyles.noErrorMessageBox
                      }
                   >
-                     <i className={loginStyles.closeIcon}>
+                     <i>
                         <IoWarning />
                      </i>
                      <p>{loginEmailErrorMessage}</p>
@@ -131,7 +129,7 @@ function Login(props) {
                            : loginStyles.noErrorMessageBox
                      }
                   >
-                     <i className={loginStyles.closeIcon}>
+                     <i>
                         <IoWarning />
                      </i>
                      <p>{loginPasswordErrorMessage}</p>
