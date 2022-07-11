@@ -21,12 +21,12 @@
 
 
 # #Write function for checking Person Email.
-# def checkUserEmail(session: sessionmaker, email: String):
-#     try:
-#        msg = session.query(testPerson).filter(testPerson.user_email == email)
-#        return str(msg),200
-#     except Exception as e:
-#         return ("Connection Error!: %s",e)
+def checkUserEmail(session , email):
+    try:
+    #    msg = session.query(testPerson).filter(testPerson.user_email == email)
+       return str(email),200
+    except Exception as e:
+        return ("Connection Error!: %s",e)
 
 # print(checkUserEmail("testperson@gmail.com"))
 

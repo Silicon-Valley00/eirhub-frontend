@@ -1,11 +1,15 @@
 from sqlalchemy import Column, ForeignKey,Integer,String,Date,Float
 from sqlalchemy.ext.declarative import declarative_base
+from User.Hospital.HospitalModel import Hospital
+
+from User.Person.PersonModel import Person
 Base = declarative_base()
 
 class Doctor(Base):
     __tablename__ = "Doctor"
     idDoctor = Column(Integer,primary_key = True)
-    idHospital = Column(Integer, ForeignKey('Person.idPerson'))
+    idPerson = Column(Integer, ForeignKey(Person.idPerson))
+    idHospital = Column(Integer, ForeignKey(Hospital.idHospital))
     doctor_ratings = Column('doctor_ratings',Float(1))
     doctor_specialities= Column('doctor_specialities',String(100))
     license_number = Column('license_number', String(45),unique = True)

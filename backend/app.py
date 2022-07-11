@@ -11,6 +11,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from User.Person.PersonModel import Person
+from User.Person.PersonService import checkUserEmail
 from User.Doctor.DoctorModel import Doctor
 from User.Patient.PatientModel import Patient
 from User.Hospital.HospitalModel import Hospital
@@ -148,27 +149,46 @@ def userLogin():
             # return (personservice.userLogin(session=Session(),email=req["email"],password=req["password"]))
             email = req["email"]
             password = req["password"]
-    #Check Email 
+            isdoctor = req["isDoctor"]
+    #Test Check Email from Person  Service File.
+            print("One Down ",checkUserEmail(session=session,email="niiodartey10"))
             try:
                 idPerson = session.query(Person.idPerson).filter(Person.user_email == email).first()
                 if(idPerson):
-                    personDetail = session.query(Person).get(idPerson)
+                    idPerson = idPerson[0]
+                    personDetail = None
+                    userObject = {}
+                    if(isdoctor):
+                        personDetail = session.query(Person,Doctor).join(Person).filter(Person.idPerson == idPerson, Doctor.idPerson ==idPerson).first()
+                        #Testing With Print
+                        print(personDetail[0].first_name) 
+                        print(personDetail[1].idDoctor)
+                        # userObject for Doctor
+                        userObject["doctor_ratings"] = personDetail[1].doctor_ratings
+                        userObject["doctor_specialities"] = personDetail[1].doctor_specialities
+                        userObject["license_number"] = personDetail[1].license_number
+                    else:
+                        personDetail = session.query(Person,Patient).join(Person).filter(Person.idPerson == idPerson, Patient.idPerson ==idPerson).first()
+                        print(personDetail[0].first_name) 
+                        print(personDetail[1].idPatient)
+                        userObject["health_details_id"] = str(personDetail[1].health_details_id)
                     session.commit()
+                    #General Info from Person Table
+                    userObject["first_name"] = personDetail[0].first_name
+                    userObject["middle_name"] = personDetail[0].middle_name
+                    userObject["last_name"] = personDetail[0].last_name
+                    userObject["age"] = personDetail[0].age
+                    userObject["person_image"] = personDetail[0].person_image
+                    userObject["user_email"] = personDetail[0].user_email
+                    userObject["date_of_birth"] = personDetail[0].date_of_birth
+                    userObject["house_address"] = personDetail[0].house_address
                     #Check Password after user email has been verified
                     try :
-                        userPasswordHash =  str(personDetail.user_password)
+                        userPasswordHash =  str(personDetail[0].user_password)
                         if(check_password_hash(str(userPasswordHash),password)):
-                            userObject = {"first_name":str(personDetail.first_name)}
-                            userObject["middle_name"] = str(personDetail.middle_name)
-                            userObject["last_name"] = str(personDetail.last_name)
-                            userObject["age"] = str(personDetail.age)
-                            userObject["person_image"] = str(personDetail.person_image)
-                            userObject["user_email"] = str(personDetail.user_email)
-                            userObject["date_of_birth"] = str(personDetail.date_of_birth)
-                            userObject["house_address"] = str(personDetail.house_address)
                             return ({
                                 'status': True,
-                                'user':userObject
+                                'user': userObject
                             }),200  #StatusCode  #Also make this entire response a json object.
                         else:
                             return({
@@ -188,7 +208,7 @@ def userLogin():
                 print(e)
                 return("Connection Error: Check your network connection"),400
         else:
-            return "Bad Request Error",400
+            return ("Bad Request Error"),400
 
 
 if __name__ == "__main__":
