@@ -1,4 +1,4 @@
-body {
+.userbody {
    width: 100vw;
    height: 100vh;
    background-color: var(#f6f6f9);
@@ -67,7 +67,7 @@ body {
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1025px) {
-   body {
+   .userbody {
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
@@ -80,7 +80,7 @@ body {
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-   body {
+   .userbody {
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
@@ -128,7 +128,7 @@ body {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-   body {
+   .userbody {
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;

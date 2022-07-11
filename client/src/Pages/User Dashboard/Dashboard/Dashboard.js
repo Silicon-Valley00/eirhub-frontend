@@ -97,7 +97,7 @@ function Dashboard() {
                      <thead>
                         <tr>
                            <th>Medicine</th>
-                           <th>Amount</th>
+                           <th>Dosage</th>
                            <th>Time</th>
                            <th></th>
                         </tr>
