@@ -10,6 +10,9 @@ Base = declarative_base()
 class HealthDetails(Base):
     __tablename__ = 'Health_Details'
     health_details_id = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
+    # these are Foreign keys to the primary keys of the health details and guardian tables:
+    # documentation :  https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html
+    report_id = Column(Integer, ForeignKey('Health_Details.report_id',ondelete=CASCADE), unique=True, nullable=True)
     last_visit = Column(Date, nullable=True)
     heart_rate = Column(String(10), nullable=True)
     blood_group = Column(ENUM('A', 'AB', 'B', 'O', 'Unknown'), nullable=True)
