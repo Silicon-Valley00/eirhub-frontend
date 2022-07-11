@@ -14,11 +14,10 @@ function Login(props) {
    const {
       handleModalsClose,
       handleModalSignup,
-      submitLoginHandler,
       loginEmailErrorMessage,
       loginPasswordErrorMessage,
-      handleLoginPassword,
       handleloginEmail,
+      handleLoginPassword,
       loginPassword,
       loginPasswordError,
       loginEmail,

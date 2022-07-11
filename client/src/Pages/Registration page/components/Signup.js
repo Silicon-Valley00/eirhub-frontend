@@ -5,8 +5,7 @@ import { FaRegUser, FaTimes } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
-import { IoCalendar } from 'react-icons/io5';
-import { IoWarning } from 'react-icons/io5';
+import { IoCalendar, IoWarning } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
 
 function Signup(props) {

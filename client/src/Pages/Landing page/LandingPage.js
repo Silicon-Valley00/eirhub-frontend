@@ -34,10 +34,10 @@ const LandingPage = () => {
                handleModalLogin={handleModalLogin}
                handleModalSignup={handleModalSignup}
             />
-            {/*<Hero />
+            <Hero />
             <QuickSolution />
-            <Services /> 
-            <Footer/>*/}
+            <Services />
+            <Footer />
          </div>
          <Registration
             modalLogin={modalLogin}
