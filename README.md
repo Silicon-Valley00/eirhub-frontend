@@ -7,7 +7,14 @@ Document to track Decision Making : [Silicon Valley - EirHub Decision Document](
 
 ## Add your name
 
+-  Agbesi Jerry : Team Lead
 -  Rexford Machu : Project Manager
 -  Kwabena Darkwa Obeng-Yeboah: System Analyst
-
--  Agbesi Jerry : Team Lead
+-  Maame Efuah Francis-Eshun
+-  Maxwell Mawube
+-  Akwasi Adenkyekye
+-  Domeh John Kelvin
+-  Ama Osaba Odoom
+-  Nii Odartey Lamptey
+-  Paul Treve
+-  Prince Adaku
