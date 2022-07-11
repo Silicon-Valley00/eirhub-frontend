@@ -1,4 +1,4 @@
-Create a virtual environment with:  
+Create a virtual environment with: virtualenv your_environment_name  
 Enter your virtual environment
 Install all packages in requirements.txt with pip install -r requirements.txt
 
