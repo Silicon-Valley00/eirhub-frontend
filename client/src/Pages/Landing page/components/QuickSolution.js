@@ -14,7 +14,7 @@ const items = [
    {
       icon: <BsFillCalendar2CheckFill className={styles.setCol} />,
       heading: 'Schedule Appointment',
-      about: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia soluta sunt voluptates!',
+      about: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. sunt voluptates!',
    },
    {
       icon: <BsFillStarFill className={styles.setCol} />,
