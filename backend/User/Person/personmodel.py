@@ -31,7 +31,6 @@ class Person(Base):
 
 
 #can method overload with method with the username instead of email address
-
     def __init__ (self,first_name,middle_name,last_name,age,person_image,user_email,user_password,date_of_birth,house_address,type_of_id,id_number,nationality):
         self.first_name = first_name
         self.middle_name = middle_name
