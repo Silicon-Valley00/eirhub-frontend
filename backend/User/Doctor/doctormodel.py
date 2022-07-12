@@ -14,7 +14,7 @@ class Doctor(Base):
     doctor_specialities= Column('doctor_specialities',String(100))
     license_number = Column('license_number', String(45),unique = True)
    
-
+#Add the Hospital Code and Doctor Hospital Identifier to do Doctor Login.
 
     def __init__ (self,idDoctor,idHospital,doctor_ratings,doctor_specialities,license_number):
         self.idDoctor = idDoctor

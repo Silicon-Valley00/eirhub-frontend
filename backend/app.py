@@ -3,6 +3,7 @@ import os
 import string
 from flask import Flask,jsonify,request
 from werkzeug.security import generate_password_hash,check_password_hash
+from flask_cors import CORS
 
 
 from sqlalchemy import create_engine,Table,MetaData,Column,Integer,String
@@ -43,6 +44,7 @@ except Exception as e:
 # Home route
 @app.route("/",methods = ['GET'])
 def home():
+    # print(checkUserEmail(session=session,email="niiodartey10@gmail.com"))
     return "Welcome to EirHub"
 
 
@@ -212,6 +214,8 @@ def userLogin():
 
 
 if __name__ == "__main__":
+    CORS(app)
     app.run(debug=True)
+
 
 

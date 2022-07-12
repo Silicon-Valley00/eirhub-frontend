@@ -57,7 +57,6 @@ API EndPoint Routes:
     	}
 	}
 	```
-
 - **User Registration**		
 
 	POST : /signup
