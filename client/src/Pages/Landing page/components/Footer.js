@@ -27,29 +27,65 @@ const Footer = () => {
                </span>
             </div>
          </div>
-         <div className={footerStyle.fourservices}>
-            <h2 className={footerStyle.fheader}>Our services</h2>
-            <ul className={footerStyle.fdropdown}>
-               <li className={footerStyle.flist}>Health Consultant</li>
-               <li className={footerStyle.flist}>Find Doctor</li>
-               <li className={footerStyle.flist}>E-Pharmacy</li>
-               <li className={footerStyle.flist}>Health Tips</li>
-               <li className={footerStyle.flist}>Blog</li>
-            </ul>
-         </div>
+         {/* <div className={footerStyle.fourservices}>
+            <h2
+               onClick={() =>
+                  //toggling with onclick
+                  toggleDropdown({
+                     state: showServices,
+                     setState: setShowServices,
+                  })
+               }
+               className={footerStyle.fheader}
+            >
+               Our services
+               {/*Trigger image if showServices is false*/}
+         {/*}  {!showServices ? (
+                  <IoIosArrowDown className={footerStyle.fmobilehide1} />
+               ) : (
+                  <IoIosArrowUp className={footerStyle.fmobilehide2} />
+               )}
+            </h2>
+            {showServices && (
+               <ul className={footerStyle.fdropdown}>
+                  <li className={footerStyle.flist}>Health Consultant</li>
+                  <li className={footerStyle.flist}>Find Doctor</li>
+                  <li className={footerStyle.flist}>E-Pharmacy</li>
+                  <li className={footerStyle.flist}>Health Tips</li>
+                  <li className={footerStyle.flist}>Blog</li>
+               </ul>
+            )}
+         </div> */}
 
          {/* support div*/}
-         <div className={footerStyle.fsupport}>
-            <h2 className={footerStyle.fheader}>Support</h2>
-            <ul className={footerStyle.fdropdown}>
-               <li className={footerStyle.flist}>Find a Doctor</li>
-               <li className={footerStyle.flist}>How it Works</li>
-               <li className={footerStyle.flist}>Book Appointment</li>
-               <li className={footerStyle.flist}>Register</li>
-               <li className={footerStyle.flist}>FAQ</li>
-               <li className={footerStyle.flist}>Terms of Use</li>
-            </ul>
-         </div>
+         {/* <div className={footerStyle.fsupport}>
+            <h2
+               onClick={() =>
+                  toggleDropdown({
+                     state: showSupport,
+                     setState: setShowSupport,
+                  })
+               }
+               className={footerStyle.fheader}
+            >
+               Support
+               {!showSupport ? (
+                  <IoIosArrowDown className={footerStyle.fmobilehide1} />
+               ) : (
+                  <IoIosArrowUp className={footerStyle.fmobilehide2} />
+               )}
+            </h2>
+            {showSupport && (
+               <ul className={footerStyle.fdropdown}>
+                  <li className={footerStyle.flist}>Find a Doctor</li>
+                  <li className={footerStyle.flist}>How it Works</li>
+                  <li className={footerStyle.flist}>Book Appointment</li>
+                  <li className={footerStyle.flist}>Register</li>
+                  <li className={footerStyle.flist}>FAQ</li>
+                  <li className={footerStyle.flist}>Terms of Use</li>
+               </ul>
+            )}
+         </div> */}
          {/*Contact*/}
          <div className={footerStyle.fcontact}>
             <h2 className={footerStyle.fheader}>Contact us</h2>

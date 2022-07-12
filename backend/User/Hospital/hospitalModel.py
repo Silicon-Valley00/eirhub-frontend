@@ -1,10 +1,11 @@
-from sqlalchemy import Column,Integer,String,Date
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column,Integer,String
+from sqlalchemy.orm import declarative_base,relationship
 Base = declarative_base()
 
 class Hospital(Base):
     __tablename__ = "Hospital"
     idHospital = Column(Integer,primary_key = True)
+    hospital = relationship("Doctor", back_populates = "hospitals" )#one to many with Doctor
     hospital_name = Column("hospital_name",String)
     location = Column("location",String)
     hospital_specialities = Column("hospital_specialities",String)

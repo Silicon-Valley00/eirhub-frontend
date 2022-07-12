@@ -229,6 +229,7 @@
 
    #signup {
       width: auto;
+      padding-right: 15%;
       white-space: nowrap;
    }
 
@@ -236,42 +237,3 @@
       font-size: 12pt;
    }
 }
-
-/* @media (min-width: 1200px) {
-   #nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-cent;
-      padding-left: 4rem;
-      padding-right: 4rem;
-      position: fixed;
-   }
-
-   #nav_links {
-      list-style-type: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 40%;
-      width: 90%;
-   }
-
-   .linkContainer {
-      margin-right: 20%;
-      margin-left: 8rem;
-   }
-
-   .left {
-      width: auto;
-   }
-
-   li.each {
-      white-space: nowrap;
-   }
-
-   #signup {
-      width: auto;
-      padding-right: 15%;
-      white-space: nowrap;
-   }
-} */

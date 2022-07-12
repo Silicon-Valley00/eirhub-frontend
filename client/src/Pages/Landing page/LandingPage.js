@@ -24,13 +24,29 @@ const LandingPage = () => {
       setModalLogin(false);
    }
    return (
-      <div>
-         <Navbar />
-         <Hero />
-         <QuickSolution />
-         <Services />
-         <Footer />
-      </div>
+      <>
+         <div
+            id={styles.blur}
+            className={modalLogin || modalSignup ? styles.active : ''}
+            handleModalsClose={handleModalsClose}
+         >
+            <Navbar
+               handleModalLogin={handleModalLogin}
+               handleModalSignup={handleModalSignup}
+            />
+            <Hero />
+            <QuickSolution />
+            <Services />
+            <Footer />
+         </div>
+         <Registration
+            modalLogin={modalLogin}
+            modalSignup={modalSignup}
+            handleModalsClose={handleModalsClose}
+            handleModalLogin={handleModalLogin}
+            handleModalSignup={handleModalSignup}
+         />
+      </>
    );
 };
 

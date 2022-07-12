@@ -19,11 +19,10 @@ function Login(props) {
    const {
       handleModalsClose,
       handleModalSignup,
-      submitLoginHandler,
       loginEmailErrorMessage,
       loginPasswordErrorMessage,
-      handleLoginPassword,
       handleloginEmail,
+      handleLoginPassword,
       loginPassword,
       loginPasswordError,
       loginEmail,
@@ -61,7 +60,7 @@ function Login(props) {
                   }}
                   className="login-form"
                >
-                  <h1 className="title">Welcome Back</h1>
+                  <h1 className="title">Welcome Back</h1>uh
                   <p>Please enter your details</p>
                   <h3>Email</h3>
                   <div
