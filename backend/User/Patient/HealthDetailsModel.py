@@ -2,6 +2,7 @@ from enum import auto
 from tkinter import CASCADE
 from sqlalchemy import Column, Integer, String, Date, ForeignKey, Float
 from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.dialects.mysql import ENUM
 
 Base = declarative_base()
 
@@ -13,16 +14,16 @@ class HealthDetails(Base):
     # documentation :  https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html
     report_id = Column(Integer, ForeignKey('Health_Details.report_id',ondelete=CASCADE), unique=True, nullable=True)
     last_visit = Column(Date, nullable=True)
-    heart_rate = Column(String(100), nullable=True)
-    blood_group = Column(String(100), nullable=True)
-    bmi = Column(Float, nullable=True)
+    heart_rate = Column(String(10), nullable=True)
+    blood_group = Column(ENUM('A', 'AB', 'B', 'O', 'Unknown'), nullable=True)
+    bmi = Column(Float, nullable=False)
     blood_pressure = Column(Float, nullable=True)
-    respiratory_rate = Column(String(100), nullable=True)
+    respiratory_rate = Column(String(10), nullable=True)
     pulse = Column(Float, nullable=True)
-    blood_sugar = Column(String(100), nullable=True)
+    blood_sugar = Column(String(10), nullable=True)
+    health_detail = relationship("Patient",back_populates = "health_details")
 
-    def __init__(self, report_id, last_visit, heart_rate, blood_group, bmi, blood_pressure, respiratory_rate, pulse, blood_sugar):
-        self.report_id = report_id
+    def __init__(self,last_visit, heart_rate, blood_group, bmi, blood_pressure, respiratory_rate, pulse, blood_sugar):
         self.last_visit = last_visit
         self.heart_rate = heart_rate
         self.blood_group = blood_group

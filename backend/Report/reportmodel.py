@@ -11,9 +11,7 @@ class Report(Base):
     description = Column('description',String(200))
     medicine_and_dosage = Column('medicine_and_dosage',String(200))
 
-    def __init__ (self,report_id,idPatient,report_type,description,medicine_and_dosage):
-        self.report_id = report_id
-        self.idPatient = idPatient
+    def __init__ (self,report_type,description,medicine_and_dosage):
         self.report_type = report_type
         self.description = description
         self.medicine_and_dosage = medicine_and_dosage
