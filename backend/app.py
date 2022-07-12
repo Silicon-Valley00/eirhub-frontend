@@ -153,7 +153,7 @@ def userLogin():
             password = req["password"]
             isdoctor = req["isDoctor"]
     #Test Check Email from Person  Service File.
-            print("One Down ",checkUserEmail(session=session,email="niiodartey10"))
+            # print("One Down ",checkUserEmail(session=session,email="niiodartey10"))
             try:
                 idPerson = session.query(Person.idPerson).filter(Person.user_email == email).first()
                 if(idPerson):
