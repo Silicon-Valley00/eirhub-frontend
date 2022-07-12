@@ -2,7 +2,7 @@ import React from 'react';
 import landingpageImage from '../../../assets/landingpage design.png';
 import heroStyles from './hero.module.css';
 import 'animate.css/animate.min.css';
-import Typewriter from 'typewriter-effect';
+// import Typewriter from 'typewriter-effect';
 
 const Hero = () => {
    return (
@@ -17,7 +17,7 @@ const Hero = () => {
                </div>
                <div className={heroStyles.content_info}>
                   <p className={heroStyles.content__info}>
-                     <Typewriter
+                     {/* <Typewriter
                         options={{ loop: false, delay: 20 }}
                         onInit={(typewriter) => {
                            typewriter
@@ -30,7 +30,7 @@ const Hero = () => {
                               )
                               .start();
                         }}
-                     />
+                     /> */}
                   </p>
                </div>
 
