@@ -138,7 +138,7 @@
 @media (min-width: 1024px) {
    .services_title {
       width: 100%;
-      font-size: var(--xl_title);
+      font-size: 35px;
    }
    .services_doctors_box {
       display: grid;
