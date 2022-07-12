@@ -1,7 +1,7 @@
 #
 from User.Person.PersonModel import Person
 from User.Doctor.DoctorModel import Doctor
-from backend.User.Hospital.HospitalModel import Hospital
+from User.Hospital.HospitalModel import Hospital
 # #Write function for checking Person Email.
 def checkUserEmail(session , email):
     try:
