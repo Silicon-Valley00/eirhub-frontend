@@ -10,10 +10,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
-from User.Person.PersonModel import Person
-from User.Doctor.DoctorModel import Doctor
-from User.Patient.PatientModel import Patient
-from User.Hospital.HospitalModel import Hospital
+from User.Person.personmodel import Person
+from User.Doctor.doctormodel import Doctor
+from User.Patient.patientModel import Patient
+from User.Hospital.hospitalModel import Hospital
 
 # result = session.query(Customer).join(Invoice).filter(Invoice.amount == 8500)
 # for row in result:
