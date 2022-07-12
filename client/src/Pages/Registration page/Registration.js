@@ -1,17 +1,14 @@
 import React, { useState, useRef } from 'react';
 import Signup from './components/Signup';
-// import './Registration.css';
 import Login from './components/Login';
+import axios from 'axios';
 
-function Registration() {
-   // Modal change
-   const [modal, setModal] = useState(false);
-   function handleModal() {
-      setModal(!modal);
-   }
-   // Handles state of page switch
-   const [changePage, changePageHandler] = useState(true);
+// Database configuration
+const api = axios.create({
+   baseURL: 'http://127.0.0.1:5000/',
+});
 
+function Registration(props) {
    // User sign in refs
    const loginEmail = useRef();
    const loginPassword = useRef();
@@ -51,15 +48,6 @@ function Registration() {
    const pattern = /^[a-zA-Z ]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-   //Handles page switch for login page
-   function pageChangelogin() {
-      changePageHandler(true);
-   }
-   //Handles page switch for signup page
-   function pageChangeSignup() {
-      changePageHandler(false);
-   }
-
    // Functions below check user credentials in each form input
    function handleloginEmail() {
       let enteredloginName = loginEmail.current.value;
@@ -79,13 +67,14 @@ function Registration() {
       let enteredloginPassword = loginPassword.current.value;
 
       if (enteredloginPassword === '') {
-         setLoginPasswordError(true);
          setLoginPasswordErrorMessage('Password required');
-      } else if (enteredloginPassword.length < 8) {
          setLoginPasswordError(true);
+      } else if (enteredloginPassword.length < 8) {
          setLoginPasswordErrorMessage(
             'Password must be at least 8 characters long'
          );
+
+         setLoginPasswordError(true);
       } else {
          setLoginPasswordError(false);
       }
@@ -187,7 +176,7 @@ function Registration() {
    }
 
    // function handles user data
-   function submitLoginHandler() {
+   function submitUserCredentialsHandler() {
       let enteredloginName = loginEmail.current.value;
       let enteredloginPassword = loginPassword.current.value;
 
@@ -197,7 +186,7 @@ function Registration() {
       let enteredSignUpEmail = signupEmail.current.value;
       let enteredSignUpPassword = signupPassword.current.value;
       let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
-      if (changePage) {
+      if (props.modalLogin) {
          //sends user validated credentials
 
          const loginData = {
@@ -205,7 +194,8 @@ function Registration() {
             password: enteredloginPassword,
          };
          console.log(loginData);
-      } else {
+         submitCredentials('login', loginData);
+      } else if (props.modalSignup) {
          //Sends validated sign up user credentials
 
          const signupData = {
@@ -217,31 +207,42 @@ function Registration() {
          };
 
          console.log(signupData);
+         console.log('start');
+         submitCredentials('signup', signupData);
+         console.log('end');
       }
+   }
+
+   function submitCredentials(path, data) {
+      axios({
+         method: 'post',
+         url: `http://127.0.0.1:5000/${path}`,
+         data: { data },
+      })
+         .then((response) => {
+            if (response.status === 200) {
+               console.log('good', response);
+            }
+         })
+         .catch((error) => {
+            if (error.response) {
+               console.log('data', error.response.data);
+            } else if (error.request) {
+               console.log('request', error.request);
+            } else {
+               console.log(error);
+               console.log('message', error.message);
+            }
+         });
    }
 
    return (
       <>
-         {/*<Login
-            pageChangelogin={pageChangelogin}
-            pageChangeSignup={pageChangeSignup}
-            changePage={changePage}
-            signupEmail={signupEmail}
-            signupPassword={signupPassword}
-            signupPasswordconfirm={signupPasswordconfirm}
-            registerUserError={registerUserError}
-            registerEmailError={registerEmailError}
-            registerPasswordOneError={registerPasswordOneError}
-            registerPasswordTwoError={registerPasswordTwoError}
-            handleRegisterUser={handleRegisterUser}
-            handleRegisterEmail={handleRegisterEmail}
-            handleRegisterPassword={handleRegisterPassword}
-            handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-            // enableRegisterButton={enableRegisterButton}
-            // enableLoginButton={enableLoginButton}
-         />*/}
          <Login
-            submitLoginHandler={submitLoginHandler}
+            modalLogin={props.modalLogin}
+            handleModalSignup={props.handleModalSignup}
+            handleModalsClose={props.handleModalsClose}
+            submitUserCredentialsHandler={submitUserCredentialsHandler}
             loginEmail={loginEmail}
             handleloginEmail={handleloginEmail}
             handleLoginPassword={handleLoginPassword}
@@ -251,15 +252,12 @@ function Registration() {
             loginEmailErrorMessage={loginEmailErrorMessage}
             loginPasswordErrorMessage={loginPasswordErrorMessage}
          />
-         {/* <div
-            id="blur"
-            className={`modal ${modal && 'modal'}`}
-            // onClick={handleModal}
-         >
-            <button onClick={handleModal}>Open sign up</button>
-         </div>
+
          <Signup
-            modal={modal}
+            modalSignup={props.modalSignup}
+            handleModalLogin={props.handleModalLogin}
+            handleModalsClose={props.handleModalsClose}
+            submitUserCredentialsHandler={submitUserCredentialsHandler}
             signupFirstname={signupFirstname}
             signupLastname={signupLastname}
             signupEmail={signupEmail}
@@ -281,8 +279,7 @@ function Registration() {
             handleRegisterDate={handleRegisterDate}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-         /> */}
-         {/* put yours below */}
+         />
       </>
    );
 }

@@ -4,7 +4,7 @@ import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
 
-const Navbar = () => {
+const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
 
    const showSidebar = () => setSidebar(!sidebar);
@@ -42,9 +42,19 @@ const Navbar = () => {
                </ul>
                <div id={styles.signup}>
                   <ul className={styles.signup_list}>
-                     <li className={styles.signup_item}>Sign Up</li>
+                     <li
+                        className={styles.signup_item}
+                        onClick={() => props.handleModalSignup()}
+                     >
+                        Sign Up
+                     </li>
                      <li id={styles.separator}>|</li>
-                     <li className={styles.signup_item}>Login</li>
+                     <li
+                        className={styles.signup_item}
+                        onClick={() => props.handleModalLogin()}
+                     >
+                        Login
+                     </li>
                   </ul>
                </div>
             </div>

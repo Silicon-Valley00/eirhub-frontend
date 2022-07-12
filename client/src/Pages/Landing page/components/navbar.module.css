@@ -1,4 +1,7 @@
 /* main nav */
+* {
+   font-family: 'Poppins', sans-serif;
+}
 #nav {
    padding: 2rem;
    display: flex;
@@ -55,6 +58,14 @@
 .left {
    display: flex;
    flex-direction: column;
+   width: 100%;
+}
+
+.left {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: right;
    width: 100%;
 }
 
@@ -218,6 +229,7 @@
 
    #signup {
       width: auto;
+      padding-right: 15%;
       white-space: nowrap;
    }
 
