@@ -4,6 +4,7 @@ import LandingPage from './Pages/Landing page/LandingPage';
 import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
+import ServicesPage from './Pages/Landing page/ServicesPage';
 
 function App() {
    return (
@@ -20,6 +21,8 @@ function App() {
             exact
             element={<UserDashboard child={<Dashboard />} />}
          />
+         {/* Route for our services  */}
+         <Route path="/our-services" exact element={<ServicesPage />} />
       </Routes>
    );
 }
