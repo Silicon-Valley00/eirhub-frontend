@@ -26,7 +26,7 @@ const Services = () => {
    return (
       <section id={Styles.services_body}>
          <div className={Styles.services_container} data-aos={'slide up'}>
-            <div className={Styles.services_title}>Meet Our Partgit ners</div>
+            <div className={Styles.services_title}>Meet Our Partners</div>
 
             <div className={Styles.services_doctors_box}>
                {React.Children.toArray(
