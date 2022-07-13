@@ -28,6 +28,7 @@
 
 .content__title {
    font-family: var(--mainfont);
+   color: #0d3f58;
 }
 .content_info {
    padding-top: 1.2rem;
@@ -35,6 +36,7 @@
 .content__info {
    font-size: 2rem;
    font-family: var(--mainfont);
+   color: #0d3f58;
 }
 
 .content_button {
