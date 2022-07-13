@@ -27,7 +27,7 @@ main .vitalsBox .vitals {
    background-color: var(--white);
    padding: 1.3rem 1rem;
    border-radius: 1rem;
-   box-shadow: 0 2px 4px 0 #0d3f58;
+   box-shadow: 0 4px 8px 0 #bedded;
    transition: box-shadow 300ms ease;
    height: 9rem;
    min-height: 9rem;
