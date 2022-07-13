@@ -217,6 +217,9 @@ function Registration(props) {
       axios({
          method: 'post',
          url: `http://127.0.0.1:5000/${path}`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+         },
          data: { data },
       })
          .then((response) => {

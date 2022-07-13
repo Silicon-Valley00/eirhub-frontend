@@ -8,12 +8,15 @@ import { ImExit } from 'react-icons/im';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { FaUser } from 'react-icons/fa';
 import { CgPill } from 'react-icons/cg';
+import { TbCalendarTime } from 'react-icons/tb';
 
 function Navigation(props) {
    return (
       <>
          <div className={styles.navbody}>
-            <aside className={props.openMenu ? styles.active : ''}>
+            <aside
+               className={props.openMenu ? styles.active : styles.notActive}
+            >
                <div className={styles.top}>
                   <div className={styles.logo}>
                      <h2>Eirhub</h2>
@@ -62,7 +65,14 @@ function Navigation(props) {
                         </span>
                         <h3>Medications</h3>
                      </li>
-
+                     <li>
+                        <span className={styles.icons}>
+                           <i>
+                              <TbCalendarTime />
+                           </i>
+                        </span>
+                        <h3>Schedule</h3>
+                     </li>
                      <li>
                         <span className={styles.icons}>
                            <i>

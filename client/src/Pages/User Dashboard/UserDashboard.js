@@ -6,7 +6,7 @@ import Navigation from './components/Navigation';
 import DashboardNotificationAlerts from './components/DashBoardNotificationAlerts';
 
 function UserDashboard(props) {
-   // handles menu open and close
+   // handles menu open and close for smaller devices
    const [openMenu, setOpenMenu] = useState(false);
 
    return (
