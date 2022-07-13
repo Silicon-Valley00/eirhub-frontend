@@ -1,7 +1,7 @@
 import React from 'react';
 import landingpageImage from '../../../assets/landingpage design.png';
 import heroStyles from './hero.module.css';
-import Typewriter from 'typewriter-effect';
+// import Typewriter from 'typewriter-effect';
 
 const Hero = () => {
    return (

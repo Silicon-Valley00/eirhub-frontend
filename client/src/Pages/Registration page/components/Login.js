@@ -27,7 +27,6 @@ function Login(props) {
       loginPasswordError,
       loginEmail,
       loginEmailError,
-      signupUser,
    } = props;
 
    const [isError, setIsError] = useState(true);
@@ -39,6 +38,14 @@ function Login(props) {
             id={loginStyles.loginContainer}
             className={props.modalLogin ? loginStyles.active : ''}
          >
+            <div
+               className={loginStyles.closeModal}
+               onClick={() => props.handleModalsClose()}
+            >
+               <i>
+                  <IoCloseOutline />
+               </i>
+            </div>
             <div className={loginStyles.loginBody}>
                <div
                   className={isError ? loginStyles.error : loginStyles.noerror}
@@ -60,13 +67,14 @@ function Login(props) {
                   }}
                   className="login-form"
                >
-                  <h1 className="title">Welcome Back</h1>uh
+                  <h1 className="title">Welcome Back</h1>
                   <p>Please enter your details</p>
                   <h3>Email</h3>
                   <div
                      className={
-                        loginStyles.inputField ||
-                        (loginEmailError && loginStyles.error)
+                        loginEmailError
+                           ? `${loginStyles.inputField} ${loginStyles.error}`
+                           : loginStyles.inputField
                      }
                   >
                      <i>
@@ -97,8 +105,9 @@ function Login(props) {
                   <h3>Password</h3>
                   <div
                      className={
-                        loginStyles.inputField ||
-                        (loginPasswordError && loginStyles.error)
+                        loginPasswordError
+                           ? `${loginStyles.inputField} ${loginStyles.error}`
+                           : loginStyles.inputField
                      }
                   >
                      <i>
@@ -185,15 +194,10 @@ function Login(props) {
                      </div>
                   </div>
                </form>
+               <div></div>
             </div>
             <div className={loginStyles.rightSide}>
-               <h1
-                  onClick={() => {
-                     handleModalsClose();
-                  }}
-               >
-                  Eirhub
-               </h1>
+               <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
                <img id={loginStyles.loginImg} src={loginImage} alt="" />
             </div>
