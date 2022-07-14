@@ -1,17 +1,18 @@
-from sqlalchemy import Column,Integer,String,ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, ForeignKey,Integer,String, Text
 from sqlalchemy.ext.declarative import declarative_base
-from User.Patient.PatientModel import Patient
-Base = declarative_base()
-class Report(Base):
-    __tablename__ = "Report"
-    report_id = Column(Integer, primary_key=True, unique = True,nullable = False, autoincrement = True)
-    idPatient = Column(Integer,ForeignKey(Patient.idPatient, nullable=False, ondelete='CASCADE'))
-    report_type = Column('report_type',String(50))
-    description = Column('description',String(200))
-    medicine_and_dosage = Column('medicine_and_dosage',String(200))
+from sqlalchemy.orm import declarative_base
 
-    def __init__ (self,report_type,description,medicine_and_dosage):
+Base = declarative_base()
+
+class Report(Base):
+    __tablename__ = 'Report'
+    idReport = Column(Integer, primary_key=True,autoincrement=True)
+    report_type = Column('report_type',String(45))
+    description = Column('description',Text)
+    #idPatient = Column(Integer,ForeignKey(Patient.idPatient, nullable=False, ondelete='CASCADE'))
+    #to be added when the merge is done
+    
+    def __init__(self,report_type,description):
         self.report_type = report_type
         self.description = description
-        self.medicine_and_dosage = medicine_and_dosage
+    

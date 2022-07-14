@@ -139,7 +139,7 @@ def userSignup():
             }),200  #StatusCode
         else:
             return 'Error: Content-Type Error',400
- 
+
 
 # User Authentication for Login Flow
 #Test with already existing details: 
