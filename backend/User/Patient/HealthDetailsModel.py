@@ -1,6 +1,6 @@
 
 from tkinter import CASCADE
-from sqlalchemy import Column, Integer, String, Date, ForeignKey, Float
+from sqlalchemy import Column, Integer, String, Date, ForeignKey, Float,Enum
 from sqlalchemy.orm import declarative_base, relationship
 import enum
 
@@ -17,7 +17,7 @@ class HealthDetails(Base):
     idHealthDetails = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     idPatient = Column(Integer,ForeignKey('Patient.idPatient'))
     last_visit = Column("last_visit",Date)
-    blood_group = Column("blood_group",enum.Enum(BloodType))
+    blood_group = Column("blood_group",Enum(BloodType))
     bmi = Column("bmi",Float)
     blood_pressure = Column("blood_pressure",Float)
     respiratory_rate = Column("respiratory_rate",String(10))
@@ -31,7 +31,7 @@ class HealthDetails(Base):
 
   
 
-    def __init__(self, last_visit, heart_rate, blood_group, bmi, blood_pressure, respiratory_rate, pulse, blood_sugar,weight,height):
+    def __init__(self, last_visit,blood_group, bmi, blood_pressure, respiratory_rate, pulse, blood_sugar,weight,height):
         self.last_visit = last_visit
         self.blood_group = blood_group
         self.bmi = bmi
