@@ -21,7 +21,7 @@ main#midsection {
 main .vitalsBox {
    display: grid;
    grid-template-columns: 24% 24% 24% 24%;
-   gap: 1rem;
+   gap: 0.6rem;
 }
 main .vitalsBox .vitals {
    background-color: var(--white);
@@ -242,7 +242,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 /* APPOINTMENTS */
 
 .appointmentsBox {
-   margin-top: 0.3rem;
+   margin-top: 0.4rem;
 }
 .appointmentsBox h2 {
    margin-bottom: 0.2rem;
@@ -358,7 +358,125 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    cursor: pointer;
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1025px) {
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+   main#midsection {
+      padding: 2rem 1rem 0 1rem;
+   }
+
+   main .vitalsBox {
+      gap: 0.5rem;
+   }
+   main .vitalsBox .vitals {
+      padding: 1.1rem 0.8rem;
+   }
+
+   .vitalsDetails {
+      width: 100%;
+      height: 40%;
+   }
+   .vitalsDetails .vitalsIcon {
+      width: 35%;
+      border-radius: 0.4rem;
+   }
+   .vitalsDetails .vitalsIcon i {
+      font-size: 150%;
+   }
+   .vitalsDetails .vitalsReadings {
+      width: 59%;
+   }
+   .vitalsReadings h4 {
+      font-size: 70%;
+   }
+   .vitalsTitle h4 {
+      font-size: 78%;
+   }
+   .vitalsInfo {
+      -webkit-line-clamp: 4;
+      font-size: 55%;
+   }
+
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(1)
+      .vitalsDetails
+      .vitalsReadings,
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(3)
+      .vitalsDetails
+      .vitalsReadings,
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(4)
+      .vitalsDetails
+      .vitalsReadings {
+      color: var(--iconred);
+   }
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(2)
+      .vitalsDetails
+      .vitalsReadings {
+      color: var(--lightcol);
+   }
+
+   main#midsection .vitalsBox .vitals:nth-child(1) .vitalsDetails .vitalsIcon,
+   main#midsection .vitalsBox .vitals:nth-child(3) .vitalsDetails .vitalsIcon,
+   main#midsection .vitalsBox .vitals:nth-child(4) .vitalsDetails .vitalsIcon {
+      background-color: var(--iconback);
+   }
+   main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon {
+      background-color: var(--gray);
+   }
+
+   main#midsection .vitalsBox .vitals:nth-child(1) .vitalsDetails .vitalsIcon i,
+   main#midsection .vitalsBox .vitals:nth-child(3) .vitalsDetails .vitalsIcon i,
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(4)
+      .vitalsDetails
+      .vitalsIcon
+      i {
+      color: var(--iconred);
+   }
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(2)
+      .vitalsDetails
+      .vitalsIcon
+      i {
+      color: var(--lightcol);
+   }
+
+   /* MEDICATIONS */
+   .medicationBox {
+      margin-top: 1rem;
+   }
+   .medicationBox h2 {
+      margin-bottom: 0.2rem;
+      font-size: 1.05rem;
+   }
+
+   .medicationBox table tbody td {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+   }
+
+   /* APPOINTMENTS */
+
+   .appointmentsBox {
+      margin-top: 0.7rem;
+   }
+   .appointmentsBox h2 {
+      font-size: 1.05rem;
+   }
+
+   .appointmentsBox table tbody td {
+      padding: 0.3rem 0.2rem;
+      font-size: 0.75rem;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
    main .vitalsBox {
       grid-template-columns: 1fr;
       gap: 0.8rem;
@@ -392,17 +510,20 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    }
 
    .vitalsTitle {
-      width: 65%;
+      width: 61%;
+      height: 30%;
       float: right;
    }
    .vitalsTitle h4 {
-      font-size: 90%;
+      font-size: 100%;
    }
    .vitalsInfo {
-      width: 65%;
-      -webkit-line-clamp: 3;
+      height: 65%;
+      width: 61%;
+      -webkit-line-clamp: 5;
       font-size: 60%;
       float: right;
+      display: block;
    }
 
    .medicationBox {

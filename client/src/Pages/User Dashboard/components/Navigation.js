@@ -57,7 +57,7 @@ function Navigation(props) {
                         </span>
                         <h3>Records</h3>
                      </li>
-                     <li>
+                     <li className={styles.active}>
                         <span className={styles.icons}>
                            <i>
                               <CgPill />

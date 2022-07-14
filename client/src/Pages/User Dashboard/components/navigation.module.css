@@ -104,8 +104,40 @@ aside .sidebar li:hover span.icons {
    margin-left: 1rem;
    color: var(--midcol);
 }
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+   aside ul li {
+      margin-left: 0.5rem;
+      height: 3.5rem;
+      min-width: 3.5rem;
+      max-height: 3.5rem;
+   }
 
-@media only screen and (min-width: 769px) and (max-width: 1025px) {
+   aside .sidebar li:nth-child(7) {
+      position: absolute;
+      bottom: 3rem;
+      width: 86.5%;
+   }
+   aside .sidebar li:nth-child(8) {
+      position: absolute;
+      width: 86.5%;
+      bottom: 0rem;
+   }
+
+   aside .sidebar li.active {
+      background-color: var(--gray);
+      margin-left: -0.5rem;
+      border-top-right-radius: 3rem;
+      border-bottom-right-radius: 3rem;
+   }
+   aside .sidebar li.active:before {
+      content: '';
+      width: 2%;
+   }
+   aside .sidebar li.active span.icons {
+      margin-left: calc(0.1rem - 0.2px);
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
    .aside .log h2 {
       display: none;
    }
@@ -115,11 +147,11 @@ aside .sidebar li:hover span.icons {
    aside ul li {
       width: 5.6rem;
    }
-   aside .sidebar li:nth-child(6) {
+   aside .sidebar li:nth-child(7) {
       position: relative;
       margin-top: 3rem;
    }
-   aside .sidebar li:nth-child(7) {
+   aside .sidebar li:nth-child(8) {
       position: relative;
       margin-top: -2.5rem;
    }
@@ -187,12 +219,12 @@ aside .sidebar li:hover span.icons {
       color: var(--midcol);
       transition: all 300ms ease;
    }
-   aside .sidebar li:nth-child(6) {
+   aside .sidebar li:nth-child(7) {
       position: absolute;
       bottom: 3rem;
       width: 86.5%;
    }
-   aside .sidebar li:nth-child(7) {
+   aside .sidebar li:nth-child(8) {
       position: absolute;
       width: 86.5%;
       bottom: 0rem;
@@ -306,12 +338,12 @@ aside .sidebar li:hover span.icons {
       color: var(--midcol);
       transition: all 300ms ease;
    }
-   aside .sidebar li:nth-child(6) {
+   aside .sidebar li:nth-child(7) {
       position: absolute;
       bottom: 3rem;
       width: 86.5%;
    }
-   aside .sidebar li:nth-child(7) {
+   aside .sidebar li:nth-child(8) {
       position: absolute;
       width: 86.5%;
       bottom: 0rem;

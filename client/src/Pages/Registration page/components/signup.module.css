@@ -630,11 +630,11 @@
    .errorMessageBox {
       height: 5%;
       font-size: 55%;
-      margin-top: -3.5%;
+      margin-top: -1.5%;
    }
    .noErrorMessageBox {
       height: 5%;
-      margin-top: -3.5%;
+      margin-top: -1.5%;
    }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -785,11 +785,11 @@
    .errorMessageBox {
       height: 5%;
       font-size: 55%;
-      margin-top: -2%;
+      margin-top: -0.1rem;
    }
    .noErrorMessageBox {
       height: 5%;
-      margin-top: -2%;
+      margin-top: -0.1rem;
    }
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
@@ -919,11 +919,11 @@
    .errorMessageBox {
       height: 5%;
       font-size: 55%;
-      margin-top: -3.5%;
+      margin-top: -0.1rem;
    }
    .noErrorMessageBox {
       height: 5%;
-      margin-top: -3.5%;
+      margin-top: -0.1rem;
    }
 }
 
@@ -1057,10 +1057,8 @@
    .errorMessageBox {
       height: 5%;
       font-size: 55%;
-      margin-top: -5%;
    }
    .noErrorMessageBox {
-      margin-top: -5%;
       height: 5%;
    }
 }
