@@ -11,11 +11,13 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
-from User.Person.PersonModel import Person
-from User.Person.PersonService import checkUserEmail
-from User.Doctor.DoctorModel import Doctor
-from User.Patient.PatientModel import Patient
-from User.Hospital.HospitalModel import Hospital
+# from User.Person.PersonModel import Person
+# from User.Person.PersonService import checkUserEmail
+# from User.Doctor.DoctorModel import Doctor
+# from User.Patient.PatientModel import Patient
+from Hospital.HospitalModel import Hospital
+from HealthDetails.HealthDetailsModel import  HealthDetails
+
 
 # result = session.query(Customer).join(Invoice).filter(Invoice.amount == 8500)
 # for row in result:
@@ -72,14 +74,14 @@ def getPersonById(id):
 #Test Route for hospital model
 @app.route("/hospital",methods = ['GET']) 
 def hospitals():
-    lhopital = Hospital("KATH","Kumasi","Pediatrics,Osteopathy,Cardiology",1097) 
+    lhopital = Hospital("KATH","Kumasi","Pediatrics,Osteopathy,Cardiology",1097,'hhfhffuu','+23323233223') 
     session = Session()
-    # session.add(lhopital)
-    # session.commit()
-    # session.close()
+    session.add(lhopital)
+    session.commit()
+    session.close()
     hospital = session.query(Hospital).all()
 
-    return  (f'{hospital[3].location}')
+    return  (f'{hospital[1].location}')
 
 #Test Route for hospital model
 @app.route("/patient",methods = ['GET']) 
@@ -105,6 +107,12 @@ def getPatientById(id):
 def getDoctorById(id):
     doctor = session.query(Doctor).get(id)
     return str(doctor.doctor_specialities)
+
+# Route for getting all doctors
+@app.route("/doctor/all", methods = ["GET"])
+def getDoctors():
+    doctor = session.query(Doctor).all()
+    return str(doctor)
 
 
 
