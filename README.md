@@ -17,4 +17,4 @@ Document to track Decision Making : [Silicon Valley - EirHub Decision Document](
 -  Ama Osaba Odoom
 -  Nii Odartey Lamptey
 -  Paul Treve
--  Prince Adaku
+-  Prince Adaku : Member
