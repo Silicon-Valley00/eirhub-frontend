@@ -48,7 +48,7 @@ const ServicesPage = () => {
                </div>
 
                {/* second container */}
-               <div className={style.container}>
+               <div className={`${style.container}`}>
                   <div className={style.of_image}>
                      <img src={pic2} alt="" className={style.of__image} />
                   </div>

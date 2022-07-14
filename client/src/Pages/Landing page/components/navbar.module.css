@@ -13,6 +13,11 @@
 
 .img {
    cursor: pointer;
+   pointer-events: none;
+}
+
+.logo_img {
+   pointer-events: none;
 }
 /* nav-links */
 #nav_links {

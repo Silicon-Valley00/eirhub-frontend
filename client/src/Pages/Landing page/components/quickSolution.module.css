@@ -157,6 +157,7 @@
    .groupdocpic {
       display: block;
       width: 60%;
+      pointer-events: none;
    }
 
    .card {

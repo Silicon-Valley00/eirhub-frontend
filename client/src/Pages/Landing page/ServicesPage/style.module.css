@@ -43,6 +43,7 @@
    display: flex;
    flex-direction: column;
    align-items: flex-start;
+   gap: 2rem;
 }
 
 .with_text {
@@ -85,11 +86,6 @@
       padding-right: 6rem;
       padding-left: 6rem;
    }
-   .container {
-      flex-direction: row;
-      height: 25rem;
-      gap: 5rem;
-   }
 }
 
 /* ================ media query for 1024px ================= */
@@ -97,5 +93,11 @@
    .upper_part {
       padding-left: 12rem;
       padding-right: 12rem;
+   }
+
+   .container {
+      flex-direction: row;
+      height: 25rem;
+      gap: 5rem;
    }
 }
