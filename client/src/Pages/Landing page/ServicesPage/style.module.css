@@ -34,7 +34,9 @@
 .lower_section {
    display: flex;
    flex-direction: column;
-   gap: 2rem;
+   gap: 7rem;
+   padding-bottom: 7rem;
+   padding-top: 3rem;
 }
 
 .container {
@@ -58,11 +60,13 @@
 
 .of_image {
    width: 100%;
+   height: 100%;
 }
 
 .of__image {
    object-fit: cover;
    width: 100%;
+   height: 25rem;
    border-radius: 20px;
 }
 
@@ -83,6 +87,8 @@
    }
    .container {
       flex-direction: row;
+      height: 25rem;
+      gap: 5rem;
    }
 }
 

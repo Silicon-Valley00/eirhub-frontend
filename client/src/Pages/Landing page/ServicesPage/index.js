@@ -2,7 +2,10 @@ import React from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import style from './style.module.css';
-import pic from '../../../assets/maleDoctor.jpg';
+import pic1 from '../../../assets/OnlineConsultation5.jpg';
+import pic2 from '../../../assets/findadoctor.png';
+import pic3 from '../../../assets/prescription-drug-coverage-1-1x1.jpg';
+import pic4 from '../../../assets/weightloss.jpg';
 
 const ServicesPage = () => {
    return (
@@ -40,13 +43,15 @@ const ServicesPage = () => {
                      </p>
                   </div>
                   <div className={style.of_image}>
-                     <img src={pic} alt="" className={style.of__image} />
+                     <img src={pic1} alt="" className={style.of__image} />
                   </div>
                </div>
 
                {/* second container */}
                <div className={style.container}>
-                  <div className={style.of_image}></div>
+                  <div className={style.of_image}>
+                     <img src={pic2} alt="" className={style.of__image} />
+                  </div>
                   <div className={style.with_text}>
                      <p className={style.with_text_title}>Find a Doctor</p>
                      <p className={style.with_text_desc}>
@@ -71,12 +76,16 @@ const ServicesPage = () => {
                         on when to refill
                      </p>
                   </div>
-                  <div className={style.of_image}></div>
+                  <div className={style.of_image}>
+                     <img src={pic3} alt="" className={style.of__image} />
+                  </div>
                </div>
 
                {/* fourth container */}
                <div className={style.container}>
-                  <div className={style.of_image}></div>
+                  <div className={style.of_image}>
+                     <img src={pic4} alt="" className={style.of__image} />
+                  </div>
                   <div className={style.with_text}>
                      <p className={style.with_text_title}>Health Tips</p>
                      <p className={style.with_text_desc}>
