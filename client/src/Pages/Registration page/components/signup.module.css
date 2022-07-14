@@ -21,8 +21,10 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 55rem;
-   height: 35rem;
+   /* width: 55rem;
+   height: 35rem; */
+   height: 80vh;
+   width: 70vw;
    background: linear-gradient(222deg, #ffffff, #f8f7f7);
    border-radius: 2rem;
    visibility: hidden;
@@ -489,7 +491,8 @@
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    #signupContent {
-      width: 85%;
+      /* width: 85%; */
+      width: 70vw;
       height: 80%;
    }
    /* .closeModal {
@@ -643,7 +646,8 @@
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
    #signupContent {
-      width: 85%;
+      /* width: 85%; */
+      width: 70vw;
       height: 80%;
    }
    /* .closeModal {
@@ -684,7 +688,8 @@
    }
 
    .error {
-      height: 6%;
+      /* height: 6%; */
+      height: max-content;
       padding: 0 1%;
    }
    .error p {
@@ -799,7 +804,8 @@
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    #signupContent {
       width: 70%;
-      height: 90%;
+      /* height: 90%; */
+      height: 80%;
       border-radius: 5%;
    }
 

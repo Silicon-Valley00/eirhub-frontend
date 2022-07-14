@@ -77,6 +77,7 @@ form {
    background-color: var(--white);
    height: 80vh;
    width: 70vw;
+   max-width: 900px;
    margin: auto;
    visibility: hidden;
    opacity: 0;
@@ -120,9 +121,13 @@ form {
    border: 1px solid grey;
    border-radius: var(--field-radius);
    display: flex;
-   justify-content: space-around;
+   justify-content: center;
    align-items: center;
    padding: var(--text-padding);
+   margin-bottom: 5px;
+}
+.inputField>i {
+   margin-top: 5px;
 }
 .inputField > * {
    padding: 0 5px;
@@ -230,21 +235,29 @@ h1 {
    padding: auto;
 }
 
-a {
+p.link {
+   display: inline;
    color: var(--light-blue);
 }
 
 /* Error */
 
-.inputField.error {
-   height: 40px;
-   font-size: 1rem;
+.inputError {
+   /* display: flex;
+   justify-content: space-around;
+   align-items: center; */
+   /* height: 20px; */
+   /* width: 20px; */
+   border:1px solid red;
+   /* font-size: 1rem; */
 }
-.inputField.error>i {
-   font-size: 1rem;
+.inputError>i {
+   margin-top: 5px;
+   /* font-size: 1rem; */
 }
 .error {
-   height: 2rem;
+   /* max-height: max-content; */
+   /* height: 2rem; */
    background: rgb(253, 252, 252);
    border: 1px solid red;
    align-self: initial;
