@@ -202,7 +202,7 @@ function Registration(props) {
             firstname: enteredSignUpFirstname,
             lastname: enteredSignUpLastname,
             dateOfBirth: enteredSignUpDate,
-            email: enteredSignUpEmail,
+            user_email: enteredSignUpEmail,
             password: enteredSignUpPassword,
          };
 

@@ -33,7 +33,11 @@ function Navigation(props) {
                </div>
                <div className={styles.sidebar}>
                   <ul>
-                     <li>
+                     <li
+                        className={
+                           props.page === 'dashboard' ? styles.active : ''
+                        }
+                     >
                         <span className={styles.icons}>
                            <i>
                               <MdSpaceDashboard />
@@ -41,7 +45,7 @@ function Navigation(props) {
                         </span>
                         <h3>Dasboard</h3>
                      </li>
-                     <li className={styles.active}>
+                     <li>
                         <span className={styles.icons}>
                            <i>
                               <FaUser />
@@ -57,7 +61,7 @@ function Navigation(props) {
                         </span>
                         <h3>Records</h3>
                      </li>
-                     <li className={styles.active}>
+                     <li>
                         <span className={styles.icons}>
                            <i>
                               <CgPill />

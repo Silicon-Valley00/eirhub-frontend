@@ -2,6 +2,7 @@ import './App.css';
 import UserDashboard from './Pages/User Dashboard/UserDashboard';
 import LandingPage from './Pages/Landing page/LandingPage';
 import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
+import DashboardNotificationAlerts from './Pages/User Dashboard/components/DashBoardNotificationAlerts.js';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -18,7 +19,13 @@ function App() {
          <Route
             path="/dashboard"
             exact
-            element={<UserDashboard child={<Dashboard />} />}
+            element={
+               <UserDashboard
+                  parent={<Dashboard />}
+                  child={<DashboardNotificationAlerts />}
+                  page={'dashboard'}
+               />
+            }
          />
       </Routes>
    );

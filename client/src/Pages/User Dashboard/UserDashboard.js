@@ -12,8 +12,12 @@ function UserDashboard(props) {
    return (
       <div className={styles.userbody}>
          <div className={styles.container}>
-            <Navigation openMenu={openMenu} setOpenMenu={setOpenMenu} />
-            {props.child}
+            <Navigation
+               openMenu={openMenu}
+               setOpenMenu={setOpenMenu}
+               page={props.page}
+            />
+            {props.parent}
 
             <div className={styles.right}>
                <div className={styles.profile}>
@@ -35,7 +39,7 @@ function UserDashboard(props) {
                      </p>
                   </div>
                </div>
-               <DashboardNotificationAlerts />
+               {props.child}
             </div>
          </div>
       </div>
