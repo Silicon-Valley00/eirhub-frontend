@@ -9,7 +9,7 @@ Base = declarative_base()
 class Prescription(Base):
     _tablename_ = "Prescription"
     idPatient = Column(Integer, Foreignkey(Patient.idPatient,nullable=False))
-    idPescription = Column(primary_key= True, unique=True, nullable= False, autoincrement=True)
+    idPrescription = Column(primary_key= True, unique=True, nullable= False, autoincrement=True)
     drug_name = Column('drug_name', String(100), nullable=False)
     dosage = Column('dosage', String(45))
     time_of_administration = Column('time_of_administration', Time)
@@ -18,8 +18,7 @@ class Prescription(Base):
     last_taken_date = Column('last_taken_date', Date)
 
     
-    def __init__(self,idPescription,drug_name,dosage,time_of_administration,start_date,end_date,last_taken_date):
-        self.idPrescription =idPescription
+    def __init__(self,drug_name,dosage,time_of_administration,start_date,end_date,last_taken_date):
         self.drug_name = drug_name
         self.dosage = dosage
         self.time_of_administration = time_of_administration
