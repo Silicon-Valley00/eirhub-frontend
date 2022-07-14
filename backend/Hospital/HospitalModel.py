@@ -1,5 +1,4 @@
 from sqlalchemy import Column,Integer,String,Text
-
 from sqlalchemy.orm import declarative_base,relationship
 Base = declarative_base()
 
