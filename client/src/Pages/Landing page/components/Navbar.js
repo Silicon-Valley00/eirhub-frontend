@@ -13,9 +13,9 @@ const Navbar = (props) => {
    return (
       <nav id={styles.nav}>
          {/* Logo */}
-         <div id={styles.img}>
+         <Link to="/" id={styles.img}>
             <img src={logo} alt="" height={50} width={200} />
-         </div>
+         </Link>
          <div
             className={
                sidebar

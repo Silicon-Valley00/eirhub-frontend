@@ -11,6 +11,9 @@
    z-index: 1;
 }
 
+.img {
+   cursor: pointer;
+}
 /* nav-links */
 #nav_links {
    display: block;
