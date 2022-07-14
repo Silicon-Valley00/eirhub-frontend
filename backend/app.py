@@ -59,14 +59,15 @@ def getPersonById(id):
         return "ID not found"
 
 # Test Route
-@app.route("/doctor/<int:id>", methods=['GET', 'POST'])
-def getDoctorById(id):
-    for i in doctors:
-        for num, info in i.items():
-            if id == num:
-                return jsonify(info)
-    else:
-        return "ID not found"
+# @app.route("/doctor/<int:id>", methods=['GET', 'POST'])
+# def getDoctorById(id):
+#     for i in doctors:
+#         for num, info in i.items():
+#             if id == num:
+#                 return jsonify(info)
+#     else:
+#         return "ID not found"
+# This was Jerry's
 
 #Test Route for hospital model
 @app.route("/hospital",methods = ['GET']) 
@@ -99,7 +100,11 @@ def getPatientById(id):
     patient = session.query(Patient).get(id)
     return str(patient.location)
 
-
+#Route for getting doctor details based on id
+@app.route("/doctor/<id>",methods = ['GET'])
+def getDoctorById(id):
+    doctor = session.query(Doctor).get(id)
+    return str(doctor.doctor_specialities)
 
 
 
@@ -134,7 +139,7 @@ def userSignup():
             }),200  #StatusCode
         else:
             return 'Error: Content-Type Error',400
-
+ 
 
 # User Authentication for Login Flow
 #Test with already existing details: 
@@ -142,6 +147,7 @@ def userSignup():
 #     "email":"niiodartey10@gmail.com",
 #     "password":"WhatTheFuckTHough5757?"
 # }
+
 @app.route("/login",methods=['POST'])
 def userLogin():
     req = request.json
