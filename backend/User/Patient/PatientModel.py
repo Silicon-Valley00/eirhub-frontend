@@ -24,9 +24,9 @@ class Patient(Base):
     nationality = Column("nationality",String(50))
     
 
+    
 
-
-
+    guardian_person = relationship("GuardianPerson") 
     health_details = relationship("HealthDetails",uselist=False,back_populates = "patient")
 
   
