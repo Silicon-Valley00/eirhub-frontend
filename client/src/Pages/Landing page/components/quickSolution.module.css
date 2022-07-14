@@ -78,6 +78,7 @@
    font-size: x-large;
    font-weight: 600;
    color: var(--deepcol);
+   width: 70%;
 }
 
 .left__div {
