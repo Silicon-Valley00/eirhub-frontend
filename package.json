@@ -1,7 +1,8 @@
 {
    "scripts": {
       "install-all": "sh ./bin/install.sh",
-      "install-windows": ".\\bin\\install.cmd"
+      "install-windows": ".\\bin\\install.cmd",
+      "prepare": "husky install"
    },
    "devDependencies": {
       "eslint": "^8.18.0",
@@ -14,6 +15,16 @@
       "eslint-plugin-prettier": "^4.0.0",
       "eslint-plugin-react": "^7.30.1",
       "eslint-plugin-react-hooks": "^4.6.0",
+      "husky": "^8.0.1",
+      "lint-staged": "^13.0.3",
       "prettier": "^2.7.1"
+   },
+   "lint-staged": {
+      "*.js": "eslint --cache --fix",
+      "*.{js, json, html, css, md}": "prettier --write"
+   },
+   "dependencies": {
+      "react-router-dom": "^6.3.0",
+      "typewriter-effect": "^2.19.0"
    }
 }
