@@ -16,7 +16,7 @@ class Doctor(Base):
     house_address = Column('house_address',String(45))
     license_number = Column('license_number',String(45),unique = True)
     doctor_ratings = Column('doctor_ratings',Integer)
-    doctor_specialities= Column('doctor_specialities',String(200))
+    doctor_specialities = Column('doctor_specialities',String(200))
     gender = Column('gender',String(45))
     hospital_code = Column('hospital_code',String(45),unique = True)
     
