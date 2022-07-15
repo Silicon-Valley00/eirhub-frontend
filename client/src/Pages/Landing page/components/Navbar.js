@@ -3,7 +3,7 @@ import logo from '../../../images/logo.svg';
 import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
@@ -13,7 +13,7 @@ const Navbar = (props) => {
    return (
       <nav id={styles.nav}>
          {/* Logo */}
-         <Link to="/" id={styles.img}>
+         <NavLink to="/" id={styles.img}>
             <img
                src={logo}
                className={styles.logo_img}
@@ -21,7 +21,7 @@ const Navbar = (props) => {
                height={50}
                width={200}
             />
-         </Link>
+         </NavLink>
          <div
             className={
                sidebar
