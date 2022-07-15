@@ -54,7 +54,7 @@ const ServicesPage = () => {
                   </div>
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="3000"
+                     data-aos-duration="2000"
                      className={style.with_text}
                   >
                      <p className={style.with_text_title}>Find a Doctor</p>
@@ -72,7 +72,7 @@ const ServicesPage = () => {
                <div className={style.container}>
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="3000"
+                     data-aos-duration="2000"
                      className={style.with_text}
                   >
                      <p className={style.with_text_title}>E-pharmacy</p>
@@ -96,7 +96,7 @@ const ServicesPage = () => {
                   </div>
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="3000"
+                     data-aos-duration="2000"
                      className={style.with_text}
                   >
                      <p className={style.with_text_title}>Health Tips</p>

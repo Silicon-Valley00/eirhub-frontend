@@ -45,21 +45,21 @@ const Navbar = (props) => {
                <ul id={styles.nav_links}>
                   <NavLink
                      to="/"
-                     activeClassName={styles.nav_link_active}
+                     // activeClassName={styles.nav_link_active}
                      className={styles.each}
                   >
                      Home
                   </NavLink>
                   <NavLink
                      to="/our-services"
-                     activeClassName={styles.nav_link_active}
+                     // activeClassName={styles.nav_link_active}
                      className={styles.each}
                   >
                      Our Services
                   </NavLink>
                   <NavLink
                      to="/how-it-works"
-                     activeClassName={styles.nav_link_active}
+                     // activeClassName={styles.nav_link_active}
                      className={styles.each}
                   >
                      How it Works
