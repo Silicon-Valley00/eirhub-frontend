@@ -65,7 +65,7 @@ function Login(props) {
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
-                  className="login-form"
+                  className="loginForm"
                >
                   <h1 className="title">Welcome Back</h1>
                   <p>Please enter your details</p>

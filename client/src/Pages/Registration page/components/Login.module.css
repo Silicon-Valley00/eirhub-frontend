@@ -3,7 +3,7 @@
 
 :root {
    --radius: 25px;
-   --height: 40px;
+   --height: 2rem;
    --white: #fff;
    --field-radius: 8px;
    --bleached-blue: #ecf3fe;
@@ -123,7 +123,7 @@ form {
    display: flex;
    justify-content: center;
    align-items: center;
-   padding: var(--text-padding);
+   /* padding: var(--text-padding); */
    margin-bottom: 5px;
 }
 .inputField>i {
@@ -143,7 +143,9 @@ h1 {
    color: var(--text-color);
    font-size: 2rem;
 }
-
+.loginForm p{
+   margin-bottom: 20rem;
+}
 .btn {
    margin: 0.5rem;
    background-color: var(--light-blue);
@@ -230,7 +232,7 @@ h1 {
    /* padding: var(--text-padding) 0; */
    border: none;
    outline: none;
-   width: 100%;
+   width: 86%;
    height: 100%;
    padding: auto;
 }
@@ -257,14 +259,15 @@ p.link {
 }
 .error {
    /* max-height: max-content; */
-   /* height: 2rem; */
+   height: 2rem;
    background: rgb(253, 252, 252);
    border: 1px solid red;
    align-self: initial;
    display: flex;
    justify-content: space-between;
    border-radius: 5px;
-   /* padding: 0 0.5rem; */
+   margin-top: -8%;
+   padding: 0 0.5rem;
 }
 
 .error p {
@@ -378,9 +381,15 @@ p.link {
       max-width: 50vw;
       margin: auto;
    }
+   .error {
+      height: fit-content;
+   }
 }
 
 @media only screen and (max-width: 768px) {
+   #loginContainer{
+      min-width: 300px;
+   }
    .loginBody {
       width: 100%;
       max-width: 350px;
@@ -393,7 +402,7 @@ p.link {
 @media only screen and (max-width: 320px) {
    #loginContainer {
       font-size: 0.8rem;
-      height: 90vh;
+      height: 80vh;
       width: 90vw;
    }
    .loginBody {
