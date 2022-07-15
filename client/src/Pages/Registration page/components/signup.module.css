@@ -21,8 +21,10 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 55rem;
-   height: 35rem;
+   /* width: 55rem;
+   height: 35rem; */
+   height: 80vh;
+   width: 70vw;
    background: linear-gradient(222deg, #ffffff, #f8f7f7);
    border-radius: 2rem;
    visibility: hidden;
@@ -33,48 +35,33 @@
    z-index: 1;
    box-shadow: 5px 5px 10px #d6d6d6, -5px -5px 10px #ffffff;
 }
+
 .closeModal {
+   position: absolute;
+   top: -10%;
+   left: 50%;
+   background: #ffffff;
    width: 25px;
    height: 25px;
-   background: #ffffff;
    border-radius: 50%;
-   /* padding-top: -3%; */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   cursor: pointer;
+   font-weight: 900;
+   /* font-size: 150%; */
+   /* padding: 1%; */
+}
+.closeModal i {
+   width: 100%;
+   height: 100%;
    /* display: flex; */
    /* align-items: center; */
    /* justify-content: center; */
-   cursor: pointer;
-   font-size: 200px;
-   font-weight: 100;
-   color: #0d3f58;
-   font-size: 25px;
-   padding: 0 2px 2px 0;
-   /* line-height: 3rem; */
-}
-i.closeIcon {
-   /* font-size: 20px; */
-
-}
-
-@keyframes changecolor {
-   0% {
-      background-color: #ecf3fe;
-   }
-
-   25% {
-      background-color: #bfd2e0;
-   }
-
-   50% {
-      background-color: #dee5eb;
-   }
-
-   75% {
-      background-color: #c5d2db;
-   }
-
-   100% {
-      background-color: #c0daee;
-   }
+   text-align: center;
+   font-weight: 900;
+   font-size: 20px;
 }
 #signupContent.active {
    visibility: visible;
@@ -94,6 +81,10 @@ i.closeIcon {
    padding: 2.5rem 2.5rem;
    float: left;
    background-color: #05a6c2;
+}
+.leftRegion >* {
+   font-family: 'Comfortaa', cursive;
+   font-weight: 700;
 }
 
 .leftRegion h3 {
@@ -152,7 +143,7 @@ i.closeIcon {
    color: red;
    font-weight: 600;
    width: 93%;
-   font-size: 0.9rem;
+   font-size: 0.8rem;
    float: left;
    display: flex;
    justify-content: center;
@@ -161,9 +152,9 @@ i.closeIcon {
 
 .error i {
    color: red;
-   width: 5%;
+   width: 6%;
    float: right;
-   font-size: 100%;
+   font-size: 150%;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -402,7 +393,10 @@ i.closeIcon {
    opacity: 1;
    transition: visibility 500ms ease-in-out;
    transition-delay: 500ms;
+}
+.loader.btnActive i {
    animation: spin 1.3s ease-in-out infinite;
+   height: 52%;
 }
 @keyframes spin {
    100% {
@@ -497,9 +491,16 @@ i.closeIcon {
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    #signupContent {
-      width: 85%;
+      /* width: 85%; */
+      width: 70vw;
       height: 80%;
    }
+   /* .closeModal {
+      width: 3%;
+      height: 5%;
+      font-size: 150%;
+      padding: 1%;
+   } */
 
    .leftRegion {
       width: 55%;
@@ -645,9 +646,16 @@ i.closeIcon {
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
    #signupContent {
-      width: 85%;
+      /* width: 85%; */
+      width: 70vw;
       height: 80%;
    }
+   /* .closeModal {
+      width: 3%;
+      height: 5%;
+      font-size: 150%;
+      padding: 1%;
+   } */
 
    .leftRegion {
       width: 55%;
@@ -680,7 +688,8 @@ i.closeIcon {
    }
 
    .error {
-      height: 6%;
+      /* height: 6%; */
+      height: max-content;
       padding: 0 1%;
    }
    .error p {
@@ -795,7 +804,8 @@ i.closeIcon {
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    #signupContent {
       width: 70%;
-      height: 90%;
+      /* height: 90%; */
+      height: 80%;
       border-radius: 5%;
    }
 

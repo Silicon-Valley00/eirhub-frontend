@@ -13,29 +13,28 @@ function Signup(props) {
    const [btnValue, setBtnValue] = useState('Create Account');
    const [btnActive, setBtnActive] = useState(false);
    // btnActive is for when button can  be clicked to create account. This would be set to false when an error occurs
-   // Handles password visibiltya
+   // Handles password visibility
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    // Handles server error
    const [isError, setIsError] = useState(true);
    const [errorMessage, setErrorMessage] = useState(
-      'Sign up failed. Try again.'
+      'Email already in use. Want to login?'
    );
    return (
       <div className={styles.signupBody}>
          <div
-            className={styles.closeModal}
-            onClick={() => props.handleModalsClose()}
-         >
-            <i className={styles.closeIcon}>
-               <IoCloseOutline />
-            </i>
-         </div>
-
-         <div
             id={styles.signupContent}
             className={props.modalSignup ? styles.active : ''}
          >
+            <div
+               className={styles.closeModal}
+               onClick={() => props.handleModalsClose()}
+            >
+               <i>
+                  <IoCloseOutline />
+               </i>
+            </div>
             <div className={styles.signupContainer}>
                <div className={styles.leftRegion}>
                   <h3>Eirhub</h3>
@@ -53,13 +52,14 @@ function Signup(props) {
                <div className={styles.rightRegion}>
                   <div className={isError ? styles.error : styles.noerror}>
                      <p>{errorMessage}</p>
-                     {/* <i className={styles.closeIcon}
+                     <i
+                        className={styles.closeIcon}
                         onClick={() => {
                            setIsError(false);
                         }}
-                     > */}
-                     <IoCloseOutline />
-                     {/* </i> */}
+                     >
+                        <IoCloseOutline />
+                     </i>
                   </div>
                   <div className={styles.signupFormTitle}>
                      <h3>Create New Account</h3>
@@ -359,7 +359,9 @@ function Signup(props) {
                                     : styles.loader
                               }
                            >
-                              <BiLoaderAlt />
+                              <i>
+                                 <BiLoaderAlt />
+                              </i>
                            </div>
                         </button>
                      </div>

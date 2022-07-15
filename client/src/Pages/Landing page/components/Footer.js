@@ -3,9 +3,11 @@ import { FaTwitter } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
 import footerStyle from '../components/footer.module.css';
+
 const Footer = () => {
    return (
       <footer>
+         {/* logo div*/}
          <div className={footerStyle.logo}>
             <span className={footerStyle.logo}>Eirhub</span>
             <p className={footerStyle.logo}>
@@ -25,66 +27,41 @@ const Footer = () => {
                </span>
             </div>
          </div>
-         <div className={footerStyle.ourservices}>
-            <h2>Our services</h2>
-            <ul className={footerStyle.dropdown1}>
-               <li>
-                  <a href="#">Health Consultant</a>
-               </li>
-               <li>
-                  <a href="#">Find Doctor</a>
-               </li>
-               <li>
-                  <a href="#">E-Pharmacy</a>
-               </li>
-               <li>
-                  <a href="#">Health Tips</a>
-               </li>
-               <li>
-                  <a href="#">Blog</a>
-               </li>
+         <div className={footerStyle.fourservices}>
+            <h2 className={footerStyle.fheader}>Our services</h2>
+            <ul className={footerStyle.fdropdown}>
+               <li className={footerStyle.flist}>Health Consultant</li>
+               <li className={footerStyle.flist}>Find Doctor</li>
+               <li className={footerStyle.flist}>E-Pharmacy</li>
+               <li className={footerStyle.flist}>Health Tips</li>
+               <li className={footerStyle.flist}>Blog</li>
             </ul>
          </div>
-         <div className={footerStyle.support}>
-            <h2>Support</h2>
-            <ul className={footerStyle.dropdown2}>
-               <li>
-                  <a href="#">Find a Doctor</a>
-               </li>
-               <li>
-                  <a href="#">How it Works</a>
-               </li>
-               <li>
-                  <a href="#">Book Appointment</a>
-               </li>
-               <li>
-                  <a href="#">Register</a>
-               </li>
-               <li>
-                  <a href="#">FAQ</a>
-               </li>
-               <li>
-                  <a href="#">Terms of Use</a>
-               </li>
+
+         {/* support div*/}
+         <div className={footerStyle.fsupport}>
+            <h2 className={footerStyle.fheader}>Support</h2>
+            <ul className={footerStyle.fdropdown}>
+               <li className={footerStyle.flist}>Find a Doctor</li>
+               <li className={footerStyle.flist}>How it Works</li>
+               <li className={footerStyle.flist}>Book Appointment</li>
+               <li className={footerStyle.flist}>Register</li>
+               <li className={footerStyle.flist}>FAQ</li>
+               <li className={footerStyle.flist}>Terms of Use</li>
             </ul>
          </div>
-         <div className={footerStyle.contact}>
-            <h2>Contact us</h2>
-            <ul>
-               <li>
-                  <a href="#">+(233) 576 678 238</a>
-               </li>
+         {/*Contact*/}
+         <div className={footerStyle.fcontact}>
+            <h2 className={footerStyle.fheader}>Contact us</h2>
+            <ul className={footerStyle.fdropdown}>
+               <li className={footerStyle.flist}>+(233) 576 678 238</li>
             </ul>
-            <ul>
-               <li>
-                  <a href="#">info@Eirhub.com</a>
-               </li>
+            <ul className={footerStyle.fdropdown}>
+               <li className={footerStyle.flist}>info@Eirhub.com</li>
             </ul>
-            <ul>
-               <li>
-                  <a href="#">
-                     17 Maple Avenue<br></br> Kumasi, Ghana{' '}
-                  </a>
+            <ul className={footerStyle.fdropdown}>
+               <li className={footerStyle.flist}>
+                  17 Maple Avenue<br></br> Kumasi, Ghana
                </li>
             </ul>
          </div>

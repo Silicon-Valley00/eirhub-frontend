@@ -19,22 +19,18 @@ function Login(props) {
    const {
       handleModalsClose,
       handleModalSignup,
-      submitLoginHandler,
       loginEmailErrorMessage,
       loginPasswordErrorMessage,
-      handleLoginPassword,
       handleloginEmail,
+      handleLoginPassword,
       loginPassword,
       loginPasswordError,
       loginEmail,
       loginEmailError,
-      signupUser,
    } = props;
 
    const [isError, setIsError] = useState(true);
-   const [errorMessage, setErrorMessage] = useState(
-      'Sign up failed. Try again.'
-   );
+   const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
    return (
       <section id={loginStyles.loginSection}>
@@ -42,6 +38,14 @@ function Login(props) {
             id={loginStyles.loginContainer}
             className={props.modalLogin ? loginStyles.active : ''}
          >
+            <div
+               className={loginStyles.closeModal}
+               onClick={() => props.handleModalsClose()}
+            >
+               <i>
+                  <IoCloseOutline />
+               </i>
+            </div>
             <div className={loginStyles.loginBody}>
                <div
                   className={isError ? loginStyles.error : loginStyles.noerror}
@@ -61,15 +65,16 @@ function Login(props) {
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
-                  className="login-form"
+                  className="loginForm"
                >
                   <h1 className="title">Welcome Back</h1>
                   <p>Please enter your details</p>
                   <h3>Email</h3>
                   <div
                      className={
-                        loginStyles.inputField ||
-                        (loginEmailError && loginStyles.error)
+                        loginEmailError
+                           ? `${loginStyles.inputField} ${loginStyles.inputError}`
+                           : loginStyles.inputField
                      }
                   >
                      <i>
@@ -92,7 +97,7 @@ function Login(props) {
                            : loginStyles.noErrorMessageBox
                      }
                   >
-                     <i className={loginStyles.closeIcon}>
+                     <i>
                         <IoWarning />
                      </i>
                      <p>{loginEmailErrorMessage}</p>
@@ -100,8 +105,9 @@ function Login(props) {
                   <h3>Password</h3>
                   <div
                      className={
-                        loginStyles.inputField ||
-                        (loginPasswordError && loginStyles.error)
+                        loginPasswordError
+                           ? `${loginStyles.inputField} ${loginStyles.inputError}`
+                           : loginStyles.inputField
                      }
                   >
                      <i>
@@ -131,13 +137,13 @@ function Login(props) {
                            : loginStyles.noErrorMessageBox
                      }
                   >
-                     <i className={loginStyles.closeIcon}>
+                     <i>
                         <IoWarning />
                      </i>
                      <p>{loginPasswordErrorMessage}</p>
                   </div>
                   <div className={loginStyles.passwordReset}>
-                     <a href="">Forgot password?</a>
+                     <p className={loginStyles.link} href="">Forgot password?</p>
                   </div>
                   <div className={loginStyles.submit}>
                      <button
@@ -181,22 +187,17 @@ function Login(props) {
                      <div className={loginStyles.signupToggle}>
                         <p>
                            New Here ?{' '}
-                           <a href="" onClick={() => handleModalSignup()}>
+                           <p className={loginStyles.link} href="" onClick={() => handleModalSignup()}>
                               Sign up
-                           </a>
+                           </p>
                         </p>
                      </div>
                   </div>
                </form>
+               <div></div>
             </div>
             <div className={loginStyles.rightSide}>
-               <h1
-                  onClick={() => {
-                     handleModalsClose();
-                  }}
-               >
-                  Eirhub
-               </h1>
+               <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
                <img id={loginStyles.loginImg} src={loginImage} alt="" />
             </div>

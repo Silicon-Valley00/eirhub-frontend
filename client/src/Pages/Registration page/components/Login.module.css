@@ -1,6 +1,9 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@400;600&display=swap'); */
+
+
 :root {
    --radius: 25px;
-   --height: 40px;
+   --height: 2rem;
    --white: #fff;
    --field-radius: 8px;
    --bleached-blue: #ecf3fe;
@@ -19,6 +22,38 @@ body {
    padding: 0;
    box-sizing: border-box;
 }
+
+
+form {
+   color: var(--dark-blue);
+}
+
+
+
+.closeModal {
+   position: absolute;
+   top: -10%;
+   left: 50%;
+   background: #ffffff;
+   width: 25px;
+   height: 25px;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   cursor: pointer;
+   font-weight: 900;
+   padding-right: 0.1%;
+}
+.closeModal i {
+   width: 100%;
+   height: 100%;
+   font-weight: 900;
+   font-size: 20px;
+}
+
+
 
 #loginSection {
    position: relative;
@@ -42,6 +77,7 @@ body {
    background-color: var(--white);
    height: 80vh;
    width: 70vw;
+   max-width: 900px;
    margin: auto;
    visibility: hidden;
    opacity: 0;
@@ -57,7 +93,7 @@ body {
 .loginBody {
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: space-between;
    padding: var(--padding);
    /* align-items: center; */
    /* margin: auto; */
@@ -85,12 +121,16 @@ body {
    border: 1px solid grey;
    border-radius: var(--field-radius);
    display: flex;
-   /* justify-content: space-around; */
+   justify-content: center;
    align-items: center;
    /* padding: var(--text-padding); */
+   margin-bottom: 5px;
+}
+.inputField>i {
+   margin-top: 5px;
 }
 .inputField > * {
-   margin: 5px;
+   padding: 0 5px;
    border: none;
 }
 .submit {
@@ -100,9 +140,12 @@ body {
    justify-content: center;
 }
 h1 {
+   color: var(--text-color);
    font-size: 2rem;
 }
-
+.loginForm p{
+   margin-bottom: 20rem;
+}
 .btn {
    margin: 0.5rem;
    background-color: var(--light-blue);
@@ -110,7 +153,7 @@ h1 {
    font-weight: 500;
    height: var(--height);
    width: 50%;
-   border-radius: var(--field-radius);
+   border-radius: 4rem;
    text-transform: uppercase;
    text-align: center;
    box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
@@ -122,7 +165,6 @@ h1 {
    background-color: var(--text-color);
    transition: background-color 0.5s ease-out;
    cursor: pointer;
-   
 }
 .loader {
    width: 20%;
@@ -145,7 +187,6 @@ h1 {
 .btnActive {
    background: #0d3f58;
    transition: color 1000ms ease-in-out;
-
 }
 
 .inactive .loader.btnActive {
@@ -160,6 +201,8 @@ h1 {
    opacity: 1;
    transition: visibility 500ms ease-in-out;
    transition-delay: 500ms;
+}
+.loader.btnActive i {
    animation: spin 1.3s ease-in-out infinite;
 }
 @keyframes spin {
@@ -168,14 +211,13 @@ h1 {
    }
 }
 
-
 .inactive {
    cursor: not-allowed;
    background-color: #a5cfd6;
    width: 60%;
    border: none;
    outline: none;
-   border-radius: 40px;
+   border-radius: 4rem;
    color: #fff;
    text-transform: uppercase;
    font-weight: 500;
@@ -190,61 +232,42 @@ h1 {
    /* padding: var(--text-padding) 0; */
    border: none;
    outline: none;
-   width: 100%;
+   width: 86%;
    height: 100%;
-padding: auto;
+   padding: auto;
 }
 
-a {
+p.link {
+   cursor: pointer;
+   display: inline;
    color: var(--light-blue);
 }
 
 /* Error */
-.errorMessageBox {
-   width: 100%;
-   height: 25px;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-font-size: 12px;
-color: red;
-}
 
-.errorMessageBox p {
-   color: red;
-   width: 93%;
+.inputError {
+   /* display: flex;
+   justify-content: space-around;
+   align-items: center; */
+   /* height: 20px; */
+   /* width: 20px; */
+   border:1px solid red;
+   /* font-size: 1rem; */
 }
-
-.errorMessageBox i {
-   fill: red;
-width: 7%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 100%;
+.inputError>i {
+   margin-top: 5px;
+   /* font-size: 1rem; */
 }
-
-.noErrorMessageBox {
-   width: 100%;
-   height: 25px;
-}
-
-.noErrorMessageBox i {
-   display: none;
-}
-
-.noErrorMessageBox p {
-   display: none;
-}
-
 .error {
+   /* max-height: max-content; */
    height: 2rem;
    background: rgb(253, 252, 252);
-   border: 1.5px solid red;
-   color: red;
+   border: 1px solid red;
+   align-self: initial;
    display: flex;
    justify-content: space-between;
    border-radius: 5px;
+   margin-top: -8%;
    padding: 0 0.5rem;
 }
 
@@ -260,14 +283,14 @@ font-size: 100%;
 }
 
 .error i {
-   color: red;
-   width: 5%;
-   float: right;
-   font-size: 100%;
+   width: 10%;
+   height: 100%;
+   /* float: right; */
+   font-size: 24px;
    display: flex;
    justify-content: center;
    align-items: center;
-   padding-bottom: 0.9rem;
+   /* padding-bottom: 0.9rem; */
    cursor: pointer;
 }
 .noerror {
@@ -281,7 +304,47 @@ font-size: 100%;
 }
 
 
+.errorMessageBox {
+   height: 25px;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-size: 12px;
+   color: red;
+}
+
+.errorMessageBox p {
+   color: red;
+   width: 93%;
+}
+
+.errorMessageBox i {
+   fill: red;
+   width: 7%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 100%;
+}
+
+.noErrorMessageBox {
+   width: 100%;
+   height: 25px;
+}
+
+.noErrorMessageBox i {
+   display: none;
+}
+
+.noErrorMessageBox p {
+   display: none;
+}
+
+
+
 .rightSide {
+   overflow: none;
    height: 100%;
    display: flex;
    flex-direction: column;
@@ -293,49 +356,54 @@ font-size: 100%;
    padding: var(--padding);
    width: 100%;
 }
+.rightSide > * {
+   font-family: 'Comfortaa', cursive;
+   font-weight: 700;
+}
 .rightSide > *:not(:first-child) {
    margin: auto;
-   
 }
 
 .rightSide > h1 {
    color: var(--white);
-   font-weight: 700;
 }
 .rightSide > p {
    font-size: 2rem;
    padding: 2rem;
 }
-#loginImg{
+#loginImg {
    width: 80%;
    margin: auto;
 }
 
-@media only screen and (max-width:1024px){
+@media only screen and (max-width: 1024px) {
    .loginBody {
-      /* width: 350px; */
-      max-width: 40%;
+      width: 500px;
+      max-width: 50vw;
       margin: auto;
+   }
+   .error {
+      height: fit-content;
    }
 }
 
-
-@media only screen and (max-width:768px){
+@media only screen and (max-width: 768px) {
+   #loginContainer{
+      min-width: 300px;
+   }
    .loginBody {
       width: 100%;
       max-width: 350px;
       padding: 0;
    }
-   .rightSide{
+   .rightSide {
       display: none;
    }
-   
 }
-@media only screen and (max-width:320px){
-
+@media only screen and (max-width: 320px) {
    #loginContainer {
       font-size: 0.8rem;
-      height: 90vh;
+      height: 80vh;
       width: 90vw;
    }
    .loginBody {
@@ -347,9 +415,10 @@ font-size: 100%;
    }
 }
 
-
-/* i.closeIcon {
+i.closeIcon {
    font-size: 20px;
-   padding: 10px 2px;
+   color: red;
+   cursor: pointer;
+}
 
-} */
+
