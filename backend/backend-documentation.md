@@ -32,31 +32,55 @@ API EndPoint Routes:
 
 	```
 	{
-    "email":"niiodartey10@gmail.com",
-    "password":"WhatTheFuckTHough5757?",
-    "isDoctor": true
-	}
+    "hospital_code":"OAa3456",
+    "license_number":"80034903"
+    }
 	```
 
 	RESPONSE:
 	```
 	{
-    "status": true,
-    "user": {
-        "age": 50,
-        "date_of_birth": "Tue, 01 Dec 2020 00:00:00 GMT",
-        "doctor_ratings": 2.0,
-        "doctor_specialities": "Gynaecology",
-        "first_name": "Nii",
-        "house_address": "House-4",
-        "last_name": "Lamptey",
-        "license_number": null,
-        "middle_name": "Odartey",
-        "person_image": "https://img.com/23495",
-        "user_email": "niiodartey10@gmail.com"
-    	}
-	}
+    "msg": {
+        "first_name": "Rexford",
+        "last_name": "Machu",
+        "license_number": "80034903",
+        "middle_name": "G.O.A.T"
+        },
+    "status": true
+    }
 	```
 - **User Registration**		
 
-	POST : /signup
+	POST : /signup      
+
+    BODY PARAMS: 	
+
+	```
+	{
+    "first_name": "Rexford",
+    "middle_name":"G.O.A.T",
+    "last_name": "Machu",
+    "person_image":"https://img.com/G.O.A.T",
+    "user_email":"baddest69@st.knust.edu.gh",
+    "date_of_birth":"2009-12-01",
+    "house_address": "House-4",
+    "doctor_ratings":3,
+    "hospital_code":"OAa3456",
+    "license_number":"80034903",
+    "doctor_specialties":"Gynaecology, Paediatric",
+    "gender":"Male"
+    }
+	```
+
+	RESPONSE:
+	```
+	{
+    "msg": {
+        "first_name": "Rexford",
+        "last_name": "Machu",
+        "license_number": "80034903",
+        "middle_name": "G.O.A.T"
+    },
+    "status": true
+    }
+	```
