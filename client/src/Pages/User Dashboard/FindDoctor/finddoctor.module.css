@@ -149,9 +149,9 @@
    min-width: 100%;
    max-width: 100%;
    width: 100%;
-   height: 21rem;
-   min-height: 21rem;
-   max-width: 21rem;
+   height: 20rem;
+   min-height: 20rem;
+   max-width: 20rem;
 }
 
 .doctorBox {
@@ -175,9 +175,9 @@
 }
 .doctorName {
    width: 100%;
-   height: 15%;
+   height: 25%;
    font-weight: 600;
-   margin-top: 0.3rem;
+   margin-top: 0.2rem;
    -webkit-line-clamp: 1;
    text-overflow: ellipsis;
    display: -webkit-box;
@@ -191,27 +191,27 @@
 }
 .doctorDetails {
    width: 100%;
-   height: 65%;
+   height: 70%;
    font-weight: 550;
    -webkit-line-clamp: 4;
    text-overflow: ellipsis;
    display: -webkit-box;
    -webkit-box-orient: vertical;
    overflow: hidden;
-   margin-top: 0.5rem;
+   /* margin-top: 0.5rem; */
 }
 .doctorDetails p {
-   font-size: 80%;
+   font-size: 70%;
    color: var(--midcol);
 }
 .doctorInfoLink {
-   width: 100%;
-   text-align: right;
+   width: max-content;
    height: 15%;
    font-weight: 450;
+   float: right;
 }
 .doctorInfoLink p {
-   font-size: 80%;
+   font-size: 65%;
    color: var(--lightcol);
    cursor: pointer;
 }

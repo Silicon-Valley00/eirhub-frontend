@@ -92,7 +92,6 @@ function Calendar() {
       } else if (selectedMonth >= 0) {
          setSelectedMonth(selectedMonth + 1);
       }
-      console.log(selectedMonth);
    }
    return (
       <>
@@ -105,7 +104,6 @@ function Calendar() {
                </span>
                <span className={styles.monthPicker} id={styles.monthPicker}>
                   {months[selectedMonth]}
-                  {date}
                </span>
                <span id={styles.year}>{year}</span>
                <span className={styles.monthChange} id={styles.nextMonth}>

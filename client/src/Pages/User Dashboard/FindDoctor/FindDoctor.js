@@ -46,7 +46,7 @@ function FindingDoctor() {
                      </div>
                      <div className={styles.doctorDetails}>
                         <p>
-                           loClinical Pharmacy Specialist, Hermatology/Oncology
+                           Clinical Pharmacy Specialist, Hermatology/Oncology
                            Assistant Professor, Pharmacy Hermatology
                         </p>
                      </div>
@@ -63,7 +63,7 @@ function FindingDoctor() {
                      </div>
                      <div className={styles.doctorDetails}>
                         <p>
-                           loClinical Pharmacy Specialist, Hermatology/Oncology
+                           Clinical Pharmacy Specialist, Hermatology/Oncology
                            Assistant Professor, Pharmacy Hermatology
                         </p>
                      </div>
@@ -80,7 +80,7 @@ function FindingDoctor() {
                      </div>
                      <div className={styles.doctorDetails}>
                         <p>
-                           loClinical Pharmacy Specialist, Hermatology/Oncology
+                           Clinical Pharmacy Specialist, Hermatology/Oncology
                            Assistant Professor, Pharmacy Hermatology
                         </p>
                      </div>
@@ -97,7 +97,7 @@ function FindingDoctor() {
                      </div>
                      <div className={styles.doctorDetails}>
                         <p>
-                           loClinical Pharmacy Specialist, Hermatology/Oncology
+                           Clinical Pharmacy Specialist, Hermatology/Oncology
                            Assistant Professor, Pharmacy Hermatology
                         </p>
                      </div>
@@ -114,7 +114,7 @@ function FindingDoctor() {
                      </div>
                      <div className={styles.doctorDetails}>
                         <p>
-                           loClinical Pharmacy Specialist, Hermatology/Oncology
+                           Clinical Pharmacy Specialist, Hermatology/Oncology
                            Assistant Professor, Pharmacy Hermatology
                         </p>
                      </div>
@@ -131,7 +131,7 @@ function FindingDoctor() {
                      </div>
                      <div className={styles.doctorDetails}>
                         <p>
-                           loClinical Pharmacy Specialist, Hermatology/Oncology
+                           Clinical Pharmacy Specialist, Hermatology/Oncology
                            Assistant Professor, Pharmacy Hermatology
                         </p>
                      </div>
@@ -148,7 +148,7 @@ function FindingDoctor() {
                      </div>
                      <div className={styles.doctorDetails}>
                         <p>
-                           loClinical Pharmacy Specialist, Hermatology/Oncology
+                           Clinical Pharmacy Specialist, Hermatology/Oncology
                            Assistant Professor, Pharmacy Hermatology
                         </p>
                      </div>
@@ -165,7 +165,7 @@ function FindingDoctor() {
                      </div>
                      <div className={styles.doctorDetails}>
                         <p>
-                           loClinical Pharmacy Specialist, Hermatology/Oncology
+                           Clinical Pharmacy Specialist, Hermatology/Oncology
                            Assistant Professor, Pharmacy Hermatology
                         </p>
                      </div>
@@ -183,7 +183,7 @@ function FindingDoctor() {
                      </div>
                      <div className={styles.doctorDetails}>
                         <p>
-                           loClinical Pharmacy Specialist, Hermatology/Oncology
+                           Clinical Pharmacy Specialist, Hermatology/Oncology
                            Assistant Professor, Pharmacy Hermatology
                         </p>
                      </div>
