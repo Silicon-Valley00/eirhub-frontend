@@ -70,12 +70,12 @@ aside .sidebar span.icons {
    color: var(--midcol);
    transition: all 300ms ease;
 }
-aside .sidebar li:nth-child(7) {
+aside .sidebar li:nth-child(8) {
    position: absolute;
    bottom: 3rem;
    width: 86.5%;
 }
-aside .sidebar li:nth-child(8) {
+aside .sidebar li:nth-child(9) {
    position: absolute;
    width: 86.5%;
    bottom: 0rem;
@@ -112,12 +112,12 @@ aside .sidebar li:hover span.icons {
       max-height: 3.5rem;
    }
 
-   aside .sidebar li:nth-child(7) {
+   aside .sidebar li:nth-child(8) {
       position: absolute;
       bottom: 3rem;
       width: 86.5%;
    }
-   aside .sidebar li:nth-child(8) {
+   aside .sidebar li:nth-child(9) {
       position: absolute;
       width: 86.5%;
       bottom: 0rem;
@@ -147,11 +147,11 @@ aside .sidebar li:hover span.icons {
    aside ul li {
       width: 5.6rem;
    }
-   aside .sidebar li:nth-child(7) {
+   aside .sidebar li:nth-child(8) {
       position: relative;
       margin-top: 3rem;
    }
-   aside .sidebar li:nth-child(8) {
+   aside .sidebar li:nth-child(9) {
       position: relative;
       margin-top: -2.5rem;
    }
@@ -338,12 +338,12 @@ aside .sidebar li:hover span.icons {
       color: var(--midcol);
       transition: all 300ms ease;
    }
-   aside .sidebar li:nth-child(7) {
+   aside .sidebar li:nth-child(8) {
       position: absolute;
       bottom: 3rem;
       width: 86.5%;
    }
-   aside .sidebar li:nth-child(8) {
+   aside .sidebar li:nth-child(9) {
       position: absolute;
       width: 86.5%;
       bottom: 0rem;

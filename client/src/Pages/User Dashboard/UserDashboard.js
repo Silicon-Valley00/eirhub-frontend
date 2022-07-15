@@ -3,7 +3,6 @@ import styles from './userdashboard.module.css';
 import { MdMenu } from 'react-icons/md';
 import avatarThree from '../../assets/Rectangle.png';
 import Navigation from './components/Navigation';
-import DashboardNotificationAlerts from './components/DashBoardNotificationAlerts';
 
 function UserDashboard(props) {
    // handles menu open and close for smaller devices

@@ -43,7 +43,10 @@ function Calendar() {
    // maps array of available days to html tags
    days = dayNumbers.map((num) => {
       if (num >= startDay) {
-         if (num - startDay + 1 === date && selectedMonth === month) {
+         if (
+            num - startDay + 1 === new Date().getUTCDate() &&
+            selectedMonth === month
+         ) {
             return (
                <div className={styles.today}>
                   {num - startDay + 1}
@@ -102,6 +105,7 @@ function Calendar() {
                </span>
                <span className={styles.monthPicker} id={styles.monthPicker}>
                   {months[selectedMonth]}
+                  {date}
                </span>
                <span id={styles.year}>{year}</span>
                <span className={styles.monthChange} id={styles.nextMonth}>
