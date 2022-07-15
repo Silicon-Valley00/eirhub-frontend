@@ -1,3 +1,4 @@
+from enum import unique
 from sqlalchemy import Column,Integer,String,Text
 from sqlalchemy.orm import declarative_base,relationship
 Base = declarative_base()
@@ -9,7 +10,7 @@ class Hospital(Base):
     location = Column("location",String(200))
     hospital_specialities = Column("hospital_specialities",Text(200))
     number_of_doctors = Column("number_of_doctors",Integer)
-    hospital_code = Column('hospital_code',String(45))
+    hospital_code = Column('hospital_code',String(45),unique = True)
     phone_number = Column('phone_number',String(45))
 
     # hospital = relationship("Doctor", back_populates = "hospitals" )#one to many with Doctor
