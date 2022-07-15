@@ -3,7 +3,7 @@ import logo from '../../../images/logo.svg';
 import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
@@ -41,14 +41,29 @@ const Navbar = (props) => {
                />
             </div>
             <div className={styles.left}>
+               {/* REVIEW: activa navlink is not working. */}
                <ul id={styles.nav_links}>
-                  <Link to="/" className={styles.each}>
+                  <NavLink
+                     to="/"
+                     activeClassName={styles.nav_link_active}
+                     className={styles.each}
+                  >
                      Home
-                  </Link>
-                  <Link to="/our-services" className={styles.each}>
+                  </NavLink>
+                  <NavLink
+                     to="/our-services"
+                     activeClassName={styles.nav_link_active}
+                     className={styles.each}
+                  >
                      Our Services
-                  </Link>
-                  <li className={styles.each}>How it Works</li>
+                  </NavLink>
+                  <NavLink
+                     to="/how-it-works"
+                     activeClassName={styles.nav_link_active}
+                     className={styles.each}
+                  >
+                     How it Works
+                  </NavLink>
                </ul>
                <div id={styles.signup}>
                   <ul className={styles.signup_list}>
