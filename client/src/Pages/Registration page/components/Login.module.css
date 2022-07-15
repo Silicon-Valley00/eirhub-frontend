@@ -275,7 +275,7 @@ p.link {
    color: red;
    font-weight: 600;
    width: 93%;
-   font-size: 0.9rem;
+   font-size: 0.9em;
    float: left;
    display: flex;
    justify-content: center;
@@ -305,18 +305,18 @@ p.link {
 
 
 .errorMessageBox {
-   height: 25px;
+   /* height: 25px; */
    width: 100%;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 12px;
+   font-size: 0.8em;
    color: red;
 }
 
 .errorMessageBox p {
    color: red;
-   width: 93%;
+   width: 100%;
 }
 
 .errorMessageBox i {
@@ -377,18 +377,26 @@ p.link {
 }
 
 @media only screen and (max-width: 1024px) {
+   #loginContainer {
+      font-size: 14px;
+   }
    .loginBody {
       width: 500px;
       max-width: 50vw;
       margin: auto;
    }
    .error {
-      height: fit-content;
+      height: 2rem;
+      /* max-height: max-content; */
    }
 }
 
 @media only screen and (max-width: 768px) {
+   *{
+      font-size: 15px;
+   }
    #loginContainer{
+      font-size: 13px;
       min-width: 300px;
    }
    .loginBody {
@@ -401,8 +409,11 @@ p.link {
    }
 }
 @media only screen and (max-width: 320px) {
+   *{
+      font-size: 14px;
+   }
    #loginContainer {
-      font-size: 0.8rem;
+      font-size: 12px;
       height: 80vh;
       width: 90vw;
    }
@@ -411,7 +422,7 @@ p.link {
    }
 
    .inputField {
-      height: 2rem;
+      height: var(--height);
    }
 }
 
