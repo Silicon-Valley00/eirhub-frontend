@@ -52,7 +52,11 @@ const ServicesPage = () => {
                   <div data-aos="fade-in" className={style.of_image}>
                      <img src={pic2} alt="" className={style.of__image} />
                   </div>
-                  <div data-aos="fade-up" className={style.with_text}>
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="3000"
+                     className={style.with_text}
+                  >
                      <p className={style.with_text_title}>Find a Doctor</p>
                      <p className={style.with_text_desc}>
                         Get access to the right doctor
@@ -66,7 +70,11 @@ const ServicesPage = () => {
 
                {/* third container */}
                <div className={style.container}>
-                  <div data-aos="fade-up" className={style.with_text}>
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="3000"
+                     className={style.with_text}
+                  >
                      <p className={style.with_text_title}>E-pharmacy</p>
                      <p className={style.with_text_desc}>
                         Manage your prescriptions more effectively
@@ -86,7 +94,11 @@ const ServicesPage = () => {
                   <div data-aos="fade-in" className={style.of_image}>
                      <img src={pic4} alt="" className={style.of__image} />
                   </div>
-                  <div data-aos="fade-up" className={style.with_text}>
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="3000"
+                     className={style.with_text}
+                  >
                      <p className={style.with_text_title}>Health Tips</p>
                      <p className={style.with_text_desc}>
                         Get access to verified tips for a healthy living
