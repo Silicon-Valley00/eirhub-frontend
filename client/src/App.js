@@ -5,6 +5,9 @@ import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 import ServicesPage from './Pages/Landing page/ServicesPage';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function App() {
    return (
