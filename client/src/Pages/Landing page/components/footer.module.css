@@ -26,9 +26,10 @@ footer {
 }
 .logo p {
    margin-top: 10px;
-   width: 77%;
+   width: 80%;
    font-weight: 500;
    font-size: 1.05em;
+   color: #0d3f58;
 }
 .socialmedia {
    display: flex;
@@ -123,6 +124,7 @@ footer {
       width: 95%;
       margin-bottom: 30px;
       text-align: center;
+      color: #0d3f58;
    }
    span.logo {
       justify-content: center;
