@@ -15,7 +15,7 @@ def getPatients():
     # session.close()
     patients = session.query(Patient).all()
     for patient in patients:
-         return ({
+        return ({
             "id": patient.idPatient,
             "First name": patient.first_name,
             "Last_name": patient.last_name,
