@@ -1,8 +1,10 @@
 from sqlalchemy import Column, Integer, String, Date, ForeignKey, Float
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy.dialects.mysql import ENUM
+from Patient.PatientModel import Patient,Base
+# from app import Base
 
-Base = declarative_base()
+# Base = declarative_base()
 
 class HealthDetails(Base):
     __tablename__ = 'Health_Details'
@@ -17,6 +19,8 @@ class HealthDetails(Base):
     blood_sugar = Column("blood_sugar",String(10))
     weight = Column("weight",Float)
     height = Column("height",Float)
+
+    patient = relationship("Patient",back_populates = "health_details")
 
 
     def __init__(self, last_visit, blood_group, bmi, blood_pressure, respiratory_rate, pulse, blood_sugar,weight,height):

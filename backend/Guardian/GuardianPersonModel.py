@@ -2,7 +2,7 @@ from enum import auto
 from tkinter import CASCADE
 from sqlalchemy import Column, Integer, String, Date, ForeignKey, Float
 from sqlalchemy.orm import declarative_base, relationship
-
+# from app import Base
 Base = declarative_base()
 
 
@@ -19,6 +19,8 @@ class GuardianPerson(Base):
     phone_number = Column("phone_number",String(50))
     id_number = Column("id_number",String(45))
     gender = Column("gender",String(45))
+
+    guardian_person = relationship("Patient") 
     
     
 

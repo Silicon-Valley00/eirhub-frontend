@@ -2,6 +2,8 @@ from enum import unique
 from tkinter import CASCADE
 from sqlalchemy import Column,Integer,String,Date,ForeignKey,Float
 from sqlalchemy.orm import declarative_base,relationship
+# from app import Base
+# from HealthDetails.HealthDetailsModel import HealthDetails
 
 
 Base = declarative_base()
@@ -26,12 +28,9 @@ class Patient(Base):
     nationality = Column("nationality",String(50))
     gender = Column("gender",String(45))
 
-    
-
-    guardian_person = relationship("GuardianPerson") 
     health_details = relationship("HealthDetails",uselist=False,back_populates = "patient")
-
-  
+   
+   
     
     def __init__(self,first_name,middle_name,last_name,person_image,user_email,user_password,date_of_birth,house_address,phone_number,id_number,nationality):
         self.first_name = first_name
@@ -46,4 +45,4 @@ class Patient(Base):
         self.id_number = id_number
         self.nationality = nationality
 
-       
+ 

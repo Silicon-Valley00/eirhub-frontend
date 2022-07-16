@@ -14,6 +14,8 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from Doctor.DoctorService import doctorlogin
 from Doctor import DoctorModel
+from Patient.PatientService import patients_route
+from HealthDetails.HealthDetailsModel import HealthDetails
 # from Hospital.HospitalService import Hospital
 # from HealthDetails.HealthDetailsModel import  HealthDetails
 # from Prescription.PrescriptionService import  Prescription
@@ -28,13 +30,14 @@ from Doctor import DoctorModel
 # for row in result:
 #    for inv in row.invoices:
 #       print (row.id, row.name, inv.invno, inv.amount)
-app = Flask(__name__)
-load_dotenv()
-engine = create_engine( os.getenv('dbconnectionstring'))#establish a connection with the database
+app = Flask(__name__)engine = create_engine( os.getenv('dbconnectionstring'))#establish a connection with the database
 Session = sessionmaker(bind=engine)
-session = Session()
+session = Ses
+load_dotenv()
+sion()
 meta = MetaData()
 Base = declarative_base()
+app.register_blueprint(patients_route)
 
 # Database Connection not needed right now. Commented out for now
 try:

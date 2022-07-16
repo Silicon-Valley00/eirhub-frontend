@@ -1,6 +1,7 @@
 from enum import unique
 from sqlalchemy import Column,Integer,String,Text
 from sqlalchemy.orm import declarative_base,relationship
+# from app import Base
 Base = declarative_base()
 
 class Hospital(Base):
