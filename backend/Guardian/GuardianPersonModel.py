@@ -3,12 +3,13 @@ from tkinter import CASCADE
 from sqlalchemy import Column, Integer, String, Date, ForeignKey, Float
 from sqlalchemy.orm import declarative_base, relationship
 # from app import Base
+# from Patient.PatientModel import Patient,Base
 Base = declarative_base()
 
 
 class GuardianPerson(Base):
-    __tablename__ = 'Guardian_Person'
-    Guardian_id = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
+    __tablename__ = 'GuardianPerson'
+    idGuardian = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     first_name = Column("first_name",String(60))
     middle_name = Column("middle_name",String(60))
     last_name = Column("last_name",String(60))
@@ -20,7 +21,7 @@ class GuardianPerson(Base):
     id_number = Column("id_number",String(45))
     gender = Column("gender",String(45))
 
-    guardian_person = relationship("Patient") 
+    patient = relationship("Patient") 
     
     
 
