@@ -1,5 +1,5 @@
 import PageNotFoundStyles from '../PageNotFound/PageNotFound.module.css';
-import NotFound from '../../assets/Notfound.svg';
+import NotFound from '../../assets/404page.svg';
 
 function PageNotFound() {
    return (
