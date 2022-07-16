@@ -490,6 +490,7 @@
 /* Media sizes */
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
+   
    #signupContent {
       /* width: 85%; */
       width: 70vw;
@@ -646,6 +647,7 @@
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
    #signupContent {
+      font-size: 14px;
       /* width: 85%; */
       width: 70vw;
       height: 80%;
@@ -803,6 +805,7 @@
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    #signupContent {
+      font-size: 13px;
       width: 70%;
       /* height: 90%; */
       height: 80%;
@@ -939,6 +942,7 @@
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
    #signupContent {
+      font-size: 12px;
       width: 90%;
       height: 90%;
       border-radius: 5%;
