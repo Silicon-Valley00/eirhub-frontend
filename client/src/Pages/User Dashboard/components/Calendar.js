@@ -44,7 +44,8 @@ function Calendar() {
    days = dayNumbers.map((num) => {
       if (num >= startDay) {
          if (
-            num - startDay + 1 === new Date().getUTCDate() &&
+            num - startDay + 1 ===
+               new Date(currentDate.toDateString()).getUTCDate() &&
             selectedMonth === month
          ) {
             return (
