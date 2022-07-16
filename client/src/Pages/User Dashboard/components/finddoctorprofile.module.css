@@ -1,0 +1,19 @@
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+   --tablehead: #c2c9d1;
+   --iconred: #dd7678;
+   --iconback: #f7eef0;
+}
+
+.profileBody {
+   margin-top: 1rem;
+   background-color: var(--gray);
+   width: 100%;
+   padding: 2rem 1.2rem 0 1.4rem;
+   border-top-left-radius: 2rem;
+   border-top-right-radius: 2rem;
+}

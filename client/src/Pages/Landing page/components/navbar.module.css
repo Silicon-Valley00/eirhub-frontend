@@ -11,6 +11,14 @@
    z-index: 1;
 }
 
+.img {
+   cursor: pointer;
+   pointer-events: none;
+}
+
+.logo_img {
+   pointer-events: none;
+}
 /* nav-links */
 #nav_links {
    display: block;
@@ -152,7 +160,7 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding-left: 5%;
+      padding-left: 20%;
    }
    #close {
       display: none;
@@ -181,9 +189,6 @@
 }
 
 @media (min-width: 890px) {
-   .left {
-      padding-left: 4rem;
-   }
 } /* ===================================================desktop style============== */
 @media (min-width: 1024px) {
    #img img {
@@ -196,6 +201,10 @@
       padding-left: 4rem;
       padding-right: 4rem;
       position: fixed;
+   }
+
+   .left {
+      padding-left: 4rem;
    }
 
    #nav_links {

@@ -36,7 +36,7 @@
 
 .closeModal {
    position: absolute;
-   top: -10%;
+   top: -8%;
    left: 50%;
    background: #ffffff;
    width: 25px;
@@ -80,7 +80,7 @@
    float: left;
    background-color: #05a6c2;
 }
-.leftRegion >* {
+.leftRegion > * {
    font-family: 'Comfortaa', cursive;
    font-weight: 700;
 }
@@ -458,7 +458,7 @@
    justify-content: space-between;
    font-size: 0.6rem;
    color: red;
-   margin-top: -2%;
+   /* margin-top: -2%; */
 }
 .errorMessageBox p {
    color: red;
@@ -476,7 +476,7 @@
 .noErrorMessageBox {
    width: 100%;
    height: 1rem;
-   margin-top: -2%;
+   /* margin-top: -2%; */
 }
 .noErrorMessageBox i {
    display: none;
@@ -634,11 +634,11 @@
    .errorMessageBox {
       height: 5%;
       font-size: 55%;
-      margin-top: -3.5%;
+      margin-top: -0.3rem;
    }
    .noErrorMessageBox {
       height: 5%;
-      margin-top: -3.5%;
+      margin-top: -0.3rem;
    }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -789,11 +789,11 @@
    .errorMessageBox {
       height: 5%;
       font-size: 55%;
-      margin-top: -2%;
+      margin-top: -0.3rem;
    }
    .noErrorMessageBox {
       height: 5%;
-      margin-top: -2%;
+      margin-top: -0.3rem;
    }
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
@@ -801,6 +801,9 @@
       width: 70%;
       height: 90%;
       border-radius: 5%;
+   }
+   .closeModal {
+      top: -5%;
    }
 
    .leftRegion {
@@ -923,11 +926,11 @@
    .errorMessageBox {
       height: 5%;
       font-size: 55%;
-      margin-top: -3.5%;
+      margin-top: -0.3rem;
    }
    .noErrorMessageBox {
       height: 5%;
-      margin-top: -3.5%;
+      margin-top: -0.3rem;
    }
 }
 
@@ -936,6 +939,9 @@
       width: 90%;
       height: 90%;
       border-radius: 5%;
+   }
+   .closeModal {
+      top: -5%;
    }
 
    .leftRegion {
@@ -1061,10 +1067,10 @@
    .errorMessageBox {
       height: 5%;
       font-size: 55%;
-      margin-top: -5%;
+      margin-top: -0.3rem;
    }
    .noErrorMessageBox {
-      margin-top: -5%;
       height: 5%;
+      margin-top: -0.3rem;
    }
 }

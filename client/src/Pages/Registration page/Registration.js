@@ -202,7 +202,7 @@ function Registration(props) {
             firstname: enteredSignUpFirstname,
             lastname: enteredSignUpLastname,
             dateOfBirth: enteredSignUpDate,
-            email: enteredSignUpEmail,
+            user_email: enteredSignUpEmail,
             password: enteredSignUpPassword,
          };
 
@@ -217,6 +217,9 @@ function Registration(props) {
       axios({
          method: 'post',
          url: `http://127.0.0.1:5000/${path}`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+         },
          data: { data },
       })
          .then((response) => {

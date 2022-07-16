@@ -8,12 +8,17 @@ import { ImExit } from 'react-icons/im';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { FaUser } from 'react-icons/fa';
 import { CgPill } from 'react-icons/cg';
+import { TbCalendarTime } from 'react-icons/tb';
+import { GiLabCoat } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
 
 function Navigation(props) {
    return (
       <>
          <div className={styles.navbody}>
-            <aside className={props.openMenu ? styles.active : ''}>
+            <aside
+               className={props.openMenu ? styles.active : styles.notActive}
+            >
                <div className={styles.top}>
                   <div className={styles.logo}>
                      <h2>Eirhub</h2>
@@ -30,15 +35,26 @@ function Navigation(props) {
                </div>
                <div className={styles.sidebar}>
                   <ul>
-                     <li>
-                        <span className={styles.icons}>
-                           <i>
-                              <MdSpaceDashboard />
-                           </i>
-                        </span>
-                        <h3>Dasboard</h3>
-                     </li>
-                     <li className={styles.active}>
+                     <Link to={'/dashboard'}>
+                        <li
+                           className={
+                              props.page === 'dashboard' ? styles.active : ''
+                           }
+                        >
+                           <span className={styles.icons}>
+                              <i>
+                                 <MdSpaceDashboard />
+                              </i>
+                           </span>
+                           <h3>Dasboard</h3>
+                        </li>
+                     </Link>
+
+                     <li
+                        className={
+                           props.page === 'profile' ? styles.active : ''
+                        }
+                     >
                         <span className={styles.icons}>
                            <i>
                               <FaUser />
@@ -54,7 +70,11 @@ function Navigation(props) {
                         </span>
                         <h3>Records</h3>
                      </li>
-                     <li>
+                     <li
+                        className={
+                           props.page === 'medications' ? styles.active : ''
+                        }
+                     >
                         <span className={styles.icons}>
                            <i>
                               <CgPill />
@@ -62,8 +82,38 @@ function Navigation(props) {
                         </span>
                         <h3>Medications</h3>
                      </li>
+                     <li
+                        className={
+                           props.page === 'scheduler' ? styles.active : ''
+                        }
+                     >
+                        <span className={styles.icons}>
+                           <i>
+                              <TbCalendarTime />
+                           </i>
+                        </span>
+                        <h3>Schedule</h3>
+                     </li>
+                     <Link to={'/find-a-doctor'}>
+                        <li
+                           className={
+                              props.page === 'finddoctor' ? styles.active : ''
+                           }
+                        >
+                           <span className={styles.icons}>
+                              <i>
+                                 <GiLabCoat />
+                              </i>
+                           </span>
+                           <h3>Find a Doctor</h3>
+                        </li>
+                     </Link>
 
-                     <li>
+                     <li
+                        className={
+                           props.page === 'messages' ? styles.active : ''
+                        }
+                     >
                         <span className={styles.icons}>
                            <i>
                               <TiMessages />
@@ -71,7 +121,11 @@ function Navigation(props) {
                         </span>
                         <h3>Messages</h3>
                      </li>
-                     <li>
+                     <li
+                        className={
+                           props.page === 'settings' ? styles.active : ''
+                        }
+                     >
                         <span className={styles.icons}>
                            <i>
                               <IoSettingsOutline />
@@ -79,7 +133,9 @@ function Navigation(props) {
                         </span>
                         <h3>Settings</h3>
                      </li>
-                     <li>
+                     <li
+                        className={props.page === 'logout' ? styles.active : ''}
+                     >
                         <span className={styles.icons}>
                            <i>
                               <ImExit />
