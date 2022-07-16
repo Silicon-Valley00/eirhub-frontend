@@ -1,7 +1,6 @@
 import http
 import os
 import string
-from Doctor.DoctorModel import Doctor
 from flask import Flask,jsonify,request
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_cors import CORS
@@ -20,6 +19,7 @@ from HealthDetails.HealthDetailsModel import HealthDetails
 # from HealthDetails.HealthDetailsModel import  HealthDetails
 # from Prescription.PrescriptionService import  Prescription
 # from Patient.PatientService import  Patient
+# from Doctor.DoctorModel import Doctor
 # from Report.ReportService import  Report
 # from Guardian.GuardianPersonService import  GuardianPerson
 
@@ -30,11 +30,11 @@ from HealthDetails.HealthDetailsModel import HealthDetails
 # for row in result:
 #    for inv in row.invoices:
 #       print (row.id, row.name, inv.invno, inv.amount)
-app = Flask(__name__)engine = create_engine( os.getenv('dbconnectionstring'))#establish a connection with the database
-Session = sessionmaker(bind=engine)
-session = Ses
+app = Flask(__name__)
 load_dotenv()
-sion()
+engine = create_engine( os.getenv('dbconnectionstring'))#establish a connection with the database
+Session = sessionmaker(bind=engine)
+session = Session()
 meta = MetaData()
 Base = declarative_base()
 app.register_blueprint(patients_route)
