@@ -3,7 +3,7 @@
 
 :root {
    --radius: 25px;
-   --height: 40px;
+   --height: 2rem;
    --white: #fff;
    --field-radius: 8px;
    --bleached-blue: #ecf3fe;
@@ -77,6 +77,7 @@ form {
    background-color: var(--white);
    height: 80vh;
    width: 70vw;
+   max-width: 900px;
    margin: auto;
    visibility: hidden;
    opacity: 0;
@@ -120,9 +121,13 @@ form {
    border: 1px solid grey;
    border-radius: var(--field-radius);
    display: flex;
-   justify-content: space-around;
+   justify-content: center;
    align-items: center;
-   padding: var(--text-padding);
+   /* padding: var(--text-padding); */
+   margin-bottom: 5px;
+}
+.inputField>i {
+   margin-top: 5px;
 }
 .inputField > * {
    padding: 0 5px;
@@ -138,7 +143,9 @@ h1 {
    color: var(--text-color);
    font-size: 2rem;
 }
-
+.loginForm p{
+   margin-bottom: 20rem;
+}
 .btn {
    margin: 0.5rem;
    background-color: var(--light-blue);
@@ -225,25 +232,34 @@ h1 {
    /* padding: var(--text-padding) 0; */
    border: none;
    outline: none;
-   width: 100%;
+   width: 86%;
    height: 100%;
    padding: auto;
 }
 
-a {
+p.link {
+   cursor: pointer;
+   display: inline;
    color: var(--light-blue);
 }
 
 /* Error */
 
-.inputField.error {
-   height: 40px;
-   font-size: 1rem;
+.inputError {
+   /* display: flex;
+   justify-content: space-around;
+   align-items: center; */
+   /* height: 20px; */
+   /* width: 20px; */
+   border:1px solid red;
+   /* font-size: 1rem; */
 }
-.inputField.error>i {
-   font-size: 1rem;
+.inputError>i {
+   margin-top: 5px;
+   /* font-size: 1rem; */
 }
 .error {
+   /* max-height: max-content; */
    height: 2rem;
    background: rgb(253, 252, 252);
    border: 1px solid red;
@@ -251,14 +267,15 @@ a {
    display: flex;
    justify-content: space-between;
    border-radius: 5px;
-   /* padding: 0 0.5rem; */
+   margin-top: -8%;
+   padding: 0 0.5rem;
 }
 
 .error p {
    color: red;
    font-weight: 600;
    width: 93%;
-   font-size: 0.9rem;
+   font-size: 0.9em;
    float: left;
    display: flex;
    justify-content: center;
@@ -288,18 +305,18 @@ a {
 
 
 .errorMessageBox {
-   height: 25px;
+   /* height: 25px; */
    width: 100%;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 12px;
+   font-size: 0.8em;
    color: red;
 }
 
 .errorMessageBox p {
    color: red;
-   width: 93%;
+   width: 100%;
 }
 
 .errorMessageBox i {
@@ -360,14 +377,28 @@ a {
 }
 
 @media only screen and (max-width: 1024px) {
+   #loginContainer {
+      font-size: 14px;
+   }
    .loginBody {
       width: 500px;
       max-width: 50vw;
       margin: auto;
    }
+   .error {
+      height: 2rem;
+      /* max-height: max-content; */
+   }
 }
 
 @media only screen and (max-width: 768px) {
+   *{
+      font-size: 15px;
+   }
+   #loginContainer{
+      font-size: 13px;
+      min-width: 300px;
+   }
    .loginBody {
       width: 100%;
       max-width: 350px;
@@ -378,9 +409,12 @@ a {
    }
 }
 @media only screen and (max-width: 320px) {
+   *{
+      font-size: 14px;
+   }
    #loginContainer {
-      font-size: 0.8rem;
-      height: 90vh;
+      font-size: 12px;
+      height: 80vh;
       width: 90vw;
    }
    .loginBody {
@@ -388,7 +422,7 @@ a {
    }
 
    .inputField {
-      height: 2rem;
+      height: var(--height);
    }
 }
 

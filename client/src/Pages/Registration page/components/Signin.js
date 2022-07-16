@@ -72,8 +72,8 @@ function Startpage(props) {
                            {hidePassword ? (
                               <AiOutlineEye />
                            ) : (
-                              <AiOutlineEyeInvisible />
-                           )}
+                                 <AiOutlineEyeInvisible />
+                              )}
                         </i>
                      </div>
                      <span className="passworderror">
@@ -85,8 +85,8 @@ function Startpage(props) {
                         value="Login"
                         className={
                            props.loginUserError === true ||
-                           props.loginPasswordError === true ||
-                           props.loginPasswordError === null
+                              props.loginPasswordError === true ||
+                              props.loginPasswordError === null
                               ? 'btn-inactive solid'
                               : 'btn solid'
                         }
@@ -177,8 +177,8 @@ function Startpage(props) {
                            {hidePasswordOne ? (
                               <AiOutlineEye />
                            ) : (
-                              <AiOutlineEyeInvisible />
-                           )}
+                                 <AiOutlineEyeInvisible />
+                              )}
                         </i>
                      </div>
                      <span className="ps1signup">
@@ -208,8 +208,8 @@ function Startpage(props) {
                            {hidePasswordTwo ? (
                               <AiOutlineEye />
                            ) : (
-                              <AiOutlineEyeInvisible />
-                           )}
+                                 <AiOutlineEyeInvisible />
+                              )}
                         </i>
                      </div>
                      <span className="ps2signup">
@@ -222,10 +222,10 @@ function Startpage(props) {
                         value="Register"
                         className={
                            props.registerUserError === true ||
-                           props.registerEmailError === true ||
-                           props.registerPasswordOneError === true ||
-                           props.registerPasswordTwoError === true ||
-                           props.registerPasswordTwoError === null
+                              props.registerEmailError === true ||
+                              props.registerPasswordOneError === true ||
+                              props.registerPasswordTwoError === true ||
+                              props.registerPasswordTwoError === null
                               ? 'btn-inactive solid'
                               : 'btn solid'
                         }

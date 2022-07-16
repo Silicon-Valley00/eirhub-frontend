@@ -65,7 +65,7 @@ function Login(props) {
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
-                  className="login-form"
+                  className="loginForm"
                >
                   <h1 className="title">Welcome Back</h1>
                   <p>Please enter your details</p>
@@ -73,7 +73,7 @@ function Login(props) {
                   <div
                      className={
                         loginEmailError
-                           ? `${loginStyles.inputField} ${loginStyles.error}`
+                           ? `${loginStyles.inputField} ${loginStyles.inputError}`
                            : loginStyles.inputField
                      }
                   >
@@ -106,7 +106,7 @@ function Login(props) {
                   <div
                      className={
                         loginPasswordError
-                           ? `${loginStyles.inputField} ${loginStyles.error}`
+                           ? `${loginStyles.inputField} ${loginStyles.inputError}`
                            : loginStyles.inputField
                      }
                   >
@@ -143,7 +143,7 @@ function Login(props) {
                      <p>{loginPasswordErrorMessage}</p>
                   </div>
                   <div className={loginStyles.passwordReset}>
-                     <a href="">Forgot password?</a>
+                     <p className={loginStyles.link} href="">Forgot password?</p>
                   </div>
                   <div className={loginStyles.submit}>
                      <button
@@ -187,9 +187,9 @@ function Login(props) {
                      <div className={loginStyles.signupToggle}>
                         <p>
                            New Here ?{' '}
-                           <a href="" onClick={() => handleModalSignup()}>
+                           <p className={loginStyles.link} href="" onClick={() => handleModalSignup()}>
                               Sign up
-                           </a>
+                           </p>
                         </p>
                      </div>
                   </div>
