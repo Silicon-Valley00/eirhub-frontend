@@ -89,69 +89,68 @@ API EndPoint Routes:
 
 #  Guardian Person     
 
- **Create Guardian Person**		
+**Create Guardian Person**		
 
-	POST : /guardian      
+POST : /guardian      
 
-    BODY PARAMS: 	
+BODY PARAMS: 	
+```
+{
+"first_name" : "Rexford ",
+"middle_name": "Guardian",
+"last_name" : "Machu",
+"person_image" : "https://img.com/7879",
+"user_email" : "guardianofgalaxy@gmail.com",
+"date_of_birth" : "2000-12-21",
+"house_address" : "House - 4",
+"phone_number" : "0206436575",
+"id_number" : "GHA-009494-233",
+"gender" : "Male"
+}
+```
 
-	```
-	{
-    "first_name" : "Rexford ",
-    "middle_name": "Guardian",
-    "last_name" : "Machu",
-    "person_image" : "https://img.com/7879",
-    "user_email" : "guardianofgalaxy@gmail.com",
-    "date_of_birth" : "2000-12-21",
-    "house_address" : "House - 4",
-    "phone_number" : "0206436575",
-    "id_number" : "GHA-009494-233",
-    "gender" : "Male"
+RESPONSE:
+```
+{
+    'status': true,
+    'msg':{
+        "date_of_birth": "Thu, 21 Dec 2000 00:00:00 GMT",
+        "first_name": "Rexford ",
+        "gender": "Male",
+        "id_number": "GHA-009494-233",
+        "last_name": "Machu",
+        "middle_name": "Guardian",
+        "person_image": "https://img.com/7879",
+        "phone_number": "0206436575",
+        "user_email": "guardianofgalaxy@gmail.com"
     }
-	```
-
-	RESPONSE:
-	```
-	{
-        'status': true,
-        'msg':{
-            "date_of_birth": "Thu, 21 Dec 2000 00:00:00 GMT",
-            "first_name": "Rexford ",
-            "gender": "Male",
-            "id_number": "GHA-009494-233",
-            "last_name": "Machu",
-            "middle_name": "Guardian",
-            "person_image": "https://img.com/7879",
-            "phone_number": "0206436575",
-            "user_email": "guardianofgalaxy@gmail.com"
-        }
-    }
-	```     
+}
+```     
 
 
 **Get All Guardian Persons**	        	
 
-    GET : /guardian      
+GET : /guardian      
 
-    BODY PARAMS: None       
+BODY PARAMS: None       
 
-	RESPONSE:
-	```
-	{
-    "msg": [
-        {
-            "date_of_birth": "Thu, 21 Dec 2000 00:00:00 GMT",
-            "first_name": "Rexford ",
-            "gender": "Male",
-            "id_number": "GHA-009494-233",
-            "last_name": "Machu",
-            "middle_name": "Guardian",
-            "person_image": "https://img.com/7879",
-            "phone_number": "0206436575",
-            "user_email": "guardianofgalaxy@gmail.com"
-        }
-    ],
-    "status": true
+RESPONSE:
+```
+{
+"msg": [
+    {
+        "date_of_birth": "Thu, 21 Dec 2000 00:00:00 GMT",
+        "first_name": "Rexford ",
+        "gender": "Male",
+        "id_number": "GHA-009494-233",
+        "last_name": "Machu",
+        "middle_name": "Guardian",
+        "person_image": "https://img.com/7879",
+        "phone_number": "0206436575",
+        "user_email": "guardianofgalaxy@gmail.com"
+    }
+],
+"status": true
 }
-    ```
+```
 
