@@ -31,10 +31,10 @@ from HealthDetails.HealthDetailsModel import HealthDetails
 #    for inv in row.invoices:
 #       print (row.id, row.name, inv.invno, inv.amount)
 app = Flask(__name__)
+load_dotenv()
 engine = create_engine( os.getenv('dbconnectionstring'))#establish a connection with the database
 Session = sessionmaker(bind=engine)
 session = Session()
-load_dotenv()
 meta = MetaData()
 Base = declarative_base()
 app.register_blueprint(patients_route)
