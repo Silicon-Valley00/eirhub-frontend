@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 from Doctor.DoctorService import doctorlogin
 from Doctor import DoctorModel
 from Patient.PatientService import patients_route
+from Guardian.GuardianPersonService import guardian_route
 from HealthDetails.HealthDetailsModel import HealthDetails
 # from Hospital.HospitalService import Hospital
 # from HealthDetails.HealthDetailsModel import  HealthDetails
@@ -38,6 +39,7 @@ session = Session()
 meta = MetaData()
 Base = declarative_base()
 app.register_blueprint(patients_route)
+app.register_blueprint(guardian_route)
 
 # Database Connection not needed right now. Commented out for now
 try:
@@ -192,25 +194,6 @@ def userLogin():
 #     "license_number":"80034903"
 # }
 
-
-# @app.route("/logindoctor",methods=['POST'])
-# def doctorLogin():
-#     pass
-
-
-
-# @app.route("/loginpatient",methods=['POST'])
-# def patientLogin():
-#     pass
-
-# @app.route("/registerdoctor",methods=['POST'])
-# def registerDoctor():
-#     pass
-# @app.route("/registerpatient",methods=['POST'])
-# def userLogin():
-#     req = request.json
-#     if request.method == "POST":
-#         pass
 
 
 

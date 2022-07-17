@@ -19,10 +19,7 @@ class GuardianPerson(Base):
     house_address = Column("house_address",String(45))
     phone_number = Column("phone_number",String(50))
     id_number = Column("id_number",String(45))
-    gender = Column("gender",String(45))
-
-    patient = relationship("Patient") 
-    
+    gender = Column("gender",String(45))    
     
 
     def __init__(self,first_name,middle_name,last_name,person_image,user_email,date_of_birth,house_address,phone_number,id_number,gender):
