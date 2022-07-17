@@ -25,7 +25,7 @@ function Signup(props) {
       <div className={styles.signupBody}>
          <div
             id={styles.signupContent}
-            className={props.modalSignup ? styles.active : ''}
+            // className={props.modalSignup ? styles.active : ''}
          >
             <div
                className={styles.closeModal}
