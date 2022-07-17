@@ -65,10 +65,10 @@ function Login(props) {
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
-                  className="loginForm"
+                  className={loginStyles.loginForm}
                >
-                  <h1 className="title">Welcome Back</h1>
-                  <p>Please enter your details</p>
+                  <h1 className={loginStyles.title}>Welcome Back</h1>
+                  <p className={loginStyles.info}>Please enter your details</p>
                   <h3>Email</h3>
                   <div
                      className={
@@ -143,7 +143,7 @@ function Login(props) {
                      <p>{loginPasswordErrorMessage}</p>
                   </div>
                   <div className={loginStyles.passwordReset}>
-                     <p className={loginStyles.link} href="">Forgot password?</p>
+                     <p className={loginStyles.link}>Forgot password?</p>
                   </div>
                   <div className={loginStyles.submit}>
                      <button
@@ -181,13 +181,19 @@ function Login(props) {
                                  : loginStyles.loader
                            }
                         >
-                           <BiLoaderAlt />
+                           <i>
+                              <BiLoaderAlt />
+                           </i>
                         </div>
                      </button>
                      <div className={loginStyles.signupToggle}>
                         <p>
                            New Here ?{' '}
-                           <p className={loginStyles.link} href="" onClick={() => handleModalSignup()}>
+                           <p
+                              className={loginStyles.link}
+                              href=""
+                              onClick={() => handleModalSignup()}
+                           >
                               Sign up
                            </p>
                         </p>

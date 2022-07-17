@@ -1,6 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@400;600&display=swap'); */
 
-
 :root {
    --radius: 25px;
    --height: 2rem;
@@ -23,12 +22,9 @@ body {
    box-sizing: border-box;
 }
 
-
 form {
    color: var(--dark-blue);
 }
-
-
 
 .closeModal {
    position: absolute;
@@ -52,8 +48,6 @@ form {
    font-weight: 900;
    font-size: 20px;
 }
-
-
 
 #loginSection {
    position: relative;
@@ -97,18 +91,40 @@ form {
    padding: var(--padding);
    /* align-items: center; */
    /* margin: auto; */
-   height: 90%;
+   height: 100%;
    width: 60%;
 }
 
-.loginForm > * {
+.loginForm {
    margin: 10px auto;
    width: 100%;
+   height: 70%;
+}
+.loginForm .title {
+   font-size: 1.5rem;
+   font-weight: 600;
+}
+.loginForm .info {
+   color: #678696;
+   font-size: 0.7rem;
+}
+.loginForm h3 {
+   color: #0d3f58;
+   width: 100%;
+   font-size: 0.8rem;
+   font-weight: 650;
+   margin-top: 0.8rem;
 }
 .passwordReset {
    color: var(--light-blue);
    font-size: 0.7rem;
    text-align: right;
+   /* margin-top: -1rem; */
+}
+p.link {
+   cursor: pointer;
+   display: inline;
+   color: var(--light-blue);
 }
 
 .signupToggle {
@@ -118,16 +134,16 @@ form {
 
 .inputField {
    height: var(--height);
-   border: 1px solid grey;
+   border: 1px solid #678696;
    border-radius: var(--field-radius);
    display: flex;
    justify-content: center;
    align-items: center;
    /* padding: var(--text-padding); */
-   margin-bottom: 5px;
 }
-.inputField>i {
+.inputField > i {
    margin-top: 5px;
+   color: #678696;
 }
 .inputField > * {
    padding: 0 5px;
@@ -138,14 +154,9 @@ form {
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   margin-top: 1rem;
 }
-h1 {
-   color: var(--text-color);
-   font-size: 2rem;
-}
-.loginForm p{
-   margin-bottom: 20rem;
-}
+
 .btn {
    margin: 0.5rem;
    background-color: var(--light-blue);
@@ -167,7 +178,7 @@ h1 {
    cursor: pointer;
 }
 .loader {
-   width: 20%;
+   width: 25%;
    height: 100%;
    border-radius: 4rem;
    position: absolute;
@@ -178,7 +189,7 @@ h1 {
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 120%;
+   font-size: 100%;
    visibility: hidden;
    opacity: 0;
    transition: visibility 1000ms ease-in-out;
@@ -187,8 +198,12 @@ h1 {
 .btnActive {
    background: #0d3f58;
    transition: color 1000ms ease-in-out;
+   cursor: progress;
 }
-
+.btnActive p {
+   margin-right: 15%;
+   transition: 500ms ease-in-out;
+}
 .inactive .loader.btnActive {
    visibility: hidden;
    opacity: 0;
@@ -204,6 +219,9 @@ h1 {
 }
 .loader.btnActive i {
    animation: spin 1.3s ease-in-out infinite;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 @keyframes spin {
    100% {
@@ -235,12 +253,7 @@ h1 {
    width: 86%;
    height: 100%;
    padding: auto;
-}
-
-p.link {
-   cursor: pointer;
-   display: inline;
-   color: var(--light-blue);
+   color: #678696;
 }
 
 /* Error */
@@ -251,10 +264,10 @@ p.link {
    align-items: center; */
    /* height: 20px; */
    /* width: 20px; */
-   border:1px solid red;
+   border: 1px solid red;
    /* font-size: 1rem; */
 }
-.inputError>i {
+.inputError > i {
    margin-top: 5px;
    /* font-size: 1rem; */
 }
@@ -303,9 +316,8 @@ p.link {
    display: none;
 }
 
-
 .errorMessageBox {
-   /* height: 25px; */
+   height: 1rem;
    width: 100%;
    display: flex;
    align-items: center;
@@ -330,7 +342,7 @@ p.link {
 
 .noErrorMessageBox {
    width: 100%;
-   height: 25px;
+   height: 1rem;
 }
 
 .noErrorMessageBox i {
@@ -340,8 +352,6 @@ p.link {
 .noErrorMessageBox p {
    display: none;
 }
-
-
 
 .rightSide {
    overflow: none;
@@ -380,10 +390,17 @@ p.link {
    #loginContainer {
       font-size: 14px;
    }
+   .rightSide > p {
+      font-size: 1.7rem;
+      padding: 0.8rem;
+   }
    .loginBody {
       width: 500px;
       max-width: 50vw;
       margin: auto;
+   }
+   .btn {
+      width: 60%;
    }
    .error {
       height: 2rem;
@@ -392,10 +409,10 @@ p.link {
 }
 
 @media only screen and (max-width: 768px) {
-   *{
-      font-size: 15px;
+   .error {
+      margin-top: -1rem;
    }
-   #loginContainer{
+   #loginContainer {
       font-size: 13px;
       min-width: 300px;
    }
@@ -404,12 +421,15 @@ p.link {
       max-width: 350px;
       padding: 0;
    }
+   .loader {
+      width: 15%;
+   }
    .rightSide {
       display: none;
    }
 }
 @media only screen and (max-width: 320px) {
-   *{
+   * {
       font-size: 14px;
    }
    #loginContainer {
@@ -431,5 +451,3 @@ i.closeIcon {
    color: red;
    cursor: pointer;
 }
-
-
