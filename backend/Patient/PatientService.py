@@ -14,7 +14,6 @@ def getPatients():
     # session.commit()
     # session.close()
     patients = session.query(Patient).all()
-<<<<<<< Updated upstream
     for patient in patients:
         return ({
             "id": patient.idPatient,
@@ -35,8 +34,3 @@ def getPatientById(id):
             "Nationality": patient.nationality
         })
 
-=======
-    print(type(patients))
-
-    return json.dumps({"patients": patients})
->>>>>>> Stashed changes
