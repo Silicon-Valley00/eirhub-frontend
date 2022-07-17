@@ -4,6 +4,7 @@ from Patient.PatientModel import Patient
 
 patients_route = Blueprint("patients_route",__name__)
 
+#Get all patients
 @patients_route.route("/patient",methods = ['GET'])
 def getPatients():
     from app import session
@@ -14,14 +15,14 @@ def getPatients():
     # session.commit()
     # session.close()
     patients = session.query(Patient).all()
-    for patient in patients:
-        return ({
+    Json_patients = [{
             "id": patient.idPatient,
             "First name": patient.first_name,
             "Last_name": patient.last_name,
             "email": patient.user_email,
             "Nationality": patient.nationality
-        })
+        } for patient in patients ]
+    return jsonify(Json_patients)
 
 @patients_route.route("/patient/<id>",methods = ['GET'])
 def getPatientById(id):
