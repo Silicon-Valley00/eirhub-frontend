@@ -267,6 +267,24 @@ RESPONSE:
     "status": true
     }
 	```         
+   
+- **Get All Patients**
 
+GET : /patient
 
+BODY PARAMS: None
 
+RESPONSE:
+```
+{
+        "Msg": {
+            "First_name": "Jerry",
+            "Last_name": "Jackman",
+            "Middle_name": "Leo",
+            "Nationality": "Ghanaian",
+            "email": "Jackman@gmail.com",
+            "id": 23
+        },
+        "status": true
+    }
+```    
