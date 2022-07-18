@@ -88,3 +88,93 @@ def doctorLogin():
                 ),200 #Check Status Code for wrong login
         else:
             return 'Error: Content-Type Error',400
+
+#Get All Doctors 
+@doctor_route.route("/doctor/",methods = ['GET'])
+def getDoctors():
+    from app import session
+    try: 
+        doctors = session.query(Doctor).all()
+        returnInfo = []
+        for doctor in doctors:
+            returnInfo.append((
+                {
+                    'first_name': doctor.first_name,'middle_name': doctor.middle_name,'last_name': doctor.last_name,
+                    'user_email': doctor.user_email,'person_image': doctor.person_image,'date_of_birth': doctor.person_image,'house_address': doctor.house_address,
+                    'doctor_ratings':doctor.doctor_ratings,'doctor_specialties': doctor.doctor_specialties,'license_number': doctor.license_number,
+                    'gender':doctor.gender,'hospital_code':doctor.hospital_code,
+            }
+            ))
+        return ({
+            'status': True,
+            'msg': returnInfo
+        }),200
+    except Exception as e:
+        return ("Connection Error: User not recorded : %s",e),400
+
+
+#Update Doctors By Id Method.
+@doctor_route.route("/doctor/<doctorId>/",methods = ['PUT'])
+def updateDoctorById(doctorId):
+    from app import session
+    req = request.json
+    try: 
+        session.query(Doctor).filter(Doctor.idDoctor == int(doctorId)).update(
+             {
+                Doctor.first_name:req["frist_name"],
+                Doctor.middle_name :req["middle_name"],
+                Doctor.last_name :req["last_name"],
+                Doctor.person_image :req["person_image"],
+                Doctor.user_email :req["user_email"],
+                Doctor.date_of_birth :req["date_of_birth"],
+                Doctor.house_address :req["house_address"],
+                Doctor.license_number :req["license_number"],
+                Doctor.doctor_ratings :req["doctor_ratings"],
+                Doctor.doctor_specialties :req["doctor_specialities"],
+                Doctor.gender :req["gender"],
+                Doctor.hospital_code :req["hospital_code"]
+            }
+             , synchronize_session = False
+             )
+        session.commit()
+        doctorInfo = session.query(Doctor).get(int(doctorId))
+        returnInfo = {
+            'first_name': doctorInfo.first_name,'middle_name': doctorInfo.middle_name,'last_name': doctorInfo.last_name,
+            'user_email': doctorInfo.user_email,'person_image': doctorInfo.person_image,'date_of_birth': doctorInfo.person_image,'house_address': doctorInfo.house_address,
+            'doctor_ratings':doctorInfo.doctor_ratings,'doctor_specialties': doctorInfo.doctor_specialties,'license_number': doctorInfo.license_number,
+            'gender':doctorInfo.gender,'hospital_code':doctorInfo.hospital_code,
+            }
+        return ({
+            'status': True,
+            'msg': returnInfo
+        }),200
+    except Exception as e:
+        return ({
+            'status':False,
+            'msg': ("Connection Error: User not updated : %s",e)
+        }),400
+
+
+# Get Doctor by doctorId
+@doctor_route.route('/doctor/<doctorId>/', methods = ['GET'])
+def getDoctorById(doctorId):
+    from app import session
+    try:
+        doctor = session.query(Doctor).get(int(doctorId))
+        returnInfo = []
+        returnInfo.append((
+            {
+                'first_name': doctor.first_name,'middle_name': doctor.middle_name,'last_name': doctor.last_name,
+                'user_email': doctor.user_email,'person_image': doctor.person_image,'date_of_birth': doctor.person_image,'house_address': doctor.house_address,
+                'doctor_ratings':doctor.doctor_ratings,'doctor_specialties': doctor.doctor_specialties,'license_number': doctor.license_number,
+                'gender':doctor.gender,'hospital_code':doctor.hospital_code,
+        }
+        ))
+        return ({
+            'status': True,
+            'msg': returnInfo
+        }),200
+    except Exception as e:
+        return ("Connection Error: User not recorded : %s",e),400
+
+        
