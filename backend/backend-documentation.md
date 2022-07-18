@@ -21,8 +21,8 @@ check_password_hash(a,'1234') #confirms if the hash and the word are equal and r
 		- 
 
 
-[Doctor](#Doctor )      
-[Guardian](#Guardian-Person )       
+[Doctor](#Doctor )           
+[Guardian](#Guardian-Person )             
 [Patient](#Patient )
 
 
@@ -277,11 +277,11 @@ BODY PARAMS: None
 RESPONSE:
 ```
 {
-        "Msg": {
-            "First_name": "Jerry",
-            "Last_name": "Jackman",
-            "Middle_name": "Leo",
-            "Nationality": "Ghanaian",
+        "msg": {
+            "first_name": "Jerry",
+            "last_name": "Jackman",
+            "middle_name": "Leo",
+            "nationality": "Ghanaian",
             "email": "Jackman@gmail.com",
             "id": 23
         },
