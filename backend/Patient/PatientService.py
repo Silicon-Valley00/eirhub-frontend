@@ -76,11 +76,13 @@ def createPatient():
             id_number = req["id_number"]
             nationality = req["nationality"]
             gender = req["gender"]
+            doctor_id = req["doctor_id"]
+            guardian_id = req["guardian_id"]
             #Hash Password
             passwordHash = generate_password_hash(password)
             newPatient = Patient(first_name=first_name,middle_name=middle_name,last_name=last_name,user_email=email,user_password=passwordHash,
             person_image=person_image,date_of_birth=date_of_birth,house_address=house_address,phone_number=phone_number,id_number=id_number,
-            gender=gender,nationality=nationality)
+            gender=gender,nationality=nationality,guardian_id=guardian_id,doctor_id=doctor_id)
             try: 
                 session.add(newPatient)
                 session.commit()
@@ -99,7 +101,9 @@ def createPatient():
                         'date_of_birth':patientInfo.date_of_birth,
                         'phone_number':patientInfo.phone_number,
                         'id_number':patientInfo.id_number,
-                        'gender':patientInfo.gender
+                        'gender':patientInfo.gender,
+                        'guardian_id': patientInfo.idGuardian,
+                        'doctor_id': patientInfo.idDoctor
 
                     },
                     'status':True
@@ -121,14 +125,12 @@ def patientLogin():
     #Check Email 
         try:
             idPatient = session.query(Patient.idPatient).filter(Patient.user_email == email).first()
-            print(idPatient)
             if(idPatient):
                 patientInfo = session.query(Patient).get(idPatient)
                 session.commit()
                 #Check Password after user email has been verified
                 try :
                     userDbPassword =  str(patientInfo.user_password)
-                    print(userDbPassword,password,check_password_hash(userDbPassword,password))
                     if(check_password_hash(userDbPassword,password)):
                         return ({
                     'msg':{
@@ -139,7 +141,9 @@ def patientLogin():
                         'date_of_birth':patientInfo.date_of_birth,
                         'phone_number':patientInfo.phone_number,
                         'id_number':patientInfo.id_number,
-                        'gender':patientInfo.gender
+                        'gender':patientInfo.gender,
+                        'guardian_id': patientInfo.idGuardian,
+                        'doctor_id': patientInfo.idDoctor
 
                     },
                     'status':True

@@ -221,13 +221,15 @@ RESPONSE:
 	{
     "msg": {
         "date_of_birth": "Tue, 01 Dec 2009 00:00:00 GMT",
+        "doctor_id": 20,
+        "email": "baddest69@st.knust.edu.gh",
         "first_name": "Rexford",
         "gender": "Male",
+        "guardian_id": 20,
         "id_number": "GHA-08008238HJJ",
         "last_name": "Machu",
         "middle_name": "Patient",
-        "phone_number": "+233206436575",
-        "user_email": "baddest69@st.knust.edu.gh"
+        "phone_number": "+233206436575"
     },
     "status": true
     }
@@ -251,7 +253,9 @@ RESPONSE:
     "gender":"Male",
     "phone_number" : "+233206436575",
     "id_number": "GHA-08008238HJJ",
-    "nationality":"Ghanaian"
+    "nationality":"Ghanaian",
+    "doctor_id": 20,
+    "guardian_id": 20
     }
 	```
 
@@ -259,15 +263,20 @@ RESPONSE:
 	```
 	{
     "msg": {
+        "date_of_birth": "Tue, 01 Dec 2009 00:00:00 GMT",
+        "doctor_id": 20,
+        "email": "baddest69@st.knust.edu.gh",
         "first_name": "Rexford",
+        "gender": "Male",
+        "guardian_id": 20,
+        "id_number": "GHA-08008238HJJ",
         "last_name": "Machu",
-        "license_number": "80034903",
-        "middle_name": "G.O.A.T"
+        "middle_name": "Patient",
+        "phone_number": "+233206436575"
     },
     "status": true
     }
-	```         
-   
+	```          
 - **Get All Patients**
 
 GET : /patient

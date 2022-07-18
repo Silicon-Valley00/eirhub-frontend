@@ -5,6 +5,8 @@ from sqlalchemy.orm import declarative_base,relationship
 # from app import Base,session
 # from HealthDetails.HealthDetailsModel import HealthDetails
 from Guardian.GuardianPersonModel import GuardianPerson
+from Doctor.DoctorModel import Doctor
+
 
 
 Base = declarative_base()
@@ -15,7 +17,7 @@ class Patient(Base):
     __tablename__ = 'Patient'
     idPatient = Column(Integer,primary_key= True,unique = True,autoincrement=True,nullable = False)
     idGuardian = Column(Integer,ForeignKey(GuardianPerson.idGuardian))
-    idDoctor = Column(Integer,)
+    idDoctor = Column(Integer,ForeignKey(Doctor.idDoctor))
     first_name = Column("first_name",String(60))
     middle_name = Column("middle_name",String(60))
     last_name = Column("last_name",String(60))
@@ -33,7 +35,7 @@ class Patient(Base):
    
    
     
-    def __init__(self,first_name,middle_name,last_name,person_image,user_email,user_password,date_of_birth,house_address,phone_number,id_number,gender,nationality):
+    def __init__(self,first_name,middle_name,last_name,person_image,user_email,user_password,date_of_birth,house_address,phone_number,id_number,gender,nationality,guardian_id = None,doctor_id = None):
         self.first_name = first_name
         self.middle_name = middle_name
         self.last_name = last_name
@@ -46,5 +48,7 @@ class Patient(Base):
         self.id_number = id_number
         self.gender = gender
         self.nationality = nationality
+        self.idDoctor = doctor_id
+        self.idGuardian = guardian_id
 
  
