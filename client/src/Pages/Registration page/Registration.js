@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import DoctorSignup from './components/DoctorSignup'
+// import DoctorSignup from './components/DoctorSignup'
 import axios from 'axios';
 
 // Database configuration
@@ -298,7 +298,7 @@ function Registration(props) {
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
-         <DoctorSignup
+         {/* <DoctorSignup
             modalSignup={props.modalSignup}
             handleModalLogin={props.handleModalLogin}
             handleModalsClose={props.handleModalsClose}
@@ -324,7 +324,7 @@ function Registration(props) {
             handleRegisterHospitalCode={handleRegisterHospitalCode}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-         />
+         /> */}
       </>
    );
 }

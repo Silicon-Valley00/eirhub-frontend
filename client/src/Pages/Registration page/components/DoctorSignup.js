@@ -10,7 +10,6 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import hospital from '../../../assets/hospital.svg'
 
 function DoctorSignup(props) {
-    console.log(props)
     // handles button changes
     const [btnValue, setBtnValue] = useState('Create Account');
     const [btnActive, setBtnActive] = useState(false);
@@ -28,7 +27,7 @@ function DoctorSignup(props) {
             <div
                 id={styles.signupContent}
                 // className={styles.active}
-                className={props.modalSignup ? styles.active : ''}
+                // className={props.modalSignup ? styles.active : ''}
             >
                 <div
                     className={styles.closeModal}
@@ -181,7 +180,7 @@ function DoctorSignup(props) {
                                     }
                                 >
                                     <i>
-                                        <img src={hospital} alt=""/>
+                                        <img src={hospital} id={styles.hospital} alt=""/>
                                     </i>
                                     <input
                                         type="text"
