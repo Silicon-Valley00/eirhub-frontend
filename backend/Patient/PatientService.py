@@ -19,14 +19,14 @@ def getPatients():
         patients = session.query(Patient).all()
         Json_patients = [{
             "status": True,
-            "Msg": {
+            "msg": {
 
                 "id": patient.idPatient,
-                "First_name": patient.first_name,
-                "Middle_name": patient.middle_name,
-                "Last_name": patient.last_name,
+                "first_name": patient.first_name,
+                "middle_name": patient.middle_name,
+                "last_name": patient.last_name,
                 "email": patient.user_email,
-                "Nationality": patient.nationality
+                "nationality": patient.nationality
             }
              
             } for patient in patients ]
@@ -39,11 +39,11 @@ def getPatientById(id):
     from app import session
     patient = session.query(Patient).get(id)
     return ({
-            "First_name": patient.first_name,
-            "Middle_name": patient.middle_name,
-            "Last_name": patient.last_name,
+            "first_name": patient.first_name,
+            "middle_name": patient.middle_name,
+            "last_name": patient.last_name,
             "email": patient.user_email,
-            "Nationality": patient.nationality
+            "nationality": patient.nationality
         })
 
 
@@ -95,7 +95,7 @@ def createPatient():
                         'first_name':patientInfo.first_name,
                         'middle_name':patientInfo.middle_name,
                         'last_name':patientInfo.last_name,
-                        'user_email':patientInfo.user_email,
+                        'email':patientInfo.user_email,
                         'date_of_birth':patientInfo.date_of_birth,
                         'phone_number':patientInfo.phone_number,
                         'id_number':patientInfo.id_number,
@@ -135,7 +135,7 @@ def patientLogin():
                         'first_name':patientInfo.first_name,
                         'middle_name':patientInfo.middle_name,
                         'last_name':patientInfo.last_name,
-                        'user_email':patientInfo.user_email,
+                        'email':patientInfo.user_email,
                         'date_of_birth':patientInfo.date_of_birth,
                         'phone_number':patientInfo.phone_number,
                         'id_number':patientInfo.id_number,

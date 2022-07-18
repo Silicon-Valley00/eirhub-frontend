@@ -41,7 +41,7 @@ def createGuardian():
                     'middle_name':guardianDetail.middle_name,
                     'last_name':guardianDetail.last_name,
                     'person_image':guardianDetail.person_image,
-                    'user_email':guardianDetail.user_email,
+                    'email':guardianDetail.user_email,
                     'date_of_birth':guardianDetail.date_of_birth,
                     'phone_number':guardianDetail.phone_number,
                     'id_number':guardianDetail.id_number,
