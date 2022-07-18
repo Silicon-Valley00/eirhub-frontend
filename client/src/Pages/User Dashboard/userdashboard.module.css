@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .userbody {
    width: 100vw;
    height: 100vh;
    background-color: var(#f6f6f9);
    overflow: hidden;
    overflow-x: hidden;
+   font-family: 'Poppins', sans-serif;
+}
+* {
+   font-family: 'Poppins', sans-serif;
 }
 :root {
    --white: #ffffff;

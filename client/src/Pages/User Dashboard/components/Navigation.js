@@ -70,18 +70,20 @@ function Navigation(props) {
                         </span>
                         <h3>Records</h3>
                      </li>
-                     <li
-                        className={
-                           props.page === 'medications' ? styles.active : ''
-                        }
-                     >
-                        <span className={styles.icons}>
-                           <i>
-                              <CgPill />
-                           </i>
-                        </span>
-                        <h3>Medications</h3>
-                     </li>
+                     <Link to={'/medications'}>
+                        <li
+                           className={
+                              props.page === 'medications' ? styles.active : ''
+                           }
+                        >
+                           <span className={styles.icons}>
+                              <i>
+                                 <CgPill />
+                              </i>
+                           </span>
+                           <h3>Medications</h3>
+                        </li>
+                     </Link>
                      <li
                         className={
                            props.page === 'scheduler' ? styles.active : ''

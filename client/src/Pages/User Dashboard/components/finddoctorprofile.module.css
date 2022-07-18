@@ -33,15 +33,16 @@
 }
 .profileDetails {
    text-align: center;
-   color: var(--midcol);
 }
 .profileDetails h3 {
    font-weight: 700;
    font-size: 1.2rem;
+   color: var(--deepcol);
 }
 .profileDetails p {
    font-weight: 500;
    font-size: 1rem;
+   color: var(--midcol);
 }
 .profileInfo {
    margin-top: 0.5rem;
@@ -49,39 +50,42 @@
 }
 .profileRatings {
    margin-bottom: 1rem;
-   color: var(--midcol);
 }
 .profileRatings h3 {
    font-weight: 700;
    font-size: 1.2rem;
+   color: var(--deepcol);
 }
 .profileRatings p {
    font-weight: 500;
    font-size: 1rem;
+   color: var(--midcol);
 }
 .profileSpecialities {
    margin-bottom: 1rem;
-   color: var(--midcol);
 }
 .profileSpecialities h3 {
    font-weight: 700;
    font-size: 1.2rem;
+   color: var(--deepcol);
 }
 .profileSpecialities p {
    font-weight: 500;
    font-size: 1rem;
+   color: var(--midcol);
 }
 .profileHospital {
    margin-bottom: 1rem;
-   color: var(--midcol);
 }
 .profileHospital h3 {
    font-weight: 700;
    font-size: 1.2rem;
+   color: var(--deepcol);
 }
 .profileHospital p {
    font-weight: 500;
    font-size: 1rem;
+   color: var(--midcol);
 }
 .profileButton {
    display: flex;

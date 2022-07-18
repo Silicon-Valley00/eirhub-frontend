@@ -1,12 +1,15 @@
 import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import UserDashboard from './Pages/User Dashboard/UserDashboard';
 import LandingPage from './Pages/Landing page/LandingPage';
+import ServicesPage from './Pages/Landing page/ServicesPage';
+
+import UserDashboard from './Pages/User Dashboard/UserDashboard';
 import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
 import DashboardNotificationAlerts from './Pages/User Dashboard/components/DashBoardNotificationAlerts.js';
 import FindDoctor from './Pages/User Dashboard/FindDoctor/FindDoctor';
 import FindDoctorProfile from './Pages/User Dashboard/components/FindDoctorProfile.js';
-import ServicesPage from './Pages/Landing page/ServicesPage';
+import Medications from './Pages/User Dashboard/Medications/Medications';
+import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
 
 function App() {
    return (
@@ -28,6 +31,17 @@ function App() {
                   parent={<Dashboard />}
                   child={<DashboardNotificationAlerts />}
                   page={'dashboard'}
+               />
+            }
+         />
+         <Route
+            path="/medications"
+            exact
+            element={
+               <UserDashboard
+                  parent={<Medications />}
+                  child={<MedicationForm />}
+                  page={'medications'}
                />
             }
          />
