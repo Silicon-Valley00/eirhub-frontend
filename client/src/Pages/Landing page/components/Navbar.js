@@ -4,14 +4,23 @@ import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
 import { NavLink } from 'react-router-dom';
-import Dropdown from './Dropdown';
+import LoginDropdown from './LoginDropdown';
+import SignUpDropdown from './SignUpDropdown';
 
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
-   const [click, setClick] = useState(false);
+   const [loginClick, setLoginClick] = useState(false);
+   const [signUpClick, setSignUpClick] = useState(false);
 
    const showSidebar = () => setSidebar(!sidebar);
-   const handleClick = () => setClick(!click);
+   const handleSignUpClick = () => {
+      setSignUpClick(!signUpClick);
+      setLoginClick(false);
+   };
+   const handleLoginClick = () => {
+      setLoginClick(!loginClick);
+      setSignUpClick(false);
+   };
 
    return (
       <nav id={styles.nav}>
@@ -70,11 +79,19 @@ const Navbar = (props) => {
                </ul>
                <div id={styles.signup}>
                   <ul className={styles.signup_list}>
-                     <li className={styles.signup_item} onClick={handleClick}>
+                     <li
+                        className={styles.signup_item}
+                        onClick={handleSignUpClick}
+                     >
                         Sign Up
                      </li>
                      <li id={styles.separator}>|</li>
-                     <li className={styles.signup_item}>Login</li>
+                     <li
+                        className={styles.signup_item}
+                        onClick={handleLoginClick}
+                     >
+                        Login
+                     </li>
 
                      {/* <li
                         className={styles.signup_item}
@@ -90,7 +107,8 @@ const Navbar = (props) => {
                         Login
                      </li> */}
                   </ul>
-                  {click && <Dropdown clicked={click} />}
+                  {loginClick && <LoginDropdown />}
+                  {signUpClick && <SignUpDropdown />}
                </div>
             </div>
          </div>

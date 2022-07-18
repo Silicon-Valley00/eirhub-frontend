@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './dropdown.module.css';
 import { Link } from 'react-router-dom';
 
-const Dropdown = ({ clicked }) => {
+const LoginDropdown = ({ clicked }) => {
    return (
       <>
          <div className={styles.main}>
@@ -22,4 +22,4 @@ const Dropdown = ({ clicked }) => {
    );
 };
 
-export default Dropdown;
+export default LoginDropdown;
