@@ -28,7 +28,7 @@ def getPatients():
                 "email": patient.user_email,
                 "nationality": patient.nationality
             }
-             
+            
             } for patient in patients ]
         return jsonify(Json_patients),200
     except Exception as e:
