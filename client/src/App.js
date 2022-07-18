@@ -26,7 +26,6 @@ function App() {
          <Route path="/our-services" exact element={<ServicesPage />} />
 
          {/*Use if Page doesnt exist */}
-         <Route path="/error" exact element={<PageNotFound />} />
       </Routes>
    );
 }
