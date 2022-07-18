@@ -7,6 +7,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import ServicesPage from './Pages/Landing page/ServicesPage';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import HowItWorks from './Pages/HowItWorks';
 AOS.init();
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
          />
          {/* Route for our services  */}
          <Route path="/our-services" exact element={<ServicesPage />} />
+         {/* Route for How it works page */}
+         <Route path="/how-it-works" exact element={<HowItWorks />} />
       </Routes>
    );
 }

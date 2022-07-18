@@ -4,11 +4,14 @@ import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
 import { NavLink } from 'react-router-dom';
+import Dropdown from './Dropdown';
 
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
+   const [click, setClick] = useState(false);
 
    const showSidebar = () => setSidebar(!sidebar);
+   const handleClick = () => setClick(!click);
 
    return (
       <nav id={styles.nav}>
@@ -41,7 +44,7 @@ const Navbar = (props) => {
                />
             </div>
             <div className={styles.left}>
-               {/* REVIEW: activa navlink is not working. */}
+               {/* REVIEW: active navlink is not working. */}
                <ul id={styles.nav_links}>
                   <NavLink
                      to="/"
@@ -67,7 +70,13 @@ const Navbar = (props) => {
                </ul>
                <div id={styles.signup}>
                   <ul className={styles.signup_list}>
-                     <li
+                     <li className={styles.signup_item} onClick={handleClick}>
+                        Sign Up
+                     </li>
+                     <li id={styles.separator}>|</li>
+                     <li className={styles.signup_item}>Login</li>
+
+                     {/* <li
                         className={styles.signup_item}
                         onClick={() => props.handleModalSignup()}
                      >
@@ -79,8 +88,9 @@ const Navbar = (props) => {
                         onClick={() => props.handleModalLogin()}
                      >
                         Login
-                     </li>
+                     </li> */}
                   </ul>
+                  {click && <Dropdown clicked={click} />}
                </div>
             </div>
          </div>
