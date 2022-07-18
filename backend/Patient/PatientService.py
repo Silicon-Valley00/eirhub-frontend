@@ -14,22 +14,32 @@ def getPatients():
     # session.add(newPatient)
     # session.commit()
     # session.close()
-    patients = session.query(Patient).all()
-    Json_patients = [{
-            "id": patient.idPatient,
-            "First name": patient.first_name,
-            "Last_name": patient.last_name,
-            "email": patient.user_email,
-            "Nationality": patient.nationality
-        } for patient in patients ]
-    return jsonify(Json_patients)
+    try:
+        patients = session.query(Patient).all()
+        Json_patients = [{
+            "status": True,
+            "Msg": {
+
+                "id": patient.idPatient,
+                "First_name": patient.first_name,
+                "Middle_name": patient.middle_name,
+                "Last_name": patient.last_name,
+                "email": patient.user_email,
+                "Nationality": patient.nationality
+            }
+             
+            } for patient in patients ]
+        return jsonify(Json_patients),200
+    except Exception as e:
+        return (f"connection error: could not get patients:{e}"),400    
 
 @patients_route.route("/patient/<id>",methods = ['GET'])
 def getPatientById(id):
     from app import session
     patient = session.query(Patient).get(id)
     return ({
-            "First name": patient.first_name,
+            "First_name": patient.first_name,
+            "Middle_name": patient.middle_name,
             "Last_name": patient.last_name,
             "email": patient.user_email,
             "Nationality": patient.nationality
