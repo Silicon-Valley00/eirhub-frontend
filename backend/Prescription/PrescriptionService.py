@@ -28,6 +28,9 @@ def post_prescription(idPatient):
     last_taken_date  = req['last_taken_date']
     
     new_presciption = Prescription(drug_name,dosage,time_of_administration,start_date,end_date,last_taken_date)
-    session.add(new_presciption)
-    session.commit()
+    try:
+        session.add(new_presciption)
+        session.commit()
+    except Exception as e:
+        return ("Error: Prescription not recorded : %s",e),400
 #to be completed
