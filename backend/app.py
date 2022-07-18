@@ -23,6 +23,8 @@ Session = sessionmaker(bind=engine)
 session = Session()
 meta = MetaData()
 Base = declarative_base()
+
+
 #App Blueprint
 app.register_blueprint(patients_route)
 app.register_blueprint(guardian_route)
