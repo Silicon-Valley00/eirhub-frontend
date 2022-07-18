@@ -156,9 +156,22 @@ def updateDoctorById(doctorId):
 
 
 # Get Doctor by doctorId
-@doctor_route.route('/doctor/<doctorId>', methods = ['GET'])
+@doctor_route.route('/doctor/<doctorId>/', methods = ['GET'])
 def getDoctorById(doctorId):
     from app import session
-    # try:
-    #     # doctor = session.query(Doctor).qu
-    #     # not done will continue later
+    try:
+        doctorInfo = session.query(Doctor).get(int(doctorId))
+        returnInfo = {
+            'first_name': doctorInfo.first_name,'middle_name': doctorInfo.middle_name,'last_name': doctorInfo.last_name,
+            'user_email': doctorInfo.user_email,'person_image': doctorInfo.person_image,'date_of_birth': doctorInfo.person_image,'house_address': doctorInfo.house_address,
+            'doctor_ratings':doctorInfo.doctor_ratings,'doctor_specialties': doctorInfo.doctor_specialties,'license_number': doctorInfo.license_number,
+            'gender':doctorInfo.gender,'hospital_code':doctorInfo.hospital_code,
+            }
+        return ({
+            'status': True,
+            'msg': returnInfo
+        }),200
+    except Exception as e:
+        return ("Connection Error: User not recorded : %s",e),400
+
+        
