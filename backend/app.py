@@ -2,7 +2,6 @@ import http
 import os
 import string
 from flask import Flask,jsonify,request
-from werkzeug.security import generate_password_hash,check_password_hash
 from flask_cors import CORS
 
 
@@ -11,18 +10,12 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
-# from User.Person.PersonModel import Person
-# from User.Person.PersonService import checkUserEmail
-# from User.Doctor.DoctorModel import Doctor
-# from User.Patient.PatientModel import Patient
-from Hospital.HospitalModel import Hospital
-from HealthDetails.HealthDetailsModel import  HealthDetails
+from Patient.PatientService import patients_route
+from Guardian.GuardianPersonService import guardian_route
+from Doctor.DoctorService import doctor_route
 
+from HealthDetails.HealthDetailsModel import HealthDetails
 
-# result = session.query(Customer).join(Invoice).filter(Invoice.amount == 8500)
-# for row in result:
-#    for inv in row.invoices:
-#       print (row.id, row.name, inv.invno, inv.amount)
 app = Flask(__name__)
 load_dotenv()
 engine = create_engine( os.getenv('dbconnectionstring'))#establish a connection with the database
@@ -30,6 +23,10 @@ Session = sessionmaker(bind=engine)
 session = Session()
 meta = MetaData()
 Base = declarative_base()
+#App Blueprint
+app.register_blueprint(patients_route)
+app.register_blueprint(guardian_route)
+app.register_blueprint(doctor_route)
 
 # Database Connection not needed right now. Commented out for now
 try:
@@ -46,10 +43,10 @@ except Exception as e:
 # Home route
 @app.route("/",methods = ['GET'])
 def home():
-    # print(checkUserEmail(session=session,email="niiodartey10@gmail.com"))
     return "Welcome to EirHub"
 
 
+<<<<<<< HEAD
 # Test Route
 @app.route("/person/<int:id>", methods=['GET', 'POST'])
 def getPersonById(id):
@@ -235,6 +232,8 @@ def doctors():
     return  (doctor)
 
 
+=======
+>>>>>>> 8a4df36f12cd8fad4550c1f599c886f4a436c5cc
 
 if __name__ == "__main__":
     CORS(app)
