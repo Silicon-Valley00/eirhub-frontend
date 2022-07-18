@@ -42,31 +42,39 @@ const ServicesPage = () => {
                         face-to-face or online just with a few clicks
                      </p>
                   </div>
-                  <div className={style.of_image}>
+                  <div data-aos="fade-in" className={style.of_image}>
                      <img src={pic1} alt="" className={style.of__image} />
                   </div>
                </div>
 
                {/* second container */}
                <div className={`${style.container}`}>
-                  <div className={style.of_image}>
+                  <div data-aos="fade-in" className={style.of_image}>
                      <img src={pic2} alt="" className={style.of__image} />
                   </div>
-                  <div className={style.with_text}>
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="2000"
+                     className={style.with_text}
+                  >
                      <p className={style.with_text_title}>Find a Doctor</p>
                      <p className={style.with_text_desc}>
                         Get access to the right doctor
                      </p>
                      <p className={style.with_text_content}>
                         Find a doctor that can help you get a solution to your
-                        health problems{' '}
+                        health problems
                      </p>
                   </div>
                </div>
 
                {/* third container */}
                <div className={style.container}>
-                  <div className={style.with_text}>
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="2000"
+                     className={style.with_text}
+                  >
                      <p className={style.with_text_title}>E-pharmacy</p>
                      <p className={style.with_text_desc}>
                         Manage your prescriptions more effectively
@@ -76,17 +84,21 @@ const ServicesPage = () => {
                         on when to refill
                      </p>
                   </div>
-                  <div className={style.of_image}>
+                  <div data-aos="fade-in" className={style.of_image}>
                      <img src={pic3} alt="" className={style.of__image} />
                   </div>
                </div>
 
                {/* fourth container */}
                <div className={style.container}>
-                  <div className={style.of_image}>
+                  <div data-aos="fade-in" className={style.of_image}>
                      <img src={pic4} alt="" className={style.of__image} />
                   </div>
-                  <div className={style.with_text}>
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="2000"
+                     className={style.with_text}
+                  >
                      <p className={style.with_text_title}>Health Tips</p>
                      <p className={style.with_text_desc}>
                         Get access to verified tips for a healthy living

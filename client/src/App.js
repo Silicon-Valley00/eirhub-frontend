@@ -5,7 +5,10 @@ import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 import ServicesPage from './Pages/Landing page/ServicesPage';
-import PageNotFound from './Pages/PageNotFound/PageNotFound';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import HowItWorks from './Pages/HowItWorks';
+AOS.init();
 
 function App() {
    return (
@@ -24,8 +27,8 @@ function App() {
          />
          {/* Route for our services  */}
          <Route path="/our-services" exact element={<ServicesPage />} />
-
-         {/*Use if Page doesnt exist */}
+         {/* Route for How it works page */}
+         <Route path="/how-it-works" exact element={<HowItWorks />} />
       </Routes>
    );
 }
