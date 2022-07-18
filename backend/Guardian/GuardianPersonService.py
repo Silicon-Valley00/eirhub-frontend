@@ -4,7 +4,7 @@ from Guardian.GuardianPersonModel import GuardianPerson
 guardian_route = Blueprint("guardian_route",__name__)
 
 
-#Create Guardian Person Method 
+#Create Guardian Person 
 @guardian_route.route("/guardian/",methods = ['POST'])
 def createGuardian():
     from app import session
@@ -54,7 +54,7 @@ def createGuardian():
 
 
 
-#Get All Guardian Persons Method 
+#Get All Guardian Persons 
 @guardian_route.route("/guardian/",methods = ['GET'])
 def getGuardians():
     from app import session
@@ -74,6 +74,47 @@ def getGuardians():
         }),200
     except Exception as e:
         return ("Connection Error: User not recorded : %s",e),400
+
+
+
+
+#Update Guardian Person By Id Method.
+@guardian_route.route("/guardian/<guardianId>/",methods = ['PUT'])
+def updateGuardianById(guardianId):
+    from app import session
+    req = request.json
+    try: 
+        session.query(GuardianPerson).filter(GuardianPerson.idGuardian== int(guardianId)).update(
+             {
+                 GuardianPerson.first_name:req["first_name"],
+                 GuardianPerson.middle_name:req["middle_name"],
+                 GuardianPerson.last_name:req["last_name"],
+                 GuardianPerson.person_image:req["person_image"],
+                 GuardianPerson.user_email:req["user_email"],
+                 GuardianPerson.date_of_birth:req["date_of_birth"],
+                 GuardianPerson.phone_number:req["phone_number"],
+                 GuardianPerson.id_number:req["id_number"],
+                 GuardianPerson.gender:req["gender"],
+                 GuardianPerson.house_address: req["house_address"]
+            }
+             , synchronize_session = False
+             )
+        session.commit()
+        guardianInfo = session.query(GuardianPerson).get(int(guardianId))
+        returnInfo = {
+            'first_name':guardianInfo.first_name,'middle_name':guardianInfo.middle_name,'last_name':guardianInfo.last_name,'person_image':guardianInfo.person_image,
+            'user_email':guardianInfo.user_email,'date_of_birth':guardianInfo.date_of_birth,'phone_number':guardianInfo.phone_number,'id_number':guardianInfo.id_number,
+            'gender':guardianInfo.gender, 'house_address': guardianInfo.house_address
+            }
+        return ({
+            'status': True,
+            'msg': returnInfo
+        }),200
+    except Exception as e:
+        return ({
+            'status':False,
+            'msg': ("Connection Error: User not updated : %s",e)
+        }),400
 
 
 
