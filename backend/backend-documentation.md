@@ -21,10 +21,18 @@ check_password_hash(a,'1234') #confirms if the hash and the word are equal and r
 		- 
 
 
+[Doctor](#Doctor )           
+[Guardian](#Guardian-Person )             
+[Patient](#Patient )
+
+
+
 
 
 API EndPoint Routes:
-- **User Login**:			
+
+# Doctor 
+- **Doctor Login**			
 
 	POST : /login		
 
@@ -32,31 +40,358 @@ API EndPoint Routes:
 
 	```
 	{
-    "email":"niiodartey10@gmail.com",
-    "password":"WhatTheFuckTHough5757?",
-    "isDoctor": true
-	}
+    "hospital_code":"OAa3456",
+    "license_number":"80034903"
+    }
 	```
 
 	RESPONSE:
 	```
 	{
-    "status": true,
-    "user": {
-        "age": 50,
-        "date_of_birth": "Tue, 01 Dec 2020 00:00:00 GMT",
-        "doctor_ratings": 2.0,
-        "doctor_specialities": "Gynaecology",
-        "first_name": "Nii",
+    "msg": {
+        "date_of_birth": "https://img.com/G.O.A.T",
+        "doctor_id": 20,
+        "doctor_ratings": 3,
+        "doctor_specialties": "Gynaecology, Paediatric",
+        "first_name": "Rexford",
+        "gender": "Male",
+        "hospital_code": "OAa3456",
         "house_address": "House-4",
-        "last_name": "Lamptey",
-        "license_number": null,
-        "middle_name": "Odartey",
-        "person_image": "https://img.com/23495",
-        "user_email": "niiodartey10@gmail.com"
-    	}
-	}
+        "last_name": "Machu",
+        "license_number": "80034903",
+        "middle_name": "G.O.A.T",
+        "person_image": "https://img.com/G.O.A.T",
+        "user_email": "baddest69@st.knust.edu.gh"
+    },
+    "status": true
+    }
 	```
-- **User Registration**		
+- **Doctor Registration**		
 
-	POST : /signup
+	POST : /signup      
+
+    BODY PARAMS: 	
+
+	```
+	{
+    "first_name": "Rexford",
+    "middle_name":"G.O.A.T",
+    "last_name": "Machu",
+    "person_image":"https://img.com/G.O.A.T",
+    "user_email":"baddest69@st.knust.edu.gh",
+    "date_of_birth":"2009-12-01",
+    "house_address": "House-4",
+    "doctor_ratings":3,
+    "hospital_code":"OAa3456",
+    "license_number":"80034903",
+    "doctor_specialties":"Gynaecology, Paediatric",
+    "gender":"Male"
+    }
+	```
+
+	RESPONSE:
+	```
+	{
+    "msg": {
+        "first_name": "Rexford",
+        "last_name": "Machu",
+        "license_number": "80034903",
+        "middle_name": "G.O.A.T"
+    },
+    "status": true
+    }
+	```    
+
+
+
+- **Get All Doctors**		
+
+	GET : /doctors      
+
+    BODY PARAMS: None
+
+	RESPONSE:
+	```
+	{
+    "msg": [
+        {
+            "date_of_birth": "https://img.com/G.O.A.T",
+            "doctor_id": 20,
+            "doctor_ratings": 3,
+            "doctor_specialties": "Gynaecology, Paediatric",
+            "first_name": "Rexford",
+            "gender": "Male",
+            "hospital_code": "OAa3456",
+            "house_address": "House-4",
+            "last_name": "Machu",
+            "license_number": "80034903",
+            "middle_name": "G.O.A.T",
+            "person_image": "https://img.com/G.O.A.T",
+            "user_email": "baddest69@st.knust.edu.gh"
+        }
+    ],
+    "status": true
+    }
+	```    
+
+
+
+- **Get Doctor By Id**		
+
+	GET : /doctor/doctorId        
+
+    BODY PARAMS: None
+
+	RESPONSE:
+	```
+	{
+    "msg": {
+        "date_of_birth": "https://img.com/G.O.A.T",
+        "doctor_ratings": 3,
+        "doctor_specialties": "Gynaecology, Paediatric",
+        "first_name": "Rexford",
+        "gender": "Male",
+        "hospital_code": "OAa3456",
+        "house_address": "House-4",
+        "last_name": "Machu",
+        "license_number": "80034903",
+        "middle_name": "G.O.A.T",
+        "person_image": "https://img.com/G.O.A.T",
+        "user_email": "baddest69@st.knust.edu.gh"
+    },
+    "status": true
+    }
+	```    
+
+# Guardian-Person     
+
+**Create Guardian Person**		
+
+POST : /guardian      
+
+BODY PARAMS: 	
+```
+{
+"first_name" : "Rexford ",
+"middle_name": "Guardian",
+"last_name" : "Machu",
+"person_image" : "https://img.com/7879",
+"user_email" : "guardianofgalaxy@gmail.com",
+"date_of_birth" : "2000-12-21",
+"house_address" : "House - 4",
+"phone_number" : "0206436575",
+"id_number" : "GHA-009494-233",
+"gender" : "Male"
+}
+```
+
+RESPONSE:
+```
+{
+    'status': true,
+    'msg':{
+        "date_of_birth": "Thu, 21 Dec 2000 00:00:00 GMT",
+        "first_name": "Rexford ",
+        "gender": "Male",
+        "id_number": "GHA-009494-233",
+        "last_name": "Machu",
+        "middle_name": "Guardian",
+        "person_image": "https://img.com/7879",
+        "phone_number": "0206436575",
+        "user_email": "guardianofgalaxy@gmail.com"
+    }
+}
+```     
+
+
+**Get All Guardian Persons**	        	
+
+GET : /guardian      
+
+BODY PARAMS: None       
+
+RESPONSE:
+```
+{
+"msg": [
+    {
+        "date_of_birth": "Thu, 21 Dec 2000 00:00:00 GMT",
+        "first_name": "Rexford ",
+        "gender": "Male",
+        "id_number": "GHA-009494-233",
+        "last_name": "Machu",
+        "middle_name": "Guardian",
+        "person_image": "https://img.com/7879",
+        "phone_number": "0206436575",
+        "user_email": "guardianofgalaxy@gmail.com"
+    }
+],
+"status": true
+}
+```     
+
+
+**Update Guardian Person By Id**		
+
+PUT : /guardian/`guardianId`        
+
+BODY PARAMS: 	
+```
+{
+    "first_name" : "Rexford ",
+    "middle_name": "Guardian",
+    "last_name" : "Machu",
+    "person_image" : "https://img.com/7879",
+    "user_email" : "guardianofthegalaxy@gmail.com",
+    "date_of_birth" : "2000-12-21",
+    "house_address" : "House - 6",
+    "phone_number" : "0206436575",
+    "id_number" : "GHA-009494-233",
+    "gender" : "Male"
+}
+```
+
+RESPONSE:
+```
+{
+    "msg": {
+        "date_of_birth": "Thu, 21 Dec 2000 00:00:00 GMT",
+        "first_name": "Rexford ",
+        "gender": "Male",
+        "house_address": "House - 6",
+        "id_number": "GHA-009494-233",
+        "last_name": "Machu",
+        "middle_name": "Guardian",
+        "person_image": "https://img.com/7879",
+        "phone_number": "0206436575",
+        "user_email": "guardianofthegalaxy@gmail.com"
+    },
+    "status": true
+}
+```    
+
+
+
+# Patient 
+- **Patient Login**:			
+
+	POST : /patientlogin		
+
+	BODY PARAMS: 	
+
+	```
+	{
+    "email":"baddest69@st.knust.edu.gh",
+    "password": "baddestGO@8"
+    }
+	```
+
+	RESPONSE:
+	```
+	{
+    "msg": {
+        "date_of_birth": "Tue, 01 Dec 2009 00:00:00 GMT",
+        "doctor_id": 20,
+        "email": "baddest69@st.knust.edu.gh",
+        "first_name": "Rexford",
+        "gender": "Male",
+        "guardian_id": 20,
+        "id_number": "GHA-08008238HJJ",
+        "last_name": "Machu",
+        "middle_name": "Patient",
+        "phone_number": "+233206436575"
+    },
+    "status": true
+    }
+	```
+- **Patient Registration**		
+
+	POST : /patientsignup      
+
+    BODY PARAMS: 	
+
+	```
+	{
+    "first_name": "Rexford",
+    "middle_name":"Patient",
+    "last_name": "Machu",
+    "person_image":"https://img.com/G.O.A.T",
+    "email":"baddest69@st.knust.edu.gh",
+    "password": "baddestGO@8",
+    "date_of_birth":"2009-12-01",
+    "house_address": "House-4",
+    "gender":"Male",
+    "phone_number" : "+233206436575",
+    "id_number": "GHA-08008238HJJ",
+    "nationality":"Ghanaian",
+    "doctor_id": 20,
+    "guardian_id": 20
+    }
+	```
+
+	RESPONSE:
+	```
+	{
+    "msg": {
+        "date_of_birth": "Tue, 01 Dec 2009 00:00:00 GMT",
+        "doctor_id": 20,
+        "email": "baddest69@st.knust.edu.gh",
+        "first_name": "Rexford",
+        "gender": "Male",
+        "guardian_id": 20,
+        "id_number": "GHA-08008238HJJ",
+        "last_name": "Machu",
+        "middle_name": "Patient",
+        "phone_number": "+233206436575"
+    },
+    "status": true
+    }
+	```          
+- **Get All Patients**
+
+GET : /patient
+
+BODY PARAMS: None
+
+RESPONSE:
+```
+{
+        "msg": {
+            "first_name": "Jerry",
+            "last_name": "Jackman",
+            "middle_name": "Leo",
+            "nationality": "Ghanaian",
+            "email": "Jackman@gmail.com",
+            "id": 23
+        },
+        "status": true
+    }
+```    
+**Get Patient by ID**
+
+GET : /patient/<id>
+
+BODY PARAMS: None
+
+RESPONSE:
+```
+{
+    "msg": {
+        "email": "baddest69@st.knust.edu.gh",
+        "first_name": "Rexford",
+        "house_address": "House-4",
+        "id": 28,
+        "idDoctor": 20,
+        "idGuardian": 20,
+        "id_number": "GHA-08008238HJJ",
+        "last_name": "Machu",
+        "middle_name": "Patient",
+        "nationality": "Ghanaian",
+        "person_image": "https://img.com/G.O.A.T"
+    },
+    "status": true
+}
+
+```
+
+
