@@ -1,7 +1,10 @@
+/* media queries for mobile devices */
+
 .main {
    padding-top: 5rem;
    padding-right: 2rem;
    padding-left: 2rem;
+   padding-bottom: 3rem;
    color: var(--deepcol);
    font-size: 16px;
    transition: all;
@@ -13,18 +16,131 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   gap: 1.5rem;
-   padding-right: 20rem;
-   padding-left: 20rem;
+   gap: 1rem;
+   padding-right: 1rem;
+   padding-left: 1rem;
 }
 
 .title {
-   font-size: 50px;
+   font-size: 27px;
    font-weight: 700;
    color: var(--deepcol);
 }
 
 .p_text {
    text-align: center;
-   font-size: 20px;
+   font-size: 18px;
+}
+
+/* media screen for tablet size screens */
+@media (min-width: 768px) {
+   .main {
+      font-size: 16px;
+      transition: all;
+      transition-duration: 500;
+      padding-bottom: 5rem;
+   }
+
+   .upper_part {
+      gap: 1.5rem;
+      padding-right: 10%;
+      padding-left: 10%;
+   }
+
+   .title {
+      font-size: 50px;
+      font-weight: 700;
+   }
+
+   .p_text {
+      font-size: 20px;
+   }
+
+   /* pole with cards */
+   .lower_section {
+      height: 65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10rem;
+   }
+
+   .pole {
+      position: relative;
+      width: 1rem;
+      height: 100%;
+      background: var(--gray);
+      border-radius: 20px;
+   }
+   .circle_1 {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: -5px;
+      left: -15px;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--lightcol);
+   }
+
+   .circle_2 {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 20rem;
+      left: -15px;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--lightcol);
+   }
+
+   .circle_3 {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: 20rem;
+      left: -15px;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--lightcol);
+   }
+
+   .circle_4 {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: -5px;
+      left: -15px;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--lightcol);
+   }
+}
+
+/* media queries for desktop screens */
+@media (min-width: 1024px) {
+}
+
+/* media queries for large screens */
+@media (min-width: 1200px) {
+   .upper_part {
+      padding-right: 17rem;
+      padding-left: 17rem;
+   }
 }
