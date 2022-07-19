@@ -32,7 +32,7 @@ check_password_hash(a,'1234') #confirms if the hash and the word are equal and r
 API EndPoint Routes:
 
 # Doctor 
-- **Doctor Login**:			
+- **Doctor Login**			
 
 	POST : /login		
 
@@ -49,11 +49,20 @@ API EndPoint Routes:
 	```
 	{
     "msg": {
+        "date_of_birth": "https://img.com/G.O.A.T",
+        "doctor_id": 20,
+        "doctor_ratings": 3,
+        "doctor_specialties": "Gynaecology, Paediatric",
         "first_name": "Rexford",
+        "gender": "Male",
+        "hospital_code": "OAa3456",
+        "house_address": "House-4",
         "last_name": "Machu",
         "license_number": "80034903",
-        "middle_name": "G.O.A.T"
-        },
+        "middle_name": "G.O.A.T",
+        "person_image": "https://img.com/G.O.A.T",
+        "user_email": "baddest69@st.knust.edu.gh"
+    },
     "status": true
     }
 	```
@@ -91,7 +100,41 @@ API EndPoint Routes:
     },
     "status": true
     }
-	```         
+	```    
+
+
+
+- **Get All Doctors**		
+
+	POST : /doctors      
+
+    BODY PARAMS: None
+
+	RESPONSE:
+	```
+	{
+    "msg": [
+        {
+            "date_of_birth": "https://img.com/G.O.A.T",
+            "doctor_id": 20,
+            "doctor_ratings": 3,
+            "doctor_specialties": "Gynaecology, Paediatric",
+            "first_name": "Rexford",
+            "gender": "Male",
+            "hospital_code": "OAa3456",
+            "house_address": "House-4",
+            "last_name": "Machu",
+            "license_number": "80034903",
+            "middle_name": "G.O.A.T",
+            "person_image": "https://img.com/G.O.A.T",
+            "user_email": "baddest69@st.knust.edu.gh"
+        }
+    ],
+    "status": true
+    }
+	```    
+
+
 
 # Guardian-Person     
 
@@ -297,3 +340,31 @@ RESPONSE:
         "status": true
     }
 ```    
+**Get Patient by ID**
+
+GET : /patient/<id>
+
+BODY PARAMS: None
+
+RESPONSE:
+```
+{
+    "msg": {
+        "email": "baddest69@st.knust.edu.gh",
+        "first_name": "Rexford",
+        "house_address": "House-4",
+        "id": 28,
+        "idDoctor": 20,
+        "idGuardian": 20,
+        "id_number": "GHA-08008238HJJ",
+        "last_name": "Machu",
+        "middle_name": "Patient",
+        "nationality": "Ghanaian",
+        "person_image": "https://img.com/G.O.A.T"
+    },
+    "status": true
+}
+
+```
+
+
