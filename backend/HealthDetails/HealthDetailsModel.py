@@ -9,7 +9,7 @@ from Patient.PatientModel import Patient,Base
 class HealthDetails(Base):
     __tablename__ = 'Health_Details'
     idHealthDetails = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
-    idPatient = Column(Integer,ForeignKey('Patient.idPatient'))
+    idPatient = Column(Integer,ForeignKey(Patient.idPatient))
     last_visit = Column("last_visit",Date)
     blood_group = Column(ENUM('A','AB','B','O','unknown'), nullable = True)
     bmi = Column("bmi",Float)
