@@ -114,7 +114,7 @@ def getDoctors():
 
 
 #Update Doctors By Id Method.
-@doctor_route.route("/doctor/<doctorId>/",methods = ['PUT'])
+@doctor_route.route("/updoctor/<doctorId>/",methods = ['PUT'])
 def updateDoctorById(doctorId):
     from app import session
     req = request.json
