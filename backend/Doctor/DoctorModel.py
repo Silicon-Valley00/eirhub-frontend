@@ -7,18 +7,18 @@ Base = declarative_base()
 class Doctor(Base):
     __tablename__ = "Doctor"
     idDoctor = Column(Integer,primary_key = True,autoincrement = True)
-    first_name = Column('first_name',String(60))
+    first_name = Column('first_name',String(60), nullable  = False)
     middle_name = Column('middle_name',String(60))
-    last_name = Column('last_name',String(60))
-    person_image = Column('person_image',String(2083))
+    last_name = Column('last_name',String(60), nullable = False)
+    person_image = Column('person_image',String(2083),nullable  = False)
     user_email = Column('user_email',String(50),unique = True)
-    date_of_birth = Column('date_of_birth',DATE)
-    house_address = Column('house_address',String(45))
-    license_number = Column('license_number',String(45),unique = True)
-    doctor_ratings = Column('doctor_ratings',Integer)
-    doctor_specialties = Column('doctor_specialties',String(200))
-    gender = Column('gender',String(45))
-    hospital_code = Column('hospital_code',String(45),unique = True)
+    date_of_birth = Column('date_of_birth',DATE, nullable  = False)
+    house_address = Column('house_address',String(45),nullable  = False)
+    license_number = Column('license_number',String(45),unique = True,nullable  = False)
+    doctor_ratings = Column('doctor_ratings',Integer,nullable  = False)
+    doctor_specialties = Column('doctor_specialties',String(200),nullable  = False)
+    gender = Column('gender',String(45),nullable  = False)
+    hospital_code = Column('hospital_code',String(45),unique = True,nullable  = False)
     
     def __init__ (self,first_name,middle_name,last_name,user_email,person_image,date_of_birth,house_address,doctor_ratings,doctor_specialties,license_number,gender,hospital_code):
         self.first_name = first_name
