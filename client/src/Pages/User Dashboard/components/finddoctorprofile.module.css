@@ -110,3 +110,161 @@
    padding: 0.7rem 0.6rem;
    border-radius: 0.2rem;
 }
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+   .profileDetails h3 {
+      font-size: 1rem;
+   }
+
+   .profileDetails p {
+      font-size: 0.8rem;
+   }
+   .profileInfo {
+      height: 50%;
+   }
+   .profileRatings h3 {
+      font-size: 1rem;
+   }
+   .profileRatings p {
+      font-size: 0.8rem;
+   }
+   .profileSpecialities h3 {
+      font-size: 1rem;
+   }
+   .profileSpecialities p {
+      font-size: 0.8rem;
+   }
+   .profileHospital h3 {
+      font-size: 1rem;
+   }
+   .profileHospital p {
+      font-size: 0.8rem;
+   }
+   .profileButton button {
+      font-size: 0.6rem;
+      padding: 0.7rem 0.6rem;
+      border-radius: 0.2rem;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+   .profileDetails h3 {
+      font-size: 1rem;
+   }
+
+   .profileDetails p {
+      font-size: 0.8rem;
+   }
+   .profileInfo {
+      height: 50%;
+   }
+   .profileRatings h3 {
+      font-size: 1rem;
+   }
+   .profileRatings p {
+      font-size: 0.8rem;
+   }
+   .profileSpecialities h3 {
+      font-size: 1rem;
+   }
+   .profileSpecialities p {
+      font-size: 0.8rem;
+   }
+   .profileHospital h3 {
+      font-size: 1rem;
+   }
+   .profileHospital p {
+      font-size: 0.8rem;
+   }
+   .profileButton button {
+      font-size: 0.6rem;
+      padding: 0.7rem 0.6rem;
+      border-radius: 0.2rem;
+   }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .profileImage {
+      height: 30%;
+      width: 30%;
+   }
+   .profileDetails h3 {
+      font-size: 1rem;
+   }
+
+   .profileDetails p {
+      font-size: 0.8rem;
+   }
+   .profileInfo {
+      margin-top: 2rem;
+      height: 45%;
+      text-align: center;
+   }
+   .profileRatings h3 {
+      font-size: 1rem;
+   }
+   .profileRatings p {
+      font-size: 0.8rem;
+   }
+   .profileSpecialities h3 {
+      font-size: 1rem;
+   }
+   .profileSpecialities p {
+      font-size: 0.8rem;
+   }
+   .profileHospital h3 {
+      font-size: 1rem;
+   }
+   .profileHospital p {
+      font-size: 0.8rem;
+   }
+   .profileButton button {
+      font-size: 0.6rem;
+      padding: 0.7rem 0.6rem;
+      border-radius: 0.2rem;
+   }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   .profileImage {
+      height: 30%;
+      width: 30%;
+   }
+   .profileDetails h3 {
+      font-size: 1rem;
+   }
+
+   .profileDetails p {
+      font-size: 0.8rem;
+   }
+   .profileInfo {
+      margin-top: 2rem;
+      height: 45%;
+      text-align: center;
+   }
+   .profileRatings h3 {
+      font-size: 1rem;
+   }
+   .profileRatings p {
+      font-size: 0.8rem;
+   }
+   .profileSpecialities h3 {
+      font-size: 1rem;
+   }
+   .profileSpecialities p {
+      font-size: 0.8rem;
+   }
+   .profileHospital h3 {
+      font-size: 1rem;
+   }
+   .profileHospital p {
+      font-size: 0.8rem;
+   }
+   .profileButton button {
+      font-size: 0.6rem;
+      padding: 0.7rem 0.6rem;
+      border-radius: 0.2rem;
+   }
+   .profileButton {
+      margin-bottom: 2rem;
+   }
+}

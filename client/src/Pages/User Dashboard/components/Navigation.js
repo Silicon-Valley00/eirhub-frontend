@@ -62,14 +62,20 @@ function Navigation(props) {
                         </span>
                         <h3>Profile</h3>
                      </li>
-                     <li>
-                        <span className={styles.icons}>
-                           <i>
-                              <BsFillFileEarmarkFill />
-                           </i>
-                        </span>
-                        <h3>Records</h3>
-                     </li>
+                     <Link to={'/records'}>
+                        <li
+                           className={
+                              props.page === 'records' ? styles.active : ''
+                           }
+                        >
+                           <span className={styles.icons}>
+                              <i>
+                                 <BsFillFileEarmarkFill />
+                              </i>
+                           </span>
+                           <h3>Records</h3>
+                        </li>
+                     </Link>
                      <Link to={'/medications'}>
                         <li
                            className={

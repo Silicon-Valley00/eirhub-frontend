@@ -18,9 +18,9 @@
    padding: 2rem 1rem 0 1rem;
    border-top-left-radius: 2rem;
    border-top-right-radius: 2rem;
-   display: flex;
+   /* display: flex;
    justify-content: center;
-   align-items: center;
+   align-items: center; */
 }
 .formContent {
    width: 100%;
@@ -40,6 +40,7 @@
 }
 .formTitle h3 {
    font-size: 140%;
+   margin-bottom: 0.5rem;
 }
 .formBox {
    width: 100%;
@@ -86,7 +87,7 @@
 .formButton {
    width: 100%;
    height: 2rem;
-   margin-top: 1.5rem;
+   margin-top: 2rem;
    display: flex;
    align-items: center;
    justify-content: center;

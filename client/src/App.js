@@ -10,6 +10,7 @@ import FindDoctor from './Pages/User Dashboard/FindDoctor/FindDoctor';
 import FindDoctorProfile from './Pages/User Dashboard/components/FindDoctorProfile.js';
 import Medications from './Pages/User Dashboard/Medications/Medications';
 import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
+import Records from './Pages/User Dashboard/Records/Records';
 
 function App() {
    return (
@@ -34,6 +35,19 @@ function App() {
                />
             }
          />
+
+         <Route
+            path="/records"
+            exact
+            element={
+               <UserDashboard
+                  parent={<Records />}
+                  child={<MedicationForm />}
+                  page={'records'}
+               />
+            }
+         />
+
          <Route
             path="/medications"
             exact
