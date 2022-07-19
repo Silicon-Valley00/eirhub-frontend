@@ -32,7 +32,10 @@ app.register_blueprint(patients_route)
 app.register_blueprint(guardian_route)
 app.register_blueprint(doctor_route)
 # app.register_blueprint(health_details_route)
+<<<<<<< HEAD
 app.register_blueprint(reports_route)
+=======
+>>>>>>> 86a12ee6109b6b706327ae25c55c1088ca3eefd4
 
 # Database Connection not needed right now. Commented out for now
 try:
