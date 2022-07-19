@@ -23,9 +23,9 @@
    gap: 1.5rem;
    justify-content: space-between;
    overflow-y: auto;
-   height: 33rem;
-   min-height: 33rem;
-   max-height: 33rem;
+   height: 36rem;
+   min-height: 36rem;
+   max-height: 36rem;
    padding-bottom: 1rem;
 }
 .medicationBox {
@@ -149,4 +149,225 @@
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 47% 47%;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.2rem;
+   }
+   .medicationName p {
+      font-size: 0.8rem;
+   }
+   .medicationCounter p {
+      font-size: 0.7rem;
+      padding: 0.2rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.8rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.8rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.7rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.4rem;
+   }
+
+}
+
+@media only screen and (min-width: 897px) and (max-width: 1024px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 47% 47%;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.15rem;
+   }
+   .medicationName p {
+      font-size: 0.65rem;
+   }
+   .medicationCounter p {
+      font-size: 0.6rem;
+      padding: 0.15rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.7rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.7rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.6rem;
+      padding: 0.1rem 0.2rem;
+      border-radius: 0.4rem;
+   }
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 896px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 1fr;
+      width: 100%;
+      justify-content: center;
+      place-items: center;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.15rem;
+   }
+   .medicationName p {
+      font-size: 0.65rem;
+   }
+   .medicationCounter p {
+      font-size: 0.6rem;
+      padding: 0.15rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.7rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.7rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.6rem;
+      padding: 0.1rem 0.2rem;
+      border-radius: 0.4rem;
+   }
+
+}
+
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 47% 47%;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.1rem;
+   }
+   .medicationName p {
+      font-size: 0.6rem;
+   }
+   .medicationCounter p {
+      font-size: 0.6rem;
+      padding: 0.15rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.65rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.65rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.6rem;
+      padding: 0.09rem 0.1rem;
+      border-radius: 0.4rem;
+   }
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 1fr;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.3rem;
+   }
+   .medicationName p {
+      font-size: 0.8rem;
+   }
+   .medicationCounter p {
+      font-size: 0.7rem;
+      padding: 0.15rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.8rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.8rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.6rem;
+      padding: 0.09rem 0.1rem;
+      border-radius: 0.4rem;
+   }
+
 }

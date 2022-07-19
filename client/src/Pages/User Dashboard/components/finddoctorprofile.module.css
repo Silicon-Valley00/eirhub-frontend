@@ -46,7 +46,7 @@
 }
 .profileInfo {
    margin-top: 0.5rem;
-   height: 57%;
+   height: 50%;
 }
 .profileRatings {
    margin-bottom: 1rem;
@@ -91,6 +91,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   margin-bottom: -10rem;
 }
 .profileButton button {
    /* width: 25%;
@@ -111,7 +112,7 @@
    border-radius: 0.2rem;
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .profileDetails h3 {
       font-size: 1rem;
    }
