@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
+// import DoctorSignup from './components/DoctorSignup'
 import axios from 'axios';
 
 // Database configuration
@@ -19,6 +20,7 @@ function Registration(props) {
    const signupPassword = useRef();
    const signupPasswordconfirm = useRef();
    const signupDate = useRef();
+   const signupHospitalCode = useRef();
 
    // Handles error state of input boxes
    const [loginEmailError, setloginEmailError] = useState(null);
@@ -26,6 +28,7 @@ function Registration(props) {
 
    const [registerNameError, setRegisterNameError] = useState(null);
    const [registerDateError, setRegisterDateError] = useState(null);
+   const [registerHospitalCodeError,setRegisterHospitalCodeError] = useState(null)
    const [registerEmailError, setRegisterEmailError] = useState(null);
    const [registerPasswordOneError, setRegisterPasswordOneError] =
       useState(null);
@@ -35,6 +38,7 @@ function Registration(props) {
    // Handles error messages of input boxes
    const [registerNameErrorMessage, setRegisterNameErrorMessage] = useState('');
    const [registerDateErrorMessage, setRegisterDateErrorMessage] = useState('');
+   const [registerHospitalCodeErrorMessage, setRegisterHospitalCodeErrorMessage] =useState('')
    const [registerEmailErrorMessage, setRegisterEmailErrorMessage] =
       useState('');
    const [registerPasswordOneErrorMessage, setRegisterPasswordOneErrorMessage] =
@@ -124,6 +128,17 @@ function Registration(props) {
       }
    }
 
+   function handleRegisterHospitalCode(){
+      let enteredSignupHospitalCode = signupHospitalCode.current.value
+
+      if (enteredSignupHospitalCode === '') {
+         setRegisterHospitalCodeErrorMessage('Hospital code required');
+         setRegisterHospitalCodeError(true);
+      } else {
+         setRegisterHospitalCodeError(false);
+      }
+   }
+
    function handleRegisterPassword() {
       let enteredSignUpPassword = signupPassword.current.value;
 
@@ -202,7 +217,7 @@ function Registration(props) {
             firstname: enteredSignUpFirstname,
             lastname: enteredSignUpLastname,
             dateOfBirth: enteredSignUpDate,
-            email: enteredSignUpEmail,
+            user_email: enteredSignUpEmail,
             password: enteredSignUpPassword,
          };
 
@@ -217,6 +232,9 @@ function Registration(props) {
       axios({
          method: 'post',
          url: `http://127.0.0.1:5000/${path}`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+         },
          data: { data },
       })
          .then((response) => {
@@ -280,6 +298,33 @@ function Registration(props) {
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
+         {/* <DoctorSignup
+            modalSignup={props.modalSignup}
+            handleModalLogin={props.handleModalLogin}
+            handleModalsClose={props.handleModalsClose}
+            submitUserCredentialsHandler={submitUserCredentialsHandler}
+            signupFirstname={signupFirstname}
+            signupLastname={signupLastname}
+            signupEmail={signupEmail}
+            signupPassword={signupPassword}
+            signupHospitalCode={signupHospitalCode}
+            signupPasswordconfirm={signupPasswordconfirm}
+            registerNameError={registerNameError}
+            registerEmailError={registerEmailError}
+            registerHospitalCodeError={registerHospitalCodeError}
+            registerPasswordOneError={registerPasswordOneError}
+            registerPasswordTwoError={registerPasswordTwoError}
+            registerNameErrorMessage={registerNameErrorMessage}
+            registerEmailErrorMessage={registerEmailErrorMessage}
+            registerHospitalCodeErrorMessage={registerHospitalCodeErrorMessage}
+            registerPasswordOneErrorMessage={registerPasswordOneErrorMessage}
+            registerPasswordTwoErrorMessage={registerPasswordTwoErrorMessage}
+            handleRegisterUser={handleRegisterUser}
+            handleRegisterEmail={handleRegisterEmail}
+            handleRegisterHospitalCode={handleRegisterHospitalCode}
+            handleRegisterPassword={handleRegisterPassword}
+            handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
+         /> */}
       </>
    );
 }

@@ -38,7 +38,7 @@
 
 .closeModal {
    position: absolute;
-   top: -10%;
+   top: -8%;
    left: 50%;
    background: #ffffff;
    width: 25px;
@@ -82,7 +82,7 @@
    float: left;
    background-color: #05a6c2;
 }
-.leftRegion >* {
+.leftRegion > * {
    font-family: 'Comfortaa', cursive;
    font-weight: 700;
 }
@@ -195,7 +195,7 @@
    color: #0d3f58;
    width: 100%;
    font-size: 0.8rem;
-   font-weight: 500;
+   font-weight: 650;
 }
 .signupFormBoxInputs {
    width: 100%;
@@ -233,7 +233,7 @@
    width: 100%;
    height: 10px;
    font-size: 0.8rem;
-   font-weight: 500;
+   font-weight: 650;
 }
 .signupFormBoxNameInputs {
    width: 100%;
@@ -382,6 +382,7 @@
 .btnActive {
    background: #0d3f58;
    transition: color 1000ms ease-in-out;
+   cursor: progress;
 }
 .btnActive p {
    margin-right: 15%;
@@ -396,7 +397,9 @@
 }
 .loader.btnActive i {
    animation: spin 1.3s ease-in-out infinite;
-   height: 52%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 @keyframes spin {
    100% {
@@ -454,13 +457,13 @@
 
 .errorMessageBox {
    width: 100%;
-   height: 1rem;
+   height: 0.7rem;
    display: flex;
    align-items: center;
    justify-content: space-between;
    font-size: 0.6rem;
    color: red;
-   margin-top: -2%;
+   /* margin-top: -2%; */
 }
 .errorMessageBox p {
    color: red;
@@ -477,8 +480,8 @@
 
 .noErrorMessageBox {
    width: 100%;
-   height: 1rem;
-   margin-top: -2%;
+   height: 0.7rem;
+   /* margin-top: -2%; */
 }
 .noErrorMessageBox i {
    display: none;
@@ -490,7 +493,6 @@
 /* Media sizes */
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
-   
    #signupContent {
       /* width: 85%; */
       width: 70vw;
@@ -555,6 +557,7 @@
    }
    .signupFormTitle p {
       font-size: 60%;
+      margin-bottom: 1.5rem;
    }
 
    .signupForm {
@@ -636,13 +639,13 @@
       font-size: 60%;
    }
    .errorMessageBox {
-      height: 5%;
-      font-size: 55%;
-      margin-top: -3.5%;
+      height: 0.7rem;
+      /* font-size: 55%; */
+      /* margin-top: -1.1rem; */
    }
    .noErrorMessageBox {
-      height: 5%;
-      margin-top: -3.5%;
+      height: 0.7rem;
+      /* margin-top: -1.1rem; */
    }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -696,7 +699,7 @@
    }
    .error p {
       width: 93%;
-      font-size: 70%;
+      font-size: 72%;
    }
 
    .error i {
@@ -707,11 +710,12 @@
       height: 6%;
    }
    .signupFormTitle h3 {
-      font-size: 120%;
+      font-size: 1.2rem;
       font-weight: 700;
    }
    .signupFormTitle p {
-      font-size: 60%;
+      font-size: 80%;
+      margin-bottom: 1.5rem;
    }
 
    .signupForm {
@@ -719,51 +723,55 @@
    }
 
    .signupFormBox {
-      height: 12%;
+      height: 10%;
    }
    .signupFormBox label {
       position: relative;
       top: -20%;
-      font-size: 70%;
+      font-size: 85%;
    }
    .signupFormBoxInputs {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 0.8rem;
    }
    .signupFormBoxInputsError {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 0.8rem;
    }
    .signupFormBoxNames {
-      height: 12%;
+      height: 10%;
    }
    .signupFormBoxName label {
       position: relative;
       top: -20%;
-      font-size: 70%;
+      font-size: 85%;
    }
    .signupFormBoxNameInputs {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 0.8rem;
    }
    .signupFormBoxName .signupFormBoxNameInputs input {
-      font-size: 80%;
+      font-size: 90%;
    }
 
    .signupFormBox .signupFormBoxInputs input {
-      font-size: 80%;
+      font-size: 90%;
    }
    .signupFormBoxNameInputsError {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 0.8rem;
    }
    .signupFormBoxName .signupFormBoxNameInputsError input {
       font-size: 80%;
@@ -778,7 +786,7 @@
       margin-top: 0.5rem;
    }
    .signupBtn {
-      width: 70%;
+      width: 80%;
       margin-top: 1%;
    }
    .signupBtnInactive {
@@ -788,20 +796,23 @@
       margin-top: 2%;
    }
    .signupFormMessage p {
-      font-size: 60%;
+      font-size: 80%;
    }
    #signupFormMessageP {
-      font-size: 60%;
+      font-size: 80%;
    }
    .errorMessageBox {
-      height: 5%;
-      font-size: 55%;
-      margin-top: -2%;
+      height: 1.8rem;
+      /* font-size: 55%; */
+      margin-top: -0.3rem;
+      padding: 0.9rem 0;
    }
    .noErrorMessageBox {
-      height: 5%;
-      margin-top: -2%;
+      height: 1.8rem;
+      /* margin-top: -1.4rem; */
+      /* padding: 0.9rem 0; */
    }
+   
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    #signupContent {
@@ -811,6 +822,9 @@
       height: 80%;
       border-radius: 5%;
    }
+   /* .closeModal {
+      top: -5%;
+   } */
 
    .leftRegion {
       display: none;
@@ -828,7 +842,7 @@
       padding: 0 1%;
    }
    .error p {
-      width: 93%;
+      width: 98%;
       font-size: 70%;
    }
 
@@ -840,11 +854,12 @@
    }
 
    .signupFormTitle h3 {
-      font-size: 120%;
+      font-size: 170%;
       font-weight: 700;
    }
    .signupFormTitle p {
-      font-size: 60%;
+      font-size: 85%;
+      margin-bottom: 1rem;
    }
 
    .signupForm {
@@ -852,24 +867,27 @@
    }
 
    .signupFormBox {
-      height: 12%;
+      height: 11.5%;
    }
    .signupFormBox label {
       position: relative;
       top: -20%;
       font-size: 70%;
+      font-size: 100%;
    }
    .signupFormBoxInputs {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 1rem;
    }
    .signupFormBoxInputsError {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 1rem;
    }
    .signupFormBoxNames {
       height: 12%;
@@ -877,13 +895,14 @@
    .signupFormBoxName label {
       position: relative;
       top: -20%;
-      font-size: 70%;
+      font-size: 100%;
    }
    .signupFormBoxNameInputs {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 1rem;
    }
    .signupFormBoxName .signupFormBoxNameInputs input {
       font-size: 80%;
@@ -897,6 +916,7 @@
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 1rem;
    }
    .signupFormBoxName .signupFormBoxNameInputsError input {
       font-size: 80%;
@@ -912,7 +932,7 @@
    }
    .signupBtn {
       margin-top: -1%;
-      font-size: 70%;
+      font-size: 80%;
       width: 60%;
    }
    .signupBtnInactive {
@@ -924,28 +944,33 @@
       margin-top: 0.5%;
    }
    .signupFormMessage p {
-      font-size: 60%;
+      font-size: 85%;
    }
    #signupFormMessageP {
-      font-size: 60%;
+      font-size: 85%;
    }
    .errorMessageBox {
-      height: 5%;
-      font-size: 55%;
-      margin-top: -3.5%;
+      height: 1.8rem;
+      /* font-size: 40%; */
+      margin-top: -1rem;
+      padding: 0.9rem 0;
    }
    .noErrorMessageBox {
-      height: 5%;
-      margin-top: -3.5%;
+      height: 1.8rem;
+      margin-top: -1rem;
+      padding: 0.9rem 0;
    }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
    #signupContent {
       font-size: 12px;
       width: 90%;
       height: 90%;
       border-radius: 5%;
+   }
+   .closeModal {
+      top: -5%;
    }
 
    .leftRegion {
@@ -965,7 +990,7 @@
    }
    .error p {
       width: 93%;
-      font-size: 70%;
+      font-size: 85%;
    }
 
    .error i {
@@ -976,11 +1001,12 @@
    }
 
    .signupFormTitle h3 {
-      font-size: 120%;
+      font-size: 1rem;
       font-weight: 700;
    }
    .signupFormTitle p {
-      font-size: 60%;
+      font-size: 85%;
+      margin-bottom: 2.5rem;
    }
 
    .signupForm {
@@ -993,19 +1019,21 @@
    .signupFormBox label {
       position: relative;
       top: -20%;
-      font-size: 70%;
+      font-size: 100%;
    }
    .signupFormBoxInputs {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 1rem;
    }
    .signupFormBoxInputsError {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 1rem;
    }
    .signupFormBoxNames {
       height: 12%;
@@ -1013,13 +1041,14 @@
    .signupFormBoxName label {
       position: relative;
       top: -20%;
-      font-size: 70%;
+      font-size: 100%;
    }
    .signupFormBoxNameInputs {
       position: relative;
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 1rem;
    }
    .signupFormBoxName .signupFormBoxNameInputs input {
       font-size: 80%;
@@ -1033,6 +1062,7 @@
       top: -20%;
       height: 60%;
       border-radius: 0.25rem;
+      font-size: 1rem;
    }
    .signupFormBoxName .signupFormBoxNameInputsError input {
       font-size: 80%;
@@ -1048,7 +1078,7 @@
    }
    .signupBtn {
       margin-top: 0.5%;
-      font-size: 70%;
+      font-size: 100%;
       width: 70%;
    }
    .signupBtnInactive {
@@ -1063,18 +1093,21 @@
       margin-top: 1.5%;
    }
    .signupFormMessage p {
-      font-size: 60%;
+      font-size: 90%;
    }
    #signupFormMessageP {
-      font-size: 60%;
+      font-size: 90%;
    }
    .errorMessageBox {
-      height: 5%;
-      font-size: 55%;
-      margin-top: -5%;
+      font-size: 0.7rem;
+      height: 1rem;
+      margin-top: -1.5rem;
+      padding: 1rem 0;
    }
    .noErrorMessageBox {
-      margin-top: -5%;
-      height: 5%;
+      font-size: 0.7rem;
+      height: 1rem;
+      margin-top: -1.5rem;
+      padding: 1rem 0;
    }
 }

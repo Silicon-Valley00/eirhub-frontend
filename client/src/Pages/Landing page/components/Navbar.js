@@ -3,6 +3,7 @@ import logo from '../../../images/logo.svg';
 import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
+import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
@@ -12,9 +13,15 @@ const Navbar = (props) => {
    return (
       <nav id={styles.nav}>
          {/* Logo */}
-         <div id={styles.img}>
-            <img src={logo} alt="" height={50} width={200} />
-         </div>
+         <Link to="/" id={styles.img}>
+            <img
+               src={logo}
+               className={styles.logo_img}
+               alt=""
+               height={50}
+               width={200}
+            />
+         </Link>
          <div
             className={
                sidebar
@@ -35,9 +42,12 @@ const Navbar = (props) => {
             </div>
             <div className={styles.left}>
                <ul id={styles.nav_links}>
-                  <li className={styles.each}>Home</li>
-                  <li className={styles.each}>Our Services</li>
-                  <li className={styles.each}>Find a doctor</li>
+                  <Link to="/landing-page" className={styles.each}>
+                     Home
+                  </Link>
+                  <Link to="/our-services" className={styles.each}>
+                     Our Services
+                  </Link>
                   <li className={styles.each}>How it Works</li>
                </ul>
                <div id={styles.signup}>

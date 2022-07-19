@@ -26,8 +26,8 @@ const QuickSolution = () => {
    return (
       <main className={styles.main}>
          <div className={styles.title}>
-            <p className={styles.caption}>a quick solution for</p>
-            <p className={styles.caption}>scheduling with a doctor</p>
+            <p className={styles.caption}>A quick solution for</p>
+            <p className={styles.caption}>Scheduling with a doctor</p>
          </div>
 
          {/* Display cards */}
@@ -57,7 +57,7 @@ const QuickSolution = () => {
             <div className={styles.left__div}>
                <p className={styles.firstp}>Join us!</p>
                <p className={styles.secondp}>
-                  We seek to provide easy accessible services to everyone
+                  Would you like to join our team of healthcare providers?
                </p>
                <div className={styles.btn}>
                   <button className={styles.contact__btn}>Contact us</button>
