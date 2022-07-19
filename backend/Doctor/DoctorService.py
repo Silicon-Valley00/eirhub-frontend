@@ -72,10 +72,10 @@ def doctorLogin():
                 session.commit()
                 return ({
                     'msg':{
-                        'first_name':returnDoctor.first_name,
-                        'middle_name':returnDoctor.middle_name,
-                        'last_name':returnDoctor.last_name,
-                        'license_number':returnDoctor.license_number
+                    'doctor_id':returnDoctor.idDoctor,'first_name': returnDoctor.first_name,'middle_name': returnDoctor.middle_name,'last_name': returnDoctor.last_name,
+                    'user_email': returnDoctor.user_email,'person_image': returnDoctor.person_image,'date_of_birth': returnDoctor.person_image,'house_address': returnDoctor.house_address,
+                    'doctor_ratings':returnDoctor.doctor_ratings,'doctor_specialties': returnDoctor.doctor_specialties,'license_number': returnDoctor.license_number,
+                    'gender':returnDoctor.gender,'hospital_code':returnDoctor.hospital_code,
                     },
                     'status':True
                 }),200  #StatusCode
@@ -90,7 +90,7 @@ def doctorLogin():
             return 'Error: Content-Type Error',400
 
 #Get All Doctors 
-@doctor_route.route("/doctor/",methods = ['GET'])
+@doctor_route.route("/doctors/",methods = ['GET'])
 def getDoctors():
     from app import session
     try: 
@@ -99,10 +99,10 @@ def getDoctors():
         for doctor in doctors:
             returnInfo.append((
                 {
-                    'first_name': doctor.first_name,'middle_name': doctor.middle_name,'last_name': doctor.last_name,
+                    'doctor_id':doctor.idDoctor,'first_name': doctor.first_name,'middle_name': doctor.middle_name,'last_name': doctor.last_name,
                     'user_email': doctor.user_email,'person_image': doctor.person_image,'date_of_birth': doctor.person_image,'house_address': doctor.house_address,
                     'doctor_ratings':doctor.doctor_ratings,'doctor_specialties': doctor.doctor_specialties,'license_number': doctor.license_number,
-                    'gender':doctor.gender,'hospital_code':doctor.hospital_code,
+                    'gender':doctor.gender,'hospital_code':doctor.hospital_code
             }
             ))
         return ({
