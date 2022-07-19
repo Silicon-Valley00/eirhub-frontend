@@ -38,7 +38,7 @@ def createPrescription(idPrescription):
         start_date = req["start_date"]
         end_date = req['end_date']
         #verify that prescription doesn't already exist
-        prescriptionExists = session.query(Prescription).filter(Prescription.drug_name ==drug_name,Prescription.start_date == start_date,Prescription.end_date == end_date,idPatient).first()
+        prescriptionExists = session.query(Prescription).filter(Prescription.drug_name ==drug_name,Prescription.start_date == start_date,Prescription.end_date == end_date).first()
         
         if(prescriptionExists):
             return ({
