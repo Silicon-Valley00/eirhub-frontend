@@ -71,7 +71,7 @@
    border-radius: 20px;
 }
 
-/* media query for 758px */
+/* media query for 768px */
 @media (min-width: 768px) {
    .upper_part {
       padding-left: 3rem;
