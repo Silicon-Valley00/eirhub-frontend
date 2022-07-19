@@ -21,11 +21,25 @@ const HowItWorks = () => {
 
             {/* center pole */}
             <section className={styles.lower_section}>
+               {/* pole */}
                <div className={styles.pole}>
-                  <div className={styles.circle_1}>1</div>
-                  <div className={styles.circle_2}>2</div>
-                  <div className={styles.circle_3}>3 </div>
-                  <div className={styles.circle_4}>4</div>
+                  {/* first circle */}
+                  <div className={styles.circle_1}>
+                     <p>1</p>
+                     <div className={styles.left__card}></div>
+                  </div>
+                  {/* second circle */}
+                  <div className={styles.circle_2}>
+                     2<div className={styles.right__card}></div>
+                  </div>
+                  {/* third circle */}
+                  <div className={styles.circle_3}>
+                     3 <div className={styles.left__card}></div>
+                  </div>
+                  {/* fourth circle */}
+                  <div className={styles.circle_4}>
+                     4<div className={styles.right__card}></div>
+                  </div>
                </div>
             </section>
          </main>

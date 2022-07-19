@@ -76,6 +76,7 @@
       color: white;
       font-size: 20px;
       position: absolute;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -85,6 +86,26 @@
       height: 3rem;
       border-radius: 50%;
       background-color: var(--lightcol);
+   }
+
+   .left__card {
+      position: absolute;
+      right: 7rem;
+      background-color: var(--white);
+      box-shadow: 0 2px 15px 0 #bedded;
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(248, 248, 250, 0.75);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.125);
+      border-radius: 20px;
+      height: 10rem;
+      width: 15rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--deepcol);
    }
 
    .circle_2 {
@@ -100,6 +121,26 @@
       height: 3rem;
       border-radius: 50%;
       background-color: var(--lightcol);
+   }
+
+   .right__card {
+      position: absolute;
+      left: 7rem;
+      background-color: var(--white);
+      box-shadow: 0 2px 15px 0 #bedded;
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(248, 248, 250, 0.75);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.125);
+      border-radius: 20px;
+      height: 10rem;
+      width: 15rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--deepcol);
    }
 
    .circle_3 {
@@ -135,6 +176,39 @@
 
 /* media queries for desktop screens */
 @media (min-width: 1024px) {
+   .circle_1 {
+      width: 5rem;
+      height: 5rem;
+      left: -32px;
+   }
+
+   .circle_2 {
+      width: 5rem;
+      height: 5rem;
+      left: -32px;
+   }
+
+   .circle_3 {
+      width: 5rem;
+      height: 5rem;
+      left: -32px;
+   }
+
+   .circle_4 {
+      width: 5rem;
+      height: 5rem;
+      left: -32px;
+   }
+
+   .right__card {
+      width: 20rem;
+      height: 13rem;
+   }
+
+   .left__card {
+      width: 20rem;
+      height: 13rem;
+   }
 }
 
 /* media queries for large screens */
