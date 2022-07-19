@@ -297,3 +297,31 @@ RESPONSE:
         "status": true
     }
 ```    
+**Get Patient by ID**
+
+GET : /patient/<id>
+
+BODY PARAMS: None
+
+RESPONSE:
+```
+{
+    "msg": {
+        "email": "baddest69@st.knust.edu.gh",
+        "first_name": "Rexford",
+        "house_address": "House-4",
+        "id": 28,
+        "idDoctor": 20,
+        "idGuardian": 20,
+        "id_number": "GHA-08008238HJJ",
+        "last_name": "Machu",
+        "middle_name": "Patient",
+        "nationality": "Ghanaian",
+        "person_image": "https://img.com/G.O.A.T"
+    },
+    "status": true
+}
+
+```
+
+

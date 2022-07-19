@@ -9,16 +9,10 @@ patients_route = Blueprint("patients_route",__name__)
 @patients_route.route("/patient",methods = ['GET'])
 def getPatients():
     from app import session
-    #trial object to test database entries
-    # newPatient = Patient("Terry","Meo","Lackman","https:/myImage.com","Lackman@gmail.com","madeit","2022-7-15"
-    # ,"12 molly street","+2332467897","57849003","male","Ghanaian")
-    # session.add(newPatient)
-    # session.commit()
-    # session.close()
     try:
         patients = session.query(Patient).all()
         Json_patients = [{
-            "status": True,
+            
             "msg": {
 
                 "id": patient.idPatient,
@@ -26,25 +20,46 @@ def getPatients():
                 "middle_name": patient.middle_name,
                 "last_name": patient.last_name,
                 "email": patient.user_email,
+                "person_image": patient.person_image,
+                "id_number": patient.id_number,
+                "idGuardian": patient.idGuardian,
+                "idDoctor": patient.idDoctor,
+                "house_address": patient.house_address,
                 "nationality": patient.nationality
-            }
+            },
+            "status": True
             
             } for patient in patients ]
         return jsonify(Json_patients),200
     except Exception as e:
         return (f"connection error: could not get patients:{e}"),400    
 
+#get patients by ID
 @patients_route.route("/patient/<id>",methods = ['GET'])
 def getPatientById(id):
     from app import session
-    patient = session.query(Patient).get(id)
-    return ({
-            "first_name": patient.first_name,
-            "middle_name": patient.middle_name,
-            "last_name": patient.last_name,
-            "email": patient.user_email,
-            "nationality": patient.nationality
-        })
+    try:
+        patient = session.query(Patient).get(id)
+        return ({
+            
+            "msg": {
+                 "id": patient.idPatient,
+                "first_name": patient.first_name,
+                "middle_name": patient.middle_name,
+                "last_name": patient.last_name,
+                "email": patient.user_email,
+                "person_image": patient.person_image,
+                "id_number": patient.id_number,
+                "idGuardian": patient.idGuardian,
+                "idDoctor": patient.idDoctor,
+                "house_address": patient.house_address,
+                "nationality": patient.nationality
+            },
+            "status": True
+            
+            }),200
+    except Exception as e:
+        return(f"Error : ID does not exist: {e}"),400        
 
 
 
@@ -171,3 +186,36 @@ def patientLogin():
             'status': False,
             'msg':"Bad Request Error"
         }),400
+
+
+#delete patient
+@patients_route.route("/patient/<id>",methods =["DELETE"] )
+def deletePatientById(id):
+     from app import session
+     try:
+        patient = session.query(Patient).get(id)
+        session.delete(patient)
+        session.commit()
+        return ({
+            
+            "msg": {
+                 "id": patient.idPatient,
+                "first_name": patient.first_name,
+                "middle_name": patient.middle_name,
+                "last_name": patient.last_name,
+                "email": patient.user_email,
+                "person_image": patient.person_image,
+                "id_number": patient.id_number,
+                "idGuardian": patient.idGuardian,
+                "idDoctor": patient.idDoctor,
+                "house_address": patient.house_address,
+                "nationality": patient.nationality
+            },
+            "status": True
+            
+            }),200
+     except Exception as e:
+        return(f"Error: Could not delete patient: {e}"),400 #currently not functional
+
+#Update patient info
+
