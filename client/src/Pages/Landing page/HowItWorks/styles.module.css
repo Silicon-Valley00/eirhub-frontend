@@ -77,6 +77,8 @@
       align-items: center;
       justify-content: center;
       margin-top: 10rem;
+      font-weight: 600;
+      font-size: 30px;
    }
 
    .pole {
@@ -88,7 +90,6 @@
    }
    .circle_1 {
       color: white;
-      font-size: 20px;
       position: absolute;
       position: relative;
       display: flex;
@@ -124,7 +125,6 @@
 
    .circle_2 {
       color: white;
-      font-size: 20px;
       position: absolute;
       display: flex;
       justify-content: center;
@@ -159,7 +159,6 @@
 
    .circle_3 {
       color: white;
-      font-size: 20px;
       position: absolute;
       display: flex;
       justify-content: center;
@@ -174,7 +173,6 @@
 
    .circle_4 {
       color: white;
-      font-size: 20px;
       position: absolute;
       display: flex;
       justify-content: center;

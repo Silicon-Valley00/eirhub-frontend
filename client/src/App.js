@@ -5,7 +5,7 @@ import 'aos/dist/aos.css';
 
 import LandingPage from './Pages/Landing page/LandingPage';
 import ServicesPage from './Pages/Landing page/ServicesPage';
-import HowItWorks from './Pages/HowItWorks';
+import HowItWorks from './Pages/Landing page/HowItWorks';
 
 import UserDashboard from './Pages/User Dashboard/UserDashboard';
 import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
@@ -15,10 +15,9 @@ import FindDoctorProfile from './Pages/User Dashboard/components/FindDoctorProfi
 import Medications from './Pages/User Dashboard/Medications/Medications';
 import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
 import Records from './Pages/User Dashboard/Records/Records';
+import PageNotFound from './Pages/PageNotFound/PageNotFound';
 
 AOS.init();
-
-
 
 function App() {
    return (
@@ -35,6 +34,7 @@ function App() {
 
          <Route path="/how-it-works" exact element={<HowItWorks />} />
 
+         <Route path="*" exact element={<PageNotFound />} />
 
          <Route
             path="/dashboard"
@@ -83,7 +83,6 @@ function App() {
                />
             }
          />
-       
       </Routes>
    );
 }
