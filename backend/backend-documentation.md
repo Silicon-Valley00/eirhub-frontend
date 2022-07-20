@@ -24,12 +24,34 @@ check_password_hash(a,'1234') #confirms if the hash and the word are equal and r
 [Doctor](#Doctor )           
 [Guardian](#Guardian-Person )             
 [Patient](#Patient )
+[Prescription](#Prescription) 
 
 
 
 
 
 API EndPoint Routes:
+
+# Prescription
+- **Get Prescription By ID**
+    GET: /prescription/prescription id 
+
+    BODY PARAMS: None
+
+    RESPONSE:
+    ```
+    "msg": {
+        "dosage": "1/day",
+        "drug_name": "lepromax",
+        "end_date": "2023-01-31",
+        "id": 2,
+        "last_taken_date": "2023-01-12",
+        "start_date": "2022-12-31",
+        "time_of_administration": "23:59:40"
+    },
+    "status": true
+    ```
+    
 
 # Doctor 
 - **Doctor Login**			
