@@ -10,21 +10,52 @@ import Registration from '../../Registration page/Registration';
 import styles from '../Landingpage.module.css';
 
 const ServicesPage = () => {
-   const [modalSignup, setModalSignup] = useState(false);
-   const [modalLogin, setModalLogin] = useState(false);
+  // Handles the states of the modals that show the different registration pages to users based on gtheir selection
+  const [modalSignup, setModalSignup] = useState(false);
+  const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
+  const [modalLogin, setModalLogin] = useState(false);
+  const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
 
-   function handleModalSignup() {
-      setModalLogin(false);
-      setModalSignup(true);
-   }
-   function handleModalLogin() {
-      setModalSignup(false);
-      setModalLogin(true);
-   }
-   function handleModalsClose() {
-      setModalSignup(false);
-      setModalLogin(false);
-   }
+
+  // Function opens the patients' signup form modal 
+  function handleModalSignup() {
+     setModalLogin(false);
+     setModalSignup(true);
+     setModalLoginDoctor(false);
+     setModalSignupDoctor(false);
+  }
+
+  // Function opens the patients' login form modal 
+  function handleModalLogin() {
+     setModalSignup(false);
+     setModalLogin(true);
+     setModalLoginDoctor(false);
+     setModalSignupDoctor(false);
+  }
+  
+  // Function opens the doctors' signup form modal 
+  function handleModalSignupDoctor() {
+     setModalLogin(false);
+     setModalSignup(false);
+     setModalLoginDoctor(false);
+     setModalSignupDoctor(true);
+  }
+
+  // Function opens the doctors' login form modal 
+  function handleModalLoginDoctor() {
+     setModalLogin(false);
+     setModalSignup(false);
+     setModalLoginDoctor(true);
+     setModalSignupDoctor(false);
+  }
+
+  // Handles close of all form modals
+  function handleModalsClose() {
+     setModalSignup(false);
+     setModalLogin(false);
+     setModalLoginDoctor(false);
+     setModalSignupDoctor(false);
+  }
    return (
       <>
          <div
@@ -33,8 +64,10 @@ const ServicesPage = () => {
             handleModalsClose={handleModalsClose}
          >
             <Navbar
-               handleModalLogin={handleModalLogin}
-               handleModalSignup={handleModalSignup}
+                handleModalLogin={handleModalLogin}
+                handleModalSignup={handleModalSignup}
+                handleModalLoginDoctor={handleModalLoginDoctor}
+                handleModalSignupDoctor={handleModalSignupDoctor}
             />{' '}
             <main className={style.main}>
                {/* upper section */}
