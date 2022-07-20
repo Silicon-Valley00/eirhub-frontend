@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Registration from '../../Registration page/Registration';
 import styles from './styles.module.css';
+import { HiCheck } from 'react-icons/hi';
 
 const HowItWorks = () => {
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
@@ -101,7 +102,8 @@ const HowItWorks = () => {
                      </div>
                      {/* fourth circle */}
                      <div className={styles.circle_4}>
-                        4<div className={styles.right__card}></div>
+                        <HiCheck />
+                        <div className={styles.right__card}></div>
                      </div>
                   </div>
                </section>
