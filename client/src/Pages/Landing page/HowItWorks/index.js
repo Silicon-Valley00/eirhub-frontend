@@ -90,20 +90,34 @@ const HowItWorks = () => {
                      {/* first circle */}
                      <div className={styles.circle_1}>
                         <p>1</p>
-                        <div className={styles.left__card}></div>
+                        <div className={styles.left_card}>
+                           <div className={styles.left__card}></div>
+                           <div className={styles.left__arrow}></div>
+                        </div>
                      </div>
                      {/* second circle */}
                      <div className={styles.circle_2}>
-                        2<div className={styles.right__card}></div>
+                        2
+                        <div className={styles.right_card}>
+                           <div className={styles.right__arrow}></div>
+                           <div className={styles.right__card}></div>
+                        </div>
                      </div>
                      {/* third circle */}
                      <div className={styles.circle_3}>
-                        3 <div className={styles.left__card}></div>
+                        3
+                        <div className={styles.left_card}>
+                           <div className={styles.left__card}></div>
+                           <div className={styles.left__arrow}></div>
+                        </div>
                      </div>
                      {/* fourth circle */}
                      <div className={styles.circle_4}>
                         <HiCheck />
-                        <div className={styles.right__card}></div>
+                        <div className={styles.right_card}>
+                           <div className={styles.right__arrow}></div>
+                           <div className={styles.right__card}></div>
+                        </div>
                      </div>
                   </div>
                </section>

@@ -103,14 +103,18 @@
       background-color: var(--lightcol);
    }
 
-   .left__card {
+   .left_card {
       position: absolute;
       right: 7rem;
+      display: flex;
+      align-items: center;
+   }
+
+   .left__card {
       background-color: var(--white);
       box-shadow: 0 2px 15px 0 #bedded;
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
-      background-color: rgba(248, 248, 250, 0.75);
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.125);
       border-radius: 20px;
@@ -121,6 +125,16 @@
       flex-direction: column;
       justify-content: space-between;
       color: var(--deepcol);
+   }
+
+   .left__arrow {
+      height: 0rem;
+      width: 0rem;
+      border-top: 2rem solid transparent;
+      border-bottom: 2rem solid transparent;
+      border-left: 4rem solid var(--white);
+      -webkit-filter: drop-shadow(1px 1px 1px #bedded);
+      filter: drop-shadow(5px 5px 5px #bedded);
    }
 
    .circle_2 {
@@ -137,14 +151,18 @@
       background-color: var(--lightcol);
    }
 
-   .right__card {
+   .right_card {
       position: absolute;
       left: 7rem;
+      display: flex;
+      align-items: center;
+   }
+
+   .right__card {
       background-color: var(--white);
       box-shadow: 0 2px 15px 0 #bedded;
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
-      background-color: rgba(248, 248, 250, 0.75);
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.125);
       border-radius: 20px;
@@ -155,6 +173,16 @@
       flex-direction: column;
       justify-content: space-between;
       color: var(--deepcol);
+   }
+
+   .right__arrow {
+      height: 0rem;
+      width: 0rem;
+      border-top: 2rem solid transparent;
+      border-bottom: 2rem solid transparent;
+      border-right: 4rem solid var(--white);
+      -webkit-filter: drop-shadow(1px 1px 1px #bedded);
+      filter: drop-shadow(5px 5px 5px #bedded);
    }
 
    .circle_3 {
