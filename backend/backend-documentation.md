@@ -374,7 +374,7 @@ RESPONSE:
 ```    
 **Get Patient by ID**
 
-GET : /patient/<id>
+GET : /patient/`patientID`
 
 BODY PARAMS: None
 
@@ -400,7 +400,7 @@ RESPONSE:
 ```
 **Delete patient**
 
-DELETE: /patient/<id>
+DELETE: /patient/`patientID`
 
 BODY PARAMS: None
 
@@ -420,6 +420,50 @@ RESPONSE:
         "middle_name": "Leo",
         "nationality": "Ghanaian",
         "person_image": "https:/myImage.com"
+    },
+    "status": true
+}
+```
+
+**Update patient details by ID**
+
+PUT: /patient/`patientID`
+
+BODY PARAMS:
+
+```
+{
+    "first_name": "Janine",
+    "middle_name":"Leta",
+    "last_name": "Mucha",
+    "person_image":"https://img.com/F.G.O.A.T",
+    "email":"Leta@st.knust.edu.gh",
+    "date_of_birth":"2007-12-03",
+    "house_address": "8 health street",
+    "gender":"female",
+    "phone_number" : "+233208936575",
+    "id_number": "GHA-08006328HJJ",
+    "nationality":"Ghanaian",
+    "doctor_id": 20,
+    "guardian_id": 20
+}
+```
+
+RESPONSE:
+```
+{
+    "msg": {
+        "email": "Leta@st.knust.edu.gh",
+        "first_name": "Janine",
+        "house_address": "8 health street",
+        "id": 27,
+        "idDoctor": 20,
+        "idGuardian": 20,
+        "id_number": "GHA-08006328HJJ",
+        "last_name": "Mucha",
+        "middle_name": "Leta",
+        "nationality": "Ghanaian",
+        "person_image": "https://img.com/F.G.O.A.T"
     },
     "status": true
 }

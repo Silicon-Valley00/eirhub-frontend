@@ -6,6 +6,6 @@ from Report.ReportModel import Report
 reports_route = Blueprint("reports_route",__name__)
 
 @reports_route.route("/reports",methods = ["GET"])
-def getreports():
+def getReports():
     return 'get Reports'
     
