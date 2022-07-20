@@ -7,7 +7,7 @@ from Patient.PatientModel import Patient,Base
 # Base = declarative_base()
 
 class HealthDetails(Base):
-    __tablename__ = 'Health_Details'
+    __tablename__ = 'HealthDetails'
     idHealthDetails = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     idPatient = Column(Integer,ForeignKey(Patient.idPatient))
     last_visit = Column("last_visit",Date)

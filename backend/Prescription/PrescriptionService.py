@@ -23,7 +23,7 @@ def getPrescriptionById(idPrescription):
         'drug_name':prescription.drug_name,
         'dosage':prescription.dosage,
         'time_of_administration':prescription.time_of_administration,
-        'start_date':prescription.star_date,
+        'start_date':prescription.start_date,
         'end_date':prescription.end_date,
         'last_taken_date':prescription.last_taken_date})
 

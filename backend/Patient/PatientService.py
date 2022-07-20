@@ -188,34 +188,34 @@ def patientLogin():
         }),400
 
 
-# #delete patient
-# @patients_route.route("/patient/<id>",methods =["DELETE"] )
-# def deletePatientById(id):
-#      from app import session
-#      try:
-#         patient = session.query(Patient).get(id)
-#         session.delete(patient)
-#         session.commit()
-#         return ({
+#delete patient
+@patients_route.route("/patient/<id>",methods =["DELETE"] )
+def deletePatientById(id):
+     from app import session
+     try:
+        patient = session.query(Patient).get(id)
+        session.delete(patient)
+        session.commit()
+        return ({
+          
+            "msg": {
+                 "id": patient.idPatient,
+                "first_name": patient.first_name,
+                "middle_name": patient.middle_name,
+                "last_name": patient.last_name,
+                "email": patient.user_email,
+                "person_image": patient.person_image,
+                "id_number": patient.id_number,
+                "idGuardian": patient.idGuardian,
+                "idDoctor": patient.idDoctor,
+                "house_address": patient.house_address,
+                "nationality": patient.nationality
+            },
+            "status": True
             
-#             "msg": {
-#                  "id": patient.idPatient,
-#                 "first_name": patient.first_name,
-#                 "middle_name": patient.middle_name,
-#                 "last_name": patient.last_name,
-#                 "email": patient.user_email,
-#                 "person_image": patient.person_image,
-#                 "id_number": patient.id_number,
-#                 "idGuardian": patient.idGuardian,
-#                 "idDoctor": patient.idDoctor,
-#                 "house_address": patient.house_address,
-#                 "nationality": patient.nationality
-#             },
-#             "status": True
-            
-#             }),200
-#      except Exception as e:
-#         return(f"Error: Could not delete patient: {e}"),400 #currently not functional
+            }),200
+     except Exception as e:
+        return(f"Error: Could not delete patient: {e}"),400 #currently not functional
 
 #Update patient info
 

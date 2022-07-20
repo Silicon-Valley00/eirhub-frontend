@@ -329,16 +329,21 @@ BODY PARAMS: None
 RESPONSE:
 ```
 {
-        "msg": {
-            "first_name": "Jerry",
-            "last_name": "Jackman",
-            "middle_name": "Leo",
-            "nationality": "Ghanaian",
-            "email": "Jackman@gmail.com",
-            "id": 23
-        },
-        "status": true
-    }
+    "msg": {
+        "email": "Lackman@gmail.com",
+        "first_name": "Terry",
+        "house_address": "12 molly street",
+        "id": 27,
+        "idDoctor": null,
+        "idGuardian": null,
+        "id_number": "57849003",
+        "last_name": "Lackman",
+        "middle_name": "Meo",
+        "nationality": "Ghanaian",
+        "person_image": "https:/myImage.com"
+    },
+    "status": true
+}
 ```    
 **Get Patient by ID**
 
@@ -366,5 +371,29 @@ RESPONSE:
 }
 
 ```
+**Delete patient**
 
+DELETE: /patient/<id>
 
+BODY PARAMS: None
+
+RESPONSE:
+
+```
+{
+    "msg": {
+        "email": "Jackman@gmail.com",
+        "first_name": "Jerry",
+        "house_address": "12 molly street",
+        "id": 24,
+        "idDoctor": null,
+        "idGuardian": null,
+        "id_number": "57849003",
+        "last_name": "Jackman",
+        "middle_name": "Leo",
+        "nationality": "Ghanaian",
+        "person_image": "https:/myImage.com"
+    },
+    "status": true
+}
+```
