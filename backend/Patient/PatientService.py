@@ -44,7 +44,7 @@ def getPatientById(id):
         return ({
             
             "msg": {
-                 "id": patient.idPatient,
+                "id": patient.idPatient,
                 "first_name": patient.first_name,
                 "middle_name": patient.middle_name,
                 "last_name": patient.last_name,
