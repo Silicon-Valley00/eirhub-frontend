@@ -13,7 +13,7 @@ function Registration(props) {
    // User sign in refs
    const loginEmail = useRef();
    const loginPassword = useRef();
-   
+
    // User sign up refs
    const signupFirstname = useRef();
    const signupLastname = useRef();
@@ -338,7 +338,7 @@ function Registration(props) {
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
          <DoctorSignup
-            modalSignup={props.modalSignupDoctor}
+            modalSignupDoctor={props.modalSignupDoctor}
             handleModalLogin={props.handleModalLogin}
             handleModalsClose={props.handleModalsClose}
             submitUserCredentialsHandler={submitUserCredentialsHandler}

@@ -58,8 +58,8 @@ const LandingPage = () => {
       <>
          <div
             id={styles.blur}
-            className={modalLogin || modalSignup ? styles.active : ''}
-            handleModalsClose={handleModalsClose}
+            className={modalLogin || modalSignup || modalLoginDoctor ||modalSignupDoctor ? styles.active : ''}
+            // handleModalsClose={handleModalsClose}
          >
             <Navbar
                handleModalLogin={handleModalLogin}
@@ -75,9 +75,13 @@ const LandingPage = () => {
          <Registration
             modalLogin={modalLogin}
             modalSignup={modalSignup}
+            modalLoginDoctor={modalLoginDoctor}
+            modalSignupDoctor={modalSignupDoctor}
             handleModalsClose={handleModalsClose}
             handleModalLogin={handleModalLogin}
             handleModalSignup={handleModalSignup}
+            handleModalLoginDoctor={handleModalLoginDoctor}
+            handleModalSignupDoctor={handleModalSignupDoctor}
          />
       </>
    );

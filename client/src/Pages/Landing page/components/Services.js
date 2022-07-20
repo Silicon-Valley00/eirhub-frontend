@@ -3,6 +3,7 @@ import Styles from './services.module.css';
 import docOne from '../../../assets/docProfileImage3.svg';
 import docTwo from '../../../assets/docProfileImage4.svg';
 import docThree from '../../../assets/docProfileImage1.svg';
+import Cards from './Cards';
 
 const details = [
    {
@@ -28,28 +29,20 @@ const Services = () => {
          <div className={Styles.services_container} data-aos={'slide up'}>
             <div className={Styles.services_title}>Meet Our Providers</div>
 
+            {/* display cards with of doctors */}
             <div className={Styles.services_doctors_box}>
                {React.Children.toArray(
                   details.map((detail) => {
                      return (
-                        <div className={Styles.card}>
-                           <div className={Styles.img}>
-                              <img src={detail.profile_pic} alt="Doctor" />
-                           </div>
-                           <div className={Styles.services_doctor_info}>
-                              <h4 className={Styles.services_doctor_info_h4}>
-                                 {detail.name}
-                              </h4>
-                              <p className={Styles.services_doctor_info_p}>
-                                 {detail.profession}
-                              </p>
-                           </div>
-                        </div>
+                        <>
+                           <Cards detail={detail} />
+                        </>
                      );
                   })
                )}
             </div>
 
+            {/* Button beneath the cards */}
             <div className={Styles.services_button}>
                <input
                   value={'Find A Doctor'}

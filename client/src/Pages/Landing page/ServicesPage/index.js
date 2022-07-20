@@ -60,7 +60,7 @@ const ServicesPage = () => {
       <>
          <div
             id={styles.blur}
-            className={modalLogin || modalSignup ? styles.active : ''}
+            className={modalLogin || modalSignup || modalLoginDoctor ||modalSignupDoctor ? styles.active : ''}
             handleModalsClose={handleModalsClose}
          >
             <Navbar
@@ -81,90 +81,84 @@ const ServicesPage = () => {
                         health care journey
                      </p>
                   </div>
-                  <div className={style.h_line}></div>
+                  <div data-aos="fade-in" className={style.of_image}>
+                     <img src={pic1} alt="" className={style.of__image} />
+                  </div>
                </div>
 
-               {/* body section with images */}
-               <section className={style.lower_section}>
-                  {/* first container */}
-                  <div className={style.container}>
-                     <div className={style.with_text}>
-                        <p className={style.with_text_title}>
-                           Health Consultation
-                        </p>
-                        <p className={style.with_text_desc}>
-                           An easier way to talk with your doctor
-                        </p>
-                        <p className={style.with_text_content}>
-                           Get to book appointments and meet your doctor
-                           face-to-face or online just with a few clicks
-                        </p>
-                     </div>
-                     <div className={style.of_image}>
-                        <img src={pic1} alt="" className={style.of__image} />
-                     </div>
+               {/* second container */}
+               <div className={`${style.container}`}>
+                  <div data-aos="fade-in" className={style.of_image}>
+                     <img src={pic2} alt="" className={style.of__image} />
                   </div>
-
-                  {/* second container */}
-                  <div className={`${style.container}`}>
-                     <div className={style.of_image}>
-                        <img src={pic2} alt="" className={style.of__image} />
-                     </div>
-                     <div className={style.with_text}>
-                        <p className={style.with_text_title}>Find a Doctor</p>
-                        <p className={style.with_text_desc}>
-                           Get access to the right doctor
-                        </p>
-                        <p className={style.with_text_content}>
-                           Find a doctor that can help you get a solution to
-                           your health problems{' '}
-                        </p>
-                     </div>
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="2000"
+                     className={style.with_text}
+                  >
+                     <p className={style.with_text_title}>Find a Doctor</p>
+                     <p className={style.with_text_desc}>
+                        Get access to the right doctor
+                     </p>
+                     <p className={style.with_text_content}>
+                        Find a doctor that can help you get a solution to your
+                        health problems
+                     </p>
                   </div>
-
-                  {/* third container */}
-                  <div className={style.container}>
-                     <div className={style.with_text}>
-                        <p className={style.with_text_title}>E-pharmacy</p>
-                        <p className={style.with_text_desc}>
-                           Manage your prescriptions more effectively
-                        </p>
-                        <p className={style.with_text_content}>
-                           Keep track of your various prescriptions and get
-                           alerts on when to refill
-                        </p>
-                     </div>
-                     <div className={style.of_image}>
-                        <img src={pic3} alt="" className={style.of__image} />
-                     </div>
+               </div>
+               {/* third container */}
+               <div className={style.container}>
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="2000"
+                     className={style.with_text}
+                  >
+                     <p className={style.with_text_title}>E-pharmacy</p>
+                     <p className={style.with_text_desc}>
+                        Manage your prescriptions more effectively
+                     </p>
+                     <p className={style.with_text_content}>
+                        Keep track of your various prescriptions and get alerts
+                        on when to refill
+                     </p>
                   </div>
-
-                  {/* fourth container */}
-                  <div className={style.container}>
-                     <div className={style.of_image}>
-                        <img src={pic4} alt="" className={style.of__image} />
-                     </div>
-                     <div className={style.with_text}>
-                        <p className={style.with_text_title}>Health Tips</p>
-                        <p className={style.with_text_desc}>
-                           Get access to verified tips for a healthy living
-                        </p>
-                        <p className={style.with_text_content}>
-                           Find a doctor that can help you get a solution to
-                           your health problems
-                        </p>
-                     </div>
+                  <div data-aos="fade-in" className={style.of_image}>
+                     <img src={pic3} alt="" className={style.of__image} />
                   </div>
-               </section>
+               </div>
+               {/* fourth container */}
+               <div className={style.container}>
+                  <div data-aos="fade-in" className={style.of_image}>
+                     <img src={pic4} alt="" className={style.of__image} />
+                  </div>
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="2000"
+                     className={style.with_text}
+                  >
+                     <p className={style.with_text_title}>Health Tips</p>
+                     <p className={style.with_text_desc}>
+                        Get access to verified tips for a healthy living
+                     </p>
+                     <p className={style.with_text_content}>
+                        Find a doctor that can help you get a solution to your
+                        health problems
+                     </p>
+                  </div>
+               </div>
             </main>
             <Footer />
          </div>
          <Registration
-            modalLogin={modalLogin}
-            modalSignup={modalSignup}
-            handleModalsClose={handleModalsClose}
-            handleModalLogin={handleModalLogin}
-            handleModalSignup={handleModalSignup}
+              modalLogin={modalLogin}
+              modalSignup={modalSignup}
+              modalLoginDoctor={modalLoginDoctor}
+              modalSignupDoctor={modalSignupDoctor}
+              handleModalsClose={handleModalsClose}
+              handleModalLogin={handleModalLogin}
+              handleModalSignup={handleModalSignup}
+              handleModalLoginDoctor={handleModalLoginDoctor}
+              handleModalSignupDoctor={handleModalSignupDoctor}
          />
       </>
    );
