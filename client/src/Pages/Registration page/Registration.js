@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import DoctorSignup from './components/DoctorSignup'
+import DoctorLogin from './components/DoctorLogin'
 import axios from 'axios';
 
 // Database configuration
@@ -297,6 +298,20 @@ function Registration(props) {
       <>
          <Login
             modalLogin={props.modalLogin}
+            handleModalSignup={props.handleModalSignup}
+            handleModalsClose={props.handleModalsClose}
+            submitUserCredentialsHandler={submitUserCredentialsHandler}
+            loginEmail={loginEmail}
+            handleloginEmail={handleloginEmail}
+            handleLoginPassword={handleLoginPassword}
+            loginPassword={loginPassword}
+            loginEmailError={loginEmailError}
+            loginPasswordError={loginPasswordError}
+            loginEmailErrorMessage={loginEmailErrorMessage}
+            loginPasswordErrorMessage={loginPasswordErrorMessage}
+         />
+         <DoctorLogin
+            modalLoginDoctor={props.modalLoginDoctor}
             handleModalSignup={props.handleModalSignup}
             handleModalsClose={props.handleModalsClose}
             submitUserCredentialsHandler={submitUserCredentialsHandler}
