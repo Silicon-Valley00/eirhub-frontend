@@ -3,7 +3,6 @@ import styles from './quickSolution.module.css';
 import groupdoc from '../../../assets/TeamOfDoctors.png';
 import { GiLabCoat } from 'react-icons/gi';
 import { BsFillCalendar2CheckFill, BsFillStarFill } from 'react-icons/bs';
-import { CgArrowLongRight } from 'react-icons/cg';
 
 const items = [
    {
@@ -40,10 +39,6 @@ const QuickSolution = () => {
                         <div className={styles.icon}>{item.icon}</div>
                         <p className={styles.heading}>{item.heading}</p>
                         <p className={styles.about}>{item.about}</p>
-                        <p className={styles.LearnMore}>
-                           Learn more
-                           <CgArrowLongRight className={styles.arrow} />
-                        </p>
                      </div>
                   );
                })

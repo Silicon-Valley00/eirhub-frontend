@@ -39,6 +39,7 @@
    border-radius: 20px;
    height: 16rem;
    padding: 2rem;
+   padding-bottom: 4rem;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
@@ -52,14 +53,6 @@
 
 .heading {
    font-weight: bold;
-}
-
-.LearnMore {
-   display: flex;
-   align-items: center;
-   gap: 6px;
-   color: var(--lightcol);
-   font-family: var(--mainfont);
 }
 
 .join_us {
