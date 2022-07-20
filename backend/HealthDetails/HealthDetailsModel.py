@@ -23,7 +23,7 @@ class HealthDetails(Base):
     patient = relationship("Patient",back_populates = "health_details")
 
 
-    def __init__(self, last_visit, blood_group, bmi, blood_pressure, respiratory_rate, pulse, blood_sugar,weight,height):
+    def __init__(self, last_visit, blood_group, bmi, blood_pressure, respiratory_rate, pulse, blood_sugar,weight,height,idPatient):
         self.last_visit = last_visit
         self.blood_group = blood_group
         self.bmi = bmi
@@ -31,6 +31,7 @@ class HealthDetails(Base):
         self. respiratory_rate = respiratory_rate
         self. pulse = pulse
         self. blood_sugar = blood_sugar
+        self.idPatient = idPatient 
         self.weight = weight
         self.height = height
     
