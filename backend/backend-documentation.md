@@ -25,6 +25,7 @@ check_password_hash(a,'1234') #confirms if the hash and the word are equal and r
 [Guardian](#Guardian-Person )             
 [Patient](#Patient )
 [Prescription](#Prescription) 
+[HealthDetails](#HealthDetails)
 
 
 
@@ -529,6 +530,33 @@ RESPONSE:
         "middle_name": "Leta",
         "nationality": "Ghanaian",
         "person_image": "https://img.com/F.G.O.A.T"
+    },
+    "status": true
+}
+```
+
+# HealthDetails
+
+**Get health details by patient ID**
+
+GET: /healthdetails/`patientID`
+
+BODY PARAMS: None
+
+RESPONSE:
+```
+{
+    "msg": {
+        "blood_group": "A",
+        "blood_pressure": 56.0,
+        "blood_sugar": "23",
+        "bmi": 45.0,
+        "height": 1.79,
+        "last_visit": "Sat, 09 Jul 2022 00:00:00 GMT",
+        "patient_id": 28,
+        "pulse": 79.0,
+        "respiratory_rate": "75",
+        "weight": 25.0
     },
     "status": true
 }
