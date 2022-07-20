@@ -156,7 +156,50 @@ API EndPoint Routes:
     }
 	```    
 
+- **Update Doctor By Id Method**
 
+    PUT : /updoctor/doctorId
+
+    BODY PARAMS: 	
+
+	```
+	{
+    "first_name": "Rexford",
+    "middle_name":"G.O.A.T",
+    "last_name": "Machu",
+    "person_image":"https://img.com/G.O.A.T",
+    "user_email":"baddest69@st.knust.edu.gh",
+    "date_of_birth":"2009-12-01",
+    "house_address": "House-4",
+    "doctor_ratings":3,
+    "hospital_code":"OAa3456",
+    "license_number":"80034903",
+    "doctor_specialties":"Gynaecology, Paediatric",
+    "gender":"Male"
+    }
+	```
+    RESPONSE:
+	```
+	{
+    "msg": {
+        "date_of_birth": "https://img.com/G.O.A.T",
+        "doctor_ratings": 3,
+        "doctor_specialties": "Gynaecology, Paediatric",
+        "first_name": "Rexford",
+        "gender": "Male",
+        "hospital_code": "OAa3456",
+        "house_address": "House-4",
+        "last_name": "Machu",
+        "license_number": "80034903",
+        "middle_name": "G.O.A.T",
+        "person_image": "https://img.com/G.O.A.T",
+        "user_email": "baddest69@st.knust.edu.gh"
+    },
+    "status": true
+    }
+	```    
+
+    
 
 - **Get Doctor By Id**		
 
