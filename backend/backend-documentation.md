@@ -51,6 +51,147 @@ API EndPoint Routes:
     },
     "status": true
     ```
+-**Get All Prescriptions**
+     GET: /getallprescription 
+
+     BODY PARAMS: None
+
+     RESPONSE:
+     ```
+        {
+        "msg": [
+            {
+                "dosage": "1/day",
+                "drug_name": "lepromax",
+                "end_date": "2023-01-31",
+                "id": 2,
+                "last_taken_date": "2023-01-12",
+                "start_date": "2022-12-31",
+                "time_of_administration": "23:59:40"
+            },
+            {
+                "dosage": "2/day",
+                "drug_name": "ziprofin ",
+                "end_date": "2023-01-31",
+                "id": 3,
+                "last_taken_date": "2023-01-12",
+                "start_date": "2022-12-31",
+                "time_of_administration": "23:59:40"
+            },
+            {
+                "dosage": "1/day",
+                "drug_name": "zipodex",
+                "end_date": "2023-01-31",
+                "id": 4,
+                "last_taken_date": "0000-00-00",
+                "start_date": "2022-12-31",
+                "time_of_administration": "23:59:40"
+            },
+            {
+                "dosage": "2/day",
+                "drug_name": "laravel",
+                "end_date": "2022-12-31",
+                "id": 6,
+                "last_taken_date": "2022-12-31",
+                "start_date": "2022-12-31",
+                "time_of_administration": "23:59:40"
+            },
+            {
+                "dosage": "2/day",
+                "drug_name": "laravelproxin",
+                "end_date": "2022-12-31",
+                "id": 7,
+                "last_taken_date": "2022-12-31",
+                "start_date": "2022-12-31",
+                "time_of_administration": "23:59:40"
+            }
+        ],
+        "status": true
+    }
+     ```
+
+- **Create A Prescription For A Patient**
+    POST : /createprescription
+
+    BODY PARAMS: 
+    ```
+        {
+        "drug_name":"laravelS",
+        "dosage":"2/day",
+        "time_of_administration":"23:59:40",
+        "start_date":"2022-12-31",
+        "end_date":"2022-12-31",
+        "last_taken_date":"2022-12-31",
+        "idPatient":28
+    }
+    ```
+    RESPONSE:
+    ```
+    {
+    "msg": {
+        "dosage": "2/day",
+        "drug_name": "laravelS",
+        "end_date": "2022-12-31",
+        "id": 8,
+        "idPatient": 28,
+        "last_taken_date": "2022-12-31",
+        "start_date": "2022-12-31",
+        "time_of_administration": "23:59:40"
+    },
+    "status": true
+    ```
+-**Update Prescription By Prescription ID**
+    PUT: /updateprescription/idPrescription
+
+    BODY PARAMS:
+    ```
+	{
+    "drug_name":"laravelS",
+    "dosage":"3/day",
+    "time_of_administration":"23:59:40",
+    "start_date":"2022-12-31",
+    "end_date":"2022-12-31",
+    "last_taken_date":"2022-12-31",
+    "idPatient":28
+    }
+	```
+    RESPONSE:
+    ```
+    {
+    "msg": {
+        "dosage": "3/day",
+        "drug_name": "laravelS",
+        "end_date": "2022-12-31",
+        "id": 8,
+        "idPatient": 28,
+        "last_taken_date": "2022-12-31",
+        "start_date": "2022-12-31",
+        "time_of_administration": "23:59:40"
+    },
+    "status": true
+    ```
+- **Delete Prescription by Prescription ID**
+    
+    DELETE: /deleteprescription/idPrescription
+
+    BODY PARAMS: None
+
+    RESPONSE:
+    ```
+    "msg": {
+        "dosage": "2/day",
+        "drug_name": "laravel",
+        "end_date": "2022-12-31",
+        "id": 6,
+        "idPatient": 28,
+        "last_taken_date": "2022-12-31",
+        "start_date": "2022-12-31",
+        "time_of_administration": "23:59:40"
+    },
+    "status": true
+    ```
+
+
     
 
 # Doctor 
