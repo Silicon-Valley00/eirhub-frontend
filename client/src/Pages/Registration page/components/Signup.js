@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './signup.module.css';
-import signUp from '../../../images/signupimage.svg';
+import signUp from '../../../images/Patientsignup.svg';
 import { FaRegUser, FaTimes } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
