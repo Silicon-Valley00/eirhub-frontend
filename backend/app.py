@@ -46,7 +46,6 @@ def home():
     return "Welcome to EirHub"
 
 
-<<<<<<< HEAD
 # Test Route
 @app.route("/person/<int:id>", methods=['GET', 'POST'])
 def getPersonById(id):
@@ -231,9 +230,6 @@ def doctors():
 
     return  (doctor)
 
-
-=======
->>>>>>> 8a4df36f12cd8fad4550c1f599c886f4a436c5cc
 
 if __name__ == "__main__":
     CORS(app)
