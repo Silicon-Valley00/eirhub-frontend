@@ -13,9 +13,14 @@ from dotenv import load_dotenv
 from Patient.PatientService import patients_route
 from Guardian.GuardianPersonService import guardian_route
 from Doctor.DoctorService import doctor_route
-# from HealthDetails.HealthDetailsService import health_details_route
+from Prescription.PrescriptionService import prescription_route
+from HealthDetails.HealthDetailsService import health_details_route
+# from Report.ReportService import reports_route
+from Report.ReportService import reports_route
+
 
 from HealthDetails.HealthDetailsModel import HealthDetails
+
 
 app = Flask(__name__)
 load_dotenv()
@@ -30,7 +35,10 @@ Base = declarative_base()
 app.register_blueprint(patients_route)
 app.register_blueprint(guardian_route)
 app.register_blueprint(doctor_route)
-# app.register_blueprint(health_details_route)
+app.register_blueprint(prescription_route)
+app.register_blueprint(reports_route)
+app.register_blueprint(health_details_route)
+# app.register_blueprint(reports_route)
 
 # Database Connection not needed right now. Commented out for now
 try:
@@ -51,6 +59,7 @@ def home():
 
 
 
+#main Logic
 if __name__ == "__main__":
     CORS(app)
     app.run(debug=True)

@@ -54,8 +54,7 @@ def createDoctor():
             return 'Error: Content-Type Error',400
 
 
-
-
+# Doctor Login
 @doctor_route.route("/doctorlogin",methods = ['POST'])
 def doctorLogin():
     from app import session
@@ -88,6 +87,7 @@ def doctorLogin():
                 ),200 #Check Status Code for wrong login
         else:
             return 'Error: Content-Type Error',400
+
 
 #Get All Doctors 
 @doctor_route.route("/doctors/",methods = ['GET'])

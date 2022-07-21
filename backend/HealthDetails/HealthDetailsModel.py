@@ -7,7 +7,7 @@ from Patient.PatientModel import Patient,Base
 # Base = declarative_base()
 
 class HealthDetails(Base):
-    __tablename__ = 'Health_Details'
+    __tablename__ = 'HealthDetails'
     idHealthDetails = Column(Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     idPatient = Column(Integer,ForeignKey(Patient.idPatient))
     last_visit = Column("last_visit",Date)
@@ -23,7 +23,7 @@ class HealthDetails(Base):
     patient = relationship("Patient",back_populates = "health_details")
 
 
-    def __init__(self, last_visit, blood_group, bmi, blood_pressure, respiratory_rate, pulse, blood_sugar,weight,height):
+    def __init__(self, last_visit, blood_group, bmi, blood_pressure, respiratory_rate, pulse, blood_sugar,weight,height,idPatient):
         self.last_visit = last_visit
         self.blood_group = blood_group
         self.bmi = bmi
@@ -31,6 +31,7 @@ class HealthDetails(Base):
         self. respiratory_rate = respiratory_rate
         self. pulse = pulse
         self. blood_sugar = blood_sugar
+        self.idPatient = idPatient 
         self.weight = weight
         self.height = height
     

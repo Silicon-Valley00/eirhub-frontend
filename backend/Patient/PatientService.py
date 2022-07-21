@@ -40,10 +40,11 @@ def getPatientById(id):
     from app import session
     try:
         patient = session.query(Patient).get(id)
+      
         return ({
             
             "msg": {
-                 "id": patient.idPatient,
+                "id": patient.idPatient,
                 "first_name": patient.first_name,
                 "middle_name": patient.middle_name,
                 "last_name": patient.last_name,
@@ -188,34 +189,80 @@ def patientLogin():
         }),400
 
 
-# #delete patient
-# @patients_route.route("/patient/<id>",methods =["DELETE"] )
-# def deletePatientById(id):
-#      from app import session
-#      try:
-#         patient = session.query(Patient).get(id)
-#         session.delete(patient)
-#         session.commit()
-#         return ({
+#delete patient
+@patients_route.route("/patient/<id>",methods =["DELETE"] )
+def deletePatientById(id):
+     from app import session
+     try:
+        patient = session.query(Patient).get(id)
+        session.delete(patient)
+        session.commit()
+        return ({
+          
+            "msg": {
+                 "id": patient.idPatient,
+                "first_name": patient.first_name,
+                "middle_name": patient.middle_name,
+                "last_name": patient.last_name,
+                "email": patient.user_email,
+                "person_image": patient.person_image,
+                "id_number": patient.id_number,
+                "idGuardian": patient.idGuardian,
+                "idDoctor": patient.idDoctor,
+                "house_address": patient.house_address,
+                "nationality": patient.nationality
+            },
+            "status": True
             
-#             "msg": {
-#                  "id": patient.idPatient,
-#                 "first_name": patient.first_name,
-#                 "middle_name": patient.middle_name,
-#                 "last_name": patient.last_name,
-#                 "email": patient.user_email,
-#                 "person_image": patient.person_image,
-#                 "id_number": patient.id_number,
-#                 "idGuardian": patient.idGuardian,
-#                 "idDoctor": patient.idDoctor,
-#                 "house_address": patient.house_address,
-#                 "nationality": patient.nationality
-#             },
-#             "status": True
-            
-#             }),200
-#      except Exception as e:
-#         return(f"Error: Could not delete patient: {e}"),400 #currently not functional
+            }),200
+     except Exception as e:
+        return(f"Error: Could not delete patient: {e}"),400 
 
-#Update patient info
+#Update patient info 
+@patients_route.route("/patient/<id>",methods = ["PUT"])
+def updatePatientDetailsById(id):
+    from app import session
+    req = request.json
+   
+    try:
+        patient = session.query(Patient).get(id)
+        
+        #update details with new parameters
+        patient.first_name = req["first_name"]
+        patient.middle_name = req["middle_name"]
+        patient.last_name = req["last_name"]
+        patient.user_email = req["email"]
+        patient.person_image = req["person_image"]
+        patient.date_of_birth =req["date_of_birth"]
+        patient.house_address = req["house_address"]
+        patient.phone_number = req["phone_number"]
+        patient.id_number = req["id_number"]
+        patient.nationality = req["nationality"]
+        patient.gender = req["gender"]
+        patient.idDoctor = req["doctor_id"]
+        patient.idGuardian = req["guardian_id"]
+
+        session.commit()
+        return ({
+          
+            "msg": {
+                 "id": patient.idPatient,
+                "first_name": patient.first_name,
+                "middle_name": patient.middle_name,
+                "last_name": patient.last_name,
+                "email": patient.user_email,
+                "person_image": patient.person_image,
+                "id_number": patient.id_number,
+                "idGuardian": patient.idGuardian,
+                "idDoctor": patient.idDoctor,
+                "house_address": patient.house_address,
+                "nationality": patient.nationality
+            },
+            "status": True
+            
+            }),200
+    except Exception as e:
+        return(f"Error: Could not update patient details: {e}"),400 
+
+   
 
