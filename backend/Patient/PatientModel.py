@@ -32,6 +32,7 @@ class Patient(Base):
     gender = Column("gender",String(45))
 
     health_details = relationship("HealthDetails",uselist=False,back_populates = "patient")
+    prescription = relationship("Prescription",cascade='save-update, merge, delete')
    
    
     

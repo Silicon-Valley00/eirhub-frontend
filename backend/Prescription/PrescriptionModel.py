@@ -1,15 +1,16 @@
+from tkinter import CASCADE
 from sqlalchemy import Column, Integer, String, Date, ForeignKey, Float,Time, null
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import declarative_base
-from Patient.PatientModel import Patient
+from Patient.PatientModel import Patient,Base
 
 
 
-Base = declarative_base()
+# Base = declarative_base()
 class Prescription(Base):
     __tablename__ = "Prescription"
-    idPatient = Column(Integer, ForeignKey(Patient.idPatient))
-    idPrescription = Column(Integer,primary_key= True, unique=True, nullable= False, autoincrement=True)
+    idPatient = Column(Integer, ForeignKey(Patient.idPatient,ondelete= 'CASCADE'))
+    idPrescription = Column(primary_key= True, unique=True, nullable= False, autoincrement=True)
     drug_name = Column('drug_name', String(45), nullable=False)
     dosage = Column('dosage', String(45), nullable = True)
     time_of_administration = Column('time_of_administration',Time,nullable=False)
@@ -18,7 +19,9 @@ class Prescription(Base):
     last_taken_date = Column('last_taken_date', Date,nullable=False)
 
     
-    def __init__(self,drug_name,dosage,time_of_administration,start_date,end_date,last_taken_date,idPatient):
+
+    
+    def __init__(self,drug_name,idPatient,dosage,time_of_administration,start_date,end_date,last_taken_date):
         self.drug_name = drug_name
         self.dosage = dosage
         self.time_of_administration = time_of_administration
