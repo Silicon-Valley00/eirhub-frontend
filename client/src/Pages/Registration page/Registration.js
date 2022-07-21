@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
-// import DoctorSignup from './components/DoctorSignup'
+import DoctorSignup from './components/DoctorSignup'
+import DoctorLogin from './components/DoctorLogin'
 import axios from 'axios';
 
 // Database configuration
@@ -13,6 +14,7 @@ function Registration(props) {
    // User sign in refs
    const loginEmail = useRef();
    const loginPassword = useRef();
+
    // User sign up refs
    const signupFirstname = useRef();
    const signupLastname = useRef();
@@ -190,8 +192,9 @@ function Registration(props) {
       }
    }
 
-   // function handles user data
+   // function handles submittion of user data to database
    function submitUserCredentialsHandler() {
+      // User entered credentials
       let enteredloginName = loginEmail.current.value;
       let enteredloginPassword = loginPassword.current.value;
 
@@ -201,19 +204,23 @@ function Registration(props) {
       let enteredSignUpEmail = signupEmail.current.value;
       let enteredSignUpPassword = signupPassword.current.value;
       let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
-      if (props.modalLogin) {
-         //sends user validated credentials
 
-         const loginData = {
+      let enteredSignupHospitalCode = signupHospitalCode.current.value
+      
+      // Below code checks which modal form is open to take user credentials
+      if (props.modalLogin) { //checks if the patient login form modal is opened 
+         // prepares credentials for submition
+         const loginPatientData = {
             name: enteredloginName,
             password: enteredloginPassword,
          };
-         console.log(loginData);
-         submitCredentials('login', loginData);
-      } else if (props.modalSignup) {
-         //Sends validated sign up user credentials
-
-         const signupData = {
+         console.log(loginPatientData);
+         submitCredentials('login', loginPatientData);
+      } 
+      
+      else if (props.modalSignup) {  //checks if the patient signup form modal is opened
+         // prepares credentials for submition
+         const signupPatientData = {
             firstname: enteredSignUpFirstname,
             lastname: enteredSignUpLastname,
             dateOfBirth: enteredSignUpDate,
@@ -221,14 +228,44 @@ function Registration(props) {
             password: enteredSignUpPassword,
          };
 
-         console.log(signupData);
+         console.log(signupPatientData);
          console.log('start');
-         submitCredentials('signup', signupData);
+         submitCredentials('signup', signupPatientData);
+         console.log('end');
+      }
+
+      else if (props.modalSignupDoctor) { //checks if the doctor signup form modal is opened
+         // prepares credentials for submittion
+         const signupDoctorData = {
+            firstname: enteredSignUpFirstname,
+            lastname: enteredSignUpLastname,
+            hospitalCode: enteredSignupHospitalCode,
+            user_email: enteredSignUpEmail,
+            password: enteredSignUpPassword,
+         };
+
+         console.log(signupDoctorData);
+         console.log('start');
+         submitCredentials('signup', signupDoctorData);
+         console.log('end');
+      }
+
+      else if (props.modalLoginDoctor) {  //checks if the doctor login form modal is opened
+         // prepares credentials for submittion
+         const loginDoctorData = {
+            user_email: enteredSignUpEmail,
+            password: enteredSignUpPassword,
+         };
+
+         console.log(loginDoctorData);
+         console.log('start');
+         submitCredentials('signup', loginDoctorData);
          console.log('end');
       }
    }
 
-   function submitCredentials(path, data) {
+   // Function submits data to database via an api
+   function submitCredentials(path, data) {  //Function takes path and data to make request
       axios({
          method: 'post',
          url: `http://127.0.0.1:5000/${path}`,
@@ -238,10 +275,13 @@ function Registration(props) {
          data: { data },
       })
          .then((response) => {
+            //Checks if response is ok
             if (response.status === 200) {
+               //checks details of response
                console.log('good', response);
             }
          })
+         //catches all errorr when response is not ok, 404 included
          .catch((error) => {
             if (error.response) {
                console.log('data', error.response.data);
@@ -258,6 +298,20 @@ function Registration(props) {
       <>
          <Login
             modalLogin={props.modalLogin}
+            handleModalSignup={props.handleModalSignup}
+            handleModalsClose={props.handleModalsClose}
+            submitUserCredentialsHandler={submitUserCredentialsHandler}
+            loginEmail={loginEmail}
+            handleloginEmail={handleloginEmail}
+            handleLoginPassword={handleLoginPassword}
+            loginPassword={loginPassword}
+            loginEmailError={loginEmailError}
+            loginPasswordError={loginPasswordError}
+            loginEmailErrorMessage={loginEmailErrorMessage}
+            loginPasswordErrorMessage={loginPasswordErrorMessage}
+         />
+         <DoctorLogin
+            modalLoginDoctor={props.modalLoginDoctor}
             handleModalSignup={props.handleModalSignup}
             handleModalsClose={props.handleModalsClose}
             submitUserCredentialsHandler={submitUserCredentialsHandler}
@@ -298,8 +352,8 @@ function Registration(props) {
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
-         {/* <DoctorSignup
-            modalSignup={props.modalSignup}
+         <DoctorSignup
+            modalSignupDoctor={props.modalSignupDoctor}
             handleModalLogin={props.handleModalLogin}
             handleModalsClose={props.handleModalsClose}
             submitUserCredentialsHandler={submitUserCredentialsHandler}
@@ -324,7 +378,7 @@ function Registration(props) {
             handleRegisterHospitalCode={handleRegisterHospitalCode}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-         /> */}
+         /> 
       </>
    );
 }

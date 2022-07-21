@@ -26,8 +26,7 @@ function DoctorSignup(props) {
         <div className={styles.signupBody}>
             <div
                 id={styles.signupContent}
-                // className={styles.active}
-                // className={props.modalSignup ? styles.active : ''}
+                className={props.modalSignupDoctor ? styles.active : ''}
             >
                 <div
                     className={styles.closeModal}
@@ -372,7 +371,7 @@ function DoctorSignup(props) {
                                 <p>Already have an account?</p>
                                 <p
                                     id={styles.signupFormMessageP}
-                                    onClick={() => props.handleModalLogin()}
+                                    onClick={() => props.handleModalLoginDoctor()}
                                 >
                                     Login
                         </p>
