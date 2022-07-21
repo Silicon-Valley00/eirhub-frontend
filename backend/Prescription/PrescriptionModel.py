@@ -1,5 +1,4 @@
-from tkinter import CASCADE
-from sqlalchemy import Column, Integer, String, Date, ForeignKey, Float,Time, null
+from sqlalchemy import Column, Integer, String, Date, ForeignKey, Float,Time
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import declarative_base
 from Patient.PatientModel import Patient,Base
