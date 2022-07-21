@@ -9,9 +9,7 @@ function PageNotFound() {
          <div className={PageNotFoundStyles.Para}>
             <h1>Oooops!!</h1>
             <p>We can't seem to find the page you are looking for.</p>
-            <button to="/" className={PageNotFoundStyles.button}>
-               Go back
-            </button>
+            <button className={PageNotFoundStyles.button}>Go back</button>
          </div>
          <div className={PageNotFoundStyles.PNFimage}>
             <img src={NotFound} alt="Not found"></img>
