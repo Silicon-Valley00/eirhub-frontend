@@ -161,6 +161,10 @@
       height: 19rem;
    }
 
+   .icon {
+      height: 2rem;
+      width: 2rem;
+   }
    .heading {
       font-size: 24px;
       font-weight: 800;
