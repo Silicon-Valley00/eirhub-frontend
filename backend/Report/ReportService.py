@@ -16,10 +16,10 @@ def getReports():
             
             "msg": {
 
-                "idReport": reports.idReport,
-                "report_type": reports.first_name,
-                "description": reports.middle_name,
-                "idPatient": reports.last_name,
+                "report_id": report.idReport,
+                "report_type": report.report_type,
+                "description": report.description,
+                "patient_id": report.idPatient,
                 
             },
             "status": True

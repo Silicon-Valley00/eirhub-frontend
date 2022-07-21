@@ -1,7 +1,6 @@
 from email.errors import InvalidMultipartContentTransferEncodingDefect
 from multiprocessing import synchronize
 from operator import methodcaller
-from subprocess import IDLE_PRIORITY_CLASS
 from flask import Blueprint,request,jsonify
 from Prescription.PrescriptionModel import Prescription 
 from flask_sqlalchemy import SQLAlchemy

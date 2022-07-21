@@ -16,6 +16,8 @@ from Doctor.DoctorService import doctor_route
 from Prescription.PrescriptionService import prescription_route
 from HealthDetails.HealthDetailsService import health_details_route
 # from Report.ReportService import reports_route
+from Report.ReportService import reports_route
+
 
 from HealthDetails.HealthDetailsModel import HealthDetails
 
@@ -34,7 +36,7 @@ app.register_blueprint(patients_route)
 app.register_blueprint(guardian_route)
 app.register_blueprint(doctor_route)
 app.register_blueprint(prescription_route)
-
+app.register_blueprint(reports_route)
 app.register_blueprint(health_details_route)
 # app.register_blueprint(reports_route)
 
