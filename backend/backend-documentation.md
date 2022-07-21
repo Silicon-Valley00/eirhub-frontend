@@ -35,7 +35,7 @@ API EndPoint Routes:
 
 # Prescription
 - **Get Prescription By ID**
-    GET: /prescription/prescription id 
+    GET: /prescription/`idPrescription`
 
     BODY PARAMS: None
 
@@ -53,7 +53,7 @@ API EndPoint Routes:
     "status": true
     ```
 - **Get All Prescriptions**
-     GET: /getallprescription 
+     GET: /prescription 
 
      BODY PARAMS: None
 
@@ -112,7 +112,7 @@ API EndPoint Routes:
      ```
 
 - **Create A Prescription For A Patient**
-    POST : /createprescription
+    POST : /prescription
 
     BODY PARAMS: 
     ```
@@ -142,7 +142,7 @@ API EndPoint Routes:
     "status": true
     ```
 - **Update Prescription By Prescription ID**
-    PUT: /updateprescription/idPrescription
+    PUT: /prescription/`idPrescription`
 
     BODY PARAMS:
     ```
@@ -173,7 +173,7 @@ API EndPoint Routes:
     ```
 - **Delete Prescription by Prescription ID**
     
-    DELETE: /deleteprescription/idPrescription
+    DELETE: /prescription/`idPrescription`
 
     BODY PARAMS: None
 

@@ -32,7 +32,7 @@ def getPrescriptionById(id):
         return(f"Error : Prescription does not exist :{e}"),400
     
 #get all prescriptions and api 
-@prescription_route.route("/getallprescription",methods = ['GET'])
+@prescription_route.route("/prescription",methods = ['GET'])
 def getPrescriptions():
     from app import session 
     try:
@@ -58,7 +58,7 @@ def getPrescriptions():
         return("Connection Error: %s",e),400
     
 
-@prescription_route.route("/createprescription",methods = ["POST"])
+@prescription_route.route("/prescription",methods = ["POST"])
 def createPrescription():
     from app import session
     content_type = request.headers.get('Content-Type')
@@ -122,7 +122,7 @@ def createPrescription():
 
 
 #update prescription by prescription id 
-@prescription_route.route("/updateprescription/<id>",methods = ["PUT"])
+@prescription_route.route("/prescription/<id>",methods = ["PUT"])
 def updatePrescriptionById(id):
     from app import session
     req = request.json 
@@ -162,7 +162,7 @@ def updatePrescriptionById(id):
         }),400
 
 #delete prescriptions api
-@prescription_route.route("/deleteprescription/<id>",methods = ["DELETE"])
+@prescription_route.route("/prescription/<id>",methods = ["DELETE"])
 def deletePrescription(id):
     from app import session
     try:
