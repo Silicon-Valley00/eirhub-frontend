@@ -18,7 +18,7 @@ function Login(props) {
     const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
     const {
         handleModalsClose,
-        handleModalSignup,
+        handleModalSignupDoctor,
         loginEmailErrorMessage,
         loginPasswordErrorMessage,
         handleloginEmail,
@@ -193,7 +193,6 @@ function Login(props) {
                                     New Here ?{' '}
                                     <p
                                         className={loginStyles.link}
-                                        href=""
                                         onClick={() => handleModalSignupDoctor()}
                                     >
                                         Sign up
@@ -207,7 +206,7 @@ function Login(props) {
                 <div className={loginStyles.rightSide}>
                     <h1>Eirhub</h1>
                     <p>Health is an everyday thing</p>
-                    <img id={loginStyles.loginImg} src={loginImage} alt="" />
+                    <img id={loginStyles.loginImg} src={loginImage} alt="login-image" />
                 </div>
             </div>
         </section>
