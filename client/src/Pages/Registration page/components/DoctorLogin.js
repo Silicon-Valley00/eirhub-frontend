@@ -194,7 +194,7 @@ function Login(props) {
                                     <p
                                         className={loginStyles.link}
                                         href=""
-                                        onClick={() => handleModalSignup()}
+                                        onClick={() => handleModalSignupDoctor()}
                                     >
                                         Sign up
                            </p>
