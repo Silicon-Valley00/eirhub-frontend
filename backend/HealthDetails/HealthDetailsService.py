@@ -36,15 +36,15 @@ def getHealthDetailsByPatientId(id):
 
 
 #Update healthdetails by ID
-@health_details_route.route("/uphealthdetails/<patientId>/",methods = ['PUT'])
+@health_details_route.route("/uphealthdetails/<patientId>",methods = ['PUT'])
 def updateHealthDetailsById(patientId):
     from app import session
     req = request.json
     try: 
         session.query(HealthDetails).filter(HealthDetails.idPatient == int(patientId)).update(
              {
-                    HealthDetails.idPatient: req['idPatient'],
-                    HealthDetails.last_visit:req["last_visit"],
+                    
+                    HealthDetails.last_visit:str(req["last_visit"]),
                     HealthDetails.blood_group: req["blood_group"],
                     HealthDetails.bmi: req["bmi"],
                     HealthDetails.blood_pressure: req["blood_pressure"],
@@ -59,7 +59,7 @@ def updateHealthDetailsById(patientId):
         session.commit()
         healthDetailsInfo = session.query(HealthDetails).get(int(patientId))
         healthDetailsInfo = {
-            'last_visit': healthDetailsInfo.last_visit,'blood_group': healthDetailsInfo.blood_group,'bmi': healthDetailsInfo.bmi,
+            'last_visit': str(healthDetailsInfo.last_visit),'blood_group': healthDetailsInfo.blood_group,'bmi': healthDetailsInfo.bmi,
              'blood_pressure': healthDetailsInfo.blood_pressure,'respiratory_rate': healthDetailsInfo.respiratory_rate,
              'pulse': healthDetailsInfo.pulse,'blood_sugar': healthDetailsInfo.blood_sugar, 'weight': healthDetailsInfo.weight, 'height' : healthDetailsInfo.height,
              'idPatient':healthDetailsInfo.idPatient
