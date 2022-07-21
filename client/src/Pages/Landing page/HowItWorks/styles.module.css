@@ -158,7 +158,9 @@
    }
 
    .circle__num {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
 
    .circle_1 {

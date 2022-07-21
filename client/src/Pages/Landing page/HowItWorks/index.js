@@ -156,7 +156,6 @@ const HowItWorks = () => {
                      {/* fourth circle */}
                      <div className={styles.circle_4}>
                         <p className={styles.circle__num}>
-                           {' '}
                            <HiCheck />
                         </p>
 
