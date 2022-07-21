@@ -63,6 +63,7 @@ health_details_route = Blueprint("health_details_route",__name__)
         # else:
         #     return ('Error: Content-Type Error'),400
 
+# Get HealthDetials By Id
 @health_details_route.route("/healthdetails/<id>",methods = ["GET"])
 def getHealthDetailsByPatientId(id):
     from app import session
@@ -90,3 +91,41 @@ def getHealthDetailsByPatientId(id):
         return(f"Error : ID does not exist: {e}"),400
 
 #Update healthdetails        
+#Update Doctors By Id Method.
+@health_details_route.route("/uphealthdetails/<patientId>/",methods = ['PUT'])
+def updateHealthDetailsById(patientId):
+    from app import session
+    req = request.json
+    try: 
+        session.query(HealthDetails).filter(HealthDetails.idPatient == int(patientId)).update(
+             {
+                    HealthDetails.idPatient: req['idPatient'],
+                    HealthDetails.last_visit:req["last_visit"],
+                    HealthDetails.blood_group: req["blood_group"],
+                    HealthDetails.bmi: req["bmi"],
+                    HealthDetails.blood_pressure: req["blood_pressure"],
+                    HealthDetails.respiratory_rate: req["respiratory_rate"],
+                    HealthDetails.pulse: req["pulse"],
+                    HealthDetails.blood_sugar:req["blood_sugar"],
+                    HealthDetails.weight: req["weight"],
+                    HealthDetails.height: req["height"],
+            }
+             , synchronize_session = False
+             )
+        session.commit()
+        healthDetailsInfo = session.query(HealthDetails).get(int(patientId))
+        healthDetailsInfo = {
+            'last_visit': healthDetailsInfo.last_visit,'blood_group': healthDetailsInfo.blood_group,'bmi': healthDetailsInfo.bmi,
+             'blood_pressure': healthDetailsInfo.blood_pressure,'respiratory_rate': healthDetailsInfo.respiratory_rate,
+             'pulse': healthDetailsInfo.pulse,'blood_sugar': healthDetailsInfo.blood_sugar, 'weight': healthDetailsInfo.weight, 'height' : healthDetailsInfo.height,
+             'idPatient':healthDetailsInfo.idPatient
+            }
+        return ({
+            'status': True,
+            'msg': healthDetailsInfo
+        }),200
+    except Exception as e:
+        return ({
+            'status':False,
+            'msg': ("Connection Error: User not updated : %s",e)
+        }),400
