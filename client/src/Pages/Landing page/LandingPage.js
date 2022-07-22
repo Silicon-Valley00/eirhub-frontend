@@ -14,8 +14,7 @@ const LandingPage = () => {
    const [modalLogin, setModalLogin] = useState(false);
    const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
 
-
-   // Function opens the patients' signup form modal 
+   // Function opens the patients' signup form modal
    function handleModalSignup() {
       setModalLogin(false);
       setModalSignup(true);
@@ -23,15 +22,15 @@ const LandingPage = () => {
       setModalSignupDoctor(false);
    }
 
-   // Function opens the patients' login form modal 
+   // Function opens the patients' login form modal
    function handleModalLogin() {
       setModalSignup(false);
       setModalLogin(true);
       setModalLoginDoctor(false);
       setModalSignupDoctor(false);
    }
-   
-   // Function opens the doctors' signup form modal 
+
+   // Function opens the doctors' signup form modal
    function handleModalSignupDoctor() {
       setModalLogin(false);
       setModalSignup(false);
@@ -39,11 +38,12 @@ const LandingPage = () => {
       setModalSignupDoctor(true);
    }
 
-   // Function opens the doctors' login form modal 
+   // Function opens the doctors' login form modal
    function handleModalLoginDoctor() {
       setModalLogin(false);
       setModalSignup(false);
       setModalLoginDoctor(true);
+      /* Setting the state of the modalSignupDoctor to false. */
       setModalSignupDoctor(false);
    }
 
@@ -58,7 +58,14 @@ const LandingPage = () => {
       <>
          <div
             id={styles.blur}
-            className={modalLogin || modalSignup || modalLoginDoctor ||modalSignupDoctor ? styles.active : ''}
+            className={
+               modalLogin ||
+               modalSignup ||
+               modalLoginDoctor ||
+               modalSignupDoctor
+                  ? styles.active
+                  : ''
+            }
             // handleModalsClose={handleModalsClose}
          >
             <Navbar

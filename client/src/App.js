@@ -5,7 +5,8 @@ import 'aos/dist/aos.css';
 
 import LandingPage from './Pages/Landing page/LandingPage';
 import ServicesPage from './Pages/Landing page/ServicesPage';
-import HowItWorks from './Pages/HowItWorks';
+import HowItWorks from './Pages/Landing page/HowItWorks';
+import FAQ from './Pages/Landing page/FAQ/FAQ';
 
 import UserDashboard from './Pages/User Dashboard/UserDashboard';
 import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
@@ -16,6 +17,7 @@ import Medications from './Pages/User Dashboard/Medications/Medications';
 import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
 import Records from './Pages/User Dashboard/Records/Records';
 import RecordChild from './Pages/User Dashboard/components/RecordsChild';
+import PageNotFound from './Pages/PageNotFound/PageNotFound';
 
 AOS.init();
 
@@ -33,6 +35,10 @@ function App() {
          <Route path="/our-services" exact element={<ServicesPage />} />
 
          <Route path="/how-it-works" exact element={<HowItWorks />} />
+
+         <Route path="*" exact element={<PageNotFound />} />
+
+         <Route path="/FAQ" exact element={<FAQ />} />
 
          <Route
             path="/dashboard"

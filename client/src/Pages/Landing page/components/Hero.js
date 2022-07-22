@@ -16,7 +16,7 @@ const Hero = () => {
                </div>
                <div className={heroStyles.content_info}>
                   <p className={heroStyles.content__info}>
-                      <Typewriter
+                     <Typewriter
                         options={{ loop: false, delay: 20 }}
                         onInit={(typewriter) => {
                            typewriter
@@ -29,7 +29,7 @@ const Hero = () => {
                               )
                               .start();
                         }}
-                     /> 
+                     />
                   </p>
                </div>
 

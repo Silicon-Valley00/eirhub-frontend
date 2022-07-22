@@ -9,7 +9,6 @@ const Cards = ({ detail }) => {
          className={Styles.card}
       >
          {/* BUG: Images are well positioned in the middle. */}
-         {/* REVIEW: animation must be different for each card */}
          <div className={Styles.img}>
             <img src={detail.profile_pic} alt="Doctor" />
          </div>
