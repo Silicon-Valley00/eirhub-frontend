@@ -122,45 +122,45 @@ def getPrescriptions():
 
 
 
-# #update prescription by prescription id 
-# @prescription_route.route("/prescription/<id>",methods = ["PUT"])
-# def updatePrescriptionById(id):
-#     from app import session
-#     req = request.json 
-#     try:
-#         session.query(Prescription).filter(Prescription.idPrescription == id).update(
-#             {   
-#                 Prescription.drug_name : req["drug_name"],
-#                 Prescription.start_date : req["start_date"],
-#                 Prescription.end_date : req['end_date'],
-#                 Prescription.idPatient : req['idPatient'],
-#                 Prescription.last_taken_date : req["last_taken_date"],
-#                 Prescription.dosage : req["dosage"],
-#                 Prescription.time_of_administration :req["time_of_administration"]
-#             }
-#             ,synchronize_session = False
-#             )
-#         session.commit()
-#         return_prescription = session.query(Prescription).get(id)
-#         prescription_data = {
-#             "id": return_prescription.idPrescription,
-#             "drug_name":return_prescription.drug_name,
-#             "dosage":return_prescription.dosage,
-#             "time_of_administration":str(return_prescription.time_of_administration),#made str because object type of date isn't json serializable
-#             "start_date":str(return_prescription.start_date),
-#             "end_date":str(return_prescription.end_date),
-#             "last_taken_date":str(return_prescription.last_taken_date),
-#             "idPatient":return_prescription.idPatient
-#         }
-#         return ({
-#             'status': True,
-#             'msg': prescription_data
-#         }),200
-#     except Exception as e:
-#         return ({
-#             'status':False,
-#             'msg': ("Connection Error: User not updated : %s",e)
-#         }),400
+#update prescription by prescription id 
+@prescription_route.route("/prescription/<id>",methods = ["PUT"])
+def updatePrescriptionById(id):
+    from app import session
+    req = request.json 
+    try:
+        session.query(Prescription).filter(Prescription.idPrescription == id).update(
+            {   
+                Prescription.drug_name : req["drug_name"],
+                Prescription.start_date : req["start_date"],
+                Prescription.end_date : req['end_date'],
+                Prescription.idPatient : req['idPatient'],
+                Prescription.last_taken_date : req["last_taken_date"],
+                Prescription.dosage : req["dosage"],
+                Prescription.time_of_administration :req["time_of_administration"]
+            }
+            ,synchronize_session = False
+            )
+        session.commit()
+        return_prescription = session.query(Prescription).get(id)
+        prescription_data = {
+            "id": return_prescription.idPrescription,
+            "drug_name":return_prescription.drug_name,
+            "dosage":return_prescription.dosage,
+            "time_of_administration":str(return_prescription.time_of_administration),#made str because object type of date isn't json serializable
+            "start_date":str(return_prescription.start_date),
+            "end_date":str(return_prescription.end_date),
+            "last_taken_date":str(return_prescription.last_taken_date),
+            "idPatient":return_prescription.idPatient
+        }
+        return ({
+            'status': True,
+            'msg': prescription_data
+        }),200
+    except Exception as e:
+        return ({
+            'status':False,
+            'msg': ("Connection Error: User not updated : %s",e)
+        }),400
 
 #delete prescriptions api
 @prescription_route.route("/prescription/<id>",methods = ["DELETE"])
