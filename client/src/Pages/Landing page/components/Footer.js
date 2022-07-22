@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaTwitter } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import footerStyle from '../components/footer.module.css';
 
 const Footer = () => {
@@ -46,7 +47,9 @@ const Footer = () => {
                <li className={footerStyle.flist}>How it Works</li>
                <li className={footerStyle.flist}>Book Appointment</li>
                <li className={footerStyle.flist}>Register</li>
-               <li className={footerStyle.flist}>FAQ</li>
+               <Link to="/FAQ" className={footerStyle.flist}>
+                  FAQ
+               </Link>
                <li className={footerStyle.flist}>Terms of Use</li>
             </ul>
          </div>
