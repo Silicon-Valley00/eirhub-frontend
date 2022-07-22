@@ -123,10 +123,12 @@ const HowItWorks = () => {
                            <div className={styles.right__arrow}></div>
                            <div className={styles.right__card}>
                               <IoIosClock className={styles.icon} />
-                              <p className={styles.heading}>Find a doctor</p>
+                              <p className={styles.heading}>
+                                 Pick a Date and Time
+                              </p>
                               <p className={styles.content}>
-                                 Choose from a wide variety of highly-qualified
-                                 doctors near you.
+                                 Select a date and time that would be convenient
+                                 for you.
                               </p>
                            </div>
                         </div>
@@ -142,10 +144,10 @@ const HowItWorks = () => {
                         >
                            <div className={styles.left__card}>
                               <MdVerified className={styles.icon} />
-                              <p className={styles.heading}>Find a doctor</p>
+                              <p className={styles.heading}>Get Approved </p>
                               <p className={styles.content}>
-                                 Choose from a wide variety of highly-qualified
-                                 doctors near you.
+                                 Wait for the selected doctor to approve your
+                                 appointment.
                               </p>
                            </div>
                            <div className={styles.left__arrow}></div>
@@ -154,7 +156,6 @@ const HowItWorks = () => {
                      {/* fourth circle */}
                      <div className={styles.circle_4}>
                         <p className={styles.circle__num}>
-                           {' '}
                            <HiCheck />
                         </p>
 
@@ -167,10 +168,10 @@ const HowItWorks = () => {
                            <div className={styles.right__arrow}></div>
                            <div className={styles.right__card}>
                               <GiVideoConference className={styles.icon} />
-                              <p className={styles.heading}>Find a doctor</p>
+                              <p className={styles.heading}>Meet your Doctor</p>
                               <p className={styles.content}>
-                                 Choose from a wide variety of highly-qualified
-                                 doctors near you.
+                                 See your doctor in-person or online and get the
+                                 are you need
                               </p>
                            </div>
                         </div>

@@ -158,7 +158,9 @@
    }
 
    .circle__num {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
 
    .circle_1 {
@@ -361,7 +363,8 @@
    }
 
    .heading {
-      font-size: 30px;
+      font-size: 25px;
+      white-space: nowrap;
    }
 
    .content {
