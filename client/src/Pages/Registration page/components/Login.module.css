@@ -49,6 +49,13 @@ form {
    font-size: 20px;
 }
 
+i.closeIcon {
+   font-size: 20px;
+   color: red;
+   cursor: pointer;
+}
+
+
 #loginSection {
    position: relative;
    display: flex;
@@ -58,7 +65,10 @@ form {
    height: 100%;
 }
 
+
 #loginContainer {
+   max-height: 600px;
+   max-width: 800px;
    display: flex;
    position: fixed;
    top: 50%;
@@ -71,7 +81,6 @@ form {
    background-color: var(--white);
    height: 80vh;
    width: 70vw;
-   max-width: 900px;
    margin: auto;
    visibility: hidden;
    opacity: 0;
@@ -447,10 +456,8 @@ p.link {
    .inputField {
       height: var(--height);
    }
+   .closeModal i svg {
+      font-size: 20px;
+   }
 }
 
-i.closeIcon {
-   font-size: 20px;
-   color: red;
-   cursor: pointer;
-}

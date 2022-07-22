@@ -312,7 +312,7 @@ function Registration(props) {
          />
          <DoctorLogin
             modalLoginDoctor={props.modalLoginDoctor}
-            handleModalSignup={props.handleModalSignup}
+            handleModalSignupDoctor={props.handleModalSignupDoctor}
             handleModalsClose={props.handleModalsClose}
             submitUserCredentialsHandler={submitUserCredentialsHandler}
             loginEmail={loginEmail}
@@ -354,7 +354,7 @@ function Registration(props) {
          />
          <DoctorSignup
             modalSignupDoctor={props.modalSignupDoctor}
-            handleModalLogin={props.handleModalLogin}
+            handleModalLoginDoctor={props.handleModalLoginDoctor}
             handleModalsClose={props.handleModalsClose}
             submitUserCredentialsHandler={submitUserCredentialsHandler}
             signupFirstname={signupFirstname}
