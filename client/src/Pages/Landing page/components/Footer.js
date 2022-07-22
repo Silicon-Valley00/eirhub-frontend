@@ -10,7 +10,10 @@ const Footer = () => {
       <footer>
          {/* logo div*/}
          <div className={footerStyle.logo}>
-            <span className={footerStyle.logo}>Eirhub</span>
+            <Link to="/">
+               <span className={footerStyle.logo}>Eirhub</span>
+            </Link>
+
             <p className={footerStyle.logo}>
                Eirhubs helps patients get quick access to experienced
                practitioners and helps increase visibility on these
