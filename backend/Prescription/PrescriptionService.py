@@ -185,4 +185,4 @@ def deletePrescription(id):
         }),200
         
     except Exception as e:
-        return ("Error: Could not delete prescriptino: %s",e),400
+        return ("Error: Could not delete prescription: %s",e),400

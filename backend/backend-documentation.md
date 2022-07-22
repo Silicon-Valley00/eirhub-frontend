@@ -556,149 +556,149 @@ RESPONSE:
 	```          
 - **Get All Patients**
 
-GET : /patient
+    GET : /patient
 
-BODY PARAMS: None
+    BODY PARAMS: None
 
-RESPONSE:
-```
-{
-    "msg": {
-        "email": "Lackman@gmail.com",
-        "first_name": "Terry",
-        "house_address": "12 molly street",
-        "id": 27,
-        "idDoctor": null,
-        "idGuardian": null,
-        "id_number": "57849003",
-        "last_name": "Lackman",
-        "middle_name": "Meo",
-        "nationality": "Ghanaian",
-        "person_image": "https:/myImage.com"
-    },
-    "status": true
-}
-```    
-**Get Patient by ID**
+    RESPONSE:
+    ```
+    {
+        "msg": {
+            "email": "Lackman@gmail.com",
+            "first_name": "Terry",
+            "house_address": "12 molly street",
+            "id": 27,
+            "idDoctor": null,
+            "idGuardian": null,
+            "id_number": "57849003",
+            "last_name": "Lackman",
+            "middle_name": "Meo",
+            "nationality": "Ghanaian",
+            "person_image": "https:/myImage.com"
+        },
+        "status": true
+    }
+    ```    
+- **Get Patient by ID**
 
-GET : /patient/`patientID`
+    GET : /patient/`patientID`
 
-BODY PARAMS: None
+    BODY PARAMS: None
 
-RESPONSE:
-```
-{
-    "msg": {
-        "email": "baddest69@st.knust.edu.gh",
-        "first_name": "Rexford",
-        "house_address": "House-4",
-        "id": 28,
-        "idDoctor": 20,
-        "idGuardian": 20,
-        "id_number": "GHA-08008238HJJ",
-        "last_name": "Machu",
-        "middle_name": "Patient",
-        "nationality": "Ghanaian",
-        "person_image": "https://img.com/G.O.A.T"
-    },
-    "status": true
-}
+    RESPONSE:
+    ```
+    {
+        "msg": {
+            "email": "baddest69@st.knust.edu.gh",
+            "first_name": "Rexford",
+            "house_address": "House-4",
+            "id": 28,
+            "idDoctor": 20,
+            "idGuardian": 20,
+            "id_number": "GHA-08008238HJJ",
+            "last_name": "Machu",
+            "middle_name": "Patient",
+            "nationality": "Ghanaian",
+            "person_image": "https://img.com/G.O.A.T"
+        },
+        "status": true
+    }
 
-```
-**Delete patient**
+    ```
+- **Delete patient**
 
-DELETE: /patient/`patientID`
+    DELETE: /patient/`patientID`
 
-BODY PARAMS: None
+    BODY PARAMS: None
 
-RESPONSE:
+    RESPONSE:
 
-```
-{
-    "msg": {
-        "email": "Jackman@gmail.com",
-        "first_name": "Jerry",
-        "house_address": "12 molly street",
-        "id": 24,
-        "idDoctor": null,
-        "idGuardian": null,
-        "id_number": "57849003",
-        "last_name": "Jackman",
-        "middle_name": "Leo",
-        "nationality": "Ghanaian",
-        "person_image": "https:/myImage.com"
-    },
-    "status": true
-}
-```
+    ```
+    {
+        "msg": {
+            "email": "Jackman@gmail.com",
+            "first_name": "Jerry",
+            "house_address": "12 molly street",
+            "id": 24,
+            "idDoctor": null,
+            "idGuardian": null,
+            "id_number": "57849003",
+            "last_name": "Jackman",
+            "middle_name": "Leo",
+            "nationality": "Ghanaian",
+            "person_image": "https:/myImage.com"
+        },
+        "status": true
+    }
+    ```
 
-**Update patient details by ID**
+- **Update patient details by ID**
 
-PUT: /patient/`patientID`
+    PUT: /patient/`patientID`
 
-BODY PARAMS:
+    BODY PARAMS:
 
-```
-{
-    "first_name": "Janine",
-    "middle_name":"Leta",
-    "last_name": "Mucha",
-    "person_image":"https://img.com/F.G.O.A.T",
-    "email":"Leta@st.knust.edu.gh",
-    "date_of_birth":"2007-12-03",
-    "house_address": "8 health street",
-    "gender":"female",
-    "phone_number" : "+233208936575",
-    "id_number": "GHA-08006328HJJ",
-    "nationality":"Ghanaian",
-    "doctor_id": 20,
-    "guardian_id": 20
-}
-```
-
-RESPONSE:
-```
-{
-    "msg": {
-        "email": "Leta@st.knust.edu.gh",
+    ```
+    {
         "first_name": "Janine",
-        "house_address": "8 health street",
-        "id": 27,
-        "idDoctor": 20,
-        "idGuardian": 20,
-        "id_number": "GHA-08006328HJJ",
+        "middle_name":"Leta",
         "last_name": "Mucha",
-        "middle_name": "Leta",
-        "nationality": "Ghanaian",
-        "person_image": "https://img.com/F.G.O.A.T"
-    },
-    "status": true
-}
-```
+        "person_image":"https://img.com/F.G.O.A.T",
+        "email":"Leta@st.knust.edu.gh",
+        "date_of_birth":"2007-12-03",
+        "house_address": "8 health street",
+        "gender":"female",
+        "phone_number" : "+233208936575",
+        "id_number": "GHA-08006328HJJ",
+        "nationality":"Ghanaian",
+        "doctor_id": 20,
+        "guardian_id": 20
+    }
+    ```
+
+    RESPONSE:
+    ```
+    {
+        "msg": {
+            "email": "Leta@st.knust.edu.gh",
+            "first_name": "Janine",
+            "house_address": "8 health street",
+            "id": 27,
+            "idDoctor": 20,
+            "idGuardian": 20,
+            "id_number": "GHA-08006328HJJ",
+            "last_name": "Mucha",
+            "middle_name": "Leta",
+            "nationality": "Ghanaian",
+            "person_image": "https://img.com/F.G.O.A.T"
+        },
+        "status": true
+    }
+    ```
 
 # HealthDetails
 
-**Get health details by patient ID**
+- **Get health details by patient ID**
 
-GET: /healthdetails/`patientID`
+    GET: /healthdetails/`patientID`
 
-BODY PARAMS: None
+    BODY PARAMS: None
 
-RESPONSE:
-```
-{
-    "msg": {
-        "blood_group": "A",
-        "blood_pressure": 56.0,
-        "blood_sugar": "23",
-        "bmi": 45.0,
-        "height": 1.79,
-        "last_visit": "Sat, 09 Jul 2022 00:00:00 GMT",
-        "patient_id": 28,
-        "pulse": 79.0,
-        "respiratory_rate": "75",
-        "weight": 25.0
-    },
-    "status": true
-}
-```
+    RESPONSE:
+    ```
+    {
+        "msg": {
+            "blood_group": "A",
+            "blood_pressure": 56.0,
+            "blood_sugar": "23",
+            "bmi": 45.0,
+            "height": 1.79,
+            "last_visit": "Sat, 09 Jul 2022 00:00:00 GMT",
+            "patient_id": 28,
+            "pulse": 79.0,
+            "respiratory_rate": "75",
+            "weight": 25.0
+        },
+        "status": true
+    }
+    ```
