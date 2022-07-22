@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import LandingPage from './Pages/Landing page/LandingPage';
 import ServicesPage from './Pages/Landing page/ServicesPage';
 import HowItWorks from './Pages/Landing page/HowItWorks';
+import FAQ from './Pages/Landing page/FAQ/FAQ';
 
 import UserDashboard from './Pages/User Dashboard/UserDashboard';
 import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
@@ -35,6 +36,8 @@ function App() {
          <Route path="/how-it-works" exact element={<HowItWorks />} />
 
          <Route path="*" exact element={<PageNotFound />} />
+
+         <Route path="/FAQ" exact element={<FAQ />} />
 
          <Route
             path="/dashboard"

@@ -102,6 +102,13 @@
    font-family: var(--mainfont);
 }
 
+.contact__btn:hover {
+   background: var(--white);
+   color: var(--lightcol);
+   transition: all;
+   transition-duration: 500ms;
+}
+
 @media (min-width: 600px) {
    .caption {
       font-size: 30px;

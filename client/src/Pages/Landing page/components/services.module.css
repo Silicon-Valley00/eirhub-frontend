@@ -200,7 +200,12 @@
       border-radius: 5px;
       background: var(--white);
    }
-
+   .message_btn:hover {
+      background: var(--lightcol);
+      color: var(--white);
+      transition: all;
+      transition-duration: 500ms;
+   }
    .circle_1 {
       position: absolute;
       bottom: -4rem;
