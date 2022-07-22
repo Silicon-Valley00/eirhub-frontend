@@ -11,7 +11,7 @@ function PageNotFound() {
             <button>Back to Home</button>
          </div>
          <div className={PageNotFoundStyles.PNFimage}>
-            <img src={NotFound}></img>
+            <img src={NotFound} alt="not-found"></img>
          </div>
       </div>
    );

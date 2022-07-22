@@ -49,7 +49,7 @@ function Calendar() {
             selectedMonth === month
          ) {
             return (
-               <div className={styles.today}>
+               <div className={styles.today} key={num}>
                   {num - startDay + 1}
                   <span></span>
                   <span></span>
@@ -59,7 +59,7 @@ function Calendar() {
             );
          } else {
             return (
-               <div>
+               <div key={num}>
                   {num - startDay + 1}
                   <span></span>
                   <span></span>
@@ -70,7 +70,7 @@ function Calendar() {
          }
       } else {
          return (
-            <div className={styles.empty}>
+            <div className={styles.empty} key={num}>
                <span></span>
                <span></span>
                <span></span>

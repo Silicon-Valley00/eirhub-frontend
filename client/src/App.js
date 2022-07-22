@@ -15,10 +15,9 @@ import FindDoctorProfile from './Pages/User Dashboard/components/FindDoctorProfi
 import Medications from './Pages/User Dashboard/Medications/Medications';
 import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
 import Records from './Pages/User Dashboard/Records/Records';
+import RecordChild from './Pages/User Dashboard/components/RecordsChild';
 
 AOS.init();
-
-
 
 function App() {
    return (
@@ -34,7 +33,6 @@ function App() {
          <Route path="/our-services" exact element={<ServicesPage />} />
 
          <Route path="/how-it-works" exact element={<HowItWorks />} />
-
 
          <Route
             path="/dashboard"
@@ -54,7 +52,7 @@ function App() {
             element={
                <UserDashboard
                   parent={<Records />}
-                  child={<MedicationForm />}
+                  child={<RecordChild />}
                   page={'records'}
                />
             }
@@ -65,7 +63,7 @@ function App() {
             exact
             element={
                <UserDashboard
-                  parent={<Medications />}
+                  parent={<Medications pushData={MedicationForm.pullData} />} //Transfers data from parent component to child component
                   child={<MedicationForm />}
                   page={'medications'}
                />
@@ -77,13 +75,12 @@ function App() {
             exact
             element={
                <UserDashboard
-                  parent={<FindDoctor pushData={FindDoctorProfile.pullData} />}
+                  parent={<FindDoctor pushData={FindDoctorProfile.pullData} />} //Transfers data from parent component to child component
                   child={<FindDoctorProfile />}
                   page={'finddoctor'}
                />
             }
          />
-       
       </Routes>
    );
 }
