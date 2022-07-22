@@ -65,7 +65,7 @@ def getPatientById(id):
 
 
 #Patient Sign Up 
-@patients_route.route("/patientsignup",methods = ['POST'])
+@patients_route.route("/patient/signup",methods = ['POST'])
 def createPatient():
     from app import session
     if request.method == 'POST':
@@ -130,7 +130,7 @@ def createPatient():
 
 
 #Patient LogIn 
-@patients_route.route("/patientlogin",methods = ['POST'])
+@patients_route.route("/patient/login",methods = ['POST'])
 def patientLogin():
     from app import session
     content_type = request.headers.get('Content-Type')

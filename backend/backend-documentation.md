@@ -482,7 +482,7 @@ RESPONSE:
 # Patient 
 - **Patient Login**:			
 
-	POST : /patientlogin		
+	POST : /patient/login		
 
 	BODY PARAMS: 	
 
@@ -513,7 +513,7 @@ RESPONSE:
 	```
 - **Patient Registration**		
 
-	POST : /patientsignup      
+	POST : /patient/signup      
 
     BODY PARAMS: 	
 
