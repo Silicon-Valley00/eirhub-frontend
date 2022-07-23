@@ -72,9 +72,9 @@ def createPatient():
         content_type = request.headers.get('Content-Type')
         if (content_type == 'application/json'):
             req = request.json
-            email = req["email"]
-            password = req["password"]
-            isPatient = session.query(Patient).filter(Patient.user_email == email).first()
+            user_email = req["user_email"]
+            user_password = req["user_password"]
+            isPatient = session.query(Patient).filter(Patient.user_email == user_email).first()
             if(isPatient):
                 return ({
                     'status': False,
@@ -83,11 +83,11 @@ def createPatient():
             first_name = req["first_name"]
             middle_name = req["middle_name"]
             last_name = req["last_name"]
-            email = req["email"]
+            user_email = req["user_email"]
             person_image = req["person_image"]
             date_of_birth =req["date_of_birth"]
             house_address = req["house_address"]
-            password = req["password"]
+            user_password = req["user_password"]
             phone_number = req["phone_number"]
             id_number = req["id_number"]
             nationality = req["nationality"]
@@ -95,8 +95,8 @@ def createPatient():
             doctor_id = req["doctor_id"]
             guardian_id = req["guardian_id"]
             #Hash Password
-            passwordHash = generate_password_hash(password)
-            newPatient = Patient(first_name=first_name,middle_name=middle_name,last_name=last_name,user_email=email,user_password=passwordHash,
+            passwordHash = generate_password_hash(user_password)
+            newPatient = Patient(first_name=first_name,middle_name=middle_name,last_name=last_name,user_email=user_email,user_password=passwordHash,
             person_image=person_image,date_of_birth=date_of_birth,house_address=house_address,phone_number=phone_number,id_number=id_number,
             gender=gender,nationality=nationality,guardian_id=guardian_id,doctor_id=doctor_id)
             try: 
@@ -104,16 +104,16 @@ def createPatient():
                 session.commit()
             except Exception as e:
                 return ("Connection Error: User not recorded : %s",e),400
-            idPatient = session.query(Patient.idPatient).filter(Patient.user_email == email).first()
+            idPatient = session.query(Patient.idPatient).filter(Patient.user_email == user_email).first()
             patientInfo = session.query(Patient).get(idPatient)
             session.commit()
-            if(check_password_hash(patientInfo.user_password,password)):
+            if(check_password_hash(patientInfo.user_password,user_password)):
                 return ({
                     'msg':{
                         'first_name':patientInfo.first_name,
                         'middle_name':patientInfo.middle_name,
                         'last_name':patientInfo.last_name,
-                        'email':patientInfo.user_email,
+                        'user_email':patientInfo.user_email,
                         'date_of_birth':patientInfo.date_of_birth,
                         'phone_number':patientInfo.phone_number,
                         'id_number':patientInfo.id_number,
@@ -136,24 +136,24 @@ def patientLogin():
     content_type = request.headers.get('Content-Type')
     if(content_type == 'application/json'):
         req = request.json
-        email = req["email"]
-        password = req["password"]
+        user_email = req["user_email"]
+        user_password = req["user_password"]
     #Check Email 
         try:
-            idPatient = session.query(Patient.idPatient).filter(Patient.user_email == email).first()
+            idPatient = session.query(Patient.idPatient).filter(Patient.user_email == user_email).first()
             if(idPatient):
                 patientInfo = session.query(Patient).get(idPatient)
                 session.commit()
                 #Check Password after user email has been verified
                 try :
                     userDbPassword =  str(patientInfo.user_password)
-                    if(check_password_hash(userDbPassword,password)):
+                    if(check_password_hash(userDbPassword,user_password)):
                         return ({
                     'msg':{
                         'first_name':patientInfo.first_name,
                         'middle_name':patientInfo.middle_name,
                         'last_name':patientInfo.last_name,
-                        'email':patientInfo.user_email,
+                        'user_email':patientInfo.user_email,
                         'date_of_birth':patientInfo.date_of_birth,
                         'phone_number':patientInfo.phone_number,
                         'id_number':patientInfo.id_number,

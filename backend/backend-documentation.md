@@ -198,14 +198,14 @@ API EndPoint Routes:
 # Doctor 
 - **Doctor Login**			
 
-	POST : /login		
+	POST : doctor/login		
 
 	BODY PARAMS: 	
 
 	```
 	{
-    "hospital_code":"OAa3456",
-    "license_number":"80034903"
+    "user_email":"baddest70@st.knust.edu.gh",
+    "user_password":"WhatTheF@ckThough54321"
     }
 	```
 
@@ -213,43 +213,39 @@ API EndPoint Routes:
 	```
 	{
     "msg": {
-        "date_of_birth": "https://img.com/G.O.A.T",
-        "doctor_id": 20,
-        "doctor_ratings": 3,
-        "doctor_specialties": "Gynaecology, Paediatric",
+        "date_of_birth": "Tue, 01 Dec 2009 00:00:00 GMT",
+        "email": "baddest70@st.knust.edu.gh",
         "first_name": "Rexford",
         "gender": "Male",
-        "hospital_code": "OAa3456",
-        "house_address": "House-4",
         "last_name": "Machu",
-        "license_number": "80034903",
-        "middle_name": "G.O.A.T",
-        "person_image": "https://img.com/G.O.A.T",
-        "user_email": "baddest69@st.knust.edu.gh"
+        "license_number": "8003490390",
+        "middle_name": "G.O.A.T.II"
     },
     "status": true
     }
 	```
 - **Doctor Registration**		
 
-	POST : /signup      
+	POST : doctor/signup      
 
     BODY PARAMS: 	
 
 	```
 	{
     "first_name": "Rexford",
-    "middle_name":"G.O.A.T",
+    "middle_name":"G.O.A.T.II",
     "last_name": "Machu",
-    "person_image":"https://img.com/G.O.A.T",
-    "user_email":"baddest69@st.knust.edu.gh",
+    "person_image":"https://img.com/G.O.A.T.II",
+    "user_email":"baddest70@st.knust.edu.gh",
+    "user_password":"WhatTheF@ckThough54321",
     "date_of_birth":"2009-12-01",
     "house_address": "House-4",
     "doctor_ratings":3,
-    "hospital_code":"OAa3456",
-    "license_number":"80034903",
-    "doctor_specialties":"Gynaecology, Paediatric",
+    "hospital_code":"OAa345609",
+    "license_number":"8003490390",
+    "doctor_specialties":"Gynaecology, Paediatric, General",
     "gender":"Male"
+
     }
 	```
 
@@ -488,8 +484,8 @@ RESPONSE:
 
 	```
 	{
-    "email":"baddest69@st.knust.edu.gh",
-    "password": "baddestGO@8"
+    "user_email":"baddest69@st.knust.edu.gh",
+    "user_password": "baddestGO@8"
     }
 	```
 
@@ -523,8 +519,8 @@ RESPONSE:
     "middle_name":"Patient",
     "last_name": "Machu",
     "person_image":"https://img.com/G.O.A.T",
-    "email":"baddest69@st.knust.edu.gh",
-    "password": "baddestGO@8",
+    "user_email":"baddest69@st.knust.edu.gh",
+    "user_password": "baddestGO@8",
     "date_of_birth":"2009-12-01",
     "house_address": "House-4",
     "gender":"Male",
