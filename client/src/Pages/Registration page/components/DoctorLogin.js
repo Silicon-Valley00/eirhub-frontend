@@ -16,21 +16,6 @@ function Login(props) {
     const [hidePassword, setHidePassword] = useState(true);
     const [hidePasswordOne, setHidePasswordOne] = useState(true);
     const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
-    const {
-        handleModalsClose,
-        handleModalSignupDoctor,
-        loginEmailErrorMessage,
-        loginPasswordErrorMessage,
-        handleloginEmail,
-        handleLoginPassword,
-        loginPassword,
-        loginPasswordError,
-        loginEmail,
-        loginEmailError,
-        modalLoginDoctor,
-        submitUserCredentialsHandler
-    } = props;
-
     const [isError, setIsError] = useState(true);
     const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
@@ -38,11 +23,11 @@ function Login(props) {
         <section id={loginStyles.loginSection}>
             <div
                 id={loginStyles.loginContainer}
-                className={modalLoginDoctor ? loginStyles.active : ''}
+                className={props.modalLoginDoctor ? loginStyles.active : ''}
             >
                 <div
                     className={loginStyles.closeModal}
-                    onClick={() => handleModalsClose()}
+                    onClick={() => props.handleModalsClose()}
                 >
                     <i>
                         <IoCloseOutline />
@@ -74,7 +59,7 @@ function Login(props) {
                         <h3>Email</h3>
                         <div
                             className={
-                                loginEmailError
+                                props.doctorLoginEmailError
                                     ? `${loginStyles.inputField} ${loginStyles.inputError}`
                                     : loginStyles.inputField
                             }
@@ -86,15 +71,15 @@ function Login(props) {
                                 type="text"
                                 id={loginStyles.loginUsername}
                                 placeholder="someone@example.com"
-                                ref={loginEmail}
+                                ref={props.doctorLoginEmail}
                                 onChange={() => {
-                                    handleloginEmail();
+                                    props.handleDoctorLoginEmail();
                                 }}
                             />
                         </div>
                         <div
                             className={
-                                loginEmailError
+                                props.doctorLoginEmailError
                                     ? loginStyles.errorMessageBox
                                     : loginStyles.noErrorMessageBox
                             }
@@ -102,12 +87,12 @@ function Login(props) {
                             <i>
                                 <IoWarning />
                             </i>
-                            <p>{loginEmailErrorMessage}</p>
+                            <p>{props.doctorLoginEmailErrorMessage}</p>
                         </div>
                         <h3>Password</h3>
                         <div
                             className={
-                                loginPasswordError
+                                props.doctorLoginPasswordError
                                     ? `${loginStyles.inputField} ${loginStyles.inputError}`
                                     : loginStyles.inputField
                             }
@@ -119,9 +104,9 @@ function Login(props) {
                                 type={hidePassword ? 'password' : 'text'}
                                 id={loginStyles.loginPassword}
                                 placeholder="Enter your password"
-                                ref={loginPassword}
+                                ref={props.doctorLoginPassword}
                                 onChange={() => {
-                                    handleLoginPassword();
+                                    props.handleDoctorLoginPassword();
                                 }}
                             />
                             <i onClick={() => setHidePassword(!hidePassword)}>
@@ -134,7 +119,7 @@ function Login(props) {
                         </div>
                         <div
                             className={
-                                loginPasswordError
+                                props.doctorLoginPasswordError
                                     ? loginStyles.errorMessageBox
                                     : loginStyles.noErrorMessageBox
                             }
@@ -142,7 +127,7 @@ function Login(props) {
                             <i>
                                 <IoWarning />
                             </i>
-                            <p>{loginPasswordErrorMessage}</p>
+                            <p>{props.doctorLoginPasswordErrorMessage}</p>
                         </div>
                         <div className={loginStyles.passwordReset}>
                             <p className={loginStyles.link}>Forgot password?</p>
@@ -151,27 +136,27 @@ function Login(props) {
                             <button
                                 id={loginStyles.loginSubmit}
                                 className={
-                                    loginEmailError ||
-                                        loginPasswordError ||
-                                        loginEmailError === null ||
-                                        loginPasswordError === null
+                                    props.doctorLoginEmailError ||
+                                        props.doctorLoginPasswordError ||
+                                        props.doctorLoginEmailError === null ||
+                                        props.doctorLoginPasswordError === null
                                         ? `${loginStyles.btn} ${loginStyles.inactive}`
                                         : btnActive
                                             ? ` ${loginStyles.btn} ${loginStyles.btnActive}`
                                             : loginStyles.btn
                                 }
                                 disabled={
-                                    loginEmailError ||
-                                    loginPasswordError ||
-                                    loginPasswordError ||
-                                    loginEmailError === null ||
-                                    loginPasswordError === null ||
-                                    loginPasswordError === null
+                                    props.doctorLoginEmailError ||
+                                    props.doctorLoginPasswordError ||
+                                    props.doctorLoginPasswordError ||
+                                    props.doctorLoginEmailError === null ||
+                                    props.doctorLoginPasswordError === null ||
+                                    props.doctorLoginPasswordError === null
                                 }
                                 onClick={() => {
                                     setBtnValue('loging in');
                                     setBtnActive(true);
-                                    submitUserCredentialsHandler();
+                                    props.submitUserCredentialsHandler();
                                 }}
                             >
                                 {' '}
@@ -193,7 +178,7 @@ function Login(props) {
                                     New Here ?{' '}
                                     <p
                                         className={loginStyles.link}
-                                        onClick={() => handleModalSignupDoctor()}
+                                        onClick={() => props.handleModalSignupDoctor()}
                                     >
                                         Sign up
                            </p>

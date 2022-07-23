@@ -72,7 +72,7 @@ function DoctorSignup(props) {
                                     <label htmlFor="firstname"> Firstname</label>
                                     <div
                                         className={
-                                            props.registerNameError
+                                            props.registerDoctorNameError
                                                 ? styles.signupFormBoxNameInputsError
                                                 : styles.signupFormBoxNameInputs
                                         }
@@ -85,9 +85,9 @@ function DoctorSignup(props) {
                                             type="text"
                                             id="firstname"
                                             placeholder="Enter Firstname"
-                                            ref={props.signupFirstname}
+                                            ref={props.doctorSignupFirstname}
                                             onChange={() => {
-                                                props.handleRegisterUser();
+                                                props.handleRegisterDoctor();
                                             }}
                                             disabled={btnActive}
                                         />
@@ -97,7 +97,7 @@ function DoctorSignup(props) {
                                     <label htmlFor="lastname"> Lastname</label>
                                     <div
                                         className={
-                                            props.registerNameError
+                                            props.registerDoctorNameError
                                                 ? styles.signupFormBoxNameInputsError
                                                 : styles.signupFormBoxNameInputs
                                         }
@@ -110,7 +110,7 @@ function DoctorSignup(props) {
                                             type="text"
                                             id="lastname"
                                             placeholder="Enter Lastname"
-                                            ref={props.signupLastname}
+                                            ref={props.doctorSignupLastname}
                                             onChange={() => {
                                                 props.handleRegisterUser();
                                             }}
@@ -121,7 +121,7 @@ function DoctorSignup(props) {
                             </div>
                             <div
                                 className={
-                                    props.registerNameError
+                                    props.registerDoctorNameError
                                         ? styles.errorMessageBox
                                         : styles.noErrorMessageBox
                                 }
@@ -129,14 +129,14 @@ function DoctorSignup(props) {
                                 <i>
                                     <IoWarning />
                                 </i>
-                                <p>{props.registerNameErrorMessage}</p>
+                                <p>{props.registerDoctorNameErrorMessage}</p>
                             </div>
                             
                             <div className={styles.signupFormBox}>
                                 <label htmlFor="email"> Email</label>
                                 <div
                                     className={
-                                        props.registerEmailError
+                                        props.registerDoctorEmailError
                                             ? styles.signupFormBoxInputsError
                                             : styles.signupFormBoxInputs
                                     }
@@ -149,9 +149,9 @@ function DoctorSignup(props) {
                                         type="email"
                                         id="email"
                                         placeholder="someone@example.com"
-                                        ref={props.signupEmail}
+                                        ref={props.doctorSignupEmail}
                                         onChange={() => {
-                                            props.handleRegisterEmail();
+                                            props.handleRegisterDoctorEmail();
                                         }}
                                         disabled={btnActive}
                                     />
@@ -159,7 +159,7 @@ function DoctorSignup(props) {
                             </div>
                             <div
                                 className={
-                                    props.registerEmailError
+                                    props.registerDoctorEmailError
                                         ? styles.errorMessageBox
                                         : styles.noErrorMessageBox
                                 }
@@ -167,7 +167,7 @@ function DoctorSignup(props) {
                                 <i>
                                     <IoWarning />
                                 </i>
-                                <p>{props.registerEmailErrorMessage}</p>
+                                <p>{props.registerDoctorEmailErrorMessage}</p>
                             </div>
                             <div className={styles.signupFormBox}>
                                 <label htmlFor="signupHospitalCode"> Hospital code</label>
@@ -216,7 +216,7 @@ function DoctorSignup(props) {
                                 <label htmlFor="passwordone"> Password</label>
                                 <div
                                     className={
-                                        props.registerPasswordOneError
+                                        props.registerDoctorPasswordOneError
                                             ? styles.signupFormBoxInputsError
                                             : styles.signupFormBoxInputs
                                     }
@@ -229,9 +229,9 @@ function DoctorSignup(props) {
                                         name="password"
                                         id="password1"
                                         placeholder="Enter a password"
-                                        ref={props.signupPassword}
+                                        ref={props.doctorSignupPassword}
                                         onChange={() => {
-                                            props.handleRegisterPassword();
+                                            props.handleRegisterDoctorPassword();
                                         }}
                                         disabled={btnActive}
                                     />
@@ -250,7 +250,7 @@ function DoctorSignup(props) {
                             </div>
                             <div
                                 className={
-                                    props.registerPasswordOneError
+                                    props.registerDoctorPasswordOneError
                                         ? styles.errorMessageBox
                                         : styles.noErrorMessageBox
                                 }
@@ -258,7 +258,7 @@ function DoctorSignup(props) {
                                 <i>
                                     <IoWarning />
                                 </i>
-                                <p>{props.registerPasswordOneErrorMessage}</p>
+                                <p>{props.registerDoctorPasswordOneErrorMessage}</p>
                             </div>
 
                             <div className={styles.signupFormBox}>
@@ -267,7 +267,7 @@ function DoctorSignup(props) {
                         </label>
                                 <div
                                     className={
-                                        props.registerPasswordTwoError
+                                        props.registerDoctorPasswordTwoError
                                             ? styles.signupFormBoxInputsError
                                             : styles.signupFormBoxInputs
                                     }
@@ -280,9 +280,9 @@ function DoctorSignup(props) {
                                         type={hidePasswordTwo ? 'password' : 'text'}
                                         id="password2"
                                         placeholder="Confirm your password"
-                                        ref={props.signupPasswordconfirm}
+                                        ref={props.doctorSignupPasswordconfirm}
                                         onChange={() => {
-                                            props.handleRegisterPasswordConfirm();
+                                            props.handleRegisterDoctorPasswordConfirm();
                                         }}
                                         disabled={btnActive}
                                     />
@@ -301,7 +301,7 @@ function DoctorSignup(props) {
                             </div>
                             <div
                                 className={
-                                    props.registerPasswordTwoError
+                                    props.registerDoctorPasswordTwoError
                                         ? styles.errorMessageBox
                                         : styles.noErrorMessageBox
                                 }
@@ -309,7 +309,7 @@ function DoctorSignup(props) {
                                 <i>
                                     <IoWarning />
                                 </i>
-                                <p>{props.registerPasswordTwoErrorMessage}</p>
+                                <p>{props.registerDoctorPasswordTwoErrorMessage}</p>
                             </div>
                             <div className={styles.signupFormButton}>
                                 <button
@@ -320,32 +320,32 @@ function DoctorSignup(props) {
                                     //       : styles.signupBtn
                                     // }
                                     className={
-                                        props.registerNameError === true ||
-                                            props.registerEmailError === true ||
-                                            props.registerDateError === true ||
-                                            props.registerPasswordOneError === true ||
-                                            props.registerPasswordTwoError === true ||
-                                            props.registerNameError === null ||
-                                            props.registerEmailError === null ||
-                                            props.registerDateError === null ||
-                                            props.registerPasswordOneError === null ||
-                                            props.registerPasswordTwoError === null
+                                        props.registerDoctorNameError === true ||
+                                            props.registerDoctorEmailError === true ||
+                                            props.registerHospitalCodeError === true ||
+                                            props.registerDoctorPasswordOneError === true ||
+                                            props.registerDoctorPasswordTwoError === true ||
+                                            props.registerDoctorNameError === null ||
+                                            props.registerDoctorEmailError === null ||
+                                            props.registerHospitalCodeError === null ||
+                                            props.registerDoctorPasswordOneError === null ||
+                                            props.registerDoctorPasswordTwoError === null
                                             ? styles.signupBtnInactive
                                             : btnActive
                                                 ? `${styles.signupBtn} ${styles.btnActive}`
                                                 : styles.signupBtn
                                     }
                                     disabled={
-                                        props.registerNameError === true ||
-                                        props.registerEmailError === true ||
-                                        props.registerDateError === true ||
-                                        props.registerPasswordOneError === true ||
-                                        props.registerPasswordTwoError === true ||
-                                        props.registerNameError === null ||
-                                        props.registerEmailError === null ||
-                                        props.registerDateError === null ||
-                                        props.registerPasswordOneError === null ||
-                                        props.registerPasswordTwoError === null
+                                        props.registerDoctorNameError === true ||
+                                        props.registerDoctorEmailError === true ||
+                                        props.registerHospitalCodeError === true ||
+                                        props.registerDoctorPasswordOneError === true ||
+                                        props.registerDoctorPasswordTwoError === true ||
+                                        props.registerDoctorNameError === null ||
+                                        props.registerDoctorEmailError === null ||
+                                        props.registerHospitalCodeError === null ||
+                                        props.registerDoctorPasswordOneError === null ||
+                                        props.registerDoctorPasswordTwoError === null
                                     }
                                     onClick={() => {
                                         setBtnValue('Creating Account');
