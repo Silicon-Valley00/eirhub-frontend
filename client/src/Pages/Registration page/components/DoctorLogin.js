@@ -38,28 +38,51 @@ function DoctorLogin(props) {
                         <IoCloseOutline />
                     </i>
                 </div>
-                <div className={loginStyles.loginBody}>
-                    <div
-                        className={isError ? loginStyles.error : loginStyles.noerror}
-                    >
-                        <p>{errorMessage}</p>
-                        <i
-                            className={loginStyles.closeIcon}
-                            onClick={() => {
-                                setIsError(false);
-                            }}
-                        >
-                            <IoCloseOutline />
-                        </i>
-                    </div>
+            <div className={loginStyles.loginBody}>
+               <div
+                  className={isError ? loginStyles.error : loginStyles.noerror}
+               >
+                  <p>{errorMessage}</p>
+                  <i
+                     className={loginStyles.closeIcon}
+                     onClick={() => {
+                        setIsError(false);
+                     }}
+                  >
+                     <IoCloseOutline />
+                  </i>
+               </div>
 
-                    <form
-                    ref={docLoginFormRef}
-                        onSubmit={(e) => {
-                            e.preventDefault();
+               <form
+                  ref={docLoginFormRef}
+                  onSubmit={(e) => {
+                     e.preventDefault();
+                  }}
+                  className={loginStyles.loginForm}
+               >
+                  <h1 className={loginStyles.title}>Welcome Back</h1>
+                  <p className={loginStyles.info}>Please enter your details</p>
+                  <h3>Email</h3>
+                  <div
+                     className={
+                        props.doctorLoginEmailError
+                           ? `${loginStyles.inputField} ${loginStyles.inputError}`
+                           : loginStyles.inputField
+                     }
+                  >
+                     <i>
+                        <IoIosMail />
+                     </i>
+                     <input
+                        type="text"
+                        id={loginStyles.loginUsername}
+                        placeholder="someone@example.com"
+                        ref={props.doctorLoginEmail}
+                        onChange={() => {
+                           props.handleDoctorLoginEmail();
                         }}
-                     >
-                  <div>
+                     />
+                  </div>
                   <div
                      className={
                         props.doctorLoginEmailError
@@ -156,7 +179,6 @@ function DoctorLogin(props) {
                                     </i>
                                 </div>
                             </button>
-                            </div>
                             <div className={loginStyles.signupToggle}>
                                 <div>
                                     New Here ?{' '}

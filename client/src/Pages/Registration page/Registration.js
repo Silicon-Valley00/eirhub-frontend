@@ -434,28 +434,36 @@ function Registration(props) {
       }
    }
 
-   // function handles submittion of user/doctor data to database
+   // function handles submission of user/doctor data to database
    function submitUserCredentialsHandler() {
       // User entered credentials
       let enteredloginEmail = loginEmail.current.value;
       let enteredloginPassword = loginPassword.current.value;
 
-      let enteredloginEmailDoctor = doctorLoginEmail.current.value;
-      let enteredloginPasswordDoctor = doctorLoginPassword.current.value;
-
+      
       let enteredSignUpFirstname = signupFirstname.current.value;
       let enteredSignUpLastname = signupLastname.current.value;
       let enteredSignUpDate = signupDate.current.value;
       let enteredSignUpEmail = signupEmail.current.value;
       let enteredSignUpPassword = signupPassword.current.value;
       let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
+      
+      // Doctor entered credentials
+      let enteredDoctorLoginEmail = doctorLoginEmail.current.value;
+      let enteredDoctorLoginPassword = doctorLoginPassword.current.value;
+
+      let enteredDoctorSignUpFirstname = doctorSignupFirstname.current.value;
+      let enteredDoctorSignUpLastname = doctorSignupLastname.current.value;
+      let enteredDoctorSignUpEmail = doctorSignupEmail.current.value;
+      let enteredDoctorSignUpPassword = doctorSignupPassword.current.value;
+      let enteredDoctorSignUpPasswordconfirm = doctorSignupPasswordconfirm.current.value;
 
       let enteredSignupHospitalCode = signupHospitalCode.current.value;
 
       // Below code checks which modal form is open to take user credentials
       if (props.modalLogin) {
          //checks if the patient login form modal is opened
-         // prepares credentials for submition
+         // prepares credentials for submission
          const loginPatientData = {
             user_email: enteredloginEmail,
             user_password: enteredloginPassword
@@ -464,7 +472,7 @@ function Registration(props) {
          submitCredentials('patient/login', loginPatientData);
       } else if (props.modalSignup) {
          //checks if the patient signup form modal is opened
-         // prepares credentials for submition
+         // prepares credentials for submission
          const signupPatientData = {
             firstname: enteredSignUpFirstname,
             lastname: enteredSignUpLastname,
@@ -479,13 +487,13 @@ function Registration(props) {
          console.log('end');
       } else if (props.modalSignupDoctor) {
          //checks if the doctor signup form modal is opened
-         // prepares credentials for submittion
+         // prepares credentials for submission
          const signupDoctorData = {
-            firstname: enteredSignUpFirstname,
-            lastname: enteredSignUpLastname,
+            firstname: enteredDoctorSignUpFirstname,
+            lastname: enteredDoctorSignUpLastname,
             hospitalCode: enteredSignupHospitalCode,
-            user_email: enteredSignUpEmail,
-            password: enteredSignUpPassword,
+            user_email: enteredDoctorSignUpEmail,
+            password: enteredDoctorSignUpPassword,
          };
 
          console.log(signupDoctorData);
@@ -494,10 +502,10 @@ function Registration(props) {
          console.log('end');
       } else if (props.modalLoginDoctor) {
          //checks if the doctor login form modal is opened
-         // prepares credentials for submittion
+         // prepares credentials for submission
          const loginDoctorData = {
-            user_email: enteredloginEmailDoctor,
-            user_password: enteredloginPasswordDoctor
+            user_email: enteredDoctorLoginEmail,
+            user_password: enteredDoctorLoginPassword
          };
 
          console.log(loginDoctorData);
