@@ -2,7 +2,6 @@ import json
 from flask import request,jsonify,Blueprint
 from Report.ReportModel import Report
 from flask_cors import CORS
-
 reports_route = Blueprint("reports_route",__name__)
 CORS(reports_route)
 

@@ -5,7 +5,6 @@ from flask_cors import CORS
 
 doctor_route = Blueprint("doctor_route",__name__)
 CORS(doctor_route)
-# Will move signup into a service function later. Currently cleaning
 #Doctor Sign Up
 @doctor_route.route("/doctor/signup",methods = ['POST'])
 def createDoctor():

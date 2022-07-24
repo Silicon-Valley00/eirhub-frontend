@@ -24,7 +24,7 @@ check_password_hash(a,'1234') #confirms if the hash and the word are equal and r
 [Doctor](#Doctor )           
 [Guardian](#Guardian-Person )               
 [Patient](#Patient )           
-[Prescription](#Prescription )
+[Prescription](#Prescription )      
 [Report](#Report)      
   
 
