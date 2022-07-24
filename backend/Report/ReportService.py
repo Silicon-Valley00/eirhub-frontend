@@ -2,9 +2,10 @@ import json
 from flask import request,jsonify,Blueprint
 # from werkzeug.security import generate_password_hash, check_password_hash
 from Report.ReportModel import Report
+from flask_cors import CORS
 
 reports_route = Blueprint("reports_route",__name__)
-
+CORS(reports_route)
 
 # get all reports
 @reports_route.route("/reports",methods = ["GET"])

@@ -1,8 +1,9 @@
 from flask import Blueprint,request
 from Guardian.GuardianPersonModel import GuardianPerson
+from flask_cors import CORS
 
 guardian_route = Blueprint("guardian_route",__name__)
-
+CORS(guardian_route)
 
 #Create Guardian Person 
 @guardian_route.route("/guardian/",methods = ['POST'])

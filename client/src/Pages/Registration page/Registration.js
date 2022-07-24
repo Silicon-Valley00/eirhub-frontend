@@ -460,11 +460,11 @@ function Registration(props) {
          //checks if the patient login form modal is opened
          // prepares credentials for submition
          const loginPatientData = {
-            email: enteredloginEmail,
-            password: enteredloginPassword,
+            user_email: enteredloginEmail,
+            user_password: enteredloginPassword
          };
          console.log(loginPatientData);
-         submitCredentials('login', loginPatientData);
+         submitCredentials('patient/login', loginPatientData);
       } else if (props.modalSignup) {
          //checks if the patient signup form modal is opened
          // prepares credentials for submition
@@ -493,19 +493,19 @@ function Registration(props) {
 
          console.log(signupDoctorData);
          console.log('start');
-         submitCredentials('doctorsignup', signupDoctorData);
+         submitCredentials('doctor/signup', signupDoctorData);
          console.log('end');
       } else if (props.modalLoginDoctor) {
          //checks if the doctor login form modal is opened
          // prepares credentials for submittion
          const loginDoctorData = {
-            email: enteredloginEmailDoctor,
-            password: enteredloginPasswordDoctor,
+            user_email: enteredloginEmailDoctor,
+            user_password: enteredloginPasswordDoctor
          };
 
          console.log(loginDoctorData);
          console.log('start');
-         submitCredentials('doctorlogin', loginDoctorData);
+         submitCredentials('doctor/login', loginDoctorData);
          console.log('end');
       }
    }
@@ -518,14 +518,20 @@ function Registration(props) {
          url: `http://127.0.0.1:5000/${path}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Methods": "*"
          },
-         data: { data },
+         data: data ,
       })
          .then((response) => {
             //Checks if response is ok
             if (response.status === 200) {
                //checks details of response
-               console.log('good', response);
+               console.log('good', response.data);
+            }
+            else{
+               console.log('bad')
             }
          })
          //catches all errorr when response is not ok, 404 included
