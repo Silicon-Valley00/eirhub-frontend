@@ -24,7 +24,8 @@ check_password_hash(a,'1234') #confirms if the hash and the word are equal and r
 [Doctor](#Doctor )           
 [Guardian](#Guardian-Person )               
 [Patient](#Patient )           
-[Prescription](#Prescription )      
+[Prescription](#Prescription )
+[Report](#Report)      
   
 
 
@@ -698,3 +699,32 @@ RESPONSE:
         "status": true
     }
     ```
+
+# Report
+
+- **Create report**
+
+    POST: /report
+
+    BODY PARAMS:
+    ```
+    {
+    "report_type":"Lab report",
+    "description":"Lab report ordered by Dr.Raymond Brown",
+    "idPatient": 31
+     }
+    ```
+
+    RESPONSE:
+    ```
+     {
+        "msg": {
+            "description": "Lab report ordered by Dr.Raymond Brown",
+            "idPatient": 31,
+            "idReport": 12,
+            "report_type": "Lab report"
+        },
+        "status": true
+    }
+    ```
+    

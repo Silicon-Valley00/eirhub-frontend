@@ -1,6 +1,5 @@
 import json
 from flask import request,jsonify,Blueprint
-# from werkzeug.security import generate_password_hash, check_password_hash
 from Report.ReportModel import Report
 
 reports_route = Blueprint("reports_route",__name__)
@@ -51,42 +50,44 @@ def getReportById(id):
     except Exception as e:
         return(f"Error : ID does not exist: {e}"),400        
 
-# #create Report
-@reports_route.route("/report/",methods = ['POST'])
-def createReport(): 
-        from app import session
-        content_type = request.headers.get('Content-Type')
-        if content_type == 'application/json':#check if content is in json format
-            req = request.json
-            report_type = req["report_type"]
-            description = req["description"]
-            patient_id = req['patient_id']
-            #create report for patient
-        new_report = Report(report_type=report_type,description=description,idPatient=patient_id)
-        
-        try:#add prescription to the database
+#create Report
+@reports_route.route("/report",methods = ['POST'])
+def createReport():
+    from app import session
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':#check if content is in json format
+        req = request.json
+        report_type = req['report_type']
+        description = req['description']
+        idPatient = int(req['idPatient'])
+
+        new_report = Report(report_type=report_type,description=description,idPatient=idPatient)
+
+        try:
+            #add report to the database
             session.add(new_report)
             session.commit()
-            reports = session.query(Report).filter(Report.idPatient == patient_id).all()
-            session.commit()
-            Json_reports = [{
-            
-            "msg": {
+            reports = session.query(Report).filter(Report.idPatient == idPatient).all()
+            json_reports = [{
+                
+                "msg": {
 
                 "idReport": report.idReport,
                 "report_type": report.report_type,
                 "description": report.description,
-                "patient_id": report.idPatient,
+                "idPatient": report.idPatient,
                 
             
                 },
                   "status": True
                 }for report in reports ]
-            return (Json_reports),200
+            return jsonify(json_reports),200
+                 
         except Exception as e:
-            print("Report could not be created {e}",(e))
-        else:
-            return ('Error: Content-Type Error'),400
+            print(f'Report could not be created: {e}')
+    else:
+        return ('Error: Content-Type Error'),400    
+       
 
 # delete report by id
 @reports_route.route("/report/<id>",methods =["DELETE"] )
