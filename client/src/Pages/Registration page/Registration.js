@@ -11,9 +11,6 @@ const api = axios.create({
 });
 
 function Registration(props) {
-   const signUpFormRef = useRef();
-   const loginFormRef = useRef();
-   const docSignUpFormRef = useRef();
    const docLoginFormRef = useRef();
 
    // User login refs
@@ -500,7 +497,6 @@ function Registration(props) {
    return (
       <>
          <Login
-            loginFormRef={loginFormRef}
             reset={reset}
             modalLogin={props.modalLogin}
             handleModalSignup={props.handleModalSignup}
@@ -534,7 +530,6 @@ function Registration(props) {
          />
 
          <Signup
-            signUpFormRef={signUpFormRef}
             reset={reset}
             modalSignup={props.modalSignup}
             handleModalLogin={props.handleModalLogin}
@@ -563,7 +558,6 @@ function Registration(props) {
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
          <DoctorSignup
-            docSignUpFormRef={docSignUpFormRef}
             reset={reset}
             modalSignupDoctor={props.modalSignupDoctor}
             handleModalLoginDoctor={props.handleModalLoginDoctor}

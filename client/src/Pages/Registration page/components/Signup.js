@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../images/Patientsignup.svg';
 import { FaRegUser, FaTimes } from 'react-icons/fa';
@@ -9,6 +9,8 @@ import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
 
 function Signup(props) {
+   const signUpFormRef = useRef();
+
    // handles button changes
    const [btnValue, setBtnValue] = useState('Create Account');
    const [btnActive, setBtnActive] = useState(false);
@@ -31,7 +33,7 @@ function Signup(props) {
                className={styles.closeModal}
                onClick={() => {
                   props.handleModalsClose()
-                  props.signUpFormRef.current.reset()
+                  signUpFormRef.current.reset()
                   props.reset()
                }}
             >
@@ -70,7 +72,7 @@ function Signup(props) {
                      <p>Take control of your health today</p>
                   </div>
                   <form
-                  ref={props.signUpFormRef}
+                  ref={signUpFormRef}
                   className={styles.signupForm}>
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>
@@ -375,7 +377,11 @@ function Signup(props) {
                         <p>Already have an account?</p>
                         <p
                            id={styles.signupFormMessageP}
-                           onClick={() => props.handleModalLogin()}
+                           onClick={() => {
+                              signUpFormRef.current.reset()
+                              props.handleModalLogin()
+                              props.reset()
+                           }}
                         >
                            Login
                         </p>

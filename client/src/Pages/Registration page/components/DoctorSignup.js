@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../images/signupimage.svg';
 import { FaRegUser, FaRegHospital } from 'react-icons/fa';
@@ -10,6 +10,8 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import hospital from '../../../assets/hospital.svg'
 
 function DoctorSignup(props) {
+    const docSignUpFormRef = useRef();
+
     // handles button changes
     const [btnValue, setBtnValue] = useState('Create Account');
     const [btnActive, setBtnActive] = useState(false);
@@ -32,7 +34,7 @@ function DoctorSignup(props) {
                     className={styles.closeModal}
                     onClick={() => {
                         props.handleModalsClose()
-                        props.docSignUpFormRef.current.reset()
+                        docSignUpFormRef.current.reset()
                         props.reset()
                     }}
                 >
@@ -71,7 +73,7 @@ function DoctorSignup(props) {
                             <p>Take control of your health today</p>
                         </div>
                         <form 
-                        ref={props.docSignUpFormRef}
+                        ref={docSignUpFormRef}
                         className={styles.signupForm}>
                             <div className={styles.signupFormBoxNames}>
                                 <div className={styles.signupFormBoxName}>
@@ -377,7 +379,11 @@ function DoctorSignup(props) {
                                 <p>Already have an account?</p>
                                 <p
                                     id={styles.signupFormMessageP}
-                                    onClick={() => props.handleModalLoginDoctor()}
+                                    onClick={() => {
+                                        props.handleModalLoginDoctor()
+                                        docSignUpFormRef.current.reset()
+                                        props.reset()
+                                    }}
                                 >
                                     Login
                         </p>

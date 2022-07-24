@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
 import loginImage from '../../../images/loginimage.svg';
@@ -8,6 +8,8 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
 
 function Login(props) {
+    const docLoginFormRef = useRef();
+
     // handles button changes
     const [btnValue, setBtnValue] = useState('login');
     const [btnActive, setBtnActive] = useState(false);
@@ -29,7 +31,7 @@ function Login(props) {
                     className={loginStyles.closeModal}
                     onClick={() => {
                         props.handleModalsClose()
-                        props.docLoginFormRef.current.reset()
+                        docLoginFormRef.current.reset()
                         props.reset()
                     }}
                 >
@@ -53,7 +55,7 @@ function Login(props) {
                     </div>
 
                     <form
-                    ref={props.docLoginFormRef}
+                    ref={docLoginFormRef}
                         onSubmit={(e) => {
                             e.preventDefault();
                         }}
@@ -183,7 +185,11 @@ function Login(props) {
                                     New Here ?{' '}
                                     <p
                                         className={loginStyles.link}
-                                        onClick={() => props.handleModalSignupDoctor()}
+                                        onClick={() => {
+                                            props.handleModalSignupDoctor()
+                                            docLoginFormRef.current.reset()
+                                            props.reset()
+                                        }}
                                     >
                                         Sign up
                            </p>
