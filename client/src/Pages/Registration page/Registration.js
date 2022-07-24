@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import DoctorSignup from './components/DoctorSignup'
-import DoctorLogin from './components/DoctorLogin'
+import DoctorSignup from './components/DoctorSignup';
+import DoctorLogin from './components/DoctorLogin';
 import axios from 'axios';
 
 // Database configuration
@@ -11,11 +11,15 @@ const api = axios.create({
 });
 
 function Registration(props) {
-   // User sign in refs
+   // User sign in refs for patients
    const loginEmail = useRef();
    const loginPassword = useRef();
 
-   // User sign up refs
+   // User sign in refs for doctors
+   const loginEmailDoctor = useRef();
+   const loginPasswordDoctor = useRef();
+
+   // User sign up refs for patients
    const signupFirstname = useRef();
    const signupLastname = useRef();
    const signupEmail = useRef();
@@ -28,9 +32,14 @@ function Registration(props) {
    const [loginEmailError, setloginEmailError] = useState(null);
    const [loginPasswordError, setLoginPasswordError] = useState(null);
 
+   const [loginEmailErrorDoctor, setloginEmailErrorDoctor] = useState(null);
+   const [loginPasswordErrorDoctor, setLoginPasswordErrorDoctor] =
+      useState(null);
+
    const [registerNameError, setRegisterNameError] = useState(null);
    const [registerDateError, setRegisterDateError] = useState(null);
-   const [registerHospitalCodeError,setRegisterHospitalCodeError] = useState(null)
+   const [registerHospitalCodeError, setRegisterHospitalCodeError] =
+      useState(null);
    const [registerEmailError, setRegisterEmailError] = useState(null);
    const [registerPasswordOneError, setRegisterPasswordOneError] =
       useState(null);
@@ -40,15 +49,24 @@ function Registration(props) {
    // Handles error messages of input boxes
    const [registerNameErrorMessage, setRegisterNameErrorMessage] = useState('');
    const [registerDateErrorMessage, setRegisterDateErrorMessage] = useState('');
-   const [registerHospitalCodeErrorMessage, setRegisterHospitalCodeErrorMessage] =useState('')
+   const [
+      registerHospitalCodeErrorMessage,
+      setRegisterHospitalCodeErrorMessage,
+   ] = useState('');
    const [registerEmailErrorMessage, setRegisterEmailErrorMessage] =
       useState('');
    const [registerPasswordOneErrorMessage, setRegisterPasswordOneErrorMessage] =
       useState('');
    const [registerPasswordTwoErrorMessage, setRegisterPasswordTwoErrorMessage] =
       useState('');
+   // Patient
    const [loginEmailErrorMessage, setloginEmailErrorMessage] = useState('');
    const [loginPasswordErrorMessage, setLoginPasswordErrorMessage] =
+      useState('');
+   // Doctors
+   const [loginEmailErrorMessageDoctor, setloginEmailErrorMessageDoctor] =
+      useState('');
+   const [loginPasswordErrorMessageDoctor, setLoginPasswordErrorMessageDoctor] =
       useState('');
 
    const pattern = /^[a-zA-Z ]+$/;
@@ -85,6 +103,36 @@ function Registration(props) {
          setLoginPasswordError(false);
       }
    }
+   function handleloginEmailDoctor() {
+      let enteredloginName = loginEmailDoctor.current.value;
+
+      if (enteredloginName === '') {
+         setloginEmailErrorDoctor(true);
+         setloginEmailErrorMessageDoctor('Email required');
+      } else if (enteredloginName.match(emailPattern)) {
+         setloginEmailErrorDoctor(false);
+      } else {
+         setloginEmailErrorDoctor(true);
+         setloginEmailErrorMessageDoctor('Email format not valid');
+      }
+   }
+
+   function handleLoginPasswordDoctor() {
+      let enteredloginPassword = loginPasswordDoctor.current.value;
+
+      if (enteredloginPassword === '') {
+         setLoginPasswordErrorMessageDoctor('Password required');
+         setLoginPasswordErrorDoctor(true);
+      } else if (enteredloginPassword.length < 8) {
+         setLoginPasswordErrorMessageDoctor(
+            'Password must be at least 8 characters long'
+         );
+
+         setLoginPasswordErrorDoctor(true);
+      } else {
+         setLoginPasswordErrorDoctor(false);
+      }
+   }
 
    // Functions below check user credentials in login form
    function handleRegisterUser() {
@@ -95,8 +143,8 @@ function Registration(props) {
          setRegisterNameErrorMessage('Full name required');
          setRegisterNameError(true);
       } else if (
-         enteredSignUpFirstname.match(pattern) &&
-         enteredSignUpLastname.match(pattern)
+         enteredSignUpFirstname.match(pattern) !== 1 &&
+         enteredSignUpLastname.match(pattern) !== 1
       ) {
          setRegisterNameError(false);
       } else {
@@ -130,8 +178,8 @@ function Registration(props) {
       }
    }
 
-   function handleRegisterHospitalCode(){
-      let enteredSignupHospitalCode = signupHospitalCode.current.value
+   function handleRegisterHospitalCode() {
+      let enteredSignupHospitalCode = signupHospitalCode.current.value;
 
       if (enteredSignupHospitalCode === '') {
          setRegisterHospitalCodeErrorMessage('Hospital code required');
@@ -193,10 +241,13 @@ function Registration(props) {
    }
 
    // function handles submittion of user data to database
-   function submitUserCredentialsHandler() {
+   async function submitUserCredentialsHandler() {
       // User entered credentials
-      let enteredloginName = loginEmail.current.value;
+      let enteredloginEmail = loginEmail.current.value;
       let enteredloginPassword = loginPassword.current.value;
+
+      let enteredloginEmailDoctor = loginEmailDoctor.current.value;
+      let enteredloginPasswordDoctor = loginPasswordDoctor.current.value;
 
       let enteredSignUpFirstname = signupFirstname.current.value;
       let enteredSignUpLastname = signupLastname.current.value;
@@ -205,20 +256,20 @@ function Registration(props) {
       let enteredSignUpPassword = signupPassword.current.value;
       let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
 
-      let enteredSignupHospitalCode = signupHospitalCode.current.value
-      
-      // Below code checks which modal form is open to take user credentials
-      if (props.modalLogin) { //checks if the patient login form modal is opened 
+      let enteredSignupHospitalCode = signupHospitalCode.current.value;
+
+      // Below codes check which modal form is open to take user credentials
+      if (props.modalLogin) {
+         //checks if the patient login form modal is opened
          // prepares credentials for submition
          const loginPatientData = {
-            name: enteredloginName,
+            email: enteredloginEmail,
             password: enteredloginPassword,
          };
          console.log(loginPatientData);
-         submitCredentials('login', loginPatientData);
-      } 
-      
-      else if (props.modalSignup) {  //checks if the patient signup form modal is opened
+         submitCredentials('patient/login', loginPatientData);
+      } else if (props.modalSignup) {
+         //checks if the patient signup form modal is opened
          // prepares credentials for submition
          const signupPatientData = {
             firstname: enteredSignUpFirstname,
@@ -230,11 +281,10 @@ function Registration(props) {
 
          console.log(signupPatientData);
          console.log('start');
-         submitCredentials('signup', signupPatientData);
+         submitCredentials('patient/signup', signupPatientData);
          console.log('end');
-      }
-
-      else if (props.modalSignupDoctor) { //checks if the doctor signup form modal is opened
+      } else if (props.modalSignupDoctor) {
+         //checks if the doctor signup form modal is opened
          // prepares credentials for submittion
          const signupDoctorData = {
             firstname: enteredSignUpFirstname,
@@ -246,26 +296,26 @@ function Registration(props) {
 
          console.log(signupDoctorData);
          console.log('start');
-         submitCredentials('signup', signupDoctorData);
+         submitCredentials('doctorsignup', signupDoctorData);
          console.log('end');
-      }
-
-      else if (props.modalLoginDoctor) {  //checks if the doctor login form modal is opened
+      } else if (props.modalLoginDoctor) {
+         //checks if the doctor login form modal is opened
          // prepares credentials for submittion
          const loginDoctorData = {
-            user_email: enteredSignUpEmail,
-            password: enteredSignUpPassword,
+            email: enteredloginEmailDoctor,
+            password: enteredloginPasswordDoctor,
          };
 
          console.log(loginDoctorData);
          console.log('start');
-         submitCredentials('signup', loginDoctorData);
+         submitCredentials('doctorlogin', loginDoctorData);
          console.log('end');
       }
    }
 
    // Function submits data to database via an api
-   function submitCredentials(path, data) {  //Function takes path and data to make request
+   async function submitCredentials(path, data) {
+      //Function takes path and data to make request
       axios({
          method: 'post',
          url: `http://127.0.0.1:5000/${path}`,
@@ -297,20 +347,6 @@ function Registration(props) {
    return (
       <>
          <Login
-            modalLogin={props.modalLogin}
-            handleModalSignup={props.handleModalSignup}
-            handleModalsClose={props.handleModalsClose}
-            submitUserCredentialsHandler={submitUserCredentialsHandler}
-            loginEmail={loginEmail}
-            handleloginEmail={handleloginEmail}
-            handleLoginPassword={handleLoginPassword}
-            loginPassword={loginPassword}
-            loginEmailError={loginEmailError}
-            loginPasswordError={loginPasswordError}
-            loginEmailErrorMessage={loginEmailErrorMessage}
-            loginPasswordErrorMessage={loginPasswordErrorMessage}
-         />
-         <DoctorLogin
             modalLoginDoctor={props.modalLoginDoctor}
             handleModalSignupDoctor={props.handleModalSignupDoctor}
             handleModalsClose={props.handleModalsClose}
@@ -323,6 +359,20 @@ function Registration(props) {
             loginPasswordError={loginPasswordError}
             loginEmailErrorMessage={loginEmailErrorMessage}
             loginPasswordErrorMessage={loginPasswordErrorMessage}
+         />
+         <DoctorLogin
+            modalLogin={props.modalLogin}
+            handleModalSignup={props.handleModalSignup}
+            handleModalsClose={props.handleModalsClose}
+            submitUserCredentialsHandler={submitUserCredentialsHandler}
+            loginEmailDoctor={loginEmailDoctor}
+            handleloginEmailDoctor={handleloginEmailDoctor}
+            handleLoginPasswordDoctor={handleLoginPasswordDoctor}
+            loginPasswordDoctor={loginPasswordDoctor}
+            loginEmailErrorDoctor={loginEmailErrorDoctor}
+            loginPasswordErrorDoctor={loginPasswordErrorDoctor}
+            loginEmailErrorMessageDoctor={loginEmailErrorMessageDoctor}
+            loginPasswordErrorMessageDoctor={loginPasswordErrorMessageDoctor}
          />
 
          <Signup
@@ -352,7 +402,7 @@ function Registration(props) {
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
-         <DoctorSignup
+         {/* <DoctorSignup
             modalSignupDoctor={props.modalSignupDoctor}
             handleModalLoginDoctor={props.handleModalLoginDoctor}
             handleModalsClose={props.handleModalsClose}
@@ -378,7 +428,7 @@ function Registration(props) {
             handleRegisterHospitalCode={handleRegisterHospitalCode}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
-         /> 
+         /> */}
       </>
    );
 }

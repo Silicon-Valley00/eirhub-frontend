@@ -1,4 +1,5 @@
 import json
+from urllib.request import Request
 from flask import request,jsonify,Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
 from Patient.PatientModel import Patient
@@ -136,7 +137,7 @@ def patientLogin():
     content_type = request.headers.get('Content-Type')
     if(content_type == 'application/json'):
         req = request.json
-        email = req["email"]
+        email = req['email']
         password = req["password"]
     #Check Email 
         try:

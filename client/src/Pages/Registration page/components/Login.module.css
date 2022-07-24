@@ -55,7 +55,6 @@ i.closeIcon {
    cursor: pointer;
 }
 
-
 #loginSection {
    position: relative;
    display: flex;
@@ -64,7 +63,6 @@ i.closeIcon {
    width: 100%;
    height: 100%;
 }
-
 
 #loginContainer {
    max-height: 600px;
@@ -364,6 +362,45 @@ p.link {
 .noErrorMessageBox p {
    display: none;
 }
+.errorMessageBoxDoctor {
+   font-size: 12px;
+   padding-top: 0;
+   height: 2rem;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-size: 0.8em;
+   color: red;
+}
+
+.errorMessageBoxDoctor p {
+   /* padding: auto; */
+   color: red;
+   width: 100%;
+}
+
+.errorMessageBoxDoctor i {
+   fill: red;
+   width: 7%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 100%;
+}
+
+.noErrorMessageBoxDoctor {
+   width: 100%;
+   height: 2rem;
+}
+
+.noErrorMessageBoxDoctor i {
+   display: none;
+}
+
+.noErrorMessageBoxDoctor p {
+   display: none;
+}
 
 .rightSide {
    overflow: none;
@@ -460,4 +497,3 @@ p.link {
       font-size: 20px;
    }
 }
-

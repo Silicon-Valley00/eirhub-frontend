@@ -18,7 +18,7 @@ function Login(props) {
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    const {
       handleModalsClose,
-      handleModalSignup,
+      handleModalSignupDoctor,
       loginEmailErrorMessage,
       loginPasswordErrorMessage,
       handleloginEmail,
@@ -27,6 +27,8 @@ function Login(props) {
       loginPasswordError,
       loginEmail,
       loginEmailError,
+      modalLoginDoctor,
+      submitUserCredentialsHandler,
    } = props;
 
    const [isError, setIsError] = useState(true);
@@ -36,11 +38,11 @@ function Login(props) {
       <section id={loginStyles.loginSection}>
          <div
             id={loginStyles.loginContainer}
-            className={props.modalLogin ? loginStyles.active : ''}
+            className={modalLoginDoctor ? loginStyles.active : ''}
          >
             <div
                className={loginStyles.closeModal}
-               onClick={() => props.handleModalsClose()}
+               onClick={() => handleModalsClose()}
             >
                <i>
                   <IoCloseOutline />
@@ -93,8 +95,8 @@ function Login(props) {
                   <div
                      className={
                         loginEmailError
-                           ? loginStyles.errorMessageBox
-                           : loginStyles.noErrorMessageBox
+                           ? loginStyles.errorMessageBoxDoctor
+                           : loginStyles.noErrorMessageBoxDoctor
                      }
                   >
                      <i>
@@ -133,8 +135,8 @@ function Login(props) {
                   <div
                      className={
                         loginPasswordError
-                           ? loginStyles.errorMessageBox
-                           : loginStyles.noErrorMessageBox
+                           ? loginStyles.errorMessageBoxDoctor
+                           : loginStyles.noErrorMessageBoxDoctor
                      }
                   >
                      <i>
@@ -169,7 +171,7 @@ function Login(props) {
                         onClick={() => {
                            setBtnValue('loging in');
                            setBtnActive(true);
-                           props.submitUserCredentialsHandler();
+                           submitUserCredentialsHandler();
                         }}
                      >
                         {' '}
@@ -191,8 +193,7 @@ function Login(props) {
                            New Here ?{' '}
                            <p
                               className={loginStyles.link}
-                              href=""
-                              onClick={() => handleModalSignup()}
+                              onClick={() => handleModalSignupDoctor()}
                            >
                               Sign up
                            </p>
@@ -205,7 +206,11 @@ function Login(props) {
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
-               <img id={loginStyles.loginImg} src={loginImage} alt="" />
+               <img
+                  id={loginStyles.loginImg}
+                  src={loginImage}
+                  alt="login-image"
+               />
             </div>
          </div>
       </section>
