@@ -37,6 +37,13 @@
    letter-spacing: 0.2px;
 }
 
+.services_button_input:hover {
+   background-color: var(--white);
+   color: var(--lightcol);
+   transition: all;
+   transition-duration: 500ms;
+}
+
 .services_message {
    display: none;
 }
@@ -58,7 +65,7 @@
    height: 16rem;
    border-radius: 20px;
    overflow: hidden;
-   box-shadow: 0 2px 15px 0 #b8e5ff
+   box-shadow: 0 2px 15px 0 #b8e5ff;
 }
 
 .img {
@@ -193,7 +200,12 @@
       border-radius: 5px;
       background: var(--white);
    }
-
+   .message_btn:hover {
+      background: var(--lightcol);
+      color: var(--white);
+      transition: all;
+      transition-duration: 500ms;
+   }
    .circle_1 {
       position: absolute;
       bottom: -4rem;

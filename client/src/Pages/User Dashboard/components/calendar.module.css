@@ -201,3 +201,38 @@
 .calendarDays div:hover span:nth-child(4) {
    transition-delay: 0.4s;
 }
+
+@media only screen and (min-width: 1024px) and (max-width: 12024px) {
+   .calendarWeekDay {
+      font-size: 0.8rem;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+   .calendarHeader {
+      font-size: 0.9rem;
+      padding: 0.1rem;
+   }
+   .calendar {
+      padding: 0.1rem;
+   }
+   .calendarDays div {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.empty {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.today {
+      border: 1px solid var(--deepcol);
+   }
+   .monthPicker {
+      height: 1.3rem;
+      padding: 0 0.5rem;
+   }
+   .calendarWeekDay {
+      font-size: 0.7rem;
+   }
+}

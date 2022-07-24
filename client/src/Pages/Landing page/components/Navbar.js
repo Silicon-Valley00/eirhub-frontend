@@ -3,17 +3,29 @@ import logo from '../../../images/logo.svg';
 import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import LoginDropdown from './LoginDropdown';
+import SignUpDropdown from './SignUpDropdown';
 
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
+   const [loginClick, setLoginClick] = useState(false);
+   const [signUpClick, setSignUpClick] = useState(false);
 
    const showSidebar = () => setSidebar(!sidebar);
+   const handleSignUpClick = () => {
+      setSignUpClick(!signUpClick);
+      setLoginClick(false);
+   };
+   const handleLoginClick = () => {
+      setLoginClick(!loginClick);
+      setSignUpClick(false);
+   };
 
    return (
       <nav id={styles.nav}>
          {/* Logo */}
-         <Link to="/" id={styles.img}>
+         <NavLink to="/" id={styles.img}>
             <img
                src={logo}
                className={styles.logo_img}
@@ -21,7 +33,7 @@ const Navbar = (props) => {
                height={50}
                width={200}
             />
-         </Link>
+         </NavLink>
          <div
             className={
                sidebar
@@ -41,18 +53,47 @@ const Navbar = (props) => {
                />
             </div>
             <div className={styles.left}>
+               {/* REVIEW: active navlink is not working. */}
                <ul id={styles.nav_links}>
-                  <Link to="/landing-page" className={styles.each}>
+                  <NavLink
+                     to="/"
+                     // activeClassName={styles.nav_link_active}
+                     className={styles.each}
+                  >
                      Home
-                  </Link>
-                  <Link to="/our-services" className={styles.each}>
+                  </NavLink>
+                  <NavLink
+                     to="/our-services"
+                     // activeClassName={styles.nav_link_active}
+                     className={styles.each}
+                  >
                      Our Services
-                  </Link>
-                  <li className={styles.each}>How it Works</li>
+                  </NavLink>
+                  <NavLink
+                     to="/how-it-works"
+                     // activeClassName={styles.nav_link_active}
+                     className={styles.each}
+                  >
+                     How it Works
+                  </NavLink>
                </ul>
                <div id={styles.signup}>
                   <ul className={styles.signup_list}>
                      <li
+                        className={styles.signup_item}
+                        onClick={handleSignUpClick}
+                     >
+                        Sign Up
+                     </li>
+                     <li id={styles.separator}>|</li>
+                     <li
+                        className={styles.signup_item}
+                        onClick={handleLoginClick}
+                     >
+                        Login
+                     </li>
+
+                     {/* <li
                         className={styles.signup_item}
                         onClick={() => props.handleModalSignup()}
                      >
@@ -64,8 +105,10 @@ const Navbar = (props) => {
                         onClick={() => props.handleModalLogin()}
                      >
                         Login
-                     </li>
+                     </li> */}
                   </ul>
+                  {loginClick && <LoginDropdown handleModalLogin={props.handleModalLogin} handleModalLoginDoctor={props.handleModalLoginDoctor} />}
+                  {signUpClick && <SignUpDropdown handleModalSignup={props.handleModalSignup} handleModalSignupDoctor={props.handleModalSignupDoctor}/>}
                </div>
             </div>
          </div>

@@ -1,0 +1,373 @@
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+   --tablehead: #c2c9d1;
+   --iconred: #dd7678;
+   --iconback: #f7eef0;
+}
+#medicationsBody {
+   margin-top: 4rem;
+   background-color: var(--gray);
+   padding: 2rem 1.2rem 0 1.4rem;
+   border-top-left-radius: 2rem;
+   border-top-right-radius: 2rem;
+}
+
+.medicationsBoxContent {
+   width: 100%;
+   display: grid;
+   grid-template-columns: 45% 45%;
+   gap: 1.5rem;
+   justify-content: space-between;
+   overflow-y: auto;
+   height: 36rem;
+   min-height: 36rem;
+   max-height: 36rem;
+   padding-bottom: 1rem;
+}
+.medicationBox {
+   height: 14rem;
+   display: block;
+   border-radius: 0.4rem;
+   padding: 0.4rem 1.5rem;
+   background-color: #ffffff;
+}
+
+.upperContent {
+   width: 100%;
+   height: 22%;
+   display: inline-flex;
+}
+.icon {
+   width: 15%;
+   height: 100%;
+   color: var(--deepcol);
+   display: flex;
+   justify-content: right;
+   align-items: right;
+   padding: 0.2rem;
+}
+.icon i {
+   font-size: 170%;
+}
+.medicationName {
+   width: 70%;
+   height: 100%;
+   padding: 0.2rem 0;
+}
+.medicationName h3 {
+   color: var(--deepcol);
+   font-size: 120%;
+   font-weight: 600;
+
+   -webkit-line-clamp: 1;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+}
+.medicationName p {
+   color: var(--tablehead);
+   font-size: 85%;
+   font-weight: 500;
+}
+.medicationCounter {
+   width: 25%;
+   height: 100%;
+   /* text-align: right; */
+}
+.medicationCounter p {
+   font-size: 85%;
+   color: var(--white);
+   background-color: var(--lightcol);
+   padding: 0.4rem;
+   border-radius: 0.3rem;
+   font-weight: 600;
+   text-align: center;
+}
+.midContent {
+   width: 100%;
+   height: 55%;
+   display: grid;
+   grid-template-columns: repeat(2, 2fr);
+   margin-top: 0.5rem;
+}
+
+.medicationDurations p {
+   color: var(--tablehead);
+   font-size: 100%;
+   font-weight: 500;
+}
+.medicationDurations h3 {
+   color: var(--deepcol);
+   font-size: 100%;
+   font-weight: 700;
+}
+.lowerContent {
+   width: 80%;
+   height: 18%;
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+}
+.lowerContent button {
+   width: 47%;
+   height: 100%;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   background-color: #05a6c2;
+   color: #fff;
+   text-transform: uppercase;
+   font-weight: 600;
+   font-size: 75%;
+   text-align: center;
+   overflow: hidden;
+   position: relative;
+   justify-content: flex-end;
+   padding: 0.4rem 0.6rem;
+   border-radius: 0.4rem;
+}
+
+.medicationsBoxContent::-webkit-scrollbar {
+   width: 0.3rem;
+   height: 0.3rem;
+   cursor: pointer;
+}
+.medicationsBoxContent::-webkit-scrollbar-track {
+   margin: 20px;
+   cursor: pointer;
+   -webkit-box-shadow: inset 0 0 10px var(--white);
+}
+.medicationsBoxContent::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 47% 47%;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.2rem;
+   }
+   .medicationName p {
+      font-size: 0.8rem;
+   }
+   .medicationCounter p {
+      font-size: 0.7rem;
+      padding: 0.2rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.8rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.8rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.7rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.4rem;
+   }
+
+}
+
+@media only screen and (min-width: 897px) and (max-width: 1024px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 47% 47%;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.15rem;
+   }
+   .medicationName p {
+      font-size: 0.65rem;
+   }
+   .medicationCounter p {
+      font-size: 0.6rem;
+      padding: 0.15rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.7rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.7rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.6rem;
+      padding: 0.1rem 0.2rem;
+      border-radius: 0.4rem;
+   }
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 896px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 1fr;
+      width: 100%;
+      justify-content: center;
+      place-items: center;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.15rem;
+   }
+   .medicationName p {
+      font-size: 0.65rem;
+   }
+   .medicationCounter p {
+      font-size: 0.6rem;
+      padding: 0.15rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.7rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.7rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.6rem;
+      padding: 0.1rem 0.2rem;
+      border-radius: 0.4rem;
+   }
+
+}
+
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 47% 47%;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.1rem;
+   }
+   .medicationName p {
+      font-size: 0.6rem;
+   }
+   .medicationCounter p {
+      font-size: 0.6rem;
+      padding: 0.15rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.65rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.65rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.6rem;
+      padding: 0.09rem 0.1rem;
+      border-radius: 0.4rem;
+   }
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   .medicationsBoxContent {
+     
+      grid-template-columns: 1fr;
+     
+   }
+   .medicationBox {
+     
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.3rem;
+   }
+   .medicationName p {
+      font-size: 0.8rem;
+   }
+   .medicationCounter p {
+      font-size: 0.7rem;
+      padding: 0.15rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.8rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.8rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+    
+      font-size: 0.6rem;
+      padding: 0.09rem 0.1rem;
+      border-radius: 0.4rem;
+   }
+
+}

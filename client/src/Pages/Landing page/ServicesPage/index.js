@@ -10,31 +10,70 @@ import Registration from '../../Registration page/Registration';
 import styles from '../Landingpage.module.css';
 
 const ServicesPage = () => {
+   // Handles the states of the modals that show the different registration pages to users based on gtheir selection
    const [modalSignup, setModalSignup] = useState(false);
+   const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
    const [modalLogin, setModalLogin] = useState(false);
+   const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
 
+   // Function opens the patients' signup form modal
    function handleModalSignup() {
       setModalLogin(false);
       setModalSignup(true);
+      setModalLoginDoctor(false);
+      setModalSignupDoctor(false);
    }
+
+   // Function opens the patients' login form modal
    function handleModalLogin() {
       setModalSignup(false);
       setModalLogin(true);
+      setModalLoginDoctor(false);
+      setModalSignupDoctor(false);
    }
+
+   // Function opens the doctors' signup form modal
+   function handleModalSignupDoctor() {
+      setModalLogin(false);
+      setModalSignup(false);
+      setModalLoginDoctor(false);
+      setModalSignupDoctor(true);
+   }
+
+   // Function opens the doctors' login form modal
+   function handleModalLoginDoctor() {
+      setModalLogin(false);
+      setModalSignup(false);
+      setModalLoginDoctor(true);
+      setModalSignupDoctor(false);
+   }
+
+   // Handles close of all form modals
    function handleModalsClose() {
       setModalSignup(false);
       setModalLogin(false);
+      setModalLoginDoctor(false);
+      setModalSignupDoctor(false);
    }
    return (
       <>
          <div
             id={styles.blur}
-            className={modalLogin || modalSignup ? styles.active : ''}
+            className={
+               modalLogin ||
+               modalSignup ||
+               modalLoginDoctor ||
+               modalSignupDoctor
+                  ? styles.active
+                  : ''
+            }
             handleModalsClose={handleModalsClose}
          >
             <Navbar
                handleModalLogin={handleModalLogin}
                handleModalSignup={handleModalSignup}
+               handleModalLoginDoctor={handleModalLoginDoctor}
+               handleModalSignupDoctor={handleModalSignupDoctor}
             />{' '}
             <main className={style.main}>
                {/* upper section */}
@@ -67,31 +106,39 @@ const ServicesPage = () => {
                            face-to-face or online just with a few clicks
                         </p>
                      </div>
-                     <div className={style.of_image}>
+                     <div data-aos="fade-in" className={style.of_image}>
                         <img src={pic1} alt="" className={style.of__image} />
                      </div>
                   </div>
 
                   {/* second container */}
                   <div className={`${style.container}`}>
-                     <div className={style.of_image}>
+                     <div data-aos="fade-in" className={style.of_image}>
                         <img src={pic2} alt="" className={style.of__image} />
                      </div>
-                     <div className={style.with_text}>
+                     <div
+                        data-aos="fade-up"
+                        data-aos-duration="2000"
+                        className={style.with_text}
+                     >
                         <p className={style.with_text_title}>Find a Doctor</p>
                         <p className={style.with_text_desc}>
                            Get access to the right doctor
                         </p>
                         <p className={style.with_text_content}>
                            Find a doctor that can help you get a solution to
-                           your health problems{' '}
+                           your health problems
                         </p>
                      </div>
                   </div>
 
                   {/* third container */}
                   <div className={style.container}>
-                     <div className={style.with_text}>
+                     <div
+                        data-aos="fade-up"
+                        data-aos-duration="2000"
+                        className={style.with_text}
+                     >
                         <p className={style.with_text_title}>E-pharmacy</p>
                         <p className={style.with_text_desc}>
                            Manage your prescriptions more effectively
@@ -101,17 +148,21 @@ const ServicesPage = () => {
                            alerts on when to refill
                         </p>
                      </div>
-                     <div className={style.of_image}>
+                     <div data-aos="fade-in" className={style.of_image}>
                         <img src={pic3} alt="" className={style.of__image} />
                      </div>
                   </div>
 
                   {/* fourth container */}
                   <div className={style.container}>
-                     <div className={style.of_image}>
+                     <div data-aos="fade-in" className={style.of_image}>
                         <img src={pic4} alt="" className={style.of__image} />
                      </div>
-                     <div className={style.with_text}>
+                     <div
+                        data-aos="fade-up"
+                        data-aos-duration="2000"
+                        className={style.with_text}
+                     >
                         <p className={style.with_text_title}>Health Tips</p>
                         <p className={style.with_text_desc}>
                            Get access to verified tips for a healthy living
@@ -129,9 +180,13 @@ const ServicesPage = () => {
          <Registration
             modalLogin={modalLogin}
             modalSignup={modalSignup}
+            modalLoginDoctor={modalLoginDoctor}
+            modalSignupDoctor={modalSignupDoctor}
             handleModalsClose={handleModalsClose}
             handleModalLogin={handleModalLogin}
             handleModalSignup={handleModalSignup}
+            handleModalLoginDoctor={handleModalLoginDoctor}
+            handleModalSignupDoctor={handleModalSignupDoctor}
          />
       </>
    );

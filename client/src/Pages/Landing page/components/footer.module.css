@@ -11,6 +11,7 @@ footer {
 .logo {
    width: 28%;
    color: #0d3f58;
+   cursor: pointer;
 }
 .logo span {
    font-family: 'Comfortaa', cursive;

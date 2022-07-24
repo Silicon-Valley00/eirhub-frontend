@@ -1,4 +1,5 @@
 /* main nav */
+
 #nav {
    padding: 2rem;
    display: flex;
@@ -74,6 +75,8 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   position: relative;
+   gap: 1rem;
 }
 
 .signup_list {

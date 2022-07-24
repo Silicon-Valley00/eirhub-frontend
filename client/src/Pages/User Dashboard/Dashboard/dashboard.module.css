@@ -31,6 +31,7 @@ main .vitalsBox .vitals {
    transition: box-shadow 300ms ease;
    height: 9rem;
    min-height: 9rem;
+   cursor: pointer;
 }
 main .vitalsBox .vitals:hover {
    transition-delay: 100ms;
