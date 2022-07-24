@@ -26,7 +26,7 @@
 
 .services_button_input {
    padding: 10px;
-   width: 23rem;
+   width: 16rem;
    background-color: var(--lightcol);
    color: var(--white);
    font-family: 'Poppins', sans-serif;
@@ -35,6 +35,13 @@
    border: 0;
    border-radius: 10px;
    letter-spacing: 0.2px;
+}
+
+.services_button_input:hover {
+   background-color: var(--white);
+   color: var(--lightcol);
+   transition: all;
+   transition-duration: 500ms;
 }
 
 .services_message {
@@ -58,8 +65,7 @@
    height: 16rem;
    border-radius: 20px;
    overflow: hidden;
-   box-shadow: 1px 4px 6px 1px rgba(13, 12, 12, 0.6),
-      1px 7px 7px 2px rgba(216, 209, 224, 0.1);
+   box-shadow: 0 2px 15px 0 #b8e5ff;
 }
 
 .img {
@@ -108,6 +114,10 @@
       align-items: center;
       width: 100%;
    }
+
+   .services_button_input {
+      width: 20rem;
+   }
 }
 
 @media (min-width: 900px) {
@@ -134,7 +144,7 @@
 @media (min-width: 1024px) {
    .services_title {
       width: 100%;
-      font-size: var(--xl_title);
+      font-size: 35px;
    }
    .services_doctors_box {
       display: grid;
@@ -190,7 +200,12 @@
       border-radius: 5px;
       background: var(--white);
    }
-
+   .message_btn:hover {
+      background: var(--lightcol);
+      color: var(--white);
+      transition: all;
+      transition-duration: 500ms;
+   }
    .circle_1 {
       position: absolute;
       bottom: -4rem;

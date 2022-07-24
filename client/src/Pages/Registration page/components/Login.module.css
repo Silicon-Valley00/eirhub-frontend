@@ -1,6 +1,8 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@400;600&display=swap'); */
+
 :root {
    --radius: 25px;
-   --height: 40px;
+   --height: 2rem;
    --white: #fff;
    --field-radius: 8px;
    --bleached-blue: #ecf3fe;
@@ -20,6 +22,39 @@ body {
    box-sizing: border-box;
 }
 
+form {
+   color: var(--dark-blue);
+}
+
+.closeModal {
+   position: absolute;
+   top: -10%;
+   left: 50%;
+   background: #ffffff;
+   width: 25px;
+   height: 25px;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   cursor: pointer;
+   font-weight: 900;
+   padding-right: 0.1%;
+}
+.closeModal i {
+   width: 100%;
+   height: 100%;
+   font-weight: 900;
+   font-size: 20px;
+}
+
+i.closeIcon {
+   font-size: 20px;
+   color: red;
+   cursor: pointer;
+}
+
 #loginSection {
    position: relative;
    display: flex;
@@ -30,6 +65,8 @@ body {
 }
 
 #loginContainer {
+   max-height: 600px;
+   max-width: 800px;
    display: flex;
    position: fixed;
    top: 50%;
@@ -57,22 +94,44 @@ body {
 .loginBody {
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: space-between;
    padding: var(--padding);
    /* align-items: center; */
    /* margin: auto; */
-   height: 90%;
+   height: 100%;
    width: 60%;
 }
 
-.loginForm > * {
+.loginForm {
    margin: 10px auto;
    width: 100%;
+   height: 70%;
+}
+.loginForm .title {
+   font-size: 1.5rem;
+   font-weight: 600;
+}
+.loginForm .info {
+   color: #678696;
+   font-size: 0.7rem;
+}
+.loginForm h3 {
+   color: #0d3f58;
+   width: 100%;
+   font-size: 0.8rem;
+   font-weight: 650;
+   /* margin-top: 0.8rem; */
 }
 .passwordReset {
    color: var(--light-blue);
    font-size: 0.7rem;
    text-align: right;
+   /* margin-top: -1rem; */
+}
+p.link {
+   cursor: pointer;
+   display: inline;
+   color: var(--light-blue);
 }
 
 .signupToggle {
@@ -82,15 +141,19 @@ body {
 
 .inputField {
    height: var(--height);
-   border: 1px solid grey;
+   border: 1px solid #678696;
    border-radius: var(--field-radius);
    display: flex;
-   /* justify-content: space-around; */
+   justify-content: center;
    align-items: center;
    /* padding: var(--text-padding); */
 }
+.inputField > i {
+   margin-top: 5px;
+   color: #678696;
+}
 .inputField > * {
-   margin: 5px;
+   padding: 0 5px;
    border: none;
 }
 .submit {
@@ -98,9 +161,7 @@ body {
    flex-direction: column;
    align-items: center;
    justify-content: center;
-}
-h1 {
-   font-size: 2rem;
+   margin-top: 1rem;
 }
 
 .btn {
@@ -124,7 +185,7 @@ h1 {
    cursor: pointer;
 }
 .loader {
-   width: 20%;
+   width: 25%;
    height: 100%;
    border-radius: 4rem;
    position: absolute;
@@ -135,7 +196,7 @@ h1 {
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 120%;
+   font-size: 100%;
    visibility: hidden;
    opacity: 0;
    transition: visibility 1000ms ease-in-out;
@@ -144,8 +205,12 @@ h1 {
 .btnActive {
    background: #0d3f58;
    transition: color 1000ms ease-in-out;
+   cursor: progress;
 }
-
+.btnActive p {
+   margin-right: 15%;
+   transition: 500ms ease-in-out;
+}
 .inactive .loader.btnActive {
    visibility: hidden;
    opacity: 0;
@@ -161,6 +226,9 @@ h1 {
 }
 .loader.btnActive i {
    animation: spin 1.3s ease-in-out infinite;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 @keyframes spin {
    100% {
@@ -189,29 +257,88 @@ h1 {
    /* padding: var(--text-padding) 0; */
    border: none;
    outline: none;
-   width: 100%;
+   width: 86%;
    height: 100%;
    padding: auto;
-}
-
-a {
-   color: var(--light-blue);
+   color: #678696;
 }
 
 /* Error */
+
+.inputError {
+   /* display: flex;
+   justify-content: space-around;
+   align-items: center; */
+   /* height: 20px; */
+   /* width: 20px; */
+   border: 1px solid red;
+   /* font-size: 1rem; */
+}
+.inputError > i {
+   margin-top: 5px;
+   /* font-size: 1rem; */
+}
+.error {
+   /* max-height: max-content; */
+   height: 2rem;
+   background: rgb(253, 252, 252);
+   border: 1px solid red;
+   align-self: initial;
+   display: flex;
+   justify-content: space-between;
+   border-radius: 5px;
+   margin-top: -8%;
+   padding: 0 0.5rem;
+}
+
+.error p {
+   color: red;
+   font-weight: 600;
+   width: 93%;
+   font-size: 0.9em;
+   float: left;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.error i {
+   width: 10%;
+   height: 100%;
+   /* float: right; */
+   font-size: 24px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   /* padding-bottom: 0.9rem; */
+   cursor: pointer;
+}
+.noerror {
+   height: 2rem;
+}
+.noerror p {
+   display: none;
+}
+.noerror i {
+   display: none;
+}
+
 .errorMessageBox {
+   font-size: 12px;
+   padding-top: 0;
+   height: 2rem;
    width: 100%;
-   height: 25px;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 12px;
+   font-size: 0.8em;
    color: red;
 }
 
 .errorMessageBox p {
+   /* padding: auto; */
    color: red;
-   width: 93%;
+   width: 100%;
 }
 
 .errorMessageBox i {
@@ -225,7 +352,7 @@ a {
 
 .noErrorMessageBox {
    width: 100%;
-   height: 25px;
+   height: 2rem;
 }
 
 .noErrorMessageBox i {
@@ -235,51 +362,48 @@ a {
 .noErrorMessageBox p {
    display: none;
 }
-
-.error {
+.errorMessageBoxDoctor {
+   font-size: 12px;
+   padding-top: 0;
    height: 2rem;
-   background: rgb(253, 252, 252);
-   border: 1.5px solid red;
-   color: red;
+   width: 100%;
    display: flex;
+   align-items: center;
    justify-content: space-between;
-   border-radius: 5px;
-   padding: 0 0.5rem;
+   font-size: 0.8em;
+   color: red;
 }
 
-.error p {
+.errorMessageBoxDoctor p {
+   /* padding: auto; */
    color: red;
-   font-weight: 600;
-   width: 93%;
-   font-size: 0.9rem;
-   float: left;
+   width: 100%;
+}
+
+.errorMessageBoxDoctor i {
+   fill: red;
+   width: 7%;
    display: flex;
-   justify-content: center;
    align-items: center;
-}
-
-.error i {
-   color: red;
-   width: 5%;
-   float: right;
+   justify-content: center;
    font-size: 100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   padding-bottom: 0.9rem;
-   cursor: pointer;
 }
-.noerror {
+
+.noErrorMessageBoxDoctor {
+   width: 100%;
    height: 2rem;
 }
-.noerror p {
+
+.noErrorMessageBoxDoctor i {
    display: none;
 }
-.noerror i {
+
+.noErrorMessageBoxDoctor p {
    display: none;
 }
 
 .rightSide {
+   overflow: none;
    height: 100%;
    display: flex;
    flex-direction: column;
@@ -291,13 +415,16 @@ a {
    padding: var(--padding);
    width: 100%;
 }
+.rightSide > * {
+   font-family: 'Comfortaa', cursive;
+   font-weight: 700;
+}
 .rightSide > *:not(:first-child) {
    margin: auto;
 }
 
 .rightSide > h1 {
    color: var(--white);
-   font-weight: 700;
 }
 .rightSide > p {
    font-size: 2rem;
@@ -309,27 +436,54 @@ a {
 }
 
 @media only screen and (max-width: 1024px) {
+   #loginContainer {
+      font-size: 14px;
+   }
+   .rightSide > p {
+      font-size: 1.7rem;
+      padding: 0.8rem;
+   }
    .loginBody {
-      /* width: 350px; */
-      max-width: 40%;
+      width: 500px;
+      max-width: 50vw;
       margin: auto;
+   }
+   .btn {
+      width: 60%;
+   }
+   .error {
+      height: 2rem;
+      /* max-height: max-content; */
    }
 }
 
 @media only screen and (max-width: 768px) {
+   .error {
+      margin-top: -1rem;
+   }
+   #loginContainer {
+      font-size: 13px;
+      min-width: 300px;
+   }
    .loginBody {
       width: 100%;
       max-width: 350px;
       padding: 0;
+   }
+   .loader {
+      width: 15%;
    }
    .rightSide {
       display: none;
    }
 }
 @media only screen and (max-width: 320px) {
+   * {
+      font-size: 14px;
+   }
    #loginContainer {
-      font-size: 0.8rem;
-      height: 90vh;
+      font-size: 12px;
+      height: 80vh;
       width: 90vw;
    }
    .loginBody {
@@ -337,12 +491,9 @@ a {
    }
 
    .inputField {
-      height: 2rem;
+      height: var(--height);
+   }
+   .closeModal i svg {
+      font-size: 20px;
    }
 }
-
-/* i.closeIcon {
-   font-size: 20px;
-   padding: 10px 2px;
-
-} */

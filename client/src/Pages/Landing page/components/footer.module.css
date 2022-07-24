@@ -9,7 +9,9 @@ footer {
    padding-bottom: 100px;
 }
 .logo {
-   width: 25%;
+   width: 28%;
+   color: #0d3f58;
+   cursor: pointer;
 }
 .logo span {
    font-family: 'Comfortaa', cursive;
@@ -26,9 +28,10 @@ footer {
 }
 .logo p {
    margin-top: 10px;
-   width: 77%;
+   width: 80%;
    font-weight: 500;
    font-size: 1.05em;
+   color: #0d3f58;
 }
 .socialmedia {
    display: flex;
@@ -46,7 +49,7 @@ footer {
 .flist:hover {
    transition: all 0.1s ease-in;
    transform: translate(2px, 0px);
-   color:#2b6777;
+   color: #2b6777;
    cursor: pointer;
 }
 .socialmedia span {
@@ -81,7 +84,7 @@ footer {
    fill: #05a6c2;
    font-size: 25px;
 }
-.flist{
+.flist {
    font-weight: 500;
    color: #0d3f58;
    list-style: none;
@@ -90,17 +93,11 @@ footer {
    line-height: 1.8;
    margin: 0;
 }
-.fdropdown{
+.fdropdown {
    padding-left: 0;
 }
 .fcontact .flist {
    margin-bottom: 20px;
-}
-.fmobilehide1 {
-   display: none;
-}
-.fmobilehide2 {
-   display: none;
 }
 
 /*responsive*/
@@ -129,6 +126,7 @@ footer {
       width: 95%;
       margin-bottom: 30px;
       text-align: center;
+      color: #0d3f58;
    }
    span.logo {
       justify-content: center;
@@ -140,13 +138,13 @@ footer {
 }
 /*All Mobile sizes*/
 @media (max-width: 756px) {
-   .fourservices{
+   .fourservices {
       width: 60%;
    }
-   .fsupport{
+   .fsupport {
       width: 60%;
    }
-  
+
    .fheader {
       font-size: 1.7rem;
       text-align: center;
@@ -156,17 +154,16 @@ footer {
       display: flex;
       justify-content: space-evenly;
       cursor: pointer;
-
    }
-   .fourservices .fheader{
+   .fourservices .fheader {
       width: 70%;
    }
-   .fourservices .fdropdown{
+   .fourservices .fdropdown {
       width: 95%;
       margin: 0 auto;
       transition: all 700ms ease-in-out;
    }
-   .fsupport .fdropdown{
+   .fsupport .fdropdown {
       width: 95%;
       margin: 0 auto;
    }
@@ -175,16 +172,14 @@ footer {
       width: 100%;
       font-size: 1.1rem;
       margin-bottom: 10px;
-      border-bottom: 1px #0d3f58 solid;
-      font-size: 20px;
+      border-bottom: #0d3f58 solid 1px;
    }
    .fsupport ul li {
       text-align: center;
       width: 100%;
       font-size: 1.1rem;
       margin-bottom: 10px;
-      border-bottom: 1px #0d3f58 solid;
-      font-size: 1.1rem;
+      border-bottom: #0d3f58 solid 1px;
    }
    .fcontact ul li {
       font-size: 1.1rem;
@@ -216,28 +211,7 @@ footer {
       width: 50%;
       margin: 30px auto;
    }
-   .fmobilehide1 {
-      display: inline;
-      cursor: pointer;
-            transition: all 300ms ease-in-out;
-
-   }
-   .fmobilehide2{
-      display: inline;
-      cursor: pointer;
-      transition: all 300ms ease-in-out;
-
-   }
-   .fourservices .fheader .fmobilehide1 {
-      margin: 0;
-   }
-   .fsupport .fheader .fmobilehide1 {
-      margin-left: 10px;
-   }
-   .fsupport .fheader .fmobilehide2 {
-      margin-left: 10px;
-   }
-   .socialmedia{
+   .socialmedia {
       width: 50%;
    }
 }
@@ -251,10 +225,10 @@ footer {
       font-size: 1rem;
       width: 100%;
    }
-   .fsupport .fheader{
+   .fsupport .fheader {
       width: 60%;
    }
-   .fourservices .fheader{
+   .fourservices .fheader {
       width: 90%;
    }
    .fsupport .flist {
@@ -281,10 +255,10 @@ footer {
    .fheader {
       font-size: 1.3rem;
    }
-    .fourservices{
+   .fourservices {
       width: 60%;
    }
-   .fsupport{
+   .fsupport {
       width: 60%;
    }
    .fourservices .flist {
@@ -308,4 +282,3 @@ footer {
       width: 70%;
    }
 }
-

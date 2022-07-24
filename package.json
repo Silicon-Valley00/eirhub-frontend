@@ -24,6 +24,7 @@
       "*.{js, json, html, css, md}": "prettier --write"
    },
    "dependencies": {
+      "aos": "^3.0.0-beta.6",
       "react-router-dom": "^6.3.0",
       "typewriter-effect": "^2.19.0"
    }

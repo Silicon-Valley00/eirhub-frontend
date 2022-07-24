@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@400;600&display=swap');
+
+
 
 * {
    margin: 0;
@@ -14,5 +17,4 @@
    --midcol: #2b6777;
    --deepcol: #0d3f58;
    --mainfont: 'Poppins', sans-serif;
-   --xl_title: 40px;
 }

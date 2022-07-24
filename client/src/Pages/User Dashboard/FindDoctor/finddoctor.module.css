@@ -1,0 +1,444 @@
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+   --tablehead: #c2c9d1;
+   --iconred: #dd7678;
+   --iconback: #f7eef0;
+}
+#findDoctorBody {
+   margin-top: 4rem;
+   background-color: var(--gray);
+   padding: 2rem 1.2rem 0 1.4rem;
+   border-top-left-radius: 2rem;
+   border-top-right-radius: 2rem;
+}
+.title {
+   width: 95%;
+   margin: 0 auto;
+   /* border: 1px solid red; */
+   text-align: center;
+   font-weight: 700;
+   padding-bottom: 1rem;
+}
+.title h1 {
+   color: var(--midcol);
+   font-size: 200%;
+
+   display: inline-block;
+   position: relative;
+   padding-bottom: 1rem;
+}
+.title h1:after {
+   content: '';
+   position: absolute;
+   width: 20%;
+   height: 0.2rem;
+   bottom: 0;
+   left: 40%;
+   border-bottom: 0.2rem solid var(--lightcol);
+}
+.formRegion {
+   margin: 0 auto;
+}
+.searchRegion {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 90%;
+   height: 2.5rem;
+}
+.searchRegion input[type='text'] {
+   justify-content: flex-start;
+   background: var(--white);
+   outline: none;
+   border: none;
+   height: 100%;
+   line-height: 1;
+   font-weight: 600;
+   font-size: 0.9rem;
+   color: var(--tablehead);
+   width: 70%;
+   border-radius: 0.2rem;
+   padding: 0.5rem;
+}
+.searchRegion input[type='text']::placeholder {
+   color: var(--tablehead);
+}
+.searchRegion input[type='text']::-ms-input-placeholder {
+   color: var(--tablehead);
+}
+.searchRegion input[type='text']:-ms-input-placeholder {
+   color: var(--tablehead);
+}
+
+.searchRegion button {
+   width: 25%;
+   height: 100%;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   background-color: #05a6c2;
+   color: #fff;
+   text-transform: uppercase;
+   font-weight: 600;
+   font-size: 75%;
+   text-align: center;
+   overflow: hidden;
+   position: relative;
+   justify-content: flex-end;
+   padding: 0.2rem 0.5rem;
+   border-radius: 0.2rem;
+}
+.formRegion form p {
+   font-weight: 750;
+   color: var(--midcol);
+   font-size: 1rem;
+   padding: 0.8rem 0;
+}
+.filterRegion {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 90%;
+   height: 2.1rem;
+}
+.selectOne {
+   width: 40%;
+   height: 100%;
+}
+.selectOne select {
+   width: 100%;
+   height: 100%;
+   color: var(--tablehead);
+   padding: 0 0.5rem;
+   border-radius: 0.2rem;
+}
+.selectOne select::part(button) {
+   padding: 0 1rem;
+}
+.selectOne select::part(listbox) {
+   border: none;
+}
+.selectTwo {
+   width: 40%;
+   height: 100%;
+}
+.selectTwo select {
+   width: 100%;
+   height: 100%;
+   color: var(--tablehead);
+   padding: 0 0.5rem;
+   border-radius: 0.2rem;
+}
+.selectTwo select::part(button) {
+   padding: 0 1rem;
+}
+.selectTwo select::part(listbox) {
+   border: none;
+}
+.doctorsBox {
+   margin-top: 2.5rem;
+   display: grid;
+   grid-template-columns: 45% 45%;
+   justify-content: space-between;
+   gap: 1rem;
+   overflow-y: auto;
+   min-width: 100%;
+   max-width: 100%;
+   width: 100%;
+   height: 20rem;
+   min-height: 20rem;
+   max-width: 20rem;
+}
+
+.doctorBox {
+   height: 8rem;
+   background-color: var(--white);
+   border-radius: 1rem;
+   padding: 0.8rem;
+}
+.doctorImage {
+   width: 30%;
+   height: 100%;
+   border-radius: 0.2rem;
+   float: left;
+   background-color: var(--midcol);
+   object-fit: cover;
+}
+.doctorImage img {
+   width: 100%;
+   max-width: 100%;
+   min-width: 100%;
+   height: 100%;
+   max-height: 100%;
+   min-height: 100%;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+.doctorInfo {
+   width: 65%;
+   height: 100%;
+   float: right;
+   padding: 0.2rem;
+}
+.doctorName {
+   width: 100%;
+   height: 25%;
+   font-weight: 600;
+   margin-top: 0.2rem;
+   -webkit-line-clamp: 1;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+}
+.doctorName h3 {
+   font-size: 100%;
+   color: var(--midcol);
+   text-align: left;
+}
+.doctorDetails {
+   width: 100%;
+   height: 70%;
+   font-weight: 550;
+   -webkit-line-clamp: 4;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   word-break: break-word;
+   /* margin-top: 0.5rem; */
+}
+.doctorDetails p {
+   font-size: 70%;
+   color: var(--midcol);
+}
+.doctorInfoLink {
+   width: max-content;
+   height: 15%;
+   font-weight: 450;
+   float: right;
+}
+.doctorInfoLink p {
+   font-size: 65%;
+   color: var(--lightcol);
+   cursor: pointer;
+}
+.doctorsBox::-webkit-scrollbar {
+   width: 0.3rem;
+   height: 0.3rem;
+   cursor: pointer;
+}
+.doctorsBox::-webkit-scrollbar-track {
+   margin: 20px;
+   cursor: pointer;
+   -webkit-box-shadow: inset 0 0 10px var(--white);
+}
+.doctorsBox::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+   .title h1 {
+      font-size: 180%;
+   }
+   .searchRegion {
+      height: 2.2rem;
+   }
+   .filterRegion {
+      height: 1.9rem;
+   }
+   .formRegion form p {
+      font-size: 0.9rem;
+   }
+   .doctorBox {
+      padding: 0.6rem;
+   }
+   .doctorName {
+      height: 30%;
+      margin-top: 0.1rem;
+      -webkit-line-clamp: 2;
+   }
+   .doctorName h3 {
+      font-size: 0.91rem;
+   }
+   .doctorDetails {
+      height: 65%;
+      -webkit-line-clamp: 5;
+      margin-top: 0.2rem;
+   }
+   .doctorDetails p {
+      font-size: 0.7rem;
+   }
+}
+
+@media only screen and (min-width: 897px) and (max-width: 1024px) {
+   .title h1 {
+      font-size: 180%;
+   }
+   .searchRegion {
+      height: 2.2rem;
+   }
+   .filterRegion {
+      height: 1.9rem;
+   }
+   .formRegion form p {
+      font-size: 0.9rem;
+   }
+   .doctorImage {
+      width: 35%;
+   }
+   .doctorInfo {
+      width: 65%;
+   }
+   .doctorBox {
+      padding: 0.6rem;
+   }
+   .doctorName {
+      height: 30%;
+      margin-top: 0.1rem;
+      -webkit-line-clamp: 2;
+   }
+   .doctorName h3 {
+      font-size: 0.9rem;
+   }
+   .doctorDetails {
+      height: 60%;
+      -webkit-line-clamp: 5;
+      margin-top: 0.2rem;
+   }
+   .doctorDetails p {
+      font-size: 0.7rem;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 896px) {
+   .doctorsBox {
+      grid-template-columns: 1fr;
+      justify-content: center;
+   }
+   .title h1 {
+      font-size: 180%;
+   }
+   .searchRegion {
+      height: 2.2rem;
+   }
+   .filterRegion {
+      height: 1.9rem;
+   }
+   .formRegion form p {
+      font-size: 0.9rem;
+   }
+   .doctorImage {
+      width: 35%;
+   }
+   .doctorInfo {
+      width: 65%;
+   }
+   .doctorBox {
+      padding: 0.6rem;
+   }
+   .doctorName {
+      height: 30%;
+      margin-top: 0.1rem;
+      -webkit-line-clamp: 2;
+   }
+   .doctorName h3 {
+      font-size: 0.9rem;
+   }
+   .doctorDetails {
+      height: 60%;
+      -webkit-line-clamp: 5;
+      margin-top: 0.2rem;
+   }
+   .doctorDetails p {
+      font-size: 0.7rem;
+   }
+}
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .title h1 {
+      font-size: 180%;
+   }
+   .searchRegion {
+      height: 2.2rem;
+   }
+   .filterRegion {
+      height: 1.9rem;
+   }
+   .formRegion form p {
+      font-size: 0.9rem;
+   }
+   .doctorImage {
+      width: 35%;
+   }
+   .doctorInfo {
+      width: 65%;
+   }
+   .doctorBox {
+      padding: 0.6rem;
+   }
+   .doctorName {
+      height: 30%;
+      margin-top: 0.1rem;
+      -webkit-line-clamp: 2;
+   }
+   .doctorName h3 {
+      font-size: 0.9rem;
+   }
+   .doctorDetails {
+      height: 60%;
+      -webkit-line-clamp: 5;
+      margin-top: 0.2rem;
+   }
+   .doctorDetails p {
+      font-size: 0.7rem;
+   }
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   .doctorsBox {
+      grid-template-columns: 1fr;
+      justify-content: center;
+   }
+   .title h1 {
+      font-size: 180%;
+   }
+   .searchRegion {
+      height: 2.2rem;
+   }
+   .filterRegion {
+      height: 1.9rem;
+   }
+   .formRegion form p {
+      font-size: 0.9rem;
+   }
+   .doctorImage {
+      width: 35%;
+   }
+   .doctorInfo {
+      width: 65%;
+   }
+   .doctorBox {
+      padding: 0.6rem;
+   }
+   .doctorName {
+      height: 30%;
+      margin-top: 0.1rem;
+      -webkit-line-clamp: 2;
+   }
+   .doctorName h3 {
+      font-size: 0.9rem;
+   }
+   .doctorDetails {
+      height: 60%;
+      -webkit-line-clamp: 5;
+      margin-top: 0.2rem;
+   }
+   .doctorDetails p {
+      font-size: 0.7rem;
+   }
+}

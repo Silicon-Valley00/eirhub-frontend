@@ -20,17 +20,18 @@ main#midsection {
 
 main .vitalsBox {
    display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   gap: 1rem;
+   grid-template-columns: 24% 24% 24% 24%;
+   gap: 0.6rem;
 }
 main .vitalsBox .vitals {
    background-color: var(--white);
    padding: 1.3rem 1rem;
    border-radius: 1rem;
-   box-shadow: 0 2px 4px 0 #0d3f58;
+   box-shadow: 0 4px 8px 0 #bedded;
    transition: box-shadow 300ms ease;
    height: 9rem;
    min-height: 9rem;
+   cursor: pointer;
 }
 main .vitalsBox .vitals:hover {
    transition-delay: 100ms;
@@ -65,7 +66,7 @@ main .vitalsBox .vitals:hover {
 }
 .vitalsReadings h4 {
    font-size: 100%;
-   font-weight: 500;
+   font-weight: 400;
 }
 .vitalsTitle {
    width: 100%;
@@ -74,7 +75,7 @@ main .vitalsBox .vitals:hover {
    font-size: 1rem;
    color: var(--midcol);
    margin-top: 0.1rem;
-   font-weight: 700;
+   font-weight: 750;
 }
 .vitalsInfo {
    width: 100%;
@@ -162,7 +163,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    min-height: 2rem;
    max-height: 2rem;
    color: var(--midcol);
-   font-weight: 500;
+   font-weight: 600;
    padding: 0.3rem 0.9rem;
    font-size: 0.8rem;
 }
@@ -242,7 +243,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 /* APPOINTMENTS */
 
 .appointmentsBox {
-   margin-top: 0.6rem;
+   margin-top: 0.4rem;
 }
 .appointmentsBox h2 {
    margin-bottom: 0.2rem;
@@ -285,7 +286,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    min-height: 2rem;
    max-height: 2rem;
    color: var(--midcol);
-   font-weight: 500;
+   font-weight: 600;
    padding: 0.3rem 0.9rem;
    font-size: 0.8rem;
 }
@@ -342,13 +343,13 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 .medicationTable::-webkit-scrollbar,
 .appointmentTable::-webkit-scrollbar {
    width: 0.3rem;
+   height: 0.3rem;
    cursor: pointer;
 }
 .medicationTable::-webkit-scrollbar-track,
 .appointmentTable::-webkit-scrollbar-track {
    margin: 20px;
    cursor: pointer;
-
    -webkit-box-shadow: inset 0 0 10px var(--white);
 }
 .medicationTable::-webkit-scrollbar-thumb,
@@ -358,51 +359,182 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    cursor: pointer;
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1025px) {
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+   main#midsection {
+      padding: 2rem 1rem 0 1rem;
+   }
+
+   main .vitalsBox {
+      gap: 0.5rem;
+   }
+   main .vitalsBox .vitals {
+      padding: 1.1rem 0.8rem;
+   }
+
+   .vitalsDetails {
+      width: 100%;
+      height: 40%;
+   }
+   .vitalsDetails .vitalsIcon {
+      width: 35%;
+      border-radius: 0.4rem;
+   }
+   .vitalsDetails .vitalsIcon i {
+      font-size: 150%;
+   }
+   .vitalsDetails .vitalsReadings {
+      width: 59%;
+   }
+   .vitalsReadings h4 {
+      font-size: 70%;
+   }
+   .vitalsTitle h4 {
+      font-size: 78%;
+   }
+   .vitalsInfo {
+      -webkit-line-clamp: 4;
+      font-size: 55%;
+   }
+
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(1)
+      .vitalsDetails
+      .vitalsReadings,
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(3)
+      .vitalsDetails
+      .vitalsReadings,
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(4)
+      .vitalsDetails
+      .vitalsReadings {
+      color: var(--iconred);
+   }
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(2)
+      .vitalsDetails
+      .vitalsReadings {
+      color: var(--lightcol);
+   }
+
+   main#midsection .vitalsBox .vitals:nth-child(1) .vitalsDetails .vitalsIcon,
+   main#midsection .vitalsBox .vitals:nth-child(3) .vitalsDetails .vitalsIcon,
+   main#midsection .vitalsBox .vitals:nth-child(4) .vitalsDetails .vitalsIcon {
+      background-color: var(--iconback);
+   }
+   main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon {
+      background-color: var(--gray);
+   }
+
+   main#midsection .vitalsBox .vitals:nth-child(1) .vitalsDetails .vitalsIcon i,
+   main#midsection .vitalsBox .vitals:nth-child(3) .vitalsDetails .vitalsIcon i,
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(4)
+      .vitalsDetails
+      .vitalsIcon
+      i {
+      color: var(--iconred);
+   }
+   main#midsection
+      .vitalsBox
+      .vitals:nth-child(2)
+      .vitalsDetails
+      .vitalsIcon
+      i {
+      color: var(--lightcol);
+   }
+
+   /* MEDICATIONS */
+   .medicationBox {
+      margin-top: 1rem;
+   }
+   .medicationBox h2 {
+      margin-bottom: 0.2rem;
+      font-size: 1.05rem;
+   }
+
+   .medicationBox table tbody td {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+   }
+
+   /* APPOINTMENTS */
+
+   .appointmentsBox {
+      margin-top: 0.7rem;
+   }
+   .appointmentsBox h2 {
+      font-size: 1.05rem;
+   }
+
+   .appointmentsBox table tbody td {
+      padding: 0.3rem 0.2rem;
+      font-size: 0.75rem;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
    main .vitalsBox {
       grid-template-columns: 1fr;
       gap: 0.8rem;
       margin-bottom: 2rem;
+      align-items: center;
+      justify-items: center;
+   }
+   .vitals {
+      width: 70%;
    }
    .vitalsDetails {
-      width: 30%;
+      width: 34%;
       height: 100%;
       display: block;
       float: left;
    }
    .vitalsDetails .vitalsIcon {
       width: 100%;
-      height: 80%;
+      height: 60%;
       border-radius: 0.5rem;
    }
    .vitalsDetails .vitalsIcon i {
       font-size: 300%;
    }
    .vitalsDetails .vitalsReadings {
-      height: 20%;
+      height: 35%;
+      width: 100%;
    }
+   .vitalsDetails .vitalsReadings h4 {
+      font-size: 80%;
+   }
+
    .vitalsTitle {
-      width: 65%;
+      width: 61%;
+      height: 30%;
       float: right;
    }
    .vitalsTitle h4 {
-      font-size: 1.5rem;
+      font-size: 100%;
    }
    .vitalsInfo {
-      width: 65%;
-      -webkit-line-clamp: 3;
-      font-size: 0.9rem;
+      height: 65%;
+      width: 61%;
+      -webkit-line-clamp: 5;
+      font-size: 60%;
       float: right;
+      display: block;
    }
 
    .medicationBox {
       background: var(--gray);
-      width: 85%;
+      width: 82%;
       height: 30%;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      margin: 0rem 0 0 5rem;
+      margin: -4rem 0 0 4rem;
       border-top-right-radius: 0.5rem;
    }
    .medicationTable {
@@ -415,12 +547,12 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    }
    .appointmentsBox {
       background: var(--gray);
-      width: 85%;
+      width: 82%;
       height: 32%;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      margin: 12.5rem 0 0 5rem;
+      margin: 10rem 0 0 4rem;
       border-radius: 0.5rem;
    }
    .apointmentsTable {
@@ -432,13 +564,9 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       background: var(--gray);
    }
    .appointmentsBox table tbody td:nth-child(1) div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100%;
-      width: 60%;
-      border-radius: 12rem;
-      background-color: var(--deepcol);
+      width: 2.5rem;
+      border-radius: 50%;
    }
 }
 
@@ -521,9 +649,12 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       grid-template-columns: 1fr;
       gap: 0.8rem;
       margin-bottom: 2rem;
+      justify-items: center;
+      align-items: center;
    }
    main .vitalsBox .vitals {
       padding: 0.5rem 0.4rem;
+      width: 70%;
       height: 7rem;
       min-height: 7rem;
    }
@@ -596,6 +727,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    .appointmentTable {
       height: 90%;
       border-radius: 0.3rem;
+      overflow-x: auto;
    }
    .appointmentsBox h2 {
       font-size: 1rem;
@@ -604,8 +736,8 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       padding: 0.3rem 0.1rem;
       font-size: 0.7rem;
    }
-   .appointmentsTable {
-      border-radius: 0.5rem;
+   .appointmentTable table {
+      width: 125%;
    }
    .appointmentsBox table thead th {
       padding: 0.4rem 0.5rem;

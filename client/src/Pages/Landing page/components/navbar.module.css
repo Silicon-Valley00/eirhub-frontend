@@ -1,7 +1,5 @@
 /* main nav */
-* {
-   font-family: 'Poppins', sans-serif;
-}
+
 #nav {
    padding: 2rem;
    display: flex;
@@ -14,6 +12,14 @@
    z-index: 1;
 }
 
+.img {
+   cursor: pointer;
+   pointer-events: none;
+}
+
+.logo_img {
+   pointer-events: none;
+}
 /* nav-links */
 #nav_links {
    display: block;
@@ -33,6 +39,7 @@
    top: 0;
    padding-top: 2rem;
    padding-right: 2rem;
+   padding-left: 2rem;
    transition: all;
    transition-duration: 500ms;
    /* display: none; */
@@ -61,14 +68,6 @@
    width: 100%;
 }
 
-.left {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: right;
-   width: 100%;
-}
-
 #signup {
    padding-top: 2rem;
    font-family: var(--mainfont);
@@ -76,6 +75,8 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   position: relative;
+   gap: 1rem;
 }
 
 .signup_list {
@@ -162,7 +163,7 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding-left: 5%;
+      padding-left: 20%;
    }
    #close {
       display: none;
@@ -191,9 +192,6 @@
 }
 
 @media (min-width: 890px) {
-   .left {
-      padding-left: 4rem;
-   }
 } /* ===================================================desktop style============== */
 @media (min-width: 1024px) {
    #img img {
@@ -206,6 +204,10 @@
       padding-left: 4rem;
       padding-right: 4rem;
       position: fixed;
+   }
+
+   .left {
+      padding-left: 4rem;
    }
 
    #nav_links {
@@ -229,7 +231,6 @@
 
    #signup {
       width: auto;
-      padding-right: 15%;
       white-space: nowrap;
    }
 

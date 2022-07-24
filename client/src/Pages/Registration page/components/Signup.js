@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './signup.module.css';
-import signUp from '../../../images/signupimage.svg';
+import signUp from '../../../images/Patientsignup.svg';
 import { FaRegUser, FaTimes } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
@@ -29,7 +29,11 @@ function Signup(props) {
          >
             <div
                className={styles.closeModal}
-               onClick={() => props.handleModalsClose()}
+               onClick={() => {
+                  props.handleModalsClose();
+                  props.signUpFormRef.current.reset();
+                  props.reset();
+               }}
             >
                <i>
                   <IoCloseOutline />
@@ -46,7 +50,7 @@ function Signup(props) {
                      <p> with doctors you can trust</p>
                   </div>
                   <div className={styles.leftRegionImage}>
-                     <img src={signUp} alt="Sign-up image" />
+                     <img src={signUp} alt="Sign-up" />
                   </div>
                </div>
                <div className={styles.rightRegion}>
@@ -65,10 +69,12 @@ function Signup(props) {
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
                   </div>
-                  <div className={styles.signupForm}>
+                  <form ref={props.signUpFormRef} className={styles.signupForm}>
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>
-                           <label htmlFor="firstname"> Firstname</label>
+                           {/* <label htmlFor="firstname"> Firstname</label> */}
+                           <h3>Firstname</h3>
+
                            <div
                               className={
                                  props.registerNameError
@@ -93,7 +99,8 @@ function Signup(props) {
                            </div>
                         </div>
                         <div className={styles.signupFormBoxName}>
-                           <label htmlFor="lastname"> Lastname</label>
+                           {/* <label htmlFor="lastname"> Lastname</label> */}
+                           <h3>Lastname</h3>
                            <div
                               className={
                                  props.registerNameError
@@ -131,7 +138,9 @@ function Signup(props) {
                         <p>{props.registerNameErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="date"> Date of Birth</label>
+                        {/* <label htmlFor="date"> Date of Birth</label> */}
+                        <h3>Date of Birth</h3>
+
                         <div
                            className={
                               props.registerDateError
@@ -174,7 +183,9 @@ function Signup(props) {
                         <p>{props.registerDateErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="email"> Email</label>
+                        {/* <label htmlFor="email"> Email</label> */}
+                        <h3>Email</h3>
+
                         <div
                            className={
                               props.registerEmailError
@@ -211,7 +222,9 @@ function Signup(props) {
                         <p>{props.registerEmailErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="passwordone"> Password</label>
+                        {/* <label htmlFor="passwordone"> Password</label> */}
+                        <h3>Password</h3>
+
                         <div
                            className={
                               props.registerPasswordOneError
@@ -260,9 +273,11 @@ function Signup(props) {
                      </div>
 
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="passwordconfirm">
+                        {/* <label htmlFor="passwordconfirm">
                            Confirm Password
-                        </label>
+                        </label> */}
+                        <h3>Confrim Password</h3>
+
                         <div
                            className={
                               props.registerPasswordTwoError
@@ -374,7 +389,7 @@ function Signup(props) {
                            Login
                         </p>
                      </div>
-                  </div>
+                  </form>
                </div>
             </div>
          </div>

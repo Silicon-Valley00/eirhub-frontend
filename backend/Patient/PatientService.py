@@ -1,10 +1,12 @@
 import json
+from urllib.request import Request
 from flask import request,jsonify,Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
 from Patient.PatientModel import Patient
+from flask_cors import CORS
 
 patients_route = Blueprint("patients_route",__name__)
-
+CORS(patients_route)
 #Get all patients
 @patients_route.route("/patient",methods = ['GET'])
 def getPatients():

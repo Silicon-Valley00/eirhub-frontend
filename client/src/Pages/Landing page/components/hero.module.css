@@ -28,6 +28,7 @@
 
 .content__title {
    font-family: var(--mainfont);
+   color: var(--white);
 }
 .content_info {
    padding-top: 1.2rem;
@@ -35,6 +36,7 @@
 .content__info {
    font-size: 2rem;
    font-family: var(--mainfont);
+   color: var(--white);
 }
 
 .content_button {
@@ -74,10 +76,11 @@
    width: 50%;
    max-height: 100%;
    padding-right: 20px;
+   pointer-events: none;
 }
-
 .hero__image {
    width: 100%;
+   pointer-events: none;
 }
 
 /* ========================== mobile view ========================= */
@@ -207,15 +210,24 @@
       width: 50%;
    }
 
+   .content__title {
+      color: var(--deepcol);
+   }
    .content__info {
       font-size: 17pt;
       height: 7rem;
+      color: var(--deepcol);
+   }
+
+   .content_button {
+      justify-content: flex-start;
+      padding-top: 2rem;
    }
 }
 
 @media (min-width: 1024px) {
-   .content__buttton {
-      width: 20rem;
+   .content__button {
+      width: 25rem;
    }
 }
 
