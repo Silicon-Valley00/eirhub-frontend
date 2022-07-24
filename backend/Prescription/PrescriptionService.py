@@ -67,14 +67,14 @@ def createPrescription():
         req = request.json
         
         drug_name = req["drug_name"]
-        start_date = str(req["start_date"])
-        end_date = str(req["end_date"])
+        start_date = req["start_date"]
+        end_date = req["end_date"]
         idPatient = req["idPatient"]
-        last_taken_date = str(req["last_taken_date"])
+        last_taken_date = req["last_taken_date"]
         dosage = req["dosage"]
-        time_of_administration = str(req["time_of_administration"])
+        time_of_administration = req["time_of_administration"]
             #verify that prescription doesn't already exist
-        prescriptionExists = session.query(Prescription).filter(Prescription.drug_name ==drug_name,str(Prescription.start_date) == start_date,str(Prescription.end_date) == end_date,Prescription.idPatient == idPatient).first()
+        prescriptionExists = session.query(Prescription).filter(Prescription.drug_name ==drug_name,Prescription.start_date == start_date,Prescription.end_date == end_date,Prescription.idPatient == idPatient).first()
             
         if(prescriptionExists):
             return ({
@@ -82,42 +82,58 @@ def createPrescription():
                 "msg":"Prescription already exists. Enter another"
             }),200
 
-            #create prescription for patient if it doesn't exist
-        drug_name = req["drug_name"]
-        dosage = req["dosage"]
-        time_of_administration  = str(req["time_of_administration"])
-        start_date  = str(req["start_date"])
-        end_date = str(req["end_date"])
-        last_taken_date  = str(req["last_taken_date"])
-        idPatient = req["idPatient"]
+
+        else:    #create prescription for patient if it doesn't exist
+            drug_name = req["drug_name"]
+            start_date = req["start_date"]
+            end_date = req["end_date"]
+            idPatient = req["idPatient"]
+            last_taken_date = req["last_taken_date"]
+            dosage = req["dosage"]
+            time_of_administration = req["time_of_administration"]
+            
+            #problem with new_prescription to be fixed later 
+            #new_prescription = Prescription(drug_name,idPatient,dosage,time_of_administration,start_date,end_date,last_taken_date)
+            
+            
+            #return (new_prescription.last_taken_date)
+            try:#add prescription to the database
+                # session.add(dict(new_prescription))
+                # session.commit()
+                return jsonify("will be fixed later")
+                
+            except Exception as e:
+                return ("Error: Prescription not recorded : %s",e),400
+            
+            # drug_name = req["drug_name"]
+            # dosage = req["dosage"]
+            # time_of_administration  = req["time_of_administration"]
+            # start_date  = req["start_date"]
+            # end_date = req["end_date"]
+            # last_taken_date  = req["last_taken_date"]
+            # idPatient = req["idPatient"]
+            
         
-    
+                
+                
+
             
-            
-        new_prescription = Prescription(drug_name,dosage,time_of_administration,start_date,end_date,last_taken_date,idPatient)
-            
-        try:#add prescription to the database
-            session.add(new_prescription)
-            session.commit()
-        except Exception as e:
-            return ("Error: Prescription not recorded : %s",e),400
-        
-        idPrescription = session.query(Prescription.idPrescription).filter(Prescription.drug_name == req["drug_name"],Prescription.start_date == str(req["start_date"]),Prescription.end_date == str(req["end_date"]),Prescription.idPatient == req["idPatient"],Prescription.dosage == req["dosage"],Prescription.time_of_administration == str(req["time_of_administration"])).first()
-        return_prescription = session.query(Prescription).get(idPrescription)
-        session.commit()
-        return ({#display message with prescription id to prove that it was added successfully
-                "msg": {
-                    "id": return_prescription.idPrescription,
-                    "drug_name":return_prescription.drug_name,
-                    "dosage":return_prescription.dosage,
-                    "time_of_administration":str(return_prescription.time_of_administration),#made str because object type of date isn't json serializable
-                    "start_date":str(return_prescription.start_date),
-                    "end_date":str(return_prescription.end_date),
-                    "last_taken_date":str(return_prescription.last_taken_date),
-                    "idPatient":return_prescription.idPatient
-                },
-                "status": True
-        }),200
+            # idPrescription = session.query(Prescription.idPrescription).filter(Prescription.drug_name == req["drug_name"],Prescription.start_date == req["start_date"],Prescription.end_date == req["end_date"],Prescription.idPatient == req["idPatient"],Prescription.dosage == req["dosage"],Prescription.time_of_administration == req["time_of_administration"]).first()
+            # return_prescription = session.query(Prescription).get(idPrescription)
+            # session.commit()
+            # return ({#display message with prescription id to prove that it was added successfully
+            #         "msg": {
+            #             "id": return_prescription.idPrescription,
+            #             "drug_name":return_prescription.drug_name,
+            #             "dosage":return_prescription.dosage,
+            #             "time_of_administration":return_prescription.time_of_administration,#made str because object type of date isn't json serializable
+            #             "start_date":return_prescription.start_date,
+            #             "end_date":return_prescription.end_date,
+            #             "last_taken_date":return_prescription.last_taken_date,
+            #             "idPatient":return_prescription.idPatient
+            #         },
+            #         "status": True
+            # }),200
         
     else:
         return 'Error: Content-Type Error',400
