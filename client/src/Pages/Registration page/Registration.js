@@ -11,6 +11,8 @@ const api = axios.create({
 });
 
 function Registration(props) {
+   const formRef = useRef();
+
    // User login refs
    const loginEmail = useRef();
    const loginPassword = useRef();
@@ -86,6 +88,51 @@ function Registration(props) {
    const [doctorLoginEmailErrorMessage, setDoctorLoginEmailErrorMessage] = useState('');
    const [doctorLoginPasswordErrorMessage, setDoctorLoginPasswordErrorMessage] =
       useState('');
+
+
+
+
+   // Function resets the values of all inputs and errors
+   function reset() {
+
+      formRef.current.reset()
+      setloginEmailError(null);
+      setLoginPasswordError(null);
+
+      setRegisterNameError(null);
+      setRegisterDateError(null);
+      setRegisterEmailError(null);
+      setRegisterPasswordOneError(null);
+      setRegisterPasswordTwoError(null);
+
+      // Handles error state in doctor input voices
+      setDoctorLoginEmailError(null);
+      setDoctorLoginPasswordError(null);
+
+      setRegisterDoctorNameError(null);
+      setRegisterHospitalCodeError(null)
+      setRegisterDoctorEmailError(null);
+      setRegisterDoctorPasswordOneError(null);
+      setRegisterDoctorPasswordTwoError(null);
+
+      // Handles error messages of user input boxes
+      setRegisterNameErrorMessage('');
+      setRegisterDateErrorMessage('');
+      setRegisterEmailErrorMessage('');
+      setRegisterPasswordOneErrorMessage('');
+      setRegisterPasswordTwoErrorMessage('');
+      setloginEmailErrorMessage('');
+      setLoginPasswordErrorMessage('');
+
+      // Handles error messages of doctor input boxes
+      setRegisterDoctorNameErrorMessage('');
+      setRegisterHospitalCodeErrorMessage('')
+      setRegisterDoctorEmailErrorMessage('');
+      setRegisterDoctorPasswordOneErrorMessage('');
+      setRegisterDoctorPasswordTwoErrorMessage('');
+      setDoctorLoginEmailErrorMessage('');
+      setDoctorLoginPasswordErrorMessage('');
+   }
 
    const pattern = /^[a-zA-Z ]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -451,6 +498,8 @@ function Registration(props) {
    return (
       <>
          <Login
+            formRef={formRef}
+            reset={reset}
             modalLogin={props.modalLogin}
             handleModalSignup={props.handleModalSignup}
             handleModalsClose={props.handleModalsClose}
@@ -465,6 +514,8 @@ function Registration(props) {
             loginPasswordErrorMessage={loginPasswordErrorMessage}
          />
          <DoctorLogin
+            formRef={formRef}
+            reset={reset}
             modalLoginDoctor={props.modalLoginDoctor}
             handleModalSignupDoctor={props.handleModalSignupDoctor}
             handleModalsClose={props.handleModalsClose}
@@ -481,6 +532,8 @@ function Registration(props) {
          />
 
          <Signup
+            formRef={formRef}
+            reset={reset}
             modalSignup={props.modalSignup}
             handleModalLogin={props.handleModalLogin}
             handleModalsClose={props.handleModalsClose}
@@ -508,6 +561,8 @@ function Registration(props) {
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
          <DoctorSignup
+            formRef={formRef}
+            reset={reset}
             modalSignupDoctor={props.modalSignupDoctor}
             handleModalLoginDoctor={props.handleModalLoginDoctor}
             handleModalsClose={props.handleModalsClose}

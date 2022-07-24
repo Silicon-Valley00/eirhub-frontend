@@ -29,7 +29,10 @@ function Signup(props) {
          >
             <div
                className={styles.closeModal}
-               onClick={() => props.handleModalsClose()}
+               onClick={() => {
+                  props.handleModalsClose()
+                  props.reset()
+               }}
             >
                <i>
                   <IoCloseOutline />
@@ -65,7 +68,9 @@ function Signup(props) {
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
                   </div>
-                  <div className={styles.signupForm}>
+                  <form
+                  ref={props.formRef}
+                  className={styles.signupForm}>
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>
                            <label htmlFor="firstname"> Firstname</label>
@@ -374,7 +379,7 @@ function Signup(props) {
                            Login
                         </p>
                      </div>
-                  </div>
+                  </form>
                </div>
             </div>
          </div>

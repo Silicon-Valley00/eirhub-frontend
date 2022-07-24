@@ -27,7 +27,10 @@ function Login(props) {
             >
                 <div
                     className={loginStyles.closeModal}
-                    onClick={() => props.handleModalsClose()}
+                    onClick={() => {
+                        props.handleModalsClose()
+                        props.reset()
+                    }}
                 >
                     <i>
                         <IoCloseOutline />
@@ -49,6 +52,7 @@ function Login(props) {
                     </div>
 
                     <form
+                    ref={props.formRef}
                         onSubmit={(e) => {
                             e.preventDefault();
                         }}
