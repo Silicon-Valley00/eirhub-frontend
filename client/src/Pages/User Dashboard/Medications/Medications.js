@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './medication.module.css';
 import { CgPill } from 'react-icons/cg';
 
-function Medications() {
+function Medication(props) {
    return (
       <>
          <div id={styles.medicationsBody}>
@@ -41,7 +41,19 @@ function Medications() {
                      </div>
                   </div>
                   <div className={styles.lowerContent}>
-                     <button>Edit</button>
+                     <button
+                        onClick={() =>
+                           props.pushData({
+                              drug_name: 'name',
+                              dosage: 'mcndj',
+                              time_of_administration: '14:54',
+                              start_date: '2022-07-25',
+                              end_date: '2022-07-13',
+                           })
+                        }
+                     >
+                        Edit
+                     </button>
                      <button>Delete</button>
                   </div>
                </div>
@@ -278,4 +290,4 @@ function Medications() {
       </>
    );
 }
-export default Medications;
+export default Medication;

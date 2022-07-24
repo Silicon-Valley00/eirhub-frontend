@@ -39,6 +39,7 @@
    border-radius: 20px;
    height: 16rem;
    padding: 2rem;
+   padding-bottom: 4rem;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
@@ -52,14 +53,6 @@
 
 .heading {
    font-weight: bold;
-}
-
-.LearnMore {
-   display: flex;
-   align-items: center;
-   gap: 6px;
-   color: var(--lightcol);
-   font-family: var(--mainfont);
 }
 
 .join_us {
@@ -107,6 +100,13 @@
    border-radius: 5px;
    font-size: 15px;
    font-family: var(--mainfont);
+}
+
+.contact__btn:hover {
+   background: var(--white);
+   color: var(--lightcol);
+   transition: all;
+   transition-duration: 500ms;
 }
 
 @media (min-width: 600px) {
@@ -168,6 +168,10 @@
       height: 19rem;
    }
 
+   .icon {
+      height: 2rem;
+      width: 2rem;
+   }
    .heading {
       font-size: 24px;
       font-weight: 800;

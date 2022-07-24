@@ -1,0 +1,194 @@
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+   --tablehead: #c2c9d1;
+   --iconred: #dd7678;
+   --iconback: #f7eef0;
+}
+#recordBody {
+   margin-top: 4rem;
+   background-color: var(--gray);
+   padding: 2rem 1.2rem 0 1.4rem;
+   border-top-left-radius: 2rem;
+   border-top-right-radius: 2rem;
+}
+
+.recordTable {
+   width: 100%;
+   height: 35rem;
+   max-height: 35rem;
+   min-height: 35rem;
+   background-color: white;
+   /* display: grid; */
+   justify-content: center;
+   align-items: center;
+   table-layout: fixed;
+   overflow: auto;
+   border-radius: 1rem;
+   outline: 1px solid #e1e5ee;
+   position: relative;
+}
+
+.recordTable table {
+   background: var(--white);
+   padding: 1rem;
+   border-collapse: collapse;
+   border-spacing: 0px;
+   min-width: 100%;
+   width: 100%;
+   table-layout: fixed;
+   /* height: 100%; */
+}
+
+.recordTable table thead {
+   box-shadow: 0 1px 4px #e1e5ee;
+   position: sticky;
+   top: 0;
+   background: var(--white);
+   z-index: 1;
+   text-align: left;
+}
+
+.recordTable table thead th {
+   color: var(--tablehead);
+   font-weight: 500;
+   text-transform: capitalize;
+   padding: 0.4rem 1rem;
+   letter-spacing: 0.1rem;
+   font-size: 0.8rem;
+}
+
+.recordTable table tbody td {
+   height: 2.5rem;
+   min-height: 2.5rem;
+   max-height: 2.5rem;
+   color: var(--midcol);
+   font-weight: 600;
+   padding: 0.3rem 0.9rem;
+   font-size: 0.8rem;
+}
+.recordTable table thead th:nth-child(1) {
+   width: 35%;
+   text-align: left;
+}
+.recordTable table thead th:nth-child(2) {
+   width: 25%;
+}
+.recordTable table thead th:nth-child(3) {
+   width: 25%;
+}
+.recordTable table thead th:nth-child(4) {
+   width: 15%;
+}
+
+.recordTable table tbody tr td:nth-child(4) {
+   color: var(--lightcol);
+}
+.options {
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 80%;
+}
+.options i {
+   font-size: 140%;
+   cursor: pointer;
+}
+
+.recordTable::-webkit-scrollbar {
+   width: 0.3rem;
+   height: 0.3rem;
+   cursor: pointer;
+}
+.recordTable::-webkit-scrollbar-track {
+   margin: 20px;
+   cursor: pointer;
+   -webkit-box-shadow: inset 0 0 10px var(--white);
+}
+.recordTable::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+}
+
+.recordOpenBox {
+   position: absolute;
+   top: 0;
+   left: -100%;
+   width: 100%;
+   height: 35rem;
+   min-height: 35rem;
+   max-height: 35rem;
+   z-index: 3;
+   transition: all 500ms ease-in-out;
+}
+
+.recordOpenBox.active {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 35rem;
+   min-height: 35rem;
+   max-height: 35rem;
+   background-color: var(--white);
+   z-index: 2;
+   transition: all 500ms ease-in-out;
+   padding: 2rem;
+}
+.top {
+   width: 100%;
+   height: 2.5rem;
+   display: inline-flex;
+}
+.reportTitle {
+   width: 70%;
+   text-align: left;
+   justify-content: center;
+}
+.reportTitle h2 {
+   font-size: 1.7rem;
+   color: var(--deepcol);
+   font-weight: 700;
+}
+.back {
+   width: 30%;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+}
+.back i {
+   font-size: 170%;
+   color: var(--deepcol);
+   cursor: pointer;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+}
+.reportDescription {
+   margin-top: 2rem;
+   height: max-content;
+   min-height: max-content;
+   max-height: max-content;
+   color: var(--deepcol);
+   font-weight: 510;
+}
+
+.descriptionBox {
+   width: 100%;
+}
+.left {
+   margin-top: 1rem;
+
+   width: 32%;
+   float: left;
+   height: 100%;
+}
+.right {
+   margin-top: 1rem;
+   width: 65%;
+   float: left;
+}

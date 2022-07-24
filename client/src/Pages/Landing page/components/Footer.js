@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaTwitter } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import footerStyle from '../components/footer.module.css';
 
 const Footer = () => {
@@ -9,7 +10,10 @@ const Footer = () => {
       <footer>
          {/* logo div*/}
          <div className={footerStyle.logo}>
-            <span className={footerStyle.logo}>Eirhub</span>
+            <Link to="/">
+               <span className={footerStyle.logo}>Eirhub</span>
+            </Link>
+
             <p className={footerStyle.logo}>
                Eirhubs helps patients get quick access to experienced
                practitioners and helps increase visibility on these
@@ -46,7 +50,9 @@ const Footer = () => {
                <li className={footerStyle.flist}>How it Works</li>
                <li className={footerStyle.flist}>Book Appointment</li>
                <li className={footerStyle.flist}>Register</li>
-               <li className={footerStyle.flist}>FAQ</li>
+               <Link to="/FAQ" className={footerStyle.flist}>
+                  FAQ
+               </Link>
                <li className={footerStyle.flist}>Terms of Use</li>
             </ul>
          </div>
