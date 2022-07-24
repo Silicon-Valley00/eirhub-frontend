@@ -11,7 +11,6 @@ const api = axios.create({
 });
 
 function Registration(props) {
-   const docLoginFormRef = useRef();
 
    // User login refs
    const loginEmail = useRef();
@@ -570,7 +569,6 @@ function Registration(props) {
             loginPasswordErrorMessage={loginPasswordErrorMessage}
          />
          <DoctorLogin
-            docLoginFormRef={docLoginFormRef}
             reset={reset}
             modalLoginDoctor={props.modalLoginDoctor}
             handleModalSignupDoctor={props.handleModalSignupDoctor}
