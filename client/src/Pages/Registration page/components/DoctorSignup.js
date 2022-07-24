@@ -32,6 +32,7 @@ function DoctorSignup(props) {
                     className={styles.closeModal}
                     onClick={() => {
                         props.handleModalsClose()
+                        props.docSignUpFormRef.current.reset()
                         props.reset()
                     }}
                 >
@@ -70,7 +71,7 @@ function DoctorSignup(props) {
                             <p>Take control of your health today</p>
                         </div>
                         <form 
-                        ref={props.formRef}
+                        ref={props.docSignUpFormRef}
                         className={styles.signupForm}>
                             <div className={styles.signupFormBoxNames}>
                                 <div className={styles.signupFormBoxName}>
@@ -88,7 +89,7 @@ function DoctorSignup(props) {
                                         <input
                                             name="firstname"
                                             type="text"
-                                            id="firstname"
+                                            id="docfirstname"
                                             placeholder="Enter Firstname"
                                             ref={props.doctorSignupFirstname}
                                             onChange={() => {
@@ -113,7 +114,7 @@ function DoctorSignup(props) {
                                         <input
                                             name="lastname"
                                             type="text"
-                                            id="lastname"
+                                            id="doclastname"
                                             placeholder="Enter Lastname"
                                             ref={props.doctorSignupLastname}
                                             onChange={() => {
@@ -152,7 +153,7 @@ function DoctorSignup(props) {
                                     <input
                                         name="email"
                                         type="email"
-                                        id="email"
+                                        id="docemail"
                                         placeholder="someone@example.com"
                                         ref={props.doctorSignupEmail}
                                         onChange={() => {
@@ -189,7 +190,7 @@ function DoctorSignup(props) {
                                     <input
                                         type="text"
                                         name="signupHospitalCode"
-                                        id="signupHospitalCode"
+                                        id="docSignupHospitalCode"
                                         placeholder="Enter hospital code"
                                         ref={props.signupHospitalCode}
                                         onFocus={(event) => (event.target.type = 'text')}
@@ -232,7 +233,7 @@ function DoctorSignup(props) {
                                     <input
                                         type={hidePasswordOne ? 'password' : 'text'}
                                         name="password"
-                                        id="password1"
+                                        id="docpassword1"
                                         placeholder="Enter a password"
                                         ref={props.doctorSignupPassword}
                                         onChange={() => {
@@ -283,7 +284,7 @@ function DoctorSignup(props) {
                                     <input
                                         name="passwordconfirm"
                                         type={hidePasswordTwo ? 'password' : 'text'}
-                                        id="password2"
+                                        id="docpassword2"
                                         placeholder="Confirm your password"
                                         ref={props.doctorSignupPasswordconfirm}
                                         onChange={() => {
@@ -318,7 +319,7 @@ function DoctorSignup(props) {
                             </div>
                             <div className={styles.signupFormButton}>
                                 <button
-                                    id="submit-btn"
+                                    id="docsubmit-btn"
                                     // className={
                                     //    btnActive
                                     //       ? `${styles.signupBtn} ${styles.btnActive}`

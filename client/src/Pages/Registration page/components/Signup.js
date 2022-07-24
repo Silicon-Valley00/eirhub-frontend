@@ -31,6 +31,7 @@ function Signup(props) {
                className={styles.closeModal}
                onClick={() => {
                   props.handleModalsClose()
+                  props.signUpFormRef.current.reset()
                   props.reset()
                }}
             >
@@ -69,7 +70,7 @@ function Signup(props) {
                      <p>Take control of your health today</p>
                   </div>
                   <form
-                  ref={props.formRef}
+                  ref={props.signUpFormRef}
                   className={styles.signupForm}>
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>

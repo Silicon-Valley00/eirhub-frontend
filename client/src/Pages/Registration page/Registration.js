@@ -11,7 +11,10 @@ const api = axios.create({
 });
 
 function Registration(props) {
-   const formRef = useRef();
+   const signUpFormRef = useRef();
+   const loginFormRef = useRef();
+   const docSignUpFormRef = useRef();
+   const docLoginFormRef = useRef();
 
    // User login refs
    const loginEmail = useRef();
@@ -95,7 +98,6 @@ function Registration(props) {
    // Function resets the values of all inputs and errors
    function reset() {
 
-      formRef.current.reset()
       setloginEmailError(null);
       setLoginPasswordError(null);
 
@@ -498,7 +500,7 @@ function Registration(props) {
    return (
       <>
          <Login
-            formRef={formRef}
+            loginFormRef={loginFormRef}
             reset={reset}
             modalLogin={props.modalLogin}
             handleModalSignup={props.handleModalSignup}
@@ -514,7 +516,7 @@ function Registration(props) {
             loginPasswordErrorMessage={loginPasswordErrorMessage}
          />
          <DoctorLogin
-            formRef={formRef}
+            docLoginFormRef={docLoginFormRef}
             reset={reset}
             modalLoginDoctor={props.modalLoginDoctor}
             handleModalSignupDoctor={props.handleModalSignupDoctor}
@@ -532,7 +534,7 @@ function Registration(props) {
          />
 
          <Signup
-            formRef={formRef}
+            signUpFormRef={signUpFormRef}
             reset={reset}
             modalSignup={props.modalSignup}
             handleModalLogin={props.handleModalLogin}
@@ -561,7 +563,7 @@ function Registration(props) {
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
          <DoctorSignup
-            formRef={formRef}
+            docSignUpFormRef={docSignUpFormRef}
             reset={reset}
             modalSignupDoctor={props.modalSignupDoctor}
             handleModalLoginDoctor={props.handleModalLoginDoctor}
@@ -585,7 +587,6 @@ function Registration(props) {
             registerDoctorPasswordTwoErrorMessage={registerDoctorPasswordTwoErrorMessage}
             handleRegisterDoctor={handleRegisterDoctor}
             handleRegisterDoctorEmail={handleRegisterDoctorEmail}
-
             handleRegisterHospitalCode={handleRegisterHospitalCode}
             handleRegisterDoctorPassword={handleRegisterDoctorPassword}
             handleRegisterDoctorPasswordConfirm={handleRegisterDoctorPasswordConfirm}

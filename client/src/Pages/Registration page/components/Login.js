@@ -28,6 +28,7 @@ function Login(props) {
                className={loginStyles.closeModal}
                onClick={() => {
                   props.handleModalsClose()
+                  props.loginFormRef.current.reset()
                   props.reset()
                }}
             >
@@ -51,7 +52,7 @@ function Login(props) {
                </div>
 
                <form
-               ref={props.formRef}
+               ref={props.loginFormRef}
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
@@ -177,7 +178,7 @@ function Login(props) {
                         </div>
                      </button>
                      <div className={loginStyles.signupToggle}>
-                        <p>
+                        <div>
                            New Here ?{' '}
                            <p
                               className={loginStyles.link}
@@ -185,8 +186,8 @@ function Login(props) {
                               onClick={() => props.handleModalSignup()}
                            >
                               Sign up
-                           </p>
                         </p>
+                           </div>
                      </div>
                   </div>
                </form>
