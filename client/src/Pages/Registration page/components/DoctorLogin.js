@@ -14,21 +14,6 @@ function Login(props) {
 
    /* Code below handles user inputs, checks and form submissions */
    const [hidePassword, setHidePassword] = useState(true);
-   const [hidePasswordOne, setHidePasswordOne] = useState(true);
-   const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
-   const {
-      handleModalsClose,
-      handleModalSignup,
-      loginEmailErrorMessageDoctor,
-      loginPasswordErrorMessageDoctor,
-      handleloginEmailDoctor,
-      handleLoginPasswordDoctor,
-      loginPasswordDoctor,
-      loginPasswordErrorDoctor,
-      loginEmailDoctor,
-      loginEmailErrorDoctor,
-   } = props;
-
    const [isError, setIsError] = useState(true);
    const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
@@ -36,11 +21,15 @@ function Login(props) {
       <section id={loginStyles.loginSection}>
          <div
             id={loginStyles.loginContainer}
-            className={props.modalLogin ? loginStyles.active : ''}
+            className={props.modalLoginDoctor ? loginStyles.active : ''}
          >
             <div
                className={loginStyles.closeModal}
-               onClick={() => props.handleModalsClose()}
+               onClick={() => {
+                  props.handleModalsClose();
+                  props.docLoginFormRef.current.reset();
+                  props.reset();
+               }}
             >
                <i>
                   <IoCloseOutline />
@@ -62,6 +51,7 @@ function Login(props) {
                </div>
 
                <form
+                  ref={props.docLoginFormRef}
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
@@ -72,7 +62,7 @@ function Login(props) {
                   <h3>Email</h3>
                   <div
                      className={
-                        loginEmailErrorDoctor
+                        props.doctorLoginEmailError
                            ? `${loginStyles.inputField} ${loginStyles.inputError}`
                            : loginStyles.inputField
                      }
@@ -82,17 +72,17 @@ function Login(props) {
                      </i>
                      <input
                         type="text"
-                        id={loginStyles.loginUsernamePatient}
+                        id={loginStyles.loginUsername}
                         placeholder="someone@example.com"
-                        ref={loginEmailDoctor}
+                        ref={props.doctorLoginEmail}
                         onChange={() => {
-                           handleloginEmailDoctor();
+                           props.handleDoctorLoginEmail();
                         }}
                      />
                   </div>
                   <div
                      className={
-                        loginEmailErrorDoctor
+                        props.doctorLoginEmailError
                            ? loginStyles.errorMessageBox
                            : loginStyles.noErrorMessageBox
                      }
@@ -100,12 +90,12 @@ function Login(props) {
                      <i>
                         <IoWarning />
                      </i>
-                     <p>{loginEmailErrorMessageDoctor}</p>
+                     <p>{props.doctorLoginEmailErrorMessage}</p>
                   </div>
                   <h3>Password</h3>
                   <div
                      className={
-                        loginPasswordErrorDoctor
+                        props.doctorLoginPasswordError
                            ? `${loginStyles.inputField} ${loginStyles.inputError}`
                            : loginStyles.inputField
                      }
@@ -115,11 +105,11 @@ function Login(props) {
                      </i>
                      <input
                         type={hidePassword ? 'password' : 'text'}
-                        id={loginStyles.loginPasswordPatient}
+                        id={loginStyles.loginPassword}
                         placeholder="Enter your password"
-                        ref={loginPasswordDoctor}
+                        ref={props.doctorLoginPassword}
                         onChange={() => {
-                           handleLoginPasswordDoctor();
+                           props.handleDoctorLoginPassword();
                         }}
                      />
                      <i onClick={() => setHidePassword(!hidePassword)}>
@@ -132,7 +122,7 @@ function Login(props) {
                   </div>
                   <div
                      className={
-                        loginPasswordErrorDoctor
+                        props.doctorLoginPasswordError
                            ? loginStyles.errorMessageBox
                            : loginStyles.noErrorMessageBox
                      }
@@ -140,7 +130,7 @@ function Login(props) {
                      <i>
                         <IoWarning />
                      </i>
-                     <p>{loginPasswordErrorMessageDoctor}</p>
+                     <p>{props.doctorLoginPasswordErrorMessage}</p>
                   </div>
                   <div className={loginStyles.passwordReset}>
                      <p className={loginStyles.link}>Forgot password?</p>
@@ -149,20 +139,22 @@ function Login(props) {
                      <button
                         id={loginStyles.loginSubmit}
                         className={
-                           loginEmailErrorDoctor === true ||
-                           loginPasswordErrorDoctor === true ||
-                           loginEmailErrorDoctor === null ||
-                           loginPasswordErrorDoctor === null
-                              ? ` ${loginStyles.btn} ${loginStyles.inactive}`
+                           props.doctorLoginEmailError ||
+                           props.doctorLoginPasswordError ||
+                           props.doctorLoginEmailError === null ||
+                           props.doctorLoginPasswordError === null
+                              ? `${loginStyles.btn} ${loginStyles.inactive}`
                               : btnActive
                               ? ` ${loginStyles.btn} ${loginStyles.btnActive}`
                               : loginStyles.btn
                         }
                         disabled={
-                           loginEmailErrorDoctor === true ||
-                           loginPasswordErrorDoctor === true ||
-                           loginEmailErrorDoctor === null ||
-                           loginPasswordErrorDoctor === null
+                           props.doctorLoginEmailError ||
+                           props.doctorLoginPasswordError ||
+                           props.doctorLoginPasswordError ||
+                           props.doctorLoginEmailError === null ||
+                           props.doctorLoginPasswordError === null ||
+                           props.doctorLoginPasswordError === null
                         }
                         onClick={() => {
                            setBtnValue('loging in');
@@ -185,16 +177,15 @@ function Login(props) {
                         </div>
                      </button>
                      <div className={loginStyles.signupToggle}>
-                        <p>
+                        <div>
                            New Here ?{' '}
                            <p
                               className={loginStyles.link}
-                              href=""
-                              onClick={() => handleModalSignup()}
+                              onClick={() => props.handleModalSignupDoctor()}
                            >
                               Sign up
                            </p>
-                        </p>
+                        </div>
                      </div>
                   </div>
                </form>
@@ -203,7 +194,11 @@ function Login(props) {
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
-               <img id={loginStyles.loginImg} src={loginImage} alt="" />
+               <img
+                  id={loginStyles.loginImg}
+                  src={loginImage}
+                  alt="login-image"
+               />
             </div>
          </div>
       </section>
