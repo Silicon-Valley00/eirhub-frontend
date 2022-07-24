@@ -7,7 +7,7 @@ import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
 
-function Login(props) {
+function DoctorLogin(props) {
     const docLoginFormRef = useRef();
 
     // handles button changes
@@ -209,4 +209,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export default DoctorLogin;
