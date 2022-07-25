@@ -75,7 +75,7 @@ function DoctorSignup(props) {
                   <form ref={docSignUpFormRef} className={styles.signupForm}>
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>
-                           <label htmlFor="firstname"> Firstname</label>
+                           <h3 htmlFor="firstname"> Firstname</h3>
                            <div
                               className={
                                  props.registerDoctorNameError
@@ -100,7 +100,7 @@ function DoctorSignup(props) {
                            </div>
                         </div>
                         <div className={styles.signupFormBoxName}>
-                           <label htmlFor="lastname"> Lastname</label>
+                           <h3 htmlFor="lastname"> Lastname</h3>
                            <div
                               className={
                                  props.registerDoctorNameError
@@ -139,7 +139,7 @@ function DoctorSignup(props) {
                      </div>
 
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="email"> Email</label>
+                        <h3 htmlFor="email"> Email</h3>
                         <div
                            className={
                               props.registerDoctorEmailError
@@ -176,10 +176,10 @@ function DoctorSignup(props) {
                         <p>{props.registerDoctorEmailErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="signupHospitalCode">
+                        <h3 htmlFor="signupHospitalCode">
                            {' '}
                            Hospital code
-                        </label>
+                        </h3>
                         <div
                            className={
                               props.registerHospitalCodeError
@@ -222,7 +222,7 @@ function DoctorSignup(props) {
                         <p>{props.registerHospitalCodeErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="passwordone"> Password</label>
+                        <h3 htmlFor="passwordone"> Password</h3>
                         <div
                            className={
                               props.registerDoctorPasswordOneError
@@ -271,9 +271,9 @@ function DoctorSignup(props) {
                      </div>
 
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="passwordconfirm">
+                        <h3 htmlFor="passwordconfirm">
                            Confirm Password
-                        </label>
+                        </h3>
                         <div
                            className={
                               props.registerDoctorPasswordTwoError
