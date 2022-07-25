@@ -73,6 +73,9 @@ function DoctorSignup(props) {
                   <form
                      ref={props.docSignUpFormRef}
                      className={styles.signupForm}
+                     onSubmit={(e) => {
+                        e.preventDefault();
+                     }}
                   >
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>

@@ -194,11 +194,7 @@ function Login(props) {
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
-               <img
-                  id={loginStyles.loginImg}
-                  src={loginImage}
-                  alt="login-image"
-               />
+               <img id={loginStyles.loginImg} src={loginImage} alt="login" />
             </div>
          </div>
       </section>

@@ -9,6 +9,7 @@ import HowItWorks from './Pages/Landing page/HowItWorks';
 import FAQ from './Pages/Landing page/FAQ/FAQ';
 
 import UserDashboard from './Pages/User Dashboard/UserDashboard';
+import Profile from './Pages/User Dashboard/Profile/Profile';
 import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
 import DashboardNotificationAlerts from './Pages/User Dashboard/components/DashBoardNotificationAlerts.js';
 import FindDoctor from './Pages/User Dashboard/FindDoctor/FindDoctor';
@@ -50,6 +51,11 @@ function App() {
                   page={'dashboard'}
                />
             }
+         />
+         <Route
+            path="/profile"
+            exact
+            element={<UserDashboard parent={<Profile />} page={'profile'} />}
          />
 
          <Route

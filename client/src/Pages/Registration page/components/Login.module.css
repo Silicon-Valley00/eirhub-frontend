@@ -22,7 +22,7 @@ body {
    box-sizing: border-box;
 }
 
-form {
+.loginForm {
    color: var(--dark-blue);
 }
 

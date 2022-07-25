@@ -69,7 +69,13 @@ function Signup(props) {
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
                   </div>
-                  <form ref={props.signUpFormRef} className={styles.signupForm}>
+                  <form
+                     ref={props.signUpFormRef}
+                     className={styles.signupForm}
+                     onSubmit={(e) => {
+                        e.preventDefault();
+                     }}
+                  >
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>
                            {/* <label htmlFor="firstname"> Firstname</label> */}
