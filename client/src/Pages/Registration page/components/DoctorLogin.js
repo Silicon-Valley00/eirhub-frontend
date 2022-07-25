@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
 import loginImage from '../../../images/loginimage.svg';
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setName } from '../../../Store/Actions.js';
 
-function Login(props) {
+function DoctorLogin(props) {
    const navigate = useNavigate();
    const dispatch = useDispatch();
    // handles button changes
@@ -224,4 +224,4 @@ function Login(props) {
    );
 }
 
-export default Login;
+export default DoctorLogin;

@@ -11,11 +11,6 @@ const api = axios.create({
 });
 
 function Registration(props) {
-   const signUpFormRef = useRef();
-   const loginFormRef = useRef();
-   const docSignUpFormRef = useRef();
-   const docLoginFormRef = useRef();
-
    // User login refs
    const loginEmail = useRef();
    const loginPassword = useRef();
@@ -426,7 +421,7 @@ function Registration(props) {
       // Below code checks which modal form is open to take user credentials
       if (props.modalLogin) {
          //checks if the patient login form modal is opened
-         // prepares credentials for submition
+         // prepares credentials for submission
          const loginPatientData = {
             user_email: enteredloginEmail,
             user_password: enteredloginPassword,
@@ -440,7 +435,7 @@ function Registration(props) {
          return await feedback; //return feedback for registeration flow
       } else if (props.modalSignup) {
          //checks if the patient signup form modal is opened
-         // prepares credentials for submition
+         // prepares credentials for submission
          const signupPatientData = {
             first_name: enteredSignUpFirstname,
             last_name: enteredSignUpLastname,
@@ -457,7 +452,7 @@ function Registration(props) {
          return await feedback; //return feedback for registeration flow
       } else if (props.modalSignupDoctor) {
          //checks if the doctor signup form modal is opened
-         // prepares credentials for submittion
+         // prepares credentials for submission
          const signupDoctorData = {
             first_name: enteredSignUpFirstnameDoctor,
             last_name: enteredSignUpLastnameDoctor,
@@ -474,7 +469,7 @@ function Registration(props) {
          return await feedback; //return feedback for registeration flow
       } else if (props.modalLoginDoctor) {
          //checks if the doctor login form modal is opened
-         // prepares credentials for submittion
+         // prepares credentials for submission
          const loginDoctorData = {
             user_email: enteredloginEmailDoctor,
             user_password: enteredloginPasswordDoctor,
@@ -538,7 +533,6 @@ function Registration(props) {
    return (
       <>
          <Login
-            loginFormRef={loginFormRef}
             reset={reset}
             modalLogin={props.modalLogin}
             handleModalSignup={props.handleModalSignup}
@@ -554,7 +548,6 @@ function Registration(props) {
             loginPasswordErrorMessage={loginPasswordErrorMessage}
          />
          <DoctorLogin
-            docLoginFormRef={docLoginFormRef}
             reset={reset}
             modalLoginDoctor={props.modalLoginDoctor}
             handleModalSignupDoctor={props.handleModalSignupDoctor}
@@ -571,7 +564,6 @@ function Registration(props) {
          />
 
          <Signup
-            signUpFormRef={signUpFormRef}
             reset={reset}
             modalSignup={props.modalSignup}
             handleModalLogin={props.handleModalLogin}
@@ -600,7 +592,6 @@ function Registration(props) {
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
          <DoctorSignup
-            docSignUpFormRef={docSignUpFormRef}
             reset={reset}
             modalSignupDoctor={props.modalSignupDoctor}
             handleModalLoginDoctor={props.handleModalLoginDoctor}

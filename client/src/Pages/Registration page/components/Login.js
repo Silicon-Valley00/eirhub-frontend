@@ -30,7 +30,8 @@ function Login(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(setName(feedback[1].first_name));
-         navigate('/dashboard', { replace: true });
+         console.log(feedback[1].first_name);
+         navigate('/dashboard');
       } else {
          setBtnActive(feedback[0]);
          setBtnValue('Login');
