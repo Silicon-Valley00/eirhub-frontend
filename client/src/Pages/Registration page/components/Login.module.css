@@ -170,7 +170,7 @@ p.link {
    color: white;
    font-weight: 500;
    height: var(--height);
-   width: 50%;
+   width: 80%;
    border-radius: 4rem;
    text-transform: uppercase;
    text-align: center;
@@ -239,7 +239,7 @@ p.link {
 .inactive {
    cursor: not-allowed;
    background-color: #a5cfd6;
-   width: 60%;
+   width: 80%;
    border: none;
    outline: none;
    border-radius: 4rem;
@@ -264,6 +264,50 @@ p.link {
 }
 
 /* Error */
+   .error {
+      /* max-height: max-content; */
+      height: 2rem;
+      background: rgb(253, 252, 252);
+      /* border: 1px solid red; */
+      align-self: initial;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 5px;
+      margin-top: -8%;
+      padding: 0 0.5rem;
+   }
+   
+   .error p {
+      color: red;
+      font-weight: 300;
+      width: 93%;
+      font-size: 0.7rem;
+      float: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   
+   .error i {
+      width: 10%;
+      height: 100%;
+      /* float: right; */
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* padding-bottom: 0.9rem; */
+      cursor: pointer;
+   }
+   .noerror {
+      height: 2rem;
+   }
+   .noerror p {
+      display: none;
+   }
+   .noerror i {
+      display: none;
+   }
 
 .inputError {
    /* display: flex;
@@ -277,50 +321,6 @@ p.link {
 .inputError > i {
    margin-top: 5px;
    /* font-size: 1rem; */
-}
-.error {
-   /* max-height: max-content; */
-   height: 2rem;
-   background: rgb(253, 252, 252);
-   border: 1px solid red;
-   align-self: initial;
-   display: flex;
-   justify-content: space-between;
-   border-radius: 5px;
-   margin-top: -8%;
-   padding: 0 0.5rem;
-}
-
-.error p {
-   color: red;
-   font-weight: 600;
-   width: 93%;
-   font-size: 0.9em;
-   float: left;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-.error i {
-   width: 10%;
-   height: 100%;
-   /* float: right; */
-   font-size: 24px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   /* padding-bottom: 0.9rem; */
-   cursor: pointer;
-}
-.noerror {
-   height: 2rem;
-}
-.noerror p {
-   display: none;
-}
-.noerror i {
-   display: none;
 }
 
 .errorMessageBox {

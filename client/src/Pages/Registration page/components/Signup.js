@@ -87,7 +87,7 @@ function Signup(props) {
                      <p>Take control of your health today</p>
                   </div>
                   <form
-                     ref={props.signUpFormRef}
+                     ref={signUpFormRef}
                      className={styles.signupForm}
                      onSubmit={(e) => {
                         e.preventDefault();

@@ -218,8 +218,8 @@ function Registration(props) {
          setRegisterNameErrorMessage('Full name required');
          setRegisterNameError(true);
       } else if (
-         enteredSignUpFirstname.match(pattern) !== 1 &&
-         enteredSignUpLastname.match(pattern) !== 1
+         enteredSignUpFirstname.match(pattern) &&
+         enteredSignUpLastname.match(pattern)
       ) {
          setRegisterNameError(false);
       } else {
