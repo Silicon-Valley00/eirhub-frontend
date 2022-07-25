@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
 import loginImage from '../../../images/loginimage.svg';
@@ -7,7 +7,10 @@ import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
 
+
 function Login(props) {
+   const loginFormRef = useRef();
+
    // handles button changes
    const [btnValue, setBtnValue] = useState('login');
    const [btnActive, setBtnActive] = useState(false);
@@ -26,9 +29,9 @@ function Login(props) {
             <div
                className={loginStyles.closeModal}
                onClick={() => {
-                  props.handleModalsClose();
-                  props.loginFormRef.current.reset();
-                  props.reset();
+                  props.handleModalsClose()
+                  loginFormRef.current.reset()
+                  props.reset()
                }}
             >
                <i>
@@ -51,7 +54,7 @@ function Login(props) {
                </div>
 
                <form
-                  ref={props.loginFormRef}
+                  ref={loginFormRef}
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
@@ -116,8 +119,8 @@ function Login(props) {
                         {hidePassword ? (
                            <AiOutlineEye />
                         ) : (
-                           <AiOutlineEyeInvisible />
-                        )}
+                              <AiOutlineEyeInvisible />
+                           )}
                      </i>
                   </div>
                   <div
@@ -140,13 +143,13 @@ function Login(props) {
                         id={loginStyles.loginSubmit}
                         className={
                            props.loginEmailError ||
-                           props.loginPasswordError ||
-                           props.loginEmailError === null ||
-                           props.loginPasswordError === null
+                              props.loginPasswordError ||
+                              props.loginEmailError === null ||
+                              props.loginPasswordError === null
                               ? `${loginStyles.btn} ${loginStyles.inactive}`
                               : btnActive
-                              ? ` ${loginStyles.btn} ${loginStyles.btnActive}`
-                              : loginStyles.btn
+                                 ? ` ${loginStyles.btn} ${loginStyles.btnActive}`
+                                 : loginStyles.btn
                         }
                         disabled={
                            props.loginEmailError ||
@@ -182,10 +185,15 @@ function Login(props) {
                            <p
                               className={loginStyles.link}
                               href=""
-                              onClick={() => props.handleModalSignup()}
+                              onClick={() => {
+                                 props.handleModalSignup()
+                                 loginFormRef.current.reset()
+                                 props.reset()
+                              }
+                              }
                            >
                               Sign up
-                           </p>
+                        </p>
                         </div>
                      </div>
                   </div>
@@ -195,10 +203,10 @@ function Login(props) {
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
-               <img id={loginStyles.loginImg} src={loginImage} alt="login" />
+               <img id={loginStyles.loginImg} src={loginImage} alt="" />
             </div>
          </div>
-      </section>
+      </section >
    );
 }
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
 import loginImage from '../../../images/loginimage.svg';
@@ -7,10 +7,12 @@ import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
 
-function Login(props) {
-   // handles button changes
-   const [btnValue, setBtnValue] = useState('login');
-   const [btnActive, setBtnActive] = useState(false);
+function DoctorLogin(props) {
+    const docLoginFormRef = useRef();
+
+    // handles button changes
+    const [btnValue, setBtnValue] = useState('login');
+    const [btnActive, setBtnActive] = useState(false);
 
    /* Code below handles user inputs, checks and form submissions */
    const [hidePassword, setHidePassword] = useState(true);
@@ -23,18 +25,19 @@ function Login(props) {
             id={loginStyles.loginContainer}
             className={props.modalLoginDoctor ? loginStyles.active : ''}
          >
-            <div
-               className={loginStyles.closeModal}
-               onClick={() => {
-                  props.handleModalsClose();
-                  props.docLoginFormRef.current.reset();
-                  props.reset();
-               }}
-            >
-               <i>
-                  <IoCloseOutline />
-               </i>
-            </div>
+           
+                <div
+                    className={loginStyles.closeModal}
+                    onClick={() => {
+                        props.handleModalsClose()
+                        docLoginFormRef.current.reset()
+                        props.reset()
+                    }}
+                >
+                    <i>
+                        <IoCloseOutline />
+                    </i>
+                </div>
             <div className={loginStyles.loginBody}>
                <div
                   className={isError ? loginStyles.error : loginStyles.noerror}
@@ -51,7 +54,7 @@ function Login(props) {
                </div>
 
                <form
-                  ref={props.docLoginFormRef}
+                  ref={docLoginFormRef}
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
@@ -135,55 +138,59 @@ function Login(props) {
                   <div className={loginStyles.passwordReset}>
                      <p className={loginStyles.link}>Forgot password?</p>
                   </div>
-                  <div className={loginStyles.submit}>
-                     <button
-                        id={loginStyles.loginSubmit}
-                        className={
-                           props.doctorLoginEmailError ||
-                           props.doctorLoginPasswordError ||
-                           props.doctorLoginEmailError === null ||
-                           props.doctorLoginPasswordError === null
-                              ? `${loginStyles.btn} ${loginStyles.inactive}`
-                              : btnActive
-                              ? ` ${loginStyles.btn} ${loginStyles.btnActive}`
-                              : loginStyles.btn
-                        }
-                        disabled={
-                           props.doctorLoginEmailError ||
-                           props.doctorLoginPasswordError ||
-                           props.doctorLoginPasswordError ||
-                           props.doctorLoginEmailError === null ||
-                           props.doctorLoginPasswordError === null ||
-                           props.doctorLoginPasswordError === null
-                        }
-                        onClick={() => {
-                           setBtnValue('loging in');
-                           setBtnActive(true);
-                           props.submitUserCredentialsHandler();
-                        }}
-                     >
-                        {' '}
-                        <p>{btnValue}</p>
-                        <div
-                           className={
-                              btnActive
-                                 ? `${loginStyles.loader} ${loginStyles.btnActive}`
-                                 : loginStyles.loader
-                           }
-                        >
-                           <i>
-                              <BiLoaderAlt />
-                           </i>
-                        </div>
-                     </button>
-                     <div className={loginStyles.signupToggle}>
-                        <div>
-                           New Here ?{' '}
-                           <p
-                              className={loginStyles.link}
-                              onClick={() => props.handleModalSignupDoctor()}
-                           >
-                              Sign up
+                        <div className={loginStyles.submit}>
+                            <button
+                                id={loginStyles.loginSubmit}
+                                className={
+                                    props.doctorLoginEmailError ||
+                                        props.doctorLoginPasswordError ||
+                                        props.doctorLoginEmailError === null ||
+                                        props.doctorLoginPasswordError === null
+                                        ? `${loginStyles.btn} ${loginStyles.inactive}`
+                                        : btnActive
+                                            ? ` ${loginStyles.btn} ${loginStyles.btnActive}`
+                                            : loginStyles.btn
+                                }
+                                disabled={
+                                    props.doctorLoginEmailError ||
+                                    props.doctorLoginPasswordError ||
+                                    props.doctorLoginPasswordError ||
+                                    props.doctorLoginEmailError === null ||
+                                    props.doctorLoginPasswordError === null ||
+                                    props.doctorLoginPasswordError === null
+                                }
+                                onClick={() => {
+                                    setBtnValue('loging in');
+                                    setBtnActive(true);
+                                    props.submitUserCredentialsHandler();
+                                }}
+                            >
+                                {' '}
+                                <p>{btnValue}</p>
+                                <div
+                                    className={
+                                        btnActive
+                                            ? `${loginStyles.loader} ${loginStyles.btnActive}`
+                                            : loginStyles.loader
+                                    }
+                                >
+                                    <i>
+                                        <BiLoaderAlt />
+                                    </i>
+                                </div>
+                            </button>
+                            <div className={loginStyles.signupToggle}>
+                                <div>
+                                    New Here ?{' '}
+                                    <p
+                                        className={loginStyles.link}
+                                        onClick={() => {
+                                            props.handleModalSignupDoctor()
+                                            docLoginFormRef.current.reset()
+                                            props.reset()
+                                        }}
+                                    >
+                                        Sign up
                            </p>
                         </div>
                      </div>
@@ -205,4 +212,4 @@ function Login(props) {
    );
 }
 
-export default Login;
+export default DoctorLogin;
