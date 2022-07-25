@@ -182,36 +182,6 @@ function Registration(props) {
          setLoginPasswordError(false);
       }
    }
-   function handleloginEmailDoctor() {
-      let enteredloginName = doctorLoginEmail.current.value;
-
-      if (enteredloginName === '') {
-         setDoctorLoginEmailError(true);
-         setDoctorLoginEmailErrorMessage('Email required');
-      } else if (enteredloginName.match(emailPattern)) {
-         setDoctorLoginEmailError(false);
-      } else {
-         setDoctorLoginEmailError(true);
-         setDoctorLoginEmailErrorMessage('Email format not valid');
-      }
-   }
-
-   function handleLoginPasswordDoctor() {
-      let enteredloginPassword = doctorLoginPassword.current.value;
-
-      if (enteredloginPassword === '') {
-         setDoctorLoginPasswordErrorMessage('Password required');
-         setDoctorLoginPasswordError(true);
-      } else if (enteredloginPassword.length < 8) {
-         setDoctorLoginPasswordErrorMessage(
-            'Password must be at least 8 characters long'
-         );
-
-         setDoctorLoginPasswordError(true);
-      } else {
-         setDoctorLoginPasswordError(false);
-      }
-   }
 
    // Functions below check doctor credentials in login form input
    function handleDoctorLoginEmail() {
@@ -433,7 +403,7 @@ function Registration(props) {
    }
 
    // function handles submittion of user/doctor data to database
-   function submitUserCredentialsHandler() {
+   async function submitUserCredentialsHandler() {
       // User entered credentials
       let enteredloginEmail = loginEmail.current.value;
       let enteredloginPassword = loginPassword.current.value;
@@ -461,8 +431,13 @@ function Registration(props) {
             user_email: enteredloginEmail,
             user_password: enteredloginPassword,
          };
-         console.log(loginPatientData);
-         submitCredentials('patient/login', loginPatientData);
+
+         // makes api call with userdata
+         const feedback = await submitCredentials(
+            'patient/login',
+            loginPatientData
+         );
+         return await feedback; //return feedback for registeration flow
       } else if (props.modalSignup) {
          //checks if the patient signup form modal is opened
          // prepares credentials for submition
@@ -474,10 +449,12 @@ function Registration(props) {
             user_password: enteredSignUpPassword,
          };
 
-         console.log(signupPatientData);
-         console.log('start');
-         submitCredentials('patient/signup', signupPatientData);
-         console.log('end');
+         // makes api call with userdata
+         const feedback = await submitCredentials(
+            'patient/signup',
+            signupPatientData
+         );
+         return await feedback; //return feedback for registeration flow
       } else if (props.modalSignupDoctor) {
          //checks if the doctor signup form modal is opened
          // prepares credentials for submittion
@@ -489,10 +466,12 @@ function Registration(props) {
             user_password: enteredSignUpPasswordDoctor,
          };
 
-         console.log(signupDoctorData);
-         console.log('start');
-         submitCredentials('doctor/signup', signupDoctorData);
-         console.log('end');
+         // makes api call with userdata
+         const feedback = await submitCredentials(
+            'doctor/signup',
+            signupDoctorData
+         );
+         return await feedback; //return feedback for registeration flow
       } else if (props.modalLoginDoctor) {
          //checks if the doctor login form modal is opened
          // prepares credentials for submittion
@@ -501,42 +480,59 @@ function Registration(props) {
             user_password: enteredloginPasswordDoctor,
          };
 
-         console.log(loginDoctorData);
-         console.log('start');
-         submitCredentials('doctor/login', loginDoctorData);
-         console.log('end');
+         // makes api call with userdata
+         const feedback = await submitCredentials(
+            'doctor/login',
+            loginDoctorData
+         );
+         return await feedback; //return feedback for registeration flow
       }
    }
 
    // Function submits data to database via an api
    async function submitCredentials(path, data) {
       //Function takes path and data to make request
-      axios({
-         method: 'POST',
-         url: `http://127.0.0.1:5000/${path}`,
-         headers: {
-            'Access-Control-Allow-Origin': '*',
-         },
-         data: { data },
-      })
-         .then((response) => {
-            //Checks if response is ok
-            if (response.status === 200) {
-               //checks details of response
-               console.log('good', response.data);
-            }
-         })
-         //catches all errorr when response is not ok, 404 included
-         .catch((error) => {
-            if (error.response) {
-               console.log('data', error.response);
-            } else if (error.request) {
-               console.log('request', error.request);
-            } else {
-               console.log(error);
-               console.log('message', error.message);
-            }
+      try {
+         const response = await axios({
+            method: 'POST',
+            url: `http://127.0.0.1:5000/${path}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+            data: data,
          });
+         if (response.status === 200) {
+            //checks if connection and data was accepted
+            //checks details of response
+
+            if (response.data.status === true) {
+               //returns response
+               return [response.data.status, response.data.msg, 'Redirecting'];
+            } else {
+               //returns response
+               return [
+                  response.data.status,
+                  response.data.msg,
+                  'Create Account',
+               ];
+            }
+         } else {
+            //takes all statuses aside 200
+            return [false, 'Something went wrong. Try again', 'Create Account'];
+         }
+      } catch (error) {
+         // catches all errors
+         if (error.response) {
+            return [false, 'Something went wrong. Try again', 'Create Account'];
+         } else if (error.request) {
+            return [false, 'Something went wrong. Try again', 'Create Account'];
+         } else {
+            return [false, 'Something went wrong. Try again', 'Create Account'];
+         }
+      }
    }
 
    return (

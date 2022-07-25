@@ -17,10 +17,25 @@ function Signup(props) {
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    // Handles server error
-   const [isError, setIsError] = useState(true);
+   const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState(
       'Email already in use. Want to login?'
    );
+
+   // handles registeration flow based on feedback from database
+   async function submitCredentialsFeedback() {
+      const feedback = await props.submitUserCredentialsHandler();
+
+      if (feedback[0] === true) {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+      } else {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         setErrorMessage(feedback[1]);
+         setIsError(true);
+      }
+   }
    return (
       <div className={styles.signupBody}>
          <div
@@ -369,7 +384,7 @@ function Signup(props) {
                            onClick={() => {
                               setBtnValue('Creating Account');
                               setBtnActive(true);
-                              props.submitUserCredentialsHandler();
+                              submitCredentialsFeedback();
                            }}
                         >
                            <p>{btnValue}</p>

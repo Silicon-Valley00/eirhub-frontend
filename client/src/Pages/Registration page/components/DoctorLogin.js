@@ -6,17 +6,40 @@ import { IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setName } from '../../../Store/Actions.js';
 
 function Login(props) {
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
    // handles button changes
    const [btnValue, setBtnValue] = useState('login');
    const [btnActive, setBtnActive] = useState(false);
 
    /* Code below handles user inputs, checks and form submissions */
    const [hidePassword, setHidePassword] = useState(true);
-   const [isError, setIsError] = useState(true);
+   const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
+   // handles registeration flow based on feedback from database
+   async function submitCredentialsFeedback() {
+      const feedback = await props.submitUserCredentialsHandler();
+
+      if (feedback[0] === true) {
+         // checks if account is to be logged in
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         dispatch(setName(feedback[1].first_name));
+         navigate('/dashboard');
+      } else {
+         // when account fails to login
+         setBtnActive(feedback[0]);
+         setBtnValue('Login');
+         setErrorMessage(feedback[1]);
+         setIsError(true);
+      }
+   }
    return (
       <section id={loginStyles.loginSection}>
          <div
@@ -159,7 +182,7 @@ function Login(props) {
                         onClick={() => {
                            setBtnValue('loging in');
                            setBtnActive(true);
-                           props.submitUserCredentialsHandler();
+                           submitCredentialsFeedback();
                         }}
                      >
                         {' '}
