@@ -7,8 +7,14 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
 import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setName } from '../../../Store/Actions.js';
 
 function Signup(props) {
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
+
    const signUpFormRef = useRef();
 
    // handles button changes
@@ -31,6 +37,10 @@ function Signup(props) {
       if (feedback[0] === true) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
+         dispatch(setName(feedback[1].first_name));
+         setTimeout(() => {
+            navigate('/dashboard');
+         }, 1500);
       } else {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
@@ -116,6 +126,9 @@ function Signup(props) {
                                  ref={props.signupFirstname}
                                  onChange={() => {
                                     props.handleRegisterUser();
+                                    setIsError(false);
+
+                                    setIsError(false);
                                  }}
                                  disabled={btnActive}
                               />
@@ -188,6 +201,9 @@ function Signup(props) {
                               }}
                               onChange={() => {
                                  props.handleRegisterDate();
+                                 setIsError(false);
+
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -227,6 +243,7 @@ function Signup(props) {
                               ref={props.signupEmail}
                               onChange={() => {
                                  props.handleRegisterEmail();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -266,6 +283,7 @@ function Signup(props) {
                               ref={props.signupPassword}
                               onChange={() => {
                                  props.handleRegisterPassword();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -319,6 +337,7 @@ function Signup(props) {
                               ref={props.signupPasswordconfirm}
                               onChange={() => {
                                  props.handleRegisterPasswordConfirm();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -408,8 +427,9 @@ function Signup(props) {
                         <p
                            id={styles.signupFormMessageP}
                            onClick={() => {
-                              signUpFormRef.current.reset();
                               props.handleModalLogin();
+
+                              signUpFormRef.current.reset();
                               props.reset();
                            }}
                         >

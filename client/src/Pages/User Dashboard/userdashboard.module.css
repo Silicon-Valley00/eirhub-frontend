@@ -70,6 +70,7 @@
    font-size: 1.2rem;
    color: var(--deepcol);
    font-weight: 700;
+   text-transform: capitalize;
 }
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .userbody {
@@ -96,9 +97,8 @@
       grid-template-columns: 7rem auto 12rem;
    }
    .info {
-
-   font-size: 1rem;
-}
+      font-size: 1rem;
+   }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {

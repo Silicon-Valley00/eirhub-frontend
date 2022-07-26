@@ -236,3 +236,61 @@
       font-size: 0.7rem;
    }
 }
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .calendarHeader {
+      font-size: 0.9rem;
+      padding: 0.1rem;
+   }
+   .calendar {
+      padding: 0.1rem;
+   }
+   .calendarDays div {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.empty {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.today {
+      border: 1px solid var(--deepcol);
+   }
+   .monthPicker {
+      height: 1.3rem;
+      padding: 0 0.5rem;
+   }
+   .calendarWeekDay {
+      font-size: 0.7rem;
+   }
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   .calendarHeader {
+      font-size: 0.9rem;
+      padding: 0.1rem;
+   }
+   .calendar {
+      padding: 0.1rem;
+   }
+   .calendarDays div {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.empty {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.today {
+      border: 1px solid var(--deepcol);
+   }
+   .monthPicker {
+      height: 1.3rem;
+      padding: 0 0.5rem;
+   }
+   .calendarWeekDay {
+      font-size: 0.7rem;
+   }
+}

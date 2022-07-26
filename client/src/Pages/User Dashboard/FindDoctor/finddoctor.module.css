@@ -115,13 +115,38 @@
    color: var(--tablehead);
    padding: 0 0.5rem;
    border-radius: 0.2rem;
+
+   -webkit-appearance: none;
+   -moz-appearanace: none;
+   -ms-appearance: none;
+   appearance: none;
+   outline: none;
+   box-shadow: none;
+   border: 0 !important;
+   background-image: none;
+   flex: 1;
+   cursor: pointer;
 }
-.selectOne select::part(button) {
-   padding: 0 1rem;
+.selectOne {
+   position: relative;
+   display: flex;
+   float: right;
+   line-height: 1;
+   overflow: hidden;
+   text-decoration: none;
 }
-.selectOne select::part(listbox) {
-   border: none;
+.selectOne::after {
+   content: '\25BC';
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 0.5rem 0.5rem;
+   color: var(--tablehead);
+   cursor: pointer;
+   pointer-events: none;
+   transition: 0.25s all ease;
 }
+
 .selectTwo {
    width: 40%;
    height: 100%;
@@ -132,12 +157,39 @@
    color: var(--tablehead);
    padding: 0 0.5rem;
    border-radius: 0.2rem;
+
+   -webkit-appearance: none;
+   -moz-appearanace: none;
+   -ms-appearance: none;
+   appearance: none;
+   outline: none;
+   box-shadow: none;
+   border: 0 !important;
+   background-image: none;
+   flex: 1;
+   cursor: pointer;
 }
-.selectTwo select::part(button) {
-   padding: 0 1rem;
+select::-ms-expand {
+   display: none;
 }
-.selectTwo select::part(listbox) {
-   border: none;
+.selectTwo {
+   position: relative;
+   display: flex;
+   float: right;
+   line-height: 1;
+   overflow: hidden;
+   text-decoration: none;
+}
+.selectTwo::after {
+   content: '\25BC';
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 0.5rem 0.5rem;
+   color: var(--tablehead);
+   cursor: pointer;
+   pointer-events: none;
+   transition: 0.25s all ease;
 }
 .doctorsBox {
    margin-top: 2.5rem;

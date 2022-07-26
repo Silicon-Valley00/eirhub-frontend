@@ -31,7 +31,9 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(setName(feedback[1].first_name));
-         navigate('/dashboard');
+         setTimeout(() => {
+            navigate('/dashboard');
+         }, 1500);
       } else {
          // when account fails to login
          setBtnActive(feedback[0]);
@@ -100,6 +102,7 @@ function DoctorLogin(props) {
                         ref={props.doctorLoginEmail}
                         onChange={() => {
                            props.handleDoctorLoginEmail();
+                           setIsError(false);
                         }}
                      />
                   </div>
@@ -133,6 +136,7 @@ function DoctorLogin(props) {
                         ref={props.doctorLoginPassword}
                         onChange={() => {
                            props.handleDoctorLoginPassword();
+                           setIsError(false);
                         }}
                      />
                      <i onClick={() => setHidePassword(!hidePassword)}>

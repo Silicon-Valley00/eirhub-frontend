@@ -19,7 +19,7 @@ class Patient(Base):
     idGuardian = Column(Integer,ForeignKey(GuardianPerson.idGuardian))
     idDoctor = Column(Integer,ForeignKey(Doctor.idDoctor))
     first_name = Column("first_name",String(60))
-    middle_name = Column("middle_name",String(60))
+    middle_name = Column("middle_name",String(60),nullable = True)
     last_name = Column("last_name",String(60))
     person_image = Column("person_image",String(2083))
     user_email = Column("user_email",String(50),unique = True)

@@ -30,8 +30,9 @@ function Login(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(setName(feedback[1].first_name));
-         console.log(feedback[1].first_name);
-         navigate('/dashboard');
+         setTimeout(() => {
+            navigate('/dashboard');
+         }, 1500);
       } else {
          setBtnActive(feedback[0]);
          setBtnValue('Login');
@@ -99,6 +100,7 @@ function Login(props) {
                         ref={props.loginEmail}
                         onChange={() => {
                            props.handleLoginEmail();
+                           setIsError(false);
                         }}
                      />
                   </div>
@@ -132,6 +134,7 @@ function Login(props) {
                         ref={props.loginPassword}
                         onChange={() => {
                            props.handleLoginPassword();
+                           setIsError(false);
                         }}
                      />
                      <i onClick={() => setHidePassword(!hidePassword)}>

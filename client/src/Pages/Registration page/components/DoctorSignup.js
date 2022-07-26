@@ -8,8 +8,13 @@ import { IoIosMail } from 'react-icons/io';
 import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
 import hospital from '../../../assets/hospital.svg';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setName } from '../../../Store/Actions.js';
 
 function DoctorSignup(props) {
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
    const docSignUpFormRef = useRef();
 
    // handles button changes
@@ -24,6 +29,25 @@ function DoctorSignup(props) {
    const [errorMessage, setErrorMessage] = useState(
       'Email already in use. Want to login?'
    );
+
+   // handles registeration flow based on feedback from database
+   async function submitCredentialsFeedback() {
+      const feedback = await props.submitUserCredentialsHandler();
+
+      if (feedback[0] === true) {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         dispatch(setName(feedback[1].first_name));
+         setTimeout(() => {
+            navigate('/dashboard');
+         }, 1500);
+      } else {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         setErrorMessage(feedback[1]);
+         setIsError(true);
+      }
+   }
    return (
       <div className={styles.signupBody}>
          <div
@@ -53,7 +77,7 @@ function DoctorSignup(props) {
                      <p> the faces of patients</p>
                   </div>
                   <div className={styles.leftRegionImage}>
-                     <img src={signUp} alt="Sign-up image" />
+                     <img src={signUp} alt="Sign-up" />
                   </div>
                </div>
                <div className={styles.rightRegion}>
@@ -75,7 +99,7 @@ function DoctorSignup(props) {
                   <form ref={docSignUpFormRef} className={styles.signupForm}>
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>
-                           <label htmlFor="firstname"> Firstname</label>
+                           <h3> Firstname</h3>
                            <div
                               className={
                                  props.registerDoctorNameError
@@ -94,13 +118,14 @@ function DoctorSignup(props) {
                                  ref={props.doctorSignupFirstname}
                                  onChange={() => {
                                     props.handleRegisterDoctor();
+                                    setIsError(false);
                                  }}
                                  disabled={btnActive}
                               />
                            </div>
                         </div>
                         <div className={styles.signupFormBoxName}>
-                           <label htmlFor="lastname"> Lastname</label>
+                           <h3> Lastname</h3>
                            <div
                               className={
                                  props.registerDoctorNameError
@@ -119,6 +144,7 @@ function DoctorSignup(props) {
                                  ref={props.doctorSignupLastname}
                                  onChange={() => {
                                     props.handleRegisterDoctor();
+                                    setIsError(false);
                                  }}
                                  disabled={btnActive}
                               />
@@ -139,7 +165,7 @@ function DoctorSignup(props) {
                      </div>
 
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="email"> Email</label>
+                        <h3> Email</h3>
                         <div
                            className={
                               props.registerDoctorEmailError
@@ -158,6 +184,7 @@ function DoctorSignup(props) {
                               ref={props.doctorSignupEmail}
                               onChange={() => {
                                  props.handleRegisterDoctorEmail();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -176,10 +203,7 @@ function DoctorSignup(props) {
                         <p>{props.registerDoctorEmailErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="signupHospitalCode">
-                           {' '}
-                           Hospital code
-                        </label>
+                        <h3> Hospital code</h3>
                         <div
                            className={
                               props.registerHospitalCodeError
@@ -204,6 +228,7 @@ function DoctorSignup(props) {
                               // }}
                               onChange={() => {
                                  props.handleRegisterHospitalCode();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -222,7 +247,7 @@ function DoctorSignup(props) {
                         <p>{props.registerHospitalCodeErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="passwordone"> Password</label>
+                        <h3> Password</h3>
                         <div
                            className={
                               props.registerDoctorPasswordOneError
@@ -241,6 +266,7 @@ function DoctorSignup(props) {
                               ref={props.doctorSignupPassword}
                               onChange={() => {
                                  props.handleRegisterDoctorPassword();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -271,9 +297,7 @@ function DoctorSignup(props) {
                      </div>
 
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="passwordconfirm">
-                           Confirm Password
-                        </label>
+                        <h3>Confirm Password</h3>
                         <div
                            className={
                               props.registerDoctorPasswordTwoError
@@ -292,6 +316,7 @@ function DoctorSignup(props) {
                               ref={props.doctorSignupPasswordconfirm}
                               onChange={() => {
                                  props.handleRegisterDoctorPasswordConfirm();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -359,7 +384,7 @@ function DoctorSignup(props) {
                            onClick={() => {
                               setBtnValue('Creating Account');
                               setBtnActive(true);
-                              props.submitUserCredentialsHandler();
+                              submitCredentialsFeedback();
                            }}
                         >
                            <p>{btnValue}</p>

@@ -218,8 +218,8 @@ function Registration(props) {
          setRegisterNameErrorMessage('Full name required');
          setRegisterNameError(true);
       } else if (
-         enteredSignUpFirstname.match(pattern) !== 1 &&
-         enteredSignUpLastname.match(pattern) !== 1
+         enteredSignUpFirstname.match(pattern) &&
+         enteredSignUpLastname.match(pattern)
       ) {
          setRegisterNameError(false);
       } else {
@@ -439,6 +439,7 @@ function Registration(props) {
          const signupPatientData = {
             first_name: enteredSignUpFirstname,
             last_name: enteredSignUpLastname,
+            middle_name: ' ',
             date_of_birth: enteredSignUpDate,
             user_email: enteredSignUpEmail,
             user_password: enteredSignUpPassword,
@@ -456,6 +457,7 @@ function Registration(props) {
          const signupDoctorData = {
             first_name: enteredSignUpFirstnameDoctor,
             last_name: enteredSignUpLastnameDoctor,
+            middle_name: ' ',
             hospital_code: enteredSignupHospitalCode,
             user_email: enteredSignUpEmailDoctor,
             user_password: enteredSignUpPasswordDoctor,

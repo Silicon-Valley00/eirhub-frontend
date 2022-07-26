@@ -3,6 +3,9 @@ import { applyMiddleware } from 'redux';
 import Reducers from './Reducers';
 import thunkMiddleware from 'redux-thunk';
 
-const store = configureStore({ reducer: Reducers });
+const store = configureStore(
+   { reducer: Reducers },
+   applyMiddleware(thunkMiddleware)
+);
 
 export default store;

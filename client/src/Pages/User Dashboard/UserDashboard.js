@@ -37,7 +37,7 @@ function UserDashboard(props) {
                   </div>
                   <div className={styles.info}>
                      {/* <p>
-                        Hey, <b>Amanda</b>
+                        Hey, <b>amanda</b>
                      </p> */}
                      <p>
                         Hey, <b>{user}</b>
