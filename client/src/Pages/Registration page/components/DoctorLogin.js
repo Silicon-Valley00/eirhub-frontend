@@ -53,6 +53,7 @@ function DoctorLogin(props) {
                   props.handleModalsClose();
                   docLoginFormRef.current.reset();
                   props.reset();
+                  setIsError(false)
                }}
             >
                <i>
@@ -209,6 +210,7 @@ function DoctorLogin(props) {
                                  props.handleModalSignupDoctor()
                                  docLoginFormRef.current.reset();
                                  props.reset();
+                                 setIsError(false)
                               }}
                            >
                               Sign up

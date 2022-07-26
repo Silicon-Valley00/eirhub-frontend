@@ -53,6 +53,7 @@ function Login(props) {
                   props.handleModalsClose();
                   loginFormRef.current.reset();
                   props.reset();
+                  setIsError(false)
                }}
             >
                <i>
@@ -209,6 +210,7 @@ function Login(props) {
                                  props.handleModalSignup()
                                  loginFormRef.current.reset()
                                  props.reset()
+                                 setIsError(false)
                               }}
                            >
                               Sign up

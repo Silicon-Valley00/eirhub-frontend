@@ -50,6 +50,7 @@ function Signup(props) {
                   props.handleModalsClose();
                   signUpFormRef.current.reset();
                   props.reset();
+                  setIsError(false)
                }}
             >
                <i>
@@ -411,6 +412,7 @@ function Signup(props) {
                               signUpFormRef.current.reset();
                               props.handleModalLogin();
                               props.reset();
+                              setIsError(false)
                            }}
                         >
                            Login

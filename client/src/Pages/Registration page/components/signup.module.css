@@ -124,7 +124,7 @@
 }
 .error {
    height: 2rem;
-   background: rgb(253, 252, 252);
+   /* background: rgb(253, 252, 252); */
    /* border: 1.5px solid red; */
    color: red;
    display: flex;
@@ -344,7 +344,7 @@
    height: 100%;
    border: none;
    outline: none;
-   border-radius: 5rem;
+   border-radius: 8px;
    cursor: pointer;
    background-color: #05a6c2;
    color: #fff;
@@ -410,7 +410,7 @@
    height: 100%;
    border: none;
    outline: none;
-   border-radius: 40px;
+   border-radius: 8px;
 
    color: #fff;
    text-transform: uppercase;
