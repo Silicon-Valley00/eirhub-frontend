@@ -49,19 +49,20 @@ function Navigation(props) {
                            <h3>Dasboard</h3>
                         </li>
                      </Link>
-
-                     <li
-                        className={
-                           props.page === 'profile' ? styles.active : ''
-                        }
-                     >
-                        <span className={styles.icons}>
-                           <i>
-                              <FaUser />
-                           </i>
-                        </span>
-                        <h3>Profile</h3>
-                     </li>
+                     <Link to={'/profile'}>
+                        <li
+                           className={
+                              props.page === 'profile' ? styles.active : ''
+                           }
+                        >
+                           <span className={styles.icons}>
+                              <i>
+                                 <FaUser />
+                              </i>
+                           </span>
+                           <h3>Profile</h3>
+                        </li>
+                     </Link>
                      <Link to={'/records'}>
                         <li
                            className={

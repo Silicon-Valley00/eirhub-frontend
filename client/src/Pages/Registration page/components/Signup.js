@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../images/Patientsignup.svg';
 import { FaRegUser, FaTimes } from 'react-icons/fa';
@@ -7,8 +7,16 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
 import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setName } from '../../../Store/Actions.js';
 
 function Signup(props) {
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
+
+   const signUpFormRef = useRef();
+
    // handles button changes
    const [btnValue, setBtnValue] = useState('Create Account');
    const [btnActive, setBtnActive] = useState(false);
@@ -17,10 +25,29 @@ function Signup(props) {
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    // Handles server error
-   const [isError, setIsError] = useState(true);
+   const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState(
       'Email already in use. Want to login?'
    );
+
+   // handles registeration flow based on feedback from database
+   async function submitCredentialsFeedback() {
+      const feedback = await props.submitUserCredentialsHandler();
+
+      if (feedback[0] === true) {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         dispatch(setName(feedback[1].first_name));
+         setTimeout(() => {
+            navigate('/dashboard');
+         }, 1500);
+      } else {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         setErrorMessage(feedback[1]);
+         setIsError(true);
+      }
+   }
    return (
       <div className={styles.signupBody}>
          <div
@@ -31,8 +58,9 @@ function Signup(props) {
                className={styles.closeModal}
                onClick={() => {
                   props.handleModalsClose();
-                  props.signUpFormRef.current.reset();
+                  signUpFormRef.current.reset();
                   props.reset();
+                  setIsError(false)
                }}
             >
                <i>
@@ -69,7 +97,13 @@ function Signup(props) {
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
                   </div>
-                  <form ref={props.signUpFormRef} className={styles.signupForm}>
+                  <form
+                     ref={signUpFormRef}
+                     className={styles.signupForm}
+                     onSubmit={(e) => {
+                        e.preventDefault();
+                     }}
+                  >
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>
                            {/* <label htmlFor="firstname"> Firstname</label> */}
@@ -93,6 +127,9 @@ function Signup(props) {
                                  ref={props.signupFirstname}
                                  onChange={() => {
                                     props.handleRegisterUser();
+                                    setIsError(false);
+
+                                    setIsError(false);
                                  }}
                                  disabled={btnActive}
                               />
@@ -165,6 +202,9 @@ function Signup(props) {
                               }}
                               onChange={() => {
                                  props.handleRegisterDate();
+                                 setIsError(false);
+
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -204,6 +244,7 @@ function Signup(props) {
                               ref={props.signupEmail}
                               onChange={() => {
                                  props.handleRegisterEmail();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -243,6 +284,7 @@ function Signup(props) {
                               ref={props.signupPassword}
                               onChange={() => {
                                  props.handleRegisterPassword();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -296,6 +338,7 @@ function Signup(props) {
                               ref={props.signupPasswordconfirm}
                               onChange={() => {
                                  props.handleRegisterPasswordConfirm();
+                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -363,7 +406,7 @@ function Signup(props) {
                            onClick={() => {
                               setBtnValue('Creating Account');
                               setBtnActive(true);
-                              props.submitUserCredentialsHandler();
+                              submitCredentialsFeedback();
                            }}
                         >
                            <p>{btnValue}</p>
@@ -384,7 +427,13 @@ function Signup(props) {
                         <p>Already have an account?</p>
                         <p
                            id={styles.signupFormMessageP}
-                           onClick={() => props.handleModalLogin()}
+                           onClick={() => {
+                              props.handleModalLogin();
+
+                              signUpFormRef.current.reset();
+                              props.reset();
+                              setIsError(false)
+                           }}
                         >
                            Login
                         </p>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
 import loginImage from '../../../images/loginimage.svg';
@@ -6,17 +6,43 @@ import { IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setName } from '../../../Store/Actions.js';
 
-function Login(props) {
+function DoctorLogin(props) {
+   const docLoginFormRef = useRef()
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
    // handles button changes
    const [btnValue, setBtnValue] = useState('login');
    const [btnActive, setBtnActive] = useState(false);
 
    /* Code below handles user inputs, checks and form submissions */
    const [hidePassword, setHidePassword] = useState(true);
-   const [isError, setIsError] = useState(true);
+   const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
+   // handles registeration flow based on feedback from database
+   async function submitCredentialsFeedback() {
+      const feedback = await props.submitUserCredentialsHandler();
+
+      if (feedback[0] === true) {
+         // checks if account is to be logged in
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         dispatch(setName(feedback[1].first_name));
+         setTimeout(() => {
+            navigate('/dashboard');
+         }, 1500);
+      } else {
+         // when account fails to login
+         setBtnActive(feedback[0]);
+         setBtnValue('Login');
+         setErrorMessage(feedback[1]);
+         setIsError(true);
+      }
+   }
    return (
       <section id={loginStyles.loginSection}>
          <div
@@ -27,8 +53,9 @@ function Login(props) {
                className={loginStyles.closeModal}
                onClick={() => {
                   props.handleModalsClose();
-                  props.docLoginFormRef.current.reset();
+                  docLoginFormRef.current.reset();
                   props.reset();
+                  setIsError(false)
                }}
             >
                <i>
@@ -51,7 +78,7 @@ function Login(props) {
                </div>
 
                <form
-                  ref={props.docLoginFormRef}
+                  ref={docLoginFormRef}
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
@@ -77,6 +104,7 @@ function Login(props) {
                         ref={props.doctorLoginEmail}
                         onChange={() => {
                            props.handleDoctorLoginEmail();
+                           setIsError(false);
                         }}
                      />
                   </div>
@@ -110,6 +138,7 @@ function Login(props) {
                         ref={props.doctorLoginPassword}
                         onChange={() => {
                            props.handleDoctorLoginPassword();
+                           setIsError(false);
                         }}
                      />
                      <i onClick={() => setHidePassword(!hidePassword)}>
@@ -159,7 +188,7 @@ function Login(props) {
                         onClick={() => {
                            setBtnValue('loging in');
                            setBtnActive(true);
-                           props.submitUserCredentialsHandler();
+                           submitCredentialsFeedback();
                         }}
                      >
                         {' '}
@@ -181,7 +210,12 @@ function Login(props) {
                            New Here ?{' '}
                            <p
                               className={loginStyles.link}
-                              onClick={() => props.handleModalSignupDoctor()}
+                              onClick={() => {
+                                 props.handleModalSignupDoctor()
+                                 docLoginFormRef.current.reset();
+                                 props.reset();
+                                 setIsError(false)
+                              }}
                            >
                               Sign up
                            </p>
@@ -194,15 +228,11 @@ function Login(props) {
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
-               <img
-                  id={loginStyles.loginImg}
-                  src={loginImage}
-                  alt="login-image"
-               />
+               <img id={loginStyles.loginImg} src={loginImage} alt="login" />
             </div>
          </div>
       </section>
    );
 }
 
-export default Login;
+export default DoctorLogin;

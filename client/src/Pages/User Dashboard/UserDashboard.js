@@ -3,8 +3,11 @@ import styles from './userdashboard.module.css';
 import { MdMenu } from 'react-icons/md';
 import avatarThree from '../../assets/Rectangle.png';
 import Navigation from './components/Navigation';
+import { useSelector } from 'react-redux';
 
 function UserDashboard(props) {
+   const user = useSelector((state) => state.name);
+
    // handles menu open and close for smaller devices
    const [openMenu, setOpenMenu] = useState(false);
 
@@ -33,8 +36,11 @@ function UserDashboard(props) {
                      <img src={avatarThree} alt="avatar" />
                   </div>
                   <div className={styles.info}>
+                     {/* <p>
+                        Hey, <b>amanda</b>
+                     </p> */}
                      <p>
-                        Hey, <b>Amanda</b>
+                        Hey, <b>{user}</b>
                      </p>
                   </div>
                </div>

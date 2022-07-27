@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
 import loginImage from '../../../images/loginimage.svg';
@@ -6,17 +6,42 @@ import { IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setName } from '../../../Store/Actions.js';
 
 function Login(props) {
+   const loginFormRef = useRef();
+
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
    // handles button changes
    const [btnValue, setBtnValue] = useState('login');
    const [btnActive, setBtnActive] = useState(false);
 
    /* Code below handles user inputs, checks and form submissions */
    const [hidePassword, setHidePassword] = useState(true);
-   const [isError, setIsError] = useState(true);
+   const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
+   // handles registeration flow based on feedback from database
+   async function submitCredentialsFeedback() {
+      const feedback = await props.submitUserCredentialsHandler();
+
+      if (feedback[0] === true) {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         dispatch(setName(feedback[1].first_name));
+         setTimeout(() => {
+            navigate('/dashboard');
+         }, 1500);
+      } else {
+         setBtnActive(feedback[0]);
+         setBtnValue('Login');
+         setErrorMessage(feedback[1]);
+         setIsError(true);
+      }
+   }
    return (
       <section id={loginStyles.loginSection}>
          <div
@@ -27,8 +52,9 @@ function Login(props) {
                className={loginStyles.closeModal}
                onClick={() => {
                   props.handleModalsClose();
-                  props.loginFormRef.current.reset();
+                  loginFormRef.current.reset();
                   props.reset();
+                  setIsError(false);
                }}
             >
                <i>
@@ -51,7 +77,7 @@ function Login(props) {
                </div>
 
                <form
-                  ref={props.loginFormRef}
+                  ref={loginFormRef}
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
@@ -77,6 +103,7 @@ function Login(props) {
                         ref={props.loginEmail}
                         onChange={() => {
                            props.handleLoginEmail();
+                           setIsError(false);
                         }}
                      />
                   </div>
@@ -110,6 +137,7 @@ function Login(props) {
                         ref={props.loginPassword}
                         onChange={() => {
                            props.handleLoginPassword();
+                           setIsError(false);
                         }}
                      />
                      <i onClick={() => setHidePassword(!hidePassword)}>
@@ -159,10 +187,9 @@ function Login(props) {
                         onClick={() => {
                            setBtnValue('loging in');
                            setBtnActive(true);
-                           props.submitUserCredentialsHandler();
+                           submitCredentialsFeedback();
                         }}
                      >
-                        {' '}
                         <p>{btnValue}</p>
                         <div
                            className={
@@ -182,7 +209,12 @@ function Login(props) {
                            <p
                               className={loginStyles.link}
                               href=""
-                              onClick={() => props.handleModalSignup()}
+                              onClick={() => {
+                                 props.handleModalSignup();
+                                 loginFormRef.current.reset();
+                                 props.reset();
+                                 setIsError(false);
+                              }}
                            >
                               Sign up
                            </p>
@@ -190,7 +222,6 @@ function Login(props) {
                      </div>
                   </div>
                </form>
-               <div></div>
             </div>
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>

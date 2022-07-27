@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@400;600&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@400;600&display=swap');
 
 :root {
    --radius: 25px;
@@ -22,7 +22,7 @@ body {
    box-sizing: border-box;
 }
 
-form {
+.loginForm {
    color: var(--dark-blue);
 }
 
@@ -103,7 +103,7 @@ i.closeIcon {
 }
 
 .loginForm {
-   margin: 10px auto;
+   margin: 3rem auto;
    width: 100%;
    height: 70%;
 }
@@ -170,8 +170,8 @@ p.link {
    color: white;
    font-weight: 500;
    height: var(--height);
-   width: 50%;
-   border-radius: 4rem;
+   width: 145px;
+   border-radius: var(--field-radius);
    text-transform: uppercase;
    text-align: center;
    box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
@@ -187,7 +187,7 @@ p.link {
 .loader {
    width: 25%;
    height: 100%;
-   border-radius: 4rem;
+   border-radius: 0.5rem;
    position: absolute;
    top: 0;
    right: -5%;
@@ -239,10 +239,10 @@ p.link {
 .inactive {
    cursor: not-allowed;
    background-color: #a5cfd6;
-   width: 60%;
+   width: 145px;
    border: none;
    outline: none;
-   border-radius: 4rem;
+   border-radius: var(--field-radius);
    color: #fff;
    text-transform: uppercase;
    font-weight: 500;
@@ -264,20 +264,6 @@ p.link {
 }
 
 /* Error */
-
-.inputError {
-   /* display: flex;
-   justify-content: space-around;
-   align-items: center; */
-   /* height: 20px; */
-   /* width: 20px; */
-   border: 1px solid red;
-   /* font-size: 1rem; */
-}
-.inputError > i {
-   margin-top: 5px;
-   /* font-size: 1rem; */
-}
 .error {
    /* max-height: max-content; */
    height: 2rem;
@@ -293,9 +279,9 @@ p.link {
 
 .error p {
    color: red;
-   font-weight: 600;
+   font-weight: 300;
    width: 93%;
-   font-size: 0.9em;
+   font-size: 0.7rem;
    float: left;
    display: flex;
    justify-content: center;
@@ -306,7 +292,7 @@ p.link {
    width: 10%;
    height: 100%;
    /* float: right; */
-   font-size: 24px;
+   font-size: 1rem;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -323,6 +309,20 @@ p.link {
    display: none;
 }
 
+.inputError {
+   /* display: flex;
+   justify-content: space-around;
+   align-items: center; */
+   /* height: 20px; */
+   /* width: 20px; */
+   border: 1px solid red;
+   /* font-size: 1rem; */
+}
+.inputError > i {
+   margin-top: 5px;
+   /* font-size: 1rem; */
+}
+
 .errorMessageBox {
    font-size: 12px;
    padding-top: 0;
@@ -331,7 +331,7 @@ p.link {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 0.8em;
+   font-size: 0.6em;
    color: red;
 }
 
@@ -370,7 +370,7 @@ p.link {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   font-size: 0.8em;
+   font-size: 0.6em;
    color: red;
 }
 

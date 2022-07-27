@@ -14,7 +14,7 @@ def createDoctor():
         if (content_type == 'application/json'):
             req = request.json
             hospital_code = req["hospital_code"]
-            license_number = req["license_number"]
+            # license_number = req["license_number"]
             user_email = req["user_email"]
             try: 
                 doctorExists = session.query(Doctor).filter(Doctor.user_email == user_email).first()
