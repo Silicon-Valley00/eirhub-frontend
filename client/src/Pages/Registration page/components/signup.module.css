@@ -129,13 +129,14 @@
    color: red;
    display: flex;
    justify-content: space-between;
+   align-items: center;
    border-radius: 5px;
    padding: 0 0.5rem;
 }
 
 .error p {
    color: red;
-   font-weight: 600;
+   font-weight: 300;
    width: 93%;
    font-size: 0.7rem;
    float: left;
@@ -152,7 +153,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   padding-bottom: 0.9rem;
+   /* padding-bottom: 0.9rem; */
    cursor: pointer;
 }
 .noerror {
@@ -343,7 +344,7 @@
    height: 100%;
    border: none;
    outline: none;
-   border-radius: 5rem;
+   border-radius: 8px;
    cursor: pointer;
    background-color: #05a6c2;
    color: #fff;
@@ -409,7 +410,7 @@
    height: 100%;
    border: none;
    outline: none;
-   border-radius: 40px;
+   border-radius: 8px;
 
    color: #fff;
    text-transform: uppercase;

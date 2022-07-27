@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
 import loginImage from '../../../images/loginimage.svg';
@@ -11,6 +11,8 @@ import { useDispatch } from 'react-redux';
 import { setName } from '../../../Store/Actions.js';
 
 function Login(props) {
+   const loginFormRef = useRef();
+
    const navigate = useNavigate();
    const dispatch = useDispatch();
    // handles button changes
@@ -50,8 +52,9 @@ function Login(props) {
                className={loginStyles.closeModal}
                onClick={() => {
                   props.handleModalsClose();
-                  props.loginFormRef.current.reset();
+                  loginFormRef.current.reset();
                   props.reset();
+                  setIsError(false);
                }}
             >
                <i>
@@ -74,7 +77,7 @@ function Login(props) {
                </div>
 
                <form
-                  ref={props.loginFormRef}
+                  ref={loginFormRef}
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
@@ -206,7 +209,12 @@ function Login(props) {
                            <p
                               className={loginStyles.link}
                               href=""
-                              onClick={() => props.handleModalSignup()}
+                              onClick={() => {
+                                 props.handleModalSignup();
+                                 loginFormRef.current.reset();
+                                 props.reset();
+                                 setIsError(false);
+                              }}
                            >
                               Sign up
                            </p>
@@ -214,7 +222,6 @@ function Login(props) {
                      </div>
                   </div>
                </form>
-               <div></div>
             </div>
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>

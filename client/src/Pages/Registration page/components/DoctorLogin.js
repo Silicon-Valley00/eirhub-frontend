@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { setName } from '../../../Store/Actions.js';
 
 function DoctorLogin(props) {
+   const docLoginFormRef = useRef()
    const navigate = useNavigate();
    const dispatch = useDispatch();
    // handles button changes
@@ -52,8 +53,9 @@ function DoctorLogin(props) {
                className={loginStyles.closeModal}
                onClick={() => {
                   props.handleModalsClose();
-                  props.docLoginFormRef.current.reset();
+                  docLoginFormRef.current.reset();
                   props.reset();
+                  setIsError(false)
                }}
             >
                <i>
@@ -76,7 +78,7 @@ function DoctorLogin(props) {
                </div>
 
                <form
-                  ref={props.docLoginFormRef}
+                  ref={docLoginFormRef}
                   onSubmit={(e) => {
                      e.preventDefault();
                   }}
@@ -208,7 +210,12 @@ function DoctorLogin(props) {
                            New Here ?{' '}
                            <p
                               className={loginStyles.link}
-                              onClick={() => props.handleModalSignupDoctor()}
+                              onClick={() => {
+                                 props.handleModalSignupDoctor()
+                                 docLoginFormRef.current.reset();
+                                 props.reset();
+                                 setIsError(false)
+                              }}
                            >
                               Sign up
                            </p>
