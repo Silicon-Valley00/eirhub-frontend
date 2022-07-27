@@ -20,7 +20,7 @@ Main aim:
 
 The bridge to better health care
 
-Others:
+Other reasons:
 
 Major:
 - Helps people at isolated ends to get in touch with their doctors or other doctors easily and faster.
