@@ -187,7 +187,7 @@ p.link {
 .loader {
    width: 25%;
    height: 100%;
-   border-radius: 4rem;
+   border-radius: 0.5rem;
    position: absolute;
    top: 0;
    right: -5%;

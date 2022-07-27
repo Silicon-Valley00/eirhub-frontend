@@ -443,6 +443,15 @@ function Registration(props) {
             date_of_birth: enteredSignUpDate,
             user_email: enteredSignUpEmail,
             user_password: enteredSignUpPassword,
+
+            person_image: '',
+            house_address: '',
+            phone_number: '',
+            id_number: '',
+            nationality: '',
+            gender: '',
+            doctor_id: '',
+            guardian_id: '',
          };
 
          // makes api call with userdata

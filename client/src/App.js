@@ -31,13 +31,13 @@ function App() {
             element={<Navigate replace to={'/landing-page'} />}
          />
 
+         <Route path="*" exact element={<PageNotFound />} />
+
          <Route path="/landing-page" exact element={<LandingPage />} />
 
          <Route path="/our-services" exact element={<ServicesPage />} />
 
          <Route path="/how-it-works" exact element={<HowItWorks />} />
-
-         <Route path="*" exact element={<PageNotFound />} />
 
          <Route path="/FAQ" exact element={<FAQ />} />
 

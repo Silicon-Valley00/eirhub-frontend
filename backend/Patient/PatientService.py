@@ -86,24 +86,21 @@ def createPatient():
             middle_name = req["middle_name"]
             last_name = req["last_name"]
             user_email = req["user_email"]
-            # person_image = req["person_image"]
+            person_image = req["person_image"]
             date_of_birth =req["date_of_birth"]
-            # house_address = req["house_address"]
+            house_address = req["house_address"]
             user_password = req["user_password"]
-            # phone_number = req["phone_number"]
-            # id_number = req["id_number"]
-            # nationality = req["nationality"]
-            # gender = req["gender"]
-            # doctor_id = req["doctor_id"]
-            # guardian_id = req["guardian_id"]
+            phone_number = req["phone_number"]
+            id_number = req["id_number"]
+            nationality = req["nationality"]
+            gender = req["gender"]
+            doctor_id = req["doctor_id"]
+            guardian_id = req["guardian_id"]
             #Hash Password
             passwordHash = generate_password_hash(user_password)
             newPatient = Patient(first_name=first_name,middle_name=middle_name,last_name=last_name,user_email=user_email,user_password=passwordHash,
-            date_of_birth=date_of_birth,
-           )
-            # newPatient = Patient(first_name=first_name,middle_name=middle_name,last_name=last_name,user_email=user_email,user_password=passwordHash,
-            # person_image=person_image,date_of_birth=date_of_birth,house_address=house_address,phone_number=phone_number,id_number=id_number,
-            # gender=gender,nationality=nationality,guardian_id=guardian_id,doctor_id=doctor_id)
+            person_image=person_image,date_of_birth=date_of_birth,house_address=house_address,phone_number=phone_number,id_number=id_number,
+            gender=gender,nationality=nationality,guardian_id=guardian_id,doctor_id=doctor_id)
             try: 
                 session.add(newPatient)
                 session.commit()

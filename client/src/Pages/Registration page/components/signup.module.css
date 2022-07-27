@@ -360,7 +360,7 @@
 .loader {
    width: 20%;
    height: 100%;
-   border-radius: 4rem;
+   border-radius: 0.5rem;
    position: absolute;
    top: 0;
    right: -5%;
