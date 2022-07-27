@@ -94,7 +94,7 @@
 }
 
 .formBtn {
-   width: 60%;
+   width: 80%;
    height: 100%;
    border: none;
    outline: none;
@@ -111,6 +111,49 @@
    position: relative;
 }
 
+.error {
+   margin-top: 2rem;
+   height: 2rem;
+   background: rgb(253, 252, 252);
+   border: 1.5px solid red;
+   color: red;
+   display: flex;
+   justify-content: space-between;
+   border-radius: 5px;
+   padding: 0 0.5rem;
+}
+
+.error p {
+   color: red;
+   font-weight: 600;
+   width: 93%;
+   font-size: 0.8rem;
+   float: left;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.error i {
+   color: red;
+   width: 6%;
+   float: right;
+   font-size: 150%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-bottom: 0.9rem;
+   cursor: pointer;
+}
+.noerror {
+   height: 2rem;
+}
+.noerror p {
+   display: none;
+}
+.noerror i {
+   display: none;
+}
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .formTitle {
@@ -125,7 +168,7 @@
    }
    .formBoxInputs {
       margin: 0.2rem 0;
-   
+
       height: 2rem;
    }
    .formBox .formBoxInputs input {
@@ -134,12 +177,10 @@
    .formBtn {
       font-size: 0.7rem;
    }
-
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
    .medicationFormBody {
-     
       padding: 2rem 0.5rem 0 0.5rem;
    }
    .formTitle {
@@ -149,7 +190,6 @@
    .formTitle h3 {
       font-size: 1rem;
       margin-bottom: 0.1rem;
-
    }
    .formBox label {
       font-size: 0.7rem;
@@ -161,7 +201,7 @@
    }
    .formBoxInputs {
       margin: 0 0;
-   
+
       height: 1.5rem;
    }
    .formBox .formBoxInputs input {
@@ -174,9 +214,7 @@
    .formBtn {
       font-size: 0.5rem;
       font-weight: 600;
-
    }
-
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    .formContent {

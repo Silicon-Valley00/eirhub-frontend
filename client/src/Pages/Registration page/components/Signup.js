@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../images/Patientsignup.svg';
 import { FaRegUser, FaTimes } from 'react-icons/fa';
@@ -9,6 +9,8 @@ import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
 
 function Signup(props) {
+   const signUpFormRef = useRef();
+
    // handles button changes
    const [btnValue, setBtnValue] = useState('Create Account');
    const [btnActive, setBtnActive] = useState(false);
@@ -17,10 +19,25 @@ function Signup(props) {
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    // Handles server error
-   const [isError, setIsError] = useState(true);
+   const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState(
       'Email already in use. Want to login?'
    );
+
+   // handles registeration flow based on feedback from database
+   async function submitCredentialsFeedback() {
+      const feedback = await props.submitUserCredentialsHandler();
+
+      if (feedback[0] === true) {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+      } else {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         setErrorMessage(feedback[1]);
+         setIsError(true);
+      }
+   }
    return (
       <div className={styles.signupBody}>
          <div
@@ -30,9 +47,10 @@ function Signup(props) {
             <div
                className={styles.closeModal}
                onClick={() => {
-                  props.handleModalsClose()
-                  props.signUpFormRef.current.reset()
-                  props.reset()
+                  props.handleModalsClose();
+                  signUpFormRef.current.reset();
+                  props.reset();
+                  setIsError(false)
                }}
             >
                <i>
@@ -50,7 +68,7 @@ function Signup(props) {
                      <p> with doctors you can trust</p>
                   </div>
                   <div className={styles.leftRegionImage}>
-                     <img src={signUp} alt="Sign-up image" />
+                     <img src={signUp} alt="Sign-up" />
                   </div>
                </div>
                <div className={styles.rightRegion}>
@@ -70,11 +88,17 @@ function Signup(props) {
                      <p>Take control of your health today</p>
                   </div>
                   <form
-                  ref={props.signUpFormRef}
-                  className={styles.signupForm}>
+                     ref={signUpFormRef}
+                     className={styles.signupForm}
+                     onSubmit={(e) => {
+                        e.preventDefault();
+                     }}
+                  >
                      <div className={styles.signupFormBoxNames}>
                         <div className={styles.signupFormBoxName}>
-                           <label htmlFor="firstname"> Firstname</label>
+                           {/* <label htmlFor="firstname"> Firstname</label> */}
+                           <h3>Firstname</h3>
+
                            <div
                               className={
                                  props.registerNameError
@@ -99,7 +123,8 @@ function Signup(props) {
                            </div>
                         </div>
                         <div className={styles.signupFormBoxName}>
-                           <label htmlFor="lastname"> Lastname</label>
+                           {/* <label htmlFor="lastname"> Lastname</label> */}
+                           <h3>Lastname</h3>
                            <div
                               className={
                                  props.registerNameError
@@ -137,7 +162,9 @@ function Signup(props) {
                         <p>{props.registerNameErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="date"> Date of Birth</label>
+                        {/* <label htmlFor="date"> Date of Birth</label> */}
+                        <h3>Date of Birth</h3>
+
                         <div
                            className={
                               props.registerDateError
@@ -180,7 +207,9 @@ function Signup(props) {
                         <p>{props.registerDateErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="email"> Email</label>
+                        {/* <label htmlFor="email"> Email</label> */}
+                        <h3>Email</h3>
+
                         <div
                            className={
                               props.registerEmailError
@@ -217,7 +246,9 @@ function Signup(props) {
                         <p>{props.registerEmailErrorMessage}</p>
                      </div>
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="passwordone"> Password</label>
+                        {/* <label htmlFor="passwordone"> Password</label> */}
+                        <h3>Password</h3>
+
                         <div
                            className={
                               props.registerPasswordOneError
@@ -266,9 +297,11 @@ function Signup(props) {
                      </div>
 
                      <div className={styles.signupFormBox}>
-                        <label htmlFor="passwordconfirm">
+                        {/* <label htmlFor="passwordconfirm">
                            Confirm Password
-                        </label>
+                        </label> */}
+                        <h3>Confrim Password</h3>
+
                         <div
                            className={
                               props.registerPasswordTwoError
@@ -354,7 +387,7 @@ function Signup(props) {
                            onClick={() => {
                               setBtnValue('Creating Account');
                               setBtnActive(true);
-                              props.submitUserCredentialsHandler();
+                              submitCredentialsFeedback();
                            }}
                         >
                            <p>{btnValue}</p>
@@ -375,7 +408,12 @@ function Signup(props) {
                         <p>Already have an account?</p>
                         <p
                            id={styles.signupFormMessageP}
-                           onClick={() => props.handleModalLogin()}
+                           onClick={() => {
+                              signUpFormRef.current.reset();
+                              props.handleModalLogin();
+                              props.reset();
+                              setIsError(false)
+                           }}
                         >
                            Login
                         </p>

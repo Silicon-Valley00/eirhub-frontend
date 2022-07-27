@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import DoctorSignup from './components/DoctorSignup'
-import DoctorLogin from './components/DoctorLogin'
+import DoctorSignup from './components/DoctorSignup.js';
+import DoctorLogin from './components/DoctorLogin';
 import axios from 'axios';
 
 // Database configuration
@@ -11,15 +11,9 @@ const api = axios.create({
 });
 
 function Registration(props) {
-   const signUpFormRef = useRef();
-   const loginFormRef = useRef();
-   const docSignUpFormRef = useRef();
-   const docLoginFormRef = useRef();
-
    // User login refs
    const loginEmail = useRef();
    const loginPassword = useRef();
-
 
    // Doctor login refs
    const doctorLoginEmail = useRef();
@@ -39,13 +33,14 @@ function Registration(props) {
    const doctorSignupEmail = useRef();
    const doctorSignupPassword = useRef();
    const doctorSignupPasswordconfirm = useRef();
-   const doctorSignupDate = useRef();
    const signupHospitalCode = useRef();
 
    // Handles error state of input user boxes
+   // Patient login error
    const [loginEmailError, setloginEmailError] = useState(null);
    const [loginPasswordError, setLoginPasswordError] = useState(null);
 
+   //Patient signup  error
    const [registerNameError, setRegisterNameError] = useState(null);
    const [registerDateError, setRegisterDateError] = useState(null);
    const [registerEmailError, setRegisterEmailError] = useState(null);
@@ -55,18 +50,23 @@ function Registration(props) {
       useState(null);
 
    // Handles error state in doctor input voices
+   //Doctor login error
    const [doctorLoginEmailError, setDoctorLoginEmailError] = useState(null);
-   const [doctorLoginPasswordError, setDoctorLoginPasswordError] = useState(null);
-
+   const [doctorLoginPasswordError, setDoctorLoginPasswordError] =
+      useState(null);
+   // Doctor sign up errors
    const [registerDoctorNameError, setRegisterDoctorNameError] = useState(null);
-   const [registerHospitalCodeError, setRegisterHospitalCodeError] = useState(null)
-   const [registerDoctorEmailError, setRegisterDoctorEmailError] = useState(null);
+   const [registerHospitalCodeError, setRegisterHospitalCodeError] =
+      useState(null);
+   const [registerDoctorEmailError, setRegisterDoctorEmailError] =
+      useState(null);
    const [registerDoctorPasswordOneError, setRegisterDoctorPasswordOneError] =
       useState(null);
    const [registerDoctorPasswordTwoError, setRegisterDoctorPasswordTwoError] =
       useState(null);
 
    // Handles error messages of user input boxes
+   //Patient error messages
    const [registerNameErrorMessage, setRegisterNameErrorMessage] = useState('');
    const [registerDateErrorMessage, setRegisterDateErrorMessage] = useState('');
    const [registerEmailErrorMessage, setRegisterEmailErrorMessage] =
@@ -75,29 +75,36 @@ function Registration(props) {
       useState('');
    const [registerPasswordTwoErrorMessage, setRegisterPasswordTwoErrorMessage] =
       useState('');
+   // Patient login error messsages
    const [loginEmailErrorMessage, setloginEmailErrorMessage] = useState('');
    const [loginPasswordErrorMessage, setLoginPasswordErrorMessage] =
       useState('');
-
    // Handles error messages of doctor input boxes
-   const [registerDoctorNameErrorMessage, setRegisterDoctorNameErrorMessage] = useState('');
-   const [registerHospitalCodeErrorMessage, setRegisterHospitalCodeErrorMessage] = useState('')
+   //Doctor signup error messages
+   const [registerDoctorNameErrorMessage, setRegisterDoctorNameErrorMessage] =
+      useState('');
+   const [
+      registerHospitalCodeErrorMessage,
+      setRegisterHospitalCodeErrorMessage,
+   ] = useState('');
    const [registerDoctorEmailErrorMessage, setRegisterDoctorEmailErrorMessage] =
       useState('');
-   const [registerDoctorPasswordOneErrorMessage, setRegisterDoctorPasswordOneErrorMessage] =
+   const [
+      registerDoctorPasswordOneErrorMessage,
+      setRegisterDoctorPasswordOneErrorMessage,
+   ] = useState('');
+   const [
+      registerDoctorPasswordTwoErrorMessage,
+      setRegisterDoctorPasswordTwoErrorMessage,
+   ] = useState('');
+   // Doctor logins error messages
+   const [doctorLoginEmailErrorMessage, setDoctorLoginEmailErrorMessage] =
       useState('');
-   const [registerDoctorPasswordTwoErrorMessage, setRegisterDoctorPasswordTwoErrorMessage] =
-      useState('');
-   const [doctorLoginEmailErrorMessage, setDoctorLoginEmailErrorMessage] = useState('');
    const [doctorLoginPasswordErrorMessage, setDoctorLoginPasswordErrorMessage] =
       useState('');
 
-
-
-
    // Function resets the values of all inputs and errors
    function reset() {
-
       setloginEmailError(null);
       setLoginPasswordError(null);
 
@@ -112,7 +119,7 @@ function Registration(props) {
       setDoctorLoginPasswordError(null);
 
       setRegisterDoctorNameError(null);
-      setRegisterHospitalCodeError(null)
+      setRegisterHospitalCodeError(null);
       setRegisterDoctorEmailError(null);
       setRegisterDoctorPasswordOneError(null);
       setRegisterDoctorPasswordTwoError(null);
@@ -128,7 +135,7 @@ function Registration(props) {
 
       // Handles error messages of doctor input boxes
       setRegisterDoctorNameErrorMessage('');
-      setRegisterHospitalCodeErrorMessage('')
+      setRegisterHospitalCodeErrorMessage('');
       setRegisterDoctorEmailErrorMessage('');
       setRegisterDoctorPasswordOneErrorMessage('');
       setRegisterDoctorPasswordTwoErrorMessage('');
@@ -170,7 +177,6 @@ function Registration(props) {
          setLoginPasswordError(false);
       }
    }
-
 
    // Functions below check doctor credentials in login form input
    function handleDoctorLoginEmail() {
@@ -246,8 +252,6 @@ function Registration(props) {
          setRegisterDateError(false);
       }
    }
-
-
 
    function handleRegisterPassword() {
       let enteredSignUpPassword = signupPassword.current.value;
@@ -333,7 +337,7 @@ function Registration(props) {
       }
    }
    function handleRegisterHospitalCode() {
-      let enteredSignupHospitalCode = signupHospitalCode.current.value
+      let enteredSignupHospitalCode = signupHospitalCode.current.value;
 
       if (enteredSignupHospitalCode === '') {
          setRegisterHospitalCodeErrorMessage('Hospital code required');
@@ -378,7 +382,8 @@ function Registration(props) {
       }
    }
    function handleRegisterDoctorPasswordConfirm() {
-      let enteredSignUpPasswordconfirm = doctorSignupPasswordconfirm.current.value;
+      let enteredSignUpPasswordconfirm =
+         doctorSignupPasswordconfirm.current.value;
       let enteredSignUpPassword = doctorSignupPassword.current.value;
 
       if (enteredSignUpPasswordconfirm === '') {
@@ -392,115 +397,142 @@ function Registration(props) {
       }
    }
 
-
-
    // function handles submittion of user/doctor data to database
-   function submitUserCredentialsHandler() {
+   async function submitUserCredentialsHandler() {
       // User entered credentials
-      let enteredloginName = loginEmail.current.value;
+      let enteredloginEmail = loginEmail.current.value;
       let enteredloginPassword = loginPassword.current.value;
+
+      let enteredloginEmailDoctor = doctorLoginEmail.current.value;
+      let enteredloginPasswordDoctor = doctorLoginPassword.current.value;
 
       let enteredSignUpFirstname = signupFirstname.current.value;
       let enteredSignUpLastname = signupLastname.current.value;
       let enteredSignUpDate = signupDate.current.value;
       let enteredSignUpEmail = signupEmail.current.value;
       let enteredSignUpPassword = signupPassword.current.value;
-      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
 
-      let enteredSignupHospitalCode = signupHospitalCode.current.value
+      let enteredSignUpFirstnameDoctor = doctorSignupFirstname.current.value;
+      let enteredSignUpLastnameDoctor = doctorSignupLastname.current.value;
+      let enteredSignUpEmailDoctor = doctorSignupEmail.current.value;
+      let enteredSignUpPasswordDoctor = doctorSignupPassword.current.value;
+      let enteredSignupHospitalCode = signupHospitalCode.current.value;
 
       // Below code checks which modal form is open to take user credentials
-      if (props.modalLogin) { //checks if the patient login form modal is opened 
-         // prepares credentials for submition
+      if (props.modalLogin) {
+         //checks if the patient login form modal is opened
+         // prepares credentials for submission
          const loginPatientData = {
-            name: enteredloginName,
-            password: enteredloginPassword,
+            user_email: enteredloginEmail,
+            user_password: enteredloginPassword,
          };
-         console.log(loginPatientData);
-         submitCredentials('login', loginPatientData);
-      }
 
-      else if (props.modalSignup) {  //checks if the patient signup form modal is opened
-         // prepares credentials for submition
+         // makes api call with userdata
+         const feedback = await submitCredentials(
+            'patient/login',
+            loginPatientData
+         );
+         return await feedback; //return feedback for registeration flow
+      } else if (props.modalSignup) {
+         //checks if the patient signup form modal is opened
+         // prepares credentials for submission
          const signupPatientData = {
-            firstname: enteredSignUpFirstname,
-            lastname: enteredSignUpLastname,
-            dateOfBirth: enteredSignUpDate,
+            first_name: enteredSignUpFirstname,
+            last_name: enteredSignUpLastname,
+            date_of_birth: enteredSignUpDate,
             user_email: enteredSignUpEmail,
-            password: enteredSignUpPassword,
+            user_password: enteredSignUpPassword,
          };
 
-         console.log(signupPatientData);
-         console.log('start');
-         submitCredentials('signup', signupPatientData);
-         console.log('end');
-      }
-
-      else if (props.modalSignupDoctor) { //checks if the doctor signup form modal is opened
-         // prepares credentials for submittion
+         // makes api call with userdata
+         const feedback = await submitCredentials(
+            'patient/signup',
+            signupPatientData
+         );
+         return await feedback; //return feedback for registeration flow
+      } else if (props.modalSignupDoctor) {
+         //checks if the doctor signup form modal is opened
+         // prepares credentials for submission
          const signupDoctorData = {
-            firstname: enteredSignUpFirstname,
-            lastname: enteredSignUpLastname,
-            hospitalCode: enteredSignupHospitalCode,
-            user_email: enteredSignUpEmail,
-            password: enteredSignUpPassword,
+            first_name: enteredSignUpFirstnameDoctor,
+            last_name: enteredSignUpLastnameDoctor,
+            hospital_code: enteredSignupHospitalCode,
+            user_email: enteredSignUpEmailDoctor,
+            user_password: enteredSignUpPasswordDoctor,
          };
 
-         console.log(signupDoctorData);
-         console.log('start');
-         submitCredentials('signup', signupDoctorData);
-         console.log('end');
-      }
-
-      else if (props.modalLoginDoctor) {  //checks if the doctor login form modal is opened
-         // prepares credentials for submittion
+         // makes api call with userdata
+         const feedback = await submitCredentials(
+            'doctor/signup',
+            signupDoctorData
+         );
+         return await feedback; //return feedback for registeration flow
+      } else if (props.modalLoginDoctor) {
+         //checks if the doctor login form modal is opened
+         // prepares credentials for submission
          const loginDoctorData = {
-            user_email: enteredSignUpEmail,
-            password: enteredSignUpPassword,
+            user_email: enteredloginEmailDoctor,
+            user_password: enteredloginPasswordDoctor,
          };
 
-         console.log(loginDoctorData);
-         console.log('start');
-         submitCredentials('signup', loginDoctorData);
-         console.log('end');
+         // makes api call with userdata
+         const feedback = await submitCredentials(
+            'doctor/login',
+            loginDoctorData
+         );
+         return await feedback; //return feedback for registeration flow
       }
    }
 
-
    // Function submits data to database via an api
-   function submitCredentials(path, data) {  //Function takes path and data to make request
-      axios({
-         method: 'post',
-         url: `http://127.0.0.1:5000/${path}`,
-         headers: {
-            'Access-Control-Allow-Origin': '*',
-         },
-         data: { data },
-      })
-         .then((response) => {
-            //Checks if response is ok
-            if (response.status === 200) {
-               //checks details of response
-               console.log('good', response);
-            }
-         })
-         //catches all errorr when response is not ok, 404 included
-         .catch((error) => {
-            if (error.response) {
-               console.log('data', error.response.data);
-            } else if (error.request) {
-               console.log('request', error.request);
-            } else {
-               console.log(error);
-               console.log('message', error.message);
-            }
+   async function submitCredentials(path, data) {
+      //Function takes path and data to make request
+      try {
+         const response = await axios({
+            method: 'POST',
+            url: `http://127.0.0.1:5000/${path}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+            data: data,
          });
+         if (response.status === 200) {
+            //checks if connection and data was accepted
+            //checks details of response
+
+            if (response.data.status === true) {
+               //returns response
+               return [response.data.status, response.data.msg, 'Redirecting'];
+            } else {
+               //returns response
+               return [
+                  response.data.status,
+                  response.data.msg,
+                  'Create Account',
+               ];
+            }
+         } else {
+            //takes all statuses aside 200
+            return [false, 'Something went wrong. Try again', 'Create Account'];
+         }
+      } catch (error) {
+         // catches all errors
+         if (error.response) {
+            return [false, 'Something went wrong. Try again', 'Create Account'];
+         } else if (error.request) {
+            return [false, 'Something went wrong. Try again', 'Create Account'];
+         } else {
+            return [false, 'Something went wrong. Try again', 'Create Account'];
+         }
+      }
    }
 
    return (
       <>
          <Login
-            loginFormRef={loginFormRef}
             reset={reset}
             modalLogin={props.modalLogin}
             handleModalSignup={props.handleModalSignup}
@@ -516,7 +548,6 @@ function Registration(props) {
             loginPasswordErrorMessage={loginPasswordErrorMessage}
          />
          <DoctorLogin
-            docLoginFormRef={docLoginFormRef}
             reset={reset}
             modalLoginDoctor={props.modalLoginDoctor}
             handleModalSignupDoctor={props.handleModalSignupDoctor}
@@ -526,7 +557,6 @@ function Registration(props) {
             doctorLoginPassword={doctorLoginPassword}
             handleDoctorLoginEmail={handleDoctorLoginEmail}
             handleDoctorLoginPassword={handleDoctorLoginPassword}
-            doctorLoginPassword={doctorLoginPassword}
             doctorLoginEmailError={doctorLoginEmailError}
             doctorLoginPasswordError={doctorLoginPasswordError}
             doctorLoginEmailErrorMessage={doctorLoginEmailErrorMessage}
@@ -534,7 +564,6 @@ function Registration(props) {
          />
 
          <Signup
-            signUpFormRef={signUpFormRef}
             reset={reset}
             modalSignup={props.modalSignup}
             handleModalLogin={props.handleModalLogin}
@@ -563,7 +592,6 @@ function Registration(props) {
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
          />
          <DoctorSignup
-            docSignUpFormRef={docSignUpFormRef}
             reset={reset}
             modalSignupDoctor={props.modalSignupDoctor}
             handleModalLoginDoctor={props.handleModalLoginDoctor}
@@ -583,13 +611,19 @@ function Registration(props) {
             registerDoctorNameErrorMessage={registerDoctorNameErrorMessage}
             registerDoctorEmailErrorMessage={registerDoctorEmailErrorMessage}
             registerHospitalCodeErrorMessage={registerHospitalCodeErrorMessage}
-            registerDoctorPasswordOneErrorMessage={registerDoctorPasswordOneErrorMessage}
-            registerDoctorPasswordTwoErrorMessage={registerDoctorPasswordTwoErrorMessage}
+            registerDoctorPasswordOneErrorMessage={
+               registerDoctorPasswordOneErrorMessage
+            }
+            registerDoctorPasswordTwoErrorMessage={
+               registerDoctorPasswordTwoErrorMessage
+            }
             handleRegisterDoctor={handleRegisterDoctor}
             handleRegisterDoctorEmail={handleRegisterDoctorEmail}
             handleRegisterHospitalCode={handleRegisterHospitalCode}
             handleRegisterDoctorPassword={handleRegisterDoctorPassword}
-            handleRegisterDoctorPasswordConfirm={handleRegisterDoctorPasswordConfirm}
+            handleRegisterDoctorPasswordConfirm={
+               handleRegisterDoctorPasswordConfirm
+            }
          />
       </>
    );

@@ -22,7 +22,7 @@ body {
    box-sizing: border-box;
 }
 
-form {
+.loginForm {
    color: var(--dark-blue);
 }
 
@@ -55,7 +55,6 @@ i.closeIcon {
    cursor: pointer;
 }
 
-
 #loginSection {
    position: relative;
    display: flex;
@@ -64,7 +63,6 @@ i.closeIcon {
    width: 100%;
    height: 100%;
 }
-
 
 #loginContainer {
    max-height: 600px;
@@ -172,8 +170,8 @@ p.link {
    color: white;
    font-weight: 500;
    height: var(--height);
-   width: 50%;
-   border-radius: 4rem;
+   width: 145px;
+   border-radius: var(--field-radius);
    text-transform: uppercase;
    text-align: center;
    box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
@@ -241,10 +239,10 @@ p.link {
 .inactive {
    cursor: not-allowed;
    background-color: #a5cfd6;
-   width: 60%;
+   width: 145px;
    border: none;
    outline: none;
-   border-radius: 4rem;
+   border-radius: var(--field-radius);
    color: #fff;
    text-transform: uppercase;
    font-weight: 500;
@@ -266,6 +264,50 @@ p.link {
 }
 
 /* Error */
+   .error {
+      /* max-height: max-content; */
+      height: 2rem;
+      /* background: rgb(253, 252, 252); */
+      /* border: 1px solid red; */
+      align-self: initial;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 5px;
+      margin-top: -8%;
+      padding: 0 0.5rem;
+   }
+   
+   .error p {
+      color: red;
+      font-weight: 300;
+      width: 93%;
+      font-size: 0.7rem;
+      float: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   
+   .error i {
+      width: 10%;
+      height: 100%;
+      /* float: right; */
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* padding-bottom: 0.9rem; */
+      cursor: pointer;
+   }
+   .noerror {
+      height: 2rem;
+   }
+   .noerror p {
+      display: none;
+   }
+   .noerror i {
+      display: none;
+   }
 
 .inputError {
    /* display: flex;
@@ -279,50 +321,6 @@ p.link {
 .inputError > i {
    margin-top: 5px;
    /* font-size: 1rem; */
-}
-.error {
-   /* max-height: max-content; */
-   height: 2rem;
-   background: rgb(253, 252, 252);
-   border: 1px solid red;
-   align-self: initial;
-   display: flex;
-   justify-content: space-between;
-   border-radius: 5px;
-   margin-top: -8%;
-   padding: 0 0.5rem;
-}
-
-.error p {
-   color: red;
-   font-weight: 600;
-   width: 93%;
-   font-size: 0.9em;
-   float: left;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-.error i {
-   width: 10%;
-   height: 100%;
-   /* float: right; */
-   font-size: 24px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   /* padding-bottom: 0.9rem; */
-   cursor: pointer;
-}
-.noerror {
-   height: 2rem;
-}
-.noerror p {
-   display: none;
-}
-.noerror i {
-   display: none;
 }
 
 .errorMessageBox {
@@ -362,6 +360,45 @@ p.link {
 }
 
 .noErrorMessageBox p {
+   display: none;
+}
+.errorMessageBoxDoctor {
+   font-size: 12px;
+   padding-top: 0;
+   height: 2rem;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-size: 0.8em;
+   color: red;
+}
+
+.errorMessageBoxDoctor p {
+   /* padding: auto; */
+   color: red;
+   width: 100%;
+}
+
+.errorMessageBoxDoctor i {
+   fill: red;
+   width: 7%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 100%;
+}
+
+.noErrorMessageBoxDoctor {
+   width: 100%;
+   height: 2rem;
+}
+
+.noErrorMessageBoxDoctor i {
+   display: none;
+}
+
+.noErrorMessageBoxDoctor p {
    display: none;
 }
 
@@ -460,4 +497,3 @@ p.link {
       font-size: 20px;
    }
 }
-
