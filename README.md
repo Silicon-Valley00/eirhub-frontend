@@ -1,6 +1,6 @@
 # Eirhub
 
-Repository for frontend of Eirhub (Software Engineering project)
+Frontend repository for Eirhub (Software Engineering project)
 
 # Want to Contribute?
 
