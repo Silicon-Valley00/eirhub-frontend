@@ -4,7 +4,7 @@ Frontend repository for Eirhub (Software Engineering project)
 
 Document to track Decision Making : [Silicon Valley - EirHub Decision Document](https://docs.google.com/document/d/1_Skgoi0TOdXuyFRiUJWxwfKSewkepBe6-_71LRvHhEc/edit)
 
-# Want to Contribute?
+# Contributors
 
 Instructions:
 1. Run `npm run install-all` in the project root to install all dependencies.

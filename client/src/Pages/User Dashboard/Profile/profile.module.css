@@ -1,0 +1,671 @@
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+   --tablehead: #c2c9d1;
+   --iconred: #dd7678;
+   --iconback: #f7eef0;
+   --formboxoutline: #c2c9d1;
+}
+
+#profileBody {
+   margin-top: 4rem;
+   background-color: var(--gray);
+   padding: 2rem 3rem 0 3rem;
+   border-top-left-radius: 2rem;
+   border-top-right-radius: 2rem;
+   width: 137%;
+}
+
+.upperContent {
+   width: 90%;
+   height: 13%;
+   display: flex;
+   justify-content: space-between;
+}
+.profileImage {
+   width: 5rem;
+   height: 100%;
+   float: left;
+   border-radius: 50%;
+}
+.profileImage img {
+   width: 100%;
+   height: 100%;
+}
+.profileIntro {
+   width: 85%;
+   padding: 0.2rem 0;
+}
+.profileName {
+   width: 100%;
+}
+.profileName h2 {
+   font-size: 1.4rem;
+   color: var(--deepcol);
+}
+.uploadImageBtn {
+   width: 100%;
+}
+.uploadImageBtn label {
+   background-color: var(--lightcol);
+   color: var(--white);
+   padding: 0.2rem 0.3rem;
+   font-weight: 300;
+   outline: none;
+   border: none;
+   border-radius: 6px;
+   cursor: pointer;
+   font-size: 0.8rem;
+}
+
+.personalInfo {
+   width: 100%;
+   height: 50%;
+   min-height: 40%;
+   max-height: 40%;
+   margin-top: 0.5rem;
+   text-transform: capitalize;
+}
+.personalInfo h2 {
+   color: var(--deepcol);
+   font-size: 1.3rem;
+}
+
+form.personalInfoFormBox {
+   width: 100%;
+   height: 90%;
+   display: grid;
+   gap: 0.5rem;
+   grid-template-columns: repeat(3, 1fr);
+}
+
+.profileFormBox {
+   height: max-content;
+   min-height: max-content;
+   max-height: max-content;
+   place-items: center;
+}
+.profileFormBox h3 {
+   font-size: 0.8rem;
+   color: var(--deepcol);
+   font-weight: 600;
+}
+.formBoxNameInputs {
+   width: 100%;
+   height: 1.6rem;
+   border-radius: 5px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   border: 0.2px solid var(--formboxoutline);
+   background-color: var(--white);
+}
+.formBoxNameInputs input {
+   background: none;
+   outline: none;
+   border: none;
+   height: 100%;
+   line-height: 1;
+   font-weight: 400;
+   font-size: 0.8rem;
+   color: rgba(0, 0, 0, 0.7);
+   width: 100%;
+   padding: 0.4rem;
+}
+
+.formBoxNameInputs .select {
+   width: 100%;
+}
+.formBoxNameInputs .select select {
+   width: 100%;
+   height: 100%;
+   color: rgba(0, 0, 0, 0.7);
+   padding: 0rem 0.4rem;
+   border-radius: 0.2rem;
+   -webkit-appearance: none;
+   -moz-appearanace: none;
+   -ms-appearance: none;
+   appearance: none;
+   outline: none;
+   box-shadow: none;
+   border: 0 !important;
+   background-image: none;
+   flex: 1;
+   cursor: pointer;
+}
+select::-ms-expand {
+   display: none;
+}
+.select {
+   position: relative;
+   display: flex;
+   float: right;
+   line-height: 1;
+   overflow: hidden;
+   text-decoration: none;
+}
+.select::after {
+   content: '\25BC';
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 0.1rem 0.5rem;
+   color: rgba(0, 0, 0, 0.7);
+   cursor: pointer;
+   pointer-events: none;
+   transition: 0.25s all ease;
+}
+.select select::part(button) {
+   padding: 0 1rem;
+}
+.select select::part(listbox) {
+   border: none;
+}
+
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(1) {
+   width: 95%;
+   justify-self: start;
+}
+
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(2) {
+   width: 95%;
+   justify-self: center;
+}
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(3) {
+   width: 95%;
+   justify-self: end;
+}
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(4) {
+   width: 100%;
+   justify-self: start;
+}
+
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(5) {
+   width: 90%;
+   justify-self: end;
+}
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(6) {
+   width: 80%;
+   justify-self: end;
+}
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(7) {
+   width: 100%;
+   justify-self: start;
+}
+
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(8) {
+   width: 80%;
+   justify-self: center;
+}
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(9) {
+   width: 90%;
+   justify-self: end;
+}
+#profileBody
+   .personalInfo
+   form.personalInfoFormBox
+   div.profileFormBox:nth-child(10) {
+   width: 100%;
+   justify-self: start;
+}
+
+.healthInfo {
+   width: 100%;
+   /* height: 50%;
+   min-height: 40%;
+   max-height: 40%; */
+   margin-top: 2rem;
+   text-transform: capitalize;
+}
+.healthInfo h2 {
+   color: var(--deepcol);
+   font-size: 1.3rem;
+}
+
+form.healthInfoFormBox {
+   width: 100%;
+   display: grid;
+   gap: 0.5rem;
+   grid-template-columns: repeat(3, 1fr);
+}
+
+.healthFormBox {
+   height: max-content;
+   min-height: max-content;
+   max-height: max-content;
+   place-items: center;
+}
+.healthFormBox h3 {
+   font-size: 0.8rem;
+   color: var(--deepcol);
+   font-weight: 600;
+}
+
+#profileBody .healthInfo form.healthInfoFormBox div.healthFormBox:nth-child(1) {
+   width: 80%;
+   justify-self: start;
+}
+
+#profileBody .healthInfo form.healthInfoFormBox div.healthFormBox:nth-child(2) {
+   width: 80%;
+   justify-self: start;
+}
+#profileBody .healthInfo form.healthInfoFormBox div.healthFormBox:nth-child(3) {
+   width: 80%;
+   justify-self: start;
+}
+#profileBody .healthInfo form.healthInfoFormBox div.healthFormBox:nth-child(4) {
+   width: 80%;
+   justify-self: start;
+}
+
+#profileBody .healthInfo form.healthInfoFormBox div.healthFormBox:nth-child(5) {
+   width: 95%;
+   justify-self: start;
+}
+#profileBody .healthInfo form.healthInfoFormBox div.healthFormBox:nth-child(6) {
+   width: 85%;
+   justify-self: end;
+}
+#profileBody .healthInfo form.healthInfoFormBox div.healthFormBox:nth-child(7) {
+   width: 80%;
+   justify-self: start;
+}
+
+#profileBody .healthInfo form.healthInfoFormBox div.healthFormBox:nth-child(8) {
+   width: 80%;
+   justify-self: start;
+}
+#profileBody .healthInfo form.healthInfoFormBox div.healthFormBox:nth-child(9) {
+   width: 70%;
+   justify-self: start;
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+   #profileBody {
+      width: 137%;
+      min-width: 137%;
+      max-width: 137%;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+   #profileBody {
+      margin-top: 4rem;
+      padding: 1rem 1rem 0 01rem;
+      width: 140%;
+      min-width: 140%;
+      max-width: 140%;
+   }
+   .upperContent {
+      width: 90%;
+      height: 13%;
+      justify-content: space-between;
+   }
+   .profileIntro {
+      width: 80%;
+   }
+   .profileFormBox h3 {
+      font-size: 0.7rem;
+   }
+   .select::after {
+      font-size: 0.8rem;
+      padding: 0.25rem 0.5rem;
+   }
+   .healthFormBox h3 {
+      font-size: 0.7rem;
+   }
+}
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   #profileBody {
+      margin-top: 4rem;
+      padding: 1rem 1rem 0 01rem;
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+   }
+   .upperContent {
+      height: 5rem;
+      width: 90%;
+      display: block;
+   }
+   .profileIntro {
+      width: 70%;
+      height: 80%;
+      padding: 0.2rem 0;
+      padding-left: 2rem;
+      float: left;
+   }
+   form.personalInfoFormBox {
+      width: 100%;
+      height: 90%;
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(1) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(2) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(3) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(4) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(5) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(6) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(7) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(8) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(9) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(10) {
+      justify-self: start;
+   }
+   .healthInfo {
+      margin-top: 3rem;
+   }
+   form.healthInfoFormBox {
+      grid-template-columns: repeat(2, 1fr);
+      padding-bottom: 2rem;
+   }
+
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(1) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(2) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(3) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(4) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(5) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(6) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(7) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(8) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(9) {
+      justify-self: start;
+   }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   #profileBody {
+      margin-top: 4rem;
+      padding: 1rem 1rem 0 01rem;
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+   }
+   .upperContent {
+      height: 5rem;
+      width: 100%;
+      display: block;
+   }
+   .profileImage {
+      width: 4rem;
+      height: 100%;
+      float: left;
+      border-radius: 50%;
+   }
+   .profileIntro {
+      width: 70%;
+      height: 80%;
+      padding: 0.2rem 0;
+      padding-left: 2rem;
+      float: left;
+   }
+   .profileName h2 {
+      font-size: 1rem;
+   }
+   form.personalInfoFormBox {
+      width: 100%;
+      height: 90%;
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: repeat(1, 1fr);
+   }
+
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(1) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(2) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(3) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(4) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(5) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(6) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(7) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(8) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(9) {
+      justify-self: start;
+   }
+   #profileBody
+      .personalInfo
+      form.personalInfoFormBox
+      div.profileFormBox:nth-child(10) {
+      justify-self: start;
+   }
+   .healthInfo {
+      margin-top: 5rem;
+   }
+   form.healthInfoFormBox {
+      grid-template-columns: repeat(1, 1fr);
+      padding-bottom: 2rem;
+   }
+
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(1) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(2) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(3) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(4) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(5) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(6) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(7) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(8) {
+      justify-self: start;
+   }
+   #profileBody
+      .healthInfo
+      form.healthInfoFormBox
+      div.healthFormBox:nth-child(9) {
+      justify-self: start;
+   }
+}

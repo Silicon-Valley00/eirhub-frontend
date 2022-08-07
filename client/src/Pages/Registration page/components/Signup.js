@@ -1,41 +1,121 @@
-import React from 'react';
-import './signup.css';
-import signUp from '../../../images/signupimage.svg';
-import { FaRegUser } from 'react-icons/fa';
-import { MdOutlineVpnKey } from 'react-icons/md';
+import React, { useState, useRef } from 'react';
+import styles from './signup.module.css';
+import signUp from '../../../images/Patientsignup.svg';
+import { FaRegUser, FaTimes } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import { HiOutlineMail } from 'react-icons/hi';
-import Alert from './Alert'
+import { RiLockPasswordFill } from 'react-icons/ri';
+import { IoIosMail } from 'react-icons/io';
+import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
+import { BiLoaderAlt } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setName } from '../../../Store/Actions.js';
 
 function Signup(props) {
-   const {msg,show} = props
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
+
+   const signUpFormRef = useRef();
+
+   // handles button changes
+   const [btnValue, setBtnValue] = useState('Create Account');
+   const [btnActive, setBtnActive] = useState(false);
+   // btnActive is for when button can  be clicked to create account. This would be set to false when an error occurs
+   // Handles password visibility
+   const [hidePasswordOne, setHidePasswordOne] = useState(true);
+   const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
+   // Handles server error
+   const [isError, setIsError] = useState(false);
+   const [errorMessage, setErrorMessage] = useState(
+      'Email already in use. Want to login?'
+   );
+
+   // handles registeration flow based on feedback from database
+   async function submitCredentialsFeedback() {
+      const feedback = await props.submitUserCredentialsHandler();
+
+      if (feedback[0] === true) {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         dispatch(setName(feedback[1].first_name));
+         setTimeout(() => {
+            navigate('/dashboard');
+         }, 1500);
+      } else {
+         setBtnActive(feedback[0]);
+         setBtnValue(feedback[2]);
+         setErrorMessage(feedback[1]);
+         setIsError(true);
+      }
+   }
    return (
-      <section className="signup-body">
-         <div id="signup-content" className={props.modal ? 'active' : ''}>
-            <div className="signup-container">
-               <div className="left-region">
+      <div className={styles.signupBody}>
+         <div
+            id={styles.signupContent}
+            className={props.modalSignup ? styles.active : ''}
+         >
+            <div
+               className={styles.closeModal}
+               onClick={() => {
+                  props.handleModalsClose();
+                  signUpFormRef.current.reset();
+                  props.reset();
+                  setIsError(false)
+               }}
+            >
+               <i>
+                  <IoCloseOutline />
+               </i>
+            </div>
+            <div className={styles.signupContainer}>
+               <div className={styles.leftRegion}>
                   <h3>Eirhub</h3>
-                  <div className="left-region-info-one">
+                  <div className={styles.leftRegionInfoOne}>
                      <p>Sign up today and get in touch</p>
                   </div>
 
-                  <div className="left-region-info-two">
+                  <div className={styles.leftRegionInfoTwo}>
                      <p> with doctors you can trust</p>
                   </div>
-                  <div className="left-region-image">
-                     <img src={signUp} alt="Sign-up image" />
+                  <div className={styles.leftRegionImage}>
+                     <img src={signUp} alt="Sign-up" />
                   </div>
                </div>
-               <div className="right-region">
-                  <div className="signup-form-title">
+               <div className={styles.rightRegion}>
+                  <div className={isError ? styles.error : styles.noerror}>
+                     <p>{errorMessage}</p>
+                     <i
+                        className={styles.closeIcon}
+                        onClick={() => {
+                           setIsError(false);
+                        }}
+                     >
+                        <IoCloseOutline />
+                     </i>
+                  </div>
+                  <div className={styles.signupFormTitle}>
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
                   </div>
-                  <div className="signup-form">
-                     <div className="signup-form-box-names">
-                        <div className="signup-form-box-name">
-                           <label htmlFor="firstname"> Firstname</label>
-                           <div className="signup-form-box-name-inputs">
+                  <form
+                     ref={signUpFormRef}
+                     className={styles.signupForm}
+                     onSubmit={(e) => {
+                        e.preventDefault();
+                     }}
+                  >
+                     <div className={styles.signupFormBoxNames}>
+                        <div className={styles.signupFormBoxName}>
+                           {/* <label htmlFor="firstname"> Firstname</label> */}
+                           <h3>Firstname</h3>
+
+                           <div
+                              className={
+                                 props.registerNameError
+                                    ? styles.signupFormBoxNameInputsError
+                                    : styles.signupFormBoxNameInputs
+                              }
+                           >
                               <i>
                                  <FaRegUser />
                               </i>
@@ -44,13 +124,27 @@ function Signup(props) {
                                  type="text"
                                  id="firstname"
                                  placeholder="Enter Firstname"
+                                 ref={props.signupFirstname}
+                                 onChange={() => {
+                                    props.handleRegisterUser();
+                                    setIsError(false);
+
+                                    setIsError(false);
+                                 }}
+                                 disabled={btnActive}
                               />
                            </div>
-                           {props.registerUserError && <Alert show={show} msg={msg} />}
                         </div>
-                        <div className="signup-form-box-name">
-                           <label htmlFor="lastname"> Lastname</label>
-                           <div className="signup-form-box-name-inputs">
+                        <div className={styles.signupFormBoxName}>
+                           {/* <label htmlFor="lastname"> Lastname</label> */}
+                           <h3>Lastname</h3>
+                           <div
+                              className={
+                                 props.registerNameError
+                                    ? styles.signupFormBoxNameInputsError
+                                    : styles.signupFormBoxNameInputs
+                              }
+                           >
                               <i>
                                  <FaRegUser />
                               </i>
@@ -59,120 +153,296 @@ function Signup(props) {
                                  type="text"
                                  id="lastname"
                                  placeholder="Enter Lastname"
+                                 ref={props.signupLastname}
+                                 onChange={() => {
+                                    props.handleRegisterUser();
+                                 }}
+                                 disabled={btnActive}
                               />
                            </div>
                         </div>
                      </div>
-                     <div className="no-error-message-box">
-                        <i>+ </i>
-                        <p>Username must have no numbers</p>
+                     <div
+                        className={
+                           props.registerNameError
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
+                        }
+                     >
+                        <i>
+                           <IoWarning />
+                        </i>
+                        <p>{props.registerNameErrorMessage}</p>
                      </div>
-                     <div className="signup-form-box">
-                        <label htmlFor="date"> Date</label>
-                        <div className="signup-form-box-inputs">
+                     <div className={styles.signupFormBox}>
+                        {/* <label htmlFor="date"> Date of Birth</label> */}
+                        <h3>Date of Birth</h3>
+
+                        <div
+                           className={
+                              props.registerDateError
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
+                           }
+                        >
                            <i>
-                              <FaRegUser />
+                              <IoCalendar />
                            </i>
                            <input
                               type="text"
                               name="date"
                               id="date"
                               placeholder="DD/MM/YYYY"
+                              ref={props.signupDate}
                               onFocus={(event) => (event.target.type = 'date')}
                               onBlur={(event) => {
                                  if (!event.target.value) {
                                     event.target.type = 'text';
                                  }
                               }}
+                              onChange={() => {
+                                 props.handleRegisterDate();
+                                 setIsError(false);
+
+                                 setIsError(false);
+                              }}
+                              disabled={btnActive}
                            />
                         </div>
                      </div>
-                     <div className="no-error-message-box">
-                        <i>+ </i>
-                        <p>Username must have no numbers</p>
+                     <div
+                        className={
+                           props.registerDateError
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
+                        }
+                     >
+                        <i>
+                           <IoWarning />
+                        </i>
+                        <p>{props.registerDateErrorMessage}</p>
                      </div>
-                     <div className="signup-form-box">
-                        <label htmlFor="email"> Email</label>
-                        <div className="signup-form-box-inputs">
+                     <div className={styles.signupFormBox}>
+                        {/* <label htmlFor="email"> Email</label> */}
+                        <h3>Email</h3>
+
+                        <div
+                           className={
+                              props.registerEmailError
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
+                           }
+                        >
                            <i>
-                              <HiOutlineMail />
+                              <IoIosMail />
                            </i>
                            <input
                               name="email"
                               type="email"
                               id="email"
-                              placeholder="Enter mail"
+                              placeholder="someone@example.com"
+                              ref={props.signupEmail}
+                              onChange={() => {
+                                 props.handleRegisterEmail();
+                                 setIsError(false);
+                              }}
+                              disabled={btnActive}
                            />
                         </div>
                      </div>
-                     <div className="no-error-message-box">
-                        <i>+ </i>
-                        <p>Username must have no numbers</p>
+                     <div
+                        className={
+                           props.registerEmailError
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
+                        }
+                     >
+                        <i>
+                           <IoWarning />
+                        </i>
+                        <p>{props.registerEmailErrorMessage}</p>
                      </div>
-                     <div className="signup-form-box">
-                        <label htmlFor="passwordone"> Password</label>
-                        <div className="signup-form-box-inputs">
+                     <div className={styles.signupFormBox}>
+                        {/* <label htmlFor="passwordone"> Password</label> */}
+                        <h3>Password</h3>
+
+                        <div
+                           className={
+                              props.registerPasswordOneError
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
+                           }
+                        >
                            <i>
-                              <MdOutlineVpnKey />
+                              <RiLockPasswordFill />
                            </i>
                            <input
-                              type={'password'}
+                              type={hidePasswordOne ? 'password' : 'text'}
                               name="password"
                               id="password1"
-                              placeholder="Enter a assword"
+                              placeholder="Enter a password"
+                              ref={props.signupPassword}
+                              onChange={() => {
+                                 props.handleRegisterPassword();
+                                 setIsError(false);
+                              }}
+                              disabled={btnActive}
                            />
-                           <i>
-                              <AiOutlineEyeInvisible />
+                           <i
+                              onClick={() =>
+                                 setHidePasswordOne(!hidePasswordOne)
+                              }
+                           >
+                              {hidePasswordOne ? (
+                                 <AiOutlineEye />
+                              ) : (
+                                 <AiOutlineEyeInvisible />
+                              )}
                            </i>
                         </div>
                      </div>
-                     <div className="no-error-message-box">
-                        <i>+ </i>
-                        <p>Username must have no numbers</p>
+                     <div
+                        className={
+                           props.registerPasswordOneError
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
+                        }
+                     >
+                        <i>
+                           <IoWarning />
+                        </i>
+                        <p>{props.registerPasswordOneErrorMessage}</p>
                      </div>
 
-                     <div className="signup-form-box">
-                        <label htmlFor="passwordconfirm">
-                           {' '}
+                     <div className={styles.signupFormBox}>
+                        {/* <label htmlFor="passwordconfirm">
                            Confirm Password
-                        </label>
-                        <div className="signup-form-box-inputs">
+                        </label> */}
+                        <h3>Confrim Password</h3>
+
+                        <div
+                           className={
+                              props.registerPasswordTwoError
+                                 ? styles.signupFormBoxInputsError
+                                 : styles.signupFormBoxInputs
+                           }
+                        >
                            <i>
-                              <MdOutlineVpnKey />
+                              <RiLockPasswordFill />
                            </i>
                            <input
                               name="passwordconfirm"
-                              type={'password'}
+                              type={hidePasswordTwo ? 'password' : 'text'}
                               id="password2"
                               placeholder="Confirm your password"
+                              ref={props.signupPasswordconfirm}
+                              onChange={() => {
+                                 props.handleRegisterPasswordConfirm();
+                                 setIsError(false);
+                              }}
+                              disabled={btnActive}
                            />
-                           <i>
-                              <AiOutlineEyeInvisible />
+                           <i
+                              onClick={() =>
+                                 setHidePasswordTwo(!hidePasswordTwo)
+                              }
+                           >
+                              {hidePasswordTwo ? (
+                                 <AiOutlineEye />
+                              ) : (
+                                 <AiOutlineEyeInvisible />
+                              )}
                            </i>
                         </div>
                      </div>
-                     <div className="no-error-message-box">
-                        <i>+ </i>
-                        <p>Username must have no numbers</p>
+                     <div
+                        className={
+                           props.registerPasswordTwoError
+                              ? styles.errorMessageBox
+                              : styles.noErrorMessageBox
+                        }
+                     >
+                        <i>
+                           <IoWarning />
+                        </i>
+                        <p>{props.registerPasswordTwoErrorMessage}</p>
                      </div>
-                     <div className="signup-form-button">
-                        <input
-                           type="submit"
+                     <div className={styles.signupFormButton}>
+                        <button
                            id="submit-btn"
-                           value="Create Account"
-                           disabled={false}
-                           className={'signup-btn'}
-                        />
+                           // className={
+                           //    btnActive
+                           //       ? `${styles.signupBtn} ${styles.btnActive}`
+                           //       : styles.signupBtn
+                           // }
+                           className={
+                              props.registerNameError === true ||
+                              props.registerEmailError === true ||
+                              props.registerDateError === true ||
+                              props.registerPasswordOneError === true ||
+                              props.registerPasswordTwoError === true ||
+                              props.registerNameError === null ||
+                              props.registerEmailError === null ||
+                              props.registerDateError === null ||
+                              props.registerPasswordOneError === null ||
+                              props.registerPasswordTwoError === null
+                                 ? styles.signupBtnInactive
+                                 : btnActive
+                                 ? `${styles.signupBtn} ${styles.btnActive}`
+                                 : styles.signupBtn
+                           }
+                           disabled={
+                              props.registerNameError === true ||
+                              props.registerEmailError === true ||
+                              props.registerDateError === true ||
+                              props.registerPasswordOneError === true ||
+                              props.registerPasswordTwoError === true ||
+                              props.registerNameError === null ||
+                              props.registerEmailError === null ||
+                              props.registerDateError === null ||
+                              props.registerPasswordOneError === null ||
+                              props.registerPasswordTwoError === null
+                           }
+                           onClick={() => {
+                              setBtnValue('Creating Account');
+                              setBtnActive(true);
+                              submitCredentialsFeedback();
+                           }}
+                        >
+                           <p>{btnValue}</p>
+                           <div
+                              className={
+                                 btnActive
+                                    ? `${styles.loader} ${styles.btnActive}`
+                                    : styles.loader
+                              }
+                           >
+                              <i>
+                                 <BiLoaderAlt />
+                              </i>
+                           </div>
+                        </button>
                      </div>
-                     <div className="signup-form-message">
+                     <div className={styles.signupFormMessage}>
                         <p>Already have an account?</p>
-                        <p id="signup-form-message-p">Login</p>
+                        <p
+                           id={styles.signupFormMessageP}
+                           onClick={() => {
+                              props.handleModalLogin();
+
+                              signUpFormRef.current.reset();
+                              props.reset();
+                              setIsError(false)
+                           }}
+                        >
+                           Login
+                        </p>
                      </div>
-                  </div>
+                  </form>
                </div>
             </div>
          </div>
-      </section>
+      </div>
    );
 }
 
