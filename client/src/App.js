@@ -25,6 +25,7 @@ AOS.init();
 function App() {
    return (
       <Routes>
+         {/* Route for landing page and it's sub-pages */}
          <Route
             path="/"
             exact
@@ -40,6 +41,10 @@ function App() {
          <Route path="/how-it-works" exact element={<HowItWorks />} />
 
          <Route path="/FAQ" exact element={<FAQ />} />
+
+         {/* End of routes for landing page */}
+
+         {/* Route for user-dashboard */}
 
          <Route
             path="/dashboard"
@@ -82,6 +87,13 @@ function App() {
             }
          />
 
+         {/* End of routes for user dashboard */}
+
+         {/* Start of route for doctor-dashboard. */}
+
+         {/* End of route for doctor-dashboard */}
+
+         {/* Start of routes for find-a-doctor page */}
          <Route
             path="/find-a-doctor"
             exact
@@ -93,6 +105,7 @@ function App() {
                />
             }
          />
+         {/* End of route for find-a-doctor page. */}
       </Routes>
    );
 }
