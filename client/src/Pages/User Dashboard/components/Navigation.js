@@ -49,7 +49,7 @@ function Navigation(props) {
                            <h3>Dasboard</h3>
                         </li>
                      </Link>
-                     <Link to={'/profile'}>
+                     <Link to={'/userprofile'}>
                         <li
                            className={
                               props.page === 'profile' ? styles.active : ''

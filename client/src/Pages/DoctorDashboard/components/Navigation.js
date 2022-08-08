@@ -2,14 +2,10 @@ import React from 'react';
 import styles from './navigation.module.css';
 import { GrClose } from 'react-icons/gr';
 import { MdSpaceDashboard } from 'react-icons/md';
-import { BsFillFileEarmarkFill } from 'react-icons/bs';
 import { TiMessages } from 'react-icons/ti';
 import { ImExit } from 'react-icons/im';
-import { IoSettingsOutline } from 'react-icons/io5';
 import { FaUser } from 'react-icons/fa';
-import { CgPill } from 'react-icons/cg';
 import { TbCalendarTime } from 'react-icons/tb';
-import { GiLabCoat } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 function Navigation(props) {
@@ -34,7 +30,9 @@ function Navigation(props) {
                   </div>
                </div>
                <div className={styles.sidebar}>
+                  {/* list of all navigation */}
                   <ul>
+                     {/* for dashboard */}
                      <Link to={'/dashboard'}>
                         <li
                            className={
@@ -49,6 +47,7 @@ function Navigation(props) {
                            <h3>Dasboard</h3>
                         </li>
                      </Link>
+                     {/* for profile */}
                      <Link to={'/profile'}>
                         <li
                            className={
@@ -63,34 +62,7 @@ function Navigation(props) {
                            <h3>Profile</h3>
                         </li>
                      </Link>
-                     <Link to={'/records'}>
-                        <li
-                           className={
-                              props.page === 'records' ? styles.active : ''
-                           }
-                        >
-                           <span className={styles.icons}>
-                              <i>
-                                 <BsFillFileEarmarkFill />
-                              </i>
-                           </span>
-                           <h3>Records</h3>
-                        </li>
-                     </Link>
-                     <Link to={'/medications'}>
-                        <li
-                           className={
-                              props.page === 'medications' ? styles.active : ''
-                           }
-                        >
-                           <span className={styles.icons}>
-                              <i>
-                                 <CgPill />
-                              </i>
-                           </span>
-                           <h3>Medications</h3>
-                        </li>
-                     </Link>
+                     {/* for schedule */}
                      <li
                         className={
                            props.page === 'scheduler' ? styles.active : ''
@@ -103,21 +75,7 @@ function Navigation(props) {
                         </span>
                         <h3>Schedule</h3>
                      </li>
-                     <Link to={'/find-a-doctor'}>
-                        <li
-                           className={
-                              props.page === 'finddoctor' ? styles.active : ''
-                           }
-                        >
-                           <span className={styles.icons}>
-                              <i>
-                                 <GiLabCoat />
-                              </i>
-                           </span>
-                           <h3>Find a Doctor</h3>
-                        </li>
-                     </Link>
-
+                     {/* for messages */}
                      <li
                         className={
                            props.page === 'messages' ? styles.active : ''
@@ -130,18 +88,7 @@ function Navigation(props) {
                         </span>
                         <h3>Messages</h3>
                      </li>
-                     <li
-                        className={
-                           props.page === 'settings' ? styles.active : ''
-                        }
-                     >
-                        <span className={styles.icons}>
-                           <i>
-                              <IoSettingsOutline />
-                           </i>
-                        </span>
-                        <h3>Settings</h3>
-                     </li>
+                     {/* for logout */}
                      <li
                         className={props.page === 'logout' ? styles.active : ''}
                      >
@@ -153,6 +100,7 @@ function Navigation(props) {
                         <h3>Logout</h3>
                      </li>
                   </ul>
+                  {/* end of navigation */}
                </div>
             </aside>
          </div>

@@ -1,17 +1,6 @@
-:root {
-   --white: #ffffff;
-   --gray: #ecf3fe;
-   --lightcol: #05a6c2;
-   --midcol: #2b6777;
-   --deepcol: #0d3f58;
-   --tablehead: #c2c9d1;
-   --iconred: #dd7678;
-   --iconback: #f7eef0;
-}
-
 /* MAIN */
 main#midsection {
-   margin-top: 4rem;
+   margin-top: 4.3rem;
    background-color: var(--gray);
    padding: 2rem 1.2rem 0 1.2rem;
    border-top-left-radius: 2rem;

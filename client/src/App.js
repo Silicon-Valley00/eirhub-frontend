@@ -19,6 +19,8 @@ import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
 import Records from './Pages/User Dashboard/Records/Records';
 import RecordChild from './Pages/User Dashboard/components/RecordsChild';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
+import DoctorDashboard from './Pages/DoctorDashboard/DoctorDashboard';
+import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
 
 AOS.init();
 
@@ -47,7 +49,7 @@ function App() {
          {/* Route for user-dashboard */}
 
          <Route
-            path="/dashboard"
+            path="/userdashboard"
             exact
             element={
                <UserDashboard
@@ -58,7 +60,7 @@ function App() {
             }
          />
          <Route
-            path="/profile"
+            path="/userprofile"
             exact
             element={<UserDashboard parent={<Profile />} page={'profile'} />}
          />
@@ -90,7 +92,17 @@ function App() {
          {/* End of routes for user dashboard */}
 
          {/* Start of route for doctor-dashboard. */}
-
+         <Route
+            path="/doctordashboard"
+            exact
+            element={
+               <DoctorDashboard
+                  parent={<MidDashboard />}
+                  child={<DashboardNotificationAlerts />}
+                  page={'dashboard'}
+               />
+            }
+         />
          {/* End of route for doctor-dashboard */}
 
          {/* Start of routes for find-a-doctor page */}

@@ -7,29 +7,7 @@
    overflow: hidden;
    overflow-x: hidden;
    font-family: 'Poppins', sans-serif;
-}
-
-:root {
-   --white: #ffffff;
-   --gray: #ecf3fe;
-   --lightcol: #05a6c2;
-   --midcol: #2b6777;
-   --deepcol: #0d3f58;
-   --tablehead: #c2c9d1;
-   --iconred: #dd7678;
-   --iconback: #f7eef0;
-}
-
-* {
-   margin: 0;
-   padding: 0;
-   outline: 0;
-   appearance: 0;
-   border: 0;
-   text-decoration: 0;
-   list-style: none;
-   box-sizing: border-box;
-   font-family: 'Poppins', sans-serif;
+   margin-top: 1rem;
 }
 
 .container {
