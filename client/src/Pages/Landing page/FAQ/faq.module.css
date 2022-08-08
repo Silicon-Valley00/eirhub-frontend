@@ -117,6 +117,10 @@
    .question_and_answer {
       padding: 0 2rem;
    }
+
+   .plusMinus {
+      font-size: 23px;
+   }
 }
 
 @media (min-width: 1024px) {

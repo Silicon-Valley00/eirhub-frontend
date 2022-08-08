@@ -106,7 +106,9 @@ const FAQ = () => {
                                  onClick={() => toggle(index)}
                               >
                                  <h1>{item.question}</h1>
-                                 <span>{selected === index ? '-' : '+'}</span>
+                                 <span className={styles.plusMinus}>
+                                    {selected === index ? '-' : '+'}
+                                 </span>
                               </div>
                               <div
                                  className={
