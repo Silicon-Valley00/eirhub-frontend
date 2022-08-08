@@ -1,4 +1,4 @@
-import PageNotFoundStyles from '../PageNotFound/PageNotFound.module.css';
+import PageNotFoundStyles from './PageNotFound.module.css';
 import NotFound from '../../assets/Notfound.svg';
 import { Link } from 'react-router-dom';
 

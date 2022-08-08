@@ -3,7 +3,7 @@ import { FaTwitter } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import footerStyle from '../components/footer.module.css';
+import footerStyle from './footer.module.css';
 
 const Footer = () => {
    return (
