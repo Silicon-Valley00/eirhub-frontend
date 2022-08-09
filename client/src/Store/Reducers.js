@@ -1,6 +1,6 @@
 import { SET_NAME } from './ActionTypes';
 
-import { PURGE } from 'redux-persist';
+// import { PURGE } from 'redux-persist';
 
 const initialState = {
    name: '',

@@ -19,6 +19,7 @@ import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
 import Records from './Pages/User Dashboard/Records/Records';
 import RecordChild from './Pages/User Dashboard/components/RecordsChild';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
+import Message from './Pages/User Dashboard/Message/Message';
 
 AOS.init();
 
@@ -92,6 +93,11 @@ function App() {
                   page={'finddoctor'}
                />
             }
+         />
+         <Route
+            path="/messaging"
+            exact
+            element={<UserDashboard parent={<Message />} page={'message'} />}
          />
       </Routes>
    );

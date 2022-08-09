@@ -72,7 +72,7 @@ function Dashboard() {
                   <div className={styles.vitalsDetails}>
                      <div className={styles.vitalsIcon}>
                         <i>
-                           <img src={glucometer} alt={'Glucometer image'} />
+                           <img src={glucometer} alt={'Glucometer'} />
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>

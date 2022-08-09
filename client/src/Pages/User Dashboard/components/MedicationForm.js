@@ -6,15 +6,13 @@ import { TiTime } from 'react-icons/ti';
 import { IoCloseOutline } from 'react-icons/io5';
 
 function Medication(props) {
-   const [editMedication, setEditMediaction] = useState({});
+   const [editMedication, setEditMedication] = useState({});
    // This transfers the setProfile function outside of this function's scope
-   pullData = setEditMediaction;
+   pullData = setEditMedication;
 
    // Handles error messages
    const [isError, setIsError] = useState(false);
-   const [errorMessage, setErrorMessage] = useState(
-      'Email already in use. Want to login?'
-   );
+   const [errorMessage, setErrorMessage] = useState('Dummy error message');
 
    // Handles user inputs for medication form
    const [drugName, setDrugName] = useState('');
@@ -36,8 +34,13 @@ function Medication(props) {
 
    // handles submition of form
    function handleMedicationSubmit() {
+      /*
+         Function validates medication entries and submits them
+         Args: Function takes no argument
+         Return: Nothing is returned
+      */
       if (
-         //First checks if all details have been entered
+         //Checks if all details have been entered
          drugName !== '' &&
          drugDosage !== '' &&
          drugTime !== '' &&
@@ -68,7 +71,7 @@ function Medication(props) {
             };
             console.log(medicationBody);
             //clears all input boxes and edit medication data
-            setEditMediaction({});
+            setEditMedication({});
             setDrugName('');
             setDrugDosage('');
             setDrugTime('');
@@ -81,7 +84,7 @@ function Medication(props) {
          setIsError(true);
       }
       //clears all input boxes and edit medication data
-      setEditMediaction({});
+      setEditMedication({});
       setDrugName('');
       setDrugDosage('');
       setDrugTime('');
@@ -232,6 +235,7 @@ function Medication(props) {
    );
 }
 
+//This getter calls the pullData function once it has been set with a value
 var pullData;
 Medication.pullData = (editMedication) => {
    pullData(editMedication);

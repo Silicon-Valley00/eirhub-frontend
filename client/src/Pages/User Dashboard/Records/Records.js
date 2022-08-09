@@ -4,8 +4,17 @@ import { FaClipboardList } from 'react-icons/fa';
 import { BsArrowLeftCircle, BsDownload } from 'react-icons/bs';
 
 function Records() {
+   //Handles state on page been viewed
    const [changePage, setChangePage] = useState(false);
-   function handleChangePage(value) {
+
+   function handleChangePage() {
+      /*
+         Function handles the change in page been showed to user
+
+         Args: No argument is taken
+
+         Return : Function returns nothing
+      */
       setChangePage(!changePage);
    }
    return (

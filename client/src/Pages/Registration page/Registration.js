@@ -4,6 +4,7 @@ import Login from './components/Login';
 import DoctorSignup from './components/DoctorSignup.js';
 import DoctorLogin from './components/DoctorLogin';
 import axios from 'axios';
+import { LoginUser } from '../../context/authcontext';
 
 // Database configuration
 const api = axios.create({
@@ -515,6 +516,9 @@ function Registration(props) {
             //checks details of response
 
             if (response.data.status === true) {
+               //log user into cometchat
+               LoginUser('superhero2');
+
                //returns response
                return [response.data.status, response.data.msg, 'Redirecting'];
             } else {

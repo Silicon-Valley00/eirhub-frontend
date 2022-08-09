@@ -80,10 +80,10 @@
    /* text-align: right; */
 }
 .medicationCounter p {
-   font-size: 85%;
+   font-size: 75%;
    color: var(--white);
    background-color: var(--lightcol);
-   padding: 0.4rem;
+   padding: 0.2rem;
    border-radius: 0.3rem;
    font-weight: 600;
    text-align: center;
@@ -107,14 +107,14 @@
    font-weight: 700;
 }
 .lowerContent {
-   width: 80%;
-   height: 18%;
+   width: 100%;
+   height: 15%;
    margin: 0 auto;
    display: flex;
    justify-content: space-between;
 }
 .lowerContent button {
-   width: 47%;
+   width: 40%;
    height: 100%;
    border: none;
    outline: none;
@@ -150,12 +150,9 @@
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .medicationsBoxContent {
-     
       grid-template-columns: 47% 47%;
-     
    }
    .medicationBox {
-     
       padding: 0.65rem 1rem;
    }
    .upperContent {
@@ -184,22 +181,17 @@
       height: 2rem;
    }
    .lowerContent button {
-    
       font-size: 0.7rem;
       padding: 0.4rem 0.6rem;
       border-radius: 0.4rem;
    }
-
 }
 
 @media only screen and (min-width: 897px) and (max-width: 1024px) {
    .medicationsBoxContent {
-     
       grid-template-columns: 47% 47%;
-     
    }
    .medicationBox {
-     
       padding: 0.65rem 1rem;
    }
    .upperContent {
@@ -228,25 +220,20 @@
       height: 2rem;
    }
    .lowerContent button {
-    
       font-size: 0.6rem;
       padding: 0.1rem 0.2rem;
       border-radius: 0.4rem;
    }
-
 }
 
 @media only screen and (min-width: 769px) and (max-width: 896px) {
    .medicationsBoxContent {
-     
       grid-template-columns: 1fr;
       width: 100%;
       justify-content: center;
       place-items: center;
-     
    }
    .medicationBox {
-     
       padding: 0.65rem 1rem;
    }
    .upperContent {
@@ -275,23 +262,17 @@
       height: 2rem;
    }
    .lowerContent button {
-    
       font-size: 0.6rem;
       padding: 0.1rem 0.2rem;
       border-radius: 0.4rem;
    }
-
 }
-
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    .medicationsBoxContent {
-     
       grid-template-columns: 47% 47%;
-     
    }
    .medicationBox {
-     
       padding: 0.65rem 1rem;
    }
    .upperContent {
@@ -320,22 +301,17 @@
       height: 2rem;
    }
    .lowerContent button {
-    
       font-size: 0.6rem;
       padding: 0.09rem 0.1rem;
       border-radius: 0.4rem;
    }
-
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
    .medicationsBoxContent {
-     
       grid-template-columns: 1fr;
-     
    }
    .medicationBox {
-     
       padding: 0.65rem 1rem;
    }
    .upperContent {
@@ -364,10 +340,8 @@
       height: 2rem;
    }
    .lowerContent button {
-    
       font-size: 0.6rem;
       padding: 0.09rem 0.1rem;
       border-radius: 0.4rem;
    }
-
 }
