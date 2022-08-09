@@ -100,11 +100,7 @@ function App() {
             path="/doctordashboard"
             exact
             element={
-               <DoctorDashboard
-                  parent={<MidDashboard />}
-                  child={<DashboardNotificationAlerts />}
-                  page={'dashboard'}
-               />
+               <DoctorDashboard parent={<MidDashboard />} page={'dashboard'} />
             }
          />
 
