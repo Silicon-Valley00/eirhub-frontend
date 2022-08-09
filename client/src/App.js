@@ -96,21 +96,9 @@ function App() {
          {/* End of routes for user dashboard */}
 
          {/* Start of route for doctor-dashboard. */}
-         <Route
-            path="/doctordashboard"
-            exact
-            element={
-               <DoctorDashboard parent={<MidDashboard />} page={'dashboard'} />
-            }
-         />
+         <Route path="/doctordashboard" exact element={<MidDashboard />} />
 
-         <Route
-            path="/doctorprofile"
-            exact
-            element={
-               <DoctorDashboard parent={<DoctorProfile />} page={'profile'} />
-            }
-         />
+         <Route path="/doctorprofile" exact element={<DoctorDashboard />} />
          {/* End of route for doctor-dashboard */}
 
          {/* Start of routes for find-a-doctor page */}

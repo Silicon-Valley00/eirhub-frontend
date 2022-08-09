@@ -1,22 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
 .userbody {
-   width: 100vw;
    height: 100vh;
-   background-color: var(#f6f6f9);
-   overflow: hidden;
-   overflow-x: hidden;
    font-family: 'Poppins', sans-serif;
    margin-top: 1rem;
+   width: 100%;
 }
 
 .container {
    display: grid;
-   width: 96%;
    height: 100%;
-   margin: 0 auto;
+   margin: 0;
    gap: 1rem;
-   grid-template-columns: 14rem auto 18rem;
+   grid-template-columns: 14rem auto 12rem;
 }
 
 /* RIGHTSIDE */
