@@ -3,11 +3,10 @@
    height: 100vh;
 }
 
-.container aside .top {
-   background: var(--white);
+.top {
    display: flex;
-   justify-content: space-around;
    align-items: center;
+   padding-left: 2rem;
 }
 
 aside .logo {
@@ -16,7 +15,7 @@ aside .logo {
 }
 aside .logo h2 {
    color: var(--lightcol);
-   font-weight: 400;
+   font-weight: 600;
    font-size: 2rem;
    font-family: var(--logofont);
 }
@@ -154,7 +153,7 @@ aside .sidebar li:hover span.icons {
       position: fixed;
       left: 0;
       background: var(--white);
-      width: 15rem;
+      width: 20rem;
       z-index: 3;
       box-shadow: 1rem 3rem 4rem rgba(132, 139, 200, 0.18);
       height: 100vh;
@@ -185,7 +184,7 @@ aside .sidebar li:hover span.icons {
 
    aside .top {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
    }
 
@@ -246,9 +245,6 @@ aside .sidebar li:hover span.icons {
       color: var(--midcol);
    }
 
-   aside .logo {
-      margin-left: 1rem;
-   }
    aside .logo h2 {
       display: inline;
    }
@@ -304,7 +300,7 @@ aside .sidebar li:hover span.icons {
 
    aside .top {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
    }
 
@@ -365,9 +361,6 @@ aside .sidebar li:hover span.icons {
       color: var(--midcol);
    }
 
-   aside .logo {
-      margin-left: 1rem;
-   }
    aside .logo h2 {
       display: inline;
    }
