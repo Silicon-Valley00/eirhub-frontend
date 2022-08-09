@@ -339,7 +339,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 .appointmentTable::-webkit-scrollbar-track {
    margin: 20px;
    cursor: pointer;
-   -webkit-box-shadow: inset 0 0 10px var(--white);
+   --webkit-box-shadow: inset 0 0 10px var(--white);
 }
 .medicationTable::-webkit-scrollbar-thumb,
 .appointmentTable::-webkit-scrollbar-thumb {

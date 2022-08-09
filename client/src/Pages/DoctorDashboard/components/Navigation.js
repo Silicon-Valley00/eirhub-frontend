@@ -33,7 +33,7 @@ function Navigation(props) {
                   {/* list of all navigation */}
                   <ul>
                      {/* for dashboard */}
-                     <Link to={'/dashboard'}>
+                     <Link to={'/doctordashboard'}>
                         <li
                            className={
                               props.page === 'dashboard' ? styles.active : ''
@@ -48,7 +48,7 @@ function Navigation(props) {
                         </li>
                      </Link>
                      {/* for profile */}
-                     <Link to={'/profile'}>
+                     <Link to={'/doctorprofile'}>
                         <li
                            className={
                               props.page === 'profile' ? styles.active : ''

@@ -46,7 +46,7 @@ function DoctorDashboard(props) {
                      </p>
                   </div>
                </div>
-               {/* {props.child} */}
+               {props.child}
             </div>
          </div>
       </div>
