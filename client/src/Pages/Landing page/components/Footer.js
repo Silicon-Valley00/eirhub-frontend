@@ -50,9 +50,11 @@ const Footer = () => {
                <li className={footerStyle.flist}>How it Works</li>
                <li className={footerStyle.flist}>Book Appointment</li>
                <li className={footerStyle.flist}>Register</li>
-               <Link to="/FAQ" className={footerStyle.flist}>
-                  FAQ
-               </Link>
+               <li className={footerStyle.flist}>
+                  <Link to="/FAQ" className={footerStyle.flist}>
+                     FAQ
+                  </Link>
+               </li>
                <li className={footerStyle.flist}>Terms of Use</li>
             </ul>
          </div>
