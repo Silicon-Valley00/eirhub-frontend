@@ -1,0 +1,11 @@
+.main {
+   margin-left: 0;
+}
+
+/* tablet queries */
+@media (min-width: 800px) {
+   .main {
+      border: 1px solid red;
+      margin-left: 4rem;
+   }
+}

@@ -10,14 +10,13 @@ nav {
 }
 
 .logo {
-   display: none;
+   display: block;
+   font-size: 14px;
+   color: var(--lightcol);
+   font-weight: 600;
+   font-family: var(--logofont);
 }
 
-.menu {
-   width: 20px;
-   height: 20px;
-   cursor: pointer;
-}
 .avatar {
    display: flex;
    align-items: center;
@@ -38,10 +37,6 @@ nav {
 @media (min-width: 480px) {
    nav {
       padding: 10px 2rem;
-   }
-
-   .menu {
-      display: none;
    }
 
    .logo {

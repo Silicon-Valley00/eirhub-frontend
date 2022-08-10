@@ -7,7 +7,7 @@ function MidDashboard() {
    return (
       <>
          <Navigation />
-         <main>Yhh dashboard</main>
+         <main className={styles.main}>Yhh dashboard</main>
       </>
       // <>
       //    <main id={styles.midsection}>
