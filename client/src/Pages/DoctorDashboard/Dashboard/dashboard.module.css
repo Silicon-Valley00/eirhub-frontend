@@ -1,11 +1,164 @@
 .main {
-   margin-left: 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 2rem;
+   background-color: var(--gray);
+   border-radius: 5px 5px 0 0;
+   height: 100vh;
+}
+
+.middle_section {
+   height: 60%;
+   width: 70%;
+}
+
+.doctor_display {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 1rem;
+}
+
+.card {
+   background: var(--white);
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   height: 6rem;
+   width: 100%;
+   color: var(--midcol);
+   padding: 2px 2rem;
+   border-radius: 10px;
+   box-shadow: 0 2px 15px 0 #bedded;
+   backdrop-filter: blur(16px) saturate(180%);
+   -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+.icon {
+   height: 2rem;
+   width: 2rem;
+   color: var(--deepcol);
+}
+
+.digits {
+   font-size: 13px;
+}
+
+.text {
+   font-size: 16px;
+   color: var(--midcol);
+   font-weight: 500;
+   text-transform: capitalize;
+   opacity: 45%;
+}
+
+@media (min-width: 420px) {
+   .middle_section {
+      width: 100%;
+   }
+
+   .doctor_display {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 10px;
+   }
+}
+
+/* @media (min-width: 600px) {
+   .doctor_display {
+      grid-template-columns: repeat(3, 1fr);
+   }
+} */
+
+@media (min-width: 720px) {
+   .main {
+      flex-direction: row;
+      gap: 1rem;
+      background-color: var(--white);
+      padding-top: 0;
+   }
+
+   .middle_section {
+      width: 70%;
+      height: 100%;
+      background-color: var(--gray);
+      border-radius: 20px 20px 0 0;
+      padding: 2rem 10px 0 10px;
+   }
+
+   .right_pane {
+      background-color: var(--white);
+      height: 100%;
+      width: 30%;
+      padding-right: 10px;
+   }
 }
 
 /* tablet queries */
 @media (min-width: 800px) {
    .main {
-      border: 1px solid red;
-      margin-left: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 6rem;
+   }
+}
+
+@media (min-width: 1024px) {
+   .main {
+      margin-left: 12rem;
+   }
+
+   .doctor_display {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      box-shadow: 0 2px 15px 0 #bedded;
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      padding: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 9rem;
+   }
+
+   .card {
+      height: 100%;
+      padding: 0;
+      justify-content: center;
+      gap: 5px;
+      border-radius: 0;
+      box-shadow: 0 0 0 0;
+      backdrop-filter: blur(0) saturate(0);
+      -webkit-backdrop-filter: blur(0) saturate(0);
+   }
+
+   #first_card {
+      justify-content: start;
+      padding: 0 2rem;
+   }
+
+   #second_card {
+      justify-content: start;
+      padding: 0 2rem;
+   }
+
+   #third_card {
+      justify-content: start;
+      padding: 0 2rem;
+   }
+
+   .icon {
+      height: 3rem;
+      width: 3rem;
+   }
+
+   .text {
+      font-size: 18px;
+   }
+
+   .digits {
+      font-size: 15px;
    }
 }
