@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import logo from '../../../images/logo.svg';
 import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
@@ -21,7 +21,21 @@ const Navbar = (props) => {
       setLoginClick(!loginClick);
       setSignUpClick(false);
    };
-
+   //Function to use when the user clicks outside of the dropdown.
+   let menuRef = useRef();
+   useEffect(() => {
+      let Handler = (event) => {
+         if (!menuRef.current.contains(event.target)) {
+            //menuRef is the menu reference used so that the function knows where the event will happen
+            setLoginClick(false);
+            setSignUpClick(false);
+         }
+      };
+      document.addEventListener('mousedown', Handler);
+      return () => {
+         document.addEventListener('mousedown', Handler);
+      };
+   });
    return (
       <nav id={styles.nav}>
          {/* Logo */}
@@ -77,7 +91,7 @@ const Navbar = (props) => {
                      How it Works
                   </NavLink>
                </ul>
-               <div id={styles.signup}>
+               <div ref={menuRef} id={styles.signup}>
                   <ul className={styles.signup_list}>
                      <li
                         className={styles.signup_item}
@@ -107,8 +121,18 @@ const Navbar = (props) => {
                         Login
                      </li> */}
                   </ul>
-                  {loginClick && <LoginDropdown handleModalLogin={props.handleModalLogin} handleModalLoginDoctor={props.handleModalLoginDoctor} />}
-                  {signUpClick && <SignUpDropdown handleModalSignup={props.handleModalSignup} handleModalSignupDoctor={props.handleModalSignupDoctor}/>}
+                  {loginClick && (
+                     <LoginDropdown
+                        handleModalLogin={props.handleModalLogin}
+                        handleModalLoginDoctor={props.handleModalLoginDoctor}
+                     />
+                  )}
+                  {signUpClick && (
+                     <SignUpDropdown
+                        handleModalSignup={props.handleModalSignup}
+                        handleModalSignupDoctor={props.handleModalSignupDoctor}
+                     />
+                  )}
                </div>
             </div>
          </div>
