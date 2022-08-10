@@ -12,7 +12,6 @@ function DoctorDashboard(props) {
    const [openMenu, setOpenMenu] = useState(false);
 
    return (
-      // BUG: fix the horizontal scrollbar bug
       <div className={styles.userbody}>
          <div className={styles.container}>
             {/* HACK: Make the middle section also have its own vertical scrollbar. */}
@@ -34,6 +33,8 @@ function DoctorDashboard(props) {
                         <MdMenu />
                      </i>
                   </div>
+
+                  {/* Show Avatar and doctor's name */}
                   <div className={styles.profileImage}>
                      <img src={avatarThree} alt="avatar" />
                   </div>
@@ -46,7 +47,6 @@ function DoctorDashboard(props) {
                      </p>
                   </div>
                </div>
-               {/* {props.child} */}
             </div>
          </div>
       </div>
