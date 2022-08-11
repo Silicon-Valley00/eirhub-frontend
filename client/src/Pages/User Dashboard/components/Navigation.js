@@ -35,7 +35,7 @@ function Navigation(props) {
                </div>
                <div className={styles.sidebar}>
                   <ul>
-                     <Link to={'/dashboard'}>
+                     <Link to={'/userdashboard'}>
                         <li
                            className={
                               props.page === 'dashboard' ? styles.active : ''
