@@ -7,6 +7,7 @@ import { MdMenu, MdSpaceDashboard } from 'react-icons/md';
 import { GrClose } from 'react-icons/gr';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AiFillFile } from 'react-icons/ai';
 
 const links = [
    {
@@ -25,8 +26,8 @@ const links = [
       to: '/doctorschedule',
    },
    {
-      icon: <MdSpaceDashboard />,
-      title: 'dashboard',
+      icon: <AiFillFile />,
+      title: 'record',
       to: '/doctorrecord',
    },
    {
@@ -38,6 +39,7 @@ const links = [
 
 const Sidebar = () => {
    const [show, setShow] = useState(false);
+   const [selected, showSelected] = useState(0);
 
    return (
       <>
@@ -68,7 +70,17 @@ const Sidebar = () => {
                <div className={styles.upper_links}>
                   {links.map((item, index) => {
                      return (
-                        <Link to={item.to} className={styles.link}>
+                        // BUG: active styling
+                        <Link
+                           to={item.to}
+                           className={
+                              selected === index
+                                 ? `${styles.link} ${styles.active}`
+                                 : `${styles.link}`
+                           }
+                           key={index}
+                           onClick={() => showSelected(index)}
+                        >
                            <div className={styles.icon}>{item.icon}</div>
                            <p className={styles.title}>{item.title}</p>
                         </Link>

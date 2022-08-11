@@ -28,13 +28,20 @@ function MidDashboard() {
                         <p className={styles.text}>records</p>
                      </div>
                   </div>
-                  <div className={styles.card} id={styles.second_card}>
+                  <div className={styles.card} id={styles.third_card}>
                      <CgCalendar className={styles.icon} />
                      <div>
                         <p className={styles.digits}>132</p>
                         <p className={styles.text}>appointments</p>
                      </div>
                   </div>
+               </div>
+               {/* End of summary display */}
+
+               {/* div for upcoming appointment */}
+               <div className={styles.appointment}>
+                  <h1 className={styles.heading}>Upcoming appointments</h1>
+                  <div className={styles.appointment_table}></div>
                </div>
             </div>
             <div className={styles.right_pane}>right</div>

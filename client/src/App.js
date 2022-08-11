@@ -98,7 +98,7 @@ function App() {
          {/* Start of route for doctor-dashboard. */}
          <Route path="/doctordashboard" exact element={<MidDashboard />} />
 
-         <Route path="/doctorprofile" exact element={<DoctorDashboard />} />
+         <Route path="/doctorprofile" exact element={<DoctorProfile />} />
          {/* End of route for doctor-dashboard */}
 
          {/* Start of routes for find-a-doctor page */}

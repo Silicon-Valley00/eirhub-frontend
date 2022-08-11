@@ -1,46 +1,30 @@
+.main {
+   padding: 0 12px 3rem 12px;
+}
+
 #profileBody {
-   margin-top: 4rem;
-   background-color: var(--gray);
-   /* padding: 2rem; */
-   width: 137%;
+   margin-top: 2rem;
 }
 
 .upperContent {
-   width: 90%;
-   height: 13%;
    display: flex;
-   justify-content: space-between;
-}
-
-/* Avataar with name and upload image button */
-.profileImage {
-   width: 5rem;
-   height: 100%;
-   float: left;
-   border-radius: 50%;
-}
-
-.profileImage img {
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 0 0.5rem;
    width: 100%;
-   height: 100%;
 }
 
 .profileIntro {
-   width: 85%;
-   padding: 0.2rem 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
 
 .profileName {
-   width: 100%;
-}
-
-.profileName h2 {
-   font-size: 1.4rem;
-   color: var(--deepcol);
-}
-
-.uploadImageBtn {
-   width: 100%;
+   color: var(--midcol);
+   text-align: center;
 }
 
 .uploadImageBtn label {
@@ -57,22 +41,18 @@
 
 .personalInfo {
    width: 100%;
-   height: 50%;
-   min-height: 40%;
-   max-height: 40%;
    margin-top: 2rem;
    text-transform: capitalize;
 }
 
-/* Section for personal info */
-.personalInfo h2 {
+.title {
    color: var(--deepcol);
    font-size: 1.3rem;
+   padding-bottom: 0.8rem;
 }
-
+/* Section for personal info */
 form.personalInfoFormBox {
    width: 100%;
-   /* height: 90%; */
    display: flex;
    flex-direction: column;
    gap: 1rem;
@@ -81,55 +61,81 @@ form.personalInfoFormBox {
 /* First name , middle name and lastname */
 .forFirst {
    display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 0.8rem;
 }
 
 /* Email, date-of-birth and Gender */
 .forSecond {
    display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 0.8rem;
 }
 
 /* House address */
 .forThird {
    display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 0.8rem;
 }
 
 .profileFormBox {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 4px;
    height: max-content;
    min-height: max-content;
    max-height: max-content;
    place-items: center;
+   width: 100%;
 }
+
 .profileFormBox h3 {
    font-size: 0.8rem;
    color: var(--deepcol);
    font-weight: 600;
 }
+
 .formBoxNameInputs {
-   width: 100%;
-   height: 1.6rem;
-   border-radius: 5px;
    display: flex;
+   flex-direction: column;
    align-items: center;
-   justify-content: space-between;
-   border: 0.2px solid var(--formboxoutline);
-   background-color: var(--white);
+   justify-content: center;
+   width: 100%;
 }
-.formBoxNameInputs input {
-   background: none;
+
+.input_box {
+   border: 0.2px solid var(--formboxoutline);
+   padding: 0.3rem 12px;
+   width: 100%;
+   height: 2rem;
+   border-radius: 5px;
+   background-color: var(--white);
    outline: none;
-   border: none;
    height: 100%;
    line-height: 1;
    font-weight: 400;
    font-size: 0.8rem;
    color: rgba(0, 0, 0, 0.7);
-   width: 100%;
-   padding: 0.4rem;
 }
 
-.formBoxNameInputs .select {
+/* BUG: the dropdown arrow is not aligned; */
+.select {
    width: 100%;
+   height: 2rem;
+   position: relative;
+   display: flex;
+   float: right;
+   line-height: 1;
+   overflow: hidden;
+   text-decoration: none;
 }
+
 .formBoxNameInputs .select select {
    width: 100%;
    height: 100%;
@@ -150,14 +156,7 @@ form.personalInfoFormBox {
 select::-ms-expand {
    display: none;
 }
-.select {
-   position: relative;
-   display: flex;
-   float: right;
-   line-height: 1;
-   overflow: hidden;
-   text-decoration: none;
-}
+
 .select::after {
    content: '\25BC';
    position: absolute;
@@ -169,9 +168,11 @@ select::-ms-expand {
    pointer-events: none;
    transition: 0.25s all ease;
 }
+
 .select select::part(button) {
    padding: 0 1rem;
 }
+
 .select select::part(listbox) {
    border: none;
 }
@@ -183,13 +184,33 @@ select::-ms-expand {
 }
 
 /* media query for 480px */
-@media (min-width: 480px) {
-   #profileBody {
-      margin-top: 4rem;
-      padding: 2rem 3rem 0 3rem;
-      border-top-left-radius: 2rem;
-      border-top-right-radius: 2rem;
-      width: 100%;
+@media (min-width: 800px) {
+   .main {
+      border: 2px solid blue;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 6rem;
+   }
+
+   .profileImage {
+      height: 4rem;
+      width: 4rem;
+   }
+
+   .upperContent {
+      flex-direction: row;
+      gap: 1rem;
+   }
+
+   .profileIntro {
+      align-items: flex-start;
+   }
+}
+
+@media (min-width: 1024px) {
+   .main {
+      margin-left: 16rem;
    }
 }
 
