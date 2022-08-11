@@ -208,6 +208,7 @@ select::-ms-expand {
    border-radius: 5px;
    letter-spacing: 2px;
    cursor: pointer;
+   transition: opacity 4s;
 }
 
 .icon {
@@ -275,6 +276,7 @@ select::-ms-expand {
 
    .upperContent {
       align-items: flex-start;
+      justify-content: flex-start;
    }
    .personal_and_proff {
       flex-direction: column;

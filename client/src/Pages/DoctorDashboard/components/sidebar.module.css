@@ -85,13 +85,6 @@
    border-bottom-right-radius: 3rem;
 }
 
-.active::before {
-   content: '';
-   width: 2%;
-   height: 100%;
-   background-color: var(--midcol);
-}
-
 .upper_links {
    display: flex;
    flex-direction: column;
