@@ -46,9 +46,13 @@ function FindingDoctor(props) {
                      </div>
                      <div className={styles.selectTwo}>
                         <select placeholder="Hospital">
-                           <option>One</option>
-                           <option>Two</option>
-                           <option>Three</option>
+                           <option>Hospital</option>
+                           <option>Komfo Anokye Teaching hospital</option>
+                           <option>KNUST University hospital</option>
+                           <option>Ridge Medical center</option>
+                           <option>North Legon Hospital</option>
+                           <option>Neptune Medical Center</option>
+                           <option>Gbawe SDA Hospital</option>
                         </select>
                      </div>
                   </div>
