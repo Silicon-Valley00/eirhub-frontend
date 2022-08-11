@@ -1,4 +1,3 @@
-/*
 //Use the first section if you're not working with message section
 
 import React from 'react';
@@ -12,13 +11,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <BrowserRouter>
       <Provider store={store}>
-         <React.StrictMode>
-            <App />
-         </React.StrictMode>
+         <App />
       </Provider>
    </BrowserRouter>
-);*/
-
+);
+/*
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -52,3 +49,4 @@ CometChat.init(CONSTANTS.APP_ID, appSetting).then(
       alert('did not work');
    }
 );
+*/

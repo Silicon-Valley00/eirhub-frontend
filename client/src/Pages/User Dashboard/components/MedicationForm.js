@@ -4,6 +4,7 @@ import { IoCalendar } from 'react-icons/io5';
 import { GiMedicinePills, GiPillDrop } from 'react-icons/gi';
 import { TiTime } from 'react-icons/ti';
 import { IoCloseOutline } from 'react-icons/io5';
+import { addPrescriptions, updatePrescriptions } from '../../../Store/Actions';
 
 function Medication(props) {
    const [editMedication, setEditMedication] = useState({});
@@ -69,7 +70,16 @@ function Medication(props) {
                start_date: drugStartDate,
                end_date: drugEndDate,
             };
-            console.log(medicationBody);
+            console.log('non', editMedication);
+            if (Object.keys(editMedication).length === 0) {
+               console.log('add');
+               addPrescriptions(medicationBody);
+            } else {
+               console.log('update');
+
+               updatePrescriptions(editMedication.id, medicationBody);
+            }
+            console.log('edited', medicationBody);
             //clears all input boxes and edit medication data
             setEditMedication({});
             setDrugName('');
@@ -144,13 +154,7 @@ function Medication(props) {
                            name="time"
                            type="text"
                            id="time"
-                           placeholder="Select time to take drug"
-                           onFocus={(event) => (event.target.type = 'time')}
-                           onBlur={(event) => {
-                              if (!event.target.value) {
-                                 event.target.type = 'text';
-                              }
-                           }}
+                           placeholder="Select period to take drug"
                            onChange={(event) => setDrugTime(event.target.value)}
                            value={drugTime}
                         />

@@ -8,8 +8,15 @@ import { ImDroplet } from 'react-icons/im';
 import { RiHeartPulseFill } from 'react-icons/ri';
 import { GiMedicalThermometer } from 'react-icons/gi';
 import styles from './dashboard.module.css';
+import { connect } from 'react-redux';
 
-function Dashboard() {
+const mapStateToProps = (state) => {
+   return {
+      savedHealthDetails: state.health,
+   };
+};
+
+function Dashboard(props) {
    return (
       <>
          <main id={styles.midsection}>
@@ -22,7 +29,7 @@ function Dashboard() {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>126 bpm</h4>
+                        <h4>{`${props.savedHealthDetails.pulse} bpm`}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -40,7 +47,7 @@ function Dashboard() {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>32.7 °C</h4>
+                        <h4>{`${props.savedHealthDetails.temperature} °C`}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -58,7 +65,7 @@ function Dashboard() {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>120/80</h4>
+                        <h4>{`${props.savedHealthDetails.blood_pressure}`}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -76,7 +83,7 @@ function Dashboard() {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>170 mg/dL</h4>
+                        <h4>{`${props.savedHealthDetails.blood_sugar} mg/dL`}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -218,4 +225,4 @@ function Dashboard() {
       </>
    );
 }
-export default Dashboard;
+export default connect(mapStateToProps)(Dashboard);

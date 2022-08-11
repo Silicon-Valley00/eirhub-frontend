@@ -594,11 +594,11 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       font-size: 100%;
    }
    .vitalsReadings h4 {
-      font-size: 70%;
+      font-size: 0.6rem;
       font-weight: 550;
    }
    .vitalsTitle h4 {
-      font-size: 0.8rem;
+      font-size: 0.6rem;
    }
    .vitalsInfo {
       -webkit-line-clamp: 3;
@@ -677,7 +677,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       width: 100%;
    }
    .vitalsReadings h4 {
-      font-size: 70%;
+      font-size: 0.6rem;
       float: left;
    }
    .vitalsTitle {
@@ -685,11 +685,11 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       float: right;
    }
    .vitalsTitle h4 {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
    }
    .vitalsInfo {
       -webkit-line-clamp: 3;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       width: 65%;
       float: right;
    }

@@ -27,14 +27,23 @@
    justify-content: space-between;
 }
 .profileImage {
+   max-width: 5rem;
    width: 5rem;
+   min-width: 5rem;
+   max-height: 100%;
    height: 100%;
+   min-height: 100%;
    float: left;
    border-radius: 50%;
 }
 .profileImage img {
+   max-width: 100%;
+   min-width: 100%;
    width: 100%;
+   max-height: 100%;
+   min-height: 100%;
    height: 100%;
+   clip-path: circle();
 }
 .profileIntro {
    width: 85%;
@@ -46,6 +55,7 @@
 .profileName h2 {
    font-size: 1.4rem;
    color: var(--deepcol);
+   text-transform: capitalize;
 }
 .uploadImageBtn {
    width: 100%;
@@ -112,7 +122,7 @@ div.personalInfoFormBox {
    line-height: 1;
    font-weight: 400;
    font-size: 0.9rem;
-   color: rgba(0, 0, 0, 0.6);
+   color: rgba(0, 0, 0, 0.8);
    width: 100%;
    padding: 0.4rem;
 }
@@ -123,7 +133,7 @@ div.personalInfoFormBox {
 .formBoxNameInputs .select select {
    width: 100%;
    height: 100%;
-   color: rgba(0, 0, 0, 0.7);
+   color: rgba(0, 0, 0, 0.8);
    padding: 0rem 0.4rem;
    border-radius: 0.2rem;
    -webkit-appearance: none;
@@ -166,6 +176,7 @@ select::-ms-expand {
    div.profileFormBox:nth-child(1) {
    width: 90%;
    justify-self: start;
+   text-transform: capitalize;
 }
 
 #profileBody
@@ -174,6 +185,7 @@ select::-ms-expand {
    div.profileFormBox:nth-child(2) {
    width: 90%;
    justify-self: start;
+   text-transform: capitalize;
 }
 #profileBody
    .personalInfo
@@ -181,6 +193,7 @@ select::-ms-expand {
    div.profileFormBox:nth-child(3) {
    width: 100%;
    justify-self: end;
+   text-transform: capitalize;
 }
 #profileBody
    .personalInfo
@@ -210,6 +223,7 @@ select::-ms-expand {
    div.profileFormBox:nth-child(7) {
    width: 100%;
    justify-self: start;
+   text-transform: capitalize;
 }
 
 #profileBody
@@ -291,6 +305,7 @@ div.healthInfoFormBox {
 #profileBody .healthInfo div.healthInfoFormBox div.healthFormBox:nth-child(6) {
    width: 105%;
    justify-self: end;
+   text-transform: capitalize;
 }
 #profileBody .healthInfo div.healthInfoFormBox div.healthFormBox:nth-child(7) {
    width: 80%;
@@ -344,6 +359,7 @@ div.guardianInfoFormBox {
    div.guardianFormBox:nth-child(1) {
    width: 90%;
    justify-self: start;
+   text-transform: capitalize;
 }
 
 #profileBody
@@ -352,6 +368,7 @@ div.guardianInfoFormBox {
    div.guardianFormBox:nth-child(2) {
    width: 90%;
    justify-self: start;
+   text-transform: capitalize;
 }
 #profileBody
    .guardianInfo
@@ -359,6 +376,7 @@ div.guardianInfoFormBox {
    div.guardianFormBox:nth-child(3) {
    width: 100%;
    justify-self: end;
+   text-transform: capitalize;
 }
 #profileBody
    .guardianInfo

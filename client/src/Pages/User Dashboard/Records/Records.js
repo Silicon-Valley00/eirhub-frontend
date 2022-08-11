@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './records.module.css';
 import { FaClipboardList } from 'react-icons/fa';
 import { BsArrowLeftCircle, BsDownload } from 'react-icons/bs';
+import { useDispatch, connect } from 'react-redux';
+import { fetchReports } from '../../../Store/Actions.js';
 
-function Records() {
+const mapStateToProps = (state) => {
+   return {
+      savedReports: state.reports,
+   };
+};
+
+function Records(props) {
+   const dispatch = useDispatch();
+   useEffect(() => {
+      dispatch(fetchReports);
+   }, []);
    //Handles state on page been viewed
    const [changePage, setChangePage] = useState(false);
 
    function handleChangePage() {
       /*
          Function handles the change in page been showed to user
-
          Args: No argument is taken
-
          Return : Function returns nothing
       */
       setChangePage(!changePage);
@@ -147,4 +157,4 @@ function Records() {
       </>
    );
 }
-export default Records;
+export default connect(mapStateToProps)(Records);

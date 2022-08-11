@@ -1,41 +1,122 @@
 import React, { useState } from 'react';
 import styles from './profile.module.css';
 import avatarThree from '../../../assets/Rectangle.png';
+import { useDispatch, connect } from 'react-redux';
+import {
+   updateGuardianInfo,
+   updateHealthDetails,
+   updateProfile,
+} from '../../../Store/Actions.js';
 
-function Profile() {
+const mapStateToProps = (state) => {
+   return {
+      savedProfile: state.profile,
+      savedHealthDetails: state.health,
+      savedGuardianDetails: state.guardian,
+   };
+};
+
+function Profile(props) {
+   // console.log(
+   //    props.savedGuardianDetails,
+   //    props.savedHealthDetails,
+   //    props.savedProfile
+   // );
+
+   // Handles dispatching of actions
+   const dispatch = useDispatch();
    // Handles values for input fields
-   const [userImage, setUserImage] = useState('');
+   const [userImage, setUserImage] = useState(
+      props.savedProfile.person_image !== ''
+         ? props.savedProfile.person_image
+         : avatarThree
+   );
 
-   const [firstName, setFirstName] = useState('');
-   const [middleName, setMiddleName] = useState('');
-   const [lastName, setLastName] = useState('');
-   const [email, setEmail] = useState('');
-   const [dateOfBirth, setDateOfBirth] = useState('');
-   const [gender, setGender] = useState('');
-   const [nationality, setNationality] = useState('');
-   const [mobileNumber, setMobileNumber] = useState('');
-   const [address, setAddress] = useState('');
-   const [idNumber, setIdNumber] = useState('');
+   // Profile details
+   const [firstName, setFirstName] = useState(props.savedProfile.first_name);
+   const [middleName, setMiddleName] = useState(props.savedProfile.middle_name);
+   const [lastName, setLastName] = useState(props.savedProfile.last_name);
+   const [email, setEmail] = useState(props.savedProfile.email);
+   const [dateOfBirth, setDateOfBirth] = useState(
+      props.savedProfile.date_of_birth !== ''
+         ? `${new Date(props.savedProfile.date_of_birth).getFullYear()}-${
+              new Date(props.savedProfile.date_of_birth).getMonth() + 1
+           }-${new Date(props.savedProfile.date_of_birth).getDate() + 1}`
+         : ''
+   );
+   const [gender, setGender] = useState(props.savedProfile.gender);
+   const [nationality, setNationality] = useState(
+      props.savedProfile.nationality
+   );
+   const [mobileNumber, setMobileNumber] = useState(
+      props.savedProfile.phone_number
+   );
+   const [address, setAddress] = useState(props.savedProfile.house_address);
+   const [idNumber, setIdNumber] = useState(props.savedProfile.id_number);
 
-   const [heartRate, setHeartRate] = useState('');
-   const [temperature, setTemperature] = useState('');
-   const [bloodPressure, setBloodPressure] = useState('');
-   const [bloodGlucose, setBloodGlucose] = useState('');
-   const [respiratoryRate, setRespiratoryRate] = useState('');
-   const [bloodGroup, setBloodGroup] = useState('');
-   const [weight, setWeight] = useState('');
-   const [height, setHeight] = useState('');
-   const [lastVisitDate, setLastVisitDate] = useState('');
+   // Health details
+   const [heartRate, setHeartRate] = useState(props.savedHealthDetails.pulse);
+   const [temperature, setTemperature] = useState(
+      props.savedHealthDetails.temperature
+   );
+   const [bloodPressure, setBloodPressure] = useState(
+      props.savedHealthDetails.blood_pressure
+   );
+   const [bloodGlucose, setBloodGlucose] = useState(
+      props.savedHealthDetails.blood_sugar
+   );
+   const [respiratoryRate, setRespiratoryRate] = useState(
+      props.savedHealthDetails.respiratory_rate
+   );
+   const [bloodGroup, setBloodGroup] = useState(
+      props.savedHealthDetails.blood_group
+   );
+   const [weight, setWeight] = useState(props.savedHealthDetails.weight);
+   const [height, setHeight] = useState(props.savedHealthDetails.height);
+   const [lastVisitDate, setLastVisitDate] = useState(
+      props.savedHealthDetails.last_visit !== ''
+         ? `${new Date(props.savedHealthDetails.last_visit).getFullYear()}-${
+              new Date(props.savedHealthDetails.last_visit).getMonth() + 1
+           }-${new Date(props.savedHealthDetails.last_visit).getDate() + 1}`
+         : ''
+   );
 
-   const [guardianFirstName, setGuardianFirstName] = useState('');
-   const [guardianMiddleName, setGuardianMiddleName] = useState('');
-   const [guardianLastName, setGuardianLastName] = useState('');
-   const [guardianEmail, setGuardianEmail] = useState('');
-   const [guardianDateOfBirth, setGuardianDateOfBirth] = useState('');
-   const [guardianGender, setGuardianGender] = useState('');
-   const [guardianMobileNumber, setGuardianMobileNumber] = useState('');
-   const [guardianAddress, setGuardianAddress] = useState('');
-   const [guardianIdNumber, setGuardianIdNumber] = useState('');
+   // Guardian details
+   const [guardianFirstName, setGuardianFirstName] = useState(
+      props.savedGuardianDetails.first_name
+   );
+   const [guardianMiddleName, setGuardianMiddleName] = useState(
+      props.savedGuardianDetails.middle_name
+   );
+   const [guardianLastName, setGuardianLastName] = useState(
+      props.savedGuardianDetails.last_name
+   );
+   const [guardianEmail, setGuardianEmail] = useState(
+      props.savedGuardianDetails.email
+   );
+   const [guardianDateOfBirth, setGuardianDateOfBirth] = useState(
+      props.savedGuardianDetails.date_of_birth !== ''
+         ? `${new Date(
+              props.savedGuardianDetails.date_of_birth
+           ).getFullYear()}-${
+              new Date(props.savedGuardianDetails.date_of_birth).getMonth() + 1
+           }-${
+              new Date(props.savedGuardianDetails.date_of_birth).getDate() + 1
+           }`
+         : ''
+   );
+   const [guardianGender, setGuardianGender] = useState(
+      props.savedGuardianDetails.gender
+   );
+   const [guardianMobileNumber, setGuardianMobileNumber] = useState(
+      props.savedGuardianDetails.phone_number
+   );
+   const [guardianAddress, setGuardianAddress] = useState(
+      props.savedGuardianDetails.house_address
+   );
+   const [guardianIdNumber, setGuardianIdNumber] = useState(
+      props.savedGuardianDetails.id_number
+   );
 
    // handles image button value
    const [uploadBtn, setUploadBtn] = useState('Upload Image');
@@ -58,14 +139,18 @@ function Profile() {
          alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
-         setUserImage(userimage); //selected image file is accepted
-         alert('good');
+         setUserImage(URL.createObjectURL(userimage)); //selected image file is accepted
          setUploadBtn('Image Uploaded');
       }
    }
 
    function handleProfileUpdate() {
-      const profile = {
+      /*
+         Function updates user profile, health and guardian details
+         Args: None 
+         Return: None      
+      */
+      let enteredProfileInfo = {
          first_name: firstName,
          middle_name: middleName,
          last_name: lastName,
@@ -73,34 +158,52 @@ function Profile() {
          date_of_birth: dateOfBirth,
          gender: gender,
          nationality: nationality,
-         mobile_number: mobileNumber,
-         address: address,
+         phone_number: mobileNumber,
+         house_address: address,
          id_number: idNumber,
-
-         heart_rate: heartRate,
+         person_image: userImage,
+         idDoctor: props.savedProfile.idDoctor,
+         idGuardian: props.savedProfile.idGuardian,
+      };
+      let enteredHealthInfo = {
+         pulse: heartRate,
          temperature: temperature,
          blood_pressure: bloodPressure,
-         blood_glucose: bloodGlucose,
+         blood_sugar: bloodGlucose,
          respiratory_rate: respiratoryRate,
          blood_group: bloodGroup,
          weight: weight,
          height: height,
-         last_visit_date: lastVisitDate,
-
-         guardian_first_name: guardianFirstName,
-         guardian_middle_name: guardianMiddleName,
-         guardian_last_name: guardianLastName,
-         guardian_email: guardianEmail,
-         guardian_date_of_birth: guardianDateOfBirth,
-         guardian_gender: guardianGender,
-         guardian_mobile_number: guardianMobileNumber,
-         guardian_address: guardianAddress,
-         guardian_id_number: guardianIdNumber,
+         last_visit: lastVisitDate,
+      };
+      let enteredGuardianinfo = {
+         first_name: guardianFirstName,
+         middle_name: guardianMiddleName,
+         last_name: guardianLastName,
+         email: guardianEmail,
+         date_of_birth: guardianDateOfBirth,
+         gender: guardianGender,
+         phone_number: guardianMobileNumber,
+         house_address: guardianAddress,
+         id_number: guardianIdNumber,
       };
 
-      console.log(profile);
+      console.log(props.savedProfile);
+
+      dispatch(updateProfile(props.savedProfile.idPatient, enteredProfileInfo));
+      dispatch(
+         updateHealthDetails(props.savedProfile.idPatient, enteredHealthInfo)
+      );
+      dispatch(
+         updateGuardianInfo(props.savedProfile.idGuardian, enteredGuardianinfo)
+      );
 
       setDisableFormBtn(true);
+      // console.log(
+      //    props.savedGuardianDetails,
+      //    props.savedHealthDetails,
+      //    props.savedProfile
+      // );
    }
    return (
       <>
@@ -112,11 +215,11 @@ function Profile() {
             >
                <div className={styles.upperContent}>
                   <div className={styles.profileImage}>
-                     <img src={avatarThree} alt={'profile'} />
+                     <img src={userImage} alt={'profile'} />
                   </div>
                   <div className={styles.profileIntro}>
                      <div className={styles.profileName}>
-                        <h2>Melissa Burkinstock</h2>
+                        <h2>{`${props.savedProfile.first_name} ${props.savedProfile.last_name}`}</h2>
                      </div>
                      <div className={styles.uploadImageBtn}>
                         <label htmlFor="file-upload-button">{uploadBtn}</label>
@@ -143,7 +246,7 @@ function Profile() {
                               type="text"
                               id="firstname"
                               placeholder="Enter first name"
-                              required="true"
+                              required
                               value={firstName}
                               onChange={(event) =>
                                  setFirstName(event.target.value)
@@ -176,7 +279,7 @@ function Profile() {
                               type="text"
                               id="lastname"
                               placeholder="Enter last name"
-                              required="true"
+                              required
                               value={lastName}
                               onChange={(event) =>
                                  setLastName(event.target.value)
@@ -193,7 +296,7 @@ function Profile() {
                               type="email"
                               id="email"
                               placeholder="Someone@gmail.com"
-                              required="true"
+                              required
                               value={email}
                               onChange={(event) => setEmail(event.target.value)}
                               disabled={disableFormBtn}
@@ -208,7 +311,7 @@ function Profile() {
                               name="date"
                               id="date"
                               placeholder="DD/MM/YYYY"
-                              required="true"
+                              required
                               value={dateOfBirth}
                               onFocus={(event) => (event.target.type = 'date')}
                               onBlur={(event) => {
@@ -229,16 +332,16 @@ function Profile() {
                            <div className={styles.select}>
                               <select
                                  placeholder="Gender"
-                                 required="true"
+                                 required
                                  value={gender}
                                  onChange={(event) =>
                                     setGender(event.target.value)
                                  }
                                  disabled={disableFormBtn}
                               >
-                                 <option>Select gender</option>
-                                 <option value={'male'}>Male</option>
-                                 <option value={'female'}>Female</option>
+                                 <option value={''}>Select gender</option>
+                                 <option value={'Male'}>Male</option>
+                                 <option value={'Female'}>Female</option>
                               </select>
                            </div>
                         </div>
@@ -251,7 +354,7 @@ function Profile() {
                               type="text"
                               id="nationality"
                               placeholder="Enter Nationality"
-                              required="true"
+                              required
                               value={nationality}
                               onChange={(event) =>
                                  setNationality(event.target.value)
@@ -268,7 +371,7 @@ function Profile() {
                               type="tel"
                               id="mobilenumber"
                               placeholder="Enter phone number"
-                              required="true"
+                              required
                               value={mobileNumber}
                               //Allows only numbers to be entered
                               onKeyPress={(event) => {
@@ -291,7 +394,7 @@ function Profile() {
                               type="text"
                               id="address"
                               placeholder="Enter house address"
-                              required="true"
+                              required
                               value={address}
                               onChange={(event) =>
                                  setAddress(event.target.value)
@@ -308,7 +411,7 @@ function Profile() {
                               type="text"
                               id="idnumber"
                               placeholder="eg. GHA-08008238Hjj"
-                              required="true"
+                              required
                               value={idNumber}
                               onChange={(event) =>
                                  setIdNumber(event.target.value)
@@ -331,7 +434,7 @@ function Profile() {
                               type="text"
                               id="heartrate"
                               placeholder="Enter heart rate "
-                              required={'true'}
+                              required
                               value={heartRate}
                               //Allows only numbers to be entered
                               onKeyPress={(event) => {
@@ -354,7 +457,7 @@ function Profile() {
                               type="text"
                               id="temperature"
                               placeholder="Enter temperature "
-                              required={'true'}
+                              required
                               value={temperature}
                               //Allows only numbers to be entered
                               onKeyPress={(event) => {
@@ -377,7 +480,7 @@ function Profile() {
                               type="text"
                               id="bloodpressure"
                               placeholder="Enter blood pressure"
-                              required={'true'}
+                              required
                               value={bloodPressure}
                               //Allows only numbers to be entered
                               onKeyPress={(event) => {
@@ -400,7 +503,7 @@ function Profile() {
                               type="text"
                               id="bloodglucose"
                               placeholder="Enter blood glucose "
-                              required={'true'}
+                              required
                               value={bloodGlucose}
                               //Allows only numbers to be entered
                               onKeyPress={(event) => {
@@ -423,7 +526,7 @@ function Profile() {
                               type="text"
                               id="respiratoryrate"
                               placeholder="Enter respiratory rate"
-                              required={'true'}
+                              required
                               value={respiratoryRate}
                               //Allows only numbers to be entered
                               onKeyPress={(event) => {
@@ -446,7 +549,7 @@ function Profile() {
                               type="text"
                               id="bloodgroup"
                               placeholder="Enter blood group"
-                              required={'true'}
+                              required
                               value={bloodGroup}
                               onChange={(event) =>
                                  setBloodGroup(event.target.value)
@@ -463,7 +566,7 @@ function Profile() {
                               type="text"
                               id="weight"
                               placeholder="Enter weight"
-                              required={'true'}
+                              required
                               value={weight}
                               //Allows only numbers to be entered
                               onKeyPress={(event) => {
@@ -487,7 +590,7 @@ function Profile() {
                               id="height"
                               placeholder="Enter height"
                               value={height}
-                              required={'true'}
+                              required
                               //Allows only numbers to be entered
                               onKeyPress={(event) => {
                                  if (!/^\d*\.?\d*$/.test(event.key)) {
@@ -509,7 +612,7 @@ function Profile() {
                               name="date"
                               id="date"
                               placeholder="DD/MM/YYYY"
-                              required={'true'}
+                              required
                               value={lastVisitDate}
                               onFocus={(event) => (event.target.type = 'date')}
                               onBlur={(event) => {
@@ -537,7 +640,7 @@ function Profile() {
                               type="text"
                               id="guardianfirstname"
                               placeholder="Enter first name"
-                              required="true"
+                              required
                               value={guardianFirstName}
                               onChange={(event) =>
                                  setGuardianFirstName(event.target.value)
@@ -570,7 +673,7 @@ function Profile() {
                               type="text"
                               id="guardianlastname"
                               placeholder="Enter last name"
-                              required="true"
+                              required
                               value={guardianLastName}
                               onChange={(event) =>
                                  setGuardianLastName(event.target.value)
@@ -587,7 +690,7 @@ function Profile() {
                               type="email"
                               id="email"
                               placeholder="Someone@gmail.com"
-                              required="true"
+                              required
                               value={guardianEmail}
                               onChange={(event) =>
                                  setGuardianEmail(event.target.value)
@@ -604,7 +707,7 @@ function Profile() {
                               name="guardiandate"
                               id="guardiandate"
                               placeholder="DD/MM/YYYY"
-                              required="true"
+                              required
                               value={guardianDateOfBirth}
                               onFocus={(event) => (event.target.type = 'date')}
                               onBlur={(event) => {
@@ -625,16 +728,16 @@ function Profile() {
                            <div className={styles.select}>
                               <select
                                  placeholder="Gender"
-                                 required="true"
+                                 required
                                  value={guardianGender}
                                  onChange={(event) =>
                                     setGuardianGender(event.target.value)
                                  }
                                  disabled={disableFormBtn}
                               >
-                                 <option>Select gender</option>
-                                 <option value={'male'}>Male</option>
-                                 <option value={'female'}>Female</option>
+                                 <option value={''}>Select gender</option>
+                                 <option value={'Male'}>Male</option>
+                                 <option value={'Female'}>Female</option>
                               </select>
                            </div>
                         </div>
@@ -648,7 +751,7 @@ function Profile() {
                               type="text"
                               id="guardianidnumber"
                               placeholder="eg. GHA-08008238Hjj"
-                              required="true"
+                              required
                               value={guardianIdNumber}
                               onChange={(event) =>
                                  setGuardianIdNumber(event.target.value)
@@ -666,7 +769,7 @@ function Profile() {
                               type="tel"
                               id="guardianmobilenumber"
                               placeholder="Enter phone number"
-                              required="true"
+                              required
                               value={guardianMobileNumber}
                               //Allows only numbers to be entered
                               onKeyPress={(event) => {
@@ -689,7 +792,7 @@ function Profile() {
                               type="text"
                               id="guardianaddress"
                               placeholder="Enter house address"
-                              required="true"
+                              required
                               value={guardianAddress}
                               onChange={(event) =>
                                  setGuardianAddress(event.target.value)
@@ -708,7 +811,7 @@ function Profile() {
                            setDisableFormBtn(false);
                         }}
                      >
-                        {disableFormBtn ? 'Update Profile' : 'Submit'}
+                        Update Profile
                      </button>
                   ) : (
                      <button
@@ -717,8 +820,36 @@ function Profile() {
                         onClick={() => {
                            handleProfileUpdate();
                         }}
+                        disabled={
+                           firstName === '' ||
+                           lastName === '' ||
+                           dateOfBirth === '' ||
+                           gender === '' ||
+                           idNumber === '' ||
+                           email === '' ||
+                           address === '' ||
+                           mobileNumber === '' ||
+                           nationality === '' ||
+                           weight === '' ||
+                           height === '' ||
+                           heartRate === '' ||
+                           temperature === '' ||
+                           bloodGlucose === '' ||
+                           bloodGroup === '' ||
+                           bloodPressure === '' ||
+                           respiratoryRate === '' ||
+                           lastVisitDate === '' ||
+                           guardianAddress === '' ||
+                           guardianDateOfBirth === '' ||
+                           guardianEmail === '' ||
+                           guardianFirstName === '' ||
+                           guardianGender === '' ||
+                           guardianIdNumber === '' ||
+                           guardianLastName === '' ||
+                           guardianMobileNumber === ''
+                        }
                      >
-                        {disableFormBtn ? 'Update Profile' : 'Submit'}
+                        Submit
                      </button>
                   )}
                </div>
@@ -728,4 +859,4 @@ function Profile() {
    );
 }
 
-export default Profile;
+export default connect(mapStateToProps)(Profile);

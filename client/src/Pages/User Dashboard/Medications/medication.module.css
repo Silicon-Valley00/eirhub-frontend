@@ -62,7 +62,7 @@
    color: var(--deepcol);
    font-size: 120%;
    font-weight: 600;
-
+   text-transform: capitalize;
    -webkit-line-clamp: 1;
    text-overflow: ellipsis;
    display: -webkit-box;
