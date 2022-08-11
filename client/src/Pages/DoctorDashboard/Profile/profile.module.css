@@ -15,6 +15,15 @@
    width: 100%;
 }
 
+/* FIXME: cannot find where image is being rounded */
+/* .profileImage {
+   border: 1px solid salmon;
+}
+
+.img {
+   background-position: cover;
+} */
+
 .profileIntro {
    display: flex;
    flex-direction: column;
@@ -49,6 +58,7 @@
    color: var(--deepcol);
    font-size: 1.3rem;
    padding-bottom: 0.8rem;
+   letter-spacing: 1px;
 }
 /* Section for personal info */
 form.personalInfoFormBox {
@@ -99,6 +109,7 @@ form.personalInfoFormBox {
    font-size: 0.8rem;
    color: var(--deepcol);
    font-weight: 600;
+   letter-spacing: 0.7px;
 }
 
 .formBoxNameInputs {
@@ -183,14 +194,57 @@ select::-ms-expand {
    text-transform: capitalize;
 }
 
+.btn_div {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+.btn {
+   margin-top: 2rem;
+   padding: 5px 1rem;
+   color: var(--white);
+   background: var(--lightcol);
+   border-radius: 5px;
+   letter-spacing: 2px;
+   cursor: pointer;
+}
+
+.icon {
+   display: none;
+}
+
+.btn:focus {
+   width: 50px;
+   height: 50px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: var(--deepcol);
+   border-radius: 50%;
+}
+
+.btn:focus .btn_text {
+   display: none;
+}
+
+.btn:focus .icon {
+   display: inline;
+   color: white;
+}
+
 /* media query for 480px */
 @media (min-width: 800px) {
    .main {
-      border: 2px solid blue;
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-left: 6rem;
+      padding-left: 2rem;
+   }
+
+   #profileBody {
+      width: 100%;
    }
 
    .profileImage {
@@ -206,11 +260,51 @@ select::-ms-expand {
    .profileIntro {
       align-items: flex-start;
    }
+
+   .personal_and_proff {
+      display: flex;
+      gap: 2rem;
+      width: 100%;
+   }
 }
 
 @media (min-width: 1024px) {
    .main {
       margin-left: 16rem;
+   }
+
+   .upperContent {
+      align-items: flex-start;
+   }
+   .personal_and_proff {
+      flex-direction: column;
+   }
+
+   .personalInfoFormBox {
+      gap: 2rem;
+   }
+
+   .forFirst {
+      flex-direction: row;
+      gap: 3rem;
+   }
+
+   .forSecond {
+      flex-direction: row;
+   }
+
+   .forThird {
+      flex-direction: row;
+      width: 30%;
+   }
+
+   .profileFormBox {
+      align-items: flex-start;
+   }
+
+   .proffBox {
+      display: flex;
+      gap: 2rem;
    }
 }
 

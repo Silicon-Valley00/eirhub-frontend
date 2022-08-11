@@ -36,7 +36,7 @@ nav {
 /* tablet screens */
 @media (min-width: 480px) {
    nav {
-      padding: 10px 2px 10px 18px;
+      padding: 10px 2rem 10px 18px;
    }
 
    .logo {
@@ -53,5 +53,11 @@ nav {
 
    .avatar {
       gap: 1rem;
+   }
+}
+
+@media (min-width: 1024px) {
+   .nav {
+      padding: 1rem 2rem;
    }
 }

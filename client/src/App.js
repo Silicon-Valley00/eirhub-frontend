@@ -25,6 +25,7 @@ import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import DoctorDashboard from './Pages/DoctorDashboard/DoctorDashboard';
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
 import DoctorProfile from './Pages/DoctorDashboard/Profile/Profile';
+import DoctorRecords from './Pages/DoctorDashboard/Records/Records';
 
 AOS.init();
 
@@ -99,6 +100,8 @@ function App() {
          <Route path="/doctordashboard" exact element={<MidDashboard />} />
 
          <Route path="/doctorprofile" exact element={<DoctorProfile />} />
+         <Route path="/doctorrecords" exact element={<DoctorRecords />} />
+
          {/* End of route for doctor-dashboard */}
 
          {/* Start of routes for find-a-doctor page */}
