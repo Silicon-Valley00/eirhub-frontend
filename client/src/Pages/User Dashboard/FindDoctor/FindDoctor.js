@@ -25,9 +25,23 @@ function FindingDoctor(props) {
                   <div className={styles.filterRegion}>
                      <div className={styles.selectOne}>
                         <select placeholder="Speciality">
-                           <option>One</option>
-                           <option>Two</option>
-                           <option>Three</option>
+                           <option>CT Scan</option>
+                           <option>Dentistry</option>
+                           <option>Dermatology</option>
+                           <option>Endocrinology</option>
+                           <option>Emergency medicine</option>
+                           <option>General surgery</option>
+                           <option>laboratory</option>
+                           <option>Nephrology</option>
+                           <option>Obstetrics/Gynaecology</option>
+                           <option>Orthopaedic</option>
+                           <option>Oncology</option>
+                           <option>Pediatrics</option>
+                           <option>Physician specialist</option>
+                           <option>Physiotherapy</option>
+                           <option>X-Ray</option>
+                          
+
                         </select>
                      </div>
                      <div className={styles.selectTwo}>
