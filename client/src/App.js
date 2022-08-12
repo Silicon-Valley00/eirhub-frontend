@@ -99,7 +99,8 @@ function App() {
          {/* Start of route for doctor-dashboard. */}
          <Route path="/doctordashboard" exact element={<MidDashboard />} />
 
-         <Route path="/doctorprofile" exact element={<DoctorDashboard />} />
+         <Route path="/doctorprofile" exact element={<DoctorProfile />} />
+
          {/* End of route for doctor-dashboard */}
          <Route path="/doctorrecords" exact element={<DoctorRecords />} />
          <Route path="/doctorschedule" exact element={<DoctorSchedule />} />

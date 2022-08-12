@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
 import styles from './navigation.module.css';
-import { GrClose } from 'react-icons/gr';
-import { MdMenu } from 'react-icons/md';
 import avatarThree from '../../../assets/Rectangle.png';
 import Sidebar from './Sidebar';
 

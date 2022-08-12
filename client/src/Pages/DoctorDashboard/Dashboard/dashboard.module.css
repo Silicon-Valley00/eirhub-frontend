@@ -6,12 +6,140 @@
    background-color: var(--gray);
    border-radius: 5px 5px 0 0;
    height: 100vh;
+   color: var((--midcol));
+   gap: 3rem;
 }
 
 .middle_section {
-   height: 60%;
-   width: 70%;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 3rem;
 }
+
+/* Table */
+
+.appointmentTable {
+   width: 100%;
+   height: 13rem;
+   background-color: white;
+   justify-content: center;
+   align-items: center;
+   table-layout: fixed;
+   overflow-y: auto;
+   border-radius: 1rem;
+   outline: 1px solid #e1e5ee;
+}
+
+.appointmentsBox table {
+   background: var(--white);
+   padding: 1rem;
+   border-collapse: collapse;
+   border-spacing: 0px;
+   min-width: 100%;
+   width: 100%;
+   table-layout: fixed;
+   height: 100%;
+}
+.appointmentsBox table thead {
+   box-shadow: 0 1px 4px #e1e5ee;
+   position: sticky;
+   top: 0;
+   background: var(--white);
+}
+
+.appointmentsBox table tbody td {
+   height: 0.4rem;
+   min-height: 0.4rem;
+   max-height: 0.4rem;
+   color: var(--midcol);
+   font-weight: 600;
+   padding: 0.3rem 0.9rem;
+   font-size: 0.8rem;
+}
+
+.table_img {
+   height: 2rem;
+   width: 2rem;
+   border-radius: 50%;
+}
+
+.appointmentsBox table tbody td:nth-child(1) div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+   border-radius: 50%;
+   background-color: var(--deepcol);
+}
+.appointmentsBox table tbody td:nth-child(1) div img {
+   height: 100%;
+   width: 100%;
+}
+
+.appointmentsBox table tbody td:nth-child(3) {
+   text-align: center;
+}
+
+.appointmentsBox table thead th {
+   color: var(--tablehead);
+   font-weight: 500;
+   text-transform: capitalize;
+   padding: 0.4rem 1rem;
+   letter-spacing: 0.1rem;
+   font-size: 0.8rem;
+}
+.appointmentsBox table thead th:nth-child(1) {
+   width: 10%;
+   padding: 0;
+}
+.appointmentsBox table thead th:nth-child(2) {
+   width: 30%;
+   text-align: left;
+}
+.appointmentsBox table thead th:nth-child(3) {
+   width: 30%;
+   text-align: center;
+}
+.appointmentsBox table thead th:nth-child(4) {
+   width: 20%;
+   text-align: left;
+}
+.appointmentsBox table thead th:nth-child(5) {
+   width: 12%;
+   text-align: left;
+}
+
+.appointmentsBox tbody tr:nth-child(even) {
+   background-color: var(--gray);
+}
+
+.appointmentTable::-webkit-scrollbar {
+   width: 0.3rem;
+   height: 0.3rem;
+   cursor: pointer;
+}
+
+.appointmentTable::-webkit-scrollbar-track {
+   margin: 20px;
+   cursor: pointer;
+   --webkit-box-shadow: inset 0 0 10px var(--white);
+}
+
+.appointmentTable::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+}
+
+/* End */
+
+/* .right_pane {
+   width: 100%;
+   background-color: blue;
+} */
 
 .doctor_display {
    display: flex;
@@ -53,6 +181,27 @@
    opacity: 45%;
 }
 
+/* styling for upcoming appointment */
+.appointment {
+   width: 100%;
+   padding: 5px 10px;
+}
+
+.heading {
+   text-align: center;
+   color: var(--deepcol);
+   text-transform: capitalize;
+   padding-bottom: 10px;
+}
+
+.appointment_table {
+   width: 100%;
+   height: 9rem;
+   background: var(--white);
+   border-radius: 10px;
+}
+
+/* =========== media query for 420px=========== */
 @media (min-width: 420px) {
    .middle_section {
       width: 100%;
@@ -108,7 +257,7 @@
 
 @media (min-width: 1024px) {
    .main {
-      margin-left: 12rem;
+      margin-left: 16rem;
    }
 
    .doctor_display {
@@ -120,7 +269,7 @@
       padding: 0;
       border-radius: 20px;
       overflow: hidden;
-      height: 9rem;
+      min-height: 9rem;
    }
 
    .card {
@@ -146,17 +295,16 @@
 
    #third_card {
       justify-content: start;
-      padding: 0 2rem;
    }
 
-   .icon {
-      height: 3rem;
+   /* .icon {
+      height: 2rem;
       width: 3rem;
    }
 
    .text {
-      font-size: 18px;
-   }
+      font-size: 17px;
+   } */
 
    .digits {
       font-size: 15px;
