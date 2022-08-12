@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import avatarOne from '../../../assets/Rectangle-1.png';
 import avatarTwo from '../../../assets/Rectangle-2.png';
 import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
@@ -9,6 +9,7 @@ import { RiHeartPulseFill } from 'react-icons/ri';
 import { GiMedicalThermometer } from 'react-icons/gi';
 import styles from './dashboard.module.css';
 import { connect } from 'react-redux';
+import { fetchMedications } from '../../../Store/Actions.js';
 
 const mapStateToProps = (state) => {
    return {
@@ -17,6 +18,42 @@ const mapStateToProps = (state) => {
 };
 
 function Dashboard(props) {
+   const [medications, setMedications] = useState();
+
+   useEffect(() => {
+      async function fetchdata() {
+         // // const items = await fetchMedications();
+         // setMedications(items);
+      }
+      fetchdata();
+      console.log(medications);
+   }, []);
+   var list;
+   //displays medications
+   console.log(medications);
+
+   if (
+      medications !== null ||
+      medications !== undefined ||
+      medications.length !== 0
+   ) {
+      list = medications.map((item, j) => {
+         return (
+            <tr key={`${item.drug_name}-${j}`}>
+               <td>{`${item.drug_name}`}</td>
+               <td>{`${item.dosage}`}</td>
+               <td>{`${item.time_of_administration}`}</td>
+               <td>
+                  <input type={'checkbox'} />
+               </td>
+            </tr>
+         );
+      });
+   } else if (medications.length === 0) {
+      // Sends message to be displayed when saved videos is empty
+      list = <p>No medications yet.</p>;
+   }
+
    return (
       <>
          <main id={styles.midsection}>

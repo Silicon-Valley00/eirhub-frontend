@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import styles from './profile.module.css';
 import avatarThree from '../../../assets/Rectangle.png';
 import { useDispatch, connect } from 'react-redux';
-import {
-   updateGuardianInfo,
-   updateHealthDetails,
-   updateProfile,
-} from '../../../Store/Actions.js';
+import { updateProfile } from '../../../Store/Actions.js';
 
 const mapStateToProps = (state) => {
    return {
@@ -17,14 +13,15 @@ const mapStateToProps = (state) => {
 };
 
 function Profile(props) {
-   console.log(
-      props.savedGuardianDetails,
-      props.savedHealthDetails,
-      props.savedProfile
-   );
+   // console.log(
+   //    props.savedGuardianDetails,
+   //    props.savedHealthDetails,
+   //    props.savedProfile
+   // );
 
    // Handles dispatching of actions
    const dispatch = useDispatch();
+
    // Handles values for input fields
    const [userImage, setUserImage] = useState(
       props.savedProfile.person_image !== ''
