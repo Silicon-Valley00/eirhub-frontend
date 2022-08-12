@@ -3,14 +3,47 @@
    display: flex;
    justify-content: space-between;
    width: 77.5%;
-   height: 95vh;
+   height: 93vh;
    gap: 30px;
 }
 .DSContainer1 {
    width: 70%;
    background-color: #ecf3fc;
+   border-radius: 20px 20px 0px 0px;
 }
 .DSContainer2 {
    width: 25%;
    background-color: #ecf3fc;
+   border-radius: 20px 20px 0px 0px;
+}
+.DSContainer1 label {
+   display: block;
+}
+.patientContainer {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+}
+.DSContainer1 input {
+   border: 1px solid #e1e4e8;
+   border-radius: 7px;
+}
+.inputName {
+   width: 30%;
+   height: 40px;
+}
+.inputCondition {
+   width: 50%;
+   height: 40px;
+}
+.inputDate {
+   width: 20%;
+   height: 40px;
+}
+.inputStartTime {
+   width: 10%;
+   height: 40px;
+}
+.inputEndTime {
+   width: 10%;
+   height: 40px;
 }
