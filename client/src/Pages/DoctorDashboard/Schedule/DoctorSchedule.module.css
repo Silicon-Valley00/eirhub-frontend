@@ -1,0 +1,16 @@
+.DSContainer {
+   margin-left: 25rem;
+   display: flex;
+   justify-content: space-between;
+   width: 77.5%;
+   height: 95vh;
+   gap: 30px;
+}
+.DSContainer1 {
+   width: 70%;
+   background-color: #ecf3fc;
+}
+.DSContainer2 {
+   width: 25%;
+   background-color: #ecf3fc;
+}

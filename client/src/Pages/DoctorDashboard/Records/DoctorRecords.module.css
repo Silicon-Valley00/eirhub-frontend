@@ -1,0 +1,56 @@
+.DRHeader {
+   margin-left: 25rem;
+   background-color: #ecf3fc;
+   width: 55%;
+   height: 95vh;
+   border-radius: 20px 20px 0px 0px;
+}
+.DRUpload {
+   background-color: white;
+   width: 90%;
+   height: 30%;
+   margin: auto;
+   text-align: center;
+   border-radius: 20px;
+   display: flex;
+   justify-content: center;
+   border: 2px dashed #05a6c2;
+}
+.DRHeader h1 {
+   display: inline-block;
+   padding: 20px;
+   margin: 10px 30px;
+   font-size: 1.2rem;
+   color: #0d3f58;
+}
+.DRSheader {
+   align-self: center;
+   color: #0d3f58;
+}
+.DRFiles {
+   text-align: center;
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   margin-top: 30px;
+   background-color: white;
+   width: 90%;
+   margin: 100px auto;
+   height: 47.5vh;
+   border-radius: 20px 20px 0px 0px;
+}
+.DRFiles th {
+   color: #c2c9d1;
+}
+.DRFiles table {
+   width: 100%;
+   margin-top: 30px;
+}
+.DRFiles td {
+   height: 70px;
+   color: #0d3f58;
+   font-weight: 700;
+}
+.DRButtonLink {
+   color: #05a6c2;
+}
