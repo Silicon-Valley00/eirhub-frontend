@@ -4,6 +4,7 @@ import styles from './dropdown.module.css';
 const LoginDropdown = ({ clicked,handleModalLogin,handleModalLoginDoctor }) => {
    return (
       <>
+      {/* FIXME: Increase the size of the dropdown*/}
          <div className={styles.main}>
             <div className={styles.sub_main}>
                <ul className={styles.list}>
