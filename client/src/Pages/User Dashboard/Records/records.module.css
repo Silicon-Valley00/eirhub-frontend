@@ -113,7 +113,7 @@
    min-height: 35rem;
    max-height: 35rem;
    z-index: 3;
-   transition: all 500ms ease-in-out;
+   transition: all 100ms ease-in-out;
 }
 
 .recordOpenBox.active {
@@ -126,7 +126,7 @@
    max-height: 35rem;
    background-color: var(--white);
    z-index: 2;
-   transition: all 500ms ease-in-out;
+   transition: all 200ms ease-in-out;
    padding: 2rem;
 }
 .top {

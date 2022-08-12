@@ -8,7 +8,12 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setName } from '../../../Store/Actions.js';
+import {
+   fetchGuardianInfo,
+   fetchHealthDetails,
+   fetchProfile,
+} from '../../../Store/Actions.js';
+import { LoginUser } from '../../../context/authcontext';
 
 function Login(props) {
    const loginFormRef = useRef();
@@ -28,10 +33,20 @@ function Login(props) {
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
 
+      // checks if account is to be logged in
       if (feedback[0] === true) {
+         //logs user into cometchat
+         // LoginUser(
+         //    `${feedback[1].first_name.toLowerCase()}-${feedback[1].last_name.toLowerCase()}-${
+         //       feedback[1].id
+         //    }`
+         // );
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         dispatch(setName(feedback[1].first_name));
+         dispatch(fetchProfile(feedback[1].idPatient, feedback[1].guardian_id));
+         // dispatch(fetchGuardianInfo());
+         // dispatch(fetchHealthDetails(feedback[1].idPatient));
+
          setTimeout(() => {
             navigate('/dashboard');
          }, 1500);

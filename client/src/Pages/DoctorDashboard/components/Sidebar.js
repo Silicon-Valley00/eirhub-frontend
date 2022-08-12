@@ -8,6 +8,7 @@ import { GrClose } from 'react-icons/gr';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillFile } from 'react-icons/ai';
+import { useEffect } from 'react';
 
 const links = [
    {
@@ -37,9 +38,20 @@ const links = [
    },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ indicator }) => {
    const [show, setShow] = useState(false);
    const [selected, showSelected] = useState(0);
+
+   // useEffect(() => {
+   //    const toggleState = (index) => {
+   //       showSelected(index);
+   //    };
+   //    console.log('is selected: ', selected);
+   // });
+
+   const showSidebar = () => {
+      setShow(!show);
+   };
 
    return (
       <>
@@ -59,10 +71,7 @@ const Sidebar = () => {
             {/* logo with close button */}
             <div className={styles.logo_close}>
                <p className={styles.logo}>Eirhub</p>
-               <GrClose
-                  className={styles.close}
-                  onClick={() => setShow(!show)}
-               />
+               <GrClose className={styles.close} onClick={showSidebar} />
             </div>
 
             {/* links */}
@@ -74,12 +83,15 @@ const Sidebar = () => {
                         <Link
                            to={item.to}
                            className={
-                              selected === index
+                              indicator === 13
                                  ? `${styles.link} ${styles.active}`
                                  : `${styles.link}`
                            }
                            key={index}
-                           onClick={() => showSelected(index)}
+                           onClick={(e) => {
+                              showSelected(index);
+                              console.log('just after click', index);
+                           }}
                         >
                            <div className={styles.icon}>{item.icon}</div>
                            <p className={styles.title}>{item.title}</p>

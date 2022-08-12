@@ -80,6 +80,11 @@ function Calendar() {
       }
    });
    function handleMonthGoBack() {
+      /*
+         Function handles navigation of month backwards
+         Arg: No argumrnts are taken
+         Return: Functions returns nothing
+      */
       if (selectedMonth === 0) {
          setSelectedMonth(0);
       } else if (selectedMonth <= 11) {
@@ -88,6 +93,11 @@ function Calendar() {
       console.log(selectedMonth);
    }
    function handleMonthGoForward() {
+      /*
+         Function handles navigation of month forward
+         Arg: No argumrnts are taken
+         Return: Functions returns nothing
+      */
       if (selectedMonth === 11) {
          setSelectedMonth(11);
       } else if (selectedMonth >= 0) {

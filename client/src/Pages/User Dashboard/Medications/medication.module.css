@@ -52,7 +52,7 @@
    color: var(--deepcol);
    font-size: 120%;
    font-weight: 600;
-
+   text-transform: capitalize;
    -webkit-line-clamp: 1;
    text-overflow: ellipsis;
    display: -webkit-box;
@@ -70,10 +70,10 @@
    /* text-align: right; */
 }
 .medicationCounter p {
-   font-size: 85%;
+   font-size: 75%;
    color: var(--white);
    background-color: var(--lightcol);
-   padding: 0.4rem;
+   padding: 0.2rem;
    border-radius: 0.3rem;
    font-weight: 600;
    text-align: center;
@@ -97,14 +97,14 @@
    font-weight: 700;
 }
 .lowerContent {
-   width: 80%;
-   height: 18%;
+   width: 100%;
+   height: 15%;
    margin: 0 auto;
    display: flex;
    justify-content: space-between;
 }
 .lowerContent button {
-   width: 47%;
+   width: 40%;
    height: 100%;
    border: none;
    outline: none;

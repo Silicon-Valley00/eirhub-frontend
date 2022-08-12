@@ -6,16 +6,23 @@ import { FaCheck } from 'react-icons/fa';
 
 function DoctorProfile() {
    // Handles values for input fields
-   const [firstName, setFirstName] = useState('');
-   const [middleName, setMiddleName] = useState('');
-   const [lastName, setLastName] = useState('');
-   const [email, setEmail] = useState('');
-   const [dateOfBirth, setDateOfBirth] = useState('');
-   const [gender, setGender] = useState('');
-   const [address, setAddress] = useState('');
-   const [hospitalCode, setHospitalCode] = useState('');
-   const [specialty, setSpecialty] = useState('');
-   const [licenseNum, setLicenseNum] = useState('');
+   const [user, setUser] = useState({
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      email: '',
+      dateOfBirth: '',
+      gender: '',
+      address: '',
+      hospitalCode: '',
+      specialty: '',
+      licenseNum: '',
+   });
+
+   const handleChange = (e) => {
+      setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+   };
+
    // function handles image upload
    const [uploadBtn, setUploadBtn] = useState('Upload Image');
    function handleImageUpload(e) {
@@ -31,7 +38,7 @@ function DoctorProfile() {
    }
    return (
       <>
-         <Navigation />
+         <Navigation nav={12} />
          <div className={styles.main}>
             <div id={styles.profileBody}>
                {/* Avatar with name and upload image button */}
@@ -81,16 +88,13 @@ function DoctorProfile() {
                               <h3>First Name</h3>
                               <div className={styles.formBoxNameInputs}>
                                  <input
-                                    name="firstname"
+                                    name="firstName"
                                     className={styles.input_box}
                                     type="text"
                                     id="firstname"
                                     placeholder="Enter first name"
                                     required="true"
-                                    value={firstName}
-                                    onChange={(event) =>
-                                       setFirstName(event.target.value)
-                                    }
+                                    onChange={handleChange}
                                  />
                               </div>
                            </div>
@@ -98,15 +102,12 @@ function DoctorProfile() {
                               <h3>Middle Name(Optional)</h3>
                               <div className={styles.formBoxNameInputs}>
                                  <input
-                                    name="middlename"
+                                    name="middleName"
                                     className={styles.input_box}
                                     type="text"
                                     id="middlename"
                                     placeholder="Enter middle name"
-                                    value={middleName}
-                                    onChange={(event) =>
-                                       setMiddleName(event.target.value)
-                                    }
+                                    onChange={handleChange}
                                  />
                               </div>
                            </div>
@@ -114,16 +115,13 @@ function DoctorProfile() {
                               <h3>Last Name</h3>
                               <div className={styles.formBoxNameInputs}>
                                  <input
-                                    name="lastname"
+                                    name="lastName"
                                     className={styles.input_box}
                                     type="text"
                                     id="lastname"
                                     placeholder="Enter last name"
                                     required="true"
-                                    value={lastName}
-                                    onChange={(event) =>
-                                       setLastName(event.target.value)
-                                    }
+                                    onChange={handleChange}
                                  />
                               </div>
                            </div>
@@ -140,10 +138,7 @@ function DoctorProfile() {
                                     id="email"
                                     placeholder="Someone@gmail.com"
                                     required="true"
-                                    value={email}
-                                    onChange={(event) =>
-                                       setEmail(event.target.value)
-                                    }
+                                    onChange={handleChange}
                                  />
                               </div>
                            </div>{' '}
@@ -153,11 +148,10 @@ function DoctorProfile() {
                                  <input
                                     type="text"
                                     className={styles.input_box}
-                                    name="date"
+                                    name="dateOfBirth"
                                     id="date"
                                     placeholder="DD/MM/YYYY"
                                     required="true"
-                                    value={dateOfBirth}
                                     onFocus={(event) =>
                                        (event.target.type = 'date')
                                     }
@@ -166,9 +160,7 @@ function DoctorProfile() {
                                           event.target.type = 'text';
                                        }
                                     }}
-                                    onChange={(event) =>
-                                       setDateOfBirth(event.target.value)
-                                    }
+                                    onChange={handleChange}
                                  />
                               </div>
                            </div>
@@ -177,12 +169,10 @@ function DoctorProfile() {
                               <div className={styles.formBoxNameInputs}>
                                  <div className={styles.select}>
                                     <select
+                                       name="gender"
                                        placeholder="Gender"
                                        required="true"
-                                       value={gender}
-                                       onChange={(event) =>
-                                          setGender(event.target.value)
-                                       }
+                                       onChange={handleChange}
                                     >
                                        <option>Select gender</option>
                                        <option>Male</option>
@@ -204,10 +194,7 @@ function DoctorProfile() {
                                     id="address"
                                     placeholder="Enter house address"
                                     required="true"
-                                    value={address}
-                                    onChange={(event) =>
-                                       setAddress(event.target.value)
-                                    }
+                                    onChange={handleChange}
                                  />
                               </div>
                            </div>
@@ -238,10 +225,7 @@ function DoctorProfile() {
                                     id="licenseNum"
                                     placeholder="Enter License Number"
                                     required="true"
-                                    value={licenseNum}
-                                    onChange={(event) =>
-                                       setLicenseNum(event.target.value)
-                                    }
+                                    onChange={handleChange}
                                  />
                               </div>
                            </div>
@@ -256,10 +240,7 @@ function DoctorProfile() {
                                     id="specialty"
                                     placeholder="Enter Specialty"
                                     required="true"
-                                    value={specialty}
-                                    onChange={(event) =>
-                                       setSpecialty(event.target.value)
-                                    }
+                                    onChange={handleChange}
                                  />
                               </div>
                            </div>
@@ -274,10 +255,7 @@ function DoctorProfile() {
                                     id="hospitalCode"
                                     placeholder="Enter Hospital Code"
                                     required="true"
-                                    value={hospitalCode}
-                                    onChange={(event) =>
-                                       setHospitalCode(event.target.value)
-                                    }
+                                    onChange={handleChange}
                                  />
                               </div>
                            </div>

@@ -10,7 +10,7 @@ import appointImg from '../../../assets/maleDoctor.jpg';
 function MidDashboard() {
    return (
       <>
-         <Navigation />
+         <Navigation nav={13} />
          <main className={styles.main}>
             <div className={styles.middle_section}>
                {/* box that containst the summary display for the doctor */}

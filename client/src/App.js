@@ -8,6 +8,10 @@ import LandingPage from './Pages/Landing page/LandingPage';
 import ServicesPage from './Pages/Landing page/ServicesPage';
 import HowItWorks from './Pages/Landing page/HowItWorks';
 import FAQ from './Pages/Landing page/FAQ/FAQ';
+
+//Imports for PageNotFound
+import PageNotFound from './Pages/PageNotFound/PageNotFound';
+
 // Imports for user-dashboard
 import UserDashboard from './Pages/User Dashboard/UserDashboard';
 import Profile from './Pages/User Dashboard/Profile/Profile';
@@ -19,8 +23,8 @@ import Medications from './Pages/User Dashboard/Medications/Medications';
 import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
 import Records from './Pages/User Dashboard/Records/Records';
 import RecordChild from './Pages/User Dashboard/components/RecordsChild';
+import Message from './Pages/User Dashboard/Message/Message';
 
-import PageNotFound from './Pages/PageNotFound/PageNotFound';
 // imports for doctor's dashboard
 import DoctorDashboard from './Pages/DoctorDashboard/DoctorDashboard';
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
@@ -71,7 +75,7 @@ function App() {
          />
 
          <Route
-            path="/records"
+            path="/reports"
             exact
             element={
                <UserDashboard
@@ -83,7 +87,7 @@ function App() {
          />
 
          <Route
-            path="/medications"
+            path="/prescriptions"
             exact
             element={
                <UserDashboard
@@ -106,6 +110,7 @@ function App() {
          <Route path="/doctorschedule" exact element={<DoctorSchedule />} />
 
          {/* Start of routes for find-a-doctor page */}
+
          <Route
             path="/find-a-doctor"
             exact
@@ -117,7 +122,20 @@ function App() {
                />
             }
          />
-         {/* End of route for find-a-doctor page. */}
+         <Route
+            path="/usermessaging"
+            exact
+            element={<UserDashboard parent={<Message />} page={'message'} />}
+         />
+         {/* End of routes for user dashboard */}
+
+         {/* Start of route for doctor-dashboard. */}
+         <Route path="/doctordashboard" exact element={<MidDashboard />} />
+
+         <Route path="/doctorprofile" exact element={<DoctorProfile />} />
+         <Route path="/doctorrecords" exact element={<DoctorRecords />} />
+
+         {/* End of route for doctor-dashboard */}
       </Routes>
    );
 }
