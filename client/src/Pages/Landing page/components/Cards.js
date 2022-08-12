@@ -8,7 +8,6 @@ const Cards = ({ detail }) => {
          data-aos-duration="1500"
          className={Styles.card}
       >
-         {/* BUG: Images are well positioned in the middle. */}
          <div className={Styles.img}>
             <img src={detail.profile_pic} alt="Doctor" />
          </div>
