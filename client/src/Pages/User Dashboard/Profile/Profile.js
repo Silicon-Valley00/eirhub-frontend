@@ -17,11 +17,11 @@ const mapStateToProps = (state) => {
 };
 
 function Profile(props) {
-   // console.log(
-   //    props.savedGuardianDetails,
-   //    props.savedHealthDetails,
-   //    props.savedProfile
-   // );
+   console.log(
+      props.savedGuardianDetails,
+      props.savedHealthDetails,
+      props.savedProfile
+   );
 
    // Handles dispatching of actions
    const dispatch = useDispatch();
@@ -139,7 +139,11 @@ function Profile(props) {
          alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
-         setUserImage(URL.createObjectURL(userimage)); //selected image file is accepted
+         let reader = new FileReader();
+         reader.onloadend = function () {
+            setUserImage('result', reader.result);
+         };
+         reader.readAsDataURL(userimage);
          setUploadBtn('Image Uploaded');
       }
    }
@@ -190,13 +194,22 @@ function Profile(props) {
 
       console.log(props.savedProfile);
 
-      dispatch(updateProfile(props.savedProfile.idPatient, enteredProfileInfo));
       dispatch(
-         updateHealthDetails(props.savedProfile.idPatient, enteredHealthInfo)
+         updateProfile(
+            props.savedProfile.idPatient,
+            enteredProfileInfo,
+            props.savedProfile.idGuardian,
+            enteredGuardianinfo,
+            enteredHealthInfo
+         )
       );
-      dispatch(
-         updateGuardianInfo(props.savedProfile.idGuardian, enteredGuardianinfo)
-      );
+      // dispatch(updateProfile(props.savedProfile.idPatient, enteredProfileInfo));
+      // dispatch(
+      //    updateHealthDetails(props.savedProfile.idPatient, enteredHealthInfo)
+      // );
+      // dispatch(
+      //    updateGuardianInfo(props.savedProfile.idGuardian, enteredGuardianinfo)
+      // );
 
       setDisableFormBtn(true);
       // console.log(

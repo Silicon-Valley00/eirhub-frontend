@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './medication.module.css';
 import { CgPill } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
-import { fetchMedications } from '../../../Store/Actions';
+import { fetchMedications, deletePrescriptions } from '../../../Store/Actions';
 
 function Medication(props) {
    const dispatch = useDispatch();
@@ -103,17 +103,24 @@ function Medication(props) {
                            start_date: item.start_date,
                            end_date: item.end_date,
                            id: item.id,
+                           last_taken_date: item.last_taken_date,
                         })
                      }
                   >
                      Edit
                   </button>
-                  <button>Delete</button>
+                  <button
+                     onClick={() => {
+                        dispatch(deletePrescriptions(item.id));
+                     }}
+                  >
+                     Delete
+                  </button>
                </div>
             </div>
          );
       });
-   } else {
+   } else if (prescriptions.length === 0) {
       // Sends message to be displayed when saved videos is empty
       list = <p>No prescriptions yet.</p>;
    }

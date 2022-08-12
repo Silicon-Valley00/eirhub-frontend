@@ -4,9 +4,14 @@ import { IoCalendar } from 'react-icons/io5';
 import { GiMedicinePills, GiPillDrop } from 'react-icons/gi';
 import { TiTime } from 'react-icons/ti';
 import { IoCloseOutline } from 'react-icons/io5';
+import { useDispatch } from 'react-redux';
 import { addPrescriptions, updatePrescriptions } from '../../../Store/Actions';
+import { useSelector } from 'react-redux';
 
 function Medication(props) {
+   const dispatch = useDispatch();
+   const userID = useSelector((state) => state.profile.idPatient);
+
    const [editMedication, setEditMedication] = useState({});
    // This transfers the setProfile function outside of this function's scope
    pullData = setEditMedication;
@@ -63,23 +68,35 @@ function Medication(props) {
             setIsError(true);
          } else {
             //prepares data for submition when no error is encountered
-            const medicationBody = {
-               drug_name: drugName,
-               dosage: drugDosage,
-               time_of_administration: drugTime,
-               start_date: drugStartDate,
-               end_date: drugEndDate,
-            };
-            console.log('non', editMedication);
-            if (Object.keys(editMedication).length === 0) {
-               console.log('add');
-               addPrescriptions(medicationBody);
-            } else {
-               console.log('update');
 
-               updatePrescriptions(editMedication.id, medicationBody);
+            if (Object.keys(editMedication).length === 0) {
+               const medicationBody = {
+                  drug_name: drugName,
+                  dosage: drugDosage,
+                  time_of_administration: drugTime,
+                  start_date: drugStartDate,
+                  end_date: drugEndDate,
+                  last_taken_date: drugStartDate,
+                  idPatient: userID,
+               };
+               console.log('add');
+               console.log('non', medicationBody);
+
+               dispatch(addPrescriptions(medicationBody));
+            } else {
+               const medicationBody = {
+                  drug_name: drugName,
+                  dosage: drugDosage,
+                  time_of_administration: drugTime,
+                  start_date: drugStartDate,
+                  end_date: drugEndDate,
+                  last_taken_date: editMedication.last_taken_date,
+               };
+               console.log('update');
+               console.log('non', medicationBody);
+
+               dispatch(updatePrescriptions(editMedication.id, medicationBody));
             }
-            console.log('edited', medicationBody);
             //clears all input boxes and edit medication data
             setEditMedication({});
             setDrugName('');
@@ -121,7 +138,10 @@ function Medication(props) {
                            type="text"
                            id="lastname"
                            placeholder="Enter name of drug"
-                           onChange={(event) => setDrugName(event.target.value)}
+                           onChange={(event) => {
+                              setDrugName(event.target.value);
+                              setIsError(false);
+                           }}
                            value={drugName}
                         />
                      </div>
@@ -137,9 +157,10 @@ function Medication(props) {
                            type="text"
                            id="dosage"
                            placeholder="eg.1/x3"
-                           onChange={(event) =>
-                              setDrugDosage(event.target.value)
-                           }
+                           onChange={(event) => {
+                              setDrugDosage(event.target.value);
+                              setIsError(false);
+                           }}
                            value={drugDosage}
                         />
                      </div>
@@ -155,7 +176,10 @@ function Medication(props) {
                            type="text"
                            id="time"
                            placeholder="Select period to take drug"
-                           onChange={(event) => setDrugTime(event.target.value)}
+                           onChange={(event) => {
+                              setDrugTime(event.target.value);
+                              setIsError(false);
+                           }}
                            value={drugTime}
                         />
                      </div>
@@ -178,9 +202,10 @@ function Medication(props) {
                                  event.target.type = 'text';
                               }
                            }}
-                           onChange={(event) =>
-                              setDrugStartDate(event.target.value)
-                           }
+                           onChange={(event) => {
+                              setDrugStartDate(event.target.value);
+                              setIsError(false);
+                           }}
                            value={drugStartDate}
                         />
                      </div>
@@ -202,9 +227,10 @@ function Medication(props) {
                                  event.target.type = 'text';
                               }
                            }}
-                           onChange={(event) =>
-                              setDrugEndDate(event.target.value)
-                           }
+                           onChange={(event) => {
+                              setDrugEndDate(event.target.value);
+                              setIsError(false);
+                           }}
                            value={drugEndDate}
                         />
                      </div>

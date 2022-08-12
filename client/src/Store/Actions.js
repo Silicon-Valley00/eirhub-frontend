@@ -136,7 +136,13 @@ export const fetchGuardianInfo = (userID, guardianID) => {
    };
 };
 //updates user profile details
-export const updateProfile = (userID, data) => {
+export const updateProfile = (
+   userID,
+   userData,
+   guardianID,
+   guardianData,
+   healthData
+) => {
    return async function (dispatch) {
       try {
          const response = await axios({
@@ -148,13 +154,21 @@ export const updateProfile = (userID, data) => {
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
             },
-            data: data,
+            data: userData,
          });
          if (response.status === 200) {
             //checks details of response
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
+               dispatch(
+                  updateGuardianInfo(
+                     guardianID,
+                     guardianData,
+                     userID,
+                     healthData
+                  )
+               );
             }
          } else {
             //takes all statuses aside 200
@@ -198,25 +212,31 @@ export const updateHealthDetails = (userID, data) => {
 };
 
 //updates user guardian details
-export const updateGuardianInfo = (guardianID, data) => {
+export const updateGuardianInfo = (
+   guardianId,
+   guardiandata,
+   userId,
+   healthdata
+) => {
    return async function (dispatch) {
       try {
          const response = await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:5000/guardian/${guardianID}`,
+            url: `http://127.0.0.1:5000/guardian/${guardianId}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
             },
-            data: data,
+            data: guardiandata,
          });
          if (response.status === 200) {
             //checks details of response
             if (response.data.status === true) {
                //returns response
                dispatch(setGuardianInfo(response.data.msg));
+               dispatch(updateHealthDetails(userId, healthdata));
             }
          } else {
             //takes all statuses aside 200
@@ -348,3 +368,62 @@ export const addPrescriptions = (data) => {
       }
    };
 };
+
+//deletes user prescriptions details
+export const deletePrescriptions = (id) => {
+   return async function (dispatch) {
+      try {
+         const response = await axios({
+            method: 'DELETE',
+            url: `http://127.0.0.1:5000/prescription/${id}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               alert('med delete worked');
+            }
+         } else {
+            //takes all statuses aside 200
+            alert('Could not make update, try again med delete 1');
+         }
+      } catch (error) {
+         alert('Could not make update, try again med delete 2');
+      }
+   };
+};
+
+//Fetches user report details
+export async function fetchDoctors() {
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `http://127.0.0.1:5000/doctors/`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      });
+      if (response.status === 200) {
+         //checks details of response
+         if (response.data.status === true) {
+            //returns response
+            alert('doctors fetch worked');
+            return response.data.msg;
+         }
+      } else {
+         //takes all statuses aside 200
+         alert('Something went wrong. Try again, doctor 1');
+      }
+   } catch (error) {
+      alert(error, 'doctors 2');
+   }
+}

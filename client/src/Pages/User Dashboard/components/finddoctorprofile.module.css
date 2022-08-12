@@ -16,7 +16,7 @@
    height: 90%;
    min-height: 90%;
    max-height: 90%;
-   padding: 2rem 1.2rem 0 1.4rem;
+   padding: 1.3rem 1.2rem 0 1.4rem;
    border-top-left-radius: 2rem;
    border-top-right-radius: 2rem;
 }
@@ -33,65 +33,77 @@
 }
 .profileDetails {
    text-align: center;
+   margin-top: 0.8rem;
+   word-break: break-word;
 }
+
 .profileDetails h3 {
    font-weight: 700;
-   font-size: 1.2rem;
+   font-size: 0.9rem;
    color: var(--deepcol);
+   margin-top: 1rem;
 }
-.profileDetails p {
-   font-weight: 500;
-   font-size: 1rem;
-   color: var(--midcol);
-}
+
 .profileInfo {
-   margin-top: 0.5rem;
-   height: 50%;
+   margin-top: 2rem;
 }
 .profileRatings {
    margin-bottom: 1rem;
 }
 .profileRatings h3 {
    font-weight: 700;
-   font-size: 1.2rem;
+   font-size: 1rem;
    color: var(--deepcol);
 }
-.profileRatings p {
-   font-weight: 500;
-   font-size: 1rem;
-   color: var(--midcol);
+.profileRatingsContent {
+   display: flex;
+   height: 1.5rem;
+   min-height: 1.5rem;
+   max-height: 1.5rem;
 }
+.profileRatingsContent span {
+   color: rgb(255, 204, 0);
+   font-size: 1.2rem;
+   padding-right: 0.1rem;
+}
+.profileRatingsContent p {
+   font-weight: 600;
+   font-size: 0.7rem;
+   color: var(--midcol);
+   margin: 0.2rem 0 0 0.5rem;
+}
+
 .profileSpecialities {
-   margin-bottom: 1rem;
+   margin-top: 1rem;
 }
 .profileSpecialities h3 {
    font-weight: 700;
-   font-size: 1.2rem;
+   font-size: 1rem;
    color: var(--deepcol);
 }
 .profileSpecialities p {
-   font-weight: 500;
-   font-size: 1rem;
+   font-weight: 600;
+   font-size: 0.7rem;
    color: var(--midcol);
 }
 .profileHospital {
-   margin-bottom: 1rem;
+   margin-top: 1rem;
 }
 .profileHospital h3 {
    font-weight: 700;
-   font-size: 1.2rem;
+   font-size: 1rem;
    color: var(--deepcol);
 }
 .profileHospital p {
    font-weight: 500;
-   font-size: 1rem;
+   font-size: 0.7rem;
    color: var(--midcol);
 }
 .profileButton {
    display: flex;
    justify-content: center;
    align-items: center;
-   margin-bottom: -10rem;
+   margin-top: 2.2rem;
 }
 .profileButton button {
    /* width: 25%;
@@ -103,7 +115,7 @@
    color: #fff;
    text-transform: uppercase;
    font-weight: 600;
-   font-size: 75%;
+   font-size: 0.9rem;
    text-align: center;
    overflow: hidden;
    position: relative;

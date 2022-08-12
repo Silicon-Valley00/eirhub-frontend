@@ -112,7 +112,7 @@
 .selectOne select {
    width: 100%;
    height: 100%;
-   color: var(--tablehead);
+   color: rgba(0, 0, 0, 0.5);
    padding: 0 0.5rem;
    border-radius: 0.2rem;
 
@@ -141,7 +141,7 @@
    top: 0;
    right: 0;
    padding: 0.5rem 0.5rem;
-   color: var(--tablehead);
+   color: rgba(0, 0, 0, 0.5);
    cursor: pointer;
    pointer-events: none;
    transition: 0.25s all ease;
@@ -154,7 +154,7 @@
 .selectTwo select {
    width: 100%;
    height: 100%;
-   color: var(--tablehead);
+   color: rgba(0, 0, 0, 0.5);
    padding: 0 0.5rem;
    border-radius: 0.2rem;
 
@@ -186,7 +186,7 @@ select::-ms-expand {
    top: 0;
    right: 0;
    padding: 0.5rem 0.5rem;
-   color: var(--tablehead);
+   color: rgba(0, 0, 0, 0.5);
    cursor: pointer;
    pointer-events: none;
    transition: 0.25s all ease;
@@ -203,7 +203,8 @@ select::-ms-expand {
    width: 100%;
    height: 20rem;
    min-height: 20rem;
-   max-width: 20rem;
+   max-height: 20rem;
+   padding-bottom: 2rem;
 }
 
 .doctorBox {
@@ -239,25 +240,26 @@ select::-ms-expand {
 }
 .doctorName {
    width: 100%;
-   height: 25%;
+   height: 1.7rem;
    font-weight: 600;
    margin-top: 0.2rem;
-   -webkit-line-clamp: 1;
+   -webkit-line-clamp: 2;
    text-overflow: ellipsis;
    display: -webkit-box;
    -webkit-box-orient: vertical;
    overflow: hidden;
+   word-break: break-word;
 }
 .doctorName h3 {
-   font-size: 100%;
+   font-size: 0.7rem;
    color: var(--midcol);
    text-align: left;
 }
 .doctorDetails {
    width: 100%;
-   height: 70%;
-   font-weight: 550;
-   -webkit-line-clamp: 4;
+   height: 3.5rem;
+   font-weight: 500;
+   -webkit-line-clamp: 5;
    text-overflow: ellipsis;
    display: -webkit-box;
    -webkit-box-orient: vertical;
@@ -266,7 +268,7 @@ select::-ms-expand {
    /* margin-top: 0.5rem; */
 }
 .doctorDetails p {
-   font-size: 70%;
+   font-size: 0.6rem;
    color: var(--midcol);
 }
 .doctorInfoLink {
@@ -298,7 +300,7 @@ select::-ms-expand {
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .title h1 {
-      font-size: 180%;
+      font-size: 1.5rem;
    }
    .searchRegion {
       height: 2.2rem;
@@ -313,26 +315,27 @@ select::-ms-expand {
       padding: 0.6rem;
    }
    .doctorName {
-      height: 30%;
+      height: 2rem;
       margin-top: 0.1rem;
       -webkit-line-clamp: 2;
+      word-break: break-word;
    }
    .doctorName h3 {
-      font-size: 0.91rem;
+      font-size: 0.75rem;
    }
    .doctorDetails {
-      height: 65%;
+      height: 3.5rem;
       -webkit-line-clamp: 5;
       margin-top: 0.2rem;
    }
    .doctorDetails p {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
    }
 }
 
 @media only screen and (min-width: 897px) and (max-width: 1024px) {
    .title h1 {
-      font-size: 180%;
+      font-size: 1.5rem;
    }
    .searchRegion {
       height: 2.2rem;
@@ -353,20 +356,21 @@ select::-ms-expand {
       padding: 0.6rem;
    }
    .doctorName {
-      height: 30%;
+      height: 1.5rem;
       margin-top: 0.1rem;
       -webkit-line-clamp: 2;
+      word-break: break-word;
    }
    .doctorName h3 {
-      font-size: 0.9rem;
+      font-size: 0.7rem;
    }
    .doctorDetails {
-      height: 60%;
+      height: 4.5rem;
       -webkit-line-clamp: 5;
       margin-top: 0.2rem;
    }
    .doctorDetails p {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
    }
 }
 @media only screen and (min-width: 769px) and (max-width: 896px) {
@@ -375,13 +379,21 @@ select::-ms-expand {
       justify-content: center;
    }
    .title h1 {
-      font-size: 180%;
+      font-size: 1.4rem;
    }
    .searchRegion {
       height: 2.2rem;
+      width: 100%;
    }
    .filterRegion {
       height: 1.9rem;
+      width: 100%;
+   }
+   .selectOne {
+      width: 47%;
+   }
+   .selectTwo {
+      width: 47%;
    }
    .formRegion form p {
       font-size: 0.9rem;
@@ -396,25 +408,28 @@ select::-ms-expand {
       padding: 0.6rem;
    }
    .doctorName {
-      height: 30%;
+      height: 2rem;
       margin-top: 0.1rem;
       -webkit-line-clamp: 2;
    }
    .doctorName h3 {
-      font-size: 0.9rem;
+      font-size: 0.7rem;
    }
    .doctorDetails {
-      height: 60%;
-      -webkit-line-clamp: 5;
+      height: 3.5rem;
+      -webkit-line-clamp: 4;
       margin-top: 0.2rem;
    }
    .doctorDetails p {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
    }
 }
-@media only screen and (min-width: 481px) and (max-width: 768px) {
+@media only screen and (min-width: 510px) and (max-width: 768px) {
+   .doctorsBox {
+      padding-bottom: 1rem;
+   }
    .title h1 {
-      font-size: 180%;
+      font-size: 1.8rem;
    }
    .searchRegion {
       height: 2.2rem;
@@ -424,6 +439,9 @@ select::-ms-expand {
    }
    .formRegion form p {
       font-size: 0.9rem;
+   }
+   .doctorsBox {
+      grid-template-columns: 48% 48%;
    }
    .doctorImage {
       width: 35%;
@@ -435,35 +453,44 @@ select::-ms-expand {
       padding: 0.6rem;
    }
    .doctorName {
-      height: 30%;
+      height: 1.8rem;
       margin-top: 0.1rem;
       -webkit-line-clamp: 2;
    }
    .doctorName h3 {
-      font-size: 0.9rem;
+      font-size: 0.75rem;
    }
    .doctorDetails {
-      height: 60%;
-      -webkit-line-clamp: 5;
+      height: 3.5rem;
+      -webkit-line-clamp: 4;
       margin-top: 0.2rem;
    }
    .doctorDetails p {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
    }
 }
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+@media only screen and (min-width: 320px) and (max-width: 509px) {
    .doctorsBox {
       grid-template-columns: 1fr;
       justify-content: center;
+      padding-bottom: 2rem;
    }
    .title h1 {
-      font-size: 180%;
+      font-size: 1.3rem;
    }
    .searchRegion {
       height: 2.2rem;
+      width: 100%;
    }
    .filterRegion {
       height: 1.9rem;
+      width: 100%;
+   }
+   .selectOne {
+      width: 47%;
+   }
+   .selectOne {
+      width: 47%;
    }
    .formRegion form p {
       font-size: 0.9rem;
@@ -478,19 +505,19 @@ select::-ms-expand {
       padding: 0.6rem;
    }
    .doctorName {
-      height: 30%;
+      height: 1.7rem;
       margin-top: 0.1rem;
       -webkit-line-clamp: 2;
    }
    .doctorName h3 {
-      font-size: 0.9rem;
+      font-size: 0.7rem;
    }
    .doctorDetails {
-      height: 60%;
-      -webkit-line-clamp: 5;
+      height: 3.5rem;
+      -webkit-line-clamp: 4;
       margin-top: 0.2rem;
    }
    .doctorDetails p {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
    }
 }
