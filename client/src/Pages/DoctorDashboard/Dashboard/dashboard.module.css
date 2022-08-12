@@ -136,11 +136,6 @@
 
 /* End */
 
-/* .right_pane {
-   width: 100%;
-   background-color: blue;
-} */
-
 .doctor_display {
    display: flex;
    flex-direction: column;
@@ -214,12 +209,6 @@
       padding: 0 10px;
    }
 }
-
-/* @media (min-width: 600px) {
-   .doctor_display {
-      grid-template-columns: repeat(3, 1fr);
-   }
-} */
 
 @media (min-width: 720px) {
    .main {
@@ -297,16 +286,12 @@
       justify-content: start;
    }
 
-   /* .icon {
-      height: 2rem;
-      width: 3rem;
-   }
-
-   .text {
-      font-size: 17px;
-   } */
-
    .digits {
       font-size: 15px;
+   }
+
+   .heading {
+      text-align: left;
+      font-size: 20px;
    }
 }

@@ -2,7 +2,8 @@ import styles from './navigation.module.css';
 import avatarThree from '../../../assets/Rectangle.png';
 import Sidebar from './Sidebar';
 
-function Navigation() {
+function Navigation({ nav }) {
+   console.log(nav);
    return (
       <nav className={styles.nav}>
          <div className={styles.welcome_msg}>
@@ -19,7 +20,7 @@ function Navigation() {
             </div>
          </div>
 
-         <Sidebar />
+         <Sidebar indicator={nav} />
       </nav>
    );
 }
