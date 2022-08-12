@@ -30,7 +30,10 @@
 .inputName {
    width: 30%;
    height: 40px;
+   grid-column: 1/2;
+   grid-row: 2/3;
 }
+
 .inputCondition {
    width: 50%;
    height: 40px;
