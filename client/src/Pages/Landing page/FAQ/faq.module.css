@@ -64,6 +64,7 @@
 .question_and_answer {
    width: 100%;
    margin-bottom: 1rem;
+   border-bottom: 1px solid var(--gray);
 }
 
 .question {
@@ -73,6 +74,7 @@
    align-items: center;
    justify-content: space-between;
    cursor: pointer;
+   padding-bottom: 10px;
 }
 
 .answer {
@@ -114,6 +116,10 @@
 
    .question_and_answer {
       padding: 0 2rem;
+   }
+
+   .plusMinus {
+      font-size: 23px;
    }
 }
 

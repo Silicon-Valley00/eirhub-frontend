@@ -35,7 +35,7 @@ function Navigation(props) {
                </div>
                <div className={styles.sidebar}>
                   <ul>
-                     <Link to={'/dashboard'}>
+                     <Link to={'/userdashboard'}>
                         <li
                            className={
                               props.page === 'dashboard' ? styles.active : ''
@@ -49,7 +49,7 @@ function Navigation(props) {
                            <h3>Dasboard</h3>
                         </li>
                      </Link>
-                     <Link to={'/profile'}>
+                     <Link to={'/userprofile'}>
                         <li
                            className={
                               props.page === 'profile' ? styles.active : ''
@@ -63,7 +63,7 @@ function Navigation(props) {
                            <h3>Profile</h3>
                         </li>
                      </Link>
-                     <Link to={'/records'}>
+                     <Link to={'/reports'}>
                         <li
                            className={
                               props.page === 'records' ? styles.active : ''
@@ -77,7 +77,7 @@ function Navigation(props) {
                            <h3>Reports</h3>
                         </li>
                      </Link>
-                     <Link to={'/medications'}>
+                     <Link to={'/prescriptions'}>
                         <li
                            className={
                               props.page === 'medications' ? styles.active : ''
@@ -117,7 +117,7 @@ function Navigation(props) {
                            <h3>Find a Doctor</h3>
                         </li>
                      </Link>
-                     <Link to={'/messaging'}>
+                     <Link to={'/usermessaging'}>
                         <li
                            className={
                               props.page === 'message' ? styles.active : ''

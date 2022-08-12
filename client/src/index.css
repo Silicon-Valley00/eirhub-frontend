@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@400;600&display=swap');
 
-
-
 * {
    margin: 0;
+   outline: 0;
+   appearance: 0;
+   border: 0;
+   text-decoration: 0;
+   list-style: none;
    box-sizing: border-box;
    border: none;
    font-family: var(--mainfont);
@@ -16,5 +19,9 @@
    --lightcol: #05a6c2;
    --midcol: #2b6777;
    --deepcol: #0d3f58;
+   --tablehead: #c2c9d1;
+   --iconred: #dd7678;
+   --iconback: #f7eef0;
    --mainfont: 'Poppins', sans-serif;
+   --logofont: 'Comfortaa', cursive;
 }

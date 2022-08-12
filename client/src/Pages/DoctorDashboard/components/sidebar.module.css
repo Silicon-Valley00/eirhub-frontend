@@ -1,0 +1,170 @@
+.main {
+   width: 100%;
+   background: var(--white);
+   height: 95vh;
+   position: absolute;
+   z-index: 9999;
+   top: 0;
+   left: 0;
+   border-radius: 0 5px 5px 0;
+   padding: 1rem 0;
+}
+
+.menu {
+   width: 20px;
+   height: 20px;
+   cursor: pointer;
+   position: absolute;
+   top: 1rem;
+   left: 4.5rem;
+}
+
+.show_sidebar {
+   left: 0;
+}
+
+/* TODO:   able to freeze vertical scrolling */
+
+.hide_sidebar {
+   width: 100%;
+   height: 100vh;
+   position: absolute;
+   top: 0;
+   border-radius: 0 5px 5px 0;
+   padding: 1rem 0;
+   left: -70rem;
+}
+
+.logo_close {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 5px;
+}
+
+/* FIXME: change the color to lightcol after testing. */
+.logo {
+   font-size: 20px;
+   color: var(--midcol);
+   font-weight: 600;
+   font-family: var(--logofont);
+}
+
+.close {
+   color: var(--midcol);
+   cursor: pointer;
+}
+
+/* styling for links */
+.nav {
+   display: flex;
+   flex-direction: column;
+   margin-top: 1rem;
+   align-items: flex-start;
+   gap: 2rem;
+   height: 100%;
+}
+
+.upper_links {
+   width: 100%;
+}
+
+.link {
+   display: flex;
+   align-items: center;
+   justify-content: start;
+   color: var(--midcol);
+   gap: 1rem;
+   height: 3rem;
+}
+
+.active {
+   background-color: var(--gray);
+   margin-left: 0;
+   border-top-right-radius: 3rem;
+   border-bottom-right-radius: 3rem;
+}
+
+.upper_links {
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+}
+
+.title {
+   text-transform: capitalize;
+}
+
+@media (min-width: 480px) {
+   .menu {
+      left: 7.5rem;
+   }
+}
+
+/* sidebar for bigger tablet screens */
+@media (min-width: 800px) {
+   .menu {
+      display: none;
+   }
+
+   .main {
+      width: 6rem;
+      top: 3rem;
+      height: calc(100vh - 50px);
+   }
+
+   .hide_sidebar {
+      width: 6rem;
+      height: 92vh;
+      position: absolute;
+      top: 3rem;
+      border-radius: 0 5px 5px 0;
+      padding: 0rem 0;
+      left: 0rem;
+   }
+
+   .close {
+      display: none;
+   }
+
+   .logo {
+      display: none;
+   }
+
+   /* styling for links */
+   .nav {
+      margin-top: 0;
+   }
+
+   .upper_links {
+      width: 100%;
+   }
+
+   .link {
+      align-items: center;
+      justify-content: flex-start;
+   }
+
+   .title {
+      display: none;
+   }
+
+   .icon {
+      font-size: 1.5rem;
+   }
+}
+
+/* sidebar on desktop screens */
+@media (min-width: 1024px) {
+   .main {
+      width: 12rem;
+   }
+   .hide_sidebar {
+      width: 12rem;
+   }
+
+   /* styling for links */
+   .title {
+      display: inline;
+   }
+}
