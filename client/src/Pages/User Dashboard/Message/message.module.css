@@ -1,0 +1,21 @@
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+   --tablehead: #c2c9d1;
+   --iconred: #dd7678;
+   --iconback: #f7eef0;
+   --formboxoutline: #c2c9d1;
+}
+
+#messageBody {
+   margin-top: 4rem;
+   background-color: var(--white);
+   padding: 2rem 3rem 0 3rem;
+   border-top-left-radius: 2rem;
+   border-top-right-radius: 2rem;
+   width: 137%;
+   overflow-y: auto;
+}

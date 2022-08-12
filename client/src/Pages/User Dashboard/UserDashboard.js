@@ -6,7 +6,8 @@ import Navigation from './components/Navigation';
 import { useSelector } from 'react-redux';
 
 function UserDashboard(props) {
-   const user = useSelector((state) => state.name);
+   const user = useSelector((state) => state.profile.first_name);
+   const userProfileImage = useSelector((state) => state.profile.person_image);
 
    // handles menu open and close for smaller devices
    const [openMenu, setOpenMenu] = useState(false);
@@ -33,7 +34,14 @@ function UserDashboard(props) {
                      </i>
                   </div>
                   <div className={styles.profileImage}>
-                     <img src={avatarThree} alt="avatar" />
+                     <img
+                        src={
+                           userProfileImage !== ''
+                              ? userProfileImage
+                              : avatarThree
+                        }
+                        alt="avatar"
+                     />
                   </div>
                   <div className={styles.info}>
                      {/* <p>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import avatarOne from '../../../assets/Rectangle-1.png';
 import avatarTwo from '../../../assets/Rectangle-2.png';
 import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
@@ -8,8 +8,52 @@ import { ImDroplet } from 'react-icons/im';
 import { RiHeartPulseFill } from 'react-icons/ri';
 import { GiMedicalThermometer } from 'react-icons/gi';
 import styles from './dashboard.module.css';
+import { connect } from 'react-redux';
+import { fetchMedications } from '../../../Store/Actions.js';
 
-function Dashboard() {
+const mapStateToProps = (state) => {
+   return {
+      savedHealthDetails: state.health,
+   };
+};
+
+function Dashboard(props) {
+   const [medications, setMedications] = useState();
+
+   useEffect(() => {
+      async function fetchdata() {
+         // // const items = await fetchMedications();
+         // setMedications(items);
+      }
+      fetchdata();
+      console.log(medications);
+   }, []);
+   var list;
+   //displays medications
+   console.log(medications);
+
+   if (
+      medications !== null ||
+      medications !== undefined ||
+      medications.length !== 0
+   ) {
+      list = medications.map((item, j) => {
+         return (
+            <tr key={`${item.drug_name}-${j}`}>
+               <td>{`${item.drug_name}`}</td>
+               <td>{`${item.dosage}`}</td>
+               <td>{`${item.time_of_administration}`}</td>
+               <td>
+                  <input type={'checkbox'} />
+               </td>
+            </tr>
+         );
+      });
+   } else if (medications.length === 0) {
+      // Sends message to be displayed when saved videos is empty
+      list = <p>No medications yet.</p>;
+   }
+
    return (
       <>
          <main id={styles.midsection}>
@@ -22,7 +66,7 @@ function Dashboard() {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>126 bpm</h4>
+                        <h4>{`${props.savedHealthDetails.pulse} bpm`}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -40,7 +84,7 @@ function Dashboard() {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>32.7 °C</h4>
+                        <h4>{`${props.savedHealthDetails.temperature} °C`}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -58,7 +102,7 @@ function Dashboard() {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>120/80</h4>
+                        <h4>{`${props.savedHealthDetails.blood_pressure}`}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -72,11 +116,11 @@ function Dashboard() {
                   <div className={styles.vitalsDetails}>
                      <div className={styles.vitalsIcon}>
                         <i>
-                           <img src={glucometer} alt={'Glucometer image'} />
+                           <img src={glucometer} alt={'Glucometer'} />
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>170 mg/dL</h4>
+                        <h4>{`${props.savedHealthDetails.blood_sugar} mg/dL`}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -218,4 +262,4 @@ function Dashboard() {
       </>
    );
 }
-export default Dashboard;
+export default connect(mapStateToProps)(Dashboard);

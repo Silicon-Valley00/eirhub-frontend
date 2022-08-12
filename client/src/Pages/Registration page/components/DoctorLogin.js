@@ -6,12 +6,17 @@ import { IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
+import { LoginUser } from '../../../context/authcontext';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setName } from '../../../Store/Actions.js';
+import {
+   fetchGuardianInfo,
+   fetchHealthDetails,
+   fetchProfile,
+} from '../../../Store/Actions.js';
 
 function DoctorLogin(props) {
-   const docLoginFormRef = useRef()
+   const docLoginFormRef = useRef();
    const navigate = useNavigate();
    const dispatch = useDispatch();
    // handles button changes
@@ -27,11 +32,20 @@ function DoctorLogin(props) {
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
 
+      // checks if account is to be logged in
       if (feedback[0] === true) {
-         // checks if account is to be logged in
+         //logs user into cometchat
+         LoginUser(
+            `${feedback[1].first_name.toLowerCase()}-${feedback[1].last_name.toLowerCase()}-${
+               feedback[1].id
+            }`
+         );
+
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         dispatch(setName(feedback[1].first_name));
+         dispatch(fetchProfile(feedback[1].id));
+         dispatch(fetchGuardianInfo(feedback[1].guardian_id));
+         dispatch(fetchHealthDetails(feedback[1].id));
          setTimeout(() => {
             navigate('/dashboard');
          }, 1500);
@@ -55,7 +69,7 @@ function DoctorLogin(props) {
                   props.handleModalsClose();
                   docLoginFormRef.current.reset();
                   props.reset();
-                  setIsError(false)
+                  setIsError(false);
                }}
             >
                <i>
@@ -211,10 +225,10 @@ function DoctorLogin(props) {
                            <p
                               className={loginStyles.link}
                               onClick={() => {
-                                 props.handleModalSignupDoctor()
+                                 props.handleModalSignupDoctor();
                                  docLoginFormRef.current.reset();
                                  props.reset();
-                                 setIsError(false)
+                                 setIsError(false);
                               }}
                            >
                               Sign up

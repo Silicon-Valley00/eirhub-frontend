@@ -63,7 +63,7 @@ function Navigation(props) {
                            <h3>Profile</h3>
                         </li>
                      </Link>
-                     <Link to={'/records'}>
+                     <Link to={'/reports'}>
                         <li
                            className={
                               props.page === 'records' ? styles.active : ''
@@ -74,10 +74,10 @@ function Navigation(props) {
                                  <BsFillFileEarmarkFill />
                               </i>
                            </span>
-                           <h3>Records</h3>
+                           <h3>Reports</h3>
                         </li>
                      </Link>
-                     <Link to={'/medications'}>
+                     <Link to={'/prescriptions'}>
                         <li
                            className={
                               props.page === 'medications' ? styles.active : ''
@@ -88,7 +88,7 @@ function Navigation(props) {
                                  <CgPill />
                               </i>
                            </span>
-                           <h3>Medications</h3>
+                           <h3>Prescriptions</h3>
                         </li>
                      </Link>
                      <li
@@ -117,19 +117,20 @@ function Navigation(props) {
                            <h3>Find a Doctor</h3>
                         </li>
                      </Link>
-
-                     <li
-                        className={
-                           props.page === 'messages' ? styles.active : ''
-                        }
-                     >
-                        <span className={styles.icons}>
-                           <i>
-                              <TiMessages />
-                           </i>
-                        </span>
-                        <h3>Messages</h3>
-                     </li>
+                     <Link to={'/usermessaging'}>
+                        <li
+                           className={
+                              props.page === 'message' ? styles.active : ''
+                           }
+                        >
+                           <span className={styles.icons}>
+                              <i>
+                                 <TiMessages />
+                              </i>
+                           </span>
+                           <h3>Messages</h3>
+                        </li>
+                     </Link>
                      <li
                         className={
                            props.page === 'settings' ? styles.active : ''
