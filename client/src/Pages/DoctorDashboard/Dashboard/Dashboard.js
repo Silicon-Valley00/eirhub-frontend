@@ -7,7 +7,13 @@ import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
 import appointImg from '../../../assets/maleDoctor.jpg';
 
-function MidDashboard() {
+const mapStateToProps = (state) => {
+   return {
+      savedAppointmentDetails: state.appointment,
+   };
+};
+
+function MidDashboard(props) {
    return (
       <>
          <Navigation nav={13} />
