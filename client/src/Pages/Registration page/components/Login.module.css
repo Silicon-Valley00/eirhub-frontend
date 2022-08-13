@@ -65,8 +65,8 @@ i.closeIcon {
 }
 
 #loginContainer {
-   max-height: 600px;
-   max-width: 800px;
+   max-height: 650px;
+   max-width: 1000px;
    display: flex;
    position: fixed;
    top: 50%;
