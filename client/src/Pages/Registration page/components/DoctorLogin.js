@@ -31,11 +31,11 @@ function DoctorLogin(props) {
       // checks if account is to be logged in
       if (feedback[0] === true) {
          //logs user into cometchat
-         LoginUser(
-            `${feedback[1].first_name.toLowerCase()}-${feedback[1].last_name.toLowerCase()}-${
-               feedback[1].id
-            }`
-         );
+         // LoginUser(
+         //    `${feedback[1].first_name.toLowerCase()}-${feedback[1].last_name.toLowerCase()}-${
+         //       feedback[1].id
+         //    }`
+         // );
 
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);

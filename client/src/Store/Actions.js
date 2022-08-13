@@ -108,7 +108,9 @@ export const fetchDoctorsProfileInfo = (doctorID) => {
             //takes all statuses aside 200
             alert('Something went wrong. Try again');
          }
-      } catch (error) {}
+      } catch (error) {
+         alert('caughterror', error);
+      }
    };
 };
 
