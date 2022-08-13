@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
 function DoctorProfile(props) {
    console.log(props.savedDoctorProfile);
 
+   // Variable used to dispatch actions
    const dispatch = useDispatch();
 
    // Handles values for input fields

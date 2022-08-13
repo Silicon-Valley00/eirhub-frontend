@@ -125,7 +125,19 @@ const Reducers = (state = initialState, action) => {
          return { ...state, reports: action.payload };
 
       case SET_DOCTOR_PROFILE_INFO:
-         return { ...state, doctor_profile_info: action.payload };
+         let doctor_profile_info = {
+            first_name: action.payload.first_name,
+            middle_name: action.payload.middle_name,
+            last_name: action.payload.last_name,
+            email: action.payload.email,
+            date_of_birth: action.payload.date_of_birth,
+            gender: action.payload.gender,
+            house_number: action.payload.house_number,
+            license_number: action.payload.license_number,
+            specialty: action.payload.specialty,
+            hospitalCode: action.payload.specialty,
+         };
+         return { ...state, doctor_profile_info };
 
       default:
          return state;

@@ -26,7 +26,6 @@ import RecordChild from './Pages/User Dashboard/components/RecordsChild';
 import Message from './Pages/User Dashboard/Message/Message';
 
 // imports for doctor's dashboard
-import DoctorDashboard from './Pages/DoctorDashboard/DoctorDashboard';
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
 import DoctorProfile from './Pages/DoctorDashboard/Profile/Profile';
 import DoctorRecords from './Pages/DoctorDashboard/Records/Records';
