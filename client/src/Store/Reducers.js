@@ -4,6 +4,7 @@ import {
    SET_HEALTH_INFO,
    SET_GUARDIAN_INFO,
    SET_REPORTS,
+   SET_DOCTOR_PROFILE_INFO,
 } from './ActionTypes';
 
 // import { PURGE } from 'redux-persist';
@@ -49,6 +50,18 @@ const initialState = {
       gender: '',
    },
    reports: [],
+   doctorProfile: {
+      first_name: '',
+      middle_name: '',
+      last_name: '',
+      email: '',
+      date_of_birth: '',
+      gender: '',
+      house_number: '',
+      license_number: '',
+      specialty: '',
+      hospitalCode: '',
+   },
 };
 
 const Reducers = (state = initialState, action) => {
@@ -111,8 +124,12 @@ const Reducers = (state = initialState, action) => {
       case SET_REPORTS:
          return { ...state, reports: action.payload };
 
+      case SET_DOCTOR_PROFILE_INFO:
+         return { ...state, doctor_profile_info: action.payload };
+
       default:
          return state;
    }
 };
+
 export default Reducers;

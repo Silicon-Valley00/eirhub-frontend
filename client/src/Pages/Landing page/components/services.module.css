@@ -260,6 +260,12 @@
    }
 
    .img {
-      padding-left: 5rem;
+      padding-left: 5%;
+   }
+}
+
+@media (min-width: 1920px) {
+   .img {
+      padding-left: 20%;
    }
 }

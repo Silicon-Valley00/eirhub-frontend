@@ -9,11 +9,7 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import { LoginUser } from '../../../context/authcontext';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {
-   fetchGuardianInfo,
-   fetchHealthDetails,
-   fetchProfile,
-} from '../../../Store/Actions.js';
+import { fetchDoctorsProfileInfo } from '../../../Store/Actions.js';
 
 function DoctorLogin(props) {
    const docLoginFormRef = useRef();
@@ -43,11 +39,11 @@ function DoctorLogin(props) {
 
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         dispatch(fetchProfile(feedback[1].id));
-         dispatch(fetchGuardianInfo(feedback[1].guardian_id));
-         dispatch(fetchHealthDetails(feedback[1].id));
+         dispatch(fetchDoctorsProfileInfo(feedback[1].id));
+         // dispatch(fetchGuardianInfo(feedback[1].guardian_id));
+         // dispatch(fetchHealthDetails(feedback[1].id));
          setTimeout(() => {
-            navigate('/dashboard');
+            navigate('/doctordashboard');
          }, 1500);
       } else {
          // when account fails to login
