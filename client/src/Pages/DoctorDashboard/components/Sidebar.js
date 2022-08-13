@@ -8,7 +8,6 @@ import { GrClose } from 'react-icons/gr';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillFile } from 'react-icons/ai';
-import { useEffect } from 'react';
 
 const links = [
    {

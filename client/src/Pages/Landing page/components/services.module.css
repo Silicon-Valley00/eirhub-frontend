@@ -258,4 +258,14 @@
       padding-left: 6rem;
       padding-right: 6rem;
    }
+
+   .img {
+      padding-left: 5%;
+   }
+}
+
+@media (min-width: 1920px) {
+   .img {
+      padding-left: 20%;
+   }
 }

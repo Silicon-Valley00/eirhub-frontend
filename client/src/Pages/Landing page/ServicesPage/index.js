@@ -107,6 +107,7 @@ const ServicesPage = () => {
                         </p>
                      </div>
                      <div data-aos="fade-in" className={style.of_image}>
+                        {/* FIXME: height of the image has to be increased on 1920px screen width. */}
                         <img src={pic1} alt="" className={style.of__image} />
                      </div>
                   </div>

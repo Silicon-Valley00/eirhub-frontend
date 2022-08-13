@@ -56,7 +56,7 @@ const Services = () => {
                <div className={Styles.services_message_box}>
                   <div className={Styles.services_message_info}>
                      <h4 className={Styles.services_ad}>
-                        Don't Delay Care For You and those You Love.{' '}
+                        Don't Delay Care For You and those You Love.
                      </h4>
                      {/* A button that is used to book an appointment.  */}
                      <button className={Styles.message_btn}>
@@ -65,6 +65,7 @@ const Services = () => {
                      <div className={Styles.circle_1}></div>
                   </div>
                   <div className={Styles.circle_2}></div>
+                  {/* FIXME: Square is not where is supposed to be */}
                   <div className={Styles.square}>
                      <div className={Styles.square_2}></div>
                   </div>
