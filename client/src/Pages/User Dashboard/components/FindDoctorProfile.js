@@ -13,7 +13,7 @@ function FindingDoctor(props) {
 
    return (
       <>
-         {profile ? (
+         {Object.keys(profile).length === 0 ? (
             <div className={styles.profileBody}>
                <div className={styles.profileImage}>
                   <img src={profile.person_image} alt="doctor-profile" />

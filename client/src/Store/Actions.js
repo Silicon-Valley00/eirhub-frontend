@@ -102,6 +102,7 @@ export const fetchDoctorsProfileInfo = (doctorID) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
+               alert('doctor profile fetched');
                dispatch(setDoctorProfile(response.data.msg));
             }
          } else {

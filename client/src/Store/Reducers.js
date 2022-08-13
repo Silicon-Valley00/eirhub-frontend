@@ -54,13 +54,16 @@ const initialState = {
       first_name: '',
       middle_name: '',
       last_name: '',
-      email: '',
+      user_email: '',
       date_of_birth: '',
       gender: '',
       house_number: '',
       license_number: '',
-      specialty: '',
-      hospitalCode: '',
+      doctor_specialties: '',
+      hospital_code: '',
+      doctor_ratings: '',
+      person_image: '',
+      idDoctor: '',
    },
 };
 
@@ -129,15 +132,18 @@ const Reducers = (state = initialState, action) => {
             first_name: action.payload.first_name,
             middle_name: action.payload.middle_name,
             last_name: action.payload.last_name,
-            email: action.payload.email,
+            user_email: action.payload.user_email,
             date_of_birth: action.payload.date_of_birth,
             gender: action.payload.gender,
-            house_number: action.payload.house_number,
+            house_address: action.payload.house_address,
             license_number: action.payload.license_number,
-            specialty: action.payload.specialty,
-            hospitalCode: action.payload.specialty,
+            doctor_specialties: action.payload.specialties,
+            hospital_code: action.payload.hospital_code,
+            doctor_ratings: action.payload.doctor_ratings,
+            person_image: action.payload.person_image,
+            idDoctor: action.payload.idDoctor,
          };
-         return { ...state, doctor_profile_info };
+         return { ...state, doctorProfile: doctor_profile_info };
 
       default:
          return state;

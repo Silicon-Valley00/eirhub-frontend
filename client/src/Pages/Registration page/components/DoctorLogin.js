@@ -39,7 +39,7 @@ function DoctorLogin(props) {
 
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         dispatch(fetchDoctorsProfileInfo(feedback[1].id));
+         dispatch(fetchDoctorsProfileInfo(feedback[1].idDoctor));
 
          setTimeout(() => {
             navigate('/doctordashboard');
