@@ -65,8 +65,8 @@ i.closeIcon {
 }
 
 #loginContainer {
-   max-height: 650px;
-   max-width: 1000px;
+   max-height: 600px;
+   max-width: 800px;
    display: flex;
    position: fixed;
    top: 50%;
@@ -435,6 +435,14 @@ p.link {
    margin: auto;
 }
 
+@media only screen and (min-width:1024px) and (max-width: 2560px) {
+#loginContainer{
+   max-width: 1250px;
+   max-height: 800px;
+   height: 70vh;
+   width: 60vw;
+}
+}
 @media only screen and (max-width: 1024px) {
    #loginContainer {
       font-size: 14px;

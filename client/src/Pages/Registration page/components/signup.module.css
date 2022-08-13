@@ -481,8 +481,10 @@
 
 /* Media sizes */
 
-@media only screen and (min-width: 1025px) and (max-width: 2000px) {
+@media only screen and (min-width: 1025px) and (max-width: 2560px) {
    #signupContent {
+      max-width: 1250px;
+      max-height: 800px;
       width: 70vw;
       height: 80%;
    }
