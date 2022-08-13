@@ -53,7 +53,7 @@ function Medication(props) {
                   </div>
                   <div className={styles.medicationName}>
                      <h3>{item.drug_name}</h3>
-                     <p>{`Time ${item.time_of_administration}`}</p>
+                     <p>{`Time: ${item.time_of_administration}`}</p>
                   </div>
                   <div className={styles.medicationCounter}>
                      <p>

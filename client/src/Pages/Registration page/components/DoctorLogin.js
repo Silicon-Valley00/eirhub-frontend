@@ -47,7 +47,7 @@ function DoctorLogin(props) {
          dispatch(fetchGuardianInfo(feedback[1].guardian_id));
          dispatch(fetchHealthDetails(feedback[1].id));
          setTimeout(() => {
-            navigate('/dashboard');
+            navigate('/doctordashboard');
          }, 1500);
       } else {
          // when account fails to login

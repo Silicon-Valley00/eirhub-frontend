@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import styles from './profile.module.css';
 import avatarThree from '../../../assets/Rectangle.png';
 import { useDispatch, connect } from 'react-redux';
-import { updateProfile } from '../../../Store/Actions.js';
+import {
+   updateProfile,
+   updateHealthDetails,
+   updateGuardianInfo,
+} from '../../../Store/Actions.js';
 
 const mapStateToProps = (state) => {
    return {
@@ -13,11 +17,11 @@ const mapStateToProps = (state) => {
 };
 
 function Profile(props) {
-   // console.log(
-   //    props.savedGuardianDetails,
-   //    props.savedHealthDetails,
-   //    props.savedProfile
-   // );
+   console.log(
+      props.savedGuardianDetails,
+      props.savedHealthDetails,
+      props.savedProfile
+   );
 
    // Handles dispatching of actions
    const dispatch = useDispatch();
@@ -137,10 +141,10 @@ function Profile(props) {
          return false;
       } else {
          let reader = new FileReader();
-         reader.onloadend = function () {
-            setUserImage('result', reader.result);
-         };
+         reader.onloadend = function () {};
          reader.readAsDataURL(userimage);
+         setUserImage(URL.createObjectURL(userimage));
+
          setUploadBtn('Image Uploaded');
       }
    }
@@ -181,7 +185,7 @@ function Profile(props) {
          first_name: guardianFirstName,
          middle_name: guardianMiddleName,
          last_name: guardianLastName,
-         email: guardianEmail,
+         user_email: guardianEmail,
          date_of_birth: guardianDateOfBirth,
          gender: guardianGender,
          phone_number: guardianMobileNumber,
@@ -191,22 +195,27 @@ function Profile(props) {
 
       console.log(props.savedProfile);
 
-      dispatch(
-         updateProfile(
-            props.savedProfile.idPatient,
-            enteredProfileInfo,
-            props.savedProfile.idGuardian,
-            enteredGuardianinfo,
-            enteredHealthInfo
-         )
-      );
+      // dispatch(
+      //    updateProfile(
+      //       props.savedProfile.idPatient,
+      //       enteredProfileInfo,
+      //       props.savedProfile.idGuardian,
+      //       enteredGuardianinfo,
+      //       enteredHealthInfo
+      //    )
+      // );
       // dispatch(updateProfile(props.savedProfile.idPatient, enteredProfileInfo));
       // dispatch(
       //    updateHealthDetails(props.savedProfile.idPatient, enteredHealthInfo)
       // );
-      // dispatch(
-      //    updateGuardianInfo(props.savedProfile.idGuardian, enteredGuardianinfo)
-      // );
+      dispatch(
+         updateGuardianInfo(
+            props.savedProfile.idGuardian,
+            enteredGuardianinfo,
+            props.savedProfile.idPatient,
+            enteredHealthInfo
+         )
+      );
 
       setDisableFormBtn(true);
       // console.log(
@@ -229,7 +238,8 @@ function Profile(props) {
                   </div>
                   <div className={styles.profileIntro}>
                      <div className={styles.profileName}>
-                        <h2>{`${props.savedProfile.first_name} ${props.savedProfile.last_name}`}</h2>
+                        {/* <h2>{`${props.savedProfile.first_name} ${props.savedProfile.last_name}`}</h2> */}
+                        <h2>Benarson Akorfa</h2>
                      </div>
                      <div className={styles.uploadImageBtn}>
                         <label htmlFor="file-upload-button">{uploadBtn}</label>

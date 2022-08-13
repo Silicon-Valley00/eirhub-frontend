@@ -30,6 +30,7 @@ import DoctorDashboard from './Pages/DoctorDashboard/DoctorDashboard';
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
 import DoctorProfile from './Pages/DoctorDashboard/Profile/Profile';
 import DoctorRecords from './Pages/DoctorDashboard/Records/Records';
+import Schedule from './Pages/User Dashboard/Schedule/Scehdule';
 
 AOS.init();
 
@@ -114,6 +115,18 @@ function App() {
             exact
             element={<UserDashboard parent={<Message />} page={'message'} />}
          />
+         <Route
+            path="/scheduling"
+            exact
+            element={
+               <UserDashboard
+                  parent={<Schedule />} //Transfers data from parent component to child component
+                  child={<DashboardNotificationAlerts />}
+                  page={'schedule'}
+               />
+            }
+         />
+
          {/* End of routes for user dashboard */}
 
          {/* Start of route for doctor-dashboard. */}

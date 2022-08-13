@@ -6,69 +6,69 @@ import doctorProfileThree from '../../../assets/docProfileImage1.svg';
 import { fetchDoctors } from '../../../Store/Actions';
 
 function FindingDoctor(props) {
-   // const [allDoctors, setAllDoctors] = useState();
-   // useEffect(() => {
-   //    async function fetchdata() {
-   //       const items = await fetchDoctors();
-   //       setAllDoctors(items);
-   //    }
-   //    fetchdata();
-   //    console.log(allDoctors);
-   // }, []);
-   // console.log(allDoctors);
+   const [allDoctors, setAllDoctors] = useState([]);
+   useEffect(() => {
+      async function fetchdata() {
+         const items = await fetchDoctors();
+         setAllDoctors(items);
+      }
+      fetchdata();
+      console.log(allDoctors);
+   }, []);
+   console.log(allDoctors);
 
-   // var list;
-   // if (
-   //    allDoctors !== null ||
-   //    allDoctors !== undefined ||
-   //    allDoctors.length !== 0
-   // ) {
-   //    list = allDoctors.map((item, j) => {
-   //       return (
-   //          <div
-   //             className={styles.doctorBox}
-   //             key={`${item.first_name} ${item.last_name}-${j}`}
-   //          >
-   //             <div className={styles.doctorImage}>
-   //                <img src={item.person_image} alt="doctor-profile" />
-   //             </div>
-   //             <div className={styles.doctorInfo}>
-   //                <div className={styles.doctorName}>
-   //                   <h3>{`${item.first_name} ${item.last_name} `}</h3>
-   //                </div>
-   //                <div className={styles.doctorDetails}>
-   //                   <p>{item.doctor_specialties}</p>
-   //                </div>
-   //                <div className={styles.doctorInfoLink}>
-   //                   <p
-   //                      onClick={() =>
-   //                         props.pushData({
-   //                            date_of_birth: item.date_of_birth,
-   //                            doctor_id: item.doctor_id,
-   //                            doctor_ratings: item.doctor_ratings,
-   //                            doctor_specialties: item.doctor_specialties,
-   //                            first_name: item.first_name,
-   //                            gender: item.gender,
-   //                            hospital_code: item.hospital_code,
-   //                            house_address: item.house_address,
-   //                            last_name: item.last_name,
-   //                            license_number: item.license_number,
-   //                            middle_name: item.middle_name,
-   //                            person_image: item.person_image,
-   //                            user_email: item.user_email,
-   //                         })
-   //                      }
-   //                   >
-   //                      View Profile
-   //                   </p>
-   //                </div>
-   //             </div>
-   //          </div>
-   //       );
-   //    });
-   // } else if (allDoctors.length === 0) {
-   //    <p>No doctors found.</p>;
-   // }
+   var list;
+   if (
+      allDoctors !== null ||
+      allDoctors !== undefined ||
+      allDoctors.length !== 0
+   ) {
+      list = allDoctors.map((item, j) => {
+         return (
+            <div
+               className={styles.doctorBox}
+               key={`${item.first_name} ${item.last_name}-${j}`}
+            >
+               <div className={styles.doctorImage}>
+                  <img src={item.person_image} alt="doctor-profile" />
+               </div>
+               <div className={styles.doctorInfo}>
+                  <div className={styles.doctorName}>
+                     <h3>{`${item.first_name} ${item.last_name} `}</h3>
+                  </div>
+                  <div className={styles.doctorDetails}>
+                     <p>{item.doctor_specialties}</p>
+                  </div>
+                  <div className={styles.doctorInfoLink}>
+                     <p
+                        onClick={() =>
+                           props.pushData({
+                              date_of_birth: item.date_of_birth,
+                              doctor_id: item.doctor_id,
+                              doctor_ratings: item.doctor_ratings,
+                              doctor_specialties: item.doctor_specialties,
+                              first_name: item.first_name,
+                              gender: item.gender,
+                              hospital_code: item.hospital_code,
+                              house_address: item.house_address,
+                              last_name: item.last_name,
+                              license_number: item.license_number,
+                              middle_name: item.middle_name,
+                              person_image: item.person_image,
+                              user_email: item.user_email,
+                           })
+                        }
+                     >
+                        View Profile
+                     </p>
+                  </div>
+               </div>
+            </div>
+         );
+      });
+   } else if (allDoctors.length === 0) {
+      <p>No doctors found.</p>;
+   }
 
    return (
       <>
@@ -123,7 +123,7 @@ function FindingDoctor(props) {
                </form>
             </div>
             <div className={styles.doctorsBox}>
-               {/* {list} */}
+               {list}
                <div className={styles.doctorBox}>
                   <div className={styles.doctorImage}>
                      <img src={doctorProfileOne} alt="doctor-profile" />

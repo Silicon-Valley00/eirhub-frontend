@@ -162,6 +162,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
+   text-transform: capitalize;
 }
 .medicationBox table tbody td:nth-child(2),
 .medicationBox table tbody td:nth-child(3) {
@@ -213,6 +214,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 .medicationBox table thead th:nth-child(1) {
    width: 40%;
    text-align: left;
+   text-transform: capitalize;
 }
 .medicationBox table thead th:nth-child(2) {
    width: 20%;

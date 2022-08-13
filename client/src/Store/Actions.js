@@ -50,7 +50,7 @@ export const fetchProfile = (userID, guardianID) => {
       try {
          const response = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:5000/patient/${userID}`,
+            url: `http://127.0.0.1:5000/patients/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -147,7 +147,7 @@ export const updateProfile = (
       try {
          const response = await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:5000/patient/${userID}`,
+            url: `http://127.0.0.1:5000/patients/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -186,7 +186,7 @@ export const updateHealthDetails = (userID, data) => {
       try {
          const response = await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:5000/uphealthdetails/${userID}`,
+            url: `http://127.0.0.1:5000/healthdetails/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.

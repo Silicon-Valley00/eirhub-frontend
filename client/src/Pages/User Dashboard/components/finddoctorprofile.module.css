@@ -45,6 +45,8 @@
    color: var(--deepcol);
 }
 .profileRatingsContent {
+   font-weight: 500;
+
    display: flex;
    height: 1.5rem;
    min-height: 1.5rem;
@@ -56,7 +58,7 @@
    padding-right: 0.1rem;
 }
 .profileRatingsContent p {
-   font-weight: 600;
+   font-weight: 500;
    font-size: 0.7rem;
    color: var(--midcol);
    margin: 0.2rem 0 0 0.5rem;
@@ -71,7 +73,7 @@
    color: var(--deepcol);
 }
 .profileSpecialities p {
-   font-weight: 600;
+   font-weight: 500;
    font-size: 0.7rem;
    color: var(--midcol);
 }
@@ -114,68 +116,37 @@
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
+   .profileImage {
+      width: 8rem;
+   }
    .profileDetails h3 {
-      font-size: 1rem;
+      font-size: 0.9rem;
    }
 
-   .profileDetails p {
-      font-size: 0.8rem;
-   }
-   .profileInfo {
-      height: 50%;
-   }
-   .profileRatings h3 {
-      font-size: 1rem;
-   }
-   .profileRatings p {
-      font-size: 0.8rem;
-   }
-   .profileSpecialities h3 {
-      font-size: 1rem;
-   }
-   .profileSpecialities p {
-      font-size: 0.8rem;
-   }
-   .profileHospital h3 {
-      font-size: 1rem;
-   }
-   .profileHospital p {
-      font-size: 0.8rem;
-   }
    .profileButton button {
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       padding: 0.7rem 0.6rem;
       border-radius: 0.2rem;
    }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-   .profileDetails h3 {
-      font-size: 1rem;
+   .profileImage {
+      width: 7rem;
    }
 
    .profileDetails p {
-      font-size: 0.8rem;
+      font-size: 0.65rem;
    }
-   .profileInfo {
-      height: 50%;
+
+   .profileRatingsContent p {
+      font-size: 0.65rem;
    }
-   .profileRatings h3 {
-      font-size: 1rem;
-   }
-   .profileRatings p {
-      font-size: 0.8rem;
-   }
-   .profileSpecialities h3 {
-      font-size: 1rem;
-   }
+
    .profileSpecialities p {
-      font-size: 0.8rem;
-   }
-   .profileHospital h3 {
-      font-size: 1rem;
+      font-size: 0.65rem;
    }
    .profileHospital p {
-      font-size: 0.8rem;
+      font-size: 0.65rem;
    }
    .profileButton button {
       font-size: 0.6rem;
@@ -185,9 +156,17 @@
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
+   .profileBody {
+      width: 55%;
+
+      height: 35rem;
+      min-height: 35rem;
+      max-height: 35rem;
+      margin: 0 auto;
+   }
    .profileImage {
-      height: 30%;
-      width: 30%;
+      height: 12rem;
+      width: 10rem;
    }
    .profileDetails h3 {
       font-size: 1rem;
@@ -196,15 +175,11 @@
    .profileDetails p {
       font-size: 0.8rem;
    }
-   .profileInfo {
-      margin-top: 2rem;
-      height: 45%;
-      text-align: center;
-   }
+
    .profileRatings h3 {
       font-size: 1rem;
    }
-   .profileRatings p {
+   .profileRatingsContent p {
       font-size: 0.8rem;
    }
    .profileSpecialities h3 {
@@ -218,6 +193,9 @@
    }
    .profileHospital p {
       font-size: 0.8rem;
+   }
+   .profileButton {
+      padding-bottom: 2rem;
    }
    .profileButton button {
       font-size: 0.6rem;
@@ -227,9 +205,17 @@
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
+   .profileBody {
+      width: 80%;
+
+      height: 38rem;
+      min-height: 38rem;
+      max-height: 38rem;
+      margin: 0 auto;
+   }
    .profileImage {
-      height: 30%;
-      width: 30%;
+      height: 12rem;
+      width: 10rem;
    }
    .profileDetails h3 {
       font-size: 1rem;
@@ -238,15 +224,11 @@
    .profileDetails p {
       font-size: 0.8rem;
    }
-   .profileInfo {
-      margin-top: 2rem;
-      height: 45%;
-      text-align: center;
-   }
+
    .profileRatings h3 {
       font-size: 1rem;
    }
-   .profileRatings p {
+   .profileRatingsContent p {
       font-size: 0.8rem;
    }
    .profileSpecialities h3 {
@@ -261,12 +243,12 @@
    .profileHospital p {
       font-size: 0.8rem;
    }
+   .profileButton {
+      padding-bottom: 2rem;
+   }
    .profileButton button {
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       padding: 0.7rem 0.6rem;
       border-radius: 0.2rem;
-   }
-   .profileButton {
-      margin-bottom: 2rem;
    }
 }
