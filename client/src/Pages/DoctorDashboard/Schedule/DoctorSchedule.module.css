@@ -1,15 +1,17 @@
 .DSContainer {
    margin-left: 25rem;
    display: flex;
-   justify-content: space-between;
+   justify-content: space-evenly;
    width: 77.5%;
    height: 93vh;
    gap: 30px;
+   box-sizing: border-box;
 }
 .DSContainer1 {
    width: 70%;
    background-color: #ecf3fc;
    border-radius: 20px 20px 0px 0px;
+   padding: 20px;
 }
 .DSContainer2 {
    width: 25%;
@@ -39,7 +41,7 @@
 .DSContainer1 h2 {
    color: #0d3f58;
    width: 50%;
-   margin-top: 50px;
+   margin-top: 10px;
    margin-left: 30px;
 }
 .inputName {
@@ -241,6 +243,7 @@
 @media (max-width: 950px) {
    .DSContainer {
       margin-left: 10rem;
+      box-sizing: border-box;
    }
    .DSContainer1 {
       width: 90%;
@@ -260,11 +263,62 @@
       font-size: 1rem;
    }
 }
-@media (max-width: 799px) {
-   .DSContainer1 {
-      width: 80%;
-   }
+@media (max-width: 768px) {
    .DSContainer {
-      margin: auto;
+      margin: 0;
+      height: 120vh;
+   }
+   .DSContainer1 {
+      background-color: white;
+   }
+   .DSContainer1 form {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+   }
+   .patientContainer {
+      grid-column: 1/2;
+      grid-row: 1/3;
+   }
+   .appointTime {
+      grid-column: 1/2;
+      grid-row: 3/6;
+   }
+   .DSh21 {
+      margin-top: 0;
+   }
+   .appointmentContainer {
+      width: 100%;
+   }
+   .DSContainer2 {
+      display: none;
+   }
+}
+/*MOBILE SCREENS*/
+@media only screen and (max-width: 368px) {
+   .DSContainer {
+      display: block;
+      height: 160vh;
+   }
+   .DSContainer1 form button {
+      width: 90%;
+   }
+   .appointmentContainer th {
+      font-size: 1rem;
+   }
+   .appointmentContainer {
+      height: 20vh;
+   }
+   .DSContainer2 {
+      display: block;
+      width: 90%;
+      text-align: center;
+      margin-top: 250px;
+      margin: 200px auto 100px auto;
+      height: 40vh;
+   }
+   .DSContainer2 ul {
+      text-align: center;
+      padding-left: 0;
    }
 }
