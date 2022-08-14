@@ -28,13 +28,15 @@ export default function DoctorSchedule(props) {
                <h2>Apppoinment Details</h2>
                <form>
                   <div className={DSstyles.patientContainer}>
-                     <label>Patient Name</label>
+                     <label className={DSstyles.labelName}>Patient Name</label>
                      <input
                         type="message"
                         id="name"
                         className={DSstyles.inputName}
                      />
-                     <label>Condition</label>
+                     <label className={DSstyles.labelCondition}>
+                        Condition
+                     </label>
                      <input
                         type="message"
                         id="condition"
@@ -42,19 +44,21 @@ export default function DoctorSchedule(props) {
                      />
                   </div>
                   <div className={DSstyles.appointTime}>
-                     <label>Appointment Date</label>
+                     <label className={DSstyles.labelDate}>
+                        Appointment Date
+                     </label>
                      <input
                         type="date"
                         id="date"
                         className={DSstyles.inputDate}
                      />
-                     <label>Start Time</label>
+                     <label className={DSstyles.labelSTime}>Start Time</label>
                      <input
                         type="time"
                         id="start time"
                         className={DSstyles.inputStartTime}
                      />
-                     <label>End Time</label>
+                     <label className={DSstyles.labelETime}>End Time</label>
                      <input
                         type="time"
                         id="end time"
