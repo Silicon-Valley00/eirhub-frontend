@@ -56,7 +56,6 @@ const QuickSolution = () => {
                   Would you like to join our team of healthcare providers?
                </p>
                <div className={styles.btn}>
-                  {/* FIXME: Button should be made big */}
                   <button className={styles.contact__btn}>Contact us</button>
                </div>
             </div>
