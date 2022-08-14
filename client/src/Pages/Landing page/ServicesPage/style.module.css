@@ -116,4 +116,24 @@
       height: 25rem;
       gap: 5rem;
    }
+
+   .container {
+      height: 40rem;
+   }
+
+   .with_text_title {
+      font-size: 50px;
+   }
+
+   .with_text_desc {
+      font-size: 30px;
+   }
+
+   .with_text_content {
+      font-size: 27px;
+   }
+
+   .of__image {
+      height: 100%;
+   }
 }
