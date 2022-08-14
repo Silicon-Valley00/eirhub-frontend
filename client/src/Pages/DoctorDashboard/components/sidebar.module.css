@@ -39,15 +39,15 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: 0 5px;
+   padding: 0 2rem;
 }
 
-/* FIXME: change the color to lightcol after testing. */
 .logo {
    font-size: 20px;
-   color: var(--midcol);
+   color: var(--lightcol);
    font-weight: 600;
    font-family: var(--logofont);
+   padding-left: 10px;
 }
 
 .close {
@@ -67,6 +67,9 @@
 
 .upper_links {
    width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
 }
 
 .link {
@@ -76,19 +79,14 @@
    color: var(--midcol);
    gap: 1rem;
    height: 3rem;
+   padding-left: 2rem;
 }
 
 .active {
    background-color: var(--gray);
    margin-left: 0;
-   border-top-right-radius: 3rem;
-   border-bottom-right-radius: 3rem;
-}
-
-.upper_links {
-   display: flex;
-   flex-direction: column;
-   gap: 2rem;
+   border-radius: 10px;
+   width: 100%;
 }
 
 .title {
@@ -127,13 +125,16 @@
       display: none;
    }
 
+   /* logo does not show here.. refer to navigation.module.css */
    .logo {
       display: none;
    }
 
    /* styling for links */
    .nav {
-      margin-top: 0;
+      margin-top: 1rem;
+      padding: 0;
+      padding-left: 1rem;
    }
 
    .upper_links {

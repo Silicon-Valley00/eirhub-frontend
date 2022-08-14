@@ -14,39 +14,36 @@ const links = [
       icon: <MdSpaceDashboard />,
       title: 'dashboard',
       to: '/doctordashboard',
+      highlight: 13,
    },
    {
       icon: <FaUser />,
       title: 'profile',
       to: '/doctorprofile',
+      highlight: 12,
    },
    {
       icon: <TbCalendarTime />,
       title: 'Schedule',
       to: '/doctorschedule',
+      highlight: 14,
    },
    {
       icon: <AiFillFile />,
       title: 'record',
       to: '/doctorrecord',
+      highlight: 15,
    },
    {
       icon: <TiMessages />,
       title: 'messages',
       to: '/doctormessages',
+      highlight: 16,
    },
 ];
 
 const Sidebar = ({ indicator }) => {
    const [show, setShow] = useState(false);
-   const [selected, showSelected] = useState(0);
-
-   // useEffect(() => {
-   //    const toggleState = (index) => {
-   //       showSelected(index);
-   //    };
-   //    console.log('is selected: ', selected);
-   // });
 
    const showSidebar = () => {
       setShow(!show);
@@ -78,19 +75,14 @@ const Sidebar = ({ indicator }) => {
                <div className={styles.upper_links}>
                   {links.map((item, index) => {
                      return (
-                        // BUG: active styling
                         <Link
                            to={item.to}
                            className={
-                              indicator === 13
+                              `${indicator}` === `${item.highlight}`
                                  ? `${styles.link} ${styles.active}`
                                  : `${styles.link}`
                            }
                            key={index}
-                           onClick={(e) => {
-                              showSelected(index);
-                              console.log('just after click', index);
-                           }}
                         >
                            <div className={styles.icon}>{item.icon}</div>
                            <p className={styles.title}>{item.title}</p>
