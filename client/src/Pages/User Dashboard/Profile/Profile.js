@@ -17,11 +17,11 @@ const mapStateToProps = (state) => {
 };
 
 function Profile(props) {
-   console.log(
-      props.savedGuardianDetails,
-      props.savedHealthDetails,
-      props.savedProfile
-   );
+   // console.log(
+   //    props.savedGuardianDetails,
+   //    props.savedHealthDetails,
+   //    props.savedProfile
+   // );
 
    // Handles dispatching of actions
    const dispatch = useDispatch();
@@ -193,36 +193,29 @@ function Profile(props) {
          id_number: guardianIdNumber,
       };
 
-      console.log(props.savedProfile);
-
-      // dispatch(
-      //    updateProfile(
-      //       props.savedProfile.idPatient,
-      //       enteredProfileInfo,
-      //       props.savedProfile.idGuardian,
-      //       enteredGuardianinfo,
-      //       enteredHealthInfo
-      //    )
-      // );
+      dispatch(
+         updateProfile(
+            props.savedProfile.idPatient,
+            enteredProfileInfo,
+            props.savedProfile.idGuardian,
+            enteredGuardianinfo,
+            enteredHealthInfo
+         )
+      );
       // dispatch(updateProfile(props.savedProfile.idPatient, enteredProfileInfo));
       // dispatch(
       //    updateHealthDetails(props.savedProfile.idPatient, enteredHealthInfo)
       // );
-      dispatch(
-         updateGuardianInfo(
-            props.savedProfile.idGuardian,
-            enteredGuardianinfo,
-            props.savedProfile.idPatient,
-            enteredHealthInfo
-         )
-      );
+      // dispatch(
+      //    updateGuardianInfo(
+      //       props.savedProfile.idGuardian,
+      //       enteredGuardianinfo,
+      //       props.savedProfile.idPatient,
+      //       enteredHealthInfo
+      //    )
+      // );
 
       setDisableFormBtn(true);
-      // console.log(
-      //    props.savedGuardianDetails,
-      //    props.savedHealthDetails,
-      //    props.savedProfile
-      // );
    }
    return (
       <>
@@ -238,8 +231,7 @@ function Profile(props) {
                   </div>
                   <div className={styles.profileIntro}>
                      <div className={styles.profileName}>
-                        {/* <h2>{`${props.savedProfile.first_name} ${props.savedProfile.last_name}`}</h2> */}
-                        <h2>Benarson Akorfa</h2>
+                        <h2>{`${props.savedProfile.first_name} ${props.savedProfile.last_name}`}</h2>
                      </div>
                      <div className={styles.uploadImageBtn}>
                         <label htmlFor="file-upload-button">{uploadBtn}</label>
@@ -650,7 +642,7 @@ function Profile(props) {
                   </div>
                </div>
                <div className={styles.guardianInfo}>
-                  <h2>Guradian Details(If applicable)</h2>
+                  <h2>Guardian Details(If applicable)</h2>
                   <div className={styles.guardianInfoFormBox}>
                      <div className={styles.guardianFormBox}>
                         <h3>First Name</h3>

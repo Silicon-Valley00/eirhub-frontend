@@ -323,7 +323,7 @@ export async function fetchMedications(userID) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/prescription/30`,
+         url: `http://127.0.0.1:5000/prescription/${userID}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -465,5 +465,63 @@ export async function fetchDoctors() {
       }
    } catch (error) {
       alert(error, 'doctors 2');
+   }
+}
+
+//Fetches user accepted appointments
+export async function fetchAcceptedAppointments() {
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `http://127.0.0.1:5000/doctors/`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      });
+      if (response.status === 200) {
+         //checks details of response
+         if (response.data.status === true) {
+            //returns response
+            alert('doctors fetch worked');
+            return response.data.msg;
+         }
+      } else {
+         //takes all statuses aside 200
+         alert('Something went wrong. Try again, accepted app 1');
+      }
+   } catch (error) {
+      alert(error, 'accepted app');
+   }
+}
+
+//Fetches user's non accepted appointments
+export async function fetchNonAcceptedAppointments() {
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `http://127.0.0.1:5000/doctors/`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      });
+      if (response.status === 200) {
+         //checks details of response
+         if (response.data.status === true) {
+            //returns response
+            alert('doctors fetch worked');
+            return response.data.msg;
+         }
+      } else {
+         //takes all statuses aside 200
+         alert('Something went wrong. Try again, accepted app 1');
+      }
+   } catch (error) {
+      alert(error, 'accepted app');
    }
 }

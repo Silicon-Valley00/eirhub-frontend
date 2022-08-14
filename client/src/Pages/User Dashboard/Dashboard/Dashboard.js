@@ -13,6 +13,7 @@ import {
    fetchMedications,
    updatePrescriptions,
 } from '../../../Store/Actions.js';
+import { useSelector } from 'react-redux';
 
 const mapStateToProps = (state) => {
    return {
@@ -23,10 +24,11 @@ const mapStateToProps = (state) => {
 function Dashboard(props) {
    const dispatch = useDispatch();
    const [medications, setMedications] = useState([]);
+   const patientID = useSelector((state) => state.profile.idPatient);
 
    useEffect(() => {
       async function fetchdata() {
-         const items = await fetchMedications();
+         const items = await fetchMedications(patientID);
          setMedications(items);
       }
       fetchdata();
