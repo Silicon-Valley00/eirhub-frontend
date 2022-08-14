@@ -78,3 +78,18 @@
       color: var(--midcol);
    }
 }
+
+@media (min-width: 1024px) {
+   .main {
+      height: 13rem;
+      width: 13rem;
+   }
+
+   .list_first {
+      font-size: 20px;
+   }
+
+   .list_last {
+      font-size: 20px;
+   }
+}
