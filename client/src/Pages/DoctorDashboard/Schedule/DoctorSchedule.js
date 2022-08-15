@@ -1,20 +1,27 @@
 import DSstyles from '../../DoctorDashboard/Schedule/DoctorSchedule.module.css';
 import Navigation from '../components/Navigation';
+import maleProfle from '../../../assets/Rectangle-1.png';
+import femaleProfle from '../../../assets/Rectangle.png';
 
 const patients = [
    {
+      image: femaleProfle,
       name: 'Melissa Burkinstock',
    },
    {
+      image: maleProfle,
       name: 'James Freeman',
    },
    {
+      image: femaleProfle,
       name: 'Chioma Ukechukwu',
    },
    {
+      image: femaleProfle,
       name: 'Melissa Burkinstock',
    },
    {
+      image: femaleProfle,
       name: 'Melissa Burkinstock',
    },
 ];
@@ -73,16 +80,22 @@ export default function DoctorSchedule(props) {
                <div className={DSstyles.appointmentContainer}>
                   <table>
                      <thead>
+                        <th className={DSstyles.DSprofile}>Profile</th>
                         <th className={DSstyles.tName}>Name</th>
                         <th className={DSstyles.tCondition}>Condition</th>
                         <th className={DSstyles.tAction}>Action</th>
                      </thead>
                      <tbody>
+                        <td>
+                           <img src={femaleProfle}></img>
+                        </td>
                         <td>{patients[0].name}</td>
                         <td>
                            Swollen tonsils with severe pains in throat and chest
                         </td>
-                        <td>Cancel</td>
+                        <td style={{ color: 'red', cursor: 'pointer' }}>
+                           Cancel
+                        </td>
                      </tbody>
                   </table>
                </div>
@@ -93,7 +106,9 @@ export default function DoctorSchedule(props) {
                   {patients.map((patientnames) => {
                      return (
                         <>
-                           <li>{patientnames.name}</li>
+                           <li style={{ listStyleImage: patientnames.image }}>
+                              {patientnames.name}
+                           </li>
                         </>
                      );
                   })}
