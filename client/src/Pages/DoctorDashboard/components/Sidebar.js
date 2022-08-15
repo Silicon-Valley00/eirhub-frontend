@@ -8,46 +8,42 @@ import { GrClose } from 'react-icons/gr';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillFile } from 'react-icons/ai';
-import { useEffect } from 'react';
 
 const links = [
    {
       icon: <MdSpaceDashboard />,
       title: 'dashboard',
       to: '/doctordashboard',
+      highlight: 13,
    },
    {
       icon: <FaUser />,
       title: 'profile',
       to: '/doctorprofile',
+      highlight: 12,
    },
    {
       icon: <TbCalendarTime />,
       title: 'Schedule',
       to: '/doctorschedule',
+      highlight: 14,
    },
    {
       icon: <AiFillFile />,
       title: 'record',
       to: '/doctorrecord',
+      highlight: 15,
    },
    {
       icon: <TiMessages />,
       title: 'messages',
       to: '/doctormessages',
+      highlight: 16,
    },
 ];
 
 const Sidebar = ({ indicator }) => {
    const [show, setShow] = useState(false);
-   const [selected, showSelected] = useState(0);
-
-   // useEffect(() => {
-   //    const toggleState = (index) => {
-   //       showSelected(index);
-   //    };
-   //    console.log('is selected: ', selected);
-   // });
 
    const showSidebar = () => {
       setShow(!show);
@@ -55,7 +51,6 @@ const Sidebar = ({ indicator }) => {
 
    return (
       <>
-         {/* REVIEW: add active link to link. */}
          <MdMenu
             color="#05a6c2"
             className={styles.menu}
@@ -79,19 +74,14 @@ const Sidebar = ({ indicator }) => {
                <div className={styles.upper_links}>
                   {links.map((item, index) => {
                      return (
-                        // BUG: active styling
                         <Link
                            to={item.to}
                            className={
-                              indicator === 13
+                              `${indicator}` === `${item.highlight}`
                                  ? `${styles.link} ${styles.active}`
                                  : `${styles.link}`
                            }
                            key={index}
-                           onClick={(e) => {
-                              showSelected(index);
-                              console.log('just after click', index);
-                           }}
                         >
                            <div className={styles.icon}>{item.icon}</div>
                            <p className={styles.title}>{item.title}</p>

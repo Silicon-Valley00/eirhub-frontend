@@ -40,9 +40,17 @@
    width: 90%;
    height: 2.5rem;
 }
+.searchRegion div {
+   background: var(--white);
+   width: 70%;
+}
+.searchRegion div span {
+   color: var(--tablehead);
+   width: 5%;
+   cursor: pointer;
+}
 .searchRegion input[type='text'] {
    justify-content: flex-start;
-   background: var(--white);
    outline: none;
    border: none;
    height: 100%;
@@ -50,8 +58,8 @@
    font-weight: 600;
    font-size: 0.9rem;
    color: var(--tablehead);
-   width: 70%;
    border-radius: 0.2rem;
+   width: 95%;
    padding: 0.5rem;
 }
 .searchRegion input[type='text']::placeholder {

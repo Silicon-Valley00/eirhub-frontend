@@ -15,6 +15,7 @@ nav {
    color: var(--lightcol);
    font-weight: 600;
    font-family: var(--logofont);
+   cursor: pointer;
 }
 
 .avatar {
@@ -59,5 +60,10 @@ nav {
 @media (min-width: 1024px) {
    .nav {
       padding: 1rem 2rem;
+   }
+
+   .logo {
+      font-size: 24px;
+      padding-left: 1rem;
    }
 }

@@ -15,15 +15,6 @@
    width: 100%;
 }
 
-/* FIXME: cannot find where image is being rounded */
-/* .profileImage {
-   border: 1px solid salmon;
-}
-
-.img {
-   background-position: cover;
-} */
-
 .profileIntro {
    display: flex;
    flex-direction: column;
@@ -206,7 +197,7 @@ select::-ms-expand {
    color: var(--white);
    background: var(--lightcol);
    border-radius: 5px;
-   letter-spacing: 2px;
+   letter-spacing: 1px;
    cursor: pointer;
    transition: opacity 4s;
 }

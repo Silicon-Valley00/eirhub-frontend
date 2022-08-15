@@ -8,8 +8,12 @@ import { ImDroplet } from 'react-icons/im';
 import { RiHeartPulseFill } from 'react-icons/ri';
 import { GiMedicalThermometer } from 'react-icons/gi';
 import styles from './dashboard.module.css';
-import { connect } from 'react-redux';
-import { fetchMedications } from '../../../Store/Actions.js';
+import { connect, useDispatch } from 'react-redux';
+import {
+   fetchMedications,
+   updatePrescriptions,
+} from '../../../Store/Actions.js';
+import { useSelector } from 'react-redux';
 
 const mapStateToProps = (state) => {
    return {
@@ -18,16 +22,19 @@ const mapStateToProps = (state) => {
 };
 
 function Dashboard(props) {
-   const [medications, setMedications] = useState();
+   const dispatch = useDispatch();
+   const [medications, setMedications] = useState([]);
+   const patientID = useSelector((state) => state.profile.idPatient);
 
    useEffect(() => {
       async function fetchdata() {
-         // // const items = await fetchMedications();
-         // setMedications(items);
+         const items = await fetchMedications(patientID);
+         setMedications(items);
       }
       fetchdata();
       console.log(medications);
    }, []);
+
    var list;
    //displays medications
    console.log(medications);
@@ -44,7 +51,16 @@ function Dashboard(props) {
                <td>{`${item.dosage}`}</td>
                <td>{`${item.time_of_administration}`}</td>
                <td>
-                  <input type={'checkbox'} />
+                  <input
+                     type={'checkbox'}
+                     defaultChecked={
+                        new Date(item.last_taken_date).setHours(0, 0, 0, 0) ===
+                        new Date().setHours(0, 0, 0, 0)
+                           ? true
+                           : false
+                     }
+                     onClick={(event) => changeCheckBox(event, item)}
+                  />
                </td>
             </tr>
          );
@@ -54,6 +70,35 @@ function Dashboard(props) {
       list = <p>No medications yet.</p>;
    }
 
+   function changeCheckBox(event, data) {
+      /*
+         Function updates last taken dates of presciptions when checkbox is checked
+         Args: Function takes event to check if box is checked and the presciptions
+         Return: Nothing is returned
+      */
+      if (event.target.checked) {
+         var today = new Date();
+         var date = `${today.getFullYear()}-${
+            (today.getMonth() + 1 < 10 ? '0' : '') + (today.getMonth() + 1)
+         }-${(today.getDate() < 10 ? '0' : '') + today.getDate()}`;
+
+         const updatedPrescription = {
+            drug_name: data.drug_name,
+            dosage: data.dosage,
+            time_of_administration: data.time_of_administration,
+            start_date: data.start_date,
+            end_date: data.end_date,
+            last_taken_date: date,
+         };
+         console.log('updated', updatedPrescription);
+         //updating prescription
+         dispatch(updatePrescriptions(data.id, updatedPrescription));
+      } else {
+         //prevents checkbox from changing to false
+         event.preventDefault();
+         return false;
+      }
+   }
    return (
       <>
          <main id={styles.midsection}>
@@ -143,56 +188,7 @@ function Dashboard(props) {
                            <th></th>
                         </tr>
                      </thead>
-                     <tbody>
-                        <tr>
-                           <td>Clopidogrel</td>
-                           <td>1/x2</td>
-                           <td>After Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>UltraVit OMEGA + DHA</td>
-                           <td>1/x3</td>
-                           <td>After Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Ticagrelor</td>
-                           <td>2/x1</td>
-                           <td>Before Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Ticagrelor</td>
-                           <td>2/x1</td>
-                           <td>Before Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Ticagrelor</td>
-                           <td>2/x1</td>
-                           <td>Before Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Ticagrelor</td>
-                           <td>2/x1</td>
-                           <td>Before Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                     </tbody>
+                     <tbody>{list}</tbody>
                   </table>
                </div>
             </div>

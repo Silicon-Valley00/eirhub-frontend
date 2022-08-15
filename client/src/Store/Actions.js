@@ -3,6 +3,7 @@ import { SET_PROFILE_INFO } from './ActionTypes';
 import { SET_HEALTH_INFO } from './ActionTypes';
 import { SET_GUARDIAN_INFO } from './ActionTypes';
 import { SET_REPORTS } from './ActionTypes';
+import { SET_DOCTOR_PROFILE_INFO } from './ActionTypes';
 
 import axios from 'axios';
 
@@ -44,13 +45,21 @@ export const setReports = (reportData) => {
    };
 };
 
+// Sets the profile details for doctors
+export const setDoctorProfile = (doctorProfile) => {
+   return {
+      type: SET_DOCTOR_PROFILE_INFO,
+      payload: doctorProfile,
+   };
+};
+
 //Fetches user profile details
 export const fetchProfile = (userID, guardianID) => {
    return async function (dispatch) {
       try {
          const response = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:5000/patient/${userID}`,
+            url: `http://127.0.0.1:5000/patients/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -71,6 +80,37 @@ export const fetchProfile = (userID, guardianID) => {
          }
       } catch (error) {
          alert(error, 'pro');
+      }
+   };
+};
+
+// Fetch doctor profile info
+export const fetchDoctorsProfileInfo = (doctorID) => {
+   return async function (dispatch) {
+      try {
+         const response = await axios({
+            method: 'GET',
+            url: `http://127.0.0.1:5000/doctor/${doctorID}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               alert('doctor profile fetched');
+               dispatch(setDoctorProfile(response.data.msg));
+            }
+         } else {
+            //takes all statuses aside 200
+            alert('Something went wrong. Try again');
+         }
+      } catch (error) {
+         alert('caughterror', error);
       }
    };
 };
@@ -147,7 +187,7 @@ export const updateProfile = (
       try {
          const response = await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:5000/patient/${userID}`,
+            url: `http://127.0.0.1:5000/patients/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -186,7 +226,7 @@ export const updateHealthDetails = (userID, data) => {
       try {
          const response = await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:5000/uphealthdetails/${userID}`,
+            url: `http://127.0.0.1:5000/healthdetails/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -283,7 +323,7 @@ export async function fetchMedications(userID) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/prescription/30`,
+         url: `http://127.0.0.1:5000/prescription/${userID}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -425,5 +465,63 @@ export async function fetchDoctors() {
       }
    } catch (error) {
       alert(error, 'doctors 2');
+   }
+}
+
+//Fetches user accepted appointments
+export async function fetchAcceptedAppointments() {
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `http://127.0.0.1:5000/doctors/`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      });
+      if (response.status === 200) {
+         //checks details of response
+         if (response.data.status === true) {
+            //returns response
+            alert('doctors fetch worked');
+            return response.data.msg;
+         }
+      } else {
+         //takes all statuses aside 200
+         alert('Something went wrong. Try again, accepted app 1');
+      }
+   } catch (error) {
+      alert(error, 'accepted app');
+   }
+}
+
+//Fetches user's non accepted appointments
+export async function fetchNonAcceptedAppointments() {
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `http://127.0.0.1:5000/doctors/`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      });
+      if (response.status === 200) {
+         //checks details of response
+         if (response.data.status === true) {
+            //returns response
+            alert('doctors fetch worked');
+            return response.data.msg;
+         }
+      } else {
+         //takes all statuses aside 200
+         alert('Something went wrong. Try again, accepted app 1');
+      }
+   } catch (error) {
+      alert(error, 'accepted app');
    }
 }

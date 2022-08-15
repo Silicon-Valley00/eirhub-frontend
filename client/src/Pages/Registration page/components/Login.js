@@ -48,7 +48,7 @@ function Login(props) {
          // dispatch(fetchHealthDetails(feedback[1].idPatient));
 
          setTimeout(() => {
-            navigate('/dashboard');
+            navigate('/userdashboard');
          }, 1500);
       } else {
          setBtnActive(feedback[0]);

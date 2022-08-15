@@ -3,8 +3,20 @@ import styles from './profile.module.css';
 import avatarThree from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
 import Navigation from '../components/Navigation';
 import { FaCheck } from 'react-icons/fa';
+import { connect, useDispatch } from 'react-redux';
 
-function DoctorProfile() {
+const mapStateToProps = (state) => {
+   return {
+      savedDoctorProfile: state.doctorProfile,
+   };
+};
+
+function DoctorProfile(props) {
+   console.log(props.savedDoctorProfile);
+
+   // Variable used to dispatch actions
+   const dispatch = useDispatch();
+
    // Handles values for input fields
    const [user, setUser] = useState({
       firstName: '',
@@ -205,7 +217,7 @@ function DoctorProfile() {
 
                   {/* Section for professional details */}
                   <div className={styles.proffInfo}>
-                     <h2 className={styles.title}>Proffessional Details</h2>
+                     <h2 className={styles.title}>Professional Details</h2>
                      <form
                         className={styles.personalInfoFormBox}
                         onSubmit={(e) => {
@@ -251,7 +263,7 @@ function DoctorProfile() {
                                  <input
                                     name="hospitalCode"
                                     className={styles.input_box}
-                                    type="number"
+                                    type="text"
                                     id="hospitalCode"
                                     placeholder="Enter Hospital Code"
                                     required="true"
@@ -269,7 +281,7 @@ function DoctorProfile() {
                {/* submit button */}
                <div className={styles.btn_div}>
                   <button type="submit" form="form" className={styles.btn}>
-                     <span className={styles.btn_text}>Update Profile</span>
+                     <span className={styles.btn_text}>Edit Profile</span>
                      <FaCheck className={styles.icon} />
                   </button>
                </div>
@@ -282,4 +294,4 @@ function DoctorProfile() {
    );
 }
 
-export default DoctorProfile;
+export default connect(mapStateToProps)(DoctorProfile);

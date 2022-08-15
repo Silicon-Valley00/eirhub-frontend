@@ -431,7 +431,7 @@ function Registration(props) {
 
          // makes api call with userdata
          const feedback = await submitCredentials(
-            'patient/login',
+            'patients/login',
             loginPatientData
          );
          return await feedback; //return feedback for registeration flow
@@ -458,7 +458,7 @@ function Registration(props) {
 
          // makes api call with userdata
          const feedback = await submitCredentials(
-            'patient/signup',
+            'patients/signup',
             signupPatientData
          );
          return await feedback; //return feedback for registeration flow
