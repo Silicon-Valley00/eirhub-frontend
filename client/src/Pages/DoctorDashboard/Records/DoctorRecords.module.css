@@ -80,8 +80,8 @@
    cursor: pointer;
 }
 /*bigger laptops*/
-@media(max-width:1440px){
-   .DRHeader{
+@media (max-width: 1440px) {
+   .DRHeader {
       margin-left: 15rem;
       width: 80%;
    }
