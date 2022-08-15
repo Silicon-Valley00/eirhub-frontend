@@ -79,6 +79,13 @@
    fill: red;
    cursor: pointer;
 }
+/*bigger laptops*/
+@media(max-width:1440px){
+   .DRHeader{
+      margin-left: 15rem;
+      width: 80%;
+   }
+}
 /*smaller laptops*/
 @media (max-width: 1024px) {
    .DRHeader {
