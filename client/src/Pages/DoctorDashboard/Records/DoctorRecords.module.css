@@ -11,9 +11,11 @@
    height: 30%;
    margin: auto;
    text-align: center;
+   align-items: center;
+   display: grid;
+   grid-template-columns: repeat(1, auto);
+   grid-template-rows: repeat(1, 1fr);
    border-radius: 20px;
-   display: flex;
-   justify-content: center;
    border: 2px dashed #05a6c2;
 }
 .DRHeader h1 {
@@ -26,6 +28,7 @@
 .DRSheader {
    align-self: center;
    color: #0d3f58;
+   height: 12rem;
 }
 .DRFiles {
    text-align: center;
@@ -47,10 +50,61 @@
    margin-top: 30px;
 }
 .DRFiles td {
-   height: 70px;
+   height: 5rem;
    color: #0d3f58;
    font-weight: 700;
 }
 .DRButtonLink {
    color: #05a6c2;
+}
+.DRUploadimg {
+   height: 10rem;
+   width: 3rem;
+   fill: #05a6c2;
+   justify-self: center;
+}
+.DRicons {
+   height: 5rem;
+   display: flex;
+   justify-content: space-around;
+   width: 60%;
+   margin: auto;
+   align-items: center;
+}
+.DRpencil {
+   fill: #05a6c2;
+   cursor: pointer;
+}
+.DRtrash {
+   fill: red;
+   cursor: pointer;
+}
+/*Tablet sizes*/
+@media(max-width:768px){
+   .DRHeader{
+      margin: auto;
+      width: 100%;
+      background-color: white;
+      text-align: center;
+   }
+}
+/*Bigger Mobile screens*/
+@media (max-width: 425px) {
+   .DRHeader {
+      margin: auto;
+      width: 100%;
+      text-align: center;
+      background-color: white;
+      font-size: .7rem;
+   }
+}
+/*MOBILE SCREENS*/
+@media (max-width: 375px) {
+   .DRHeader {
+      text-align: center;
+      margin-left: 0;
+      width: 100%;
+      background-color: white;
+      font-size: 0.8rem;
+   }
 }
