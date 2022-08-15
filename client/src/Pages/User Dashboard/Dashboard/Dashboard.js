@@ -10,6 +10,7 @@ import { GiMedicalThermometer } from 'react-icons/gi';
 import styles from './dashboard.module.css';
 import { connect, useDispatch } from 'react-redux';
 import {
+   fetchAppointments,
    fetchMedications,
    updatePrescriptions,
 } from '../../../Store/Actions.js';
@@ -24,51 +25,87 @@ const mapStateToProps = (state) => {
 function Dashboard(props) {
    const dispatch = useDispatch();
    const [medications, setMedications] = useState([]);
+   const [appointments, setAppointments] = useState([]);
    const patientID = useSelector((state) => state.profile.idPatient);
 
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchMedications(patientID);
+         // const schedules = await fetchAppointments(patientID);
          setMedications(items);
+         // setAppointments(schedules);
       }
       fetchdata();
-      console.log(medications);
    }, []);
 
    var list;
    //displays medications
-   console.log(medications);
 
-   if (
-      medications !== null ||
-      medications !== undefined ||
-      medications.length !== 0
-   ) {
-      list = medications.map((item, j) => {
-         return (
-            <tr key={`${item.drug_name}-${j}`}>
-               <td>{`${item.drug_name}`}</td>
-               <td>{`${item.dosage}`}</td>
-               <td>{`${item.time_of_administration}`}</td>
-               <td>
-                  <input
-                     type={'checkbox'}
-                     defaultChecked={
-                        new Date(item.last_taken_date).setHours(0, 0, 0, 0) ===
-                        new Date().setHours(0, 0, 0, 0)
-                           ? true
-                           : false
-                     }
-                     onClick={(event) => changeCheckBox(event, item)}
-                  />
-               </td>
-            </tr>
-         );
-      });
-   } else if (medications.length === 0) {
-      // Sends message to be displayed when saved videos is empty
-      list = <p>No medications yet.</p>;
+   if (medications === undefined) {
+      list = <p>Nothing to show here.</p>;
+   } else {
+      if (medications.length !== 0) {
+         list = medications.map((item, j) => {
+            return (
+               <tr key={`${item.drug_name}-${j}`}>
+                  <td>{`${item.drug_name}`}</td>
+                  <td>{`${item.dosage}`}</td>
+                  <td>{`${item.time_of_administration}`}</td>
+                  <td>
+                     <input
+                        type={'checkbox'}
+                        defaultChecked={
+                           new Date(item.last_taken_date).setHours(
+                              0,
+                              0,
+                              0,
+                              0
+                           ) === new Date().setHours(0, 0, 0, 0)
+                              ? true
+                              : false
+                        }
+                        onClick={(event) => changeCheckBox(event, item)}
+                     />
+                  </td>
+               </tr>
+            );
+         });
+      } else if (medications.length === 0) {
+         // Sends message to be displayed when saved videos is empty
+         list = <p>Nothing to show here.</p>;
+      }
    }
+
+   // var appointmentsData;
+   // //displays medications
+
+   // if (appointments === undefined) {
+   //    appointmentsData = <p>Nothing to show here.</p>;
+   // } else {
+   //    if (appointments.length !== 0) {
+   //       appointmentsData = appointments.map((item, j) => {
+   //          return (
+   //             <tr key={`${item.drug_name}-${j}`}>
+   //                <tr>
+   //                         <td>
+   //                            <div>
+   //                               <img src={avatarTwo} alt="avatar" />
+   //                            </div>
+   //                         </td>
+   //                         <td>{`Dr. ${item.first_name}` `${item.last_name}`}</td>
+   //                         <td>{`${item.location}`}</td>
+   //                         <td>{`${new Date(item.appointment_date).getFullYear()}/${
+   //            new Date(item.appointment_date).getMonth() + 1
+   //         }/${new Date(item.appointment_date).getDate() + 1}`}</td>
+   //                         <td>2:00 PM</td>
+   //                      </tr>
+   //             </tr>
+   //          );
+   //       });
+   //    } else if (appointments.length === 0) {
+   //       // Sends message to be displayed when saved videos is empty
+   //       appointmentsData = <p>Nothing to show here.</p>;
+   //    }
 
    function changeCheckBox(event, data) {
       /*

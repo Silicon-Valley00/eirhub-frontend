@@ -306,7 +306,8 @@ export const fetchReports = (userID) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               dispatch(setProfileInfo(response.data.msg));
+               alert('report fetched worked');
+               console.log(response.data.msg);
             }
          } else {
             //takes all statuses aside 200
@@ -340,7 +341,8 @@ export async function fetchMedications(userID) {
          }
       } else {
          //takes all statuses aside 200
-         alert('Something went wrong. Try again med1');
+         alert('Something went wrong. Try again');
+         return [];
       }
    } catch (error) {
       alert(error, 'med2');
@@ -469,40 +471,11 @@ export async function fetchDoctors() {
 }
 
 //Fetches user accepted appointments
-export async function fetchAcceptedAppointments() {
+export async function fetchAppointments(userID) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/doctors/`,
-         headers: {
-            'Access-Control-Allow-Origin': '*',
-            //Helpful in some cases.
-            'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Methods': '*',
-         },
-      });
-      if (response.status === 200) {
-         //checks details of response
-         if (response.data.status === true) {
-            //returns response
-            alert('doctors fetch worked');
-            return response.data.msg;
-         }
-      } else {
-         //takes all statuses aside 200
-         alert('Something went wrong. Try again, accepted app 1');
-      }
-   } catch (error) {
-      alert(error, 'accepted app');
-   }
-}
-
-//Fetches user's non accepted appointments
-export async function fetchNonAcceptedAppointments() {
-   try {
-      const response = await axios({
-         method: 'GET',
-         url: `http://127.0.0.1:5000/doctors/`,
+         url: `http://127.0.0.1:5000/appointments/?patient_id=${userID}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.

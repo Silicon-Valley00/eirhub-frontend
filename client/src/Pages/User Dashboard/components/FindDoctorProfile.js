@@ -10,6 +10,7 @@ function FindingDoctor(props) {
    const [showProfile, setShowprofile] = useState(false);
    // This transfers the setProfile function outside of this function's scope
    pullData = setProfile;
+
    console.log(profile);
 
    useEffect(() => {

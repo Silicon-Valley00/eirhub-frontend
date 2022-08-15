@@ -231,6 +231,20 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    width: 100%;
 }
 
+.medicationBox tbody p {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: var(--tablehead);
+   font-weight: 400;
+   font-family: 'Poppins';
+   font-size: 1.2rem;
+}
+
 /* APPOINTMENTS */
 
 .appointmentsBox {

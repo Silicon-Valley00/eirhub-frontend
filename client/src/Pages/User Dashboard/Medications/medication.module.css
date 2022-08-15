@@ -18,6 +18,20 @@
    max-height: 36rem;
    padding-bottom: 1rem;
 }
+.medicationsBoxContent p.emptyMessage {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: var(--tablehead);
+   font-weight: 400;
+   font-family: 'Poppins';
+   font-size: 1.2rem;
+}
+
 .medicationBox {
    height: 14rem;
    display: block;
