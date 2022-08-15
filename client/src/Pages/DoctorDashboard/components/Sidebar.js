@@ -51,7 +51,6 @@ const Sidebar = ({ indicator }) => {
 
    return (
       <>
-         {/* REVIEW: add active link to link. */}
          <MdMenu
             color="#05a6c2"
             className={styles.menu}
