@@ -11,8 +11,11 @@ function FindingDoctor(props) {
    const [enteredName, setEnteredName] = useState(''); //handles state for Doctor's name to search
    const [isSearchByDoctorName, isSearchByDoctorNameHandler] = useState(false); //sets whether search for doctors is done by name
    const [isSearchByDoctorSpt, isSearchByDoctorSptHandler] = useState(false); //sets whether search is done by specialty for doctors
+   const [isSearchByDoctorHpt, isSearchByDoctorHptHandler] = useState(false); //sets whether search is done by hospital for doctors
+
    const [nameSearchResults, setNameSearchResults] = useState([]); //arrays stores doctors filtered by entered name
    const [sptSearchResults, setSptSearchResults] = useState([]); //arrays stores doctors filtered by entered specialty
+   const [hptSearchResults, setHptSearchResults] = useState([]); //arrays stores doctors filtered by entered specialty
 
    useEffect(() => {
       async function fetchdata() {
@@ -41,16 +44,42 @@ function FindingDoctor(props) {
          Return: List of doctor profile(s) marched with entered name     
       */
       isSearchByDoctorNameHandler(true);
-      isSearchByDoctorSptHandler(false);
-      setNameSearchResults([]);
-      var filterItems = enteredName.toLowerCase();
-      allDoctors.forEach(function (item) {
-         var name = `${item.first_name} ${item.middle_name} ${item.last_name}`;
-         //puts all doctor profiles same with entered name into an array
-         if (name.toLowerCase().indexOf(filterItems) !== -1) {
-            setNameSearchResults((oldArray) => [...oldArray, item]);
-         }
-      });
+      if (isSearchByDoctorHpt === true && isSearchByDoctorSpt === false) {
+         //makes search with filtered doctors by hospital
+         setNameSearchResults([]);
+         var filterItems = enteredName.toLowerCase();
+         hptSearchResults.forEach(function (item) {
+            var name = `${item.first_name} ${item.middle_name} ${item.last_name}`;
+            //puts all doctor profiles same with entered name into an array
+            if (name.toLowerCase().indexOf(filterItems) !== -1) {
+               setNameSearchResults((oldArray) => [...oldArray, item]);
+            }
+         });
+      } else if (
+         isSearchByDoctorHpt === false &&
+         isSearchByDoctorSpt === true
+      ) {
+         //makes search with filtered doctors by hospital
+         setNameSearchResults([]);
+         var filterItems = enteredName.toLowerCase();
+         sptSearchResults.forEach(function (item) {
+            var name = `${item.first_name} ${item.middle_name} ${item.last_name}`;
+            //puts all doctor profiles same with entered name into an array
+            if (name.toLowerCase().indexOf(filterItems) !== -1) {
+               setNameSearchResults((oldArray) => [...oldArray, item]);
+            }
+         });
+      } else {
+         setNameSearchResults([]);
+         var filterItems = enteredName.toLowerCase();
+         allDoctors.forEach(function (item) {
+            var name = `${item.first_name} ${item.middle_name} ${item.last_name}`;
+            //puts all doctor profiles same with entered name into an array
+            if (name.toLowerCase().indexOf(filterItems) !== -1) {
+               setNameSearchResults((oldArray) => [...oldArray, item]);
+            }
+         });
+      }
    }
 
    function handleSearchBySpecialty(specialty) {
@@ -66,8 +95,8 @@ function FindingDoctor(props) {
 
       isSearchByDoctorSptHandler(true);
 
-      if (isSearchByDoctorName === true) {
-         //makes use of filterd doctors by name to make search
+      if (isSearchByDoctorName === true && isSearchByDoctorHpt === false) {
+         //makes use of filtered doctors by name to make search
          setSptSearchResults([]);
          let spt = specialty.toLowerCase();
          nameSearchResults.forEach(function (item) {
@@ -82,7 +111,45 @@ function FindingDoctor(props) {
                setSptSearchResults((oldArray) => [...oldArray, item]);
             }
          });
-      } else if (isSearchByDoctorName === false) {
+      } else if (
+         isSearchByDoctorName === false &&
+         isSearchByDoctorHpt === true
+      ) {
+         //makes use of filtered doctors by hospital to make search
+         setSptSearchResults([]);
+         let spt = specialty.toLowerCase();
+         hptSearchResults.forEach(function (item) {
+            if (
+               item.doctor_specialties === null ||
+               item.doctor_specialties === ''
+            )
+               return;
+            var specialties = item.doctor_specialties.toLowerCase().split(',');
+            //puts all doctor profiles same with entered name into an array
+            if (specialties.includes(spt)) {
+               setSptSearchResults((oldArray) => [...oldArray, item]);
+            }
+         });
+      } else if (
+         isSearchByDoctorName === true &&
+         isSearchByDoctorHpt === true
+      ) {
+         //makes use of filtered doctors by hospital to make search
+         setSptSearchResults([]);
+         let spt = specialty.toLowerCase();
+         hptSearchResults.forEach(function (item) {
+            if (
+               item.doctor_specialties === null ||
+               item.doctor_specialties === ''
+            )
+               return;
+            var specialties = item.doctor_specialties.toLowerCase().split(',');
+            //puts all doctor profiles same with entered name into an array
+            if (specialties.includes(spt)) {
+               setSptSearchResults((oldArray) => [...oldArray, item]);
+            }
+         });
+      } else {
          //makes use of all doctors to make search
          setSptSearchResults([]);
          let spt = specialty.toLowerCase();
@@ -102,7 +169,11 @@ function FindingDoctor(props) {
    }
 
    var list;
-   if (isSearchByDoctorName === true && isSearchByDoctorSpt === false) {
+   if (
+      isSearchByDoctorName === true &&
+      isSearchByDoctorSpt === false &&
+      isSearchByDoctorHpt === false
+   ) {
       list = nameSearchResults.map((item, j) => {
          return (
             <div
@@ -146,8 +217,66 @@ function FindingDoctor(props) {
             </div>
          );
       });
-   } else if (isSearchByDoctorSpt === true) {
+   } else if (
+      (isSearchByDoctorName === true &&
+         isSearchByDoctorSpt === true &&
+         isSearchByDoctorHpt === false) ||
+      (isSearchByDoctorName === false &&
+         isSearchByDoctorSpt === true &&
+         isSearchByDoctorHpt === false)
+   ) {
       list = sptSearchResults.map((item, j) => {
+         return (
+            <div
+               className={styles.doctorBox}
+               key={`${item.first_name} ${item.last_name}-${j}`}
+            >
+               <div className={styles.doctorImage}>
+                  <img src={item.person_image} alt="doctor-profile" />
+               </div>
+               <div className={styles.doctorInfo}>
+                  <div className={styles.doctorName}>
+                     <h3>{`Dr. ${item.first_name} ${item.last_name} `}</h3>
+                  </div>
+                  <div className={styles.doctorDetails}>
+                     <p>{item.doctor_specialties}</p>
+                  </div>
+                  <div className={styles.doctorInfoLink}>
+                     <p
+                        onClick={() =>
+                           props.pushData({
+                              date_of_birth: item.date_of_birth,
+                              doctor_id: item.doctor_id,
+                              doctor_ratings: item.doctor_ratings,
+                              doctor_specialties: item.doctor_specialties,
+                              first_name: item.first_name,
+                              gender: item.gender,
+                              hospital_code: item.hospital_code,
+                              house_address: item.house_address,
+                              last_name: item.last_name,
+                              license_number: item.license_number,
+                              middle_name: item.middle_name,
+                              person_image: item.person_image,
+                              user_email: item.user_email,
+                           })
+                        }
+                     >
+                        View Profile
+                     </p>
+                  </div>
+               </div>
+            </div>
+         );
+      });
+   } else if (
+      (isSearchByDoctorName === true &&
+         isSearchByDoctorSpt === false &&
+         isSearchByDoctorHpt === true) ||
+      (isSearchByDoctorName === false &&
+         isSearchByDoctorSpt === false &&
+         isSearchByDoctorHpt === true)
+   ) {
+      list = hptSearchResults.map((item, j) => {
          return (
             <div
                className={styles.doctorBox}

@@ -17,11 +17,11 @@ const mapStateToProps = (state) => {
 };
 
 function Profile(props) {
-   // console.log(
-   //    props.savedGuardianDetails,
-   //    props.savedHealthDetails,
-   //    props.savedProfile
-   // );
+   console.log(
+      props.savedGuardianDetails,
+      props.savedHealthDetails,
+      props.savedProfile
+   );
 
    // Handles dispatching of actions
    const dispatch = useDispatch();
@@ -141,9 +141,11 @@ function Profile(props) {
          return false;
       } else {
          let reader = new FileReader();
-         reader.onloadend = function () {};
+         reader.onloadend = function () {
+            setUserImage(reader.result);
+            console.log(reader.result.length);
+         };
          reader.readAsDataURL(userimage);
-         setUserImage(URL.createObjectURL(userimage));
 
          setUploadBtn('Image Uploaded');
       }
