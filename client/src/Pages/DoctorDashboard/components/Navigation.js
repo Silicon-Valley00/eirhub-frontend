@@ -3,7 +3,6 @@ import avatarThree from '../../../assets/Rectangle.png';
 import Sidebar from './Sidebar';
 
 function Navigation({ nav }) {
-   console.log(nav);
    return (
       <nav className={styles.nav}>
          <div className={styles.welcome_msg}>

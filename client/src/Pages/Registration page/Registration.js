@@ -347,6 +347,8 @@ function Registration(props) {
       }
    }
    function handleRegisterDoctorPassword() {
+      console.log(registerDoctorPasswordOneErrorMessage)
+
       let enteredSignUpPassword = doctorSignupPassword.current.value;
 
       if (enteredSignUpPassword === '') {
@@ -358,17 +360,17 @@ function Registration(props) {
          );
          setRegisterDoctorPasswordOneError(true);
       } else if (enteredSignUpPassword.search(/[0-9]/) === -1) {
-         setRegisterPasswordOneErrorMessage(
+         setRegisterDoctorPasswordOneErrorMessage(
             'Password must contain at least a number'
          );
          setRegisterDoctorPasswordOneError(true);
       } else if (enteredSignUpPassword.search(/[a-z]/) === -1) {
-         setRegisterPasswordOneErrorMessage(
+         setRegisterDoctorPasswordOneErrorMessage(
             'Password must contain at least a lowercase character'
          );
          setRegisterDoctorPasswordOneError(true);
       } else if (enteredSignUpPassword.search(/[A-Z]/) === -1) {
-         setRegisterPasswordOneErrorMessage(
+         setRegisterDoctorPasswordOneErrorMessage(
             'Password must contain at least an uppercase character'
          );
          setRegisterDoctorPasswordOneError(true);
@@ -429,7 +431,7 @@ function Registration(props) {
 
          // makes api call with userdata
          const feedback = await submitCredentials(
-            'patient/login',
+            'patients/login',
             loginPatientData
          );
          return await feedback; //return feedback for registeration flow
@@ -456,7 +458,7 @@ function Registration(props) {
 
          // makes api call with userdata
          const feedback = await submitCredentials(
-            'patient/signup',
+            'patients/signup',
             signupPatientData
          );
          return await feedback; //return feedback for registeration flow

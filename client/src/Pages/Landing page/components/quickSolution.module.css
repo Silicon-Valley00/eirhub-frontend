@@ -200,3 +200,11 @@
       display: block;
    }
 }
+
+@media (min-width: 1200px) {
+   .contact__btn {
+      width: 20rem;
+      height: 3rem;
+      font-size: 20px;
+   }
+}

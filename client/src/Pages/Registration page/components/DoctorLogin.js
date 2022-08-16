@@ -9,11 +9,7 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import { LoginUser } from '../../../context/authcontext';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {
-   fetchGuardianInfo,
-   fetchHealthDetails,
-   fetchProfile,
-} from '../../../Store/Actions.js';
+import { fetchDoctorsProfileInfo } from '../../../Store/DoctorAction.js';
 
 function DoctorLogin(props) {
    const docLoginFormRef = useRef();
@@ -35,19 +31,18 @@ function DoctorLogin(props) {
       // checks if account is to be logged in
       if (feedback[0] === true) {
          //logs user into cometchat
-         LoginUser(
-            `${feedback[1].first_name.toLowerCase()}-${feedback[1].last_name.toLowerCase()}-${
-               feedback[1].id
-            }`
-         );
+         // LoginUser(
+         //    `${feedback[1].first_name.toLowerCase()}-${feedback[1].last_name.toLowerCase()}-${
+         //       feedback[1].id
+         //    }`
+         // );
 
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         dispatch(fetchProfile(feedback[1].id));
-         dispatch(fetchGuardianInfo(feedback[1].guardian_id));
-         dispatch(fetchHealthDetails(feedback[1].id));
+         dispatch(fetchDoctorsProfileInfo(feedback[1].idDoctor));
+
          setTimeout(() => {
-            navigate('/dashboard');
+            navigate('/doctordashboard');
          }, 1500);
       } else {
          // when account fails to login

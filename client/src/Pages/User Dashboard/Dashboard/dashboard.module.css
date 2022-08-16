@@ -162,6 +162,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
+   text-transform: capitalize;
 }
 .medicationBox table tbody td:nth-child(2),
 .medicationBox table tbody td:nth-child(3) {
@@ -213,6 +214,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 .medicationBox table thead th:nth-child(1) {
    width: 40%;
    text-align: left;
+   text-transform: capitalize;
 }
 .medicationBox table thead th:nth-child(2) {
    width: 20%;
@@ -227,6 +229,20 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 .medicationBox tbody tr:nth-child(even) {
    background-color: var(--gray);
    width: 100%;
+}
+
+.medicationBox tbody p {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: var(--tablehead);
+   font-weight: 400;
+   font-family: 'Poppins';
+   font-size: 1.2rem;
 }
 
 /* APPOINTMENTS */

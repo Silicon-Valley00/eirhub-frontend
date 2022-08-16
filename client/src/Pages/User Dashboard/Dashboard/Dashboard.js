@@ -8,8 +8,13 @@ import { ImDroplet } from 'react-icons/im';
 import { RiHeartPulseFill } from 'react-icons/ri';
 import { GiMedicalThermometer } from 'react-icons/gi';
 import styles from './dashboard.module.css';
-import { connect } from 'react-redux';
-import { fetchMedications } from '../../../Store/Actions.js';
+import { connect, useDispatch } from 'react-redux';
+import {
+   fetchAppointments,
+   fetchMedications,
+   updatePrescriptions,
+} from '../../../Store/Actions.js';
+import { useSelector } from 'react-redux';
 
 const mapStateToProps = (state) => {
    return {
@@ -18,42 +23,119 @@ const mapStateToProps = (state) => {
 };
 
 function Dashboard(props) {
-   const [medications, setMedications] = useState();
+   const dispatch = useDispatch();
+   const [medications, setMedications] = useState([]);
+   const [appointments, setAppointments] = useState([]);
+   const patientID = useSelector((state) => state.profile.idPatient);
 
    useEffect(() => {
       async function fetchdata() {
-         // // const items = await fetchMedications();
-         // setMedications(items);
+         const items = await fetchMedications(patientID);
+         // const schedules = await fetchAppointments(patientID);
+         setMedications(items);
+         // setAppointments(schedules);
       }
       fetchdata();
-      console.log(medications);
    }, []);
+
    var list;
    //displays medications
-   console.log(medications);
 
-   if (
-      medications !== null ||
-      medications !== undefined ||
-      medications.length !== 0
-   ) {
-      list = medications.map((item, j) => {
-         return (
-            <tr key={`${item.drug_name}-${j}`}>
-               <td>{`${item.drug_name}`}</td>
-               <td>{`${item.dosage}`}</td>
-               <td>{`${item.time_of_administration}`}</td>
-               <td>
-                  <input type={'checkbox'} />
-               </td>
-            </tr>
-         );
-      });
-   } else if (medications.length === 0) {
-      // Sends message to be displayed when saved videos is empty
-      list = <p>No medications yet.</p>;
+   if (medications === undefined) {
+      list = <p>Nothing to show here.</p>;
+   } else {
+      if (medications.length !== 0) {
+         list = medications.map((item, j) => {
+            return (
+               <tr key={`${item.drug_name}-${j}`}>
+                  <td>{`${item.drug_name}`}</td>
+                  <td>{`${item.dosage}`}</td>
+                  <td>{`${item.time_of_administration}`}</td>
+                  <td>
+                     <input
+                        type={'checkbox'}
+                        defaultChecked={
+                           new Date(item.last_taken_date).setHours(
+                              0,
+                              0,
+                              0,
+                              0
+                           ) === new Date().setHours(0, 0, 0, 0)
+                              ? true
+                              : false
+                        }
+                        onClick={(event) => changeCheckBox(event, item)}
+                     />
+                  </td>
+               </tr>
+            );
+         });
+      } else if (medications.length === 0) {
+         // Sends message to be displayed when saved videos is empty
+         list = <p>Nothing to show here.</p>;
+      }
    }
 
+   // var appointmentsData;
+   // //displays medications
+
+   // if (appointments === undefined) {
+   //    appointmentsData = <p>Nothing to show here.</p>;
+   // } else {
+   //    if (appointments.length !== 0) {
+   //       appointmentsData = appointments.map((item, j) => {
+   //          return (
+   //             <tr key={`${item.drug_name}-${j}`}>
+   //                <tr>
+   //                         <td>
+   //                            <div>
+   //                               <img src={avatarTwo} alt="avatar" />
+   //                            </div>
+   //                         </td>
+   //                         <td>{`Dr. ${item.first_name}` `${item.last_name}`}</td>
+   //                         <td>{`${item.location}`}</td>
+   //                         <td>{`${new Date(item.appointment_date).getFullYear()}/${
+   //            new Date(item.appointment_date).getMonth() + 1
+   //         }/${new Date(item.appointment_date).getDate() + 1}`}</td>
+   //                         <td>2:00 PM</td>
+   //                      </tr>
+   //             </tr>
+   //          );
+   //       });
+   //    } else if (appointments.length === 0) {
+   //       // Sends message to be displayed when saved videos is empty
+   //       appointmentsData = <p>Nothing to show here.</p>;
+   //    }
+
+   function changeCheckBox(event, data) {
+      /*
+         Function updates last taken dates of presciptions when checkbox is checked
+         Args: Function takes event to check if box is checked and the presciptions
+         Return: Nothing is returned
+      */
+      if (event.target.checked) {
+         var today = new Date();
+         var date = `${today.getFullYear()}-${
+            (today.getMonth() + 1 < 10 ? '0' : '') + (today.getMonth() + 1)
+         }-${(today.getDate() < 10 ? '0' : '') + today.getDate()}`;
+
+         const updatedPrescription = {
+            drug_name: data.drug_name,
+            dosage: data.dosage,
+            time_of_administration: data.time_of_administration,
+            start_date: data.start_date,
+            end_date: data.end_date,
+            last_taken_date: date,
+         };
+         console.log('updated', updatedPrescription);
+         //updating prescription
+         dispatch(updatePrescriptions(data.id, updatedPrescription));
+      } else {
+         //prevents checkbox from changing to false
+         event.preventDefault();
+         return false;
+      }
+   }
    return (
       <>
          <main id={styles.midsection}>
@@ -143,56 +225,7 @@ function Dashboard(props) {
                            <th></th>
                         </tr>
                      </thead>
-                     <tbody>
-                        <tr>
-                           <td>Clopidogrel</td>
-                           <td>1/x2</td>
-                           <td>After Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>UltraVit OMEGA + DHA</td>
-                           <td>1/x3</td>
-                           <td>After Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Ticagrelor</td>
-                           <td>2/x1</td>
-                           <td>Before Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Ticagrelor</td>
-                           <td>2/x1</td>
-                           <td>Before Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Ticagrelor</td>
-                           <td>2/x1</td>
-                           <td>Before Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Ticagrelor</td>
-                           <td>2/x1</td>
-                           <td>Before Meals</td>
-                           <td>
-                              <input type={'checkbox'} />
-                           </td>
-                        </tr>
-                     </tbody>
+                     <tbody>{list}</tbody>
                   </table>
                </div>
             </div>

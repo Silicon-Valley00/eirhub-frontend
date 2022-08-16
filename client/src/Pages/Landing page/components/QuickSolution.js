@@ -36,6 +36,7 @@ const QuickSolution = () => {
                items.map((item) => {
                   return (
                      <div className={styles.card}>
+                        {/* FIXME: Icon to be made big on 1920px */}
                         <div className={styles.icon}>{item.icon}</div>
                         <p className={styles.heading}>{item.heading}</p>
                         <p className={styles.about}>{item.about}</p>

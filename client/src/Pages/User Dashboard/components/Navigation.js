@@ -91,18 +91,20 @@ function Navigation(props) {
                            <h3>Prescriptions</h3>
                         </li>
                      </Link>
-                     <li
-                        className={
-                           props.page === 'scheduler' ? styles.active : ''
-                        }
-                     >
-                        <span className={styles.icons}>
-                           <i>
-                              <TbCalendarTime />
-                           </i>
-                        </span>
-                        <h3>Schedule</h3>
-                     </li>
+                     <Link to={'/scheduling'}>
+                        <li
+                           className={
+                              props.page === 'schedule' ? styles.active : ''
+                           }
+                        >
+                           <span className={styles.icons}>
+                              <i>
+                                 <TbCalendarTime />
+                              </i>
+                           </span>
+                           <h3>Schedule</h3>
+                        </li>
+                     </Link>
                      <Link to={'/find-a-doctor'}>
                         <li
                            className={

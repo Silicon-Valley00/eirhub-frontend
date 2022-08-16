@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import styles from './profile.module.css';
 import avatarThree from '../../../assets/Rectangle.png';
 import { useDispatch, connect } from 'react-redux';
-import { updateProfile } from '../../../Store/Actions.js';
+import {
+   updateProfile,
+   updateHealthDetails,
+   updateGuardianInfo,
+} from '../../../Store/Actions.js';
 
 const mapStateToProps = (state) => {
    return {
@@ -13,11 +17,11 @@ const mapStateToProps = (state) => {
 };
 
 function Profile(props) {
-   // console.log(
-   //    props.savedGuardianDetails,
-   //    props.savedHealthDetails,
-   //    props.savedProfile
-   // );
+   console.log(
+      props.savedGuardianDetails,
+      props.savedHealthDetails,
+      props.savedProfile
+   );
 
    // Handles dispatching of actions
    const dispatch = useDispatch();
@@ -138,9 +142,11 @@ function Profile(props) {
       } else {
          let reader = new FileReader();
          reader.onloadend = function () {
-            setUserImage('result', reader.result);
+            setUserImage(reader.result);
+            console.log(reader.result.length);
          };
          reader.readAsDataURL(userimage);
+
          setUploadBtn('Image Uploaded');
       }
    }
@@ -181,15 +187,13 @@ function Profile(props) {
          first_name: guardianFirstName,
          middle_name: guardianMiddleName,
          last_name: guardianLastName,
-         email: guardianEmail,
+         user_email: guardianEmail,
          date_of_birth: guardianDateOfBirth,
          gender: guardianGender,
          phone_number: guardianMobileNumber,
          house_address: guardianAddress,
          id_number: guardianIdNumber,
       };
-
-      console.log(props.savedProfile);
 
       dispatch(
          updateProfile(
@@ -205,15 +209,15 @@ function Profile(props) {
       //    updateHealthDetails(props.savedProfile.idPatient, enteredHealthInfo)
       // );
       // dispatch(
-      //    updateGuardianInfo(props.savedProfile.idGuardian, enteredGuardianinfo)
+      //    updateGuardianInfo(
+      //       props.savedProfile.idGuardian,
+      //       enteredGuardianinfo,
+      //       props.savedProfile.idPatient,
+      //       enteredHealthInfo
+      //    )
       // );
 
       setDisableFormBtn(true);
-      // console.log(
-      //    props.savedGuardianDetails,
-      //    props.savedHealthDetails,
-      //    props.savedProfile
-      // );
    }
    return (
       <>
@@ -640,7 +644,7 @@ function Profile(props) {
                   </div>
                </div>
                <div className={styles.guardianInfo}>
-                  <h2>Guradian Details(If applicable)</h2>
+                  <h2>Guardian Details(If applicable)</h2>
                   <div className={styles.guardianInfoFormBox}>
                      <div className={styles.guardianFormBox}>
                         <h3>First Name</h3>

@@ -39,7 +39,6 @@ const Hero = () => {
                   </button>
                </div>
             </div>
-
             <div className={heroStyles.hero_image}>
                <img
                   src={landingpageImage}

@@ -38,7 +38,6 @@ function Medication(props) {
       }
    }, [editMedication]);
 
-   // handles submition of form
    function handleMedicationSubmit() {
       /*
          Function validates medication entries and submits them
@@ -79,8 +78,6 @@ function Medication(props) {
                   last_taken_date: drugStartDate,
                   idPatient: userID,
                };
-               console.log('add');
-               console.log('non', medicationBody);
 
                dispatch(addPrescriptions(medicationBody));
             } else {
@@ -92,8 +89,6 @@ function Medication(props) {
                   end_date: drugEndDate,
                   last_taken_date: editMedication.last_taken_date,
                };
-               console.log('update');
-               console.log('non', medicationBody);
 
                dispatch(updatePrescriptions(editMedication.id, medicationBody));
             }
