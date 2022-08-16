@@ -39,8 +39,6 @@ const Hero = () => {
                   </button>
                </div>
             </div>
-
-            {/* BUG: Image out of hero div */}
             <div className={heroStyles.hero_image}>
                <img
                   src={landingpageImage}

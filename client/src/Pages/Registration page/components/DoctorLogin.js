@@ -9,7 +9,7 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import { LoginUser } from '../../../context/authcontext';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchDoctorsProfileInfo } from '../../../Store/Actions.js';
+import { fetchDoctorsProfileInfo } from '../../../Store/DoctorAction.js';
 
 function DoctorLogin(props) {
    const docLoginFormRef = useRef();

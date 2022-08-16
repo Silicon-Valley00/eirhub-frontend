@@ -105,7 +105,7 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="firstname"
                                     placeholder="Enter first name"
-                                    required="true"
+                                    required={true}
                                     onChange={handleChange}
                                  />
                               </div>
@@ -132,7 +132,7 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="lastname"
                                     placeholder="Enter last name"
-                                    required="true"
+                                    required={true}
                                     onChange={handleChange}
                                  />
                               </div>
@@ -149,7 +149,7 @@ function DoctorProfile(props) {
                                     type="email"
                                     id="email"
                                     placeholder="Someone@gmail.com"
-                                    required="true"
+                                    required={true}
                                     onChange={handleChange}
                                  />
                               </div>
@@ -163,7 +163,7 @@ function DoctorProfile(props) {
                                     name="dateOfBirth"
                                     id="date"
                                     placeholder="DD/MM/YYYY"
-                                    required="true"
+                                    required={true}
                                     onFocus={(event) =>
                                        (event.target.type = 'date')
                                     }
@@ -183,7 +183,7 @@ function DoctorProfile(props) {
                                     <select
                                        name="gender"
                                        placeholder="Gender"
-                                       required="true"
+                                       required={true}
                                        onChange={handleChange}
                                     >
                                        <option>Select gender</option>
@@ -205,7 +205,7 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="address"
                                     placeholder="Enter house address"
-                                    required="true"
+                                    required={true}
                                     onChange={handleChange}
                                  />
                               </div>
@@ -236,7 +236,7 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="licenseNum"
                                     placeholder="Enter License Number"
-                                    required="true"
+                                    required={true}
                                     onChange={handleChange}
                                  />
                               </div>
@@ -251,7 +251,7 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="specialty"
                                     placeholder="Enter Specialty"
-                                    required="true"
+                                    required={true}
                                     onChange={handleChange}
                                  />
                               </div>
@@ -266,7 +266,7 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="hospitalCode"
                                     placeholder="Enter Hospital Code"
-                                    required="true"
+                                    required={true}
                                     onChange={handleChange}
                                  />
                               </div>
