@@ -5,25 +5,25 @@ import femaleProfle from '../../../assets/Rectangle.png';
 
 const patients = [
    {
-      image: femaleProfle,
+      image: -femaleProfle,
       name: 'Melissa Burkinstock',
    },
-   {
-      image: maleProfle,
-      name: 'James Freeman',
-   },
-   {
-      image: femaleProfle,
-      name: 'Chioma Ukechukwu',
-   },
-   {
-      image: femaleProfle,
-      name: 'Melissa Burkinstock',
-   },
-   {
-      image: femaleProfle,
-      name: 'Melissa Burkinstock',
-   },
+   // {
+   //    image: maleProfle,
+   //    name: 'James Freeman',
+   // },
+   // {
+   //    image: femaleProfle,
+   //    name: 'Chioma Ukechukwu',
+   // },
+   // {
+   //    image: femaleProfle,
+   //    name: 'Melissa Burkinstock',
+   // },
+   // {
+   //    image: femaleProfle,
+   //    name: 'Melissa Burkinstock',
+   // },
 ];
 
 export default function DoctorSchedule(props) {
@@ -106,6 +106,7 @@ export default function DoctorSchedule(props) {
                   {patients.map((patientnames) => {
                      return (
                         <>
+                           {patientnames.image}
                            <li style={{ listStyleImage: patientnames.image }}>
                               {patientnames.name}
                            </li>

@@ -141,7 +141,7 @@ const Reducers = (state = initialState, action) => {
             hospital_code: action.payload.hospital_code,
             doctor_ratings: action.payload.doctor_ratings,
             person_image: action.payload.person_image,
-            idDoctor: action.payload.idDoctor,
+            id_doctor: action.payload.id_doctor,
          };
          return { ...state, doctorProfile: doctor_profile_info };
 

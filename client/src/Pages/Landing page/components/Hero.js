@@ -25,8 +25,10 @@ const Hero = () => {
                               .pauseFor(300)
                               .deleteChars(8)
                               .typeString(
-                                 ' <Strong>patients</Strong> get quick access to experienced practitioners and helps increase the visibility of these  practitioners.'
+                                 ' <Strong>patients</Strong> get quick access to experienced practitioners and helps increase the visibility of these practitioners'
                               )
+                              .deleteChars(14)
+                              .typeString(' <Strong>Practitioners</Strong>')
                               .start();
                         }}
                      />

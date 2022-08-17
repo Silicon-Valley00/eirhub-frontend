@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
 };
 
 function MidDashboard(props) {
+   console.log('show in dashboard: ', props);
    return (
       <>
          <Navigation nav={13} />

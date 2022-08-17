@@ -10,12 +10,12 @@ export const setDoctorProfile = (doctorProfile) => {
 };
 
 // Action creator: Fetch doctor profile info
-export const fetchDoctorsProfileInfo = (doctorID) => {
+export const fetchDoctorsProfileInfo = (idDoctor) => {
    return async function (dispatch) {
       try {
          const response = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:5000/doctor/${doctorID}`,
+            url: `http://127.0.0.1:5000/doctor/${idDoctor}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -36,6 +36,7 @@ export const fetchDoctorsProfileInfo = (doctorID) => {
          }
       } catch (error) {
          alert('caughterror', error);
+         console.log(error);
       }
    };
 };
