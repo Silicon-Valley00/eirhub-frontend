@@ -1,7 +1,7 @@
 .DSContainer {
    margin-left: 16rem;
    display: flex;
-   justify-content: space-between;
+   justify-content: space-evenly;
    width: 83%;
    box-sizing: border-box;
    gap: 5%;
@@ -11,13 +11,13 @@
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
-   height: 1000px;
+   height: 56.75rem;
 }
 .DSContainer2 {
-   width: 300px;
+   width: 20.3rem;
    background-color: #ecf3fc;
-   border-radius: 20px;
-   height: 500px;
+   border-radius: 1.25rem;
+   height: 56.75rem;
    overflow-y: scroll;
 }
 .DSContainer2::-webkit-scrollbar,
@@ -176,13 +176,21 @@
 }
 .DSContainer2 ul {
    text-align: center;
-   padding-left: 30px;
+   padding-left: 1rem;
 }
 .DSContainer2 li {
    padding-top: 20px;
    font-weight: 600;
    color: #0d3f58;
    font-size: 1rem;
+}
+.imageDiv{
+   display: flex;
+   justify-content: space-around;
+   width: 15rem;
+}
+.imageDiv{
+   margin-top: 1.5rem;
 }
 /*Responsive*/
 @media (max-width: 1200px) {
@@ -209,7 +217,7 @@
    .DSContainer2 {
       grid-column: 1/2;
       width: 35%;
-      height: 50vh;
+      height: 56.75rem;
       overflow: scroll;
       border-radius: 20px;
    }

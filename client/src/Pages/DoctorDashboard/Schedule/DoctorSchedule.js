@@ -95,7 +95,7 @@ export default function DoctorSchedule(props) {
                         <td>
                            Swollen tonsils with severe pains in throat and chest
                         </td>
-                        <td style={{ color: 'red', cursor: 'pointer' }}>
+                        <td style={{ color: '#EC6464', cursor: 'pointer' }}>
                            Cancel
                         </td>
                      </tbody>
@@ -105,13 +105,12 @@ export default function DoctorSchedule(props) {
             <div className={DSstyles.DSContainer2}>
                <h2>Patients</h2>
                <ul>
-                  {patients.map((patientnames) => {
+                  {patients.map((patientnames, index) => {
                      return (
-                        <>
-                           <li style={{ listStyleImage: patientnames.image }}>
-                              {patientnames.name}
-                           </li>
-                        </>
+                        <div className={DSstyles.imageDiv}>
+                           <img src={patientnames.image}></img>
+                           <li key={index}>{patientnames.name}</li>
+                        </div>
                      );
                   })}
                </ul>
