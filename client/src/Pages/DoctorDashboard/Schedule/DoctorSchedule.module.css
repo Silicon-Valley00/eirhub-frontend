@@ -175,22 +175,24 @@
    text-align: center;
 }
 .DSContainer2 ul {
-   text-align: center;
-   padding-left: 1rem;
+   /* padding-left: 1rem; */
 }
 .DSContainer2 li {
-   padding-top: 20px;
    font-weight: 600;
    color: #0d3f58;
    font-size: 1rem;
 }
-.imageDiv{
+.imageDiv {
+   margin: 15px 0; 
    display: flex;
-   justify-content: space-around;
-   width: 15rem;
+   align-items: center;
+   width: 17rem;
+   
 }
-.imageDiv{
-   margin-top: 1.5rem;
+.imageDiv img {
+   margin: 0 20px;
+   width: 40px;
+   height: 40px;
 }
 /*Responsive*/
 @media (max-width: 1200px) {
