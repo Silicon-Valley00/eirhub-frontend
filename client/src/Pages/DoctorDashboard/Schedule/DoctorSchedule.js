@@ -72,9 +72,11 @@ export default function DoctorSchedule(props) {
                         className={DSstyles.inputEndTime}
                      />
                   </div>
-                  <button className={DSstyles.DSbutton}>
-                     Schedule Appointment
-                  </button>
+                  <div className={DSstyles.DSbuttondiv}>
+                     <button className={DSstyles.DSbutton}>
+                        Schedule Appointment
+                     </button>
+                  </div>
                </form>
                <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
                <div className={DSstyles.appointmentContainer}>
