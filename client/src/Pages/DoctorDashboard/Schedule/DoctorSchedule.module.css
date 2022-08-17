@@ -4,7 +4,7 @@
    justify-content: space-evenly;
    width: 83%;
    box-sizing: border-box;
-   gap: 5%;
+   gap: 2%;
 }
 .DSContainer1 {
    width: 70%;
@@ -13,6 +13,7 @@
    padding: 20px;
    height: 56.75rem;
 }
+
 .DSContainer2 {
    width: 20.3rem;
    background-color: #ecf3fc;
@@ -44,6 +45,72 @@
    font-size: 1.1rem;
    color: #0d3f58;
 }
+
+
+.DSFiles {
+   text-align: center;
+   display: flex;
+   justify-content: space-between;
+   margin-top: 30px;
+   background-color: white;
+   width: 90%;
+   margin: 100px auto;
+   height: 500px;
+   overflow-y: scroll;
+   border-radius: 20px;
+}
+.DSFiles::-webkit-scrollbar,
+.DSFiles::-webkit-scrollbar {
+   width: 0.3rem;
+   height: 0.3rem;
+   cursor: pointer;
+}
+.DSFiles::-webkit-scrollbar-track,
+.DSFiles::-webkit-scrollbar-track {
+   margin: 20px;
+   cursor: pointer;
+   --webkit-box-shadow: inset 0 0 10px var(--white);
+}
+.DSFiles::-webkit-scrollbar-thumb,
+.DSFiles::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+}
+
+.DSHeader::-webkit-scrollbar,
+.DSHeader::-webkit-scrollbar {
+   width: 0.3rem;
+   height: 0.3rem;
+   cursor: pointer;
+}
+.DSHeader::-webkit-scrollbar-track,
+.DSHeader::-webkit-scrollbar-track {
+   margin: 20px;
+   cursor: pointer;
+   --webkit-box-shadow: inset 0 0 10px var(--white);
+}
+.DSHeader::-webkit-scrollbar-thumb,
+.DSHeader::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+}
+.DSFiles th {
+   color: #c2c9d1;
+}
+.DSFiles table {
+   width: 100%;
+   margin-top: 30px;
+}
+.DSFiles td {
+   height: 5rem;
+   color: #0d3f58;
+   font-weight: 700;
+}
+
+
+
 .patientContainer {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
