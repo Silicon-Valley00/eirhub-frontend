@@ -1,11 +1,12 @@
 .DSContainer {
-   margin-left: 25rem;
+   margin-left: 16rem;
    display: flex;
    justify-content: space-evenly;
-   width: 77.5%;
-   height: 93vh;
+   width: 70%;
    gap: 30px;
    box-sizing: border-box;
+   margin-right: 0;
+   overflow-y: scroll;
 }
 .DSContainer1 {
    width: 70%;
@@ -40,7 +41,7 @@
 }
 .DSContainer1 h2 {
    color: #0d3f58;
-   width: 50%;
+   width: 70%;
    margin-top: 10px;
    margin-left: 30px;
 }
