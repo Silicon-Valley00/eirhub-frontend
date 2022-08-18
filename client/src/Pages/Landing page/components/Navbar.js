@@ -25,6 +25,7 @@ const Navbar = (props) => {
    let menuRef = useRef();
    useEffect(() => {
       let Handler = (event) => {
+         // BUG: triggers an error in doctor profile when text input is clicked.
          if (!menuRef.current.contains(event.target)) {
             //menuRef is the menu reference used so that the function knows where the event will happen
             setLoginClick(false);

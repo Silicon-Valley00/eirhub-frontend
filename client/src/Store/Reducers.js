@@ -63,7 +63,7 @@ const initialState = {
       hospital_code: '',
       doctor_ratings: '',
       person_image: '',
-      idDoctor: '',
+      id_doctor: '',
    },
 };
 

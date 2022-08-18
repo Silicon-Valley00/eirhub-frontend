@@ -40,3 +40,5 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
       }
    };
 };
+
+// Update Doctor profile
