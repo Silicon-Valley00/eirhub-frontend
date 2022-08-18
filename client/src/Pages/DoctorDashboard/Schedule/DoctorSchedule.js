@@ -5,7 +5,7 @@ import femaleProfle from '../../../assets/Rectangle.png';
 
 const patients = [
    {
-      image: -femaleProfle,
+      image: femaleProfle,
       name: 'Melissa Burkinstock',
    },
    {
@@ -111,7 +111,6 @@ export default function DoctorSchedule(props) {
                            <img src={patientnames.image}></img>
                            <li key={index}>{patientnames.name}</li>
                         </div>
-         
                      );
                   })}
                </ul>

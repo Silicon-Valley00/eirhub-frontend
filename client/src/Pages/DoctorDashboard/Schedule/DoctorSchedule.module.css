@@ -11,13 +11,13 @@
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
-   height: 56.75rem;
+   height: 59rem;
 }
 .DSContainer2 {
    width: 20.3rem;
    background-color: #ecf3fc;
    border-radius: 1.25rem;
-   height: 56.75rem;
+   height: 59rem;
    overflow-y: scroll;
 }
 .DSContainer2::-webkit-scrollbar,
@@ -183,11 +183,10 @@
    font-size: 1rem;
 }
 .imageDiv {
-   margin: 15px 0; 
+   margin: 15px 0;
    display: flex;
    align-items: center;
    width: 17rem;
-   
 }
 .imageDiv img {
    margin: 0 20px;
@@ -202,7 +201,7 @@
    }
    .DSContainer1 {
       width: 80%;
-      height: 90vh;
+      height: 59rem;
    }
 
    .DSContainer1 form {
@@ -284,23 +283,23 @@
 /*smaller laptop screens*/
 @media (max-width: 1024px) {
    .DSContainer {
-      margin-left: 0;
+      margin-left: 5rem;
       display: grid;
       width: auto;
-      height: 85rem;
+      height: 90rem;
       font-size: 1rem;
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: 0.4fr 0.3fr;
-      overflow-y: scroll;
    }
    .DSContainer1 {
       width: 78%;
       margin-left: 10rem;
    }
    .DSContainer2 {
-      width: 50%;
+      width: 35%;
       height: 400px;
-      margin: auto;
+      margin: 0 auto 20px auto;
+      overflow-y: scroll;
    }
    .appointmentContainer {
       height: 25%;
@@ -309,11 +308,17 @@
       text-align: center;
       padding-left: 0;
    }
+   .imageDiv {
+      width: 100%;
+   }
    .DSContainer2::-webkit-scrollbar,
    .DSContainer2::-webkit-scrollbar {
       width: 0.3rem;
       height: 0.3rem;
       cursor: pointer;
+   }
+   .DSContainer2 li {
+      font-size: 0.9rem;
    }
    .DSContainer2::-webkit-scrollbar-track,
    .DSContainer2::-webkit-scrollbar-track {
@@ -373,10 +378,14 @@
       grid-row: 3/4;
       margin: auto;
       width: 50%;
+      margin: 0 auto 20px auto;
    }
    .DSContainer2 ul {
       text-align: center;
       padding-left: 0;
+   }
+   .DSContainer2 li {
+      font-size: 0.9rem;
    }
    .DSContainer2::-webkit-scrollbar,
    .DSContainer2::-webkit-scrollbar {
@@ -440,13 +449,16 @@
    .DSContainer2 {
       grid-column: 1/2;
       grid-row: 3/4;
-      margin: auto;
+      margin: 0 auto 20px auto;
       width: 80%;
       text-align: center;
    }
    .DSContainer2 ul {
       text-align: center;
       padding-left: 0;
+   }
+   .DSContainer2 li {
+      font-size: 1rem;
    }
    .DSContainer2::-webkit-scrollbar,
    .DSContainer2::-webkit-scrollbar {
