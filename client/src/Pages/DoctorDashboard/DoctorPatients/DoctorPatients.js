@@ -24,7 +24,7 @@ const patients = [
     },
 ];
 
-function Patients() {
+function DoctorPatients() {
     return (
         <div className={styles.DRContainer2}>
             <h2>Patients</h2>
@@ -43,4 +43,4 @@ function Patients() {
     )
 }
 
-export default Patients;
+export default DoctorPatients;
