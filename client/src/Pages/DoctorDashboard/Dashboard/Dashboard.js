@@ -6,15 +6,15 @@ import { IoIosPeople } from 'react-icons/io';
 import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
 import appointImg from '../../../assets/maleDoctor.jpg';
+import { connect, useSelector } from 'react-redux';
 
 const mapStateToProps = (state) => {
    return {
-      savedAppointmentDetails: state.appointment,
+      savedDetails: state.doctorProfile,
    };
 };
 
 function MidDashboard(props) {
-   console.log('show in dashboard: ', props);
    return (
       <>
          <Navigation nav={13} />
@@ -124,4 +124,4 @@ function MidDashboard(props) {
       </>
    );
 }
-export default MidDashboard;
+export default connect(mapStateToProps)(MidDashboard);

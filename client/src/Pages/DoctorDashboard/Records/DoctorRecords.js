@@ -1,15 +1,16 @@
 import styles from './DoctorRecords.module.css';
 import Navigation from '../components/Navigation';
 import { Link } from 'react-router-dom';
-import { FaFileUpload } from 'react-icons/fa';
-import { FaPencilAlt } from 'react-icons/fa';
-import { FaTrash } from 'react-icons/fa';
+import { FaFileUpload, FaTrash, FaPencilAlt } from 'react-icons/fa';
+import Patients from '../Patients'
+
 
 function DoctorRecords() {
    return (
       <>
          <Navigation />
-         <div className={styles.DRHeader}>
+         <div className={styles.DRContainer}>
+            <div className={styles.DRContainer1}>
             <h1>Upload Files</h1>
             <div className={styles.DRUpload}>
                <FaFileUpload className={styles.DRUploadimg} />
@@ -40,6 +41,8 @@ function DoctorRecords() {
                   </tbody>
                </table>
             </div>
+            </div>
+            <Patients/>
          </div>
       </>
    );
