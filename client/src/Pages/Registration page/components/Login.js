@@ -43,7 +43,9 @@ function Login(props) {
          // );
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         dispatch(fetchProfile(feedback[1].idPatient, feedback[1].guardian_id));
+         dispatch(
+            fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
+         );
          // dispatch(fetchGuardianInfo());
          // dispatch(fetchHealthDetails(feedback[1].idPatient));
 

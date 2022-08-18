@@ -5,20 +5,20 @@ import {
    SET_GUARDIAN_INFO,
    SET_REPORTS,
    SET_DOCTOR_PROFILE_INFO,
+   SET_APPOINTMENT_DOCTOR,
+   CLEAR_APPOINTMENT_DOCTOR,
 } from './ActionTypes';
 
 // import { PURGE } from 'redux-persist';
 
 const initialState = {
-   name: '',
-   user_id: '',
    profile: {
-      email: '',
+      user_email: '',
       first_name: '',
       house_address: '',
-      idPatient: '',
-      idDoctor: '',
-      idGuardian: '',
+      id_patient: '',
+      id_doctor: '',
+      id_guardian: '',
       id_number: '',
       last_name: '',
       middle_name: '',
@@ -49,6 +49,7 @@ const initialState = {
       id_number: '',
       gender: '',
    },
+   doctorAppointment: {},
    reports: [],
    doctorProfile: {
       first_name: '',
@@ -79,12 +80,12 @@ const Reducers = (state = initialState, action) => {
 
       case SET_PROFILE_INFO:
          let profile = {
-            email: action.payload.email,
+            user_email: action.payload.user_email,
             first_name: action.payload.first_name,
             house_address: action.payload.house_address,
-            idPatient: action.payload.idPatient,
-            idDoctor: action.payload.idDoctor,
-            idGuardian: action.payload.idGuardian,
+            id_patient: action.payload.id_patient,
+            id_doctor: action.payload.id_doctor,
+            id_guardian: action.payload.id_uardian,
             id_number: action.payload.id_number,
             last_name: action.payload.last_name,
             middle_name: action.payload.middle_name,
@@ -115,7 +116,7 @@ const Reducers = (state = initialState, action) => {
             first_name: action.payload.first_name,
             middle_name: action.payload.middle_name,
             last_name: action.payload.last_name,
-            user_email: action.payload.email,
+            user_email: action.payload.user_email,
             date_of_birth: action.payload.date_of_birth,
             house_address: action.payload.house_address,
             phone_number: action.payload.phone_number,
@@ -124,8 +125,36 @@ const Reducers = (state = initialState, action) => {
          };
          return { ...state, guardian: guardian };
 
+      case SET_APPOINTMENT_DOCTOR:
+         let appointmentDoctorProfile = {
+            first_name: action.payload.first_name,
+            middle_name: action.payload.middle_name,
+            last_name: action.payload.last_name,
+            user_email: action.payload.email,
+            date_of_birth: action.payload.date_of_birth,
+            house_address: action.payload.house_address,
+            phone_number: action.payload.phone_number,
+            id_number: action.payload.id_number,
+            gender: action.payload.gender,
+         };
+         return { ...state, doctorAppointment: appointmentDoctorProfile };
+
       case SET_REPORTS:
          return { ...state, reports: action.payload };
+
+      case CLEAR_APPOINTMENT_DOCTOR:
+         let appointmentDoctorProfileClear = {
+            first_name: action.payload.first_name,
+            middle_name: action.payload.middle_name,
+            last_name: action.payload.last_name,
+            user_email: action.payload.email,
+            date_of_birth: action.payload.date_of_birth,
+            house_address: action.payload.house_address,
+            phone_number: action.payload.phone_number,
+            id_number: action.payload.id_number,
+            gender: action.payload.gender,
+         };
+         return { ...state, doctorAppointment: appointmentDoctorProfileClear };
 
       case SET_DOCTOR_PROFILE_INFO:
          let doctor_profile_info = {

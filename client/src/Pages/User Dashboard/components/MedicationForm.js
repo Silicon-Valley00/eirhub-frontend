@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 function Medication(props) {
    const dispatch = useDispatch();
-   const userID = useSelector((state) => state.profile.idPatient);
+   const userID = useSelector((state) => state.profile.id_patient);
 
    const [editMedication, setEditMedication] = useState({});
    // This transfers the setProfile function outside of this function's scope
@@ -76,7 +76,7 @@ function Medication(props) {
                   start_date: drugStartDate,
                   end_date: drugEndDate,
                   last_taken_date: drugStartDate,
-                  idPatient: userID,
+                  id_patient: userID,
                };
 
                dispatch(addPrescriptions(medicationBody));
@@ -88,6 +88,7 @@ function Medication(props) {
                   start_date: drugStartDate,
                   end_date: drugEndDate,
                   last_taken_date: editMedication.last_taken_date,
+                  id_patient: userID,
                };
 
                dispatch(updatePrescriptions(editMedication.id, medicationBody));

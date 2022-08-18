@@ -29,7 +29,7 @@ import Message from './Pages/User Dashboard/Message/Message';
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
 import DoctorProfile from './Pages/DoctorDashboard/Profile/Profile';
 import DoctorRecords from './Pages/DoctorDashboard/Records/Records';
-import Schedule from './Pages/User Dashboard/Schedule/Scehdule';
+import Schedule from './Pages/User Dashboard/Schedule/Schedule';
 
 AOS.init();
 

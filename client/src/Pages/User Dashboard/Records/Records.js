@@ -4,29 +4,90 @@ import { FaClipboardList } from 'react-icons/fa';
 import { BsArrowLeftCircle, BsDownload } from 'react-icons/bs';
 import { useDispatch, connect } from 'react-redux';
 import { fetchReports } from '../../../Store/Actions.js';
-
-const mapStateToProps = (state) => {
-   return {
-      savedReports: state.reports,
-   };
-};
+import { useSelector } from 'react-redux';
 
 function Records(props) {
    const dispatch = useDispatch();
-   useEffect(() => {
-      dispatch(fetchReports);
-   }, []);
+   const [reports, setReports] = useState([]);
+   const patientID = useSelector((state) => state.profile.id_patient);
+
    //Handles state on page been viewed
    const [changePage, setChangePage] = useState(false);
+   const [report, setReport] = useState({
+      description: 'Lab report ordered by Dr.Raymond Brown',
+      id_report: 9,
+      report_type: 'Lab report',
+      upload_date: 'Sun, 24 Jul 2022 04:36:42 GMT',
+   });
+
+   const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+   ];
+
+   useEffect(() => {
+      async function fetchdata() {
+         const items = await fetchReports(patientID);
+         console.log('items', items);
+
+         setReports(items);
+         console.log('rep', reports);
+      }
+      fetchdata();
+   }, []);
 
    function handleChangePage() {
-      /*
-         Function handles the change in page been showed to user
-         Args: No argument is taken
-         Return : Function returns nothing
-      */
       setChangePage(!changePage);
    }
+
+   var list;
+   console.log(reports);
+   if (reports === undefined) {
+      list = <p className={styles.emptyMessage}>Nothing to show here.</p>;
+   } else {
+      if (reports.length !== 0) {
+         list = reports.map((item, j) => {
+            return (
+               <tr key={`${j}-${item.upload_date}-${item.report_type}`}>
+                  <td>{item.report_type}</td>
+                  <td>{item.report_type}</td>
+                  <td>{`${new Date(item.upload_date).getDate() + 1}/${
+                     new Date(item.upload_date).getMonth() + 1
+                  }/${new Date(item.upload_date).getFullYear()}`}</td>
+                  <td>
+                     <div className={styles.options}>
+                        <i
+                           onClick={() => {
+                              setReport(item);
+                              handleChangePage();
+                           }}
+                        >
+                           <FaClipboardList />
+                        </i>
+                        <i>
+                           <BsDownload />
+                        </i>
+                     </div>
+                  </td>
+               </tr>
+            );
+         });
+      } else if (reports.length === 0) {
+         // Sends message to be displayed when saved videos is empty
+         list = <p>Nothing to show here.</p>;
+      }
+   }
+
    return (
       <>
          <div id={styles.recordBody}>
@@ -57,51 +118,7 @@ function Records(props) {
                               </div>
                            </td>
                         </tr>
-                        <tr>
-                           <td>X_ray</td>
-                           <td>Chest X-ray</td>
-                           <td>07/02/2020</td>
-                           <td>
-                              <div className={styles.options}>
-                                 <i onClick={() => handleChangePage()}>
-                                    <FaClipboardList />
-                                 </i>
-                                 <i>
-                                    <BsDownload />
-                                 </i>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Blood_Culture</td>
-                           <td>Lab report </td>
-                           <td>07/02/2020</td>
-                           <td>
-                              <div className={styles.options}>
-                                 <i onClick={() => handleChangePage()}>
-                                    <FaClipboardList />
-                                 </i>
-                                 <i>
-                                    <BsDownload />
-                                 </i>
-                              </div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Lab_report</td>
-                           <td>Lab report </td>
-                           <td>07/02/2020</td>
-                           <td>
-                              <div className={styles.options}>
-                                 <i onClick={() => handleChangePage()}>
-                                    <FaClipboardList />
-                                 </i>
-                                 <i>
-                                    <BsDownload />
-                                 </i>
-                              </div>
-                           </td>
-                        </tr>
+                        {list}
                      </tbody>
                   </table>
                   <div
@@ -118,7 +135,7 @@ function Records(props) {
                            </i>
                         </div>
                         <div className={styles.reportTitle}>
-                           <h2>Report Details</h2>
+                           <h2>{report.report_type}</h2>
                         </div>
                      </div>
                      <div className={styles.reportDescription}>
@@ -127,7 +144,7 @@ function Records(props) {
                               <p>Type:</p>
                            </div>
                            <div className={styles.right}>
-                              <p>Lab Report</p>
+                              <p>{report.report_type}</p>
                            </div>
                         </div>
                         <div className={styles.descriptionBox}>
@@ -135,10 +152,7 @@ function Records(props) {
                               <p>Description:</p>
                            </div>
                            <div className={styles.right}>
-                              <p>
-                                 Urology lab report ordered by Dr. Raymond Brown
-                                 for disease confirmation
-                              </p>
+                              <p>{report.description}</p>
                            </div>
                         </div>
                         <div className={styles.descriptionBox}>
@@ -146,7 +160,11 @@ function Records(props) {
                               <p>Created:</p>
                            </div>
                            <div className={styles.right}>
-                              <p>07 October 2021</p>
+                              <p>{`${new Date(report.upload_date).getDate()} ${
+                                 months[new Date(report.upload_date).getMonth()]
+                              } ${new Date(
+                                 report.upload_date
+                              ).getFullYear()}`}</p>
                            </div>
                         </div>
                      </div>
@@ -157,4 +175,4 @@ function Records(props) {
       </>
    );
 }
-export default connect(mapStateToProps)(Records);
+export default Records;

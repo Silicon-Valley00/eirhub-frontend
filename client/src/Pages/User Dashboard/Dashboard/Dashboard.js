@@ -26,14 +26,14 @@ function Dashboard(props) {
    const dispatch = useDispatch();
    const [medications, setMedications] = useState([]);
    const [appointments, setAppointments] = useState([]);
-   const patientID = useSelector((state) => state.profile.idPatient);
+   const patientID = useSelector((state) => state.profile.id_patient);
 
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchMedications(patientID);
-         // const schedules = await fetchAppointments(patientID);
          setMedications(items);
-         // setAppointments(schedules);
+         const schedules = await fetchAppointments(patientID, true);
+         setAppointments(schedules);
       }
       fetchdata();
    }, []);
@@ -75,37 +75,54 @@ function Dashboard(props) {
          list = <p>Nothing to show here.</p>;
       }
    }
+   console.log(appointments);
+   var appointmentsData;
+   //gets all apoints for display
 
-   // var appointmentsData;
-   // //displays medications
-
-   // if (appointments === undefined) {
-   //    appointmentsData = <p>Nothing to show here.</p>;
-   // } else {
-   //    if (appointments.length !== 0) {
-   //       appointmentsData = appointments.map((item, j) => {
-   //          return (
-   //             <tr key={`${item.drug_name}-${j}`}>
-   //                <tr>
-   //                         <td>
-   //                            <div>
-   //                               <img src={avatarTwo} alt="avatar" />
-   //                            </div>
-   //                         </td>
-   //                         <td>{`Dr. ${item.first_name}` `${item.last_name}`}</td>
-   //                         <td>{`${item.location}`}</td>
-   //                         <td>{`${new Date(item.appointment_date).getFullYear()}/${
-   //            new Date(item.appointment_date).getMonth() + 1
-   //         }/${new Date(item.appointment_date).getDate() + 1}`}</td>
-   //                         <td>2:00 PM</td>
-   //                      </tr>
-   //             </tr>
-   //          );
-   //       });
-   //    } else if (appointments.length === 0) {
-   //       // Sends message to be displayed when saved videos is empty
-   //       appointmentsData = <p>Nothing to show here.</p>;
-   //    }
+   if (appointments === undefined) {
+      appointmentsData = <p>Nothing to show here.</p>;
+   } else {
+      if (appointments.length !== 0) {
+         appointmentsData = appointments.map((item, j) => {
+            return (
+               <tr
+                  key={`${item.appointment_reason}-${j}`}
+                  style={{
+                     height: '2.8rem',
+                     minHeight: '2.8rem',
+                     maxHeight: '2.8rem',
+                  }}
+               >
+                  <td>
+                     <div>
+                        <img src={item.doctor_info.person_image} alt="avatar" />
+                     </div>
+                  </td>
+                  <td>{`Dr. ${item.doctor_info.first_name} ${item.doctor_info.last_name}`}</td>
+                  <td>{item.appointment_location}</td>
+                  <td>
+                     {`${new Date(item.appointment_date).getDate() + 1}/${
+                        new Date(item.appointment_date).getMonth() + 1
+                     }/${new Date(item.appointment_date).getFullYear()}`}
+                  </td>
+                  <td>{`${item.appointment_start_time.slice(
+                     0,
+                     2
+                  )}:${item.appointment_start_time.slice(
+                     3,
+                     5
+                  )} - ${item.appointment_end_time.slice(
+                     0,
+                     2
+                  )}:${item.appointment_end_time.slice(3, 5)}`}</td>
+               </tr>
+            );
+         });
+      } else if (appointments.length === 0) {
+         // Sends message to be displayed when saved videos is empty
+         appointmentsData = <p>Nothing to show here.</p>;
+      }
+   }
 
    function changeCheckBox(event, data) {
       /*
@@ -243,7 +260,13 @@ function Dashboard(props) {
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
+                        <tr
+                           style={{
+                              height: '2.8rem',
+                              minHeight: '2.8rem',
+                              maxHeight: '2.8rem',
+                           }}
+                        >
                            <td>
                               <div>
                                  <img src={avatarTwo} alt="avatar" />
@@ -252,9 +275,10 @@ function Dashboard(props) {
                            <td>Dr. Natheniel Gaglo</td>
                            <td>37 Military Hospital</td>
                            <td>07/02/2020</td>
-                           <td>2:00 PM</td>
+                           <td>2:00 - 3:00 PM</td>
                         </tr>
-                        <tr>
+                        {appointmentsData}
+                        {/* <tr>
                            <td>
                               <div>
                                  <img src={avatarOne} alt="avatar" />
@@ -283,10 +307,10 @@ function Dashboard(props) {
                               </div>
                            </td>
                            <td>Dr. Anne Hill</td>
-                           <td>East Wing Clinic</td>
+                           <td>East Wing Clinic, Gbawa North</td>
                            <td>30/06/2020</td>
-                           <td>1:00 PM</td>
-                        </tr>
+                           <td>1:00 - 5:00 PM</td>
+                        </tr> */}
                      </tbody>
                   </table>
                </div>
