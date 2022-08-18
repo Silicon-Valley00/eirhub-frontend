@@ -1,6 +1,6 @@
-import styles from './Patients.module.css'
-import maleProfle from '../../assets/Rectangle-1.png';
-import femaleProfle from '../../assets/Rectangle.png';
+import styles from './DoctorPatients.module.css'
+import maleProfle from '../../../assets/Rectangle-1.png';
+import femaleProfle from '../../../assets/Rectangle.png';
 const patients = [
     {
         image: femaleProfle,

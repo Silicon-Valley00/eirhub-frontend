@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation';
 import maleProfle from '../../../assets/Rectangle-1.png';
 import femaleProfle from '../../../assets/Rectangle.png';
 import {FaPencilAlt,FaTrash} from 'react-icons/fa'
-import Patients from '../Patients'
+import Patients from '../DoctorPatients/DoctorPatients'
 
 
 
