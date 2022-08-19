@@ -185,10 +185,11 @@ function DoctorLogin(props) {
                            props.doctorLoginPasswordError ||
                            props.doctorLoginEmailError === null ||
                            props.doctorLoginPasswordError === null ||
-                           props.doctorLoginPasswordError === null
+                           props.doctorLoginPasswordError === null ||
+                           btnActive
                         }
                         onClick={() => {
-                           setBtnValue('loging in');
+                           setBtnValue('logging in');
                            setBtnActive(true);
                            submitCredentialsFeedback();
                         }}

@@ -401,7 +401,8 @@ function Signup(props) {
                               props.registerEmailError === null ||
                               props.registerDateError === null ||
                               props.registerPasswordOneError === null ||
-                              props.registerPasswordTwoError === null
+                              props.registerPasswordTwoError === null ||
+                              btnActive
                            }
                            onClick={() => {
                               setBtnValue('Creating Account');
