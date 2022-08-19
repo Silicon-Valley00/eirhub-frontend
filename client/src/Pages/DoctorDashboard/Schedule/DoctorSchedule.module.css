@@ -46,7 +46,6 @@
    color: #0d3f58;
 }
 
-
 .DSFiles {
    text-align: center;
    display: flex;
@@ -108,8 +107,6 @@
    color: #0d3f58;
    font-weight: 700;
 }
-
-
 
 .patientContainer {
    display: grid;
@@ -360,10 +357,14 @@
       margin-left: 10rem;
    }
    .DSContainer2 {
-      width: 35%;
+      width: 50%;
       height: 400px;
       margin: 0 auto 20px auto;
       overflow-y: scroll;
+   }
+   .DSpatientContainer{
+      width: 90%;
+      margin: 0 auto;
    }
    .appointmentContainer {
       height: 25%;
@@ -427,6 +428,11 @@
       grid-column: 1/3;
       grid-row: 1/2;
    }
+   .DSpatientContainer{
+       grid-column: 1/2;
+      grid-row: 3/4;
+
+   }
    .appointTime {
       grid-column: 1/3;
       grid-row: 2/3;
@@ -436,38 +442,6 @@
    .appointmentContainer {
       height: 300px;
       overflow-y: scroll;
-   }
-   .DSContainer2 {
-      grid-column: 1/2;
-      grid-row: 3/4;
-      margin: auto;
-      width: 50%;
-      margin: 0 auto 20px auto;
-   }
-   .DSContainer2 ul {
-      text-align: center;
-      padding-left: 0;
-   }
-   .DSContainer2 li {
-      font-size: 0.9rem;
-   }
-   .DSContainer2::-webkit-scrollbar,
-   .DSContainer2::-webkit-scrollbar {
-      width: 0.3rem;
-      height: 0.3rem;
-      cursor: pointer;
-   }
-   .DSContainer2::-webkit-scrollbar-track,
-   .DSContainer2::-webkit-scrollbar-track {
-      margin: 20px;
-      cursor: pointer;
-      --webkit-box-shadow: inset 0 0 10px var(--white);
-   }
-   .DSContainer2::-webkit-scrollbar-thumb,
-   .DSContainer2::-webkit-scrollbar-thumb {
-      background-color: var(--lightcol);
-      border-radius: 10%;
-      cursor: pointer;
    }
 }
 /*Mobile screens*/
@@ -559,7 +533,7 @@
       font-size: 1rem;
       gap: 0;
       grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: 0.6fr 0.4fr 0.5fr;
+      grid-template-rows: 0.6fr 0.5fr 0.5fr;
       margin-left: 0;
       height: 1800px;
       overflow-y: scroll;
@@ -590,7 +564,7 @@
       align-self: center;
    }
    .appointmentContainer {
-      height: 500px;
+      height: 350px;
    }
    .DSContainer2 {
       grid-column: 1/2;
@@ -608,7 +582,9 @@
    }
    .DSbuttondiv {
       width: 70%;
+      height: 50px;
    }
+
    .DSContainer2::-webkit-scrollbar,
    .DSContainer2::-webkit-scrollbar {
       width: 0.3rem;

@@ -84,7 +84,7 @@ export default function DoctorSchedule(props) {
                   </div>
                </div>
             </div>
-            <div className={DSstyles.DSContainer2}>
+            <div className={DSstyles.DSpatientContainer}>
                <DoctorPatients />
             </div>
          </div>
