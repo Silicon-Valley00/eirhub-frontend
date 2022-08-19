@@ -154,13 +154,20 @@
 }
 /*smaller laptops*/
 @media (max-width: 1024px) {
-   .DRHeader {
-      margin-left: 12rem;
-      width: 80%;
-   }
+.DRContainer{
+   margin-left: 6rem;
+}
+.DRHeader {
+   margin-left: 12rem;
+   width: 80%;
+}
 }
 /*Tablet sizes*/
 @media (max-width: 768px) {
+.DRContainer{
+   margin-left: 20px;
+   display: block;
+}
    .DRHeader {
       margin: auto;
       width: 100%;
