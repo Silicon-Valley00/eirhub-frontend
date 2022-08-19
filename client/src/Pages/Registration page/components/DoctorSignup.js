@@ -381,7 +381,8 @@ function DoctorSignup(props) {
                               props.registerDoctorEmailError === null ||
                               props.registerHospitalCodeError === null ||
                               props.registerDoctorPasswordOneError === null ||
-                              props.registerDoctorPasswordTwoError === null
+                              props.registerDoctorPasswordTwoError === null ||
+                              btnActive
                            }
                            onClick={() => {
                               setBtnValue('Creating Account');

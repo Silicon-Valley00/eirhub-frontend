@@ -388,7 +388,7 @@ scrollbar-width: none;  /* Firefox */
 .btnActive {
    background: #0d3f58;
    transition: color 1000ms ease-in-out;
-   cursor: progress;
+   cursor: not-allowed;
 }
 .btnActive p {
    margin-right: 15%;
