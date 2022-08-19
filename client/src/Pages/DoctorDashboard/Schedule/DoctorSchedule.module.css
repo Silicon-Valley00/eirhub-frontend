@@ -54,7 +54,7 @@
    margin-top: 30px;
    background-color: white;
    width: 90%;
-   margin: 100px auto;
+   margin: 10px auto;
    height: 500px;
    overflow-y: scroll;
    border-radius: 20px;
@@ -240,9 +240,6 @@
 .DSContainer2 h2 {
    color: #0d3f58;
    text-align: center;
-}
-.DSContainer2 ul {
-   /* padding-left: 1rem; */
 }
 .DSContainer2 li {
    font-weight: 600;

@@ -26,7 +26,7 @@ const patients = [
 
 function DoctorPatients() {
     return (
-        <div className={styles.DRContainer2}>
+        <div className={styles.DSContainer2}>
             <h2>Patients</h2>
             <ul>
                 {patients.map((patientnames, index) => {
