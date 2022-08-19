@@ -37,7 +37,7 @@ function Profile(props) {
    const [firstName, setFirstName] = useState(props.savedProfile.first_name);
    const [middleName, setMiddleName] = useState(props.savedProfile.middle_name);
    const [lastName, setLastName] = useState(props.savedProfile.last_name);
-   const [email, setEmail] = useState(props.savedProfile.email);
+   const [email, setEmail] = useState(props.savedProfile.user_email);
    const [dateOfBirth, setDateOfBirth] = useState(
       props.savedProfile.date_of_birth !== ''
          ? `${new Date(props.savedProfile.date_of_birth).getFullYear()}-${
@@ -161,7 +161,7 @@ function Profile(props) {
          first_name: firstName,
          middle_name: middleName,
          last_name: lastName,
-         email: email,
+         user_email: email,
          date_of_birth: dateOfBirth,
          gender: gender,
          nationality: nationality,
@@ -169,8 +169,8 @@ function Profile(props) {
          house_address: address,
          id_number: idNumber,
          person_image: userImage,
-         idDoctor: props.savedProfile.idDoctor,
-         idGuardian: props.savedProfile.idGuardian,
+         id_doctor: props.savedProfile.id_doctor,
+         id_guardian: props.savedProfile.id_guardian,
       };
       let enteredHealthInfo = {
          pulse: heartRate,

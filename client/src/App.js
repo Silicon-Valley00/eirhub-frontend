@@ -28,9 +28,10 @@ import Message from './Pages/User Dashboard/Message/Message';
 // imports for doctor's dashboard
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
 import DoctorProfile from './Pages/DoctorDashboard/Profile/Profile';
+
 import DoctorRecords from './Pages/DoctorDashboard/Records/DoctorRecords';
 import DoctorSchedule from './Pages/DoctorDashboard/Schedule/DoctorSchedule';
-import Schedule from './Pages/User Dashboard/Schedule/Scehdule';
+import Schedule from './Pages/User Dashboard/Schedule/Schedule';
 
 AOS.init();
 

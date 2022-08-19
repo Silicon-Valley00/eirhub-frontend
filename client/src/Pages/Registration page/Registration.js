@@ -347,7 +347,7 @@ function Registration(props) {
       }
    }
    function handleRegisterDoctorPassword() {
-      console.log(registerDoctorPasswordOneErrorMessage)
+      console.log(registerDoctorPasswordOneErrorMessage);
 
       let enteredSignUpPassword = doctorSignupPassword.current.value;
 
@@ -523,7 +523,7 @@ function Registration(props) {
                //returns response
                return [
                   response.data.status,
-                  response.data.msg,
+                  response.data.msg.message,
                   'Create Account',
                ];
             }

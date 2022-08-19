@@ -14,7 +14,12 @@
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
-   height: 56.75rem;
+    height: 59rem;
+}
+.DRContainer1 h1{
+   margin: 20px 0;
+   padding-left: 50px;
+   color: #0D3F58;
 }
 .DRContainer1 label {
    display: block;

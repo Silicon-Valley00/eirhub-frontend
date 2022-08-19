@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 function Medication(props) {
    const dispatch = useDispatch();
-   const patientID = useSelector((state) => state.profile.idPatient);
+   const patientID = useSelector((state) => state.profile.id_patient);
 
    const [prescriptions, setPrescriptions] = useState([]);
    const months = [
@@ -103,7 +103,7 @@ function Medication(props) {
                                  item.time_of_administration,
                               start_date: item.start_date,
                               end_date: item.end_date,
-                              id: item.id,
+                              id_prescription: item.id_prescription,
                               last_taken_date: item.last_taken_date,
                            })
                         }
@@ -123,7 +123,7 @@ function Medication(props) {
          });
       } else if (prescriptions.length === 0) {
          // Sends message to be displayed when saved videos is empty
-         list = <p className={styles.emptyMessage}>Nothing to show here.</p>;
+         list = <p>Nothing to show here.</p>;
       }
    }
 
@@ -131,7 +131,7 @@ function Medication(props) {
       <>
          <div id={styles.medicationsBody}>
             <div className={styles.medicationsBoxContent}>
-               {/* <div className={styles.medicationBox}>
+               <div className={styles.medicationBox}>
                   <div className={styles.upperContent}>
                      <div className={styles.icon}>
                         <i>
@@ -189,7 +189,7 @@ function Medication(props) {
                      </button>
                      <button>Delete</button>
                   </div>
-               </div> */}
+               </div>{' '}
                {list}
             </div>
          </div>

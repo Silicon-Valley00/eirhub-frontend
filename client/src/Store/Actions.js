@@ -3,6 +3,9 @@ import { SET_PROFILE_INFO } from './ActionTypes';
 import { SET_HEALTH_INFO } from './ActionTypes';
 import { SET_GUARDIAN_INFO } from './ActionTypes';
 import { SET_REPORTS } from './ActionTypes';
+import { SET_DOCTOR_PROFILE_INFO } from './ActionTypes';
+import { SET_APPOINTMENT_DOCTOR } from './ActionTypes';
+import { CLEAR_APPOINTMENT_DOCTOR } from './ActionTypes';
 
 import axios from 'axios';
 
@@ -36,11 +39,27 @@ export const setGuardianInfo = (guardianData) => {
       payload: guardianData,
    };
 };
-//Sets reports of user
-export const setReports = (reportData) => {
+
+// Sets the profile details for doctors
+export const setDoctorProfile = (doctorProfile) => {
    return {
-      type: SET_REPORTS,
-      payload: reportData,
+      type: SET_DOCTOR_PROFILE_INFO,
+      payload: doctorProfile,
+   };
+};
+
+//Sets doctor profile details for appointment booking
+export const setDoctorForAppointment = (doctorProfile) => {
+   return {
+      type: SET_APPOINTMENT_DOCTOR,
+      payload: doctorProfile,
+   };
+};
+
+//clears doctor profile details for appointment booking
+export const clearDoctorForAppointment = () => {
+   return {
+      type: CLEAR_APPOINTMENT_DOCTOR,
    };
 };
 
@@ -249,35 +268,33 @@ export const updateGuardianInfo = (
 };
 
 //Fetches user report details
-export const fetchReports = (userID) => {
-   return async function (dispatch) {
-      try {
-         const response = await axios({
-            method: 'GET',
-            url: `http://127.0.0.1:5000/report/${userID}`,
-            headers: {
-               'Access-Control-Allow-Origin': '*',
-               //Helpful in some cases.
-               'Access-Control-Allow-Headers': '*',
-               'Access-Control-Allow-Methods': '*',
-            },
-         });
-         if (response.status === 200) {
-            //checks details of response
-            if (response.data.status === true) {
-               //returns response
-               alert('report fetched worked');
-               console.log(response.data.msg);
-            }
-         } else {
-            //takes all statuses aside 200
-            alert('Something went wrong. Try again');
+export async function fetchReports(userID) {
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `http://127.0.0.1:5000/report/${userID}`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      });
+      if (response.status === 200) {
+         //checks details of response
+         if (response.data.status === true) {
+            //returns response
+            alert('report fetched worked');
+            return response.data.msg;
          }
-      } catch (error) {
-         alert(error, 'pro');
+      } else {
+         //takes all statuses aside 200
+         alert('Something went wrong. Try again');
       }
-   };
-};
+   } catch (error) {
+      alert(error, 'pro');
+   }
+}
 
 //Fetches user report details
 export async function fetchMedications(userID) {
@@ -406,7 +423,7 @@ export async function fetchDoctors() {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/doctors/`,
+         url: `http://127.0.0.1:5000/doctors`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -431,11 +448,11 @@ export async function fetchDoctors() {
 }
 
 //Fetches user accepted appointments
-export async function fetchAppointments(userID) {
+export async function fetchAppointments(userID, status) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/appointments/?patient_id=${userID}`,
+         url: `http://127.0.0.1:5000/appointments/?patient_id=${userID}&accepted=${status}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -447,14 +464,46 @@ export async function fetchAppointments(userID) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            alert('doctors fetch worked');
+            alert('appointments fetch worked');
+            console.log(response.data.msg);
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         alert('Something went wrong. Try again, accepted app 1');
+         alert('Something went wrong. Try again, accepted appments 1');
       }
    } catch (error) {
-      alert(error, 'accepted app');
+      alert(error, 'accepted appments 2');
    }
 }
+
+//Fetches user accepted appointments
+export const addAppointments = (data) => {
+   return async function (dispatch) {
+      try {
+         const response = await axios({
+            method: 'POST',
+            url: `http://127.0.0.1:5000/appointments/`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+            data: data,
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               alert('appointments post worked');
+            }
+         } else {
+            //takes all statuses aside 200
+            alert('Something went wrong. Try again, post appments 1');
+         }
+      } catch (error) {
+         alert(error, 'post appments 2');
+      }
+   };
+};

@@ -148,11 +148,11 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 }
 
 .medicationBox table tbody td {
-   height: 2rem;
-   min-height: 2rem;
-   max-height: 2rem;
+   height: 2.8rem;
+   min-height: 2.8rem;
+   max-height: 2.8rem;
    color: var(--midcol);
-   font-weight: 600;
+   font-weight: 500;
    padding: 0.3rem 0.9rem;
    font-size: 0.8rem;
 }
@@ -285,15 +285,22 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    top: 0;
    background: var(--white);
 }
+/* .appointmentsBox table tbody tr {
+   height: 2.8rem;
+   min-height: 2.8rem;
+   max-height: 2.8rem;
+   line-height: 0px;
+} */
 
 .appointmentsBox table tbody td {
-   height: 2rem;
-   min-height: 2rem;
-   max-height: 2rem;
+   /* height: 2.8rem;
+   min-height: 2.8rem;
+   max-height: 2.8rem; */
    color: var(--midcol);
-   font-weight: 600;
-   padding: 0.3rem 0.9rem;
+   font-weight: 500;
+   padding: 0.2rem 0.5rem;
    font-size: 0.8rem;
+   line-height: 0px;
 }
 .appointmentsBox table tbody td:nth-child(1) div {
    display: flex;
@@ -302,11 +309,11 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    height: 100%;
    width: 100%;
    border-radius: 50%;
-   background-color: var(--deepcol);
 }
 .appointmentsBox table tbody td:nth-child(1) div img {
    height: 100%;
    width: 100%;
+   clip-path: circle();
 }
 
 .appointmentsBox table tbody td:nth-child(3) {
@@ -333,11 +340,11 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    text-align: center;
 }
 .appointmentsBox table thead th:nth-child(4) {
-   width: 20%;
+   width: 15%;
    text-align: left;
 }
 .appointmentsBox table thead th:nth-child(5) {
-   width: 12%;
+   width: 20%;
    text-align: left;
 }
 
@@ -478,7 +485,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    }
 
    .appointmentsBox table tbody td {
-      padding: 0.3rem 0.2rem;
+      padding: 0.3rem 0.5rem;
       font-size: 0.75rem;
    }
 }

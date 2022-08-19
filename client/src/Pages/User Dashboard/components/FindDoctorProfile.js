@@ -3,8 +3,11 @@ import styles from './finddoctorprofile.module.css';
 import { AiFillStar } from 'react-icons/ai';
 import doctorProfileOne from '../../../assets/docProfileImage3.svg';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setDoctorForAppointment } from '../../../Store/Actions';
 
 function FindingDoctor(props) {
+   const dispatch = useDispatch();
    const navigate = useNavigate();
    const [profile, setProfile] = useState({});
    const [showProfile, setShowprofile] = useState(false);
@@ -22,6 +25,11 @@ function FindingDoctor(props) {
       }
    }, [profile]);
 
+   function submitDoctorProfile() {
+      dispatch(setDoctorForAppointment(profile));
+      navigate('/scheduling');
+      console.log('Submitted doctor profile');
+   }
    return (
       <>
          {showProfile === true ? (
@@ -79,7 +87,7 @@ function FindingDoctor(props) {
                   </div>
                </div>
                <div className={styles.profileButton}>
-                  <button onClick={() => navigate('/scheduling')}>
+                  <button onClick={() => submitDoctorProfile()}>
                      Request an Appointment
                   </button>
                </div>
@@ -87,7 +95,7 @@ function FindingDoctor(props) {
          ) : (
             <div className={styles.profileBody}>
                <div className={styles.profileImage}>
-                  <img src={''} alt="doctor-profile" />
+                  <img src={doctorProfileOne} alt="doctor-profile" />
                </div>
                <div className={styles.profileDetails}>
                   <h3></h3>
