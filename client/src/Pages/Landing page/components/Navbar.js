@@ -22,20 +22,20 @@ const Navbar = (props) => {
       setSignUpClick(false);
    };
    //Function to use when the user clicks outside of the dropdown.
-   let menuRef = useRef();
-   useEffect(() => {
-      let Handler = (event) => {
-         if (!menuRef.current.contains(event.target)) {
-            //menuRef is the menu reference used so that the function knows where the event will happen
-            setLoginClick(false);
-            setSignUpClick(false);
-         }
-      };
-      document.addEventListener('mousedown', Handler);
-      return () => {
-         document.addEventListener('mousedown', Handler);
-      };
-   });
+   // let menuRef = useRef();
+   // useEffect(() => {
+   //    let Handler = (event) => {
+   //       if (!menuRef.current.contains(event.target)) {
+   //          //menuRef is the menu reference used so that the function knows where the event will happen
+   //          setLoginClick(false);
+   //          setSignUpClick(false);
+   //       }
+   //    };
+   //    document.addEventListener('mousedown', Handler);
+   //    return () => {
+   //       document.addEventListener('mousedown', Handler);
+   //    };
+   // });
    return (
       <nav id={styles.nav}>
          {/* Logo */}
@@ -91,7 +91,7 @@ const Navbar = (props) => {
                      How it Works
                   </NavLink>
                </ul>
-               <div ref={menuRef} id={styles.signup}>
+               <div id={styles.signup}>
                   <ul className={styles.signup_list}>
                      <li
                         className={styles.signup_item}

@@ -6,10 +6,15 @@ import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.p
 import avatarThree from '../../../assets/Rectangle.png';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { addAppointments, fetchAppointments } from '../../../Store/Actions.js';
+import {
+   addAppointments,
+   clearDoctorForAppointment,
+   fetchAppointments,
+} from '../../../Store/Actions.js';
 
 function Schedule() {
    const dispatch = useDispatch();
+   const doctorID = useSelector((state) => state.doctorAppointment.id_doctor);
 
    const [condition, setCondition] = useState('');
    const [appointments, setAppointments] = useState([]);
@@ -30,24 +35,23 @@ function Schedule() {
       }
 
       const appointMentDetails = {
-         condition: condition,
-         appointment_date: null,
-         appointment_start_time: null,
-         appointment_end_time: null,
+         appointment_date: '',
+         appointment_start_time: '',
+         appointment_end_time: '',
          appointment_reason: condition,
          appointment_status: 'Pending',
          appointment_location: '',
          id_patient: patientID,
-         id_doctor: '',
+         id_doctor: doctorID,
       };
-      console.log(appointMentDetails);
 
-      // dispatch(addAppointments(data));
+      dispatch(addAppointments(appointMentDetails));
+      setCondition('');
+      dispatch(clearDoctorForAppointment());
    }
 
    var appointmentsData;
    //displays medications
-
    console.log(appointments);
    if (appointments === undefined) {
       appointmentsData = <p>Nothing to show here.</p>;

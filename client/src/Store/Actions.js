@@ -461,7 +461,7 @@ export async function fetchDoctors() {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/doctors/`,
+         url: `http://127.0.0.1:5000/doctors`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -516,30 +516,32 @@ export async function fetchAppointments(userID, status) {
 }
 
 //Fetches user accepted appointments
-export async function addAppointments(data) {
-   try {
-      const response = await axios({
-         method: 'POST',
-         url: `http://127.0.0.1:5000/appointments/`,
-         headers: {
-            'Access-Control-Allow-Origin': '*',
-            //Helpful in some cases.
-            'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Methods': '*',
-         },
-         data: data,
-      });
-      if (response.status === 200) {
-         //checks details of response
-         if (response.data.status === true) {
-            //returns response
-            alert('appointments post worked');
+export const addAppointments = (data) => {
+   return async function (dispatch) {
+      try {
+         const response = await axios({
+            method: 'POST',
+            url: `http://127.0.0.1:5000/appointments/`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+            data: data,
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               alert('appointments post worked');
+            }
+         } else {
+            //takes all statuses aside 200
+            alert('Something went wrong. Try again, post appments 1');
          }
-      } else {
-         //takes all statuses aside 200
-         alert('Something went wrong. Try again, post appments 1');
+      } catch (error) {
+         alert(error, 'post appments 2');
       }
-   } catch (error) {
-      alert(error, 'post appments 2');
-   }
-}
+   };
+};

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styles from './finddoctor.module.css';
-import doctorProfileOne from '../../../assets/docProfileImage3.svg';
 import doctorProfileTwo from '../../../assets/docProfileImage4.svg';
 import doctorProfileThree from '../../../assets/docProfileImage1.svg';
 import { FaTimes } from 'react-icons/fa';
@@ -29,17 +28,20 @@ function FindingDoctor(props) {
       }
       fetchdata();
    }, []);
+   console.log(allDoctors);
 
    useEffect(() => {
       handleDoctorSearchBySpecialty();
    }, [specialty]);
-   // console.log(allDoctors);
 
    function closeSearch() {
       setEnteredName('');
-      console.log(allDoctors);
-      var reset = [...allDoctors];
-      setSearchResults(reset);
+      console.log('all', allDoctors);
+
+      var reset = [];
+      console.log('reset', reset);
+
+      setSearchResults((oldArray) => [...oldArray, ...allDoctors]);
 
       console.log('chg 1', searchResults);
       if (isSearchByDoctorSpt === true) {
@@ -55,7 +57,7 @@ function FindingDoctor(props) {
       }
       var filteredDoctors = [];
       var nameToSearch = enteredName.toLowerCase();
-      console.log('nam 1', searchResults);
+      console.log('search rsults for nam 1', searchResults);
 
       searchResults.forEach(function (item) {
          var name = `${item.first_name} ${item.middle_name} ${item.last_name}`;
@@ -71,8 +73,10 @@ function FindingDoctor(props) {
    function handleDoctorSearchBySpecialty() {
       if (specialty === '') {
          console.log('fired');
+         console.log('chg 2 before', searchResults);
+
          setSearchResults((oldArray) => [...allDoctors]);
-         console.log('chg 1', searchResults);
+         console.log('chg 2 after', searchResults);
 
          if (isSearchByDoctorName === true) {
             handleDoctorSearchByName();
@@ -84,14 +88,11 @@ function FindingDoctor(props) {
       var filteredDoctorsTwo = [];
       let spt = specialty.toLowerCase();
       console.log('fired', spt);
-      console.log('spe 1', searchResults);
+      console.log('search results for spt', searchResults);
 
       searchResults.forEach(function (item) {
-         // if (
-         //    item.doctor_specialties === null ||
-         //    item.doctor_specialties === ''
-         // )
-         //    return;
+         if (item.doctor_specialties === null || item.doctor_specialties === '')
+            return;
          var specialties = item.doctor_specialties.toLowerCase().split(',');
          //puts all doctor profiles thta has the entered name into an array
          if (specialties.includes(spt)) {
@@ -125,7 +126,7 @@ function FindingDoctor(props) {
                         onClick={() =>
                            props.pushData({
                               date_of_birth: item.date_of_birth,
-                              doctor_id: item.doctor_id,
+                              id_doctor: item.id_doctor,
                               doctor_ratings: item.doctor_ratings,
                               doctor_specialties: item.doctor_specialties,
                               first_name: item.first_name,
@@ -171,7 +172,7 @@ function FindingDoctor(props) {
                               onClick={() =>
                                  props.pushData({
                                     date_of_birth: item.date_of_birth,
-                                    doctor_id: item.doctor_id,
+                                    id_doctor: item.id_doctor,
                                     doctor_ratings: item.doctor_ratings,
                                     doctor_specialties: item.doctor_specialties,
                                     first_name: item.first_name,

@@ -3,7 +3,6 @@ import {
    SET_PROFILE_INFO,
    SET_HEALTH_INFO,
    SET_GUARDIAN_INFO,
-   SET_REPORTS,
    SET_DOCTOR_PROFILE_INFO,
    SET_APPOINTMENT_DOCTOR,
    CLEAR_APPOINTMENT_DOCTOR,
@@ -50,7 +49,6 @@ const initialState = {
       gender: '',
    },
    doctorAppointment: {},
-   reports: [],
    doctorProfile: {
       first_name: '',
       middle_name: '',
@@ -64,7 +62,7 @@ const initialState = {
       hospital_code: '',
       doctor_ratings: '',
       person_image: '',
-      idDoctor: '',
+      id_doctor: '',
    },
 };
 
@@ -137,42 +135,13 @@ const Reducers = (state = initialState, action) => {
             id_number: action.payload.id_number,
             gender: action.payload.gender,
          };
-         return { ...state, doctorAppointment: appointmentDoctorProfile };
-
-      case SET_REPORTS:
-         return { ...state, reports: action.payload };
+         return { ...state, doctorAppointment: action.payload };
 
       case CLEAR_APPOINTMENT_DOCTOR:
-         let appointmentDoctorProfileClear = {
-            first_name: action.payload.first_name,
-            middle_name: action.payload.middle_name,
-            last_name: action.payload.last_name,
-            user_email: action.payload.email,
-            date_of_birth: action.payload.date_of_birth,
-            house_address: action.payload.house_address,
-            phone_number: action.payload.phone_number,
-            id_number: action.payload.id_number,
-            gender: action.payload.gender,
-         };
-         return { ...state, doctorAppointment: appointmentDoctorProfileClear };
+         return { ...state, doctorAppointment: action.payload };
 
       case SET_DOCTOR_PROFILE_INFO:
-         let doctor_profile_info = {
-            first_name: action.payload.first_name,
-            middle_name: action.payload.middle_name,
-            last_name: action.payload.last_name,
-            user_email: action.payload.email,
-            date_of_birth: action.payload.date_of_birth,
-            gender: action.payload.gender,
-            house_address: action.payload.house_address,
-            license_number: action.payload.license_number,
-            doctor_specialties: action.payload.specialties,
-            hospital_code: action.payload.hospital_code,
-            doctor_ratings: action.payload.doctor_ratings,
-            person_image: action.payload.person_image,
-            idDoctor: action.payload.idDoctor,
-         };
-         return { ...state, doctorProfile: doctor_profile_info };
+         return { ...state, doctorProfile: {} };
 
       default:
          return state;
