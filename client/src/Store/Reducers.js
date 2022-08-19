@@ -124,17 +124,6 @@ const Reducers = (state = initialState, action) => {
          return { ...state, guardian: guardian };
 
       case SET_APPOINTMENT_DOCTOR:
-         let appointmentDoctorProfile = {
-            first_name: action.payload.first_name,
-            middle_name: action.payload.middle_name,
-            last_name: action.payload.last_name,
-            user_email: action.payload.email,
-            date_of_birth: action.payload.date_of_birth,
-            house_address: action.payload.house_address,
-            phone_number: action.payload.phone_number,
-            id_number: action.payload.id_number,
-            gender: action.payload.gender,
-         };
          return { ...state, doctorAppointment: action.payload };
 
       case CLEAR_APPOINTMENT_DOCTOR:

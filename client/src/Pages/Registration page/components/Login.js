@@ -199,10 +199,11 @@ function Login(props) {
                            props.loginPasswordError ||
                            props.loginEmailError === null ||
                            props.loginPasswordError === null ||
-                           props.loginPasswordError === null
+                           props.loginPasswordError === null ||
+                           btnActive
                         }
                         onClick={() => {
-                           setBtnValue('loging in');
+                           setBtnValue('logging in');
                            setBtnActive(true);
                            submitCredentialsFeedback();
                         }}

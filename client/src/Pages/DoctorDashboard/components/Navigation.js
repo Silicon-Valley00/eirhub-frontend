@@ -1,9 +1,14 @@
 import styles from './navigation.module.css';
 import avatarThree from '../../../assets/Rectangle.png';
 import Sidebar from './Sidebar';
+import { useSelector } from 'react-redux';
 
 function Navigation({ nav }) {
-   console.log(nav);
+   const user = useSelector((state) => state?.doctorProfile.first_name);
+   const userProfileImage = useSelector(
+      (state) => state.doctorProfile?.person_image
+   );
+
    return (
       <nav className={styles.nav}>
          <div className={styles.welcome_msg}>
@@ -12,11 +17,11 @@ function Navigation({ nav }) {
             {/* Avatar with welcome message */}
             <div className={styles.avatar}>
                <img
-                  src={avatarThree}
+                  src={userProfileImage}
                   alt="avatar"
                   className={styles.avatar_img}
                />
-               <p className={styles.hello_msg}>Hello, Raymond</p>
+               <p className={styles.hello_msg}>Hello, {user}</p>
             </div>
          </div>
 

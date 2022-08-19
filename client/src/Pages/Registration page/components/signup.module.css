@@ -121,6 +121,17 @@
    width: 40%;
    height: 100%;
    padding: 0 1.5rem;
+   overflow-y: scroll;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.rightRegion::-webkit-scrollbar {
+display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.rightRegion {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
 }
 .error {
    height: 2rem;
@@ -377,7 +388,7 @@
 .btnActive {
    background: #0d3f58;
    transition: color 1000ms ease-in-out;
-   cursor: progress;
+   cursor: not-allowed;
 }
 .btnActive p {
    margin-right: 15%;
@@ -518,6 +529,7 @@
    .rightRegion {
       padding: 0 0;
    }
+
 
    .error {
       height: 2rem;

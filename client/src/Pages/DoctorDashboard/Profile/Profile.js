@@ -5,36 +5,75 @@ import Navigation from '../components/Navigation';
 import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
 
-const mapStateToProps = (state) => {
-   return {
-      savedDoctorProfile: state.doctorProfile,
-   };
-};
-
 function DoctorProfile(props) {
-   console.log(props.savedDoctorProfile);
+   const data = props.doctorProfile;
+   // endpoint for updating doctor profile
+   const endpoint = `/doctors/${data?.id_doctor}`;
+   // const updateDoctorProfile = () => {
+   //    // const dispatch = useDispatch();
+
+   //    const updateProfile = async () => {
+   //       const request = await axios.put();
+   //    };
+   // };
 
    // Variable used to dispatch actions
-   const dispatch = useDispatch();
 
    // Handles values for input fields
-   const [user, setUser] = useState({
-      firstName: '',
-      middleName: '',
-      lastName: '',
-      email: '',
-      dateOfBirth: '',
-      gender: '',
-      address: '',
-      hospitalCode: '',
-      specialty: '',
-      licenseNum: '',
-   });
+   // const [user, setUser] = useState({
+   //    firstName: '',
+   //    middleName: '',
+   //    lastName: '',
+   //    email: '',
+   //    dateOfBirth: '',
+   //    gender: '',
+   //    address: '',
+   //    hospitalCode: '',
+   //    specialty: '',
+   //    licenseNum: '',
+   // });
+   // console.log(user);
+   const [first_name, setFirstName] = useState(data?.first_name);
+   const [last_name, setLastName] = useState(data?.last_name);
+   const [middle_name, setMiddleName] = useState(
+      props.doctorProfile.middle_name
+   );
+   const [user_email, setEmail] = useState(data?.user_email);
+   const [date_of_birth, setDateOfBirth] = useState(
+      data?.date_of_birth !== ''
+         ? `${new Date(data?.date_of_birth).getFullYear()}-${
+              new Date(data?.date_of_birth).getMonth() + 1
+           }-${new Date(data?.date_of_birth).getDate() + 1}`
+         : ''
+   );
+   const [user_image, setUserImage] = useState(data?.user_image);
+   const [gender, setGender] = useState(data?.email);
+   const [doctor_specialties, setSpecialties] = useState(
+      data?.doctor_specialties
+   );
+   const [hospital_code, setCode] = useState(data?.hospital_code);
+   const [house_address, setAddress] = useState(data?.house_address);
+   const [license_number, setLicenseNumber] = useState(data?.license_number);
 
-   const handleChange = (e) => {
-      setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+   // const handleChange = (e) => {
+   //    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+   //    console.log(e.target);
+   // };
+
+   let doctorEditedProfile = {
+      first_name,
+      last_name,
+      middle_name,
+      user_email,
+      date_of_birth,
+      user_image,
+      gender,
+      doctor_specialties,
+      hospital_code,
+      house_address,
+      license_number,
    };
-
+   console.log(doctorEditedProfile);
    // function handles image upload
    const [uploadBtn, setUploadBtn] = useState('Upload Image');
    function handleImageUpload(e) {
@@ -64,7 +103,9 @@ function DoctorProfile(props) {
                   </div>
                   <div className={styles.profileIntro}>
                      <div className={styles.profileName}>
-                        <h2>Raymond Brown</h2>
+                        <h2>
+                           {data?.first_name} {data?.last_name}
+                        </h2>
                      </div>
                      <div className={styles.uploadImageBtn}>
                         <label htmlFor="file-upload-button">{uploadBtn}</label>
@@ -105,8 +146,11 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="firstname"
                                     placeholder="Enter first name"
-                                    required="true"
-                                    onChange={handleChange}
+                                    required={true}
+                                    onChange={(e) =>
+                                       setFirstName(e.target.value)
+                                    }
+                                    value={first_name}
                                  />
                               </div>
                            </div>
@@ -119,7 +163,10 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="middlename"
                                     placeholder="Enter middle name"
-                                    onChange={handleChange}
+                                    onChange={(e) =>
+                                       setMiddleName(e.target.value)
+                                    }
+                                    value={middle_name}
                                  />
                               </div>
                            </div>
@@ -132,8 +179,11 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="lastname"
                                     placeholder="Enter last name"
-                                    required="true"
-                                    onChange={handleChange}
+                                    required={true}
+                                    onChange={(e) =>
+                                       setLastName(e.target.value)
+                                    }
+                                    value={last_name}
                                  />
                               </div>
                            </div>
@@ -149,8 +199,9 @@ function DoctorProfile(props) {
                                     type="email"
                                     id="email"
                                     placeholder="Someone@gmail.com"
-                                    required="true"
-                                    onChange={handleChange}
+                                    required={true}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={user_email}
                                  />
                               </div>
                            </div>{' '}
@@ -163,7 +214,7 @@ function DoctorProfile(props) {
                                     name="dateOfBirth"
                                     id="date"
                                     placeholder="DD/MM/YYYY"
-                                    required="true"
+                                    required={true}
                                     onFocus={(event) =>
                                        (event.target.type = 'date')
                                     }
@@ -172,7 +223,10 @@ function DoctorProfile(props) {
                                           event.target.type = 'text';
                                        }
                                     }}
-                                    onChange={handleChange}
+                                    onChange={(e) =>
+                                       setDateOfBirth(e.target.value)
+                                    }
+                                    value={date_of_birth}
                                  />
                               </div>
                            </div>
@@ -183,12 +237,15 @@ function DoctorProfile(props) {
                                     <select
                                        name="gender"
                                        placeholder="Gender"
-                                       required="true"
-                                       onChange={handleChange}
+                                       required={true}
+                                       onChange={(e) =>
+                                          setGender(e.target.value)
+                                       }
+                                       value={gender}
                                     >
-                                       <option>Select gender</option>
-                                       <option>Male</option>
-                                       <option>Female</option>
+                                       <option value={''}>Select gender</option>
+                                       <option value={'Male'}>Male</option>
+                                       <option value={'Female'}>Female</option>
                                     </select>
                                  </div>
                               </div>
@@ -205,8 +262,9 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="address"
                                     placeholder="Enter house address"
-                                    required="true"
-                                    onChange={handleChange}
+                                    required={true}
+                                    onChange={(e) => setAddress(e.target.value)}
+                                    value={house_address}
                                  />
                               </div>
                            </div>
@@ -236,8 +294,11 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="licenseNum"
                                     placeholder="Enter License Number"
-                                    required="true"
-                                    onChange={handleChange}
+                                    required={true}
+                                    onChange={(e) =>
+                                       setLicenseNumber(e.target.value)
+                                    }
+                                    value={license_number}
                                  />
                               </div>
                            </div>
@@ -251,8 +312,11 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="specialty"
                                     placeholder="Enter Specialty"
-                                    required="true"
-                                    onChange={handleChange}
+                                    required={true}
+                                    onChange={(e) =>
+                                       setSpecialties(e.target.value)
+                                    }
+                                    value={doctor_specialties}
                                  />
                               </div>
                            </div>
@@ -266,8 +330,9 @@ function DoctorProfile(props) {
                                     type="text"
                                     id="hospitalCode"
                                     placeholder="Enter Hospital Code"
-                                    required="true"
-                                    onChange={handleChange}
+                                    required={true}
+                                    onChange={(e) => setCode(e.target.value)}
+                                    value={hospital_code}
                                  />
                               </div>
                            </div>
@@ -293,5 +358,11 @@ function DoctorProfile(props) {
       // </>
    );
 }
+
+const mapStateToProps = (state) => {
+   return {
+      doctorProfile: state.doctorProfile,
+   };
+};
 
 export default connect(mapStateToProps)(DoctorProfile);

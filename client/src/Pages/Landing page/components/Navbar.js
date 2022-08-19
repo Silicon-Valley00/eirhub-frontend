@@ -36,6 +36,7 @@ const Navbar = (props) => {
    //       document.addEventListener('mousedown', Handler);
    //    };
    // });
+
    return (
       <nav id={styles.nav}>
          {/* Logo */}

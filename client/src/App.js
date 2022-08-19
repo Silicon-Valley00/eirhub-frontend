@@ -28,7 +28,9 @@ import Message from './Pages/User Dashboard/Message/Message';
 // imports for doctor's dashboard
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
 import DoctorProfile from './Pages/DoctorDashboard/Profile/Profile';
-import DoctorRecords from './Pages/DoctorDashboard/Records/Records';
+
+import DoctorRecords from './Pages/DoctorDashboard/Records/DoctorRecords';
+import DoctorSchedule from './Pages/DoctorDashboard/Schedule/DoctorSchedule';
 import Schedule from './Pages/User Dashboard/Schedule/Schedule';
 
 AOS.init();
@@ -97,6 +99,19 @@ function App() {
                />
             }
          />
+
+         {/* End of routes for user dashboard */}
+
+         {/* Start of route for doctor-dashboard. */}
+         <Route path="/doctordashboard" exact element={<MidDashboard />} />
+
+         <Route path="/doctorprofile" exact element={<DoctorProfile />} />
+
+         {/* End of route for doctor-dashboard */}
+         <Route path="/doctorrecord" exact element={<DoctorRecords />} />
+         <Route path="/doctorschedule" exact element={<DoctorSchedule />} />
+
+         {/* Start of routes for find-a-doctor page */}
 
          <Route
             path="/find-a-doctor"

@@ -103,7 +103,7 @@ function Medication(props) {
                                  item.time_of_administration,
                               start_date: item.start_date,
                               end_date: item.end_date,
-                              id: item.id,
+                              id_prescription: item.id_prescription,
                               last_taken_date: item.last_taken_date,
                            })
                         }

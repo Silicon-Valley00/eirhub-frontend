@@ -48,6 +48,7 @@ function DoctorSignup(props) {
          setIsError(true);
       }
    }
+
    return (
       <div className={styles.signupBody}>
          <div
@@ -112,7 +113,7 @@ function DoctorSignup(props) {
                                  <FaRegUser />
                               </i>
                               <input
-                                 name="firstname"
+                                 name="firstName"
                                  type="text"
                                  id="docfirstname"
                                  placeholder="Enter Firstname"
@@ -380,7 +381,8 @@ function DoctorSignup(props) {
                               props.registerDoctorEmailError === null ||
                               props.registerHospitalCodeError === null ||
                               props.registerDoctorPasswordOneError === null ||
-                              props.registerDoctorPasswordTwoError === null
+                              props.registerDoctorPasswordTwoError === null ||
+                              btnActive
                            }
                            onClick={() => {
                               setBtnValue('Creating Account');
