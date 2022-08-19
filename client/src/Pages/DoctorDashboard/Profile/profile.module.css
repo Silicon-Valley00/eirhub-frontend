@@ -51,6 +51,7 @@
    padding-bottom: 0.8rem;
    letter-spacing: 1px;
 }
+
 /* Section for personal info */
 form.personalInfoFormBox {
    width: 100%;
@@ -81,6 +82,20 @@ form.personalInfoFormBox {
    flex-direction: column;
    align-items: flex-start;
    gap: 0.8rem;
+}
+
+.profileImage {
+   height: 4rem;
+   width: 4rem;
+   border-radius: 50%;
+   background-color: red;
+}
+
+.img {
+   clip-path: circle();
+   height: 4rem;
+   width: 4rem;
+   background-size: contain;
 }
 
 .profileFormBox {
@@ -237,11 +252,6 @@ select::-ms-expand {
 
    #profileBody {
       width: 100%;
-   }
-
-   .profileImage {
-      height: 4rem;
-      width: 4rem;
    }
 
    .upperContent {
