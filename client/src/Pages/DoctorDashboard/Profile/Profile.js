@@ -6,26 +6,11 @@ import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
 import store from '../../../Store/ReducerStore';
 import axios from 'axios';
+import { setDoctorProfile } from '../../../Store/DoctorAction';
 
 function DoctorProfile(props) {
    const data = props.doctorProfile;
    console.log(data);
-   // Variable used to dispatch actions
-
-   // Handles values for input fields
-   // const [user, setUser] = useState({
-   //    firstName: '',
-   //    middleName: '',
-   //    lastName: '',
-   //    email: '',
-   //    dateOfBirth: '',
-   //    gender: '',
-   //    address: '',
-   //    hospitalCode: '',
-   //    specialty: '',
-   //    licenseNum: '',
-   // });
-   // console.log(user);
 
    const id_doctor = data?.id_doctor;
    console.log(id_doctor);
@@ -42,7 +27,7 @@ function DoctorProfile(props) {
            }-${new Date(data?.date_of_birth).getDate() + 1}`
          : ''
    );
-   const [person_image, setUserImage] = useState(data?.user_image);
+   const [person_image, setUserImage] = useState(data?.person_image);
    const [gender, setGender] = useState(data?.gender);
    const [doctor_specialties, setSpecialties] = useState(
       data?.doctor_specialties
@@ -76,8 +61,8 @@ function DoctorProfile(props) {
    const endpoint = `http://127.0.0.1:5000/doctor/${data?.id_doctor}`;
    console.log(endpoint);
 
+   const dispatch = useDispatch();
    const updateDoctorProfile = async () => {
-      // const dispatch = useDispatch();
       try {
          const request = await axios({
             method: 'PUT',
@@ -93,6 +78,7 @@ function DoctorProfile(props) {
          console.log(request);
          if (request.status === 200) {
             console.log('PUT was successful');
+            dispatch(setDoctorProfile(request.data));
          }
       } catch (error) {
          console.log('Put Error', error);
