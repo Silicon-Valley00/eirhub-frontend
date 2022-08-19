@@ -2,7 +2,7 @@ import styles from './DoctorRecords.module.css';
 import Navigation from '../components/Navigation';
 import { Link } from 'react-router-dom';
 import { FaFileUpload, FaTrash, FaPencilAlt } from 'react-icons/fa';
-import Patients from '../Patients'
+import Patients from '../DoctorPatients/DoctorPatients'
 
 
 function DoctorRecords() {
