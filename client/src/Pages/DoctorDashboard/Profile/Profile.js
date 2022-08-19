@@ -42,7 +42,7 @@ function DoctorProfile(props) {
            }-${new Date(data?.date_of_birth).getDate() + 1}`
          : ''
    );
-   const [user_image, setUserImage] = useState(data?.user_image);
+   const [person_image, setUserImage] = useState(data?.user_image);
    const [gender, setGender] = useState(data?.gender);
    const [doctor_specialties, setSpecialties] = useState(
       data?.doctor_specialties
@@ -57,13 +57,13 @@ function DoctorProfile(props) {
    // };
 
    let doctorEditedProfile = {
-      id_doctor,
+      // id_doctor,
       first_name,
       last_name,
       middle_name,
       user_email,
       date_of_birth,
-      // user_image,
+      person_image,
       gender,
       doctor_specialties,
       hospital_code,
@@ -137,7 +137,7 @@ function DoctorProfile(props) {
                <div className={styles.upperContent}>
                   <div className={styles.profileImage}>
                      <img
-                        src={user_image}
+                        src={person_image}
                         alt={'profile'}
                         className={styles.img}
                      />
