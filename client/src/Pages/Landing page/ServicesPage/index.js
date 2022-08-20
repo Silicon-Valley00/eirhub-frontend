@@ -57,6 +57,7 @@ const ServicesPage = () => {
    }
    return (
       <>
+         {/* BUG: React does not recognize the `handleModalsClose` prop on a DOM element. */}
          <div
             id={styles.blur}
             className={
@@ -74,6 +75,7 @@ const ServicesPage = () => {
                handleModalSignup={handleModalSignup}
                handleModalLoginDoctor={handleModalLoginDoctor}
                handleModalSignupDoctor={handleModalSignupDoctor}
+               indicator={2}
             />{' '}
             <main className={style.main}>
                {/* upper section */}

@@ -73,6 +73,7 @@ const LandingPage = () => {
                handleModalSignup={handleModalSignup}
                handleModalLoginDoctor={handleModalLoginDoctor}
                handleModalSignupDoctor={handleModalSignupDoctor}
+               indicator={1}
             />
             <Hero />
             <QuickSolution />
