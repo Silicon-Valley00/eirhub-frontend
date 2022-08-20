@@ -6,6 +6,8 @@ import Patients from '../DoctorPatients/DoctorPatients'
 
 
 function DoctorRecords() {
+   
+
    return (
       <>
          <Navigation />
@@ -42,7 +44,7 @@ function DoctorRecords() {
                </table>
             </div>
             </div>
-            <Patients/>
+            <Patients show/>
          </div>
       </>
    );
