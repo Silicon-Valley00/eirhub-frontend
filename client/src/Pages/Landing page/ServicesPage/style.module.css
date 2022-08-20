@@ -46,6 +46,10 @@
    gap: 2rem;
 }
 
+.reverse_flex {
+   flex-direction: column-reverse;
+}
+
 .with_text {
    display: block;
 }

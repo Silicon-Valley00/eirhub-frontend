@@ -114,13 +114,13 @@ const ServicesPage = () => {
                   </div>
 
                   {/* second container */}
-                  <div className={`${style.container}`}>
+                  <div className={`${style.container} ${style.reverse_flex}`}>
                      <div data-aos="fade-in" className={style.of_image}>
                         <img src={pic2} alt="" className={style.of__image} />
                      </div>
                      <div
                         data-aos="fade-up"
-                        data-aos-duration="2000"
+                        data-aos-duration="200"
                         className={style.with_text}
                      >
                         <p className={style.with_text_title}>Find a Doctor</p>
@@ -138,7 +138,7 @@ const ServicesPage = () => {
                   <div className={style.container}>
                      <div
                         data-aos="fade-up"
-                        data-aos-duration="2000"
+                        data-aos-duration="200"
                         className={style.with_text}
                      >
                         <p className={style.with_text_title}>E-pharmacy</p>
@@ -156,13 +156,13 @@ const ServicesPage = () => {
                   </div>
 
                   {/* fourth container */}
-                  <div className={style.container}>
+                  <div className={`${style.container} ${style.reverse_flex}`}>
                      <div data-aos="fade-in" className={style.of_image}>
                         <img src={pic4} alt="" className={style.of__image} />
                      </div>
                      <div
                         data-aos="fade-up"
-                        data-aos-duration="2000"
+                        data-aos-duration="200"
                         className={style.with_text}
                      >
                         <p className={style.with_text_title}>Health Tips</p>
