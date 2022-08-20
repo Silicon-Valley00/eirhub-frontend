@@ -10,7 +10,6 @@ import { setDoctorProfile } from '../../../Store/DoctorAction';
 
 function DoctorProfile(props) {
    const data = props.doctorProfile;
-   console.log(data);
 
    const id_doctor = data?.id_doctor;
    console.log(id_doctor);
@@ -36,13 +35,7 @@ function DoctorProfile(props) {
    const [house_address, setAddress] = useState(data?.house_address);
    const [license_number, setLicenseNumber] = useState(data?.license_number);
 
-   // const handleChange = (e) => {
-   //    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-   //    console.log(e.target);
-   // };
-
    let doctorEditedProfile = {
-      // id_doctor,
       first_name,
       last_name,
       middle_name,

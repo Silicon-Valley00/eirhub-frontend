@@ -59,7 +59,7 @@
 .nav {
    display: flex;
    flex-direction: column;
-   margin-top: 1rem;
+   margin-top: 2rem;
    align-items: flex-start;
    gap: 2rem;
    height: 100%;
@@ -93,9 +93,16 @@
    text-transform: capitalize;
 }
 
-@media (min-width: 481px) {
+@media (min-width: 320px) {
    .menu {
-      left: 7.5rem;
+      left: 5.5rem;
+      top: 1.3rem;
+   }
+}
+
+@media (min-width: 480px) {
+   .menu {
+      left: 8rem;
    }
 }
 
