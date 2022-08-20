@@ -208,29 +208,23 @@ select::-ms-expand {
 }
 
 .doctorsBox .emptyMessage {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   display: flex;
-   justify-content: center;
-   align-items: center;
    color: var(--tablehead);
    font-weight: 400;
    font-family: 'Poppins';
    font-size: 1.2rem;
+   text-align: center;
 }
 
 .doctorBox {
    height: 8rem;
    background-color: var(--white);
-   border-radius: 1rem;
+   border-radius: 0.4rem;
    padding: 0.8rem;
 }
 .doctorImage {
    width: 30%;
    height: 100%;
-   border-radius: 0.2rem;
+   border-radius: 0.4rem;
    float: left;
    background-color: var(--midcol);
    object-fit: cover;
@@ -242,6 +236,7 @@ select::-ms-expand {
    height: 100%;
    max-height: 100%;
    min-height: 100%;
+   border-radius: 0.4rem;
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;

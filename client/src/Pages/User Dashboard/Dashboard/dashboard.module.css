@@ -232,17 +232,11 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 }
 
 .medicationBox tbody p {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   display: flex;
-   justify-content: center;
-   align-items: center;
    color: var(--tablehead);
    font-weight: 400;
    font-family: 'Poppins';
    font-size: 1.2rem;
+   text-align: center;
 }
 
 /* APPOINTMENTS */
@@ -285,22 +279,29 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    top: 0;
    background: var(--white);
 }
-/* .appointmentsBox table tbody tr {
+.appointmentsBox table tbody tr {
    height: 2.8rem;
    min-height: 2.8rem;
    max-height: 2.8rem;
    line-height: 0px;
-} */
+}
 
 .appointmentsBox table tbody td {
-   /* height: 2.8rem;
+   height: 2.8rem;
    min-height: 2.8rem;
-   max-height: 2.8rem; */
+   max-height: 2.8rem;
    color: var(--midcol);
    font-weight: 500;
    padding: 0.2rem 0.5rem;
    font-size: 0.8rem;
    line-height: 0px;
+}
+.appointmentsBox tbody p {
+   color: var(--tablehead);
+   font-weight: 400;
+   font-family: 'Poppins';
+   font-size: 1.2rem;
+   text-align: center;
 }
 .appointmentsBox table tbody td:nth-child(1) div {
    display: flex;

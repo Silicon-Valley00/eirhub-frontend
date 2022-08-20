@@ -260,7 +260,7 @@ function Dashboard(props) {
                         </tr>
                      </thead>
                      <tbody>
-                        <tr
+                        {/* <tr
                            style={{
                               height: '2.8rem',
                               minHeight: '2.8rem',
@@ -276,7 +276,8 @@ function Dashboard(props) {
                            <td>37 Military Hospital</td>
                            <td>07/02/2020</td>
                            <td>2:00 - 3:00 PM</td>
-                        </tr>
+                        </tr>  */}
+
                         {appointmentsData}
                         {/* <tr>
                            <td>

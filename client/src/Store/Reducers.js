@@ -127,10 +127,25 @@ const Reducers = (state = initialState, action) => {
          return { ...state, doctorAppointment: action.payload };
 
       case CLEAR_APPOINTMENT_DOCTOR:
-         return { ...state, doctorAppointment: action.payload };
+         return { ...state, doctorAppointment: {} };
 
       case SET_DOCTOR_PROFILE_INFO:
-         return { ...state, doctorProfile: {} };
+         let doctor_profile_info = {
+            first_name: action.payload.first_name,
+            middle_name: action.payload.middle_name,
+            last_name: action.payload.last_name,
+            user_email: action.payload.email,
+            date_of_birth: action.payload.date_of_birth,
+            gender: action.payload.gender,
+            house_address: action.payload.house_address,
+            license_number: action.payload.license_number,
+            doctor_specialties: action.payload.specialties,
+            hospital_code: action.payload.hospital_code,
+            doctor_ratings: action.payload.doctor_ratings,
+            person_image: action.payload.person_image,
+            idDoctor: action.payload.idDoctor,
+         };
+         return { ...state, doctorProfile: doctor_profile_info };
 
       default:
          return state;

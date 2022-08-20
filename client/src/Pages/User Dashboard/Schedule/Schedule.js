@@ -11,10 +11,21 @@ import {
    clearDoctorForAppointment,
    fetchAppointments,
 } from '../../../Store/Actions.js';
+import store from '../../../Store/ReducerStore';
 
 function Schedule() {
+   console.log(store.getState());
    const dispatch = useDispatch();
    const doctorID = useSelector((state) => state.doctorAppointment.id_doctor);
+   const doctorFirstName = useSelector(
+      (state) => state.doctorAppointment.first_name
+   );
+   const doctorLastName = useSelector(
+      (state) => state.doctorAppointment.last_name
+   );
+   const doctorHospital = useSelector(
+      (state) => state.doctorAppointment.hospital_name
+   );
 
    const [condition, setCondition] = useState('');
    const [appointments, setAppointments] = useState([]);
@@ -29,30 +40,37 @@ function Schedule() {
    }, []);
 
    function requestAppoinment() {
-      if (condition === '') {
-         alert('Please enter condition');
-         return;
+      if (
+         doctorFirstName === undefined ||
+         doctorFirstName === null ||
+         doctorFirstName === ''
+      ) {
+         alert('First request an appointment from a doctor');
+      } else {
+         if (condition === '') {
+            alert('Please enter condition');
+            return;
+         }
+
+         const appointMentDetails = {
+            appointment_date: '',
+            appointment_start_time: '',
+            appointment_end_time: '',
+            appointment_reason: condition,
+            appointment_status: 'Pending',
+            appointment_location: '',
+            id_patient: patientID,
+            id_doctor: doctorID,
+         };
+
+         dispatch(addAppointments(appointMentDetails));
+         setCondition('');
+         dispatch(clearDoctorForAppointment());
       }
-
-      const appointMentDetails = {
-         appointment_date: '',
-         appointment_start_time: '',
-         appointment_end_time: '',
-         appointment_reason: condition,
-         appointment_status: 'Pending',
-         appointment_location: '',
-         id_patient: patientID,
-         id_doctor: doctorID,
-      };
-
-      dispatch(addAppointments(appointMentDetails));
-      setCondition('');
-      dispatch(clearDoctorForAppointment());
    }
 
    var appointmentsData;
    //displays medications
-   console.log(appointments);
    if (appointments === undefined) {
       appointmentsData = <p>Nothing to show here.</p>;
    } else {
@@ -62,7 +80,14 @@ function Schedule() {
                <tr key={`${item.appointment_reason}-${j}`}>
                   <td>
                      <div>
-                        <img src={item.doctor_info.person_image} alt="avatar" />
+                        <img
+                           src={
+                              item.doctor_info.person_image
+                                 ? item.doctor_info.person_image
+                                 : avatarOne
+                           }
+                           alt="avatar"
+                        />
                      </div>
                   </td>
                   <td>{`Dr. ${item.doctor_info.first_name} ${item.doctor_info.last_name}`}</td>
@@ -80,6 +105,40 @@ function Schedule() {
    return (
       <>
          <div id={styles.scheduleBody}>
+            <div className={styles.DoctorBox}>
+               <div className={styles.doctorDetailsField}>
+                  <h2>Doctor Name</h2>
+                  <div className={styles.doctorNameDetails}>
+                     <input
+                        type={'text'}
+                        value={
+                           doctorFirstName === undefined ||
+                           doctorFirstName === null ||
+                           doctorFirstName === ''
+                              ? ''
+                              : `Dr. ${doctorFirstName} ${doctorLastName}`
+                        }
+                        disabled
+                     />
+                  </div>
+               </div>
+               <div className={styles.doctorDetailsField}>
+                  <h2>Doctor Location</h2>
+                  <div className={styles.doctorLocationDetails}>
+                     <input
+                        type={'text'}
+                        value={
+                           doctorHospital === undefined ||
+                           doctorHospital === null ||
+                           doctorHospital === ''
+                              ? ''
+                              : `${doctorHospital}`
+                        }
+                        disabled
+                     />
+                  </div>
+               </div>
+            </div>
             <div className={styles.conditionBox}>
                <h2>Conditions</h2>
                <div className={styles.conditionDetails}>
@@ -117,8 +176,19 @@ function Schedule() {
                            <td>Headache</td>
                            <td>Pending</td>
                         </tr>
+                        <tr>
+                           <td>
+                              <div>
+                                 <img src={avatarTwo} alt="avatar" />
+                              </div>
+                           </td>
+                           <td>Dr. Natheniel Gaglo</td>
+                           <td>37 Military Hospital</td>
+                           <td>Headache</td>
+                           <td>Pending</td>
+                        </tr>
 
-                        {appointmentsData}
+                        {/* {appointmentsData} */}
                      </tbody>
                   </table>
                </div>
