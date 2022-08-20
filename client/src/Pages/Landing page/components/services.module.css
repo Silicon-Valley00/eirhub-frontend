@@ -158,10 +158,6 @@
       width: 100%;
    }
 
-   /* .card {
-      height: 18rem;
-   } */
-
    .services_message {
       display: block;
       padding: 2rem;
@@ -200,9 +196,14 @@
       color: var(--lightcol);
       padding: 10px;
       width: 40%;
+      height: 3.5rem;
       border-radius: 5px;
       background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
+
    .message_btn:hover {
       background: var(--lightcol);
       color: var(--white);
@@ -234,8 +235,9 @@
 
    .square {
       position: relative;
-      width: 40%;
+      width: 50%;
    }
+
    .square_2 {
       position: absolute;
       right: 0;
@@ -255,16 +257,44 @@
       font-size: 35px;
       padding-top: 2rem;
    }
+
    .services_message {
       display: block;
       padding: 2rem;
       padding-left: 6rem;
       padding-right: 6rem;
    }
+
+   .services_message_box {
+      height: 23rem;
+   }
+
+   .services_ad {
+      font-size: 35px;
+   }
+
+   .message_btn {
+      height: 4rem;
+      width: 30rem;
+      font-size: 16px;
+   }
+
+   .services_button_input {
+      width: 25rem;
+   }
 }
 
 @media (min-width: 1400px) {
    .card {
       height: 28rem;
+   }
+
+   .services_ad {
+      font-size: 40px;
+   }
+
+   .message_btn {
+      margin-top: 3rem;
+      font-size: 20px;
    }
 }
