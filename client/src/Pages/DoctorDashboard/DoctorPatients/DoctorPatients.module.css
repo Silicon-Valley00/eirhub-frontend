@@ -55,6 +55,10 @@
 .menu {
    display: none;
 }
+
+.close {
+   display: none;
+}
 @media (max-width: 1200px) {
    .DSContainer2 {
       grid-column: 1/2;
@@ -102,10 +106,14 @@
 @media(max-width: 600px){
    .DSContainer2{
       position: absolute;
-      top: 5rem;
+      top: 0;
       right: -1rem;
-      width: 70%;
+      width: 100vw;
       height: 100vh;
+   }
+
+   .DSContainer2 ul {
+      width: 50%;
    }
    .menu {
    display: block;
@@ -120,8 +128,29 @@
       display: block;
    }
    .hide {
-      right: -30rem;
+      display: none;
+      position: absolute;
+      right: -40rem;
    }
+   .logo_close {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 2rem;
+}
+
+/* .logo {
+   font-size: 20px;
+   color: var(--lightcol);
+   font-weight: 600;
+   font-family: var(--logofont);
+   padding-left: 10px;
+} */
+.close {
+   display: block;
+   color: var(--midcol);
+   cursor: pointer;
+}
 }
 
 @media (max-width: 375px) {
