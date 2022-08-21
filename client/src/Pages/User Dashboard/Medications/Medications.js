@@ -57,14 +57,12 @@ function Medication(props) {
                      </div>
                      <div className={styles.medicationCounter}>
                         <p>
-                           {`${
-                              Math.round(
-                                 new Date(item.end_date) -
-                                    new Date(item.last_taken_date)
-                              ) /
-                              (1000 * 3600 * 24) /
-                              parseFloat(item.dosage[0])
-                           }
+                           {`${Math.round(
+                              (new Date(item.end_date) -
+                                 new Date(item.last_taken_date)) /
+                                 (1000 * 3600 * 24) /
+                                 parseFloat(item.dosage[0])
+                           )}
                         left`}
                         </p>
                      </div>

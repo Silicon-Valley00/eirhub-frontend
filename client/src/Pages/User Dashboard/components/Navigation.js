@@ -11,8 +11,20 @@ import { CgPill } from 'react-icons/cg';
 import { TbCalendarTime } from 'react-icons/tb';
 import { GiLabCoat } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import { persistStore } from 'redux-persist';
+import { useNavigate } from 'react-router-dom';
 
 function Navigation(props) {
+   const navigate = useNavigate();
+
+   function logout() {
+      try {
+         setTimeout(() => persistStore.purge(), 200);
+         navigate('/landing-page');
+      } catch (err) {
+         console.log(err);
+      }
+   }
    return (
       <>
          <div className={styles.navbody}>
@@ -147,6 +159,9 @@ function Navigation(props) {
                      </li>
                      <li
                         className={props.page === 'logout' ? styles.active : ''}
+                        onClick={() => {
+                           logout();
+                        }}
                      >
                         <span className={styles.icons}>
                            <i>

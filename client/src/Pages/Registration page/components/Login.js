@@ -46,8 +46,6 @@ function Login(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
-         // dispatch(fetchGuardianInfo());
-         // dispatch(fetchHealthDetails(feedback[1].idPatient));
 
          setTimeout(() => {
             navigate('/userdashboard');

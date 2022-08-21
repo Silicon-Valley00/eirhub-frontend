@@ -465,7 +465,6 @@ export async function fetchAppointments(userID, status) {
          if (response.data.status === true) {
             //returns response
             alert('appointments fetch worked');
-            console.log(response.data.msg);
             return response.data.msg;
          }
       } else {

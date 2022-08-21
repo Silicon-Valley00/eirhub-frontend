@@ -136,6 +136,7 @@
    position: sticky;
    top: 0;
    background: var(--white);
+   z-index: 1;
 }
 .appointmentsBox tbody p {
    color: var(--tablehead);

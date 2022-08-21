@@ -14,7 +14,6 @@ import {
 import store from '../../../Store/ReducerStore';
 
 function Schedule() {
-   console.log(store.getState());
    const dispatch = useDispatch();
    const doctorID = useSelector((state) => state.doctorAppointment.id_doctor);
    const doctorFirstName = useSelector(
@@ -58,7 +57,7 @@ function Schedule() {
             appointment_end_time: '',
             appointment_reason: condition,
             appointment_status: 'Pending',
-            appointment_location: '',
+            appointment_location: doctorHospital,
             id_patient: patientID,
             id_doctor: doctorID,
          };
@@ -164,32 +163,7 @@ function Schedule() {
                            <th>Status</th>
                         </tr>
                      </thead>
-                     <tbody>
-                        <tr>
-                           <td>
-                              <div>
-                                 <img src={avatarTwo} alt="avatar" />
-                              </div>
-                           </td>
-                           <td>Dr. Natheniel Gaglo</td>
-                           <td>37 Military Hospital</td>
-                           <td>Headache</td>
-                           <td>Pending</td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div>
-                                 <img src={avatarTwo} alt="avatar" />
-                              </div>
-                           </td>
-                           <td>Dr. Natheniel Gaglo</td>
-                           <td>37 Military Hospital</td>
-                           <td>Headache</td>
-                           <td>Pending</td>
-                        </tr>
-
-                        {/* {appointmentsData} */}
-                     </tbody>
+                     <tbody>{appointmentsData}</tbody>
                   </table>
                </div>
             </div>

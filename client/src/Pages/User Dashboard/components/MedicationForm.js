@@ -15,6 +15,7 @@ function Medication(props) {
    const [editMedication, setEditMedication] = useState({});
    // This transfers the setProfile function outside of this function's scope
    pullData = setEditMedication;
+   console.log(editMedication);
 
    // Handles error messages
    const [isError, setIsError] = useState(false);
@@ -89,9 +90,15 @@ function Medication(props) {
                   end_date: drugEndDate,
                   last_taken_date: editMedication.last_taken_date,
                   id_patient: userID,
+                  id_prescription: editMedication.id_prescription,
                };
 
-               dispatch(updatePrescriptions(editMedication.id, medicationBody));
+               dispatch(
+                  updatePrescriptions(
+                     editMedication.id_prescription,
+                     medicationBody
+                  )
+               );
             }
             //clears all input boxes and edit medication data
             setEditMedication({});
