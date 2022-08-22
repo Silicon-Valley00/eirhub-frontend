@@ -11,7 +11,7 @@ import { CgPill } from 'react-icons/cg';
 import { TbCalendarTime } from 'react-icons/tb';
 import { GiLabCoat } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
-import { persistStore } from 'redux-persist';
+import { persistor } from '../../../Store/ReducerStore';
 import { useNavigate } from 'react-router-dom';
 
 function Navigation(props) {
@@ -19,7 +19,7 @@ function Navigation(props) {
 
    function logout() {
       try {
-         setTimeout(() => persistStore.purge(), 200);
+         setTimeout(() => persistor.purge(), 200);
          navigate('/landing-page');
       } catch (err) {
          console.log(err);
