@@ -10,7 +10,7 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import hospital from '../../../assets/hospital.svg';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setName } from '../../../Store/Actions.js';
+import { fetchDoctorsProfileInfo } from '../../../Store/DoctorAction.js';
 
 function DoctorSignup(props) {
    const navigate = useNavigate();
@@ -34,16 +34,18 @@ function DoctorSignup(props) {
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
 
+      // checks if user signup was successful
       if (feedback[0] === true) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         dispatch(setName(feedback[1].first_name));
+         dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
          setTimeout(() => {
-            navigate('/dashboard');
+            navigate('/doctordashboard');
          }, 1500);
       } else {
+         // when signup was unsuccessful
          setBtnActive(feedback[0]);
-         setBtnValue(feedback[2]);
+         setBtnValue('Create Account');
          setErrorMessage(feedback[1]);
          setIsError(true);
       }

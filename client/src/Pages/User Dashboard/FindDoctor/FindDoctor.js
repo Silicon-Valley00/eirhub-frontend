@@ -6,19 +6,16 @@ import { FaTimes } from 'react-icons/fa';
 import { fetchDoctors } from '../../../Store/Actions';
 
 function FindingDoctor(props) {
+   //handles state for all Doctor's fetched
    const [allDoctors, setAllDoctors] = useState([]);
+
+   const [searchResults, setSearchResults] = useState([]); //handles state for Doctor's searched
    const [enteredName, setEnteredName] = useState(''); //handles state for Doctor's name to search
-   const [isSearchByDoctorName, isSearchByDoctorNameHandler] = useState(false); //sets whether search for doctors is done by name
-   const [isSearchByDoctorSpt, isSearchByDoctorSptHandler] = useState(false); //sets whether search is done by specialty for doctors
-   const [isSearchByDoctorHpt, isSearchByDoctorHptHandler] = useState(false); //sets whether search is done by hospital for doctors
+   const [specialty, setSpecialty] = useState(''); //handles state for Doctor's specialty to search
+   const [hospital, setHospital] = useState(''); //handles state for Doctor's hospital to search
 
-   const [nameSearchResults, setNameSearchResults] = useState([]); //arrays stores doctors filtered by entered name
-   const [sptSearchResults, setSptSearchResults] = useState([]); //arrays stores doctors filtered by entered specialty
-   const [hptSearchResults, setHptSearchResults] = useState([]); //arrays stores doctors filtered by entered specialty
-
-   const [isSearchOn, setIsSearchOn] = useState();
-   const [searchResults, setSearchResults] = useState([]);
-   const [specialty, setSpecialty] = useState('');
+   const [useEffectCount, setUseEffectCount] = useState(0);
+   const [useEffectCountHpt, setUseEffectCountHpt] = useState(0);
 
    useEffect(() => {
       async function fetchdata() {
@@ -28,178 +25,136 @@ function FindingDoctor(props) {
       }
       fetchdata();
    }, []);
-   console.log(allDoctors);
 
    useEffect(() => {
-      handleDoctorSearchBySpecialty();
-   }, [specialty]);
+      if (useEffectCount === 0) {
+         setUseEffectCount(useEffectCount + 1);
+         return;
+      }
 
+      handleDoctorSearch(enteredName);
+   }, [specialty, hospital]);
+
+   // useEffect(() => {
+   //    console.log('called');
+   //    if (useEffectCountHpt === 0) {
+   //       setUseEffectCountHpt(useEffectCountHpt + 1);
+   //       return;
+   //    }
+   //    handleDoctorSearch(enteredName);
+   // }, [hospital]);
+
+   // handles close of search for doctor's name
    function closeSearch() {
       setEnteredName('');
-      console.log('all', allDoctors);
-
-      var reset = [];
-      console.log('reset', reset);
-
-      setSearchResults((oldArray) => [...oldArray, ...allDoctors]);
-
-      console.log('chg 1', searchResults);
-      if (isSearchByDoctorSpt === true) {
-         handleDoctorSearchBySpecialty();
-      }
-      isSearchByDoctorNameHandler(false);
+      handleDoctorSearch('');
    }
 
-   function handleDoctorSearchByName() {
-      if (enteredName === '') {
-         closeSearch();
-         return;
-      }
-      var filteredDoctors = [];
-      var nameToSearch = enteredName.toLowerCase();
-      console.log('search rsults for nam 1', searchResults);
+   function handleDoctorSearch(enteredName) {
+      setSearchResults(allDoctors);
 
-      searchResults.forEach(function (item) {
-         var name = `${item.first_name} ${item.middle_name} ${item.last_name}`;
-         //puts all doctor profiles same with entered name into an array
-         if (name.toLowerCase().indexOf(nameToSearch) !== -1) {
-            filteredDoctors.push(item);
-         }
-      });
-      setSearchResults(filteredDoctors);
-      isSearchByDoctorNameHandler(true);
-   }
+      let nameToSearch =
+         enteredName !== '' ? enteredName.toLowerCase().trim() : '';
+      let spt = specialty;
+      let hpt = hospital;
 
-   function handleDoctorSearchBySpecialty() {
-      if (specialty === '') {
-         console.log('fired');
-         console.log('chg 2 before', searchResults);
+      let results = allDoctors
+         .filter((item) => {
+            //filter by entered doctor's name
+            if (nameToSearch === '') {
+               return item;
+            }
+            return (
+               `${item.first_name} ${item.middle_name} ${item.last_name}`
+                  .toLowerCase()
+                  .indexOf(nameToSearch) !== -1
+            );
+         })
+         .filter((item) => {
+            //filter by selected doctor's specialty
+            if (spt === '') {
+               return item;
+            } else {
+               if (
+                  item.doctor_specialties === null ||
+                  item.doctor_specialties === ''
+               ) {
+                  return;
+               }
+               var specialties = item.doctor_specialties
+                  .toLowerCase()
+                  .split(',');
+               return specialties.includes(spt);
+            }
+         })
+         .filter((item) => {
+            //filter by selected doctor's hospital
+            if (hpt === '') {
+               return item;
+            } else {
+               if (item.hospital_name === null || item.hospital_name === '') {
+                  return;
+               }
 
-         setSearchResults((oldArray) => [...allDoctors]);
-         console.log('chg 2 after', searchResults);
-
-         if (isSearchByDoctorName === true) {
-            handleDoctorSearchByName();
-         }
-         isSearchByDoctorSptHandler(false);
-
-         return;
-      }
-      var filteredDoctorsTwo = [];
-      let spt = specialty.toLowerCase();
-      console.log('fired', spt);
-      console.log('search results for spt', searchResults);
-
-      searchResults.forEach(function (item) {
-         if (item.doctor_specialties === null || item.doctor_specialties === '')
-            return;
-         var specialties = item.doctor_specialties.toLowerCase().split(',');
-         //puts all doctor profiles thta has the entered name into an array
-         if (specialties.includes(spt)) {
-            filteredDoctorsTwo.push(item);
-         }
-      });
-      setSearchResults(filteredDoctorsTwo);
-      isSearchByDoctorSptHandler(true);
+               return item.hospital_name.toLowerCase().indexOf(hpt) !== -1;
+            }
+         });
+      setSearchResults(results);
    }
 
    var list;
-   if (isSearchByDoctorName === true || isSearchByDoctorSpt === true) {
-      list = searchResults.map((item, j) => {
-         return (
-            <div
-               className={styles.doctorBox}
-               key={`${item.first_name} ${item.last_name}-${j}`}
-            >
-               <div className={styles.doctorImage}>
-                  <img src={item.person_image} alt="doctor-profile" />
-               </div>
-               <div className={styles.doctorInfo}>
-                  <div className={styles.doctorName}>
-                     <h3>{`Dr. ${item.first_name} ${item.last_name} `}</h3>
+
+   if (searchResults !== undefined) {
+      if (searchResults.length !== 0) {
+         list = searchResults.map((item, j) => {
+            return (
+               <div
+                  className={styles.doctorBox}
+                  key={`${item.first_name} ${item.last_name}-${j}`}
+               >
+                  <div className={styles.doctorImage}>
+                     <img src={item.person_image} alt="doctor-profile" />
                   </div>
-                  <div className={styles.doctorDetails}>
-                     <p>{item.doctor_specialties}</p>
-                  </div>
-                  <div className={styles.doctorInfoLink}>
-                     <p
-                        onClick={() =>
-                           props.pushData({
-                              date_of_birth: item.date_of_birth,
-                              id_doctor: item.id_doctor,
-                              doctor_ratings: item.doctor_ratings,
-                              doctor_specialties: item.doctor_specialties,
-                              first_name: item.first_name,
-                              gender: item.gender,
-                              hospital_code: item.hospital_code,
-                              house_address: item.house_address,
-                              last_name: item.last_name,
-                              license_number: item.license_number,
-                              middle_name: item.middle_name,
-                              person_image: item.person_image,
-                              user_email: item.user_email,
-                           })
-                        }
-                     >
-                        View Profile
-                     </p>
-                  </div>
-               </div>
-            </div>
-         );
-      });
-   } else {
-      if (allDoctors !== undefined) {
-         if (allDoctors.length !== 0) {
-            list = allDoctors.map((item, j) => {
-               return (
-                  <div
-                     className={styles.doctorBox}
-                     key={`${item.first_name} ${item.last_name}-${j}`}
-                  >
-                     <div className={styles.doctorImage}>
-                        <img src={item.person_image} alt="doctor-profile" />
+                  <div className={styles.doctorInfo}>
+                     <div className={styles.doctorName}>
+                        <h3>{`Dr. ${item.first_name} ${item.last_name} `}</h3>
                      </div>
-                     <div className={styles.doctorInfo}>
-                        <div className={styles.doctorName}>
-                           <h3>{`Dr. ${item.first_name} ${item.last_name} `}</h3>
-                        </div>
-                        <div className={styles.doctorDetails}>
-                           <p>{item.doctor_specialties}</p>
-                        </div>
-                        <div className={styles.doctorInfoLink}>
-                           <p
-                              onClick={() =>
-                                 props.pushData({
-                                    date_of_birth: item.date_of_birth,
-                                    id_doctor: item.id_doctor,
-                                    doctor_ratings: item.doctor_ratings,
-                                    doctor_specialties: item.doctor_specialties,
-                                    first_name: item.first_name,
-                                    gender: item.gender,
-                                    hospital_code: item.hospital_code,
-                                    house_address: item.house_address,
-                                    last_name: item.last_name,
-                                    license_number: item.license_number,
-                                    middle_name: item.middle_name,
-                                    person_image: item.person_image,
-                                    user_email: item.user_email,
-                                 })
-                              }
-                           >
-                              View Profile
-                           </p>
-                        </div>
+                     <div className={styles.doctorDetails}>
+                        <p>{item.doctor_specialties}</p>
+                     </div>
+                     <div className={styles.doctorInfoLink}>
+                        <p
+                           onClick={() =>
+                              props.pushData({
+                                 date_of_birth: item.date_of_birth,
+                                 id_doctor: item.id_doctor,
+                                 doctor_ratings: item.doctor_ratings,
+                                 doctor_specialties: item.doctor_specialties,
+                                 first_name: item.first_name,
+                                 gender: item.gender,
+                                 hospital_code: item.hospital_code,
+                                 hospital_name: item.hospital_name,
+                                 house_address: item.house_address,
+                                 last_name: item.last_name,
+                                 license_number: item.license_number,
+                                 middle_name: item.middle_name,
+                                 person_image: item.person_image,
+                                 user_email: item.user_email,
+                              })
+                           }
+                        >
+                           View Profile
+                        </p>
                      </div>
                   </div>
-               );
-            });
-         } else if (allDoctors.length === 0) {
-            <p className={styles.emptyMessage}>No doctors found.</p>;
-         }
-      } else {
+               </div>
+            );
+         });
+      } else if (allDoctors.length === 0) {
          <p className={styles.emptyMessage}>No doctors found.</p>;
       }
+   } else {
+      <p className={styles.emptyMessage}>No doctors found.</p>;
    }
 
    return (
@@ -222,7 +177,7 @@ function FindingDoctor(props) {
                            }
                         />
                         <span>
-                           {isSearchByDoctorName && (
+                           {enteredName.trim().length !== 0 && (
                               <i>
                                  <FaTimes onClick={() => closeSearch()} />
                               </i>
@@ -231,7 +186,7 @@ function FindingDoctor(props) {
                      </div>
                      <button
                         onClick={() => {
-                           handleDoctorSearchByName();
+                           handleDoctorSearch(enteredName);
                         }}
                      >
                         Search
@@ -244,7 +199,6 @@ function FindingDoctor(props) {
                            placeholder="Speciality"
                            onChange={(event) => {
                               setSpecialty(event.target.value);
-                              // handleDoctorSearchBySpecialty();
                            }}
                         >
                            <option key={''} value={''}>
@@ -296,7 +250,7 @@ function FindingDoctor(props) {
                            <option key={'oncology'} value={'oncology'}>
                               Oncology
                            </option>
-                           <option key={'pediatics'} value={'pediatics'}>
+                           <option key={'pediatrics'} value={'pediatrics'}>
                               Pediatrics
                            </option>
                            <option
@@ -317,7 +271,12 @@ function FindingDoctor(props) {
                         </select>
                      </div>
                      <div className={styles.selectTwo}>
-                        <select placeholder="Hospital">
+                        <select
+                           placeholder="Hospital"
+                           onChange={(event) => {
+                              setHospital(event.target.value);
+                           }}
+                        >
                            <option value={''}>Hospital</option>
                            <option value={'komfo anokye teaching hospital'}>
                               Komfo Anokye Teaching Hospital
@@ -326,7 +285,7 @@ function FindingDoctor(props) {
                               KNUST University Hospital
                            </option>
                            <option value={'ridge medical center'}>
-                              Ridge Medical center
+                              Ridge Medical Center
                            </option>
                            <option value={'north legon hospital'}>
                               North Legon Hospital
@@ -389,525 +348,3 @@ function FindingDoctor(props) {
    );
 }
 export default FindingDoctor;
-
-// import React, { useEffect, useState } from 'react';
-// import styles from './finddoctor.module.css';
-// import doctorProfileOne from '../../../assets/docProfileImage3.svg';
-// import doctorProfileTwo from '../../../assets/docProfileImage4.svg';
-// import doctorProfileThree from '../../../assets/docProfileImage1.svg';
-// import { FaTimes } from 'react-icons/fa';
-// import { fetchDoctors } from '../../../Store/Actions';
-
-// function FindingDoctor(props) {
-//    const [allDoctors, setAllDoctors] = useState([]);
-//    const [enteredName, setEnteredName] = useState(''); //handles state for Doctor's name to search
-//    const [isSearchByDoctorName, isSearchByDoctorNameHandler] = useState(false); //sets whether search for doctors is done by name
-//    const [isSearchByDoctorSpt, isSearchByDoctorSptHandler] = useState(false); //sets whether search is done by specialty for doctors
-//    const [isSearchByDoctorHpt, isSearchByDoctorHptHandler] = useState(false); //sets whether search is done by hospital for doctors
-
-//    const [nameSearchResults, setNameSearchResults] = useState([]); //arrays stores doctors filtered by entered name
-//    const [sptSearchResults, setSptSearchResults] = useState([]); //arrays stores doctors filtered by entered specialty
-//    const [hptSearchResults, setHptSearchResults] = useState([]); //arrays stores doctors filtered by entered specialty
-
-//    useEffect(() => {
-//       async function fetchdata() {
-//          const items = await fetchDoctors();
-//          setAllDoctors(items);
-//       }
-//       fetchdata();
-//    }, []);
-//    // console.log(allDoctors);
-
-//    function closeSearch() {
-//       /*
-//          Function handles close of Doctor search
-//          Args: None
-//          Return: None
-//       */
-//       setEnteredName('');
-//       isSearchByDoctorNameHandler(false);
-//       setNameSearchResults([]);
-//    }
-
-//    function handleDoctorSearch() {
-//       /*
-//          Function handles search of doctor(s) marching entered name
-//          Args: None
-//          Return: List of doctor profile(s) marched with entered name
-//       */
-//       isSearchByDoctorNameHandler(true);
-//       if (isSearchByDoctorHpt === true && isSearchByDoctorSpt === false) {
-//          //makes search with filtered doctors by hospital
-//          setNameSearchResults([]);
-//          var filterItems = enteredName.toLowerCase();
-//          hptSearchResults.forEach(function (item) {
-//             var name = `${item.first_name} ${item.middle_name} ${item.last_name}`;
-//             //puts all doctor profiles same with entered name into an array
-//             if (name.toLowerCase().indexOf(filterItems) !== -1) {
-//                setNameSearchResults((oldArray) => [...oldArray, item]);
-//             }
-//          });
-//       } else if (
-//          isSearchByDoctorHpt === false &&
-//          isSearchByDoctorSpt === true
-//       ) {
-//          //makes search with filtered doctors by hospital
-//          setNameSearchResults([]);
-//          var filterItems = enteredName.toLowerCase();
-//          sptSearchResults.forEach(function (item) {
-//             var name = `${item.first_name} ${item.middle_name} ${item.last_name}`;
-//             //puts all doctor profiles same with entered name into an array
-//             if (name.toLowerCase().indexOf(filterItems) !== -1) {
-//                setNameSearchResults((oldArray) => [...oldArray, item]);
-//             }
-//          });
-//       } else {
-//          setNameSearchResults([]);
-//          var filterItems = enteredName.toLowerCase();
-//          allDoctors.forEach(function (item) {
-//             var name = `${item.first_name} ${item.middle_name} ${item.last_name}`;
-//             //puts all doctor profiles same with entered name into an array
-//             if (name.toLowerCase().indexOf(filterItems) !== -1) {
-//                setNameSearchResults((oldArray) => [...oldArray, item]);
-//             }
-//          });
-//       }
-//    }
-
-//    function handleSearchBySpecialty(specialty) {
-//       /*
-//          Function handles search of doctor(s) marching speciality
-//          Args: speciality to search by
-//          Return: List of doctor profile(s) marching speciality
-//       */
-//       if (specialty === '') {
-//          isSearchByDoctorSptHandler(false);
-//          return;
-//       }
-
-//       isSearchByDoctorSptHandler(true);
-
-//       if (isSearchByDoctorName === true && isSearchByDoctorHpt === false) {
-//          //makes use of filtered doctors by name to make search
-//          setSptSearchResults([]);
-//          let spt = specialty.toLowerCase();
-//          nameSearchResults.forEach(function (item) {
-//             if (
-//                item.doctor_specialties === null ||
-//                item.doctor_specialties === ''
-//             )
-//                return;
-//             var specialties = item.doctor_specialties.toLowerCase().split(',');
-//             //puts all doctor profiles same with entered name into an array
-//             if (specialties.includes(spt)) {
-//                setSptSearchResults((oldArray) => [...oldArray, item]);
-//             }
-//          });
-//       } else if (
-//          isSearchByDoctorName === false &&
-//          isSearchByDoctorHpt === true
-//       ) {
-//          //makes use of filtered doctors by hospital to make search
-//          setSptSearchResults([]);
-//          let spt = specialty.toLowerCase();
-//          hptSearchResults.forEach(function (item) {
-//             if (
-//                item.doctor_specialties === null ||
-//                item.doctor_specialties === ''
-//             )
-//                return;
-//             var specialties = item.doctor_specialties.toLowerCase().split(',');
-//             //puts all doctor profiles same with entered name into an array
-//             if (specialties.includes(spt)) {
-//                setSptSearchResults((oldArray) => [...oldArray, item]);
-//             }
-//          });
-//       } else if (
-//          isSearchByDoctorName === true &&
-//          isSearchByDoctorHpt === true
-//       ) {
-//          //makes use of filtered doctors by hospital to make search
-//          setSptSearchResults([]);
-//          let spt = specialty.toLowerCase();
-//          hptSearchResults.forEach(function (item) {
-//             if (
-//                item.doctor_specialties === null ||
-//                item.doctor_specialties === ''
-//             )
-//                return;
-//             var specialties = item.doctor_specialties.toLowerCase().split(',');
-//             //puts all doctor profiles same with entered name into an array
-//             if (specialties.includes(spt)) {
-//                setSptSearchResults((oldArray) => [...oldArray, item]);
-//             }
-//          });
-//       } else {
-//          //makes use of all doctors to make search
-//          setSptSearchResults([]);
-//          let spt = specialty.toLowerCase();
-//          allDoctors.forEach(function (item) {
-//             if (
-//                item.doctor_specialties === null ||
-//                item.doctor_specialties === ''
-//             )
-//                return;
-//             var specialties = item.doctor_specialties.toLowerCase().split(',');
-//             //puts all doctor profiles same with entered name into an array
-//             if (specialties.includes(spt)) {
-//                setSptSearchResults((oldArray) => [...oldArray, item]);
-//             }
-//          });
-//       }
-//    }
-
-//    var list;
-//    if (
-//       isSearchByDoctorName === true &&
-//       isSearchByDoctorSpt === false &&
-//       isSearchByDoctorHpt === false
-//    ) {
-//       list = nameSearchResults.map((item, j) => {
-//          return (
-//             <div
-//                className={styles.doctorBox}
-//                key={`${item.first_name} ${item.last_name}-${j}`}
-//             >
-//                <div className={styles.doctorImage}>
-//                   <img src={item.person_image} alt="doctor-profile" />
-//                </div>
-//                <div className={styles.doctorInfo}>
-//                   <div className={styles.doctorName}>
-//                      <h3>{`Dr. ${item.first_name} ${item.last_name} `}</h3>
-//                   </div>
-//                   <div className={styles.doctorDetails}>
-//                      <p>{item.doctor_specialties}</p>
-//                   </div>
-//                   <div className={styles.doctorInfoLink}>
-//                      <p
-//                         onClick={() =>
-//                            props.pushData({
-//                               date_of_birth: item.date_of_birth,
-//                               doctor_id: item.doctor_id,
-//                               doctor_ratings: item.doctor_ratings,
-//                               doctor_specialties: item.doctor_specialties,
-//                               first_name: item.first_name,
-//                               gender: item.gender,
-//                               hospital_code: item.hospital_code,
-//                               house_address: item.house_address,
-//                               last_name: item.last_name,
-//                               license_number: item.license_number,
-//                               middle_name: item.middle_name,
-//                               person_image: item.person_image,
-//                               user_email: item.user_email,
-//                            })
-//                         }
-//                      >
-//                         View Profile
-//                      </p>
-//                   </div>
-//                </div>
-//             </div>
-//          );
-//       });
-//    } else if (
-//       (isSearchByDoctorName === true &&
-//          isSearchByDoctorSpt === true &&
-//          isSearchByDoctorHpt === false) ||
-//       (isSearchByDoctorName === false &&
-//          isSearchByDoctorSpt === true &&
-//          isSearchByDoctorHpt === false)
-//    ) {
-//       list = sptSearchResults.map((item, j) => {
-//          return (
-//             <div
-//                className={styles.doctorBox}
-//                key={`${item.first_name} ${item.last_name}-${j}`}
-//             >
-//                <div className={styles.doctorImage}>
-//                   <img src={item.person_image} alt="doctor-profile" />
-//                </div>
-//                <div className={styles.doctorInfo}>
-//                   <div className={styles.doctorName}>
-//                      <h3>{`Dr. ${item.first_name} ${item.last_name} `}</h3>
-//                   </div>
-//                   <div className={styles.doctorDetails}>
-//                      <p>{item.doctor_specialties}</p>
-//                   </div>
-//                   <div className={styles.doctorInfoLink}>
-//                      <p
-//                         onClick={() =>
-//                            props.pushData({
-//                               date_of_birth: item.date_of_birth,
-//                               doctor_id: item.doctor_id,
-//                               doctor_ratings: item.doctor_ratings,
-//                               doctor_specialties: item.doctor_specialties,
-//                               first_name: item.first_name,
-//                               gender: item.gender,
-//                               hospital_code: item.hospital_code,
-//                               house_address: item.house_address,
-//                               last_name: item.last_name,
-//                               license_number: item.license_number,
-//                               middle_name: item.middle_name,
-//                               person_image: item.person_image,
-//                               user_email: item.user_email,
-//                            })
-//                         }
-//                      >
-//                         View Profile
-//                      </p>
-//                   </div>
-//                </div>
-//             </div>
-//          );
-//       });
-//    } else if (
-//       (isSearchByDoctorName === true &&
-//          isSearchByDoctorSpt === false &&
-//          isSearchByDoctorHpt === true) ||
-//       (isSearchByDoctorName === false &&
-//          isSearchByDoctorSpt === false &&
-//          isSearchByDoctorHpt === true)
-//    ) {
-//       list = hptSearchResults.map((item, j) => {
-//          return (
-//             <div
-//                className={styles.doctorBox}
-//                key={`${item.first_name} ${item.last_name}-${j}`}
-//             >
-//                <div className={styles.doctorImage}>
-//                   <img src={item.person_image} alt="doctor-profile" />
-//                </div>
-//                <div className={styles.doctorInfo}>
-//                   <div className={styles.doctorName}>
-//                      <h3>{`Dr. ${item.first_name} ${item.last_name} `}</h3>
-//                   </div>
-//                   <div className={styles.doctorDetails}>
-//                      <p>{item.doctor_specialties}</p>
-//                   </div>
-//                   <div className={styles.doctorInfoLink}>
-//                      <p
-//                         onClick={() =>
-//                            props.pushData({
-//                               date_of_birth: item.date_of_birth,
-//                               doctor_id: item.doctor_id,
-//                               doctor_ratings: item.doctor_ratings,
-//                               doctor_specialties: item.doctor_specialties,
-//                               first_name: item.first_name,
-//                               gender: item.gender,
-//                               hospital_code: item.hospital_code,
-//                               house_address: item.house_address,
-//                               last_name: item.last_name,
-//                               license_number: item.license_number,
-//                               middle_name: item.middle_name,
-//                               person_image: item.person_image,
-//                               user_email: item.user_email,
-//                            })
-//                         }
-//                      >
-//                         View Profile
-//                      </p>
-//                   </div>
-//                </div>
-//             </div>
-//          );
-//       });
-//    } else {
-//       if (
-//          allDoctors !== null ||
-//          allDoctors !== undefined ||
-//          allDoctors.length !== 0
-//       ) {
-//          list = allDoctors.map((item, j) => {
-//             return (
-//                <div
-//                   className={styles.doctorBox}
-//                   key={`${item.first_name} ${item.last_name}-${j}`}
-//                >
-//                   <div className={styles.doctorImage}>
-//                      <img src={item.person_image} alt="doctor-profile" />
-//                   </div>
-//                   <div className={styles.doctorInfo}>
-//                      <div className={styles.doctorName}>
-//                         <h3>{`Dr. ${item.first_name} ${item.last_name} `}</h3>
-//                      </div>
-//                      <div className={styles.doctorDetails}>
-//                         <p>{item.doctor_specialties}</p>
-//                      </div>
-//                      <div className={styles.doctorInfoLink}>
-//                         <p
-//                            onClick={() =>
-//                               props.pushData({
-//                                  date_of_birth: item.date_of_birth,
-//                                  doctor_id: item.doctor_id,
-//                                  doctor_ratings: item.doctor_ratings,
-//                                  doctor_specialties: item.doctor_specialties,
-//                                  first_name: item.first_name,
-//                                  gender: item.gender,
-//                                  hospital_code: item.hospital_code,
-//                                  house_address: item.house_address,
-//                                  last_name: item.last_name,
-//                                  license_number: item.license_number,
-//                                  middle_name: item.middle_name,
-//                                  person_image: item.person_image,
-//                                  user_email: item.user_email,
-//                               })
-//                            }
-//                         >
-//                            View Profile
-//                         </p>
-//                      </div>
-//                   </div>
-//                </div>
-//             );
-//          });
-//       } else if (allDoctors.length === 0) {
-//          <p>No doctors found.</p>;
-//       }
-//    }
-
-//    return (
-//       <>
-//          <div id={styles.findDoctorBody}>
-//             <div className={styles.title}>
-//                <h1>Find a Doctor, Book an Appointment</h1>
-//             </div>
-//             <div className={styles.formRegion}>
-//                <form onSubmit={(e) => e.preventDefault()}>
-//                   <div className={styles.searchRegion}>
-//                      <div>
-//                         <input
-//                            type={'text'}
-//                            placeholder="Type to search"
-//                            name="searchbox"
-//                            value={enteredName}
-//                            onChange={(event) =>
-//                               setEnteredName(event.target.value)
-//                            }
-//                         />
-//                         <span>
-//                            {isSearchByDoctorName && (
-//                               <i>
-//                                  <FaTimes onClick={() => closeSearch()} />
-//                               </i>
-//                            )}
-//                         </span>
-//                      </div>
-//                      <button
-//                         onClick={() => {
-//                            handleDoctorSearch();
-//                         }}
-//                      >
-//                         Search
-//                      </button>
-//                   </div>
-//                   <p>Filter by: </p>
-//                   <div className={styles.filterRegion}>
-//                      <div className={styles.selectOne}>
-//                         <select
-//                            placeholder="Speciality"
-//                            onChange={(event) =>
-//                               handleSearchBySpecialty(event.target.value)
-//                            }
-//                         >
-//                            <option value={''}>Speciality</option>
-//                            <option value={'ct scan'}>CT Scan</option>
-//                            <option value={'dentistry'}> Dentistry</option>
-//                            <option value={'dermatology'}>Dermatology</option>
-//                            <option value={'endocrinology'}>
-//                               Endocrinology
-//                            </option>
-//                            <option value={'emergency medicine'}>
-//                               Emergency medicine
-//                            </option>
-//                            <option value={'general surgery'}>
-//                               General surgery
-//                            </option>
-//                            <option value={'laboratory'}>Laboratory</option>
-//                            <option value={'nephrology'}>Nephrology</option>
-//                            <option value={'gynaecology'}>Gynaecology</option>
-//                            <option value={'obstetrics'}>Obstetrics</option>
-//                            <option value={'orthopaedic'}>Orthopaedic</option>
-//                            <option value={'oncology'}>Oncology</option>
-//                            <option value={'pediatics'}>Pediatrics</option>
-//                            <option value={'physician specialist'}>
-//                               Physician specialist
-//                            </option>
-//                            <option value={'physiotherapy'}>
-//                               Physiotherapy
-//                            </option>
-//                            <option value={'x-ray'}>X-Ray</option>
-//                         </select>
-//                      </div>
-//                      <div className={styles.selectTwo}>
-//                         <select placeholder="Hospital">
-//                            <option value={''}>Hospital</option>
-//                            <option value={'komfo anokye teaching hospital'}>
-//                               Komfo Anokye Teaching Hospital
-//                            </option>
-//                            <option value={'knust university hospital'}>
-//                               KNUST University Hospital
-//                            </option>
-//                            <option value={'ridge medical center'}>
-//                               Ridge Medical center
-//                            </option>
-//                            <option value={'north legon hospital'}>
-//                               North Legon Hospital
-//                            </option>
-//                            <option value={'neptune medical hospital'}>
-//                               Neptune Medical Center
-//                            </option>
-//                            <option value={'gbawe sda hospital'}>
-//                               Gbawe SDA Hospital
-//                            </option>
-//                         </select>
-//                      </div>
-//                   </div>
-//                </form>
-//             </div>
-//             <div className={styles.doctorsBox}>
-//                {list}
-//                <div className={styles.doctorBox}>
-//                   <div className={styles.doctorImage}>
-//                      <img src={doctorProfileTwo} alt="doctor-profile" />
-//                   </div>
-//                   <div className={styles.doctorInfo}>
-//                      <div className={styles.doctorName}>
-//                         <h3>Gucci Delix, Pharm D</h3>
-//                      </div>
-//                      <div className={styles.doctorDetails}>
-//                         <p>
-//                            Clinical Pharmacy Specialist, Hermatology/Oncology
-//                            Assistant Professor, Pharmacy Hermatology
-//                         </p>
-//                      </div>
-//                      <div className={styles.doctorInfoLink}>
-//                         <p>View Profile</p>
-//                      </div>
-//                   </div>
-//                </div>
-
-//                <div className={styles.doctorBox}>
-//                   <div className={styles.doctorImage}>
-//                      <img src={doctorProfileThree} alt="doctor-profile" />
-//                   </div>
-//                   <div className={styles.doctorInfo}>
-//                      <div className={styles.doctorName}>
-//                         <h3>Gucci Delix, Pharm D</h3>
-//                      </div>
-//                      <div className={styles.doctorDetails}>
-//                         <p>
-//                            Clinical Pharmacy Specialist, Hermatology/Oncology
-//                            Assistant Professor, Pharmacy Hermatology
-//                         </p>
-//                      </div>
-//                      <div className={styles.doctorInfoLink}>
-//                         <p>View Profile</p>
-//                      </div>
-//                   </div>
-//                </div>
-//             </div>
-//          </div>
-//       </>
-//    );
-// }
-// export default FindingDoctor;

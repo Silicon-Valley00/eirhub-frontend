@@ -75,7 +75,6 @@ function Dashboard(props) {
          list = <p>Nothing to show here.</p>;
       }
    }
-   console.log(appointments);
    var appointmentsData;
    //gets all apoints for display
 
@@ -144,9 +143,10 @@ function Dashboard(props) {
             end_date: data.end_date,
             last_taken_date: date,
          };
-         console.log('updated', updatedPrescription);
          //updating prescription
-         dispatch(updatePrescriptions(data.id, updatedPrescription));
+         dispatch(
+            updatePrescriptions(data.id_prescription, updatedPrescription)
+         );
       } else {
          //prevents checkbox from changing to false
          event.preventDefault();
@@ -260,7 +260,7 @@ function Dashboard(props) {
                         </tr>
                      </thead>
                      <tbody>
-                        <tr
+                        {/* <tr
                            style={{
                               height: '2.8rem',
                               minHeight: '2.8rem',
@@ -276,7 +276,8 @@ function Dashboard(props) {
                            <td>37 Military Hospital</td>
                            <td>07/02/2020</td>
                            <td>2:00 - 3:00 PM</td>
-                        </tr>
+                        </tr>  */}
+
                         {appointmentsData}
                         {/* <tr>
                            <td>

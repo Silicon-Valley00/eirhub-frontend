@@ -60,6 +60,14 @@
    padding: 0.3rem 0.9rem;
    font-size: 0.8rem;
 }
+
+.emptyMessage {
+   color: var(--tablehead);
+   font-weight: 400;
+   font-family: 'Poppins';
+   font-size: 1.2rem;
+   text-align: center;
+}
 .recordTable table thead th:nth-child(1) {
    width: 35%;
    text-align: left;
