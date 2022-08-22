@@ -32,16 +32,27 @@ const patients = [
 
 function DoctorPatients() {
     const [show, setShow] = useState(false);
+    const body = document.querySelector("body");
+
+    const showPeople = ()=>{
+        setShow(true)
+        body.styles.overflow = 'none'
+    }
+    const hidePeople = ()=> {
+        setShow(false)
+        body.styles.overflow = 'auto'
+    }    
+
     return (<>
         <FaUserCircle
             color="#05a6c2"
             className={styles.menu}
-            onClick={() => setShow(true)}
+            onClick={() => showPeople()}
 
         />
         <div className={show ?`${styles.DSContainer2} ${styles.show} `:`${styles.DSContainer2} ${styles.hide}`}>
             <div className={styles.logo_close}>
-            <GrClose className={styles.close} onClick={()=>{setShow(false)}} />
+            <GrClose className={styles.close} onClick={()=> hidePeople()} />
             <h2>Patients</h2>
             </div>
             <ul>

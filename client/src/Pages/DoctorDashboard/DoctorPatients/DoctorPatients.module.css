@@ -107,13 +107,14 @@
    .DSContainer2{
       position: absolute;
       top: 0;
-      right: -1rem;
+      right: 0;
       width: 100vw;
       height: 100vh;
    }
 
    .DSContainer2 ul {
       width: 50%;
+      min-width: 300px;
    }
    .menu {
    display: block;
@@ -125,6 +126,7 @@
    right: 1rem;
    }
    .show{
+      border-radius: 0;
       display: block;
    }
    .hide {
@@ -154,14 +156,6 @@
 }
 
 @media (max-width: 375px) {
-   .DSContainer2 {
-      width: 80%;
-      text-align: center;
-   }
-   .DSContainer2 ul {
-      text-align: center;
-      padding-left: 0;
-   }
    
    .DSContainer2::-webkit-scrollbar,
    .DSContainer2::-webkit-scrollbar {

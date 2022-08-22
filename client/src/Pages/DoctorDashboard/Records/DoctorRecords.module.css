@@ -1,9 +1,12 @@
 .DRContainer {
+   height: 90vh;
    margin-left: 15rem;
    display: flex;
    box-sizing: border-box;
    gap: 2%;
    margin-right: 20px;
+   overflow-y: scroll;
+   overflow-x: hidden;
 }
 
 
@@ -172,10 +175,9 @@
 @media (max-width: 768px) {
 .DRContainer{
    margin: auto;
-   /* margin: 10px 2rem 10px 18px; */
    width: 95%;
-   /* display: flex; */
    justify-content: center;
+   height: 90vh;
 }
 .DRContainer1 {
    width: 100%;
