@@ -4,35 +4,15 @@ import avatarThree from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.
 import Navigation from '../components/Navigation';
 import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
+import store from '../../../Store/ReducerStore';
+import axios from 'axios';
+import { setDoctorProfile } from '../../../Store/DoctorAction';
 
 function DoctorProfile(props) {
    const data = props.doctorProfile;
-   // endpoint for updating doctor profile
-   const endpoint = `/doctors/${data?.id_doctor}`;
-   // const updateDoctorProfile = () => {
-   //    // const dispatch = useDispatch();
 
-   //    const updateProfile = async () => {
-   //       const request = await axios.put();
-   //    };
-   // };
-
-   // Variable used to dispatch actions
-
-   // Handles values for input fields
-   // const [user, setUser] = useState({
-   //    firstName: '',
-   //    middleName: '',
-   //    lastName: '',
-   //    email: '',
-   //    dateOfBirth: '',
-   //    gender: '',
-   //    address: '',
-   //    hospitalCode: '',
-   //    specialty: '',
-   //    licenseNum: '',
-   // });
-   // console.log(user);
+   const id_doctor = data?.id_doctor;
+   console.log(id_doctor);
    const [first_name, setFirstName] = useState(data?.first_name);
    const [last_name, setLastName] = useState(data?.last_name);
    const [middle_name, setMiddleName] = useState(
@@ -46,8 +26,8 @@ function DoctorProfile(props) {
            }-${new Date(data?.date_of_birth).getDate() + 1}`
          : ''
    );
-   const [user_image, setUserImage] = useState(data?.user_image);
-   const [gender, setGender] = useState(data?.email);
+   const [person_image, setUserImage] = useState(data?.person_image);
+   const [gender, setGender] = useState(data?.gender);
    const [doctor_specialties, setSpecialties] = useState(
       data?.doctor_specialties
    );
@@ -55,18 +35,13 @@ function DoctorProfile(props) {
    const [house_address, setAddress] = useState(data?.house_address);
    const [license_number, setLicenseNumber] = useState(data?.license_number);
 
-   // const handleChange = (e) => {
-   //    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-   //    console.log(e.target);
-   // };
-
    let doctorEditedProfile = {
       first_name,
       last_name,
       middle_name,
       user_email,
       date_of_birth,
-      user_image,
+      person_image,
       gender,
       doctor_specialties,
       hospital_code,
@@ -74,16 +49,61 @@ function DoctorProfile(props) {
       license_number,
    };
    console.log(doctorEditedProfile);
+
+   // endpoint for updating doctor profile
+   const endpoint = `http://127.0.0.1:5000/doctor/${data?.id_doctor}`;
+   console.log(endpoint);
+
+   const dispatch = useDispatch();
+   const updateDoctorProfile = async () => {
+      try {
+         const request = await axios({
+            method: 'PUT',
+            url: endpoint,
+            data: doctorEditedProfile,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+            application: 'application/json',
+         });
+         console.log(request);
+         if (request.status === 200) {
+            console.log('PUT was successful');
+            dispatch(setDoctorProfile(request.data));
+         }
+      } catch (error) {
+         console.log('Put Error', error);
+      }
+   };
+
    // function handles image upload
    const [uploadBtn, setUploadBtn] = useState('Upload Image');
+
    function handleImageUpload(e) {
-      if (e.target.files.length === 0) return false;
+      /*
+         Function validates image file selected for upload.
+         Args:
+         Function takes event as an argument
+         Return:
+         If image after validation is ok, image is accepted else user is notified to change image selected
+      
+      */
+      if (e.target.files.length === 0) return false; //Breaks out of function when no file is selected
       const userimage = e.target.files[0];
       if (!/^image\//.test(userimage.type)) {
-         alert(`${userimage.name} is not accepted`);
+         //Checks for the image format
+         alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
-         alert('good');
+         let reader = new FileReader();
+         reader.onloadend = function () {
+            setUserImage(reader.result);
+            console.log(reader.result.length);
+         };
+         reader.readAsDataURL(userimage);
+
          setUploadBtn('Image Uploaded');
       }
    }
@@ -96,7 +116,7 @@ function DoctorProfile(props) {
                <div className={styles.upperContent}>
                   <div className={styles.profileImage}>
                      <img
-                        src={avatarThree}
+                        src={person_image}
                         alt={'profile'}
                         className={styles.img}
                      />
@@ -237,7 +257,7 @@ function DoctorProfile(props) {
                                     <select
                                        name="gender"
                                        placeholder="Gender"
-                                       required={true}
+                                       required
                                        onChange={(e) =>
                                           setGender(e.target.value)
                                        }
@@ -345,7 +365,12 @@ function DoctorProfile(props) {
 
                {/* submit button */}
                <div className={styles.btn_div}>
-                  <button type="submit" form="form" className={styles.btn}>
+                  <button
+                     type="submit"
+                     form="form"
+                     className={styles.btn}
+                     onClick={updateDoctorProfile}
+                  >
                      <span className={styles.btn_text}>Edit Profile</span>
                      <FaCheck className={styles.icon} />
                   </button>

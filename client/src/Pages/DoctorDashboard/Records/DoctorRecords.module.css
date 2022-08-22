@@ -1,11 +1,12 @@
 .DRContainer {
-   margin-left: 16rem;
+   margin-left: 15rem;
    display: flex;
-   justify-content: space-evenly;
-   width: 83%;
    box-sizing: border-box;
    gap: 2%;
+   margin-right: 20px;
 }
+
+
 .DRContainer h2 {
    padding: 20px 0px;
 }
@@ -14,7 +15,7 @@
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
-    height: 59rem;
+   height: 59rem;
 }
 .DRContainer1 h1{
    margin: 20px 0;
@@ -153,7 +154,7 @@
 /*bigger laptops*/
 @media (max-width: 1440px) {
    .DRHeader {
-      margin-left: 15rem;
+      margin-left: 1rem;
       width: 80%;
    }
 }
@@ -170,8 +171,15 @@
 /*Tablet sizes*/
 @media (max-width: 768px) {
 .DRContainer{
-   margin-left: 20px;
-   display: block;
+   margin: auto;
+   /* margin: 10px 2rem 10px 18px; */
+   width: 95%;
+   /* display: flex; */
+   justify-content: center;
+}
+.DRContainer1 {
+   width: 100%;
+
 }
    .DRHeader {
       margin: auto;
@@ -179,7 +187,14 @@
       background-color: white;
       text-align: center;
    }
+   
 }
+
+@media(max-width:600px){
+
+}
+
+
 /*Bigger Mobile screens*/
 @media (max-width: 425px) {
    .DRHeader {
