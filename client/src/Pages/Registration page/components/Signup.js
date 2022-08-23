@@ -9,7 +9,7 @@ import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setName } from '../../../Store/Actions.js';
+import { fetchProfile } from '../../../Store/Actions.js';
 
 function Signup(props) {
    const navigate = useNavigate();
@@ -34,16 +34,26 @@ function Signup(props) {
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
 
+      // checks if user signup was successful
       if (feedback[0] === true) {
+         //logs user into cometchat
+         // LoginUser(
+         //    `${feedback[1].first_name.toLowerCase()}-${feedback[1].last_name.toLowerCase()}-${
+         //       feedback[1].id
+         //    }`
+         // );
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         dispatch(setName(feedback[1].first_name));
+         dispatch(
+            fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
+         );
+
          setTimeout(() => {
-            navigate('/dashboard');
+            navigate('/userdashboard');
          }, 1500);
       } else {
          setBtnActive(feedback[0]);
-         setBtnValue(feedback[2]);
+         setBtnValue('Create Account');
          setErrorMessage(feedback[1]);
          setIsError(true);
       }
@@ -60,7 +70,7 @@ function Signup(props) {
                   props.handleModalsClose();
                   signUpFormRef.current.reset();
                   props.reset();
-                  setIsError(false)
+                  setIsError(false);
                }}
             >
                <i>
@@ -433,7 +443,7 @@ function Signup(props) {
 
                               signUpFormRef.current.reset();
                               props.reset();
-                              setIsError(false)
+                              setIsError(false);
                            }}
                         >
                            Login

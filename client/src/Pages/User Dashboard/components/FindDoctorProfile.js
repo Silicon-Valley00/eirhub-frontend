@@ -14,8 +14,6 @@ function FindingDoctor(props) {
    // This transfers the setProfile function outside of this function's scope
    pullData = setProfile;
 
-   console.log(profile);
-
    useEffect(() => {
       if (Object.keys(profile).length === 0) {
          //checks if any doctor profile is available for display
@@ -82,7 +80,9 @@ function FindingDoctor(props) {
                   <div className={styles.profileHospital}>
                      <h3>Hospital</h3>
                      <p>{`${
-                        profile.location === null ? '' : profile.location
+                        profile.hospital_name === null
+                           ? ''
+                           : profile.hospital_name
                      }`}</p>
                   </div>
                </div>

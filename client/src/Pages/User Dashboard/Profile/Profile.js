@@ -17,14 +17,13 @@ const mapStateToProps = (state) => {
 };
 
 function Profile(props) {
-   console.log(
-      props.savedGuardianDetails,
-      props.savedHealthDetails,
-      props.savedProfile
-   );
-
    // Handles dispatching of actions
    const dispatch = useDispatch();
+   console.log(
+      props.savedProfile,
+      props.savedGuardianDetails,
+      props.savedGuardianDetails
+   );
 
    // Handles values for input fields
    const [userImage, setUserImage] = useState(
@@ -143,7 +142,6 @@ function Profile(props) {
          let reader = new FileReader();
          reader.onloadend = function () {
             setUserImage(reader.result);
-            console.log(reader.result.length);
          };
          reader.readAsDataURL(userimage);
 
@@ -195,11 +193,12 @@ function Profile(props) {
          id_number: guardianIdNumber,
       };
 
+      console.log(enteredProfileInfo);
       dispatch(
          updateProfile(
-            props.savedProfile.idPatient,
+            props.savedProfile.id_patient,
             enteredProfileInfo,
-            props.savedProfile.idGuardian,
+            props.savedProfile.id_guardian,
             enteredGuardianinfo,
             enteredHealthInfo
          )

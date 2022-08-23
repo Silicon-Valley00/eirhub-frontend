@@ -38,10 +38,8 @@ function Records(props) {
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchReports(patientID);
-         console.log('items', items);
 
          setReports(items);
-         console.log('rep', reports);
       }
       fetchdata();
    }, []);
@@ -51,7 +49,6 @@ function Records(props) {
    }
 
    var list;
-   console.log(reports);
    if (reports === undefined) {
       list = <p className={styles.emptyMessage}>Nothing to show here.</p>;
    } else {

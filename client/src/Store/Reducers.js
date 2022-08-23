@@ -1,4 +1,4 @@
-import { SET_NAME } from './ActionTypes';
+import { PURGE } from 'redux-persist';
 import {
    SET_PROFILE_INFO,
    SET_HEALTH_INFO,
@@ -8,9 +8,8 @@ import {
    CLEAR_APPOINTMENT_DOCTOR,
 } from './ActionTypes';
 
-// import { PURGE } from 'redux-persist';
-
 const initialState = {
+   //Patient Dashboard
    profile: {
       user_email: '',
       first_name: '',
@@ -49,6 +48,7 @@ const initialState = {
       gender: '',
    },
    doctorAppointment: {},
+   // Doctor Dashboard
    doctorProfile: {
       first_name: '',
       middle_name: '',
@@ -68,13 +68,8 @@ const initialState = {
 
 const Reducers = (state = initialState, action) => {
    switch (action.type) {
-      //   case PURGE:
-      //      return initialState;
-      case SET_NAME:
-         return {
-            ...state,
-            name: action.payload,
-         };
+      case PURGE:
+         return initialState;
 
       case SET_PROFILE_INFO:
          let profile = {
@@ -83,7 +78,7 @@ const Reducers = (state = initialState, action) => {
             house_address: action.payload.house_address,
             id_patient: action.payload.id_patient,
             id_doctor: action.payload.id_doctor,
-            id_guardian: action.payload.id_uardian,
+            id_guardian: action.payload.id_guardian,
             id_number: action.payload.id_number,
             last_name: action.payload.last_name,
             middle_name: action.payload.middle_name,
@@ -127,7 +122,7 @@ const Reducers = (state = initialState, action) => {
          return { ...state, doctorAppointment: action.payload };
 
       case CLEAR_APPOINTMENT_DOCTOR:
-         return { ...state, doctorAppointment: action.payload };
+         return { ...state, doctorAppointment: {} };
 
       case SET_DOCTOR_PROFILE_INFO:
          let doctor_profile_info = {

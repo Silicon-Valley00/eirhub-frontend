@@ -8,6 +8,8 @@ import { GrClose } from 'react-icons/gr';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillFile } from 'react-icons/ai';
+import { persistor } from '../../../Store/ReducerStore';
+import { useNavigate } from 'react-router-dom';
 
 const links = [
    {
@@ -44,10 +46,20 @@ const links = [
 
 const Sidebar = ({ indicator }) => {
    const [show, setShow] = useState(false);
+   const navigate = useNavigate();
 
    const showSidebar = () => {
       setShow(!show);
    };
+
+   function logout() {
+      try {
+         setTimeout(() => persistor.purge(), 200);
+         navigate('/landing-page');
+      } catch (err) {
+         console.log(err);
+      }
+   }
 
    return (
       <>
@@ -91,7 +103,13 @@ const Sidebar = ({ indicator }) => {
                </div>
 
                {/* logout button */}
-               <Link to="/logout" className={styles.link}>
+               <Link
+                  to=""
+                  className={styles.link}
+                  onClick={() => {
+                     logout();
+                  }}
+               >
                   <ImExit className={styles.icon} />
                   <p className={styles.title}>Logout</p>
                </Link>

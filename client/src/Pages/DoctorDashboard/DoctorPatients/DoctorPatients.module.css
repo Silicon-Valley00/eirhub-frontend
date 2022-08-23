@@ -4,8 +4,8 @@
    background-color: #ecf3fc;
    border-radius: 1.25rem;
    /* height: 59rem; */
-   overflow-y: scroll;
 }
+
 .DSContainer2 h2 {
    color: #0d3f58;
    text-align: center;
@@ -55,6 +55,10 @@
 .menu {
    display: none;
 }
+
+.close {
+   display: none;
+}
 @media (max-width: 1200px) {
    .DSContainer2 {
       grid-column: 1/2;
@@ -102,10 +106,15 @@
 @media(max-width: 600px){
    .DSContainer2{
       position: absolute;
-      top: 5rem;
-      right: -1rem;
-      width: 70%;
+      top: 0;
+      right: 0;
+      width: 100vw;
       height: 100vh;
+   }
+
+   .DSContainer2 ul {
+      width: 50%;
+      min-width: 300px;
    }
    .menu {
    display: block;
@@ -117,22 +126,36 @@
    right: 1rem;
    }
    .show{
+      border-radius: 0;
       display: block;
    }
    .hide {
-      right: -30rem;
+      display: none;
+      position: absolute;
+      right: -40rem;
    }
+   .logo_close {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 2rem;
+}
+
+/* .logo {
+   font-size: 20px;
+   color: var(--lightcol);
+   font-weight: 600;
+   font-family: var(--logofont);
+   padding-left: 10px;
+} */
+.close {
+   display: block;
+   color: var(--midcol);
+   cursor: pointer;
+}
 }
 
 @media (max-width: 375px) {
-   .DSContainer2 {
-      width: 80%;
-      text-align: center;
-   }
-   .DSContainer2 ul {
-      text-align: center;
-      padding-left: 0;
-   }
    
    .DSContainer2::-webkit-scrollbar,
    .DSContainer2::-webkit-scrollbar {

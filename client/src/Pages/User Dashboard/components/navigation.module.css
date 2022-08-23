@@ -17,7 +17,7 @@ aside .logo h2 {
    color: var(--lightcol);
    font-weight: 400;
    font-size: 2rem;
-   font-weight: 'Comfortaa';
+   font-family: var(--logofont);
 }
 
 aside .close {
