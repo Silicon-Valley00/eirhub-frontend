@@ -1,4 +1,4 @@
-.DRContainer {
+.docRecordsContainer {
    height: 90vh;
    margin-left: 15rem;
    display: flex;
@@ -10,40 +10,40 @@
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.DRContainer::-webkit-scrollbar {
+.docRecordsContainer::-webkit-scrollbar {
    display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.DRContainer {
+.docRecordsContainer {
    -ms-overflow-style: none; /* IE and Edge */
    scrollbar-width: none; /* Firefox */
 }
 
-.DRContainer h2 {
+.docRecordsContainer h2 {
    padding: 20px 0px;
 }
-.DRContainer1 {
+.docRecordsContainer1 {
    width: 70%;
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
    max-height: 100vh;
 }
-.DRContainer1 h1 {
+.docRecordsContainer1 h1 {
    margin: 20px 0;
    padding-left: 50px;
    color: #0d3f58;
    font-size: 1.125rem;
 }
-.DRContainer1 label {
+.docRecordsContainer1 label {
    display: block;
    font-weight: 600;
    font-size: 1.1rem;
    color: #0d3f58;
 }
 
-.DRHeader {
+.docRecordsHeader {
    margin-left: 25rem;
    background-color: #ecf3fc;
    width: 55%;
@@ -51,7 +51,7 @@
    overflow-y: scroll;
    border-radius: 20px 20px 0px 0px;
 }
-.DRUpload {
+.docRecordsUpload {
    background-color: white;
    width: 90%;
    height: 14.25rem;
@@ -65,19 +65,19 @@
    border: 2px dashed #05a6c2;
    padding-top: 54px;
 }
-.DRHeader h1 {
+.docRecordsHeader h1 {
    display: inline-block;
    padding: 20px;
    margin: 10px 30px;
    font-size: 1.2rem;
    color: #0d3f58;
 }
-.DRSheader {
+.docRecordsSheader {
    align-self: center;
    color: #0d3f58;
    font-size: 0.9375rem;
 }
-.DRFiles {
+.docRecordsFiles {
    text-align: center;
    display: flex;
    justify-content: space-between;
@@ -91,66 +91,66 @@
    height: 32.6rem;
    max-height: 100vh;
 }
-/* .DRFiles::-webkit-scrollbar,
-.DRFiles::-webkit-scrollbar {
+/* .docRecordsFiles::-webkit-scrollbar,
+.docRecordsFiles::-webkit-scrollbar {
    width: 0.3rem;
    height: 0.3rem;
    cursor: pointer;
 }
-.DRFiles::-webkit-scrollbar-track,
-.DRFiles::-webkit-scrollbar-track {
+.docRecordsFiles::-webkit-scrollbar-track,
+.docRecordsFiles::-webkit-scrollbar-track {
    margin: 20px;
    cursor: pointer;
    --webkit-box-shadow: inset 0 0 10px var(--white);
 }
-.DRFiles::-webkit-scrollbar-thumb,
-.DRFiles::-webkit-scrollbar-thumb {
+.docRecordsFiles::-webkit-scrollbar-thumb,
+.docRecordsFiles::-webkit-scrollbar-thumb {
    background-color: var(--lightcol);
    border-radius: 10%;
    cursor: pointer;
 }
 
-.DRHeader::-webkit-scrollbar,
-.DRHeader::-webkit-scrollbar {
+.docRecordsHeader::-webkit-scrollbar,
+.docRecordsHeader::-webkit-scrollbar {
    width: 0.3rem;
    height: 0.3rem;
    cursor: pointer;
 }
-.DRHeader::-webkit-scrollbar-track,
-.DRHeader::-webkit-scrollbar-track {
+.docRecordsHeader::-webkit-scrollbar-track,
+.docRecordsHeader::-webkit-scrollbar-track {
    margin: 20px;
    cursor: pointer;
    --webkit-box-shadow: inset 0 0 10px var(--white);
 }
-.DRHeader::-webkit-scrollbar-thumb,
-.DRHeader::-webkit-scrollbar-thumb {
+.docRecordsHeader::-webkit-scrollbar-thumb,
+.docRecordsHeader::-webkit-scrollbar-thumb {
    background-color: var(--lightcol);
    border-radius: 10%;
    cursor: pointer;
 } */
-.DRFiles th {
+.docRecordsFiles th {
    color: #c2c9d1;
 }
-.DRFiles table {
+.docRecordsFiles table {
    width: 100%;
    margin-top: 30px;
 }
-.DRFiles td {
+.docRecordsFiles td {
    height: 5rem;
    color: #0d3f58;
    font-weight: 600;
    font-size: 0.9375rem;
 }
-.DRButtonLink {
+.docRecordsButtonLink {
    color: #05a6c2;
 }
-.DRUploadimg {
+.docRecordsUploadimg {
    height: 50px;
    width: 50px;
    fill: #05a6c2;
    justify-self: center;
 }
-.DRicons {
+.docRecordsicons {
    height: 5rem;
    display: flex;
    justify-content: space-around;
@@ -158,44 +158,44 @@
    margin: auto;
    align-items: center;
 }
-.DRpencil {
+.docRecordspencil {
    fill: #05a6c2;
    cursor: pointer;
 }
-.DRtrash {
+.docRecordstrash {
    fill: red;
    cursor: pointer;
 }
 
 /*bigger laptops*/
 @media (max-width: 1440px) {
-   .DRHeader {
+   .docRecordsHeader {
       margin-left: 1rem;
       width: 80%;
    }
 }
 /*smaller laptops*/
 @media (max-width: 1024px) {
-   .DRContainer {
+   .docRecordsContainer {
       margin-left: 6rem;
    }
-   .DRHeader {
+   .docRecordsHeader {
       margin-left: 12rem;
       width: 80%;
    }
 }
 /*Tablet sizes*/
 @media (max-width: 768px) {
-   .DRContainer {
+   .docRecordsContainer {
       margin: auto;
       width: 95%;
       justify-content: center;
       height: 90vh;
    }
-   .DRContainer1 {
+   .docRecordsContainer1 {
       width: 100%;
    }
-   .DRHeader {
+   .docRecordsHeader {
       margin: auto;
       width: 100%;
       background-color: white;
@@ -208,7 +208,7 @@
 
 /*Bigger Mobile screens*/
 @media (max-width: 425px) {
-   .DRHeader {
+   .docRecordsHeader {
       margin: auto;
       width: 100%;
       text-align: center;
@@ -218,7 +218,7 @@
 }
 /*MOBILE SCREENS*/
 @media (max-width: 375px) {
-   .DRHeader {
+   .docRecordsHeader {
       text-align: center;
       margin-left: 0;
       width: 100%;

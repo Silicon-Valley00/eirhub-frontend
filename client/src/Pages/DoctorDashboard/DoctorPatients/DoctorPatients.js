@@ -1,6 +1,6 @@
 import styles from './DoctorPatients.module.css'
-import maleProfle from '../../../assets/Rectangle-1.png';
-import femaleProfle from '../../../assets/Rectangle.png';
+import maleProfile from '../../../assets/Rectangle-1.png';
+import femaleProfile from '../../../assets/Rectangle.png';
 import { GrClose } from 'react-icons/gr';
 import { useState } from 'react'
 import {FaUserCircle} from 'react-icons/fa'
@@ -9,23 +9,23 @@ import {FaUserCircle} from 'react-icons/fa'
 
 const patients = [
     {
-        image: femaleProfle,
+        image: femaleProfile,
         name: 'Melissa Burkinstock',
     },
     {
-        image: maleProfle,
+        image: maleProfile,
         name: 'James Freeman',
     },
     {
-        image: femaleProfle,
+        image: femaleProfile,
         name: 'Chioma Ukechukwu',
     },
     {
-        image: femaleProfle,
+        image: femaleProfile,
         name: 'Melissa Burkinstock',
     },
     {
-        image: femaleProfle,
+        image: femaleProfile,
         name: 'Melissa Burkinstock',
     },
 ];
@@ -50,17 +50,17 @@ function DoctorPatients() {
             onClick={() => showPeople()}
 
         />
-        <div className={show ?`${styles.DSContainer2} ${styles.show} `:`${styles.DSContainer2} ${styles.hide}`}>
+        <div className={show ?`${styles.patientsSection} ${styles.show} `:`${styles.patientsSection} ${styles.hide}`}>
             <div className={styles.logo_close}>
             <GrClose className={styles.close} onClick={()=> hidePeople()} />
             <h2>Patients</h2>
             </div>
             <ul>
-                {patients.map((patientnames, index) => {
+                {patients.map((patients, index) => {
                     return (
                         <div className={styles.imageDiv}>
-                            <img src={patientnames.image}></img>
-                            <li key={index}>{patientnames.name}</li>
+                            <img src={patients.image} alt={patients.name}></img>
+                            <li key={index}>{patients.name}</li>
                         </div>
 
                     );
