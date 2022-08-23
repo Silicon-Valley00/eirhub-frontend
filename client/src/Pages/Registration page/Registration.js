@@ -254,6 +254,7 @@ function Registration(props) {
    }
 
    function handleRegisterPassword() {
+      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
       let enteredSignUpPassword = signupPassword.current.value;
 
       if (enteredSignUpPassword === '') {
@@ -284,8 +285,12 @@ function Registration(props) {
             'Password must contain at least a special character'
          );
          setRegisterPasswordOneError(true);
+      } else if (enteredSignUpPassword !== enteredSignUpPasswordconfirm && (enteredSignUpPasswordconfirm!=='')) {
+         setRegisterPasswordTwoErrorMessage('Passwords do not match');
+         setRegisterPasswordTwoError(true);
       } else {
          setRegisterPasswordOneError(false);
+         setRegisterPasswordTwoError(false)
       }
    }
 
@@ -347,9 +352,9 @@ function Registration(props) {
       }
    }
    function handleRegisterDoctorPassword() {
-      console.log(registerDoctorPasswordOneErrorMessage);
 
       let enteredSignUpPassword = doctorSignupPassword.current.value;
+      let enteredSignUpPasswordconfirm = doctorSignupPasswordconfirm.current.value;
 
       if (enteredSignUpPassword === '') {
          setRegisterDoctorPasswordOneErrorMessage('Password required');
@@ -379,8 +384,12 @@ function Registration(props) {
             'Password must contain at least a special character'
          );
          setRegisterDoctorPasswordOneError(true);
+      } else if (enteredSignUpPassword !== enteredSignUpPasswordconfirm && (enteredSignUpPasswordconfirm!== '')) {
+         setRegisterDoctorPasswordTwoErrorMessage('Passwords do not match');
+         setRegisterDoctorPasswordTwoError(true);
       } else {
          setRegisterDoctorPasswordOneError(false);
+         setRegisterDoctorPasswordTwoError(false);
       }
    }
    function handleRegisterDoctorPasswordConfirm() {

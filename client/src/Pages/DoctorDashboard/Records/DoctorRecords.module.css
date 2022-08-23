@@ -11,15 +11,14 @@
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .DRContainer::-webkit-scrollbar {
-  display: none;
+   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .DRContainer {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+   -ms-overflow-style: none; /* IE and Edge */
+   scrollbar-width: none; /* Firefox */
 }
-
 
 .DRContainer h2 {
    padding: 20px 0px;
@@ -29,12 +28,12 @@
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
-   height: 59rem;
+   max-height: 100vh;
 }
-.DRContainer1 h1{
+.DRContainer1 h1 {
    margin: 20px 0;
    padding-left: 50px;
-   color: #0D3F58;
+   color: #0d3f58;
    font-size: 1.125rem;
 }
 .DRContainer1 label {
@@ -55,15 +54,16 @@
 .DRUpload {
    background-color: white;
    width: 90%;
-   height: 300px;
+   height: 14.25rem;
    margin: auto;
    text-align: center;
    align-items: center;
    display: grid;
-   grid-template-columns: repeat(1, auto);
+   grid-template-columns: repeat(1, 1fr);
    grid-template-rows: repeat(1, 1fr);
    border-radius: 20px;
    border: 2px dashed #05a6c2;
+   padding-top: 54px;
 }
 .DRHeader h1 {
    display: inline-block;
@@ -75,7 +75,7 @@
 .DRSheader {
    align-self: center;
    color: #0d3f58;
-   height: 12rem;
+   font-size: 0.9375rem;
 }
 .DRFiles {
    text-align: center;
@@ -88,6 +88,8 @@
    height: 500px;
    overflow-y: auto;
    border-radius: 20px;
+   height: 32.6rem;
+   max-height: 100vh;
 }
 /* .DRFiles::-webkit-scrollbar,
 .DRFiles::-webkit-scrollbar {
@@ -136,14 +138,15 @@
 .DRFiles td {
    height: 5rem;
    color: #0d3f58;
-   font-weight: 700;
+   font-weight: 600;
+   font-size: 0.9375rem;
 }
 .DRButtonLink {
    color: #05a6c2;
 }
 .DRUploadimg {
-   height: 10rem;
-   width: 3rem;
+   height: 50px;
+   width: 50px;
    fill: #05a6c2;
    justify-self: center;
 }
@@ -164,8 +167,6 @@
    cursor: pointer;
 }
 
-
-
 /*bigger laptops*/
 @media (max-width: 1440px) {
    .DRHeader {
@@ -175,39 +176,35 @@
 }
 /*smaller laptops*/
 @media (max-width: 1024px) {
-.DRContainer{
-   margin-left: 6rem;
-}
-.DRHeader {
-   margin-left: 12rem;
-   width: 80%;
-}
+   .DRContainer {
+      margin-left: 6rem;
+   }
+   .DRHeader {
+      margin-left: 12rem;
+      width: 80%;
+   }
 }
 /*Tablet sizes*/
 @media (max-width: 768px) {
-.DRContainer{
-   margin: auto;
-   width: 95%;
-   justify-content: center;
-   height: 90vh;
-}
-.DRContainer1 {
-   width: 100%;
-
-}
+   .DRContainer {
+      margin: auto;
+      width: 95%;
+      justify-content: center;
+      height: 90vh;
+   }
+   .DRContainer1 {
+      width: 100%;
+   }
    .DRHeader {
       margin: auto;
       width: 100%;
       background-color: white;
       text-align: center;
    }
-   
 }
 
-@media(max-width:600px){
-
+@media (max-width: 600px) {
 }
-
 
 /*Bigger Mobile screens*/
 @media (max-width: 425px) {

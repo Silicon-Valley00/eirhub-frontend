@@ -1,5 +1,6 @@
 .DSContainer2 {
    width: 20rem;
+   /* min-width: 200px; */
    /* min-width: max-content; */
    background-color: #ecf3fc;
    border-radius: 1.25rem;
@@ -50,6 +51,7 @@
    margin: 0 20px;
    width: 40px;
    height: 40px;
+   clip-path: circle();
 }
 
 .menu {
