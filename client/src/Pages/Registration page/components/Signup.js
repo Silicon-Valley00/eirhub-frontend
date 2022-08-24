@@ -19,7 +19,7 @@ function Signup(props) {
 
    // handles button changes
    const [btnValue, setBtnValue] = useState('Create Account');
-   const [btnActive, setBtnActive] = useState(false);
+   const [btnActive, setBtnActive] = useState(true);
    // btnActive is for when button can  be clicked to create account. This would be set to false when an error occurs
    // Handles password visibility
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
