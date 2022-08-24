@@ -73,6 +73,7 @@ const HowItWorks = () => {
                handleModalSignup={handleModalSignup}
                handleModalLoginDoctor={handleModalLoginDoctor}
                handleModalSignupDoctor={handleModalSignupDoctor}
+               indicator={3}
             />
             <main className={styles.main}>
                {/* upper section */}

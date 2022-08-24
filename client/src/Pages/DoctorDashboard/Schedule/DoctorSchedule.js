@@ -7,7 +7,7 @@ import DoctorPatients from '../DoctorPatients/DoctorPatients';
 export default function DoctorSchedule(props) {
    return (
       <>
-         <Navigation />
+         <Navigation nav={14} />
          <div className={DSstyles.DSContainer}>
             <div className={DSstyles.DSContainer1}>
                <h2>Apppoinment Details</h2>
@@ -68,7 +68,7 @@ export default function DoctorSchedule(props) {
                         </thead>
                         <tbody>
                            <td>
-                              <img src={femaleProfle}></img>
+                              <img src={femaleProfle} alt={'img'} />
                            </td>
                            <td>Melissa Burkinstock </td>
                            <td>

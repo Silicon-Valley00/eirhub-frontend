@@ -65,7 +65,6 @@ const Services = () => {
                      <div className={Styles.circle_1}></div>
                   </div>
                   <div className={Styles.circle_2}></div>
-                  {/* FIXME: Square is not where is supposed to be */}
                   <div className={Styles.square}>
                      <div className={Styles.square_2}></div>
                   </div>

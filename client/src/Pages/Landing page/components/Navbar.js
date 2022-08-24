@@ -3,7 +3,7 @@ import logo from '../../../images/logo.svg';
 import styles from './navbar.module.css';
 import close from '../../../images/close.svg';
 import menu from '../../../images/menu.svg';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LoginDropdown from './LoginDropdown';
 import SignUpDropdown from './SignUpDropdown';
 
@@ -40,7 +40,7 @@ const Navbar = (props) => {
    return (
       <nav id={styles.nav}>
          {/* Logo */}
-         <NavLink to="/" id={styles.img}>
+         <Link to="/" id={styles.img}>
             <img
                src={logo}
                className={styles.logo_img}
@@ -48,11 +48,11 @@ const Navbar = (props) => {
                height={50}
                width={200}
             />
-         </NavLink>
+         </Link>
          <div
             className={
                sidebar
-                  ? `${styles.linkContainer} ${styles.active}`
+                  ? `${styles.linkContainer} ${styles.sidebar}`
                   : `${styles.linkContainer}`
             }
          >
@@ -62,35 +62,43 @@ const Navbar = (props) => {
                   src={close}
                   alt=""
                   id={styles.close}
-                  height={30}
-                  width={30}
+                  height={20}
+                  width={20}
                   onClick={showSidebar}
                />
             </div>
             <div className={styles.left}>
-               {/* REVIEW: active navlink is not working. */}
                <ul id={styles.nav_links}>
-                  <NavLink
+                  <Link
                      to="/"
-                     // activeClassName={styles.nav_link_active}
-                     className={styles.each}
+                     className={
+                        props.indicator === 1
+                           ? `${styles.active} ${styles.each}`
+                           : styles.each
+                     }
                   >
                      Home
-                  </NavLink>
-                  <NavLink
+                  </Link>
+                  <Link
                      to="/our-services"
-                     // activeClassName={styles.nav_link_active}
-                     className={styles.each}
+                     className={
+                        props.indicator === 2
+                           ? `${styles.active} ${styles.each}`
+                           : styles.each
+                     }
                   >
                      Our Services
-                  </NavLink>
-                  <NavLink
+                  </Link>
+                  <Link
                      to="/how-it-works"
-                     // activeClassName={styles.nav_link_active}
-                     className={styles.each}
+                     className={
+                        props.indicator === 3
+                           ? `${styles.active} ${styles.each}`
+                           : styles.each
+                     }
                   >
                      How it Works
-                  </NavLink>
+                  </Link>
                </ul>
                <div id={styles.signup}>
                   <ul className={styles.signup_list}>
@@ -107,20 +115,6 @@ const Navbar = (props) => {
                      >
                         Login
                      </li>
-
-                     {/* <li
-                        className={styles.signup_item}
-                        onClick={() => props.handleModalSignup()}
-                     >
-                        Sign Up
-                     </li>
-                     <li id={styles.separator}>|</li>
-                     <li
-                        className={styles.signup_item}
-                        onClick={() => props.handleModalLogin()}
-                     >
-                        Login
-                     </li> */}
                   </ul>
                   {loginClick && (
                      <LoginDropdown
@@ -141,8 +135,8 @@ const Navbar = (props) => {
          <img
             src={menu}
             alt=""
-            height={30}
-            width={30}
+            height={20}
+            width={20}
             id={styles.menu}
             onClick={showSidebar}
          />
