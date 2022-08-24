@@ -5,6 +5,7 @@
    box-sizing: border-box;
    margin-right: 0;
    gap: 1.25rem;
+   max-height: 100vh;
 }
 .DSContainer1 {
    width: 78%;
@@ -265,8 +266,17 @@
    width: 40px;
    height: 40px;
 }
+@media (min-width:1366px) {
+   .appointmentContainer .nameSection {
+      width: 250px;
+   }
+   .appointmentContainer td {
+      padding: 1.0625rem;
+   }
+   
+}
 /*Responsive*/
-@media (max-width: 1440px) {
+@media only screen and (min-width:1366px) and (max-width: 1440px) {
    .DSContainer1 h2 {
       width: 16.3125rem;
       font-weight: 600;
@@ -279,6 +289,7 @@
    }
    .patientContainer {
       gap: 0;
+      width: 91%;
    }
    .patientContainer .inputName {
       width: 15.875rem;
@@ -660,6 +671,7 @@
    }
    .appointmentContainer .nameSection {
       width: 100%;
+      justify-content: space-around;
    }
 }
 @media (max-width: 320px) {
@@ -688,5 +700,10 @@
    }
    .appointmentContainer .nameSection {
       width: 100px;
+      gap: 1rem;
+      padding: 0;
+   }
+   .appointmentContainer td {
+      padding: 1rem;
    }
 }
