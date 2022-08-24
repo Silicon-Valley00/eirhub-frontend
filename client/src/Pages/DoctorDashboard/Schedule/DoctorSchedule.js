@@ -67,16 +67,13 @@ export default function DoctorSchedule(props) {
                         </thead>
                         <tbody>
                            <td className={DSstyles.nameSection}>
-                              {' '}
-                              <img src={femaleProfle}></img>Melissa Burkinstock{' '}
-                           <td>
-                              <img src={femaleProfle} alt={'img'} />
+                              <img src={femaleProfle} alt='profile img'></img>Melissa Burkinstock{' '}
                            </td>
-                           <td>
+                           <td className={DSstyles.tdCondition}>
                               Swollen tonsils with severe pains in throat and
                               chest
                            </td>
-                           <td style={{ color: '#EC6464', cursor: 'pointer' }}>
+                           <td style={{ color: '#EC6464', cursor: 'pointer' }} className={DSstyles.tdAction}>
                               Cancel
                            </td>
                            <tr></tr>

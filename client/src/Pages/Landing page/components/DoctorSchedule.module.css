@@ -227,16 +227,17 @@
    color: #0d3f58;
    width: 19.5rem;
 }
-.appointmentContainer .tdCondition {
+.appointmentContainer .tdCondition{
    text-align: left;
 }
-.appointmentContainer .nameSection {
+.appointmentContainer .nameSection{
    text-align: center;
    display: flex;
    align-items: center;
    justify-content: space-between;
    width: 300px;
    margin: 0 auto;
+   
 }
 .DSContainer h2 {
    padding: 20px 0px;
@@ -261,83 +262,64 @@
    width: 40px;
    height: 40px;
 }
-.nameSection img {
+.nameSection img{
    width: 40px;
    height: 40px;
 }
 /*Responsive*/
-@media (max-width: 1440px) {
-   .DSContainer1 h2 {
+@media (max-width:1440px) {
+
+   .DSContainer1 h2{
       width: 16.3125rem;
       font-weight: 600;
       height: 2.25rem;
-      font-size: 1.25rem;
+      font-size:1.25rem ;
       margin-left: 20px;
       margin-right: 425px;
       padding: 0;
       margin-top: 25px;
    }
-   .patientContainer {
+   .patientContainer{
       gap: 0;
    }
-   .patientContainer .inputName {
+   .patientContainer .inputName{
       width: 15.875rem;
       height: 2.5rem;
    }
-   .patientContainer .inputCondition {
+   .patientContainer .inputCondition{
       width: 23.5rem;
       height: 2.5rem;
    }
-   .patientContainer .inputDate {
+   .patientContainer .inputDate{
       width: 13.75rem;
       height: 2.5rem;
    }
-   .patientContainer .inputStartTime {
+   .patientContainer .inputStartTime{
       width: 11.875rem;
       height: 2.5rem;
    }
-   .patientContainer .inputEndTime {
+   .patientContainer .inputEndTime{
       width: 11.875rem;
       height: 2.5rem;
    }
-   .patientContainer label {
+   .patientContainer label{
       font-size: 0.875rem;
       margin-bottom: 8px;
    }
-   .appointTime label {
+   .appointTime label{
       font-size: 0.875rem;
       margin-bottom: 8px;
    }
-   .DSbutton {
+   .DSbutton{
       width: 75%;
       margin: auto;
    }
-   .DSh21 {
+   .DSh21{
       font-size: 16.3125rem;
       margin-left: 21px;
    }
-   .appointmentContainer {
+   .appointmentContainer{
       margin-top: 6px;
-   }
-   .DSFiles {
-      margin: 0;
-      width: 100%;
-      height: 313px;
-   }
-   .DSFiles table {
-      font-size: 0.9375rem;
-   }
-   .DSFiles td {
-      font-size: 0.9375rem;
-   }
-    .appointmentContainer .nameSection {
-      width: 250px;
-   }
-   .appointmentContainer td {
-      padding: 1.0625rem;
-   }
-   .appointmentContainer .tdCondition{
-      width: 400px;
    }
 }
 @media only screen and (max-width: 1200px) {
@@ -412,9 +394,9 @@
       grid-column: 1/3;
       width: 70%;
    }
-   .appointmentContainer table {
-      margin-top: 0;
-   }
+   .appointmentContainer table{
+      margin-top: 0
+   };
    .appointmentContainer th {
       font-size: 0.8rem;
    }
@@ -428,13 +410,13 @@
    .DSContainer1 {
       border-radius: 20px;
    }
-   .appointmentContainer .nameSection {
+      .appointmentContainer .nameSection{
       width: 200px;
    }
-   .appointmentContainer td {
+   .appointmentContainer td{
       padding: 1rem;
    }
-   .DSFiles {
+   .DSFiles{
       margin-top: 0;
    }
 }
@@ -453,17 +435,17 @@
       width: 78%;
       margin-left: 10rem;
    }
-   .DSpatientContainer {
+   .DSpatientContainer{
       width: 90%;
       margin: 0 auto;
    }
    .appointmentContainer {
       height: 25%;
    }
-   .appointmentContainer .nameSection {
+      .appointmentContainer .nameSection{
       width: 200px;
    }
-   .appointmentContainer td {
+   .appointmentContainer td{
       padding: 1rem;
    }
 }
@@ -498,9 +480,10 @@
       grid-column: 1/3;
       grid-row: 1/2;
    }
-   .DSpatientContainer {
-      grid-column: 1/2;
+   .DSpatientContainer{
+       grid-column: 1/2;
       grid-row: 3/4;
+
    }
    .appointTime {
       grid-column: 1/3;
@@ -512,12 +495,13 @@
       height: 18.75rem;
       overflow-y: scroll;
    }
-   .appointmentContainer .nameSection {
+     .appointmentContainer .nameSection{
       width: 200px;
    }
-   .appointmentContainer td {
+   .appointmentContainer td{
       padding: 1rem;
    }
+
 }
 /*Mobile screens*/
 @media (max-width: 425px) {
@@ -597,10 +581,10 @@
    .DSbuttondiv {
       width: 70%;
    }
-   .appointmentContainer .nameSection {
+    .appointmentContainer .nameSection{
       width: 100%;
    }
-   .appointmentContainer td {
+   .appointmentContainer td{
       padding: 1rem;
    }
 }
@@ -658,35 +642,36 @@
       width: 70%;
       height: 3.125rem;
    }
-   .appointmentContainer .nameSection {
+   .appointmentContainer .nameSection{
       width: 100%;
    }
 }
 @media (max-width: 320px) {
-   .DSContainer {
+   .DSContainer{
       width: 100%;
       margin: auto;
    }
-   .DSContainer1 form {
-      margin: auto;
-      width: 100%;
+     .DSContainer1 form {
+   margin: auto;
+   width: 100%;
    }
-   .DSFiles {
+   .DSFiles{
       width: 100%;
       text-align: center;
    }
-   .appointmentContainer {
+   .appointmentContainer{
       width: 100%;
       margin: auto;
    }
-   .appointmentContainer table {
+   .appointmentContainer table{
       width: 100%;
       overflow-x: scroll;
    }
-   .appointmentContainer td {
+   .appointmentContainer td{
       width: 1000px;
    }
-   .appointmentContainer .nameSection {
-      width: 100px;
-   }
+.appointmentContainer .nameSection{
+   width: 100px;
 }
+}
+
