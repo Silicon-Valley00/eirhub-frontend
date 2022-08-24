@@ -3,7 +3,7 @@ import styles from './profile.module.css';
 import Navigation from '../components/Navigation';
 import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
-import axios from '../../../Store/api/axios';
+import axios from 'axios';
 import { setDoctorProfile } from '../../../Store/DoctorAction';
 
 function DoctorProfile(props) {
@@ -377,27 +377,6 @@ function DoctorProfile(props) {
 
                {/* submit button */}
                <div className={styles.btn_div}>
-                  {/* {disableBtn ? (
-                     <button
-                        // type="submit"
-                        // form="form"
-                        className={styles.btn}
-                        onClick={setDisableBtn(!disableBtn)}
-                     >
-                        <span className={styles.btn_text}>Edit Profile</span>
-                     </button>
-                  ) : (
-                     <button
-                        type="submit"
-                        form="form"
-                        className={styles.btn}
-                        onClick={updateDoctorProfile}
-                     >
-                        <span className={styles.btn_text}>Update Profile</span>
-                        <FaCheck className={styles.icon} />
-                     </button>
-                  )} */}
-
                   {console.log(disableBtn)}
                   {disableBtn ? (
                      <button
@@ -420,17 +399,6 @@ function DoctorProfile(props) {
                         <FaCheck className={styles.icon} />
                      </button>
                   )}
-                  {/* {disableBtn === false && (
-                     <button
-                        type="submit"
-                        form="form"
-                        className={styles.btn}
-                        onClick={updateDoctorProfile}
-                     >
-                        <span className={styles.btn_text}>Update Profile</span>
-                        <FaCheck className={styles.icon} />
-                     </button>
-                  )} */}
                </div>
             </div>
          </div>
