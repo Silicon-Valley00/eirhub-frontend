@@ -136,7 +136,6 @@ p.link {
 }
 
 .signupToggle {
-   /* padding: var(--text-padding); */
    font-size: 0.7rem;
 }
 
@@ -146,9 +145,7 @@ p.link {
    border: 1px solid #678696;
    border-radius: var(--field-radius);
    display: flex;
-   justify-content: center;
    align-items: center;
-   /* padding: var(--text-padding); */
 }
 .inputField > i {
    margin-top: 5px;
@@ -157,6 +154,12 @@ p.link {
 .inputField > * {
    padding: 0 5px;
    border: none;
+}
+input{
+   color: var(--text-color);
+}
+input::placeholder{
+   color: grey;
 }
 .submit {
    display: flex;
@@ -174,7 +177,7 @@ p.link {
    height: var(--height);
    width: 145px;
    border-radius: var(--field-radius);
-   text-transform: uppercase;
+   text-transform: capitalize;
    text-align: center;
    box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
    overflow: hidden;
@@ -246,7 +249,7 @@ p.link {
    outline: none;
    border-radius: var(--field-radius);
    color: #fff;
-   text-transform: uppercase;
+   /* text-transform: uppercase; */
    font-weight: 500;
    font-size: 75%;
    text-align: center;
@@ -262,12 +265,10 @@ p.link {
    width: 86%;
    height: 100%;
    padding: auto;
-   color: #678696;
 }
 
 /* Error */
 .error {
-   /* max-height: max-content; */
    height: 2rem;
    background: rgb(253, 252, 252);
    border: 1px solid red;
@@ -293,12 +294,10 @@ p.link {
 .error i {
    width: 10%;
    height: 100%;
-   /* float: right; */
    font-size: 1rem;
    display: flex;
    justify-content: center;
    align-items: center;
-   /* padding-bottom: 0.9rem; */
    cursor: pointer;
 }
 .noerror {
@@ -312,17 +311,10 @@ p.link {
 }
 
 .inputError {
-   /* display: flex;
-   justify-content: space-around;
-   align-items: center; */
-   /* height: 20px; */
-   /* width: 20px; */
    border: 1px solid red;
-   /* font-size: 1rem; */
 }
 .inputError > i {
    margin-top: 5px;
-   /* font-size: 1rem; */
 }
 
 .errorMessageBox {
