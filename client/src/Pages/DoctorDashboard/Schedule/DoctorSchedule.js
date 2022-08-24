@@ -61,16 +61,15 @@ export default function DoctorSchedule(props) {
                   <div className={DSstyles.DSFiles}>
                      <table>
                         <thead>
-                           <th className={DSstyles.DSprofile}>Profile</th>
                            <th className={DSstyles.tName}>Name</th>
                            <th className={DSstyles.tCondition}>Condition</th>
                            <th className={DSstyles.tAction}>Action</th>
                         </thead>
                         <tbody>
-                           <td>
-                              <img src={femaleProfle}></img>
+                           <td className={DSstyles.nameSection}>
+                              {' '}
+                              <img src={femaleProfle}></img>Melissa Burkinstock{' '}
                            </td>
-                           <td>Melissa Burkinstock </td>
                            <td>
                               Swollen tonsils with severe pains in throat and
                               chest

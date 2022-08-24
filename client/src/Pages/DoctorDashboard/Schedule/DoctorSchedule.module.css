@@ -2,12 +2,12 @@
    margin-left: 16rem;
    display: flex;
    justify-content: space-evenly;
-   width: 83%;
    box-sizing: border-box;
-   gap: 2%;
+   margin-right: 0;
+   gap: 1.25rem;
 }
 .DSContainer1 {
-   width: 70%;
+   width: 78%;
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
@@ -52,8 +52,6 @@
    justify-content: space-between;
    margin-top: 1.875rem;
    background-color: white;
-   width: 90%;
-   margin: 0.625rem auto;
    height: 31.25rem;
    overflow-y: scroll;
    border-radius: 20px;
@@ -189,12 +187,10 @@
 }
 .appointmentContainer {
    background-color: white;
-   width: 95%;
    margin: auto;
    height: 25rem;
    border-radius: 20px;
    margin-top: 20px;
-   text-align: center;
    overflow: scroll;
    box-sizing: border-box;
 }
@@ -219,10 +215,7 @@
 .appointmentContainer table {
    margin: 20px auto;
    padding-top: 20px;
-}
-
-.appointmentContainer td {
-   width: 20%;
+   text-align: center;
 }
 .appointmentContainer th {
    color: #c2c9d1;
@@ -231,6 +224,8 @@
    font-weight: 600;
    font-size: 1rem;
    color: #0d3f58;
+   width: 19.5rem;
+   text-align: left;
 }
 .DSContainer h2 {
    padding: 20px 0px;
@@ -252,6 +247,15 @@
 }
 .imageDiv img {
    margin: 0 20px;
+   width: 40px;
+   height: 40px;
+}
+.nameSection{
+   display: flex;
+   margin-right: 0;
+   justify-content: space-around;
+}
+.nameSection img{
    width: 40px;
    height: 40px;
 }
