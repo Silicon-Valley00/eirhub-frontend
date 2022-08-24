@@ -1,7 +1,4 @@
 /* media queries for mobile devices */
-* {
-   font-family: 'Poppins', sans-serif;
-}
 #blur.active {
    filter: blur(5px);
    pointer-events: none;
@@ -161,6 +158,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 16px;
    }
 
    .circle_1 {
@@ -171,7 +169,7 @@
       justify-content: center;
       align-items: center;
       top: -5px;
-      left: -15px;
+      left: -13px;
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
@@ -193,8 +191,8 @@
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.125);
       border-radius: 20px;
-      height: 10rem;
-      width: 15rem;
+      height: 15rem;
+      width: 17rem;
       padding: 1rem;
       margin-bottom: 0;
       display: flex;
@@ -206,8 +204,6 @@
    .icon {
       color: var(--lightcol);
       padding-right: 15px;
-      height: 3rem;
-      width: 3rem;
    }
 
    .heading {
@@ -236,7 +232,7 @@
       justify-content: center;
       align-items: center;
       top: 20rem;
-      left: -15px;
+      left: -13px;
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
@@ -258,8 +254,8 @@
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.125);
       border-radius: 20px;
-      height: 10rem;
-      width: 15rem;
+      height: 15rem;
+      width: 17rem;
       padding: 1rem;
       margin-bottom: 0;
       display: flex;
@@ -284,7 +280,7 @@
       justify-content: center;
       align-items: center;
       bottom: 20rem;
-      left: -15px;
+      left: -13px;
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
@@ -298,7 +294,7 @@
       justify-content: center;
       align-items: center;
       bottom: -5px;
-      left: -15px;
+      left: -13px;
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
@@ -314,25 +310,25 @@
    .circle_1 {
       width: 5rem;
       height: 5rem;
-      left: -32px;
+      left: -26px;
    }
 
    .circle_2 {
       width: 5rem;
       height: 5rem;
-      left: -32px;
+      left: -26px;
    }
 
    .circle_3 {
       width: 5rem;
       height: 5rem;
-      left: -32px;
+      left: -26px;
    }
 
    .circle_4 {
       width: 5rem;
       height: 5rem;
-      left: -32px;
+      left: -26px;
    }
 
    .left_card {
@@ -344,14 +340,12 @@
    }
 
    .right__card {
-      width: 20rem;
-      height: 13rem;
+      width: 30rem;
       padding: 2rem;
    }
 
    .left__card {
-      width: 20rem;
-      height: 13rem;
+      width: 30rem;
       padding: 2rem;
    }
 

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import styles from './profile.module.css';
-import avatarThree from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
 import Navigation from '../components/Navigation';
 import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
-import store from '../../../Store/ReducerStore';
 import axios from 'axios';
 import { setDoctorProfile } from '../../../Store/DoctorAction';
 
 function DoctorProfile(props) {
    const data = props.doctorProfile;
 
+   // BUG: Email and specialities do not display in profiles..
    const id_doctor = data?.id_doctor;
    console.log(id_doctor);
+   console.log('the data: ', data);
    const [first_name, setFirstName] = useState(data?.first_name);
    const [last_name, setLastName] = useState(data?.last_name);
    const [middle_name, setMiddleName] = useState(
@@ -35,6 +35,9 @@ function DoctorProfile(props) {
    const [house_address, setAddress] = useState(data?.house_address);
    const [license_number, setLicenseNumber] = useState(data?.license_number);
 
+   // State to toggle between disabling the text inputs or not.
+   const [disableBtn, setDisableBtn] = useState(true);
+
    let doctorEditedProfile = {
       first_name,
       last_name,
@@ -52,7 +55,6 @@ function DoctorProfile(props) {
 
    // endpoint for updating doctor profile
    const endpoint = `http://127.0.0.1:5000/doctor/${data?.id_doctor}`;
-   console.log(endpoint);
 
    const dispatch = useDispatch();
    const updateDoctorProfile = async () => {
@@ -171,6 +173,7 @@ function DoctorProfile(props) {
                                        setFirstName(e.target.value)
                                     }
                                     value={first_name}
+                                    disabled={disableBtn}
                                  />
                               </div>
                            </div>
@@ -187,6 +190,7 @@ function DoctorProfile(props) {
                                        setMiddleName(e.target.value)
                                     }
                                     value={middle_name}
+                                    disabled={disableBtn}
                                  />
                               </div>
                            </div>
@@ -204,6 +208,7 @@ function DoctorProfile(props) {
                                        setLastName(e.target.value)
                                     }
                                     value={last_name}
+                                    disabled={disableBtn}
                                  />
                               </div>
                            </div>
@@ -222,6 +227,7 @@ function DoctorProfile(props) {
                                     required={true}
                                     onChange={(e) => setEmail(e.target.value)}
                                     value={user_email}
+                                    disabled={disableBtn}
                                  />
                               </div>
                            </div>{' '}
@@ -247,6 +253,7 @@ function DoctorProfile(props) {
                                        setDateOfBirth(e.target.value)
                                     }
                                     value={date_of_birth}
+                                    disabled={disableBtn}
                                  />
                               </div>
                            </div>
@@ -262,6 +269,7 @@ function DoctorProfile(props) {
                                           setGender(e.target.value)
                                        }
                                        value={gender}
+                                       disabled={disableBtn}
                                     >
                                        <option value={''}>Select gender</option>
                                        <option value={'Male'}>Male</option>
@@ -285,6 +293,7 @@ function DoctorProfile(props) {
                                     required={true}
                                     onChange={(e) => setAddress(e.target.value)}
                                     value={house_address}
+                                    disabled={disableBtn}
                                  />
                               </div>
                            </div>
@@ -319,6 +328,7 @@ function DoctorProfile(props) {
                                        setLicenseNumber(e.target.value)
                                     }
                                     value={license_number}
+                                    disabled={disableBtn}
                                  />
                               </div>
                            </div>
@@ -337,6 +347,7 @@ function DoctorProfile(props) {
                                        setSpecialties(e.target.value)
                                     }
                                     value={doctor_specialties}
+                                    disabled={disableBtn}
                                  />
                               </div>
                            </div>
@@ -353,6 +364,7 @@ function DoctorProfile(props) {
                                     required={true}
                                     onChange={(e) => setCode(e.target.value)}
                                     value={hospital_code}
+                                    disabled={disableBtn}
                                  />
                               </div>
                            </div>
@@ -365,15 +377,28 @@ function DoctorProfile(props) {
 
                {/* submit button */}
                <div className={styles.btn_div}>
-                  <button
-                     type="submit"
-                     form="form"
-                     className={styles.btn}
-                     onClick={updateDoctorProfile}
-                  >
-                     <span className={styles.btn_text}>Edit Profile</span>
-                     <FaCheck className={styles.icon} />
-                  </button>
+                  {console.log(disableBtn)}
+                  {disableBtn ? (
+                     <button
+                        className={styles.edit_btn}
+                        onClick={() => setDisableBtn(!disableBtn)}
+                     >
+                        <span className={styles.btn_text}>Edit Profile</span>
+                     </button>
+                  ) : (
+                     <button
+                        type="submit"
+                        form="form"
+                        className={styles.btn}
+                        onClick={() => {
+                           updateDoctorProfile();
+                           setDisableBtn(!disableBtn);
+                        }}
+                     >
+                        <span className={styles.btn_text}>Update Profile</span>
+                        <FaCheck className={styles.icon} />
+                     </button>
+                  )}
                </div>
             </div>
          </div>

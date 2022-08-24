@@ -45,10 +45,30 @@
    /* display: none; */
 }
 
-.linkContainer.active {
+#menu {
+   cursor: pointer;
+}
+
+#close {
+   cursor: pointer;
+}
+
+.sidebar {
    right: 0;
    transition: all;
    transition-duration: 500ms;
+}
+
+.active {
+   cursor: pointer;
+   list-style-type: none;
+   font-family: var(--mainfont);
+   font-weight: 600;
+   height: 4rem;
+   display: flex;
+   align-items: center;
+   border-bottom: 1px solid var(--gray);
+   color: var(-deepcol);
 }
 
 .each {
@@ -151,6 +171,14 @@
       font-size: 12px;
       font-weight: 500;
       height: 0;
+   }
+
+   .active {
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 500;
+      height: 0;
+      color: var(--lightcol);
    }
 
    .each:hover {

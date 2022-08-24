@@ -7,7 +7,7 @@ import DoctorPatients from '../DoctorPatients/DoctorPatients';
 export default function DoctorSchedule(props) {
    return (
       <>
-         <Navigation />
+         <Navigation nav={14} />
          <div className={DSstyles.DSContainer}>
             <div className={DSstyles.DSContainer1}>
                <h2>Apppoinment Details</h2>
@@ -69,6 +69,8 @@ export default function DoctorSchedule(props) {
                            <td className={DSstyles.nameSection}>
                               {' '}
                               <img src={femaleProfle}></img>Melissa Burkinstock{' '}
+                           <td>
+                              <img src={femaleProfle} alt={'img'} />
                            </td>
                            <td>
                               Swollen tonsils with severe pains in throat and
