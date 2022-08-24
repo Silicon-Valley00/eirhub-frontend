@@ -32,6 +32,7 @@ import DoctorProfile from './Pages/DoctorDashboard/Profile/Profile';
 import DoctorRecords from './Pages/DoctorDashboard/Records/DoctorRecords';
 import DoctorSchedule from './Pages/DoctorDashboard/Schedule/DoctorSchedule';
 import Schedule from './Pages/User Dashboard/Schedule/Schedule';
+import MessageUsers from './Pages/User Dashboard/components/MessageUsers';
 
 AOS.init();
 
@@ -127,7 +128,13 @@ function App() {
          <Route
             path="/usermessaging"
             exact
-            element={<UserDashboard parent={<Message />} page={'message'} />}
+            element={
+               <UserDashboard
+                  parent={<Message />}
+                  child={<MessageUsers />}
+                  page={'message'}
+               />
+            }
          />
          <Route
             path="/scheduling"

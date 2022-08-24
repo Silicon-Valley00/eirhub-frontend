@@ -6,6 +6,7 @@ import {
    SET_DOCTOR_PROFILE_INFO,
    SET_APPOINTMENT_DOCTOR,
    CLEAR_APPOINTMENT_DOCTOR,
+   SET_CHAT_WITH_DOCTOR,
 } from './ActionTypes';
 
 const initialState = {
@@ -48,6 +49,7 @@ const initialState = {
       gender: '',
    },
    doctorAppointment: {},
+   doctorToChatWith: '',
    // Doctor Dashboard
    doctorProfile: {
       first_name: '',
@@ -123,6 +125,9 @@ const Reducers = (state = initialState, action) => {
 
       case CLEAR_APPOINTMENT_DOCTOR:
          return { ...state, doctorAppointment: {} };
+
+      case SET_CHAT_WITH_DOCTOR:
+         return { ...state, doctorToChatWith: action.payload };
 
       case SET_DOCTOR_PROFILE_INFO:
          let doctor_profile_info = {

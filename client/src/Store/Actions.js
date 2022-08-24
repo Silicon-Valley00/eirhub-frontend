@@ -1,21 +1,14 @@
-import { SET_NAME } from './ActionTypes';
-import { SET_PROFILE_INFO } from './ActionTypes';
-import { SET_HEALTH_INFO } from './ActionTypes';
-import { SET_GUARDIAN_INFO } from './ActionTypes';
-import { SET_REPORTS } from './ActionTypes';
-import { SET_DOCTOR_PROFILE_INFO } from './ActionTypes';
-import { SET_APPOINTMENT_DOCTOR } from './ActionTypes';
-import { CLEAR_APPOINTMENT_DOCTOR } from './ActionTypes';
+import {
+   SET_PROFILE_INFO,
+   SET_HEALTH_INFO,
+   SET_GUARDIAN_INFO,
+   SET_DOCTOR_PROFILE_INFO,
+   SET_APPOINTMENT_DOCTOR,
+   CLEAR_APPOINTMENT_DOCTOR,
+   SET_CHAT_WITH_DOCTOR,
+} from './ActionTypes';
 
 import axios from 'axios';
-
-//Sets User name
-export const setName = (data) => {
-   return {
-      type: SET_NAME,
-      payload: data,
-   };
-};
 
 // Sets profile details
 export const setProfileInfo = (profileData) => {
@@ -62,7 +55,13 @@ export const clearDoctorForAppointment = () => {
       type: CLEAR_APPOINTMENT_DOCTOR,
    };
 };
-
+// sets uid of doctor to chat with
+export const setDoctorToChatWith = (doctorUID) => {
+   return {
+      type: SET_CHAT_WITH_DOCTOR,
+      payload: doctorUID,
+   };
+};
 //Fetches user profile details
 export const fetchProfile = (userID, guardianID) => {
    return async function (dispatch) {

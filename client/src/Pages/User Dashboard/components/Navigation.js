@@ -13,6 +13,7 @@ import { GiLabCoat } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import { persistor } from '../../../Store/ReducerStore';
 import { useNavigate } from 'react-router-dom';
+import { Logout } from '../../../context/authcontext';
 
 function Navigation(props) {
    const navigate = useNavigate();
@@ -20,6 +21,7 @@ function Navigation(props) {
    function logout() {
       try {
          setTimeout(() => persistor.purge(), 200);
+         Logout();
          navigate('/landing-page');
       } catch (err) {
          console.log(err);
