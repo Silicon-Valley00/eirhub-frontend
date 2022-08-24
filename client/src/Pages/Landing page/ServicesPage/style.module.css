@@ -95,6 +95,12 @@
       font-size: 20px;
    }
 
+   .with_text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+   }
+
    .with_text_title {
       font-size: 27px;
    }
@@ -126,6 +132,21 @@
    }
 
    .with_text_title {
+      font-size: 35px;
+   }
+
+   .with_text_desc {
+      font-size: 22px;
+   }
+
+   .of__image {
+      height: 100%;
+   }
+}
+
+/* ============ media query for HD screens =================================== */
+@media (min-width: 1400px) {
+   .with_text_title {
       font-size: 50px;
    }
 
@@ -135,9 +156,5 @@
 
    .with_text_content {
       font-size: 27px;
-   }
-
-   .of__image {
-      height: 100%;
    }
 }

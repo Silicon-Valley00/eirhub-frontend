@@ -1,5 +1,4 @@
 import styles from './navigation.module.css';
-import avatarThree from '../../../assets/Rectangle.png';
 import Sidebar from './Sidebar';
 import { useSelector } from 'react-redux';
 
