@@ -328,7 +328,7 @@ function Signup(props) {
                         {/* <label htmlFor="passwordconfirm">
                            Confirm Password
                         </label> */}
-                        <h3>Confrim Password</h3>
+                        <h3>Confirm Password</h3>
 
                         <div
                            className={

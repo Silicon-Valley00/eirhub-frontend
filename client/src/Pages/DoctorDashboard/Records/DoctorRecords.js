@@ -11,19 +11,19 @@ function DoctorRecords() {
    return (
       <>
          <Navigation />
-         <div className={styles.DRContainer}>
-            <div className={styles.DRContainer1}>
+         <div className={styles.docRecordsContainer}>
+            <div className={styles.docRecordsContainer1}>
             <h1>Upload Files</h1>
-            <div className={styles.DRUpload}>
-               <FaFileUpload className={styles.DRUploadimg} />
-               <h2 className={styles.DRSheader}>
+            <div className={styles.docRecordsUpload}>
+               <FaFileUpload className={styles.docRecordsUploadimg} />
+               <h2 className={styles.docRecordsSheader}>
                   Drag and drop file or{' '}
-                  <Link to="/" className={styles.DRButtonLink}>
+                  <Link to="/" className={styles.docRecordsButtonLink}>
                      browse
                   </Link>
                </h2>
             </div>
-            <div className={styles.DRFiles}>
+            <div className={styles.docRecordsFiles}>
                <table>
                   <thead>
                      <th>Title</th>
@@ -35,9 +35,9 @@ function DoctorRecords() {
                      <td>Lab_Report</td>
                      <td>Lab_Report</td>
                      <td>07/10/2022</td>
-                     <td className={styles.DRicons}>
-                        <FaPencilAlt className={styles.DRpencil} />
-                        <FaTrash className={styles.DRtrash} />
+                     <td className={styles.docRecordsicons}>
+                        <FaPencilAlt className={styles.docRecordspencil} />
+                        <FaTrash className={styles.docRecordstrash} />
                      </td>
                      <tr></tr>
                   </tbody>
