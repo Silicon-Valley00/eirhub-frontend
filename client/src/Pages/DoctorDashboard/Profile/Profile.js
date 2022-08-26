@@ -10,8 +10,6 @@ function DoctorProfile(props) {
    const data = props.doctorProfile;
 
    // BUG: Email and specialities do not display in profiles..
-   const id_doctor = data?.id_doctor;
-   console.log(id_doctor);
    console.log('the data: ', data);
    const [first_name, setFirstName] = useState(data?.first_name);
    const [last_name, setLastName] = useState(data?.last_name);
@@ -70,9 +68,7 @@ function DoctorProfile(props) {
             },
             application: 'application/json',
          });
-         console.log(request);
          if (request.status === 200) {
-            console.log('PUT was successful');
             dispatch(setDoctorProfile(request.data));
          }
       } catch (error) {

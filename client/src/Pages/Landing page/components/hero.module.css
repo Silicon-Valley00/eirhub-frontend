@@ -189,8 +189,13 @@
 }
 
 @media (min-width: 960px) {
+   #hero_body {
+      padding-top: 0;
+      /* background: red; */
+   }
    .hero_container {
       overflow: hidden;
+      padding-top: 0;
    }
 
    .hero_content {
@@ -200,6 +205,7 @@
       height: 30rem;
       display: flex;
       flex-direction: column;
+      margin-bottom: 2rem;
    }
 
    .hero_image {

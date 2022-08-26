@@ -192,7 +192,7 @@
 
 .appointment_table {
    width: 100%;
-   height: 9rem;
+   height: 20rem;
    background: var(--white);
    border-radius: 10px;
 }
@@ -217,6 +217,7 @@
       gap: 1rem;
       background-color: var(--white);
       padding-top: 0;
+      height: 90vh;
    }
 
    .middle_section {
@@ -225,6 +226,7 @@
       background-color: var(--gray);
       border-radius: 20px 20px 0 0;
       padding: 2rem 10px 0 10px;
+      gap: 24%;
    }
 
    .right_pane {
@@ -247,7 +249,7 @@
 
 @media (min-width: 1024px) {
    .main {
-      margin-left: 16rem;
+      margin-left: 20rem;
    }
 
    .doctor_display {
@@ -274,17 +276,18 @@
    }
 
    #first_card {
-      justify-content: start;
-      padding: 0 2rem;
+      justify-content: center;
+      padding-right: 10%;
    }
 
    #second_card {
       justify-content: start;
       padding: 0 2rem;
+      padding-left: 25%;
    }
 
    #third_card {
-      justify-content: start;
+      justify-content: center;
    }
 
    .digits {
