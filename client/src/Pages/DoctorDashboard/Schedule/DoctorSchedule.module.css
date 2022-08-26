@@ -51,10 +51,8 @@
    text-align: center;
    display: flex;
    justify-content: space-between;
-   margin-top: 1.875rem;
    background-color: white;
    height: 31.25rem;
-   overflow-y: scroll;
    border-radius: 20px;
 }
 .DSFiles::-webkit-scrollbar,
@@ -99,12 +97,6 @@
 }
 .DSFiles table {
    width: 100%;
-   margin-top: 30px;
-}
-.DSFiles td {
-   height: 5rem;
-   color: #0d3f58;
-   font-weight: 700;
 }
 
 .patientContainer {
@@ -159,6 +151,11 @@
    width: 80%;
    height: 2.5rem;
 }
+.appointTime input::-webkit-input-placeholder {
+   font-size: 1.1rem;
+   text-align: left;
+   padding-left: 8px;
+}
 .DSbutton {
    width: 100%;
    height: 100%;
@@ -192,7 +189,7 @@
    height: 25rem;
    border-radius: 20px;
    margin-top: 20px;
-   overflow: scroll;
+   overflow-y: scroll;
    box-sizing: border-box;
 }
 .appointmentContainer::-webkit-scrollbar,
@@ -227,6 +224,7 @@
    font-size: 1rem;
    color: #0d3f58;
    width: 19.5rem;
+   height: 100px;
 }
 .appointmentContainer .tdCondition {
    text-align: left;
@@ -236,7 +234,7 @@
    width: 300px;
    margin: 0 auto;
 }
-.DSFiles .tName{
+.DSFiles .tName {
    text-align: left;
 }
 .DSContainer h2 {
@@ -253,8 +251,6 @@
 }
 .imageDiv {
    margin: 15px 0;
-   display: flex;
-   align-items: center;
    width: 17rem;
 }
 .imageDiv img {
@@ -267,7 +263,7 @@
    height: 40px;
 }
 /*Responsive*/
-@media only screen and (min-width:1366px) and (max-width: 1440px) {
+@media only screen and (min-width: 1366px) and (max-width: 1440px) {
    .DSContainer1 h2 {
       width: 16.3125rem;
       font-weight: 600;
@@ -332,14 +328,18 @@
    .DSFiles td {
       font-size: 0.9375rem;
    }
-    .appointmentContainer .nameSection {
+   .appointmentContainer .nameSection {
       width: 250px;
+      padding: 0;
    }
    .appointmentContainer td {
       padding: 1.0625rem;
    }
-   .appointmentContainer .tdCondition{
+   .appointmentContainer .tdCondition {
       width: 400px;
+   }
+   .appointTime input::-webkit-input-placeholder {
+      font-size: 0.875rem;
    }
 }
 @media only screen and (max-width: 1200px) {

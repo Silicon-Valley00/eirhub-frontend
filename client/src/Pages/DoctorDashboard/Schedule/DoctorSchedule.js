@@ -108,21 +108,29 @@ const DoctorSchedule = (props) => {
                         Appointment Date
                      </label>
                      <input
-                        type="date"
+                        type="text"
                         id="date"
-                        className={DSstyles.inputDate}
                         placeholder="DD/MM/YYYY"
+                        onFocus={(e) => (e.target.type = 'date')}
+                        onBlur={(e) => (e.target.type = 'text')}
+                        className={DSstyles.inputDate}
                      />
                      <label className={DSstyles.labelSTime}>Start Time</label>
                      <input
-                        type="time"
+                        type="text"
                         id="start time"
+                        placeholder="HH:MM:SS"
+                        onFocus={(e) => (e.target.type = 'time')}
+                        onBlur={(e) => (e.target.type = 'text')}
                         className={DSstyles.inputStartTime}
                      />
                      <label className={DSstyles.labelETime}>End Time</label>
                      <input
-                        type="time"
+                        type="text"
                         id="end time"
+                        placeholder="HH:MM:SS"
+                        onFocus={(e) => (e.target.type = 'time')}
+                        onBlur={(e) => (e.target.type = 'text')}
                         className={DSstyles.inputEndTime}
                      />
                   </div>
@@ -159,21 +167,20 @@ const DoctorSchedule = (props) => {
                            >
                               Cancel
                            </td>
-                           <tr></tr>
                            {dataAppoint.msg.map((data, index) => {
                               return (
                                  <tr key={index}>
-                                    <td>
+                                    <td className={DSstyles.imgSection}>
                                        <img
                                           src={data.patient_info.person_image}
                                           alt={'img'}
                                        />
                                     </td>
-                                    <td>
+                                    <td className={DSstyles.nameSection}>
                                        {data.patient_info.first_name}{' '}
                                        {data.patient_info.last_name}{' '}
                                     </td>
-                                    <td>
+                                    <td className={DSstyles.tdCondition}>
                                        Swollen tonsils with severe pains in
                                        throat and chest
                                     </td>
@@ -195,7 +202,7 @@ const DoctorSchedule = (props) => {
                </div>
             </div>
             <div className={DSstyles.DSpatientContainer}>
-               <DoctorPatients />
+               <DoctorPatients show />
             </div>
          </div>
       </>
