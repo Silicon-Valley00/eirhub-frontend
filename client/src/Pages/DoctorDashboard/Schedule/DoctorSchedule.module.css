@@ -226,6 +226,9 @@
    width: 19.5rem;
    height: 100px;
 }
+.appointmentContainer .imgSection{
+   width: 80px;
+}
 .appointmentContainer .tdCondition {
    text-align: left;
 }
@@ -324,6 +327,7 @@
    }
    .DSFiles table {
       font-size: 0.9375rem;
+      margin-top: 0;
    }
    .DSFiles td {
       font-size: 0.9375rem;

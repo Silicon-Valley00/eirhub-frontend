@@ -5,6 +5,7 @@ import DoctorPatients from '../DoctorPatients/DoctorPatients';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import{BsChevronDown} from 'react-icons/bs'
 
 const dataAppoint = {
    msg: [
@@ -145,7 +146,7 @@ const DoctorSchedule = (props) => {
                   <div className={DSstyles.DSFiles}>
                      <table>
                         <thead>
-                           <th></th>
+                           <th className={DSstyles.imgHeader}></th>
                            <th className={DSstyles.tName}>Name</th>
                            <th className={DSstyles.tCondition}>Condition</th>
                            <th className={DSstyles.tAction}>Action</th>
