@@ -36,6 +36,7 @@ export default function DoctorSchedule(props) {
                         type="date"
                         id="date"
                         className={DSstyles.inputDate}
+                        placeholder="DD/MM/YYYY"
                      />
                      <label className={DSstyles.labelSTime}>Start Time</label>
                      <input
@@ -61,19 +62,26 @@ export default function DoctorSchedule(props) {
                   <div className={DSstyles.DSFiles}>
                      <table>
                         <thead>
+                           <th></th>
                            <th className={DSstyles.tName}>Name</th>
                            <th className={DSstyles.tCondition}>Condition</th>
                            <th className={DSstyles.tAction}>Action</th>
                         </thead>
                         <tbody>
+                           <td className={DSstyles.imgSection}>
+                              <img src={femaleProfle} alt="profile img"></img>
+                           </td>
                            <td className={DSstyles.nameSection}>
-                              <img src={femaleProfle} alt='profile img'></img>Melissa Burkinstock{' '}
+                              Melissa Burkinstock{' '}
                            </td>
                            <td className={DSstyles.tdCondition}>
                               Swollen tonsils with severe pains in throat and
                               chest
                            </td>
-                           <td style={{ color: '#EC6464', cursor: 'pointer' }} className={DSstyles.tdAction}>
+                           <td
+                              style={{ color: '#EC6464', cursor: 'pointer' }}
+                              className={DSstyles.tdAction}
+                           >
                               Cancel
                            </td>
                            <tr></tr>

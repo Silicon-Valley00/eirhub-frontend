@@ -232,12 +232,12 @@
    text-align: left;
 }
 .appointmentContainer .nameSection {
-   text-align: center;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
+   text-align: left;
    width: 300px;
    margin: 0 auto;
+}
+.DSFiles .tName{
+   text-align: left;
 }
 .DSContainer h2 {
    padding: 20px 0px;
@@ -265,15 +265,6 @@
 .nameSection img {
    width: 40px;
    height: 40px;
-}
-@media (min-width:1366px) {
-   .appointmentContainer .nameSection {
-      width: 250px;
-   }
-   .appointmentContainer td {
-      padding: 1.0625rem;
-   }
-   
 }
 /*Responsive*/
 @media only screen and (min-width:1366px) and (max-width: 1440px) {
