@@ -1,21 +1,22 @@
 .docRecordsContainer {
-   height: 90vh;
+   width: calc(100vw-15rem);
+   height: 100vh;
    margin-left: 15rem;
    display: flex;
    box-sizing: border-box;
    gap: 1.25rem;
    margin-right: 20px;
-   overflow-y: auto;
+   overflow-y: hidden;
    overflow-x: hidden;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.docRecordsContainer::-webkit-scrollbar {
+*::-webkit-scrollbar {
    display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.docRecordsContainer {
+* {
    -ms-overflow-style: none; /* IE and Edge */
    scrollbar-width: none; /* Firefox */
 }
@@ -29,6 +30,7 @@
    border-radius: 20px;
    padding: 20px;
    max-height: 100vh;
+   overflow: scroll;
 }
 .docRecordsContainer1 h1 {
    margin: 20px 0;
@@ -84,12 +86,12 @@
    margin-top: 4.5rem;
    background-color: white;
    width: 90%;
-   margin: 100px auto;
-   height: 500px;
-   overflow-y: auto;
+   margin: 50px auto;
+   height: 30%;
+   overflow-y: scroll;
    border-radius: 20px;
-   height: 32.6rem;
-   max-height: 100vh;
+   /* height: 32.6rem; */
+   /* max-height: 100vh; */
 }
 /* .docRecordsFiles::-webkit-scrollbar,
 .docRecordsFiles::-webkit-scrollbar {
@@ -142,9 +144,11 @@
    font-size: 0.9375rem;
 }
 .docRecordsButtonLink {
+   cursor: pointer;
    color: #05a6c2;
 }
 .docRecordsUploadimg {
+   cursor: pointer;
    height: 50px;
    width: 50px;
    fill: #05a6c2;
