@@ -123,12 +123,8 @@
 
    .container {
       flex-direction: row;
-      height: 25rem;
+      height: 30rem;
       gap: 5rem;
-   }
-
-   .container {
-      height: 40rem;
    }
 
    .with_text_title {
@@ -146,6 +142,10 @@
 
 /* ============ media query for HD screens =================================== */
 @media (min-width: 1400px) {
+   .container {
+      height: 40rem;
+   }
+
    .with_text_title {
       font-size: 50px;
    }

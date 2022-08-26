@@ -1,10 +1,85 @@
 import DSstyles from '../../DoctorDashboard/Schedule/DoctorSchedule.module.css';
 import Navigation from '../components/Navigation';
-import maleProfle from '../../../assets/Rectangle-1.png';
 import femaleProfle from '../../../assets/Rectangle.png';
 import DoctorPatients from '../DoctorPatients/DoctorPatients';
+import axios from 'axios';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-export default function DoctorSchedule(props) {
+const dataAppoint = {
+   msg: [
+      {
+         appointment_date: 'Mon, 21 Nov 2022 00:00:00 GMT',
+         appointment_end_time: '13:00:00',
+         appointment_location: '',
+         appointment_reason: 'Swollen tonsils',
+         appointment_start_time: '12:00:00',
+         appointment_status: 'pending',
+         id_appointment: 4,
+         id_doctor: 20,
+         id_patient: 34,
+         patient_info: {
+            first_name: 'Pete',
+            last_name: 'Greg',
+            middle_name: 'Leta',
+            person_image: 'femaleProfle',
+         },
+      },
+      {
+         appointment_date: 'Mon, 21 Nov 2022 00:00:00 GMT',
+         appointment_end_time: '03:00:00',
+         appointment_location: '',
+         appointment_reason: 'Eczema',
+         appointment_start_time: '01:00:00',
+         appointment_status: 'pending',
+         idAppointment: 5,
+         id_doctor: 20,
+         id_patient: 34,
+         patient_info: {
+            first_name: 'Desmond',
+            last_name: 'Jeph',
+            middle_name: 'Leta',
+            person_image: 'femaleProfle',
+         },
+      },
+   ],
+   status: true,
+};
+
+const DoctorSchedule = (props) => {
+   const data = props.doctorProfile;
+   console.log('In the schedule: ', data);
+
+   // endpoint for updating doctor profile
+   const endpoint = `http://127.0.0.1:5000/appointments/?id_doctor=${data?.id_doctor}&accepted=false`;
+   console.log(endpoint);
+
+   useEffect(() => {
+      const updateDoctorProfile = async () => {
+         try {
+            const response = await axios({
+               method: 'GET',
+               url: endpoint,
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+               // application: 'application/json',
+            });
+            console.log(response);
+            if (response.status === 200) {
+               console.log('GET was successful');
+               console.log(response.data.msg);
+               return response.data.msg;
+            }
+         } catch (error) {
+            console.log('GET Error', error);
+         }
+      };
+      updateDoctorProfile();
+   }, [endpoint]);
+
    return (
       <>
          <Navigation nav={14} />
@@ -67,18 +142,35 @@ export default function DoctorSchedule(props) {
                            <th className={DSstyles.tAction}>Action</th>
                         </thead>
                         <tbody>
-                           <td>
-                              <img src={femaleProfle} alt={'img'} />
-                           </td>
-                           <td>Melissa Burkinstock </td>
-                           <td>
-                              Swollen tonsils with severe pains in throat and
-                              chest
-                           </td>
-                           <td style={{ color: '#EC6464', cursor: 'pointer' }}>
-                              Cancel
-                           </td>
-                           <tr></tr>
+                           {dataAppoint.msg.map((data, index) => {
+                              return (
+                                 <tr key={index}>
+                                    <td>
+                                       <img
+                                          src={data.patient_info.person_image}
+                                          alt={'img'}
+                                       />
+                                    </td>
+                                    <td>
+                                       {data.patient_info.first_name}{' '}
+                                       {data.patient_info.last_name}{' '}
+                                    </td>
+                                    <td>
+                                       Swollen tonsils with severe pains in
+                                       throat and chest
+                                    </td>
+                                    <td
+                                       style={{
+                                          color: '#EC6464',
+                                          cursor: 'pointer',
+                                       }}
+                                       onClick=""
+                                    >
+                                       Cancel
+                                    </td>
+                                 </tr>
+                              );
+                           })}
                         </tbody>
                      </table>
                   </div>
@@ -90,4 +182,12 @@ export default function DoctorSchedule(props) {
          </div>
       </>
    );
-}
+};
+
+const mapStateToProps = (state) => {
+   return {
+      doctorProfile: state.doctorProfile,
+   };
+};
+
+export default connect(mapStateToProps)(DoctorSchedule);
