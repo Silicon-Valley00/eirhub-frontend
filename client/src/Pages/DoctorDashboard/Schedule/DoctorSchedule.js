@@ -136,7 +136,6 @@ const DoctorSchedule = (props) => {
                   <div className={DSstyles.DSFiles}>
                      <table>
                         <thead>
-                           <th className={DSstyles.DSprofile}>Profile</th>
                            <th className={DSstyles.tName}>Name</th>
                            <th className={DSstyles.tCondition}>Condition</th>
                            <th className={DSstyles.tAction}>Action</th>

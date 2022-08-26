@@ -37,8 +37,6 @@ const Footer = () => {
                <li className={footerStyle.flist}>Health Consultant</li>
                <li className={footerStyle.flist}>Find Doctor</li>
                <li className={footerStyle.flist}>E-Pharmacy</li>
-               <li className={footerStyle.flist}>Health Tips</li>
-               <li className={footerStyle.flist}>Blog</li>
             </ul>
          </div>
 

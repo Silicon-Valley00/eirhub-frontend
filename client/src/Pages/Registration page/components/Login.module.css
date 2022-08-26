@@ -2,7 +2,7 @@
 
 :root {
    --radius: 25px;
-   --height: 2rem;
+   --height: 40px;
    --white: #fff;
    --field-radius: 8px;
    --bleached-blue: #ecf3fe;
@@ -114,6 +114,7 @@ i.closeIcon {
 .loginForm .info {
    color: #678696;
    font-size: 0.7rem;
+   margin: 0.7rem 0;
 }
 .loginForm h3 {
    color: #0d3f58;
@@ -141,6 +142,7 @@ p.link {
 
 .inputField {
    height: var(--height);
+   max-height: 3rem;
    border: 1px solid #678696;
    border-radius: var(--field-radius);
    display: flex;
