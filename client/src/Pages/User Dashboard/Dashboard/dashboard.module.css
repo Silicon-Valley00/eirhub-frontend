@@ -5,6 +5,9 @@ main#midsection {
    padding: 2rem 1.2rem 0 1.2rem;
    border-top-left-radius: 2rem;
    border-top-right-radius: 2rem;
+   height: calc(100vh - 4rem);
+   min-height: calc(100vh - 4rem);
+   max-height: calc(100vh - 4rem);
 }
 
 main .vitalsBox {
@@ -252,7 +255,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 }
 .appointmentTable {
    width: 100%;
-   height: 11rem;
+   height: calc(666px - 31rem);
    background-color: white;
    /* display: grid; */
    justify-content: center;
@@ -549,7 +552,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      margin: -4rem 0 0 4rem;
+      margin: 2rem 0 0 4rem;
       border-top-right-radius: 0.5rem;
    }
    .medicationTable {
@@ -567,7 +570,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      margin: 10rem 0 0 4rem;
+      margin: 15rem 0 0 4rem;
       border-radius: 0.5rem;
    }
    .apointmentsTable {

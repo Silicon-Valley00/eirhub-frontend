@@ -11,7 +11,6 @@ function UserDashboard(props) {
 
    // handles menu open and close for smaller devices
    const [openMenu, setOpenMenu] = useState(false);
-
    return (
       <div className={styles.userbody}>
          <div className={styles.container}>
@@ -35,11 +34,7 @@ function UserDashboard(props) {
                   </div>
                   <div className={styles.profileImage}>
                      <img
-                        src={
-                           userProfileImage !== ''
-                              ? userProfileImage
-                              : avatarThree
-                        }
+                        src={userProfileImage ? userProfileImage : avatarThree}
                         alt="avatar"
                      />
                   </div>

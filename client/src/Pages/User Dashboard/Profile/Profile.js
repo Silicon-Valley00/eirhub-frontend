@@ -215,7 +215,7 @@ function Profile(props) {
       //       enteredHealthInfo
       //    )
       // );
-
+      setUploadBtn('Upload Image');
       setDisableFormBtn(true);
    }
    return (

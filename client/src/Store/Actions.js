@@ -446,6 +446,35 @@ export async function fetchDoctors() {
    }
 }
 
+//Fectches doctors by patient id
+export async function fetchDoctorsByPatient(userID) {
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `http://127.0.0.1:5000/patients/?id_patient=${userID}`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      });
+      if (response.status === 200) {
+         //checks details of response
+         if (response.data.status === true) {
+            //returns response
+            alert('doctors by patient id worked fetch worked');
+            return response.data.msg;
+         }
+      } else {
+         //takes all statuses aside 200
+         alert('Something went wrong. Try again, doctor 1');
+      }
+   } catch (error) {
+      alert(error, 'doctors 2');
+   }
+}
+
 //Fetches user accepted appointments
 export async function fetchAppointments(userID, status) {
    try {

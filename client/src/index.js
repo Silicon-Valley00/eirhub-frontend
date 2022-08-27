@@ -51,7 +51,7 @@ CometChat.init(CONSTANTS.APP_ID, appSetting).then(
 
       alert('worked');
       //  Logout();
-      LoginUser('superhero3');
+      // LoginUser('superhero3');
    },
    (error) => {
       alert('did not work');

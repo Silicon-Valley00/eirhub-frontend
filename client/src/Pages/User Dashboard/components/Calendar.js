@@ -5,7 +5,7 @@ import {
    MdOutlineArrowForwardIos,
 } from 'react-icons/md';
 
-function Calendar() {
+function Calendar(props) {
    // Array of months to display
    const months = [
       'January',
@@ -20,6 +20,11 @@ function Calendar() {
       'October',
       'November',
       'December',
+   ];
+   var dates = [
+      1670803200000, 1704844800000, 1668988800000, 1663545600000, 1670803200000,
+      1665878400000, 1670803200000, 1668124800000, 1673222400000, 1672531200000,
+      1672531200000, 1672531200000, 1672531200000, 1700092800000,
    ];
    // Current date variables
    const currentDate = new Date();
@@ -42,6 +47,9 @@ function Calendar() {
    );
    // maps array of available days to html tags
    days = dayNumbers.map((num) => {
+      console.log(
+         new Date(`${num - startDay + 1}-${selectedMonth}-${year}`).getTime()
+      );
       if (num >= startDay) {
          if (
             num - startDay + 1 ===
@@ -50,6 +58,22 @@ function Calendar() {
          ) {
             return (
                <div className={styles.today} key={num}>
+                  {num - startDay + 1}
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+            );
+         } else if (
+            dates.includes(
+               new Date(
+                  `${num - startDay + 1}-${selectedMonth}-${year}`
+               ).getTime()
+            )
+         ) {
+            return (
+               <div className={styles.appoint} key={num}>
                   {num - startDay + 1}
                   <span></span>
                   <span></span>

@@ -16,6 +16,5 @@
    border-top-left-radius: 2rem;
    border-top-right-radius: 2rem;
    /* width: 137%; */
-   overflow-y: auto;
-   height: 67%;
+   height: calc(100% - 4.5rem);
 }
