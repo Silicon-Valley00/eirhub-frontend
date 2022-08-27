@@ -447,6 +447,8 @@ export async function fetchDoctors() {
    }
 }
 
+
+
 //Fetches user accepted appointments
 export async function fetchAppointments(userID, status) {
    try {

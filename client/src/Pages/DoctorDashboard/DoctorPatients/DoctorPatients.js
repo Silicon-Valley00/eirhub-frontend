@@ -2,8 +2,9 @@ import styles from './DoctorPatients.module.css'
 import maleProfile from '../../../assets/Rectangle-1.png';
 import femaleProfile from '../../../assets/Rectangle.png';
 import { GrClose } from 'react-icons/gr';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {FaUserCircle} from 'react-icons/fa'
+import { fetchPatientsByDoctorId } from '../../../Store/DoctorAction';
 
 
 
@@ -31,6 +32,7 @@ const patients = [
 ];
 
 function DoctorPatients() {
+    const [patients,setPat]
     const [show, setShow] = useState(false);
     const body = document.querySelector("body");
 
@@ -42,6 +44,13 @@ function DoctorPatients() {
         setShow(false)
         body.styles.overflow = 'auto'
     }    
+
+    useEffect(()=>{
+        async function fetchdata(){
+            const items = await fetchPatientsByDoctorId(doctorId)
+            setPatien
+        }
+    })
 
     return (<>
         <FaUserCircle
