@@ -310,15 +310,17 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 100%;
+   height: 2.8rem;
+   min-height: 2.8rem;
+   max-height: 2.8rem;
    width: 100%;
    border-radius: 50%;
-}
-.appointmentsBox table tbody td:nth-child(1) div img {
-   height: 100%;
-   width: 100%;
    clip-path: circle();
 }
+/* .appointmentsBox table tbody td:nth-child(1) div img {
+   height: 100%;
+   width: 100%;
+} */
 
 .appointmentsBox table tbody td:nth-child(3) {
    text-align: center;
@@ -552,7 +554,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      margin: 2rem 0 0 4rem;
+      margin: -1rem 0 0 4rem;
       border-top-right-radius: 0.5rem;
    }
    .medicationTable {
@@ -570,7 +572,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      margin: 15rem 0 0 4rem;
+      margin: 2rem 0 0 4rem;
       border-radius: 0.5rem;
    }
    .apointmentsTable {
@@ -719,7 +721,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       width: 100%;
       background: var(--gray);
       height: 22%;
-      margin: -1.8rem 0 0 0;
+      margin: 1.8rem 0 0 0;
    }
    .medicationTable {
       overflow-x: hidden;
@@ -739,7 +741,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    .appointmentsBox {
       background: var(--gray);
       height: 22%;
-      margin: -0.5rem 0 0 0;
+      margin: 5rem 0 0 0;
       border-radius: 0.2rem;
    }
    .appointmentTable {
@@ -755,7 +757,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
       font-size: 0.7rem;
    }
    .appointmentTable table {
-      width: 125%;
+      width: 200%;
    }
    .appointmentsBox table thead th {
       padding: 0.4rem 0.5rem;
