@@ -34,6 +34,14 @@ import DoctorRecords from './Pages/DoctorDashboard/Records/DoctorRecords';
 import DoctorSchedule from './Pages/DoctorDashboard/Schedule/DoctorSchedule';
 import DoctorMessage from './Pages/DoctorDashboard/DoctorMessage/DoctorMessage';
 
+import TagManager from 'react-gtm-module';
+
+const tagManagerArgs = {
+   gtmID: 'GTM-WHSKBFK',
+};
+
+TagManager.initialize(tagManagerArgs);
+
 AOS.init();
 
 function App() {

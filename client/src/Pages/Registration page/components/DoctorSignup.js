@@ -11,6 +11,7 @@ import hospital from '../../../assets/hospital.svg';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchDoctorsProfileInfo } from '../../../Store/DoctorAction.js';
+import { SignUpUser } from '../../../context/authcontext';
 
 function DoctorSignup(props) {
    const navigate = useNavigate();
@@ -25,7 +26,7 @@ function DoctorSignup(props) {
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    // Handles server error
-   const [isError, setIsError] = useState(true);
+   const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState(
       'Email already in use. Want to login?'
    );
@@ -38,6 +39,20 @@ function DoctorSignup(props) {
       if (feedback[0] === true) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
+         //registers user into cometchat
+         SignUpUser(
+            `${
+               feedback[1].first_name.charAt(0).toUpperCase() +
+               feedback[1].first_name.slice(1)
+            } ${
+               feedback[1].last_name.charAt(0).toUpperCase() +
+               feedback[1].last_name.slice(1)
+            }
+      }`,
+            `${feedback[1].first_name.toLowerCase()}${feedback[1].last_name.toLowerCase()}${
+               feedback[1].id_doctor
+            }`
+         );
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
          setTimeout(() => {
             navigate('/doctordashboard');
