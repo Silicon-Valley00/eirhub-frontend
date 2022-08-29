@@ -207,7 +207,6 @@ select::-ms-expand {
    min-height: calc(666px - 21rem);
    max-height: calc(666px - 21rem);
    padding-bottom: 2rem;
-   border: 1px solid red;
 }
 
 .doctorsBox .emptyMessage {

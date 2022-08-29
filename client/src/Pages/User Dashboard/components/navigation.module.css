@@ -86,7 +86,7 @@ aside .sidebar li:hover {
    color: var(--midcol);
 }
 aside .sidebar li:hover span.icons {
-   margin-left: 1rem;
+   margin-left: 0.5rem;
    color: var(--midcol);
 }
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
