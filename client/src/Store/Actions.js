@@ -6,6 +6,7 @@ import {
    SET_APPOINTMENT_DOCTOR,
    CLEAR_APPOINTMENT_DOCTOR,
    SET_CHAT_WITH_DOCTOR,
+   SET_APPOINTMENTS_DATES,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -60,6 +61,13 @@ export const setDoctorToChatWith = (doctorUID) => {
    return {
       type: SET_CHAT_WITH_DOCTOR,
       payload: doctorUID,
+   };
+};
+// sets appointment dates
+export const setAppointmentDates = (dates) => {
+   return {
+      type: SET_APPOINTMENTS_DATES,
+      payload: dates,
    };
 };
 //Fetches user profile details

@@ -26,7 +26,7 @@ function MessageUsers() {
    }, []);
 
    let myDoctors;
-   if (doctors === undefined) {
+   if (doctors[0] === undefined) {
       myDoctors = <p className={styles.emptyMessage}>Nothing to show here.</p>;
    } else {
       if (doctors.length !== 0) {

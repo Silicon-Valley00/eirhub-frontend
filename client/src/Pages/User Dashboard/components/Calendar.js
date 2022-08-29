@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import styles from './calendar.module.css';
+import { useSelector } from 'react-redux';
 import {
    MdOutlineArrowBackIos,
    MdOutlineArrowForwardIos,
 } from 'react-icons/md';
 
 function Calendar(props) {
+   const dates = useSelector((state) => state.appointmentDates);
+
    // Array of months to display
    const months = [
       'January',
@@ -21,11 +24,11 @@ function Calendar(props) {
       'November',
       'December',
    ];
-   var dates = [
-      1670803200000, 1704844800000, 1668988800000, 1663545600000, 1670803200000,
-      1665878400000, 1670803200000, 1668124800000, 1673222400000, 1672531200000,
-      1672531200000, 1672531200000, 1672531200000, 1700092800000, 1661558400000,
-   ];
+   // var dates = [
+   //    1670803200000, 1704844800000, 1668988800000, 1663545600000, 1670803200000,
+   //    1665878400000, 1670803200000, 1668124800000, 1673222400000, 1672531200000,
+   //    1672531200000, 1672531200000, 1672531200000, 1700092800000, 1661558400000,
+   // ];
    // Current date variables
    const currentDate = new Date();
    const year = currentDate.getFullYear();

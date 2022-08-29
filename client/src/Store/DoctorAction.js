@@ -52,7 +52,7 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
    };
 };
 
-//Fectches doctors by patient id
+//Fectches patients by doctor id
 export async function fetchPatientsByDoctor(userID) {
    try {
       const response = await axios({
