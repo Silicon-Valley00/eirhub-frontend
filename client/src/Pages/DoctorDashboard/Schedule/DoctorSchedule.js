@@ -1,10 +1,10 @@
 import DSstyles from '../../DoctorDashboard/Schedule/DoctorSchedule.module.css';
 import Navigation from '../components/Navigation';
-import femaleProfle from '../../../assets/Rectangle.png';
 import DoctorPatients from '../DoctorPatients/DoctorPatients';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import avatarOne from '../../../assets/Rectangle-1.png';
 
 const dataAppoint = {
    msg: [
@@ -50,35 +50,103 @@ const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
    console.log('In the schedule: ', data);
 
+   const [allAppointments, setAllAppointments] = useState([]);
+   console.log(allAppointments);
+
    // endpoint for updating doctor profile
-   const endpoint = `http://127.0.0.1:5000/appointments/?id_doctor=${data?.id_doctor}&accepted=false`;
-   console.log(endpoint);
+   const baseURL = 'http://127.0.0.1:5000';
+
+   // useEffect(() => {
+   //    const getAllAppointmentsForADoctor = async () => {
+   //       const getAppointments = async () => {
+   //          try {
+   //             const response = await axios({
+   //                method: 'GET',
+   //                url: endpoint,
+   //                headers: {
+   //                   'Access-Control-Allow-Origin': '*',
+   //                   'Access-Control-Allow-Headers': '*',
+   //                   'Access-Control-Allow-Methods': '*',
+   //                },
+   //             });
+   //             console.log(response);
+   //             const res = response.data.msg;
+   //             if (response.status === 200) {
+   //                console.log('GET was successful');
+   //                if (res.length === 0) {
+   //                   console.log('true');
+   //                   setAllAppointments(
+   //                      allAppointments.push({ nothing: 'Nothing to display' })
+   //                   );
+   //                }
+   //                return response.data.msg;
+   //             }
+   //          } catch (error) {
+   //             console.log('GET Error', error);
+   //          }
+   //       };
+   //       const fetchedAppointments = await getAppointments();
+   //       setAllAppointments(fetchedAppointments);
+   //    };
+   //    getAllAppointmentsForADoctor();
+   // }, [endpoint]);
 
    useEffect(() => {
-      const updateDoctorProfile = async () => {
-         try {
-            const response = await axios({
-               method: 'GET',
-               url: endpoint,
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
-               // application: 'application/json',
+      const getAllAppointmentsForADoctor = async () => {
+         axios
+            .get(
+               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=false`,
+               {
+                  headers: {
+                     'Access-Control-Allow-Origin': '*',
+                     'Access-Control-Allow-Headers': '*',
+                     'Access-Control-Allow-Methods': '*',
+                  },
+               }
+            )
+            .then((res) => {
+               setAllAppointments(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
             });
-            console.log(response);
-            if (response.status === 200) {
-               console.log('GET was successful');
-               console.log(response.data.msg);
-               return response.data.msg;
-            }
-         } catch (error) {
-            console.log('GET Error', error);
-         }
       };
-      updateDoctorProfile();
-   }, [endpoint]);
+      getAllAppointmentsForADoctor();
+   }, []);
+
+   let appointmentsData;
+   //displays medications
+   if (allAppointments === undefined) {
+      appointmentsData = <p>Nothing to show here.</p>;
+   } else {
+      if (allAppointments.length !== 0) {
+         appointmentsData = allAppointments.map((item, j) => {
+            return (
+               <tr key={`${item.appointment_reason}-${j}`}>
+                  <td>
+                     <div>
+                        <img
+                           src={
+                              item.doctor_info.person_image
+                                 ? item.doctor_info.person_image
+                                 : avatarOne
+                           }
+                           alt="avatar"
+                        />
+                     </div>
+                  </td>
+                  <td>{`Dr. ${item.doctor_info.first_name} ${item.doctor_info.last_name}`}</td>
+                  <td>Ridge Hospital</td>
+                  <td>{item.appointment_reason}</td>
+                  <td>{item.appointment_status}</td>
+               </tr>
+            );
+         });
+      } else if (allAppointments.length === 0) {
+         // Sends message to be displayed when saved videos is empty
+         appointmentsData = <p>Nothing to show here.</p>;
+      }
+   }
 
    return (
       <>
@@ -141,18 +209,18 @@ const DoctorSchedule = (props) => {
                            <th className={DSstyles.tAction}>Action</th>
                         </thead>
                         <tbody>
-                           {dataAppoint.msg.map((data, index) => {
+                           {allAppointments.map((data, index) => {
                               return (
                                  <tr key={index}>
                                     <td>
                                        <img
-                                          src={data.patient_info.person_image}
+                                          src={data?.patient_info.person_image}
                                           alt={'img'}
                                        />
                                     </td>
                                     <td>
-                                       {data.patient_info.first_name}{' '}
-                                       {data.patient_info.last_name}{' '}
+                                       {data?.patient_info.first_name}{' '}
+                                       {data?.patient_info.last_name}{' '}
                                     </td>
                                     <td>
                                        Swollen tonsils with severe pains in

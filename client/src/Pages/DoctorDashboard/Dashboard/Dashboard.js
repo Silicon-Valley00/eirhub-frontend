@@ -5,45 +5,71 @@ import styles from './dashboard.module.css';
 import { IoIosPeople } from 'react-icons/io';
 import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
-import appointImg from '../../../assets/maleDoctor.jpg';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 function MidDashboard(props) {
    const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
+   const [numOfPatients, setNumOfPatients] = useState(0);
+   const [numOfRecords, setNumOfRecords] = useState(0);
+   const [numOfAppointments, setNumOfAppointments] = useState(0);
 
    const data = props.doctorProfile;
+   const baseURL = 'http://127.0.0.1:5000';
    // endpoint for updating doctor profile
-   const endpoint = `http://127.0.0.1:5000/appointments/?id_doctor=${data?.id_doctor}&accepted=true`;
-   console.log(endpoint);
+   const accepted_appointment_endpoint = `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`;
+   const numberOfPatients_endpoint = `${baseURL}/doctors/patient/?id_doctor=${data?.id_doctor}`;
+   const numberOfRecords_endpoint = `${baseURL}/doctors/records/?id_doctor=${data?.id_doctor}`;
+   const numberOfAppointments_endpoint = `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`;
 
+   const endpoints = [
+      `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`,
+      `${baseURL}/doctors/records/?id_doctor=${data?.id_doctor}`,
+      `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`,
+   ];
+
+   // TODO: add interceptors to catch errors
    useEffect(() => {
-      const getAcceptedAppointments = async () => {
-         const fetchAcceptedAppointments = async () => {
-            try {
-               const response = await axios({
-                  method: 'GET',
-                  url: endpoint,
+      const fetchAcceptedAppointments = async () => {
+         axios
+            .get(
+               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`,
+               {
                   headers: {
                      'Access-Control-Allow-Origin': '*',
                      'Access-Control-Allow-Headers': '*',
                      'Access-Control-Allow-Methods': '*',
                   },
-                  // application: 'application/json',
-               });
-               if (response.status === 200) {
-                  console.log('GET was successful');
-                  return response.data.msg;
                }
-            } catch (error) {
-               console.log('GET Error', error);
-            }
-         };
-         const acceptedAppointments = await fetchAcceptedAppointments();
-         setAcceptedAppointment(acceptedAppointments);
+            )
+            .then((res) => {
+               setAcceptedAppointment(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
       };
-      getAcceptedAppointments();
-   }, [endpoint]);
+      fetchAcceptedAppointments();
+   }, []);
+
+   // axios
+   //    .all(
+   //       endpoints.map((endpoint) => axios.get(endpoint)),
+   //       {
+   //          headers: {
+   //             'Access-Control-Allow-Origin': '*',
+   //             'Access-Control-Allow-Headers': '*',
+   //             'Access-Control-Allow-Methods': '*',
+   //          },
+   //       }
+   //    )
+   //    .then(axios.spread((numOfPatients, numOfRecords, numOfAppointments),
+   //    setAcceptedAppointment()
+   //    )
+   //    )
+   //    .catch((err) => {
+   //       console.log(err.message);
+   //    });
 
    return (
       <>
@@ -93,7 +119,7 @@ function MidDashboard(props) {
                            {getacceptedAppointment.map((data, index) => {
                               return (
                                  <>
-                                    <tr>
+                                    <tr key={index}>
                                        <td>
                                           <img
                                              src={
