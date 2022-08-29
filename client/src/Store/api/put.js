@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export default axios.create({
-   baseUrl: 'http://127.0.0.1:5000/',
+const put = axios.create({
+   baseURL: 'http://127.0.0.1:5000',
    timeout: 1000,
    headers: {
       'Access-Control-Allow-Origin': '*',
@@ -9,4 +9,7 @@ export default axios.create({
       'Access-Control-Allow-Headers': '*',
       'Access-Control-Allow-Methods': '*',
    },
+   application: 'application/json',
 });
+
+export default put;

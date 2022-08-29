@@ -1,6 +1,6 @@
 #hero_body {
    width: 100%;
-   height: 40rem;
+   height: 45rem;
    padding-top: 6rem;
    background-color: var(--gray);
    padding-left: 4rem;
@@ -16,7 +16,7 @@
    max-height: 100%;
 }
 
-.hero_content {
+/* .hero_content {
    padding-top: 2rem;
    width: 50%;
    display: flex;
@@ -24,23 +24,41 @@
    align-items: center;
    justify-content: center;
    color: var(--deepcol);
+} */
+
+.hero_content {
+   position: absolute;
+   color: var(--gray);
+   width: 80%;
+   height: 80%;
+   right: 34px;
+   /* top: 100px; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
 
 .content__title {
    font-family: var(--mainfont);
    color: var(--white);
+   font-size: 25px;
+   text-align: center;
 }
+
 .content_info {
    padding-top: 1.2rem;
 }
+
 .content__info {
-   font-size: 2rem;
+   font-size: 20px;
    font-family: var(--mainfont);
    color: var(--white);
+   width: 100%;
 }
 
 .content_button {
-   padding-top: 1.2rem;
+   padding-top: 1.7rem;
    width: 100%;
    display: flex;
    align-items: center;
@@ -48,8 +66,11 @@
 }
 
 .content__button {
-   display: block;
-   width: 15rem;
+   display: flex;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 3rem;
    padding: 10px;
    font-weight: 500;
    color: var(--white);
@@ -78,12 +99,13 @@
    padding-right: 20px;
    pointer-events: none;
 }
-.hero__image {
+
+/* .hero__image {
    width: 100%;
    pointer-events: none;
-}
+} */
 
-/* ========================== mobile view ========================= */
+/* ========================== covers the background image on mobile screens ========================= */
 @media (max-width: 368px) {
    #hero_body {
       background-image: url('../../../assets/maleDoctor.jpg');
@@ -105,29 +127,7 @@
       opacity: 85%;
    }
 
-   .hero_content {
-      position: absolute;
-      color: var(--gray);
-      width: 80%;
-      height: max-content;
-      right: 37px;
-      top: 100px;
-   }
-
-   .content__title {
-      font-size: 20px;
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-   }
-
-   .content__buttton {
-      width: 10rem;
-      color: red;
-   }
-
-   .content__info {
-      font-size: 13pt;
-      font-family: 'Poppins', sans-serif;
+   .content__button {
       width: 100%;
    }
 
@@ -157,27 +157,17 @@
       position: absolute;
       color: var(--gray);
       width: 80%;
-      height: max-content;
+      height: 70%;
       right: 40px;
       top: 100px;
    }
 
-   .content__title {
-      font-size: 28pt;
-      font-family: 'Poppins', sans-serif;
-   }
-
-   .content__info {
-      font-size: 13pt;
-      font-family: 'Poppins', sans-serif;
+   .content__button {
+      width: fit-content;
    }
 
    .hero_image {
       display: none;
-   }
-
-   .content__button {
-      width: 20rem;
    }
 }
 
@@ -186,46 +176,73 @@
       position: absolute;
       color: var(--gray);
       width: 80%;
-      height: max-content;
-      right: 40px;
-      top: 200px;
+      height: 70%;
+      right: 70px;
+      top: 120px;
+      display: flex;
+      flex-direction: column;
+   }
+
+   .content__title {
+      font-size: 30px;
    }
 }
 
 @media (min-width: 960px) {
+   #hero_body {
+      padding-top: 0;
+      /* background: red; */
+   }
+   .hero_container {
+      overflow: hidden;
+      padding-top: 0;
+   }
+
+   .hero_content {
+      color: var(--midcol);
+      position: initial;
+      width: 50%;
+      height: 30rem;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+   }
+
    .hero_image {
-      padding-top: 2rem;
+      padding-top: 4rem;
       width: 50%;
       float: right;
       padding-right: 20px;
+      margin-top: 5rem;
    }
 
    .hero__image {
       width: 100%;
       overflow: hidden;
    }
-   .hero_content {
-      color: var(--midcol);
-      position: initial;
-      width: 50%;
-   }
 
    .content__title {
       color: var(--deepcol);
+      text-align: left;
+      font-size: 25pt;
    }
+
    .content__info {
-      font-size: 17pt;
-      height: 7rem;
+      font-size: 15pt;
       color: var(--deepcol);
    }
 
    .content_button {
       justify-content: flex-start;
-      padding-top: 2rem;
+      padding-top: 3rem;
    }
 }
 
 @media (min-width: 1024px) {
+   .hero__image {
+      /* width: 50%; */
+   }
+
    .content__button {
       width: 25rem;
    }
@@ -234,8 +251,7 @@
 @media (min-width: 1200px) {
    #hero_body {
       width: 100%;
-      height: 47rem;
-      padding-bottom: 4rem;
+      height: 50rem;
       background-color: var(--gray);
       padding-left: 4rem;
       padding-right: 4rem;
@@ -252,11 +268,11 @@
    }
 
    .hero_image {
-      padding-top: 2rem;
+      padding-top: 8rem;
       width: 50%;
       float: right;
       overflow: hidden;
-      padding-right: 20px;
+      margin-left: 2rem;
    }
 
    .hero__image {
@@ -270,7 +286,11 @@
 }
 
 @media (min-width: 1400px) {
+   #hero_body {
+      height: 60rem;
+   }
+
    .hero_image {
-      width: 35%;
+      width: 50%;
    }
 }

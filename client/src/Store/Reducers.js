@@ -142,16 +142,16 @@ const Reducers = (state = initialState, action) => {
             first_name: action.payload.first_name,
             middle_name: action.payload.middle_name,
             last_name: action.payload.last_name,
-            user_email: action.payload.email,
+            user_email: action.payload.user_email,
             date_of_birth: action.payload.date_of_birth,
             gender: action.payload.gender,
             house_address: action.payload.house_address,
             license_number: action.payload.license_number,
-            doctor_specialties: action.payload.specialties,
+            doctor_specialties: action.payload.doctor_specialties,
             hospital_code: action.payload.hospital_code,
             doctor_ratings: action.payload.doctor_ratings,
             person_image: action.payload.person_image,
-            idDoctor: action.payload.idDoctor,
+            id_doctor: action.payload.id_doctor,
          };
          return { ...state, doctorProfile: doctor_profile_info };
 

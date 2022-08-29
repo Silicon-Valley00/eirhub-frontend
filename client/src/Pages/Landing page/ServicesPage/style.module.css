@@ -46,6 +46,10 @@
    gap: 2rem;
 }
 
+.reverse_flex {
+   flex-direction: column-reverse;
+}
+
 .with_text {
    display: block;
 }
@@ -91,6 +95,12 @@
       font-size: 20px;
    }
 
+   .with_text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+   }
+
    .with_text_title {
       font-size: 27px;
    }
@@ -113,10 +123,25 @@
 
    .container {
       flex-direction: row;
-      height: 25rem;
+      height: 30rem;
       gap: 5rem;
    }
 
+   .with_text_title {
+      font-size: 35px;
+   }
+
+   .with_text_desc {
+      font-size: 22px;
+   }
+
+   .of__image {
+      height: 100%;
+   }
+}
+
+/* ============ media query for HD screens =================================== */
+@media (min-width: 1400px) {
    .container {
       height: 40rem;
    }
@@ -131,9 +156,5 @@
 
    .with_text_content {
       font-size: 27px;
-   }
-
-   .of__image {
-      height: 100%;
    }
 }

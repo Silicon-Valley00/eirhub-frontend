@@ -824,7 +824,7 @@ function Profile(props) {
                            setDisableFormBtn(false);
                         }}
                      >
-                        Update Profile
+                        Edit Profile
                      </button>
                   ) : (
                      <button
@@ -862,7 +862,7 @@ function Profile(props) {
                            guardianMobileNumber === ''
                         }
                      >
-                        Submit
+                        Update
                      </button>
                   )}
                </div>

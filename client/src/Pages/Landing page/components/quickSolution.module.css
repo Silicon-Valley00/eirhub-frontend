@@ -16,7 +16,7 @@
    font-weight: bold;
    letter-spacing: 0.4px;
    color: var(--deepcol);
-   font-size: x-large;
+   font-size: 20px;
    text-align: center;
    font-family: var(--mainfont);
 }
@@ -53,6 +53,11 @@
 
 .heading {
    font-weight: bold;
+   font-size: 15px;
+}
+
+.about {
+   font-size: 12px;
 }
 
 .join_us {
@@ -154,10 +159,6 @@
 }
 
 @media (min-width: 1024px) {
-   .caption {
-      font-size: var(--xl_title);
-   }
-
    .groupdocpic {
       display: block;
       width: 60%;
@@ -165,13 +166,13 @@
    }
 
    .card {
-      height: 19rem;
+      height: 25rem;
    }
 
-   .icon {
-      height: 2rem;
-      width: 2rem;
+   .setCol {
+      font-size: 30px;
    }
+
    .heading {
       font-size: 24px;
       font-weight: 800;
@@ -206,5 +207,15 @@
       width: 20rem;
       height: 3rem;
       font-size: 20px;
+   }
+
+   .setCol {
+      font-size: 3rem;
+   }
+}
+
+@media (min-width: 1400px) {
+   .card {
+      height: 20rem;
    }
 }
