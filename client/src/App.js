@@ -23,16 +23,16 @@ import Medications from './Pages/User Dashboard/Medications/Medications';
 import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
 import Records from './Pages/User Dashboard/Records/Records';
 import RecordChild from './Pages/User Dashboard/components/RecordsChild';
+import Schedule from './Pages/User Dashboard/Schedule/Schedule';
 import Message from './Pages/User Dashboard/Message/Message';
+import MessageUsers from './Pages/User Dashboard/components/MessageUsers';
 
 // imports for doctor's dashboard
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
 import DoctorProfile from './Pages/DoctorDashboard/Profile/Profile';
-
 import DoctorRecords from './Pages/DoctorDashboard/Records/DoctorRecords';
 import DoctorSchedule from './Pages/DoctorDashboard/Schedule/DoctorSchedule';
-import Schedule from './Pages/User Dashboard/Schedule/Schedule';
-import MessageUsers from './Pages/User Dashboard/components/MessageUsers';
+import DoctorMessage from './Pages/DoctorDashboard/DoctorMessage/DoctorMessage';
 
 AOS.init();
 
@@ -155,6 +155,7 @@ function App() {
 
          <Route path="/doctorprofile" exact element={<DoctorProfile />} />
          <Route path="/doctorrecords" exact element={<DoctorRecords />} />
+         <Route path="/doctormessages" exact element={<DoctorMessage />} />
 
          {/* End of route for doctor-dashboard */}
       </Routes>

@@ -7,6 +7,7 @@ import {
    SET_APPOINTMENT_DOCTOR,
    CLEAR_APPOINTMENT_DOCTOR,
    SET_CHAT_WITH_DOCTOR,
+   SET_PATIENT_TO_CHAT_WITH,
 } from './ActionTypes';
 
 const initialState = {
@@ -66,6 +67,7 @@ const initialState = {
       person_image: '',
       id_doctor: '',
    },
+   patientToChatWith: '',
 };
 
 const Reducers = (state = initialState, action) => {
@@ -146,6 +148,9 @@ const Reducers = (state = initialState, action) => {
             idDoctor: action.payload.idDoctor,
          };
          return { ...state, doctorProfile: doctor_profile_info };
+
+      case SET_PATIENT_TO_CHAT_WITH:
+         return { ...state, patientToChatWith: action.payload };
 
       default:
          return state;
