@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './message.module.css';
-import { CometChatMessages } from '../../../Chat UI KIt/cometchat-pro-react-ui-kit/CometChatWorkspace/src';
+import { CometChatMessages } from '../../../Chat UI Kit/cometchat-pro-react-ui-kit/CometChatWorkspace/src';
 import MessagePatients from '../components/MessagePatients';
 import Navigation from '../components/Navigation';
 
