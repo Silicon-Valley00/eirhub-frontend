@@ -6,6 +6,11 @@ import {
    SET_DOCTOR_PROFILE_INFO,
    SET_APPOINTMENT_DOCTOR,
    CLEAR_APPOINTMENT_DOCTOR,
+   SET_CHAT_WITH_DOCTOR,
+   SET_PATIENT_TO_CHAT_WITH,
+   SET_APPOINTMENTS_DATES,
+   SET_DOCTOR_AUTH,
+   SET_PATIENT_AUTH,
 } from './ActionTypes';
 
 const initialState = {
@@ -48,7 +53,12 @@ const initialState = {
       gender: '',
    },
    doctorAppointment: {},
+   doctorToChatWith: '',
+   appointmentDates: [],
+   isPatientAuth: false,
+
    // Doctor Dashboard
+   isDoctorAuth: false,
    doctorProfile: {
       first_name: '',
       middle_name: '',
@@ -64,6 +74,7 @@ const initialState = {
       person_image: '',
       id_doctor: '',
    },
+   patientToChatWith: '',
 };
 
 const Reducers = (state = initialState, action) => {
@@ -124,6 +135,17 @@ const Reducers = (state = initialState, action) => {
       case CLEAR_APPOINTMENT_DOCTOR:
          return { ...state, doctorAppointment: {} };
 
+      case SET_CHAT_WITH_DOCTOR:
+         return { ...state, doctorToChatWith: action.payload };
+
+      case SET_APPOINTMENTS_DATES:
+         return { ...state, appointmentDates: action.payload };
+
+      case SET_PATIENT_AUTH:
+         return { ...state, isPatientAuth: action.payload };
+      // Doctor dashboard
+      case SET_DOCTOR_AUTH:
+         return { ...state, isPatientAuth: action.payload };
       case SET_DOCTOR_PROFILE_INFO:
          let doctor_profile_info = {
             first_name: action.payload.first_name,
@@ -141,6 +163,9 @@ const Reducers = (state = initialState, action) => {
             id_doctor: action.payload.id_doctor,
          };
          return { ...state, doctorProfile: doctor_profile_info };
+
+      case SET_PATIENT_TO_CHAT_WITH:
+         return { ...state, patientToChatWith: action.payload };
 
       default:
          return state;

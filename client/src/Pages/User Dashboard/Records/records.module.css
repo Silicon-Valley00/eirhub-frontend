@@ -4,6 +4,9 @@
    padding: 2rem 1.2rem 0 1.4rem;
    border-top-left-radius: 2rem;
    border-top-right-radius: 2rem;
+   height: calc(100vh - 4rem);
+   min-height: calc(100vh - 4rem);
+   max-height: calc(100vh - 4rem);
 }
 
 .recordTable {
@@ -288,16 +291,24 @@
       height: 2rem;
       display: inline-flex;
    }
-   .recordOpenBox.active {
-      padding: 1rem;
-   }
+
    .reportTitle h2 {
       font-size: 1.5rem;
+   }
+
+   .recordOpenBox {
+      left: -150%;
+   }
+
+   .recordOpenBox.active {
+      width: 120%;
+      padding: 1rem;
    }
    .back i {
       font-size: 150%;
    }
    .descriptionBox {
       font-size: 0.9rem;
+      width: 100%;
    }
 }

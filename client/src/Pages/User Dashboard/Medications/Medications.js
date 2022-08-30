@@ -129,7 +129,7 @@ function Medication(props) {
       <>
          <div id={styles.medicationsBody}>
             <div className={styles.medicationsBoxContent}>
-               {/* <div className={styles.medicationBox}>
+               <div className={styles.medicationBox}>
                   <div className={styles.upperContent}>
                      <div className={styles.icon}>
                         <i>
@@ -187,7 +187,7 @@ function Medication(props) {
                      </button>
                      <button>Delete</button>
                   </div>
-               </div>{' '} */}
+               </div>{' '}
                {list}
             </div>
          </div>

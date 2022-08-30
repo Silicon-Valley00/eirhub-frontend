@@ -12,9 +12,11 @@ import { connect, useDispatch } from 'react-redux';
 import {
    fetchAppointments,
    fetchMedications,
+   setAppointmentDates,
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
+import BirthdayCard from '../../Birthday Card/BirthdayCard';
 
 const mapStateToProps = (state) => {
    return {
@@ -37,6 +39,27 @@ function Dashboard(props) {
       }
       fetchdata();
    }, []);
+
+   let appointment_dates = [];
+   useEffect(() => {
+      if (appointments === undefined) return;
+      if (
+         appointments !== undefined ||
+         appointments !== null ||
+         appointments.length !== 0
+      ) {
+         for (let item of appointments) {
+            if (
+               new Date().getTime() <= new Date(item.appointment_date).getTime()
+            ) {
+               appointment_dates.push(
+                  new Date(item.appointment_date).getTime()
+               );
+            }
+         }
+      }
+      dispatch(setAppointmentDates(appointment_dates));
+   }, [appointments]);
 
    var list;
    //displays medications
@@ -84,14 +107,7 @@ function Dashboard(props) {
       if (appointments.length !== 0) {
          appointmentsData = appointments.map((item, j) => {
             return (
-               <tr
-                  key={`${item.appointment_reason}-${j}`}
-                  style={{
-                     height: '2.8rem',
-                     minHeight: '2.8rem',
-                     maxHeight: '2.8rem',
-                  }}
-               >
+               <tr key={`${item.appointment_reason}-${j}`}>
                   <td>
                      <div>
                         <img src={item.doctor_info.person_image} alt="avatar" />
@@ -100,7 +116,7 @@ function Dashboard(props) {
                   <td>{`Dr. ${item.doctor_info.first_name} ${item.doctor_info.last_name}`}</td>
                   <td>{item.appointment_location}</td>
                   <td>
-                     {`${new Date(item.appointment_date).getDate() + 1}/${
+                     {`${new Date(item.appointment_date).getDate()}/${
                         new Date(item.appointment_date).getMonth() + 1
                      }/${new Date(item.appointment_date).getFullYear()}`}
                   </td>
@@ -142,6 +158,7 @@ function Dashboard(props) {
             start_date: data.start_date,
             end_date: data.end_date,
             last_taken_date: date,
+            id_patient: patientID,
          };
          //updating prescription
          dispatch(
@@ -153,6 +170,7 @@ function Dashboard(props) {
          return false;
       }
    }
+
    return (
       <>
          <main id={styles.midsection}>
@@ -165,7 +183,11 @@ function Dashboard(props) {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>{`${props.savedHealthDetails.pulse} bpm`}</h4>
+                        <h4>
+                           {props.savedHealthDetails?.pulse
+                              ? `${props.savedHealthDetails?.pulse} bpm`
+                              : ''}
+                        </h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -183,7 +205,11 @@ function Dashboard(props) {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>{`${props.savedHealthDetails.temperature} °C`}</h4>
+                        <h4>
+                           {props.savedHealthDetails?.temperature
+                              ? `${props.savedHealthDetails?.temperature} °C`
+                              : ''}
+                        </h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -201,7 +227,11 @@ function Dashboard(props) {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>{`${props.savedHealthDetails.blood_pressure}`}</h4>
+                        <h4>
+                           {props.savedHealthDetails.blood_pressure
+                              ? `${props.savedHealthDetails.blood_pressure}`
+                              : ''}
+                        </h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
@@ -259,60 +289,7 @@ function Dashboard(props) {
                            <th>Time</th>
                         </tr>
                      </thead>
-                     <tbody>
-                        {/* <tr
-                           style={{
-                              height: '2.8rem',
-                              minHeight: '2.8rem',
-                              maxHeight: '2.8rem',
-                           }}
-                        >
-                           <td>
-                              <div>
-                                 <img src={avatarTwo} alt="avatar" />
-                              </div>
-                           </td>
-                           <td>Dr. Natheniel Gaglo</td>
-                           <td>37 Military Hospital</td>
-                           <td>07/02/2020</td>
-                           <td>2:00 - 3:00 PM</td>
-                        </tr>  */}
-
-                        {appointmentsData}
-                        {/* <tr>
-                           <td>
-                              <div>
-                                 <img src={avatarOne} alt="avatar" />
-                              </div>
-                           </td>
-                           <td>Dr. Raphael Botwe</td>
-                           <td>Ridge Hospital</td>
-                           <td>21/11/2020</td>
-                           <td>8:00 AM</td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div>
-                                 <img src={avatarFour} alt="avatar" />
-                              </div>
-                           </td>
-                           <td>Dr. Joel Mensah</td>
-                           <td>Korle Bu Hospital</td>
-                           <td>03/05/2020</td>
-                           <td>11:00 AM</td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div>
-                                 <img src={avatarThree} alt="avatar" />
-                              </div>
-                           </td>
-                           <td>Dr. Anne Hill</td>
-                           <td>East Wing Clinic, Gbawa North</td>
-                           <td>30/06/2020</td>
-                           <td>1:00 - 5:00 PM</td>
-                        </tr> */}
-                     </tbody>
+                     <tbody>{appointmentsData}</tbody>
                   </table>
                </div>
             </div>

@@ -9,7 +9,8 @@ import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchProfile } from '../../../Store/Actions.js';
+import { fetchProfile, setPatientAuth } from '../../../Store/Actions.js';
+import { SignUpUser } from '../../../context/authcontext';
 
 function Signup(props) {
    const navigate = useNavigate();
@@ -36,17 +37,26 @@ function Signup(props) {
 
       // checks if user signup was successful
       if (feedback[0] === true) {
-         //logs user into cometchat
-         // LoginUser(
-         //    `${feedback[1].first_name.toLowerCase()}-${feedback[1].last_name.toLowerCase()}-${
-         //       feedback[1].id
-         //    }`
-         // );
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
+         //registers user into cometchat
+         SignUpUser(
+            `${
+               feedback[1].first_name.charAt(0).toUpperCase() +
+               feedback[1].first_name.slice(1)
+            } ${
+               feedback[1].last_name.charAt(0).toUpperCase() +
+               feedback[1].last_name.slice(1)
+            }
+      }`,
+            `${feedback[1].first_name.toLowerCase()}${feedback[1].last_name.toLowerCase()}${
+               feedback[1].id_patient
+            }`
+         );
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
+         dispatch(setPatientAuth(true));
 
          setTimeout(() => {
             navigate('/userdashboard');
