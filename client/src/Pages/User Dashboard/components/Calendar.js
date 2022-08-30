@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import styles from './calendar.module.css';
+import { useSelector } from 'react-redux';
 import {
    MdOutlineArrowBackIos,
    MdOutlineArrowForwardIos,
 } from 'react-icons/md';
 
-function Calendar() {
+function Calendar(props) {
+   const dates = useSelector((state) => state.appointmentDates);
+
    // Array of months to display
    const months = [
       'January',
@@ -21,6 +24,11 @@ function Calendar() {
       'November',
       'December',
    ];
+   // var dates = [
+   //    1670803200000, 1704844800000, 1668988800000, 1663545600000, 1670803200000,
+   //    1665878400000, 1670803200000, 1668124800000, 1673222400000, 1672531200000,
+   //    1672531200000, 1672531200000, 1672531200000, 1700092800000, 1661558400000,
+   // ];
    // Current date variables
    const currentDate = new Date();
    const year = currentDate.getFullYear();
@@ -40,9 +48,31 @@ function Calendar() {
    var dayNumbers = [...Array(totalNumberOfDays + startDay - 1).keys()].map(
       (x) => ++x
    );
+
    // maps array of available days to html tags
    days = dayNumbers.map((num) => {
       if (num >= startDay) {
+         // // Checks if user's date is equal to focused date and has an appointment
+         if (
+            num - startDay + 1 ===
+               new Date(currentDate.toDateString()).getUTCDate() &&
+            selectedMonth === month &&
+            dates.includes(
+               new Date(
+                  `${year}-${selectedMonth + 1}-${num - startDay + 1}`
+               ).getTime()
+            )
+         ) {
+            return (
+               <div className={styles.todayAppoint} key={num}>
+                  {num - startDay + 1}
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </div>
+            );
+         } // Checks if focused date corresponds to user's today date
          if (
             num - startDay + 1 ===
                new Date(currentDate.toDateString()).getUTCDate() &&
@@ -57,16 +87,38 @@ function Calendar() {
                   <span></span>
                </div>
             );
-         } else {
-            return (
-               <div key={num}>
-                  {num - startDay + 1}
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-               </div>
-            );
+         }
+         // when focused dates are not equal to user's today date
+         else {
+            // checks if user has an appoint on focused date
+            if (
+               dates.includes(
+                  new Date(
+                     `${year}/${selectedMonth + 1}/${num - startDay + 1}`
+                  ).getTime()
+               )
+            ) {
+               return (
+                  <div className={styles.appoint} key={num}>
+                     {num - startDay + 1}
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                  </div>
+               );
+            } else {
+               //when focused date has no appointments nor is equal to user's today's date
+               return (
+                  <div key={num}>
+                     {num - startDay + 1}
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                  </div>
+               );
+            }
          }
       } else {
          return (

@@ -114,13 +114,14 @@ i.closeIcon {
 .loginForm .info {
    color: #678696;
    font-size: 0.7rem;
+   font-weight: 400;
    margin: 0.7rem 0;
 }
 .loginForm h3 {
    color: #0d3f58;
    width: 100%;
    font-size: 0.8rem;
-   font-weight: 650;
+   font-weight: 600;
    /* margin-top: 0.8rem; */
 }
 .passwordReset {
@@ -439,11 +440,11 @@ p.link {
    margin: auto;
 }
 
-@media only screen and (min-width:1025px) and (max-width: 2560px) {
-#loginContainer{
-   max-width: 1250px;
-   max-height: 1000px;
-}
+@media only screen and (min-width: 1025px) and (max-width: 2560px) {
+   #loginContainer {
+      max-width: 1250px;
+      max-height: 1000px;
+   }
 }
 @media only screen and (max-width: 1024px) {
    #loginContainer {

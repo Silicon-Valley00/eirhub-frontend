@@ -1,4 +1,3 @@
-
 /* .recordChildBody {
    margin-top: 1rem;
    width: 100%;
@@ -23,6 +22,28 @@
       margin-top: 1rem;
       background-color: var(--gray);
       height: 15rem;
+      width: 80%;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+   .calendar {
+      margin-top: 1rem;
+      background-color: var(--gray);
+      height: 15rem;
       width: 100%;
+   }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .calendar {
+      width: 60%;
+      margin: 0 auto;
+   }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   .calendar {
+      width: 80%;
+      margin: 0 auto;
    }
 }

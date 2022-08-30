@@ -4,7 +4,11 @@ import DoctorPatients from '../DoctorPatients/DoctorPatients';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import avatarOne from '../../../assets/Rectangle-1.png';
+=======
+import{BsChevronDown} from 'react-icons/bs'
+>>>>>>> d7a733962f349c6db3bb6a480d12c9be886c38e2
 
 const dataAppoint = {
    msg: [
@@ -176,20 +180,29 @@ const DoctorSchedule = (props) => {
                         Appointment Date
                      </label>
                      <input
-                        type="date"
+                        type="text"
                         id="date"
+                        placeholder="DD/MM/YYYY"
+                        onFocus={(e) => (e.target.type = 'date')}
+                        onBlur={(e) => (e.target.type = 'text')}
                         className={DSstyles.inputDate}
                      />
                      <label className={DSstyles.labelSTime}>Start Time</label>
                      <input
-                        type="time"
+                        type="text"
                         id="start time"
+                        placeholder="HH:MM:SS"
+                        onFocus={(e) => (e.target.type = 'time')}
+                        onBlur={(e) => (e.target.type = 'text')}
                         className={DSstyles.inputStartTime}
                      />
                      <label className={DSstyles.labelETime}>End Time</label>
                      <input
-                        type="time"
+                        type="text"
                         id="end time"
+                        placeholder="HH:MM:SS"
+                        onFocus={(e) => (e.target.type = 'time')}
+                        onBlur={(e) => (e.target.type = 'text')}
                         className={DSstyles.inputEndTime}
                      />
                   </div>
@@ -204,25 +217,52 @@ const DoctorSchedule = (props) => {
                   <div className={DSstyles.DSFiles}>
                      <table>
                         <thead>
+                           <th className={DSstyles.imgHeader}></th>
                            <th className={DSstyles.tName}>Name</th>
                            <th className={DSstyles.tCondition}>Condition</th>
                            <th className={DSstyles.tAction}>Action</th>
                         </thead>
                         <tbody>
+<<<<<<< HEAD
                            {allAppointments.map((data, index) => {
+=======
+                           <td className={DSstyles.imgSection}>
+                              <img src={femaleProfle} alt="profile img"></img>
+                           </td>
+                           <td className={DSstyles.nameSection}>
+                              Melissa Burkinstock{' '}
+                           </td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td
+                              style={{ color: '#EC6464', cursor: 'pointer' }}
+                              className={DSstyles.tdAction}
+                           >
+                              Cancel
+                           </td>
+                           {dataAppoint.msg.map((data, index) => {
+>>>>>>> d7a733962f349c6db3bb6a480d12c9be886c38e2
                               return (
                                  <tr key={index}>
-                                    <td>
+                                    <td className={DSstyles.imgSection}>
                                        <img
                                           src={data?.patient_info.person_image}
                                           alt={'img'}
                                        />
                                     </td>
+<<<<<<< HEAD
                                     <td>
                                        {data?.patient_info.first_name}{' '}
                                        {data?.patient_info.last_name}{' '}
+=======
+                                    <td className={DSstyles.nameSection}>
+                                       {data.patient_info.first_name}{' '}
+                                       {data.patient_info.last_name}{' '}
+>>>>>>> d7a733962f349c6db3bb6a480d12c9be886c38e2
                                     </td>
-                                    <td>
+                                    <td className={DSstyles.tdCondition}>
                                        Swollen tonsils with severe pains in
                                        throat and chest
                                     </td>
@@ -244,7 +284,7 @@ const DoctorSchedule = (props) => {
                </div>
             </div>
             <div className={DSstyles.DSpatientContainer}>
-               <DoctorPatients />
+               <DoctorPatients show />
             </div>
          </div>
       </>

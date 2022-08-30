@@ -150,7 +150,7 @@ function FindingDoctor(props) {
                </div>
             );
          });
-      } else if (allDoctors.length === 0) {
+      } else {
          <p className={styles.emptyMessage}>No doctors found.</p>;
       }
    } else {

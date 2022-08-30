@@ -9,7 +9,10 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import { LoginUser } from '../../../context/authcontext';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchDoctorsProfileInfo } from '../../../Store/DoctorAction.js';
+import {
+   fetchDoctorsProfileInfo,
+   setDoctorAuth,
+} from '../../../Store/DoctorAction.js';
 
 function DoctorLogin(props) {
    const docLoginFormRef = useRef();
@@ -33,7 +36,9 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
-         // FIX: doctor specialties displays undefined in the console
+         navigate('/loading');
+
+         dispatch(setDoctorAuth(true));
          setTimeout(() => {
             navigate('/doctordashboard');
          }, 1500);
