@@ -175,7 +175,7 @@ p.link {
    height: var(--height);
    width: 145px;
    border-radius: var(--field-radius);
-   text-transform: uppercase;
+   text-transform: capitalize;
    text-align: center;
    box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
    overflow: hidden;
