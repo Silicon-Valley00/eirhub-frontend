@@ -114,39 +114,39 @@ const DoctorSchedule = (props) => {
       getAllAppointmentsForADoctor();
    }, []);
 
-   let appointmentsData;
-   //displays medications
-   if (allAppointments === undefined) {
-      appointmentsData = <p>Nothing to show here.</p>;
-   } else {
-      if (allAppointments.length !== 0) {
-         appointmentsData = allAppointments.map((item, j) => {
-            return (
-               <tr key={`${item.appointment_reason}-${j}`}>
-                  <td>
-                     <div>
-                        <img
-                           src={
-                              item.doctor_info.person_image
-                                 ? item.doctor_info.person_image
-                                 : avatarOne
-                           }
-                           alt="avatar"
-                        />
-                     </div>
-                  </td>
-                  <td>{`Dr. ${item.doctor_info.first_name} ${item.doctor_info.last_name}`}</td>
-                  <td>Ridge Hospital</td>
-                  <td>{item.appointment_reason}</td>
-                  <td>{item.appointment_status}</td>
-               </tr>
-            );
-         });
-      } else if (allAppointments.length === 0) {
-         // Sends message to be displayed when saved videos is empty
-         appointmentsData = <p>Nothing to show here.</p>;
-      }
-   }
+   // let appointmentsData;
+   // //displays medications
+   // if (allAppointments === undefined) {
+   //    appointmentsData = <p>Nothing to show here.</p>;
+   // } else {
+   //    if (allAppointments.length !== 0) {
+   //       appointmentsData = allAppointments.map((item, j) => {
+   //          return (
+   //             <tr key={`${item.appointment_reason}-${j}`}>
+   //                <td>
+   //                   <div>
+   //                      <img
+   //                         src={
+   //                            item.patient_info.person_image
+   //                               ? item.patient_info.person_image
+   //                               : avatarOne
+   //                         }
+   //                         alt="avatar"
+   //                      />
+   //                   </div>
+   //                </td>
+   //                <td>{`Dr. ${item.doctor_info.first_name} ${item.doctor_info.last_name}`}</td>
+   //                <td>Ridge Hospital</td>
+   //                <td>{item.appointment_reason}</td>
+   //                <td>{item.appointment_status}</td>
+   //             </tr>
+   //          );
+   //       });
+   //    } else if (allAppointments.length === 0) {
+   //       // Sends message to be displayed when saved videos is empty
+   //       appointmentsData = <p>Nothing to show here.</p>;
+   //    }
+   // }
 
    return (
       <>
