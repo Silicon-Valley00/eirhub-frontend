@@ -32,7 +32,7 @@ const patients = [
 ];
 
 function DoctorPatients() {
-    const [patients,setPat]
+    // const [patients,setPatients] = useState() 
     const [show, setShow] = useState(false);
     const body = document.querySelector("body");
 
@@ -45,12 +45,12 @@ function DoctorPatients() {
         body.styles.overflow = 'auto'
     }    
 
-    useEffect(()=>{
-        async function fetchdata(){
-            const items = await fetchPatientsByDoctorId(doctorId)
-            setPatien
-        }
-    })
+    // useEffect(()=>{
+    //     async function fetchdata(){
+    //         const items = await fetchPatientsByDoctorId(doctorId)
+    //         setPatients(items)
+    //     }
+    // })
 
     return (<>
         <FaUserCircle

@@ -25,7 +25,7 @@ function DoctorSignup(props) {
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    // Handles server error
-   const [isError, setIsError] = useState(true);
+   const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState(
       'Email already in use. Want to login?'
    );

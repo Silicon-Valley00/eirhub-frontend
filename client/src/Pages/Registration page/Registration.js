@@ -285,19 +285,21 @@ function Registration(props) {
             'Password must contain at least a special character'
          );
          setRegisterPasswordOneError(true);
-      } else if (enteredSignUpPassword !== enteredSignUpPasswordconfirm && (enteredSignUpPasswordconfirm!=='')) {
+      } else if ((enteredSignUpPassword !== enteredSignUpPasswordconfirm) && (enteredSignUpPasswordconfirm !== '')) {
          setRegisterPasswordTwoErrorMessage('Passwords do not match');
          setRegisterPasswordTwoError(true);
+      } else if ((enteredSignUpPassword === enteredSignUpPasswordconfirm) && (enteredSignUpPasswordconfirm !== '')) {
+         setRegisterDoctorPasswordTwoError(false);
+         setRegisterDoctorPasswordTwoError(false);
       } else {
          setRegisterPasswordOneError(false);
-         setRegisterPasswordTwoError(false)
+         setRegisterPasswordTwoError(null)
       }
    }
 
    function handleRegisterPasswordConfirm() {
       let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
       let enteredSignUpPassword = signupPassword.current.value;
-
       if (enteredSignUpPasswordconfirm === '') {
          setRegisterPasswordTwoErrorMessage('Confirm password required');
          setRegisterPasswordTwoError(true);
@@ -384,12 +386,15 @@ function Registration(props) {
             'Password must contain at least a special character'
          );
          setRegisterDoctorPasswordOneError(true);
-      } else if (enteredSignUpPassword !== enteredSignUpPasswordconfirm && (enteredSignUpPasswordconfirm!== '')) {
+      } else if ((enteredSignUpPassword !== enteredSignUpPasswordconfirm) && (enteredSignUpPasswordconfirm!== '')) {
          setRegisterDoctorPasswordTwoErrorMessage('Passwords do not match');
          setRegisterDoctorPasswordTwoError(true);
+      } else if ((enteredSignUpPassword === enteredSignUpPasswordconfirm) && (enteredSignUpPasswordconfirm !== '')) {
+         setRegisterDoctorPasswordTwoError(false);
+         setRegisterDoctorPasswordTwoError(false);
       } else {
          setRegisterDoctorPasswordOneError(false);
-         setRegisterDoctorPasswordTwoError(false);
+         setRegisterDoctorPasswordTwoError(null);
       }
    }
    function handleRegisterDoctorPasswordConfirm() {
