@@ -41,6 +41,7 @@ import TagManager from 'react-gtm-module';
 import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPatient';
 import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDoctor';
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
+import Loading from './Pages/Loading Page/loadingpage';
 //Google analytics
 const tagManagerArgs = {
    gtmID: 'GTM-WHSKBFK',
@@ -57,6 +58,7 @@ function App() {
    return (
       <Routes>
          <Route path="*" exact element={<PageNotFound />} />
+         <Route path="/loading" exact element={<Loading />} />
          {/* Route for landing page and it's sub-pages */}
          <Route
             element={
