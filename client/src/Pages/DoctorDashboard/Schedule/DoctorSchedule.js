@@ -4,6 +4,10 @@ import DoctorPatients from '../DoctorPatients/DoctorPatients';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
+=======
+import avatarOne from '../../../assets/Rectangle-1.png';
+>>>>>>> 25919602fbb3173ace837b622601b11f014de918
 import { BsChevronDown } from 'react-icons/bs';
 
 const dataAppoint = {
@@ -219,7 +223,11 @@ const DoctorSchedule = (props) => {
                            <th className={DSstyles.tAction}>Action</th>
                         </thead>
                         <tbody>
+<<<<<<< HEAD
                            {dataAppoint.msg.map((data, index) => {
+=======
+                           {allAppointments.map((data, index) => {
+>>>>>>> 25919602fbb3173ace837b622601b11f014de918
                               return (
                                  <tr key={index}>
                                     <td className={DSstyles.imgSection}>
@@ -228,9 +236,15 @@ const DoctorSchedule = (props) => {
                                           alt={'img'}
                                        />
                                     </td>
+<<<<<<< HEAD
                                     <td className={DSstyles.nameSection}>
                                        {data.patient_info.first_name}{' '}
                                        {data.patient_info.last_name}{' '}
+=======
+                                    <td>
+                                       {data?.patient_info.first_name}{' '}
+                                       {data?.patient_info.last_name}{' '}
+>>>>>>> 25919602fbb3173ace837b622601b11f014de918
                                     </td>
                                     <td className={DSstyles.tdCondition}>
                                        Swollen tonsils with severe pains in

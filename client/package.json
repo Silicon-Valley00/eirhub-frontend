@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
-  
     "axios": "^0.27.2",
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
@@ -12,7 +11,6 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4",
-
     "@cometchat-pro/chat": "^3.0.6",
     "@emotion/core": "^10.3.1",
     "dateformat": "^4.6.3",
