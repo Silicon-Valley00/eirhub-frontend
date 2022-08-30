@@ -4,11 +4,7 @@ import DoctorPatients from '../DoctorPatients/DoctorPatients';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
-import avatarOne from '../../../assets/Rectangle-1.png';
-=======
-import{BsChevronDown} from 'react-icons/bs'
->>>>>>> d7a733962f349c6db3bb6a480d12c9be886c38e2
+import { BsChevronDown } from 'react-icons/bs';
 
 const dataAppoint = {
    msg: [
@@ -223,27 +219,7 @@ const DoctorSchedule = (props) => {
                            <th className={DSstyles.tAction}>Action</th>
                         </thead>
                         <tbody>
-<<<<<<< HEAD
-                           {allAppointments.map((data, index) => {
-=======
-                           <td className={DSstyles.imgSection}>
-                              <img src={femaleProfle} alt="profile img"></img>
-                           </td>
-                           <td className={DSstyles.nameSection}>
-                              Melissa Burkinstock{' '}
-                           </td>
-                           <td className={DSstyles.tdCondition}>
-                              Swollen tonsils with severe pains in throat and
-                              chest
-                           </td>
-                           <td
-                              style={{ color: '#EC6464', cursor: 'pointer' }}
-                              className={DSstyles.tdAction}
-                           >
-                              Cancel
-                           </td>
                            {dataAppoint.msg.map((data, index) => {
->>>>>>> d7a733962f349c6db3bb6a480d12c9be886c38e2
                               return (
                                  <tr key={index}>
                                     <td className={DSstyles.imgSection}>
@@ -252,15 +228,9 @@ const DoctorSchedule = (props) => {
                                           alt={'img'}
                                        />
                                     </td>
-<<<<<<< HEAD
-                                    <td>
-                                       {data?.patient_info.first_name}{' '}
-                                       {data?.patient_info.last_name}{' '}
-=======
                                     <td className={DSstyles.nameSection}>
                                        {data.patient_info.first_name}{' '}
                                        {data.patient_info.last_name}{' '}
->>>>>>> d7a733962f349c6db3bb6a480d12c9be886c38e2
                                     </td>
                                     <td className={DSstyles.tdCondition}>
                                        Swollen tonsils with severe pains in
