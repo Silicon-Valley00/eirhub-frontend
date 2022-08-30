@@ -12,7 +12,7 @@ function PageNotFound() {
             <p>We can't seem to find the page you are looking for.</p>
             <button
                className={PageNotFoundStyles.button}
-               onClick={() => navigate(-1)}
+               onClick={() => navigate(-2)}
             >
                Go back
             </button>

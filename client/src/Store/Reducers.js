@@ -9,6 +9,8 @@ import {
    SET_CHAT_WITH_DOCTOR,
    SET_PATIENT_TO_CHAT_WITH,
    SET_APPOINTMENTS_DATES,
+   SET_DOCTOR_AUTH,
+   SET_PATIENT_AUTH,
 } from './ActionTypes';
 
 const initialState = {
@@ -53,8 +55,10 @@ const initialState = {
    doctorAppointment: {},
    doctorToChatWith: '',
    appointmentDates: [],
+   isPatientAuth: false,
 
    // Doctor Dashboard
+   isDoctorAuth: false,
    doctorProfile: {
       first_name: '',
       middle_name: '',
@@ -136,7 +140,12 @@ const Reducers = (state = initialState, action) => {
 
       case SET_APPOINTMENTS_DATES:
          return { ...state, appointmentDates: action.payload };
+
+      case SET_PATIENT_AUTH:
+         return { ...state, isPatientAuth: action.payload };
       // Doctor dashboard
+      case SET_DOCTOR_AUTH:
+         return { ...state, isPatientAuth: action.payload };
       case SET_DOCTOR_PROFILE_INFO:
          let doctor_profile_info = {
             first_name: action.payload.first_name,

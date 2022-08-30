@@ -9,7 +9,7 @@ import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchProfile } from '../../../Store/Actions.js';
+import { fetchProfile, setPatientAuth } from '../../../Store/Actions.js';
 import { SignUpUser } from '../../../context/authcontext';
 
 function Signup(props) {
@@ -56,6 +56,7 @@ function Signup(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
+         dispatch(setPatientAuth(true));
 
          setTimeout(() => {
             navigate('/userdashboard');

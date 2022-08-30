@@ -7,6 +7,7 @@ import {
    CLEAR_APPOINTMENT_DOCTOR,
    SET_CHAT_WITH_DOCTOR,
    SET_APPOINTMENTS_DATES,
+   SET_PATIENT_AUTH,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -68,6 +69,14 @@ export const setAppointmentDates = (dates) => {
    return {
       type: SET_APPOINTMENTS_DATES,
       payload: dates,
+   };
+};
+
+//Authorise patients for patient pages view
+export const setPatientAuth = (auth) => {
+   return {
+      type: SET_PATIENT_AUTH,
+      payload: auth,
    };
 };
 //Fetches user profile details

@@ -10,6 +10,9 @@ import { Link } from 'react-router-dom';
 import { AiFillFile } from 'react-icons/ai';
 import { persistor } from '../../../Store/ReducerStore';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setDoctorAuth } from '../../../Store/DoctorAction';
+import { Logout } from '../../../context/authcontext';
 
 const links = [
    {
@@ -33,7 +36,7 @@ const links = [
    {
       icon: <AiFillFile />,
       title: 'record',
-      to: '/doctorrecord',
+      to: '/doctorrecords',
       highlight: 15,
    },
    {
@@ -47,6 +50,7 @@ const links = [
 const Sidebar = ({ indicator }) => {
    const [show, setShow] = useState(false);
    const navigate = useNavigate();
+   const dispatch = useDispatch();
 
    const showSidebar = () => {
       setShow(!show);
@@ -55,6 +59,9 @@ const Sidebar = ({ indicator }) => {
    function logout() {
       try {
          setTimeout(() => persistor.purge(), 200);
+         Logout();
+
+         dispatch(setDoctorAuth(false));
          navigate('/landing-page');
       } catch (err) {
          console.log(err);

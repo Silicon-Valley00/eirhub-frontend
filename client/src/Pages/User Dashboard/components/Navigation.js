@@ -14,13 +14,17 @@ import { Link } from 'react-router-dom';
 import { persistor } from '../../../Store/ReducerStore';
 import { useNavigate } from 'react-router-dom';
 import { Logout } from '../../../context/authcontext';
+import { useDispatch } from 'react-redux';
+import { setPatientAuth } from '../../../Store/Actions';
 
 function Navigation(props) {
    const navigate = useNavigate();
+   const dispatch = useDispatch();
 
    function logout() {
       try {
          setTimeout(() => persistor.purge(), 200);
+         dispatch(setPatientAuth(false));
          Logout();
          navigate('/landing-page');
       } catch (err) {

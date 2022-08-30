@@ -10,7 +10,10 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import hospital from '../../../assets/hospital.svg';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchDoctorsProfileInfo } from '../../../Store/DoctorAction.js';
+import {
+   fetchDoctorsProfileInfo,
+   setDoctorAuth,
+} from '../../../Store/DoctorAction.js';
 import { SignUpUser } from '../../../context/authcontext';
 
 function DoctorSignup(props) {
@@ -54,6 +57,7 @@ function DoctorSignup(props) {
             }`
          );
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
+         dispatch(setDoctorAuth(true));
          setTimeout(() => {
             navigate('/doctordashboard');
          }, 1500);

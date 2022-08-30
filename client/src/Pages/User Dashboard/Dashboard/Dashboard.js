@@ -16,6 +16,7 @@ import {
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
+import BirthdayCard from '../../Birthday Card/BirthdayCard';
 
 const mapStateToProps = (state) => {
    return {
@@ -41,15 +42,25 @@ function Dashboard(props) {
 
    let appointment_dates = [];
    useEffect(() => {
-      for (let item of appointments) {
-         if (
-            new Date().getTime() <= new Date(item.appointment_date).getTime()
-         ) {
-            appointment_dates.push(new Date(item.appointment_date).getTime());
+      if (appointments === undefined) return;
+      if (
+         appointments !== undefined ||
+         appointments !== null ||
+         appointments.length !== 0
+      ) {
+         for (let item of appointments) {
+            if (
+               new Date().getTime() <= new Date(item.appointment_date).getTime()
+            ) {
+               appointment_dates.push(
+                  new Date(item.appointment_date).getTime()
+               );
+            }
          }
       }
       dispatch(setAppointmentDates(appointment_dates));
    }, [appointments]);
+
    var list;
    //displays medications
 
@@ -159,6 +170,7 @@ function Dashboard(props) {
          return false;
       }
    }
+
    return (
       <>
          <main id={styles.midsection}>

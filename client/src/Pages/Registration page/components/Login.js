@@ -12,6 +12,7 @@ import {
    fetchGuardianInfo,
    fetchHealthDetails,
    fetchProfile,
+   setPatientAuth,
 } from '../../../Store/Actions.js';
 import { LoginUser } from '../../../context/authcontext';
 
@@ -47,6 +48,7 @@ function Login(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
+         dispatch(setPatientAuth(true));
 
          setTimeout(() => {
             navigate('/userdashboard');

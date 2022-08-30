@@ -1,6 +1,7 @@
 import {
    SET_DOCTOR_PROFILE_INFO,
    SET_PATIENT_TO_CHAT_WITH,
+   SET_DOCTOR_AUTH,
 } from './ActionTypes';
 import axios from 'axios';
 
@@ -17,6 +18,14 @@ export const setPatientToChatWith = (patient) => {
    return {
       type: SET_PATIENT_TO_CHAT_WITH,
       payload: patient,
+   };
+};
+
+//Authorise patients for patient pages view
+export const setDoctorAuth = (auth) => {
+   return {
+      type: SET_DOCTOR_AUTH,
+      payload: auth,
    };
 };
 

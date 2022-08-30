@@ -549,11 +549,11 @@ function Registration(props) {
       } catch (error) {
          // catches all errors
          if (error.response) {
-            return [false, 'Something went wrong. Try again', 'Create Account'];
+            return [false, error.response.data.msg.message, 'Create Account'];
          } else if (error.request) {
-            return [false, 'Something went wrong. Try again', 'Create Account'];
+            return [false, error.response.data.msg.message, 'Create Account'];
          } else {
-            return [false, 'Something went wrong. Try again', 'Create Account'];
+            return [false, error.response.data.msg.message, 'Create Account'];
          }
       }
    }
