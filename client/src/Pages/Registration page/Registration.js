@@ -254,8 +254,8 @@ function Registration(props) {
    }
 
    function handleRegisterPassword() {
-      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
       let enteredSignUpPassword = signupPassword.current.value;
+      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
 
       if (enteredSignUpPassword === '') {
          setRegisterPasswordOneErrorMessage('Password required');
@@ -289,8 +289,8 @@ function Registration(props) {
          setRegisterPasswordTwoErrorMessage('Passwords do not match');
          setRegisterPasswordTwoError(true);
       } else if ((enteredSignUpPassword === enteredSignUpPasswordconfirm) && (enteredSignUpPasswordconfirm !== '')) {
-         setRegisterDoctorPasswordTwoError(false);
-         setRegisterDoctorPasswordTwoError(false);
+         setRegisterPasswordTwoError(false);
+         setRegisterPasswordTwoError(false);
       } else {
          setRegisterPasswordOneError(false);
          setRegisterPasswordTwoError(null)
