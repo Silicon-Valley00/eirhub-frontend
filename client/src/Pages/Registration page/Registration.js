@@ -354,9 +354,9 @@ function Registration(props) {
       }
    }
    function handleRegisterDoctorPassword() {
-
       let enteredSignUpPassword = doctorSignupPassword.current.value;
-      let enteredSignUpPasswordconfirm = doctorSignupPasswordconfirm.current.value;
+      let enteredSignUpPasswordconfirm =
+         doctorSignupPasswordconfirm.current.value;
 
       if (enteredSignUpPassword === '') {
          setRegisterDoctorPasswordOneErrorMessage('Password required');
@@ -543,16 +543,16 @@ function Registration(props) {
             }
          } else {
             //takes all statuses aside 200
-            return [false, 'Something went wrong. Try again', 'Create Account'];
+            return [false, response.data.msg.message, 'Create Account'];
          }
       } catch (error) {
          // catches all errors
          if (error.response) {
-            return [false, 'Something went wrong. Try again', 'Create Account'];
+            return [false, error.response.data.msg.message, 'Create Account'];
          } else if (error.request) {
-            return [false, 'Something went wrong. Try again', 'Create Account'];
+            return [false, error.response.data.msg.message, 'Create Account'];
          } else {
-            return [false, 'Something went wrong. Try again', 'Create Account'];
+            return [false, error.response.data.msg.message, 'Create Account'];
          }
       }
    }

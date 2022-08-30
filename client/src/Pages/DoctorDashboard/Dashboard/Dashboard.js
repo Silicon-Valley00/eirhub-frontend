@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navigation from '../components/Navigation';
 import DoctorCalendar from '../components/Calendar';
 import styles from './dashboard.module.css';
@@ -6,15 +6,50 @@ import { IoIosPeople } from 'react-icons/io';
 import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
 import appointImg from '../../../assets/maleDoctor.jpg';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 const mapStateToProps = (state) => {
    return {
-      savedDetails: state.doctorProfile,
+      doctorProfile: state.doctorProfile,
    };
 };
 
 function MidDashboard(props) {
+   const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
+
+   console.log('dash: ', getacceptedAppointment);
+   const data = props.doctorProfile;
+   // endpoint for updating doctor profile
+   const endpoint = `http://127.0.0.1:5000/appointments/?id_doctor=${data?.id_doctor}&accepted=true`;
+   console.log(endpoint);
+
+   useEffect(() => {
+      const updateDoctorProfile = async () => {
+         try {
+            const response = await axios({
+               method: 'GET',
+               url: endpoint,
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+               // application: 'application/json',
+            });
+            if (response.status === 200) {
+               console.log('GET was successful');
+               console.log(response.data.msg);
+               return response.data.msg;
+            }
+            setAcceptedAppointment(response.data.msg);
+         } catch (error) {
+            console.log('GET Error', error);
+         }
+      };
+      updateDoctorProfile();
+   }, [endpoint]);
+
    return (
       <>
          <Navigation nav={13} />
@@ -60,6 +95,9 @@ function MidDashboard(props) {
                            <th>Time</th>
                         </thead>
                         <tbody>
+                           {/* {getacceptedAppointment.map((data, index) => {
+                              return <></>;
+                           })} */}
                            <tr>
                               <td>
                                  <img

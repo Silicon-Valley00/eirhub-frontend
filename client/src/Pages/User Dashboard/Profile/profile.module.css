@@ -10,6 +10,9 @@
    border-top-right-radius: 2rem;
    width: 137%;
    overflow-y: auto;
+   height: calc(100vh - 4rem);
+   min-height: calc(100vh - 4rem);
+   max-height: calc(100vh - 4rem);
 }
 
 .upperContent {
@@ -512,6 +515,12 @@ div.guardianInfoFormBox {
       width: 90%;
       display: block;
    }
+   .profileImage {
+      width: 4rem;
+      height: 100%;
+      float: left;
+      border-radius: 50%;
+   }
    .profileIntro {
       width: 70%;
       height: 80%;
@@ -519,7 +528,7 @@ div.guardianInfoFormBox {
       padding-left: 2rem;
       float: left;
    }
-   form.personalInfoFormBox {
+   div.personalInfoFormBox {
       width: 100%;
       height: 90%;
       display: grid;
@@ -529,131 +538,205 @@ div.guardianInfoFormBox {
 
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(1) {
       justify-self: start;
    }
 
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(2) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(3) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(4) {
       justify-self: start;
    }
 
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(5) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(6) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(7) {
       justify-self: start;
    }
 
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(8) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(9) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(10) {
       justify-self: start;
    }
    .healthInfo {
       margin-top: 3rem;
    }
-   form.healthInfoFormBox {
+   div.healthInfoFormBox {
       grid-template-columns: repeat(2, 1fr);
       padding-bottom: 2rem;
    }
 
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(1) {
       justify-self: start;
    }
 
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(2) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(3) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(4) {
       justify-self: start;
    }
 
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(5) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(6) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(7) {
       justify-self: start;
    }
 
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(8) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(9) {
       justify-self: start;
+   }
+
+   .guardianInfo {
+      margin-top: 5rem;
+   }
+
+   div.guardianInfoFormBox {
+      grid-template-columns: repeat(2, 1fr);
+      padding-bottom: 2rem;
+   }
+
+   #profileBody
+      .healthInfo
+      div.healthInfoFormBox
+      div.healthFormBox:nth-child(1) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(2) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(3) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(4) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(5) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(6) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(7) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(8) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(9) {
+      justify-self: start;
+   }
+
+   .formButton {
+      width: 70%;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin: 1.5rem 0;
    }
 }
 
@@ -684,142 +767,224 @@ div.guardianInfoFormBox {
       float: left;
    }
    .profileName h2 {
-      font-size: 1rem;
+      font-size: 1.2rem;
    }
-   form.personalInfoFormBox {
+   .personalInfo h2 {
+      font-size: 1.3rem;
+   }
+   div.personalInfoFormBox {
       width: 100%;
       height: 90%;
       display: grid;
       gap: 0.5rem;
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: 1fr;
    }
 
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(1) {
       justify-self: start;
    }
 
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(2) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(3) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(4) {
       justify-self: start;
    }
 
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(5) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(6) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(7) {
       justify-self: start;
    }
 
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(8) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(9) {
       justify-self: start;
    }
    #profileBody
       .personalInfo
-      form.personalInfoFormBox
+      div.personalInfoFormBox
       div.profileFormBox:nth-child(10) {
       justify-self: start;
    }
    .healthInfo {
       margin-top: 5rem;
    }
-   form.healthInfoFormBox {
-      grid-template-columns: repeat(1, 1fr);
+   .healthInfo h2 {
+      font-size: 1.3rem;
+   }
+   div.healthInfoFormBox {
+      grid-template-columns: 1fr;
       padding-bottom: 2rem;
    }
 
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(1) {
       justify-self: start;
    }
 
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(2) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(3) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(4) {
       justify-self: start;
    }
 
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(5) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(6) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(7) {
       justify-self: start;
    }
 
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(8) {
       justify-self: start;
    }
    #profileBody
       .healthInfo
-      form.healthInfoFormBox
+      div.healthInfoFormBox
       div.healthFormBox:nth-child(9) {
       justify-self: start;
+   }
+
+   .guardianInfo {
+      margin-top: 5rem;
+   }
+   .guardianInfo h2 {
+      font-size: 1.3rem;
+   }
+   div.guardianInfoFormBox {
+      grid-template-columns: 1fr;
+      padding-bottom: 2rem;
+   }
+
+   #profileBody
+      .healthInfo
+      div.healthInfoFormBox
+      div.healthFormBox:nth-child(1) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(2) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(3) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(4) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(5) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(6) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(7) {
+      justify-self: start;
+   }
+
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(8) {
+      justify-self: start;
+   }
+   #profileBody
+      .guardianInfo
+      div.guardianInfoFormBox
+      div.guardianFormBox:nth-child(9) {
+      justify-self: start;
+   }
+
+   .formButton {
+      width: 70%;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin: 1.5rem 0;
    }
 }

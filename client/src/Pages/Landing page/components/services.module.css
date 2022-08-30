@@ -66,6 +66,7 @@
    border-radius: 20px;
    overflow: hidden;
    box-shadow: 0 2px 15px 0 #b8e5ff;
+   overflow: hidden;
 }
 
 .img {
@@ -83,7 +84,7 @@
    margin: 0 auto;
    padding: 0.5rem;
    font-family: 'Poppins', sans-serif;
-   border-radius: 0 0 20px 20px;
+   /* border-radius: 0 0 20px 20px; */
    color: var(--midcol);
 }
 

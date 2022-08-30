@@ -1,21 +1,16 @@
-import { SET_NAME } from './ActionTypes';
-import { SET_PROFILE_INFO } from './ActionTypes';
-import { SET_HEALTH_INFO } from './ActionTypes';
-import { SET_GUARDIAN_INFO } from './ActionTypes';
-import { SET_REPORTS } from './ActionTypes';
-import { SET_DOCTOR_PROFILE_INFO } from './ActionTypes';
-import { SET_APPOINTMENT_DOCTOR } from './ActionTypes';
-import { CLEAR_APPOINTMENT_DOCTOR } from './ActionTypes';
+import {
+   SET_PROFILE_INFO,
+   SET_HEALTH_INFO,
+   SET_GUARDIAN_INFO,
+   SET_DOCTOR_PROFILE_INFO,
+   SET_APPOINTMENT_DOCTOR,
+   CLEAR_APPOINTMENT_DOCTOR,
+   SET_CHAT_WITH_DOCTOR,
+   SET_APPOINTMENTS_DATES,
+   SET_PATIENT_AUTH,
+} from './ActionTypes';
 
 import axios from 'axios';
-
-//Sets User name
-export const setName = (data) => {
-   return {
-      type: SET_NAME,
-      payload: data,
-   };
-};
 
 // Sets profile details
 export const setProfileInfo = (profileData) => {
@@ -62,7 +57,28 @@ export const clearDoctorForAppointment = () => {
       type: CLEAR_APPOINTMENT_DOCTOR,
    };
 };
+// sets uid of doctor to chat with
+export const setDoctorToChatWith = (doctorUID) => {
+   return {
+      type: SET_CHAT_WITH_DOCTOR,
+      payload: doctorUID,
+   };
+};
+// sets appointment dates
+export const setAppointmentDates = (dates) => {
+   return {
+      type: SET_APPOINTMENTS_DATES,
+      payload: dates,
+   };
+};
 
+//Authorise patients for patient pages view
+export const setPatientAuth = (auth) => {
+   return {
+      type: SET_PATIENT_AUTH,
+      payload: auth,
+   };
+};
 //Fetches user profile details
 export const fetchProfile = (userID, guardianID) => {
    return async function (dispatch) {
@@ -447,7 +463,34 @@ export async function fetchDoctors() {
    }
 }
 
-
+//Fectches doctors by patient id
+export async function fetchDoctorsByPatient(userID) {
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `http://127.0.0.1:5000/patients/?id_patient=${userID}`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      });
+      if (response.status === 200) {
+         //checks details of response
+         if (response.data.status === true) {
+            //returns response
+            alert('doctors by patient id worked fetch worked');
+            return response.data.msg;
+         }
+      } else {
+         //takes all statuses aside 200
+         alert('Something went wrong. Try again, doctor 1');
+      }
+   } catch (error) {
+      alert(error, 'doctors 2');
+   }
+}
 
 //Fetches user accepted appointments
 export async function fetchAppointments(userID, status) {

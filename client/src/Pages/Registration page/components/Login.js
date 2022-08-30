@@ -12,6 +12,7 @@ import {
    fetchGuardianInfo,
    fetchHealthDetails,
    fetchProfile,
+   setPatientAuth,
 } from '../../../Store/Actions.js';
 import { LoginUser } from '../../../context/authcontext';
 
@@ -36,20 +37,23 @@ function Login(props) {
       // checks if account is to be logged in
       if (feedback[0] === true) {
          //logs user into cometchat
-         // LoginUser(
-         //    `${feedback[1].first_name.toLowerCase()}-${feedback[1].last_name.toLowerCase()}-${
-         //       feedback[1].id
-         //    }`
-         // );
+
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
+         LoginUser(
+            `${feedback[1].first_name.toLowerCase()}${feedback[1].last_name.toLowerCase()}${
+               feedback[1].id_patient
+            }`
+         );
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
+         navigate('/loading');
+         dispatch(setPatientAuth(true));
 
          setTimeout(() => {
             navigate('/userdashboard');
-         }, 1500);
+         }, 2000);
       } else {
          setBtnActive(feedback[0]);
          setBtnValue('Login');
