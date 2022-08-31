@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
 
 function UserDashboard(props) {
-   const user = useSelector((state) => state.profile.first_name);
+   const user = useSelector((state) => state.user.name);
    const userProfileImage = useSelector((state) => state.profile.person_image);
    const patientDOB = useSelector((state) => state.profile.date_of_birth);
 

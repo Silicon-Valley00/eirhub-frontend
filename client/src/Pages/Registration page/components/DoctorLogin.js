@@ -13,7 +13,7 @@ import {
    fetchDoctorsProfileInfo,
    setDoctorAuth,
 } from '../../../Store/DoctorAction.js';
-
+import store from '../../../Store/ReducerStore';
 function DoctorLogin(props) {
    const docLoginFormRef = useRef();
    const navigate = useNavigate();
@@ -42,6 +42,7 @@ function DoctorLogin(props) {
          setTimeout(() => {
             navigate('/doctordashboard');
          }, 1500);
+         console.log(store.getState());
       } else {
          // when account fails to login
          setBtnActive(feedback[0]);

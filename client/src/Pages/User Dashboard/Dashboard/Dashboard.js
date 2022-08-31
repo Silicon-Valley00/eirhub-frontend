@@ -12,15 +12,16 @@ import { connect, useDispatch } from 'react-redux';
 import {
    fetchAppointments,
    fetchMedications,
+   fetchProfile,
    setAppointmentDates,
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
-import BirthdayCard from '../../Birthday Card/BirthdayCard';
 
 const mapStateToProps = (state) => {
    return {
       savedHealthDetails: state.health,
+      savedUserInfo: state.user,
    };
 };
 
@@ -30,6 +31,17 @@ function Dashboard(props) {
    const [appointments, setAppointments] = useState([]);
    const patientID = useSelector((state) => state.profile.id_patient);
 
+   // useEffect(() => {
+   //    async function fetchUserData() {
+   //       dispatch(
+   //          fetchProfile(
+   //             props.savedUserInfo.id_patient,
+   //             props.savedUserInfo.id_guardian
+   //          )
+   //       );
+   //    }
+   //    fetchUserData();
+   // }, []);
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchMedications(patientID);
