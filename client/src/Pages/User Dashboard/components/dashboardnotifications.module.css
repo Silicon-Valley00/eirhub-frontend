@@ -14,6 +14,13 @@
 .recentNotifications {
    margin-top: 0.3rem;
 }
+/* overflow: auto;
+position: absolute;
+bottom: 0.5rem;
+width: auto;
+height: 25rem;
+min-height: 25rem;
+padding-right: 2.6rem; */
 .recentNotifications h2 {
    margin-bottom: 0.2rem;
    color: var(--midcol);
@@ -129,7 +136,18 @@
 }
 
 /* MEADIA QUERIES */
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+@media only screen and (min-width: 1400px) and (max-width: 20000px) {
+   .recentNotifications {
+      overflow: auto;
+      position: absolute;
+      bottom: 0.5rem;
+      width: auto;
+      height: 25rem;
+      min-height: 25rem;
+      padding-right: 2.6rem;
+   }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1399px) {
    .recentNotifications h2 {
       font-size: 1.2rem;
    }

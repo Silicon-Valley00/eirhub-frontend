@@ -1,9 +1,11 @@
 /* ASIDE */
-.container aside {
-   height: 100vh;
+.navbody aside {
+   height: 100%;
+   min-height: 100%;
+   max-height: 100%;
 }
 
-.container aside .top {
+.navbody aside .top {
    background: var(--white);
    display: flex;
    justify-content: space-around;
@@ -12,11 +14,14 @@
 aside .logo {
    display: flex;
    gap: 0.8rem;
+   justify-content: center;
+   align-items: center;
+   height: 3.1rem;
 }
 aside .logo h2 {
    color: var(--lightcol);
    font-weight: 400;
-   font-size: 2rem;
+   font-size: 1.8rem;
    font-family: var(--logofont);
 }
 
