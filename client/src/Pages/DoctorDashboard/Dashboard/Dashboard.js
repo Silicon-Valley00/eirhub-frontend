@@ -17,6 +17,7 @@ function MidDashboard(props) {
 
    const data = props.doctorProfile;
    const baseURL = 'http://127.0.0.1:5000';
+
    // endpoint for updating doctor profile
    // const accepted_appointment_endpoint = `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`;
    // const numberOfPatients_endpoint = `${baseURL}/doctors/patient/?id_doctor=${data?.id_doctor}`;
@@ -31,65 +32,65 @@ function MidDashboard(props) {
    ];
 
    // TODO: add interceptors to catch errors
-   // useEffect(() => {
-   //    const fetchAcceptedAppointments = async () => {
-   //       axios
-   //          .get(
-   //             `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`,
-   //             {
-   //                headers: {
-   //                   'Access-Control-Allow-Origin': '*',
-   //                   'Access-Control-Allow-Headers': '*',
-   //                   'Access-Control-Allow-Methods': '*',
-   //                },
-   //             }
-   //          )
-   //          .then((res) => {
-   //             setAcceptedAppointment(res.data.msg);
-   //          })
-   //          .catch((err) => {
-   //             console.log(err.message);
-   //          });
-   //    };
-   //    fetchAcceptedAppointments();
-   // }, []);
-
    useEffect(() => {
-      axios
-         .all(
-            [
-               axios.get(
-                  `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`
-               ),
-               axios.get(
-                  `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`
-               ),
-               axios.get(
-                  `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`
-               ),
-               axios.get(
-                  `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`
-               ),
-            ],
-            {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
-            }
-         )
-         .then(
-            axios.spread(
-               (upcomingAppointments, patients, records, appointments) => {
-                  setAcceptedAppointment(upcomingAppointments);
+      const fetchAcceptedAppointments = async () => {
+         axios
+            .get(
+               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`,
+               {
+                  headers: {
+                     'Access-Control-Allow-Origin': '*',
+                     'Access-Control-Allow-Headers': '*',
+                     'Access-Control-Allow-Methods': '*',
+                  },
                }
             )
-         )
-         .catch((err) => {
-            console.log(err.message);
-         });
+            .then((res) => {
+               setAcceptedAppointment(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
+      };
+      fetchAcceptedAppointments();
    }, []);
+
+   // useEffect(() => {
+   //    axios
+   //       .all(
+   //          [
+   //             axios.get(
+   //                `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`
+   //             ),
+   //             axios.get(
+   //                `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`
+   //             ),
+   //             axios.get(
+   //                `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`
+   //             ),
+   //             axios.get(
+   //                `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`
+   //             ),
+   //          ],
+   //          {
+   //             headers: {
+   //                'Access-Control-Allow-Origin': '*',
+   //                'Access-Control-Allow-Headers': '*',
+   //                'Access-Control-Allow-Methods': '*',
+   //             },
+   //          }
+   //       )
+   //       .then(
+   //          axios.spread(
+   //             (upcomingAppointments, patients, records, appointments) => {
+   //                setAcceptedAppointment(upcomingAppointments);
+   //             }
+   //          )
+   //       )
+   //       .catch((err) => {
+   //          console.log(err.message);
+   //       });
+   // }, []);
 
    return (
       <>
@@ -149,9 +150,9 @@ function MidDashboard(props) {
                                              className={styles.table_img}
                                           />
                                        </td>
+                                       {/* FIXME: Space name */}
                                        <td>
-                                          {data?.patient_info.first_name}
-                                          {data?.patient_info.last_name}
+                                          {`${data?.patient_info.first_name} ${data?.patient_info.last_name}`}
                                        </td>
                                        <td>{data?.appointment_reason}</td>
                                        <td>

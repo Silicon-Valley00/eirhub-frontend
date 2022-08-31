@@ -145,7 +145,7 @@ const Reducers = (state = initialState, action) => {
          return { ...state, isPatientAuth: action.payload };
       // Doctor dashboard
       case SET_DOCTOR_AUTH:
-         return { ...state, isPatientAuth: action.payload };
+         return { ...state, isDoctorAuth: action.payload };
       case SET_DOCTOR_PROFILE_INFO:
          let doctor_profile_info = {
             first_name: action.payload.first_name,
