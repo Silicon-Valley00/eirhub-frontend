@@ -323,7 +323,7 @@
    }
    .DSContainer1 {
       width: 80%;
-      height: 59rem;
+      height: 93.5vh;
    }
 
    .DSContainer1 form {
@@ -428,6 +428,7 @@
    .DSContainer1 {
       width: 78%;
       margin-left: 10rem;
+      height: 59rem;
    }
    .DSpatientContainer {
       width: 90%;
