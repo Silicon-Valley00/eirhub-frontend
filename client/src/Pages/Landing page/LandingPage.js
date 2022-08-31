@@ -75,9 +75,9 @@ const LandingPage = () => {
                handleModalSignupDoctor={handleModalSignupDoctor}
                indicator={1}
             />
-            <Hero />
+            <Hero handleModalSignup={handleModalSignup} />
             <QuickSolution />
-            <Services />
+            <Services handleModalSignup={handleModalSignup} />
             <Footer />
          </div>
          <Registration

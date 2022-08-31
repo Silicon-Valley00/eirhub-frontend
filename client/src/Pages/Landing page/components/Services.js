@@ -23,7 +23,7 @@ const details = [
    },
 ];
 
-const Services = () => {
+const Services = (props) => {
    return (
       <section id={Styles.services_body}>
          <div className={Styles.services_container} data-aos={'slide up'}>
@@ -43,7 +43,7 @@ const Services = () => {
             </div>
 
             {/* Button beneath the cards */}
-            <div className={Styles.services_button}>
+            <div className={Styles.services_button} onClick={() => props.handleModalSignup()}>
                <input
                   value={'Find A Doctor'}
                   type={'submit'}
@@ -59,7 +59,7 @@ const Services = () => {
                         Don't Delay Care For You and those You Love.
                      </h4>
                      {/* A button that is used to book an appointment.  */}
-                     <button className={Styles.message_btn}>
+                     <button className={Styles.message_btn} onClick={() => props.handleModalSignup()}>
                         Book an Appointment
                      </button>
                      <div className={Styles.circle_1}></div>
