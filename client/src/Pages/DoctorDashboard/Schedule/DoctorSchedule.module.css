@@ -100,6 +100,7 @@
    grid-template-columns: repeat(3, 1fr);
    margin-left: 20px;
    margin-top: 30px;
+   gap: 8px;
 }
 .inputDate {
    width: 80%;
@@ -156,6 +157,7 @@
    border-radius: 20px;
    margin-top: 20px;
    box-sizing: border-box;
+   overflow-y: scroll;
 }
 .appointmentContainer::-webkit-scrollbar,
 .appointmentContainer::-webkit-scrollbar {
@@ -175,39 +177,50 @@
    border-radius: 10%;
    cursor: pointer;
 }
-.appointmentContainer table thead{
-    position: sticky;
+.appointmentContainer table thead {
+   position: sticky;
    top: 0;
+   background: var(--white);
 }
 .appointmentContainer table {
-   margin: 20px auto;
+   margin: auto;
    text-align: center;
-   padding-top: 15px;
-   width: 85%;
-   height: 100%;
+   table-layout: fixed;
+   width: 100%;
 }
 .appointmentContainer th {
    color: #c2c9d1;
+   padding-top: 29px;
 }
-.appointmentContainer td {
+.appointmentContainer table td {
+   padding-top: 21px;
    font-weight: 600;
    font-size: 1rem;
    color: #0d3f58;
    width: 19.5rem;
-   height: 100px;
+   height: 0.4rem;
+   min-height: 0.4rem;
+   max-height: 0.4rem;
+   cursor: pointer;
 }
-.appointmentContainer .imgSection {
-   width: 80px;
+.appointmentContainer table .tdCancel {
+   color: #ec6464;
+   cursor: pointer;
+}
+.appointmentContainer .imgHeader {
+   width: 10%;
 }
 .appointmentContainer .tdCondition {
    text-align: left;
 }
-.appointmentContainer .nameSection {
+.appointmentContainer .tCondition{
    text-align: left;
-   width: 300px;
-   margin: 0 auto;
 }
 .appointmentContainer .tName {
+   text-align: left;
+   margin: 0 auto;
+}
+.appointmentContainer .tdName {
    text-align: left;
 }
 .DSContainer h2 {
@@ -236,7 +249,7 @@
    height: 40px;
 }
 /*Responsive*/
-@media only screen and (min-width: 1366px) and (max-width: 1440px) {
+@media only screen and (min-width: 1200px) and (max-width: 1440px) {
    .DSContainer1 h2 {
       width: 16.3125rem;
       font-weight: 600;
@@ -290,26 +303,22 @@
    .appointmentContainer {
       margin-top: 6px;
    }
-   /* .DSFiles table {
-      font-size: 0.9375rem;
-      margin-top: 0;
-   }
-   .DSFiles td {
-      font-size: 0.9375rem;
-   } */
    .appointmentContainer .nameSection {
-      width: 250px;
+      width: 100px;
       padding: 0;
-   }
-   .appointmentContainer td {
-      padding: 1.0625rem;
-   }
-   .appointmentContainer .tdCondition {
-      width: 400px;
    }
    .appointTime input::-webkit-input-placeholder {
       font-size: 0.875rem;
    }
+   .appointmentContainer .tName{
+   width: 20%;
+}
+.appointmentContainer .imgHeader{
+   width: 10%;
+}
+.appointmentContainer .tAction{
+   width: 20%;
+}
 }
 @media only screen and (max-width: 1200px) {
    .DSContainer {
@@ -408,6 +417,15 @@
    .DSFiles {
       margin-top: 0;
    }
+      .appointmentContainer .tName{
+   width: 20%;
+}
+.appointmentContainer .imgHeader{
+   width: 10%;
+}
+.appointmentContainer .tAction{
+   width: 20%;
+}
 }
 /*smaller laptop screens*/
 @media (max-width: 1024px) {
@@ -575,6 +593,9 @@
    .appointmentContainer td {
       padding: 1rem;
    }
+   .appointmentContainer .imgSection{
+      padding-left: 0;
+   }
 }
 
 /*small mobile screens*/
@@ -634,6 +655,9 @@
       width: 100%;
       justify-content: space-around;
    }
+   .appointmentContainer .imgSection{
+      padding-left: 0;
+   }
 }
 @media (max-width: 320px) {
    .DSContainer {
@@ -644,13 +668,10 @@
       margin: auto;
       width: 100%;
    }
-   .DSFiles {
-      width: 100%;
-      text-align: center;
-   }
    .appointmentContainer {
       width: 100%;
       margin: auto;
+      text-align: center;
    }
    .appointmentContainer table {
       width: 100%;
@@ -666,5 +687,8 @@
    }
    .appointmentContainer td {
       padding: 1rem;
+   }
+   .appointmentContainer .imgSection{
+      padding-left: 0;
    }
 }

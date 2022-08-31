@@ -170,45 +170,182 @@ const DoctorSchedule = (props) => {
                </form>
                <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
                <div className={DSstyles.appointmentContainer}>
-                     <table>
-                        <thead>
-                           <th className={DSstyles.imgHeader}></th>
-                           <th className={DSstyles.tName}>Name</th>
-                           <th className={DSstyles.tCondition}>Condition</th>
-                           <th className={DSstyles.tAction}>Action</th>
-                        </thead>
-                        <tbody>
-                           {allAppointments  .map((data, index) => {
-                              return (
-                                 <tr key={index}>
-                                    <td className={DSstyles.imgSection}>
-                                       <img
-                                          src={data?.patient_info.person_image}
-                                          alt={'img'}
-                                       />
-                                    </td>
-                                    <td>
-                                       {data?.patient_info.first_name}{' '}
-                                       {data?.patient_info.last_name}{' '}
-                                    </td>
-                                    <td className={DSstyles.tdCondition}>
-                                       Swollen tonsils with severe pains in
-                                       throat and chest
-                                    </td>
-                                    <td
-                                       style={{
-                                          color: '#EC6464',
-                                          cursor: 'pointer',
-                                       }}
-                                       onClick=""
-                                    >
-                                       Cancel
-                                    </td>
-                                 </tr>
-                              );
-                           })}
-                        </tbody>
-                     </table>
+                  <table>
+                     <thead>
+                        <th className={DSstyles.imgHeader}></th>
+                        <th className={DSstyles.tName}>Name</th>
+                        <th className={DSstyles.tCondition}>Condition</th>
+                        <th className={DSstyles.tAction}>Action</th>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        <tr>
+                           <td className={DSstyles.imgSection}>
+                              <img src={avatarOne} alt={'img'} />
+                           </td>
+                           <td className={DSstyles.tdName}>Ama Osaba</td>
+                           <td className={DSstyles.tdCondition}>
+                              Swollen tonsils with severe pains in throat and
+                              chest
+                           </td>
+                           <td className={DSstyles.tdCancel} onClick="">
+                              Cancel
+                           </td>
+                        </tr>
+                        {/* {allAppointments.map((data, index) => {
+                           return (
+                              <tr key={index}>
+                                 <td className={DSstyles.imgSection}>
+                                    <img
+                                       src={data?.patient_info.person_image}
+                                       alt={'img'}
+                                    />
+                                 </td>
+                                 <td classname={DSstyles.tdName}>
+                                    {data?.patient_info.first_name}{' '}
+                                    {data?.patient_info.last_name}{' '}
+                                 </td>
+                                 <td className={DSstyles.tdCondition}>
+                                    Swollen tonsils with severe pains in throat
+                                    and chest
+                                 </td>
+                                 <td className={DSstyles.tdCancel} onClick="">
+                                    Cancel
+                                 </td>
+                              </tr> */}
+                           );
+                        })}
+                     </tbody>
+                  </table>
                </div>
             </div>
             <div className={DSstyles.DSpatientContainer}>
