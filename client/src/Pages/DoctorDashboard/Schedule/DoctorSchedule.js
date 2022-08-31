@@ -5,47 +5,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import avatarOne from '../../../assets/Rectangle-1.png';
-import { BsChevronDown } from 'react-icons/bs';
-
-const dataAppoint = {
-   msg: [
-      {
-         appointment_date: 'Mon, 21 Nov 2022 00:00:00 GMT',
-         appointment_end_time: '13:00:00',
-         appointment_location: '',
-         appointment_reason: 'Swollen tonsils',
-         appointment_start_time: '12:00:00',
-         appointment_status: 'pending',
-         id_appointment: 4,
-         id_doctor: 20,
-         id_patient: 34,
-         patient_info: {
-            first_name: 'Pete',
-            last_name: 'Greg',
-            middle_name: 'Leta',
-            person_image: 'femaleProfle',
-         },
-      },
-      {
-         appointment_date: 'Mon, 21 Nov 2022 00:00:00 GMT',
-         appointment_end_time: '03:00:00',
-         appointment_location: '',
-         appointment_reason: 'Eczema',
-         appointment_start_time: '01:00:00',
-         appointment_status: 'pending',
-         idAppointment: 5,
-         id_doctor: 20,
-         id_patient: 34,
-         patient_info: {
-            first_name: 'Desmond',
-            last_name: 'Jeph',
-            middle_name: 'Leta',
-            person_image: 'femaleProfle',
-         },
-      },
-   ],
-   status: true,
-};
 
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
@@ -229,7 +188,6 @@ const DoctorSchedule = (props) => {
                                           alt={'img'}
                                        />
                                     </td>
-
                                     <td>
                                        {data?.patient_info.first_name}{' '}
                                        {data?.patient_info.last_name}{' '}
