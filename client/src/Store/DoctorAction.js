@@ -62,11 +62,11 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
 };
 
 //Fectches patients by doctor id
-export async function fetchPatientsByDoctor(userID) {
+export async function fetchPatientsByDoctorId(idDoctor) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/doctors/?id_doctor=${userID}`,
+         url: `http://127.0.0.1:5000/doctors/?id_doctor=${idDoctor}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
