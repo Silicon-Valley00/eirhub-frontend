@@ -6,6 +6,12 @@ import Patients from '../DoctorPatients/DoctorPatients'
 import { useState, useRef } from 'react';
 
 
+function MyDropzone(){
+   const onDrop= useCallback(acceptedFiles => {
+      
+   })
+}
+
 function DoctorRecords() {
    const [selectedFile, setSelectedFile] = useState()
    const [isSelected, setIsSelected] = useState(false)
