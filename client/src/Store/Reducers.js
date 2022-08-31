@@ -11,10 +11,16 @@ import {
    SET_APPOINTMENTS_DATES,
    SET_DOCTOR_AUTH,
    SET_PATIENT_AUTH,
+   SET_USER_INFO,
 } from './ActionTypes';
 
 const initialState = {
    //Patient Dashboard
+   user: {
+      name: '',
+      id_patient: '',
+      id_guardian: '',
+   },
    profile: {
       user_email: '',
       first_name: '',
@@ -82,6 +88,14 @@ const Reducers = (state = initialState, action) => {
       case PURGE:
          return initialState;
 
+      case SET_USER_INFO:
+         let user = {
+            name: action.payload.name,
+            id_patient: action.payload.id_patient,
+            id_guardian: action.payload.id_guardian,
+         };
+         return { ...state, user: user };
+
       case SET_PROFILE_INFO:
          let profile = {
             user_email: action.payload.user_email,
@@ -145,7 +159,7 @@ const Reducers = (state = initialState, action) => {
          return { ...state, isPatientAuth: action.payload };
       // Doctor dashboard
       case SET_DOCTOR_AUTH:
-         return { ...state, isPatientAuth: action.payload };
+         return { ...state, isDoctorAuth: action.payload };
       case SET_DOCTOR_PROFILE_INFO:
          let doctor_profile_info = {
             first_name: action.payload.first_name,

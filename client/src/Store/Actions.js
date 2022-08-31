@@ -8,10 +8,18 @@ import {
    SET_CHAT_WITH_DOCTOR,
    SET_APPOINTMENTS_DATES,
    SET_PATIENT_AUTH,
+   SET_USER_INFO,
 } from './ActionTypes';
 
 import axios from 'axios';
 
+// Sets profile details
+export const setUserInfo = (user) => {
+   return {
+      type: SET_USER_INFO,
+      payload: user,
+   };
+};
 // Sets profile details
 export const setProfileInfo = (profileData) => {
    return {
