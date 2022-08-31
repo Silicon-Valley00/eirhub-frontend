@@ -4,7 +4,7 @@ import avatarThree from '../../../assets/doc profile 1.png';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {
-   fetchPatientsByDoctor,
+   fetchPatientsByDoctorId,
    setPatientToChatWith,
 } from '../../../Store/DoctorAction';
 
@@ -19,7 +19,7 @@ function MessagePatients() {
 
    useEffect(() => {
       async function fetchdata() {
-         const items = await fetchPatientsByDoctor(doctorID);
+         const items = await fetchPatientsByDoctorId(doctorID);
          setPatients([items]);
       }
       fetchdata();

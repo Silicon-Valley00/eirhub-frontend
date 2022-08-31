@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 function Records(props) {
    const dispatch = useDispatch();
    const [reports, setReports] = useState([]);
-   const patientID = useSelector((state) => state.profile.id_patient);
+   const patientID = useSelector((state) => state.user.id_patient);
 
    //Handles state on page been viewed
    const [changePage, setChangePage] = useState(false);

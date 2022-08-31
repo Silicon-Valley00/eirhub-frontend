@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './profile.module.css';
 import avatarThree from '../../../assets/Rectangle.png';
-import { useDispatch, connect } from 'react-redux';
+import { useDispatch, connect, useSelector } from 'react-redux';
 import {
    updateProfile,
    updateHealthDetails,
@@ -18,6 +18,9 @@ const mapStateToProps = (state) => {
 
 function Profile(props) {
    // Handles dispatching of actions
+   const patientID = useSelector((state) => state.user.id_patient);
+   const guardianID = useSelector((state) => state.user.id_guardian);
+
    const dispatch = useDispatch();
    console.log(
       props.savedProfile,
@@ -196,9 +199,9 @@ function Profile(props) {
       console.log(enteredProfileInfo);
       dispatch(
          updateProfile(
-            props.savedProfile.id_patient,
+            patientID,
             enteredProfileInfo,
-            props.savedProfile.id_guardian,
+            guardianID,
             enteredGuardianinfo,
             enteredHealthInfo
          )

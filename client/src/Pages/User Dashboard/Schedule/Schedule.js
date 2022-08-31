@@ -28,7 +28,7 @@ function Schedule() {
 
    const [condition, setCondition] = useState('');
    const [appointments, setAppointments] = useState([]);
-   const patientID = useSelector((state) => state.profile.id_patient);
+   const patientID = useSelector((state) => state.user.id_patient);
 
    useEffect(() => {
       async function fetchdata() {
