@@ -55,7 +55,9 @@ const QuickSolution = () => {
                   Would you like to join our team of healthcare providers?
                </p>
                <div className={styles.btn}>
-                  <button className={styles.contact__btn}>Contact us</button>
+                  <button className={styles.contact__btn}
+                     onClick={ () => window.open('mailto:eirhub@gmail.com', '_self') }
+                  >Contact us</button>
                </div>
             </div>
 
