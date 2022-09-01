@@ -1,28 +1,14 @@
 import styles from './DoctorRecords.module.css';
 import Navigation from '../components/Navigation';
 import { Link } from 'react-router-dom';
-import { FaFileUpload, FaTrash, FaPencilAlt } from 'react-icons/fa';
+import { FaTrash, FaPencilAlt } from 'react-icons/fa';
 import Patients from '../DoctorPatients/DoctorPatients'
-import { useState, useRef } from 'react';
+
+import Dropzone from './Dropzone';
 
 
 function DoctorRecords() {
-   const [selectedFile, setSelectedFile] = useState()
-   const [isSelected, setIsSelected] = useState(false)
-   const docRecordsUploadRef = useRef()
 
-   const uploadFile = ()=> {
-      docRecordsUploadRef.current.click()
-   }
-   const changeHandler = (e)=> {
-      setSelectedFile(e.target.files[0])
-      setIsSelected(true)
-   }
-
-   const handleSubmission = ()=> {
-
-   }
-   
 
    return (
       <>
@@ -30,7 +16,7 @@ function DoctorRecords() {
          <div className={styles.docRecordsContainer}>
             <div className={styles.docRecordsContainer1}>
             <h1>Upload Files</h1>
-            <div className={styles.docRecordsUpload}>
+            {/* <div className={styles.docRecordsUpload}>
                <input ref={docRecordsUploadRef} style={{display:'none'}} type="file" accept='.doc,.docx,.pdf,.txt' name='file' onChange={changeHandler}/>
                {isSelected ? (
                   <div>
@@ -46,11 +32,10 @@ function DoctorRecords() {
                <h2 className={styles.docRecordsSheader}>
                      Drag and drop file or <span className={styles.docRecordsButtonLink} onClick={uploadFile}>browse</span>
                   {/* Drag and drop file or{' '}
-                  <Link to="/" className={styles.docRecordsButtonLink}>
-                     browse
-                  </Link> */}
                </h2>
-            </div>
+            </div> */}
+            <Dropzone/>
+
             <div className={styles.docRecordsFiles}>
                <table>
                   <thead>

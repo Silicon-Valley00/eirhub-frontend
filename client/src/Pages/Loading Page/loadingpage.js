@@ -1,8 +1,23 @@
 import React, { useEffect } from 'react';
 import styles from './loading.module.css';
 import spinner from '../../assets/loading-gif.gif';
-function Loading() {
-   useEffect(() => {});
+import { useDispatch, connect, useSelector } from 'react-redux';
+import { addNewHealthDetails } from '../../Store/Actions';
+
+const mapStateToProps = (state) => {
+   return {
+      savedProfile: state.profile,
+      savedHealthDetails: state.health,
+      savedGuardianDetails: state.guardian,
+   };
+};
+
+function Loading(props) {
+   const patientID = useSelector((state) => state.user.id_patient);
+   const dispatch = useDispatch();
+   useEffect(() => {
+      dispatch(addNewHealthDetails(patientID, props.savedProfile));
+   });
    return (
       <>
          <main>
@@ -15,4 +30,4 @@ function Loading() {
       </>
    );
 }
-export default Loading;
+export default connect(mapStateToProps)(Loading);
