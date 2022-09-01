@@ -200,7 +200,7 @@ const DoctorSchedule = (props) => {
                            <th className={DSstyles.tAction}>Action</th>
                         </thead>
                         <tbody>
-                           {/* {allAppointments.map((data, index) => {
+                           {allAppointments.map((data, index) => {
                               return (
                                  <tr key={index}>
                                     <td
@@ -240,9 +240,9 @@ const DoctorSchedule = (props) => {
                                     </td>
                                  </tr>
                               );
-                           })} */}
-{/*Dummy Texts*/}
-                           <tr>
+                           })}
+                           {/*Dummy Texts*/}
+                           {/* <tr>
                               <td className={DSstyles.imgSection}>
                                  <img src={avatarOne} alt={'img'} />
                               </td>
@@ -254,7 +254,8 @@ const DoctorSchedule = (props) => {
                               <td className={DSstyles.tdCancel} onClick="">
                                  Cancel
                               </td>
-                           </tr>
+                           </tr> */}
+                           {/*Dummy text End */}
                         </tbody>
                      </table>
                   </div>
