@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import styles from './loading.module.css';
 import spinner from '../../assets/loading-gif.gif';
-import { useDispatch } from 'react-redux';
-import { addNewHealthDetails,connect } from '../../Store/Actions';
+import { useDispatch, connect, useSelector } from 'react-redux';
+import { addNewHealthDetails } from '../../Store/Actions';
 
 const mapStateToProps = (state) => {
    return {
@@ -11,14 +11,13 @@ const mapStateToProps = (state) => {
       savedGuardianDetails: state.guardian,
    };
 };
-                
 
-function Loading(props) {     
+function Loading(props) {
    const patientID = useSelector((state) => state.user.id_patient);
    const dispatch = useDispatch();
-   useEffect (() => {
-      dispatch(addNewHealthDetails(patientID,props.savedProfile))
-   }) 
+   useEffect(() => {
+      dispatch(addNewHealthDetails(patientID, props.savedProfile));
+   });
    return (
       <>
          <main>
@@ -31,4 +30,4 @@ function Loading(props) {
       </>
    );
 }
-export default connect(mapStateToProps)(Loading)
+export default connect(mapStateToProps)(Loading);

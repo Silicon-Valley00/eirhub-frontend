@@ -207,7 +207,7 @@
    transition-delay: 0.4s;
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 12024px) {
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
    .calendarWeekDay {
       font-size: 0.8rem;
    }

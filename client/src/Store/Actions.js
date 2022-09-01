@@ -118,6 +118,36 @@ export const fetchProfile = (userID, guardianID) => {
    };
 };
 
+//Fetches user profile details
+export const fetchProfileOnSignup = (userID) => {
+   return async function (dispatch) {
+      try {
+         const response = await axios({
+            method: 'GET',
+            url: `http://127.0.0.1:5000/patients/${userID}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               dispatch(setProfileInfo(response.data.msg));
+            }
+         } else {
+            //takes all statuses aside 200
+            alert('Something went wrong. Try again');
+         }
+      } catch (error) {
+         alert(error, 'pro');
+      }
+   };
+};
+
 //Fetches user health details
 export const fetchHealthDetails = (userID) => {
    return async function (dispatch) {
@@ -293,7 +323,7 @@ export const updateGuardianInfo = (
 };
 
 //Create new user health details
-export const addNewHealthDetails = (patientId,profileData) => {
+export const addNewHealthDetails = (patientId, profileData) => {
    return async function (dispatch) {
       try {
          const response = await axios({
@@ -305,15 +335,13 @@ export const addNewHealthDetails = (patientId,profileData) => {
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
             },
-           
          });
          if (response.status === 200) {
             //checks details of response
             if (response.data.status === true) {
                //returns response
                dispatch(setHealthInfo(response.data.msg));
-               dispatch(addNewGuardianInfo(profileData ));
-               
+               dispatch(addNewGuardianInfo(profileData));
             }
          } else {
             //takes all statuses aside 200
@@ -326,9 +354,7 @@ export const addNewHealthDetails = (patientId,profileData) => {
 };
 
 //Creates guardian details
-export const addNewGuardianInfo = (
-   profileData
-) => {
+export const addNewGuardianInfo = (profileData) => {
    return async function (dispatch) {
       try {
          const response = await axios({
@@ -340,7 +366,6 @@ export const addNewGuardianInfo = (
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
             },
-           
          });
          if (response.status === 200) {
             //checks details of response
@@ -348,18 +373,20 @@ export const addNewGuardianInfo = (
                //returns response
                dispatch(setGuardianInfo(response.data.msg));
                const user = {
-
-                  name : `${profileData.first_name.charAt(0).toUpperCase() +  profileData.slice(1)}`,
-                  id_patient : profileData.id_patient,
-                  id_guardian : response.data.msg.id_guardian
-               }
+                  name: `${
+                     profileData.first_name.charAt(0).toUpperCase() +
+                     profileData.slice(1)
+                  }`,
+                  id_patient: profileData.id_patient,
+                  id_guardian: response.data.msg.id_guardian,
+               };
                const profile = {
                   user_email: profileData.user_email,
                   first_name: profileData.first_name,
                   house_address: profileData.house_address,
                   id_patient: profileData.id_patient,
                   id_doctor: profileData.id_doctor,
-                  id_guardian: response.data.msg.id_guardian ,
+                  id_guardian: response.data.msg.id_guardian,
                   id_number: profileData.id_number,
                   last_name: profileData.last_name,
                   middle_name: profileData.middle_name,
@@ -368,9 +395,9 @@ export const addNewGuardianInfo = (
                   person_image: profileData.person_image,
                   date_of_birth: profileData.date_of_birth,
                   gender: profileData.gender,
-               }
-               dispatch(setProfileInfo(profile))
-               dispatch(setUserInfo(user))
+               };
+               dispatch(setProfileInfo(profile));
+               dispatch(setUserInfo(user));
             }
          } else {
             //takes all statuses aside 200
@@ -382,8 +409,35 @@ export const addNewGuardianInfo = (
    };
 };
 
-
 //Fetches user report details
+export async function fetchReports(userID) {
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `http://127.0.0.1:5000/report/${userID}`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      });
+      if (response.status === 200) {
+         //checks details of response
+         if (response.data.status === true) {
+            //returns response
+            alert('report fetched worked');
+            return response.data.msg;
+         }
+      } else {
+         //takes all statuses aside 200
+         alert('Something went wrong. Try again');
+      }
+   } catch (error) {
+      alert(error, 'pro');
+   }
+}
+//Fetches user medications
 export async function fetchMedications(userID) {
    try {
       const response = await axios({
