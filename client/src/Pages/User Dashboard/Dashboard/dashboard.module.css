@@ -402,6 +402,13 @@ main#midsection::-webkit-scrollbar-thumb {
       align-content: space-between;
       justify-content: space-around;
    }
+   main .vitalsBox .vitals {
+      height: calc(100vh - 85vh);
+      min-height: calc(100vh - 85vh);
+   }
+   .vitalsInfo {
+      font-size: 0.8rem;
+   }
    /* MEDICATIONS */
    .medicationBox {
       margin-top: 1rem;
@@ -429,8 +436,8 @@ main#midsection::-webkit-scrollbar-thumb {
 @media only screen and (min-width: 1400px) and (max-width: 2000px) {
    main .vitalsBox {
       display: grid;
-      grid-template-columns: 21% 21% 21% 21%;
-      gap: 2.5rem;
+      grid-template-columns: 22% 22% 22% 22%;
+      gap: 2rem;
       align-content: space-between;
       justify-content: space-around;
    }

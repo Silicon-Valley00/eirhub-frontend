@@ -32,7 +32,6 @@ padding-right: 2.6rem; */
 .notificationBox {
    height: 22rem;
    min-height: 22rem;
-   max-height: 22rem;
    width: 100%;
    overflow: auto;
 }
@@ -142,9 +141,17 @@ padding-right: 2.6rem; */
       position: absolute;
       bottom: 0.5rem;
       width: auto;
-      height: calc(100vh - 65vh);
-      min-height: calc(100vh - 65vh);
-      padding-right: 2.6rem;
+      height: calc(100vh - 45vh);
+      min-height: calc(100vh - 45vh);
+      padding-right: 1rem;
+   }
+   .notificationBox {
+      height: calc(100vh - 50vh);
+      min-height: calc(100vh - 50vh);
+   }
+   .calendar {
+      height: 18rem;
+      min-height: 18rem;
    }
 }
 
@@ -154,9 +161,13 @@ padding-right: 2.6rem; */
       position: absolute;
       bottom: 0.5rem;
       width: auto;
-      height: calc(100vh - 65vh);
-      min-height: calc(100vh - 65vh);
-      padding-right: 2.6rem;
+      height: calc(100vh - 45vh);
+      min-height: calc(100vh - 45vh);
+      padding-right: 1rem;
+   }
+   .notificationBox {
+      height: calc(100vh - 50vh);
+      min-height: calc(100vh - 50vh);
    }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1399px) {

@@ -206,8 +206,39 @@
 .calendarDays div:hover span:nth-child(4) {
    transition-delay: 0.4s;
 }
+@media (min-width: 2001px) {
+   .calendarHeader {
+      font-size: 1.3rem;
+      padding: 0.2rem;
+   }
 
-@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+   .calendar {
+      padding: 0.2rem;
+   }
+   .calendarWeekDay {
+      height: 1.8rem;
+   }
+
+   .calendarDays {
+      gap: 0.3rem;
+   }
+   .calendarDays div {
+      height: 1.8rem;
+      width: 2rem;
+      font-size: 1rem;
+      padding: 0.2rem;
+   }
+   .calendarDays div.empty {
+      height: 1.8rem;
+      width: 2rem;
+      padding: 0.2rem;
+      background-color: var(--gray);
+   }
+}
+/* Media Queries */
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+}
+@media only screen and (min-width: 1024px) and (max-width: 1399px) {
    .calendarWeekDay {
       font-size: 0.8rem;
    }
