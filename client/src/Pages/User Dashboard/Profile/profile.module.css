@@ -123,7 +123,7 @@ div.personalInfoFormBox {
    line-height: 1;
    font-weight: 400;
    font-size: 0.9rem;
-   color: rgba(0, 0, 0, 0.8);
+   color: var(--deepcol);
    width: 100%;
    padding: 0.4rem;
 }

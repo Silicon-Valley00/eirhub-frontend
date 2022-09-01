@@ -5,21 +5,20 @@
    box-sizing: border-box;
    margin-right: 0;
    gap: 1.25rem;
-   max-height: 100vh;
+   min-height: 59rem;
+   height: 93.5vh;
 }
 .DSContainer1 {
    width: 78%;
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
-   height: 59rem;
 }
 
 .DSContainer2 {
    width: 20.3rem;
    background-color: #ecf3fc;
    border-radius: 1.25rem;
-   height: 59rem;
    overflow-y: scroll;
 }
 .DSContainer2::-webkit-scrollbar,
@@ -47,33 +46,6 @@
    color: #0d3f58;
 }
 
-.DSFiles {
-   text-align: center;
-   display: flex;
-   justify-content: space-between;
-   background-color: white;
-   height: 31.25rem;
-   border-radius: 20px;
-}
-.DSFiles::-webkit-scrollbar,
-.DSFiles::-webkit-scrollbar {
-   width: 0.3rem;
-   height: 0.3rem;
-   cursor: pointer;
-}
-.DSFiles::-webkit-scrollbar-track,
-.DSFiles::-webkit-scrollbar-track {
-   margin: 20px;
-   cursor: pointer;
-   --webkit-box-shadow: inset 0 0 10px var(--white);
-}
-.DSFiles::-webkit-scrollbar-thumb,
-.DSFiles::-webkit-scrollbar-thumb {
-   background-color: var(--lightcol);
-   border-radius: 10%;
-   cursor: pointer;
-}
-
 .DSHeader::-webkit-scrollbar,
 .DSHeader::-webkit-scrollbar {
    width: 0.3rem;
@@ -92,17 +64,11 @@
    border-radius: 10%;
    cursor: pointer;
 }
-.DSFiles th {
-   color: #c2c9d1;
-}
-.DSFiles table {
-   width: 100%;
-}
 
 .patientContainer {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
-   gap: 10px;
+   gap: 8px;
    margin-left: 20px;
    margin-top: 50px;
    max-height: 100vh;
@@ -134,6 +100,7 @@
    grid-template-columns: repeat(3, 1fr);
    margin-left: 20px;
    margin-top: 30px;
+   gap: 8px;
 }
 .inputDate {
    width: 80%;
@@ -189,8 +156,8 @@
    height: 25rem;
    border-radius: 20px;
    margin-top: 20px;
-   overflow-y: scroll;
    box-sizing: border-box;
+   overflow-y: scroll;
 }
 .appointmentContainer::-webkit-scrollbar,
 .appointmentContainer::-webkit-scrollbar {
@@ -210,34 +177,50 @@
    border-radius: 10%;
    cursor: pointer;
 }
+.appointmentContainer table thead {
+   position: sticky;
+   top: 0;
+   background: var(--white);
+}
 .appointmentContainer table {
-   margin: 20px auto;
-   padding-top: 20px;
+   margin: auto;
    text-align: center;
+   table-layout: fixed;
    width: 100%;
 }
 .appointmentContainer th {
    color: #c2c9d1;
+   padding-top: 29px;
 }
-.appointmentContainer td {
+.appointmentContainer table td {
+   padding-top: 21px;
    font-weight: 600;
    font-size: 1rem;
    color: #0d3f58;
    width: 19.5rem;
-   height: 100px;
+   height: 0.4rem;
+   min-height: 0.4rem;
+   max-height: 0.4rem;
+   cursor: pointer;
 }
-.appointmentContainer .imgSection{
-   width: 80px;
+.appointmentContainer table .tdCancel {
+   color: #ec6464;
+   cursor: pointer;
+}
+.appointmentContainer .imgHeader {
+   width: 10%;
 }
 .appointmentContainer .tdCondition {
    text-align: left;
 }
-.appointmentContainer .nameSection {
+.appointmentContainer .tCondition {
    text-align: left;
-   width: 300px;
+}
+.appointmentContainer .tName {
+   text-align: left;
    margin: 0 auto;
 }
-.DSFiles .tName {
+.appointmentContainer .tdName {
    text-align: left;
 }
 .DSContainer h2 {
@@ -266,7 +249,7 @@
    height: 40px;
 }
 /*Responsive*/
-@media only screen and (min-width: 1366px) and (max-width: 1440px) {
+@media only screen and (min-width: 1200px) and (max-width: 1440px) {
    .DSContainer1 h2 {
       width: 16.3125rem;
       font-weight: 600;
@@ -320,30 +303,21 @@
    .appointmentContainer {
       margin-top: 6px;
    }
-   .DSFiles {
-      margin: 0;
-      width: 100%;
-      height: 313px;
-   }
-   .DSFiles table {
-      font-size: 0.9375rem;
-      margin-top: 0;
-   }
-   .DSFiles td {
-      font-size: 0.9375rem;
-   }
    .appointmentContainer .nameSection {
-      width: 250px;
+      width: 100px;
       padding: 0;
-   }
-   .appointmentContainer td {
-      padding: 1.0625rem;
-   }
-   .appointmentContainer .tdCondition {
-      width: 400px;
    }
    .appointTime input::-webkit-input-placeholder {
       font-size: 0.875rem;
+   }
+   .appointmentContainer .tName {
+      width: 20%;
+   }
+   .appointmentContainer .imgHeader {
+      width: 10%;
+   }
+   .appointmentContainer .tAction {
+      width: 20%;
    }
 }
 @media only screen and (max-width: 1200px) {
@@ -353,7 +327,7 @@
    }
    .DSContainer1 {
       width: 80%;
-      height: 59rem;
+      height: 93.5vh;
    }
 
    .DSContainer1 form {
@@ -443,6 +417,15 @@
    .DSFiles {
       margin-top: 0;
    }
+   .appointmentContainer .tName {
+      width: 20%;
+   }
+   .appointmentContainer .imgHeader {
+      width: 10%;
+   }
+   .appointmentContainer .tAction {
+      width: 20%;
+   }
 }
 /*smaller laptop screens*/
 @media (max-width: 1024px) {
@@ -458,6 +441,7 @@
    .DSContainer1 {
       width: 78%;
       margin-left: 10rem;
+      height: 59rem;
    }
    .DSpatientContainer {
       width: 90%;
@@ -609,6 +593,9 @@
    .appointmentContainer td {
       padding: 1rem;
    }
+   .appointmentContainer .imgSection {
+      padding-left: 0;
+   }
 }
 
 /*small mobile screens*/
@@ -668,6 +655,9 @@
       width: 100%;
       justify-content: space-around;
    }
+   .appointmentContainer .imgSection {
+      padding-left: 0;
+   }
 }
 @media (max-width: 320px) {
    .DSContainer {
@@ -678,13 +668,10 @@
       margin: auto;
       width: 100%;
    }
-   .DSFiles {
-      width: 100%;
-      text-align: center;
-   }
    .appointmentContainer {
       width: 100%;
       margin: auto;
+      text-align: center;
    }
    .appointmentContainer table {
       width: 100%;
@@ -700,5 +687,8 @@
    }
    .appointmentContainer td {
       padding: 1rem;
+   }
+   .appointmentContainer .imgSection {
+      padding-left: 0;
    }
 }

@@ -248,6 +248,7 @@ function App() {
       // </Routes>
 
       //    /* Use the routes below if you do not want restrictions with your routes */
+
       <Routes>
          <Route path="*" exact element={<PageNotFound />} />
          <Route path="/loading" exact element={<Loading />} />
