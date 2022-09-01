@@ -88,6 +88,15 @@ function DoctorProfile(props) {
          //alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
+
+         const formData = new FormData();
+         formData.append('image', userimage);
+         formData.append('upload_preset', 'n6r1o2rk')
+
+         axios
+         .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
+         .then((response) => console.log(response))
+
          let reader = new FileReader();
          reader.onloadend = function () {
             setUserImage(reader.result);
