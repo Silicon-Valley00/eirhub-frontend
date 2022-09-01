@@ -165,6 +165,9 @@ padding-right: 2.6rem; */
       height: 15rem;
       width: 100%;
    }
+   .recentNotifications h2 {
+      font-size: 1rem;
+   }
    .notificationBox {
       height: 21rem;
       min-height: 21rem;

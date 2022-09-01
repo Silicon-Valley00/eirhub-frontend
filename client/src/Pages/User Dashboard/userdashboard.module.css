@@ -90,7 +90,13 @@
    font-weight: 700;
    text-transform: capitalize;
 }
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+   .container {
+      width: 98%;
+      grid-template-columns: 15rem auto 20rem;
+   }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1399px) {
    .userbody {
       overflow-x: hidden;
       width: 100vw;
@@ -98,11 +104,11 @@
    }
    .container {
       width: 98%;
-      grid-template-columns: 10rem auto 14rem;
+      grid-template-columns: 14rem auto 14rem;
    }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1025px) {
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
    .userbody {
       overflow-x: hidden;
       width: 100vw;

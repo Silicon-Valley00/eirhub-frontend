@@ -104,7 +104,7 @@ function Schedule() {
    return (
       <>
          <div id={styles.scheduleBody}>
-            <div className={styles.DoctorBox}>
+            <div className={styles.doctorBox}>
                <div className={styles.doctorDetailsField}>
                   <h2>Doctor Name</h2>
                   <div className={styles.doctorNameDetails}>

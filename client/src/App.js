@@ -220,7 +220,7 @@ function App() {
       //          exact
       //          element={
       //             <UserDashboard
-      //                parent={<Schedule />} //Transfers data from parent component to child component
+      //                parent={<Schedule />}
       //                child={<DashboardNotificationAlerts />}
       //                page={'schedule'}
       //             />
@@ -340,7 +340,7 @@ function App() {
             exact
             element={
                <UserDashboard
-                  parent={<Schedule />} //Transfers data from parent component to child component
+                  parent={<Schedule />}
                   child={<DashboardNotificationAlerts />}
                   page={'schedule'}
                />
