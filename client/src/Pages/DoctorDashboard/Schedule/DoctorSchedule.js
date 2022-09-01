@@ -8,49 +8,29 @@ import avatarOne from '../../../assets/Rectangle-1.png';
 
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
-   console.log('In the schedule: ', data);
 
    const [allAppointments, setAllAppointments] = useState([]);
-   console.log(allAppointments);
+   const [selectedAppointment, setSelectedAppointment] = useState([]);
+   const [appointment_date, setAppointmentDate] = useState('');
+   const [appointment_start_time, setAppointmentStartTime] = useState('');
+   const [appointment_end_time, setAppointmentEndTime] = useState('');
+
+   let scheduledAppointment = {
+      appointment_date,
+      appointment_end_time,
+      appointment_reason: selectedAppointment?.appointment_reason,
+      appointment_start_time,
+      appointment_status: 'Pending',
+      appointment_location: selectedAppointment?.appointment_location,
+      id_doctor: 21,
+      id_patient: 31,
+   };
+   console.log(scheduledAppointment);
 
    // endpoint for updating doctor profile
    const baseURL = 'http://127.0.0.1:5000';
 
-   // useEffect(() => {
-   //    const getAllAppointmentsForADoctor = async () => {
-   //       const getAppointments = async () => {
-   //          try {
-   //             const response = await axios({
-   //                method: 'GET',
-   //                url: endpoint,
-   //                headers: {
-   //                   'Access-Control-Allow-Origin': '*',
-   //                   'Access-Control-Allow-Headers': '*',
-   //                   'Access-Control-Allow-Methods': '*',
-   //                },
-   //             });
-   //             console.log(response);
-   //             const res = response.data.msg;
-   //             if (response.status === 200) {
-   //                console.log('GET was successful');
-   //                if (res.length === 0) {
-   //                   console.log('true');
-   //                   setAllAppointments(
-   //                      allAppointments.push({ nothing: 'Nothing to display' })
-   //                   );
-   //                }
-   //                return response.data.msg;
-   //             }
-   //          } catch (error) {
-   //             console.log('GET Error', error);
-   //          }
-   //       };
-   //       const fetchedAppointments = await getAppointments();
-   //       setAllAppointments(fetchedAppointments);
-   //    };
-   //    getAllAppointmentsForADoctor();
-   // }, [endpoint]);
-
+   // Function to get all pending appointment.
    useEffect(() => {
       const getAllAppointmentsForADoctor = async () => {
          axios
@@ -74,31 +54,61 @@ const DoctorSchedule = (props) => {
       getAllAppointmentsForADoctor();
    }, []);
 
+   const scheduleAppointment = () => {
+      axios
+         .put(
+            `${baseURL}/appointments/?appointment_id=${selectedAppointment?.appointment_id}`,
+            (scheduledAppointment = {
+               ...scheduledAppointment,
+               appointment_status: 'Accepted',
+            }),
+            {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            }
+         )
+         .then(() => console.log('successul put'))
+         .catch((error) => console.log(error));
+   };
+
+   const displaySelectedPatientDetails = (patientKeyNum) => {
+      const selectedPatient = allAppointments[patientKeyNum];
+      setSelectedAppointment(selectedPatient);
+      console.log('was clicked', selectedPatient);
+      console.log(patientKeyNum);
+   };
+
    // let appointmentsData;
    // //displays medications
    // if (allAppointments === undefined) {
    //    appointmentsData = <p>Nothing to show here.</p>;
    // } else {
    //    if (allAppointments.length !== 0) {
-   //       appointmentsData = allAppointments.map((item, j) => {
+   //       allAppointments.map((data, index) => {
    //          return (
-   //             <tr key={`${item.appointment_reason}-${j}`}>
-   //                <td>
-   //                   <div>
-   //                      <img
-   //                         src={
-   //                            item.patient_info.person_image
-   //                               ? item.patient_info.person_image
-   //                               : avatarOne
-   //                         }
-   //                         alt="avatar"
-   //                      />
-   //                   </div>
+   //             <tr key={index}>
+   //                <td className={DSstyles.imgSection}>
+   //                   <img src={data?.patient_info.person_image} alt={'img'} />
    //                </td>
-   //                <td>{`Dr. ${item.doctor_info.first_name} ${item.doctor_info.last_name}`}</td>
-   //                <td>Ridge Hospital</td>
-   //                <td>{item.appointment_reason}</td>
-   //                <td>{item.appointment_status}</td>
+   //                <td>
+   //                   {data?.patient_info.first_name}{' '}
+   //                   {data?.patient_info.last_name}{' '}
+   //                </td>
+   //                <td className={DSstyles.tdCondition}>
+   //                   Swollen tonsils with severe pains in throat and chest
+   //                </td>
+   //                <td
+   //                   style={{
+   //                      color: '#EC6464',
+   //                      cursor: 'pointer',
+   //                   }}
+   //                   onClick=""
+   //                >
+   //                   Cancel
+   //                </td>
    //             </tr>
    //          );
    //       });
@@ -121,14 +131,18 @@ const DoctorSchedule = (props) => {
                         type="message"
                         id="name"
                         className={DSstyles.inputName}
+                        value={selectedAppointment?.patient_info?.first_name}
+                        disabled
                      />
                      <label className={DSstyles.labelCondition}>
                         Condition
                      </label>
                      <input
-                        type="message"
+                        type="text"
                         id="condition"
                         className={DSstyles.inputCondition}
+                        value={selectedAppointment?.appointment_reason}
+                        disabled
                      />
                   </div>
                   <div className={DSstyles.appointTime}>
@@ -142,6 +156,7 @@ const DoctorSchedule = (props) => {
                         onFocus={(e) => (e.target.type = 'date')}
                         onBlur={(e) => (e.target.type = 'text')}
                         className={DSstyles.inputDate}
+                        onChange={(e) => setAppointmentDate(e.target.value)}
                      />
                      <label className={DSstyles.labelSTime}>Start Time</label>
                      <input
@@ -151,6 +166,9 @@ const DoctorSchedule = (props) => {
                         onFocus={(e) => (e.target.type = 'time')}
                         onBlur={(e) => (e.target.type = 'text')}
                         className={DSstyles.inputStartTime}
+                        onChange={(e) =>
+                           setAppointmentStartTime(e.target.value)
+                        }
                      />
                      <label className={DSstyles.labelETime}>End Time</label>
                      <input
@@ -160,62 +178,75 @@ const DoctorSchedule = (props) => {
                         onFocus={(e) => (e.target.type = 'time')}
                         onBlur={(e) => (e.target.type = 'text')}
                         className={DSstyles.inputEndTime}
+                        onChange={(e) => setAppointmentEndTime(e.target.value)}
                      />
                   </div>
                   <div className={DSstyles.DSbuttondiv}>
-                     <button className={DSstyles.DSbutton}>
+                     <button
+                        className={DSstyles.DSbutton}
+                        onClick={() => scheduleAppointment}
+                     >
                         Schedule Appointment
                      </button>
                   </div>
                </form>
                <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
                <div className={DSstyles.appointmentContainer}>
-                  <table>
-                     <thead>
-                        <th className={DSstyles.imgHeader}></th>
-                        <th className={DSstyles.tName}>Name</th>
-                        <th className={DSstyles.tCondition}>Condition</th>
-                        <th className={DSstyles.tAction}>Action</th>
-                     </thead>
-                     <tbody>
-                        {/* <tr>
-                           <td className={DSstyles.imgSection}>
-                              <img src={avatarOne} alt={'img'} />
-                           </td>
-                           <td className={DSstyles.tdName}>Ama Osaba</td>
-                           <td className={DSstyles.tdCondition}>
-                              Swollen tonsils with severe pains in throat and
-                              chest
-                           </td>
-                           <td className={DSstyles.tdCancel} onClick="">
-                              Cancel
-                           </td>
-                        </tr> */}
-                        {allAppointments.map((data, index) => {
-                           return (
-                              <tr key={index}>
-                                 <td className={DSstyles.imgSection}>
-                                    <img
-                                       src={data?.patient_info.person_image}
-                                       alt={'img'}
-                                    />
-                                 </td>
-                                 <td classname={DSstyles.tdName}>
-                                    {data?.patient_info.first_name}{' '}
-                                    {data?.patient_info.last_name}{' '}
-                                 </td>
-                                 <td className={DSstyles.tdCondition}>
-                                    Swollen tonsils with severe pains in throat
-                                    and chest
-                                 </td>
-                                 <td className={DSstyles.tdCancel} onClick="">
-                                    Cancel
-                                 </td>
-                              </tr>
-                           );
-                        })}
-                     </tbody>
-                  </table>
+                  <div className={DSstyles.DSFiles}>
+                     <table>
+                        <thead>
+                           <th className={DSstyles.imgHeader}></th>
+                           <th className={DSstyles.tName}>Name</th>
+                           <th className={DSstyles.tCondition}>Condition</th>
+                           <th className={DSstyles.tAction}>Action</th>
+                        </thead>
+                        <tbody>
+                           {allAppointments.map((data, index) => {
+                              return (
+                                 <tr key={index}>
+                                    <td
+                                       className={DSstyles.imgSection}
+                                       onClick={() =>
+                                          displaySelectedPatientDetails(index)
+                                       }
+                                    >
+                                       <img
+                                          src={data?.patient_info.person_image}
+                                          alt={'img'}
+                                       />
+                                    </td>
+                                    <td
+                                       onClick={() =>
+                                          displaySelectedPatientDetails(index)
+                                       }
+                                    >
+                                       {data?.patient_info.first_name}{' '}
+                                       {data?.patient_info.last_name}{' '}
+                                    </td>
+                                    <td
+                                       className={DSstyles.tdCondition}
+                                       onClick={() =>
+                                          displaySelectedPatientDetails(index)
+                                       }
+                                    >
+                                       Swollen tonsils with severe pains in
+                                       throat and chest
+                                    </td>
+                                    <td
+                                       style={{
+                                          color: '#EC6464',
+                                          cursor: 'pointer',
+                                       }}
+                                       onClick=""
+                                    >
+                                       Cancel
+                                    </td>
+                                 </tr>
+                              );
+                           })}
+                        </tbody>
+                     </table>
+                  </div>
                </div>
             </div>
             <div className={DSstyles.DSpatientContainer}>

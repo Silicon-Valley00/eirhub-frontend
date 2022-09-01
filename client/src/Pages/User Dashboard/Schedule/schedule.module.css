@@ -8,13 +8,14 @@
    min-height: calc(100vh - 4rem);
    max-height: calc(100vh - 4rem);
 }
-.DoctorBox {
+.doctorBox {
    height: 4.8rem;
    min-height: 4.8rem;
    max-height: 4.8rem;
    display: flex;
    justify-content: space-between;
 }
+
 .doctorDetailsField {
    width: 48%;
 }
@@ -66,7 +67,7 @@
    font-weight: 500;
    font-size: 0.9rem;
    color: var(--tablehead);
-   width: 30rem;
+   width: 70%;
    border-radius: 0.4rem;
    padding: 0.5rem;
 }
@@ -82,7 +83,7 @@
 }
 
 .conditionDetails button {
-   width: 7rem;
+   width: 15%;
    height: 2.5rem;
    border: none;
    outline: none;
@@ -95,8 +96,7 @@
    text-align: center;
    overflow: hidden;
    position: relative;
-   justify-content: flex-end;
-   padding: 0.2rem 0.5rem;
+   /* padding: 0.2rem 0.6rem; */
    border-radius: 0.2rem;
 }
 
@@ -113,9 +113,8 @@
 }
 .appointmentTable {
    width: 100%;
-   height: calc(666px - 25rem);
+   height: calc(100vh - 67vh);
    background-color: white;
-   /* display: grid; */
    justify-content: center;
    align-items: center;
    table-layout: fixed;
@@ -230,8 +229,23 @@
    border-radius: 10%;
    cursor: pointer;
 }
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+   .appointmentsBox {
+      margin-top: 10rem;
+   }
+   .appointmentsBox h2 {
+      font-size: 1.3rem;
+   }
+   .appointmentTable {
+      width: 100%;
+      height: calc(100vh - 60vh);
+   }
+}
 
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+@media only screen and (min-width: 1025px) and (max-width: 1399px) {
+   .conditionDetails input[type='text'] {
+      width: 80%;
+   }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 }
