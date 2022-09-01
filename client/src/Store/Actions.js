@@ -118,6 +118,36 @@ export const fetchProfile = (userID, guardianID) => {
    };
 };
 
+//Fetches user profile details
+export const fetchProfileOnSignup = (userID) => {
+   return async function (dispatch) {
+      try {
+         const response = await axios({
+            method: 'GET',
+            url: `http://127.0.0.1:5000/patients/${userID}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               dispatch(setProfileInfo(response.data.msg));
+            }
+         } else {
+            //takes all statuses aside 200
+            alert('Something went wrong. Try again');
+         }
+      } catch (error) {
+         alert(error, 'pro');
+      }
+   };
+};
+
 //Fetches user health details
 export const fetchHealthDetails = (userID) => {
    return async function (dispatch) {

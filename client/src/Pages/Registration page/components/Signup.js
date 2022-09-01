@@ -9,7 +9,12 @@ import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchProfile, setPatientAuth } from '../../../Store/Actions.js';
+import {
+   fetchProfile,
+   fetchProfileOnSignup,
+   setPatientAuth,
+   setUserInfo,
+} from '../../../Store/Actions.js';
 import { SignUpUser } from '../../../context/authcontext';
 
 function Signup(props) {
@@ -54,8 +59,16 @@ function Signup(props) {
             }`
          );
          dispatch(
-            fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
+            setUserInfo({
+               name: `${
+                  feedback[1].first_name.charAt(0).toUpperCase() +
+                  feedback[1].first_name.slice(1)
+               }`,
+               id_patient: feedback[1].id_patient,
+               id_guardian: '',
+            })
          );
+         dispatch(fetchProfileOnSignup(feedback[1].id_patient));
          navigate('/loading');
 
          dispatch(setPatientAuth(true));
