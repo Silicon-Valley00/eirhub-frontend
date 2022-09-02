@@ -123,6 +123,9 @@
    text-align: left;
    padding-left: 8px;
 }
+.DSContainer1 form input {
+   font-size: 1.1rem;
+}
 .DSbutton {
    width: 100%;
    height: 100%;
@@ -210,10 +213,10 @@
 .appointmentContainer .imgHeader {
    width: 10%;
 }
-.appointmentContainer .tdCondition {
+.appointmentContainer .tCondition {
    text-align: left;
 }
-.appointmentContainer .tCondition {
+.appointmentContainer .tdCondition {
    text-align: left;
 }
 .appointmentContainer .tName {
@@ -241,10 +244,6 @@
 }
 .imageDiv img {
    margin: 0 20px;
-   width: 40px;
-   height: 40px;
-}
-.nameSection img {
    width: 40px;
    height: 40px;
 }
@@ -409,10 +408,7 @@
       border-radius: 20px;
    }
    .appointmentContainer .nameSection {
-      width: 200px;
-   }
-   .appointmentContainer td {
-      padding: 1rem;
+      width: 12.5rem;
    }
    .DSFiles {
       margin-top: 0;
@@ -452,9 +448,6 @@
    }
    .appointmentContainer .nameSection {
       width: 200px;
-   }
-   .appointmentContainer td {
-      padding: 1rem;
    }
 }
 /*Tablet Screens*/
@@ -504,9 +497,6 @@
    }
    .appointmentContainer .nameSection {
       width: 200px;
-   }
-   .appointmentContainer td {
-      padding: 1rem;
    }
 }
 /*Mobile screens*/
@@ -590,11 +580,17 @@
    .appointmentContainer .nameSection {
       width: 100%;
    }
-   .appointmentContainer td {
-      padding: 1rem;
-   }
    .appointmentContainer .imgSection {
       padding-left: 0;
+   }
+   .appointmentContainer .tdCancel {
+      padding-left: 0;
+   }
+   .appointmentContainer table th {
+      padding-left: 20px;
+   }
+   .appointmentContainer table td {
+      padding-left: 20px;
    }
 }
 
@@ -658,6 +654,15 @@
    .appointmentContainer .imgSection {
       padding-left: 0;
    }
+    .appointmentContainer .tdCancel {
+      padding-left: 0;
+   }
+   .appointmentContainer table th {
+      padding-left: 20px;
+   }
+   .appointmentContainer table td {
+      padding-left: 20px;
+   }
 }
 @media (max-width: 320px) {
    .DSContainer {
@@ -677,16 +682,19 @@
       width: 100%;
       overflow-x: scroll;
    }
-   .appointmentContainer td {
-      width: 1000px;
+   .appointmentContainer table th {
+      padding-left: 20px;
    }
+   .appointmentContainer table td {
+      padding-left: 20px;
+   }
+   /* .appointmentContainer td {
+      width: 1000px;
+   } */
    .appointmentContainer .nameSection {
       width: 100px;
       gap: 1rem;
       padding: 0;
-   }
-   .appointmentContainer td {
-      padding: 1rem;
    }
    .appointmentContainer .imgSection {
       padding-left: 0;

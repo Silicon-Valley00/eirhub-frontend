@@ -11,8 +11,10 @@ import axios from 'axios';
 function MidDashboard(props) {
    const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
    console.log(getacceptedAppointment);
+
+   // States to keep the counts of the number of patients, reports and appointments
    const [numOfPatients, setNumOfPatients] = useState(0);
-   const [numOfRecords, setNumOfRecords] = useState(0);
+   const [numOfReports, setNumOfReports] = useState(0);
    const [numOfAppointments, setNumOfAppointments] = useState(0);
 
    const data = props.doctorProfile;
@@ -55,6 +57,7 @@ function MidDashboard(props) {
       fetchAcceptedAppointments();
    }, []);
 
+   // Fetch all the data from the endpoints at once.
    // useEffect(() => {
    //    axios
    //       .all(
@@ -63,7 +66,7 @@ function MidDashboard(props) {
    //                `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`
    //             ),
    //             axios.get(
-   //                `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`
+   //                `${baseURL}/doctors/patients/?id_doctor=${data?.id_doctor}`
    //             ),
    //             axios.get(
    //                `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`
@@ -82,8 +85,11 @@ function MidDashboard(props) {
    //       )
    //       .then(
    //          axios.spread(
-   //             (upcomingAppointments, patients, records, appointments) => {
+   //             (upcomingAppointments, patients, reports, appointments) => {
    //                setAcceptedAppointment(upcomingAppointments);
+   //                setNumOfAppointments(appointments);
+   //                setNumOfPatients(patients);
+   //                setNumOfRecords(reports);
    //             }
    //          )
    //       )
