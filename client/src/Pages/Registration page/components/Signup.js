@@ -52,8 +52,7 @@ function Signup(props) {
             } ${
                feedback[1].last_name.charAt(0).toUpperCase() +
                feedback[1].last_name.slice(1)
-            }
-      }`,
+            }`,
             `${feedback[1].first_name.toLowerCase()}${feedback[1].last_name.toLowerCase()}${
                feedback[1].id_patient
             }`
