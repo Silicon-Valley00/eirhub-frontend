@@ -7,7 +7,7 @@ import Cards from './Cards';
 
 const details = [
    {
-      name: 'Dr. Jaine Huaffmann',
+      name: 'Dr. Jaine Hauffmann',
       profession: 'Restorative Dentist',
       profile_pic: docOne,
    },
@@ -43,7 +43,10 @@ const Services = (props) => {
             </div>
 
             {/* Button beneath the cards */}
-            <div className={Styles.services_button} onClick={() => props.handleModalSignup()}>
+            <div
+               className={Styles.services_button}
+               onClick={() => props.handleModalSignup()}
+            >
                <input
                   value={'Find A Doctor'}
                   type={'submit'}
@@ -53,13 +56,16 @@ const Services = (props) => {
 
             {/* Box that displays and ad and book an appointment */}
             <div className={Styles.services_message}>
-               <div className={Styles.services_message_box}>
+               <div className={Styles.services_message_boxservices_body}>
                   <div className={Styles.services_message_info}>
                      <h4 className={Styles.services_ad}>
                         Don't Delay Care For You and those You Love.
                      </h4>
                      {/* A button that is used to book an appointment.  */}
-                     <button className={Styles.message_btn} onClick={() => props.handleModalSignup()}>
+                     <button
+                        className={Styles.message_btn}
+                        onClick={() => props.handleModalSignup()}
+                     >
                         Book an Appointment
                      </button>
                      <div className={Styles.circle_1}></div>

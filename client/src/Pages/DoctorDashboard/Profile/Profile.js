@@ -9,7 +9,6 @@ import { setDoctorProfile } from '../../../Store/DoctorAction';
 function DoctorProfile(props) {
    const data = props.doctorProfile;
 
-   // BUG: Email and specialities do not display in profiles..
    console.log('the data: ', data);
    const [first_name, setFirstName] = useState(data?.first_name);
    const [last_name, setLastName] = useState(data?.last_name);
@@ -49,32 +48,25 @@ function DoctorProfile(props) {
       house_address,
       license_number,
    };
-   console.log(doctorEditedProfile);
+   console.log('sending', doctorEditedProfile);
 
    // endpoint for updating doctor profile
    const endpoint = `http://127.0.0.1:5000/doctor/${data?.id_doctor}`;
 
    const dispatch = useDispatch();
-   // FIXME: Refactor codes
+
    const updateDoctorProfile = async () => {
-      try {
-         const request = await axios({
-            method: 'PUT',
-            url: endpoint,
-            data: doctorEditedProfile,
+      await axios
+         .put(endpoint, doctorEditedProfile, {
             headers: {
                'Access-Control-Allow-Origin': '*',
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
+               'content-type': 'application/json',
             },
-            application: 'application/json',
-         });
-         if (request.status === 200) {
-            dispatch(setDoctorProfile(request.data));
-         }
-      } catch (error) {
-         console.log('Put Error', error);
-      }
+         })
+         .then((res) => dispatch(setDoctorProfile(res.data)))
+         .catch((error) => console.log('Put Error', error));
    };
 
    // function handles image upload
@@ -93,7 +85,7 @@ function DoctorProfile(props) {
       const userimage = e.target.files[0];
       if (!/^image\//.test(userimage.type)) {
          //Checks for the image format
-         alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
+         //alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
          let reader = new FileReader();
@@ -137,6 +129,7 @@ function DoctorProfile(props) {
                               display: 'none',
                            }}
                            onChange={(e) => handleImageUpload(e)}
+                           disabled={disableBtn}
                         />
                      </div>
                   </div>
@@ -374,7 +367,6 @@ function DoctorProfile(props) {
 
                {/* submit button */}
                <div className={styles.btn_div}>
-                  {console.log(disableBtn)}
                   {disableBtn ? (
                      <button
                         className={styles.edit_btn}

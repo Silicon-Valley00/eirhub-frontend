@@ -9,12 +9,14 @@ import avatarOne from '../../../assets/Rectangle-1.png';
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
 
+   // States that would be used as data for the PUT method
    const [allAppointments, setAllAppointments] = useState([]);
    const [selectedAppointment, setSelectedAppointment] = useState([]);
    const [appointment_date, setAppointmentDate] = useState('');
    const [appointment_start_time, setAppointmentStartTime] = useState('');
    const [appointment_end_time, setAppointmentEndTime] = useState('');
 
+   // Data to be sent over to the backend
    let scheduledAppointment = {
       appointment_date,
       appointment_end_time,
@@ -22,10 +24,9 @@ const DoctorSchedule = (props) => {
       appointment_start_time,
       appointment_status: 'Pending',
       appointment_location: selectedAppointment?.appointment_location,
-      id_doctor: 21,
-      id_patient: 31,
+      id_doctor: selectedAppointment?.id_doctor,
+      id_patient: selectedAppointment?.id_patient,
    };
-   console.log(scheduledAppointment);
 
    // endpoint for updating doctor profile
    const baseURL = 'http://127.0.0.1:5000';
@@ -54,14 +55,15 @@ const DoctorSchedule = (props) => {
       getAllAppointmentsForADoctor();
    }, []);
 
-   const scheduleAppointment = () => {
-      axios
+   // Function that sends the data to the server
+   const scheduleAppointment = async () => {
+      await axios
          .put(
-            `${baseURL}/appointments/?appointment_id=${selectedAppointment?.appointment_id}`,
-            (scheduledAppointment = {
+            `${baseURL}/appointments/?id_appointment=${selectedAppointment?.id_appointment}`,
+            {
                ...scheduledAppointment,
                appointment_status: 'Accepted',
-            }),
+            },
             {
                headers: {
                   'Access-Control-Allow-Origin': '*',
@@ -77,8 +79,6 @@ const DoctorSchedule = (props) => {
    const displaySelectedPatientDetails = (patientKeyNum) => {
       const selectedPatient = allAppointments[patientKeyNum];
       setSelectedAppointment(selectedPatient);
-      console.log('was clicked', selectedPatient);
-      console.log(patientKeyNum);
    };
 
    // let appointmentsData;
@@ -89,27 +89,26 @@ const DoctorSchedule = (props) => {
    //    if (allAppointments.length !== 0) {
    //       allAppointments.map((data, index) => {
    //          return (
-   //             <tr key={index}>
-   //                <td className={DSstyles.imgSection}>
-   //                   <img src={data?.patient_info.person_image} alt={'img'} />
-   //                </td>
-   //                <td>
-   //                   {data?.patient_info.first_name}{' '}
-   //                   {data?.patient_info.last_name}{' '}
-   //                </td>
-   //                <td className={DSstyles.tdCondition}>
-   //                   Swollen tonsils with severe pains in throat and chest
-   //                </td>
-   //                <td
-   //                   style={{
-   //                      color: '#EC6464',
-   //                      cursor: 'pointer',
-   //                   }}
-   //                   onClick=""
-   //                >
-   //                   Cancel
-   //                </td>
-   //             </tr>
+   // <tr key={index}>
+   //    <td className={DSstyles.imgSection}>
+   //       <img src={data?.patient_info.person_image} alt={'img'} />
+   //    </td>
+   //    <td>
+   //       {data?.patient_info.first_name} {data?.patient_info.last_name}{' '}
+   //    </td>
+   //    <td className={DSstyles.tdCondition}>
+   //       Swollen tonsils with severe pains in throat and chest
+   //    </td>
+   //    <td
+   //       style={{
+   //          color: '#EC6464',
+   //          cursor: 'pointer',
+   //       }}
+   //       onClick=""
+   //    >
+   //       Cancel
+   //    </td>
+   // </tr>;
    //          );
    //       });
    //    } else if (allAppointments.length === 0) {
@@ -184,7 +183,7 @@ const DoctorSchedule = (props) => {
                   <div className={DSstyles.DSbuttondiv}>
                      <button
                         className={DSstyles.DSbutton}
-                        onClick={() => scheduleAppointment}
+                        onClick={() => scheduleAppointment()}
                      >
                         Schedule Appointment
                      </button>
@@ -219,6 +218,7 @@ const DoctorSchedule = (props) => {
                                        onClick={() =>
                                           displaySelectedPatientDetails(index)
                                        }
+                                       className={DSstyles.tdName}
                                     >
                                        {data?.patient_info.first_name}{' '}
                                        {data?.patient_info.last_name}{' '}
@@ -244,6 +244,21 @@ const DoctorSchedule = (props) => {
                                  </tr>
                               );
                            })}
+                           {/*Dummy Texts*/}
+                           {/* <tr>
+                              <td className={DSstyles.imgSection}>
+                                 <img src={avatarOne} alt={'img'} />
+                              </td>
+                              <td className={DSstyles.tdName}>Ama Osaba</td>
+                              <td className={DSstyles.tdCondition}>
+                                 Swollen tonsils with severe pains in throat and
+                                 chest
+                              </td>
+                              <td className={DSstyles.tdCancel} onClick="">
+                                 Cancel
+                              </td>
+                           </tr> */}
+                           {/*Dummy text End */}
                         </tbody>
                      </table>
                   </div>

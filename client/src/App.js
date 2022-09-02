@@ -6,10 +6,10 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 // Imports for landing pate
-import LandingPage from './Pages/Landing page/LandingPage';
-import ServicesPage from './Pages/Landing page/ServicesPage';
-import HowItWorks from './Pages/Landing page/HowItWorks';
-import FAQ from './Pages/Landing page/FAQ/FAQ';
+import LandingPage from './Pages/Landing_page/LandingPage';
+import ServicesPage from './Pages/Landing_page/ServicesPage';
+import HowItWorks from './Pages/Landing_page/HowItWorks';
+import FAQ from './Pages/Landing_page/FAQ/FAQ';
 
 //Imports for PageNotFound
 import PageNotFound from './Pages/PageNotFound/PageNotFound';

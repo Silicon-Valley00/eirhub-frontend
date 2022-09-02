@@ -110,10 +110,40 @@ export const fetchProfile = (userID, guardianID) => {
             }
          } else {
             //takes all statuses aside 200
-            alert('Something went wrong. Try again');
+            //alert('Something went wrong. Try again');
          }
       } catch (error) {
-         alert(error, 'pro');
+         //alert(error, 'pro');
+      }
+   };
+};
+
+//Fetches user profile details
+export const fetchProfileOnSignup = (userID) => {
+   return async function (dispatch) {
+      try {
+         const response = await axios({
+            method: 'GET',
+            url: `http://127.0.0.1:5000/patients/${userID}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               dispatch(setProfileInfo(response.data.msg));
+            }
+         } else {
+            //takes all statuses aside 200
+            //alert('Something went wrong. Try again');
+         }
+      } catch (error) {
+         //alert(error, 'pro');
       }
    };
 };
@@ -140,10 +170,10 @@ export const fetchHealthDetails = (userID) => {
             }
          } else {
             //takes all statuses aside 200
-            alert('Something went wrong. Try again');
+            //alert('Something went wrong. Try again');
          }
       } catch (error) {
-         alert(error, 'hel');
+         //alert(error, 'hel');
       }
    };
 };
@@ -171,13 +201,14 @@ export const fetchGuardianInfo = (userID, guardianID) => {
             }
          } else {
             //takes all statuses aside 200
-            alert('Something went wrong. Try again');
+            //alert('Something went wrong. Try again');
          }
       } catch (error) {
-         alert(error, 'gur');
+         //alert(error, 'gur');
       }
    };
 };
+
 //updates user profile details
 export const updateProfile = (
    userID,
@@ -215,10 +246,10 @@ export const updateProfile = (
             }
          } else {
             //takes all statuses aside 200
-            alert('Could not make update, try again up1');
+            //alert('Could not make update, try again up1');
          }
       } catch (error) {
-         alert('Could not make update, try again up2');
+         //alert('Could not make update, try again up2');
       }
    };
 };
@@ -246,10 +277,10 @@ export const updateHealthDetails = (userID, data) => {
             }
          } else {
             //takes all statuses aside 200
-            alert('Could not make update, try again uh1');
+            //alert('Could not make update, try again uh1');
          }
       } catch (error) {
-         alert('Could not make update, try again uh2');
+         //alert('Could not make update, try again uh2');
       }
    };
 };
@@ -283,10 +314,99 @@ export const updateGuardianInfo = (
             }
          } else {
             //takes all statuses aside 200
-            alert('Could not make update, try again ug1');
+            //alert('Could not make update, try again ug1');
          }
       } catch (error) {
-         alert('Could not make update, try again ug2');
+         //alert('Could not make update, try again ug2');
+      }
+   };
+};
+
+//Create new user health details
+export const addNewHealthDetails = (healthData,guardianData,patientId, profileData) => {
+   return async function (dispatch) {
+      try {
+         const response = await axios({
+            method: 'POST',
+            url: `http://127.0.0.1:5000/healthdetails/${patientId}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+            data:healthData
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               dispatch(setHealthInfo(response.data.msg));
+               dispatch(addNewGuardianInfo(guardianData,profileData));
+            }
+         } else {
+            //takes all statuses aside 200
+            //alert('Could not create health details, try again uh1');
+         }
+      } catch (error) {
+         //alert('Could not create health details, try again uh2');
+      }
+   };
+};
+
+//Creates guardian details
+export const addNewGuardianInfo = (guardianData,profileData) => {
+   return async function (dispatch) {
+      try {
+         const response = await axios({
+            method: 'POST',
+            url: `http://127.0.0.1:5000/guardians`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+            data: guardianData
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               dispatch(setGuardianInfo(response.data.msg));
+               const user = {
+                  name: `${
+                     profileData.first_name.charAt(0).toUpperCase() +
+                     profileData.slice(1)
+                  }`,
+                  id_patient: profileData.id_patient,
+                  id_guardian: response.data.msg.id_guardian,
+               };
+               const profile = {
+                  user_email: profileData.user_email,
+                  first_name: profileData.first_name,
+                  house_address: profileData.house_address,
+                  id_patient: profileData.id_patient,
+                  id_doctor: profileData.id_doctor,
+                  id_guardian: response.data.msg.id_guardian,
+                  id_number: profileData.id_number,
+                  last_name: profileData.last_name,
+                  middle_name: profileData.middle_name,
+                  nationality: profileData.nationality,
+                  phone_number: profileData.phone_number,
+                  person_image: profileData.person_image,
+                  date_of_birth: profileData.date_of_birth,
+                  gender: profileData.gender,
+               };
+               dispatch(setProfileInfo(profile));
+               dispatch(setUserInfo(user));
+            }
+         } else {
+            //takes all statuses aside 200
+            //alert('Could not create guardian, try again ug1');
+         }
+      } catch (error) {
+         //alert('Could not create guardian, try again ug2');
       }
    };
 };
@@ -308,19 +428,18 @@ export async function fetchReports(userID) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            alert('report fetched worked');
+            //alert('report fetched worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         alert('Something went wrong. Try again');
+         //alert('Something went wrong. Try again');
       }
    } catch (error) {
-      alert(error, 'pro');
+      //alert(error, 'pro');
    }
 }
-
-//Fetches user report details
+//Fetches user medications
 export async function fetchMedications(userID) {
    try {
       const response = await axios({
@@ -337,16 +456,16 @@ export async function fetchMedications(userID) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            alert('fetch med worked');
+            //alert('fetch med worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         alert('Something went wrong. Try again');
+         //alert('Something went wrong. Try again');
          return [];
       }
    } catch (error) {
-      alert(error, 'med2');
+      //alert(error, 'med2');
    }
 }
 
@@ -369,14 +488,14 @@ export const updatePrescriptions = (Id, data) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               alert('med update worked');
+               //alert('med update worked');
             }
          } else {
             //takes all statuses aside 200
-            alert('Could not make update, try again med update 1');
+            //alert('Could not make update, try again med update 1');
          }
       } catch (error) {
-         alert('Could not make update, try again med update 2');
+         //alert('Could not make update, try again med update 2');
       }
    };
 };
@@ -400,14 +519,14 @@ export const addPrescriptions = (data) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               alert('med creation worked');
+               //alert('med creation worked');
             }
          } else {
             //takes all statuses aside 200
-            alert('Could not make update, try again med create 1');
+            //alert('Could not make update, try again med create 1');
          }
       } catch (error) {
-         alert('Could not make update, try again med create 2');
+         //alert('Could not make update, try again med create 2');
       }
    };
 };
@@ -430,14 +549,14 @@ export const deletePrescriptions = (id) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               alert('med delete worked');
+               //alert('med delete worked');
             }
          } else {
             //takes all statuses aside 200
-            alert('Could not make update, try again med delete 1');
+            //alert('Could not make update, try again med delete 1');
          }
       } catch (error) {
-         alert('Could not make update, try again med delete 2');
+         //alert('Could not make update, try again med delete 2');
       }
    };
 };
@@ -459,15 +578,15 @@ export async function fetchDoctors() {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            alert('doctors fetch worked');
+            //alert('doctors fetch worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         alert('Something went wrong. Try again, doctor 1');
+         //alert('Something went wrong. Try again, doctor 1');
       }
    } catch (error) {
-      alert(error, 'doctors 2');
+      //alert(error, 'doctors 2');
    }
 }
 
@@ -488,15 +607,15 @@ export async function fetchDoctorsByPatient(userID) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            alert('doctors by patient id worked fetch worked');
+            //alert('doctors by patient id worked fetch worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         alert('Something went wrong. Try again, doctor 1');
+         //alert('Something went wrong. Try again, doctor 1');
       }
    } catch (error) {
-      alert(error, 'doctors 2');
+      //alert(error, 'doctors 2');
    }
 }
 
@@ -517,15 +636,15 @@ export async function fetchAppointments(userID, status) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            alert('appointments fetch worked');
+            //alert('appointments fetch worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         alert('Something went wrong. Try again, accepted appments 1');
+         //alert('Something went wrong. Try again, accepted appments 1');
       }
    } catch (error) {
-      alert(error, 'accepted appments 2');
+      //alert(error, 'accepted appments 2');
    }
 }
 
@@ -548,14 +667,14 @@ export const addAppointments = (data) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               alert('appointments post worked');
+               //alert('appointments post worked');
             }
          } else {
             //takes all statuses aside 200
-            alert('Something went wrong. Try again, post appments 1');
+            //alert('Something went wrong. Try again, post appments 1');
          }
       } catch (error) {
-         alert(error, 'post appments 2');
+         //alert(error, 'post appments 2');
       }
    };
 };

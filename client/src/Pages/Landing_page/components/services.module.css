@@ -183,7 +183,7 @@
 
    .services_ad {
       color: var(--white);
-      font-size: 30px;
+      font-size: 20px;
       font-weight: 700;
       font-family: var(--mainfont);
       width: 70%;
@@ -236,7 +236,7 @@
 
    .square {
       position: relative;
-      width: 50%;
+      width: 60%;
    }
 
    .square_2 {
@@ -255,23 +255,8 @@
    }
 
    .services_ad {
-      font-size: 35px;
+      /* font-size: 35px; */
       padding-top: 2rem;
-   }
-
-   .services_message {
-      display: block;
-      padding: 2rem;
-      padding-left: 6rem;
-      padding-right: 6rem;
-   }
-
-   .services_message_box {
-      height: 23rem;
-   }
-
-   .services_ad {
-      font-size: 35px;
    }
 
    .message_btn {
@@ -285,17 +270,25 @@
    }
 }
 
-@media (min-width: 1400px) {
+/* @media (min-width: 1400px) {
    .card {
       height: 28rem;
-   }
-
-   .services_ad {
-      font-size: 40px;
    }
 
    .message_btn {
       margin-top: 3rem;
       font-size: 20px;
+   }
+} */
+
+@media (min-width: 1500px) {
+   #services_body {
+      padding: 5rem 15% 10rem 15%;
+   }
+}
+
+@media (min-width: 2050px) {
+   #services_body {
+      padding: 5rem 15% 10rem 15%;
    }
 }

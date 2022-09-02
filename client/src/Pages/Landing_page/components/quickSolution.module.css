@@ -219,3 +219,9 @@
       height: 20rem;
    }
 }
+
+@media (min-width: 1500px) {
+   .main {
+      padding: 0 15%;
+   }
+}
