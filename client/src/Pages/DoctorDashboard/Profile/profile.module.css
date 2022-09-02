@@ -320,3 +320,9 @@ select::-ms-expand {
       gap: 2rem;
    }
 }
+@media(min-width: 2000px){
+   .main{
+      width: 90rem;
+      margin: auto;
+   }
+}

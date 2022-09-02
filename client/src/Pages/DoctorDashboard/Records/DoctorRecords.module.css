@@ -169,6 +169,12 @@
    fill: red;
    cursor: pointer;
 }
+@media(min-width:2000px){
+   .docRecordsContainer{
+         width: 90rem;
+      margin: auto;
+   }
+}
 
 /*bigger laptops*/
 @media (max-width: 1440px) {
