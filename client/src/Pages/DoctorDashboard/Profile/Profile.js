@@ -9,7 +9,6 @@ import { setDoctorProfile } from '../../../Store/DoctorAction';
 function DoctorProfile(props) {
    const data = props.doctorProfile;
 
-   // BUG: Email and specialities do not display in profiles..
    console.log('the data: ', data);
    const [first_name, setFirstName] = useState(data?.first_name);
    const [last_name, setLastName] = useState(data?.last_name);
@@ -137,6 +136,7 @@ function DoctorProfile(props) {
                               display: 'none',
                            }}
                            onChange={(e) => handleImageUpload(e)}
+                           disabled={disableBtn}
                         />
                      </div>
                   </div>
@@ -374,7 +374,6 @@ function DoctorProfile(props) {
 
                {/* submit button */}
                <div className={styles.btn_div}>
-                  {console.log(disableBtn)}
                   {disableBtn ? (
                      <button
                         className={styles.edit_btn}
