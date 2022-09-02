@@ -79,6 +79,23 @@
    color: #0d3f58;
    font-size: 0.9375rem;
 }
+
+.btn {
+   margin: 0.5rem;
+   background-color: var(--light-blue);
+   color: white;
+   font-weight: 500;
+   height: var(--height);
+   width: 145px;
+   border-radius: var(--field-radius);
+   text-transform: capitalize;
+   text-align: center;
+   box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
+   overflow: hidden;
+   position: relative;
+   cursor: pointer;
+}
+
 .docRecordsFiles {
    text-align: center;
    display: flex;
