@@ -210,10 +210,16 @@ const DoctorSchedule = (props) => {
                                           displaySelectedPatientDetails(index)
                                        }
                                     >
-                                       <img
-                                          src={data?.patient_info.person_image}
-                                          alt={'img'}
-                                       />
+                                       <div
+                                          className={DSstyles.profileImageDiv}
+                                       >
+                                          <img
+                                             src={
+                                                data?.patient_info.person_image
+                                             }
+                                             alt={'img'}
+                                          />
+                                       </div>
                                     </td>
                                     <td
                                        onClick={() =>
@@ -234,7 +240,7 @@ const DoctorSchedule = (props) => {
                                        throat and chest
                                     </td>
                                     <td
-                                    className={DSstyles.tdCancel}
+                                       className={DSstyles.tdCancel}
                                        onClick=""
                                     >
                                        Cancel
