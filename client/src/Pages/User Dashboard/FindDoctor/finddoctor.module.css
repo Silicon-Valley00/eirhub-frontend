@@ -61,7 +61,7 @@
    line-height: 1;
    font-weight: 600;
    font-size: 0.9rem;
-   color: var(--tablehead);
+   color: var(--deepcol);
    border-radius: 0.4rem;
    width: 95%;
    padding: 0.4rem 0.7rem;
@@ -203,9 +203,9 @@ select::-ms-expand {
    min-width: 100%;
    max-width: 100%;
    width: 100%;
-   height: calc(666px - 21rem);
-   min-height: calc(666px - 21rem);
-   max-height: calc(666px - 21rem);
+   height: calc(100vh -55vh);
+   min-height: calc(100vh - 55vh);
+   /* max-height: calc(666px - 21rem); */
    padding-bottom: 2rem;
 }
 

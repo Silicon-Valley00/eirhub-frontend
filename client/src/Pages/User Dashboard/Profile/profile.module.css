@@ -123,7 +123,7 @@ div.personalInfoFormBox {
    line-height: 1;
    font-weight: 400;
    font-size: 0.9rem;
-   color: rgba(0, 0, 0, 0.8);
+   color: var(--deepcol);
    width: 100%;
    padding: 0.4rem;
 }
@@ -468,7 +468,15 @@ div.guardianInfoFormBox {
    cursor: pointer;
 }
 
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+/* Media Queries */
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+   #profileBody {
+      width: 72rem;
+      min-width: 72rem;
+      max-width: 72rem;
+   }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1399px) {
    #profileBody {
       width: 137%;
       min-width: 137%;

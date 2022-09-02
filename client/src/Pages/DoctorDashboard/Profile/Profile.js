@@ -55,6 +55,7 @@ function DoctorProfile(props) {
    const endpoint = `http://127.0.0.1:5000/doctor/${data?.id_doctor}`;
 
    const dispatch = useDispatch();
+   // FIXME: Refactor codes
    const updateDoctorProfile = async () => {
       try {
          const request = await axios({

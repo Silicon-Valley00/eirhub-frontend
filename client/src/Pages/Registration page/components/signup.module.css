@@ -259,7 +259,7 @@
    line-height: 1;
    font-weight: 400;
    font-size: 0.8rem;
-   color: #678696;
+   /* color: #678696; */
    width: 85%;
 }
 .signupFormBoxName .signupFormBoxNameInputs i {
@@ -279,9 +279,16 @@
    line-height: 1;
    font-weight: 400;
    font-size: 0.8rem;
-   color: #678696;
+   /* color: #678696; */
    width: 90%;
 }
+
+input{
+   color: var(--text-color);
+}
+/* input::placeholder{
+   color: grey;
+} */
 .signupFormBox .signupFormBoxInputs i {
    color: #678696;
    font-size: 90%;
@@ -308,7 +315,7 @@
    line-height: 1;
    font-weight: 400;
    font-size: 0.8rem;
-   color: #678696;
+   /* color: #678696; */
    width: 85%;
 }
 .signupFormBoxName .signupFormBoxNameInputsError i {

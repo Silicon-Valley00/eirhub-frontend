@@ -73,7 +73,6 @@
    .patientsSection {
       width: 40%;
       /* height: 400px; */
-      margin: 0 auto 20px auto;
       overflow-y: scroll;
    }
    .patientsSection ul {
@@ -107,6 +106,7 @@
 }
 @media(max-width: 600px){
    .patientsSection{
+      margin: auto;
       position: absolute;
       top: 0;
       right: 0;
