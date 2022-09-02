@@ -7,7 +7,7 @@ import Cards from './Cards';
 
 const details = [
    {
-      name: 'Dr. Jaine Huaffmann',
+      name: 'Dr. Jaine Hauffmann',
       profession: 'Restorative Dentist',
       profile_pic: docOne,
    },
