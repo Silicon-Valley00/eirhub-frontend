@@ -62,10 +62,10 @@
    align-items: center;
    display: grid;
    grid-template-columns: repeat(1, 1fr);
-   grid-template-rows: repeat(1, 1fr);
+   grid-template-rows: 1fr 1fr;
    border-radius: 20px;
    border: 2px dashed #05a6c2;
-   padding-top: 54px;
+   padding-top: 20px;
 }
 .docRecordsHeader h1 {
    display: inline-block;
@@ -75,9 +75,9 @@
    color: #0d3f58;
 }
 .docRecordsSheader {
-   align-self: center;
+   align-self: flex-start;
    color: #0d3f58;
-   font-size: 0.9375rem;
+   font-size: 0.9375rem; 
 }
 
 .btn {
@@ -169,6 +169,7 @@
    width: 50px;
    fill: #05a6c2;
    justify-self: center;
+   align-self: flex-end;
 }
 .docRecordsicons {
    height: 5rem;
@@ -185,6 +186,12 @@
 .docRecordstrash {
    fill: red;
    cursor: pointer;
+}
+@media(min-width:2000px){
+   .docRecordsContainer{
+         width: 90rem;
+      margin: auto;
+   }
 }
 
 /*bigger laptops*/

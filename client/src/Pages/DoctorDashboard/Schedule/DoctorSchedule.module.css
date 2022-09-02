@@ -250,14 +250,15 @@
    clip-path: circle();
 }
 @media (min-width: 2000px) {
-   .DSContainer{
+   .DSContainer {
       width: 100rem;
-      margin: auto
+      margin: auto;
+      min-height: 71rem;
    }
-   .appointmentContainer{
+   .appointmentContainer {
+      min-height: 25rem;
       height: 35rem;
    }
-   
 }
 /*Responsive*/
 @media only screen and (min-width: 1200px) and (max-width: 1440px) {

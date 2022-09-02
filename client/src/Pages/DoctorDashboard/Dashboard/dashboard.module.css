@@ -299,3 +299,9 @@
       font-size: 20px;
    }
 }
+@media (min-width: 1950px) {
+   .main {
+      width: 85rem;
+      margin: auto;
+   }
+}
