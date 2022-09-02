@@ -294,3 +294,9 @@
       width: 50%;
    }
 }
+
+@media (min-width: 1500px) {
+   #hero_body {
+      padding: 0 15%;
+   }
+}

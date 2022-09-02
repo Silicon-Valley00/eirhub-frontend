@@ -75,10 +75,12 @@ const LandingPage = () => {
                handleModalSignupDoctor={handleModalSignupDoctor}
                indicator={1}
             />
-            <Hero handleModalSignup={handleModalSignup} />
-            <QuickSolution />
-            <Services handleModalSignup={handleModalSignup} />
-            <Footer />
+            <div className={styles.landingPage}>
+               <Hero handleModalSignup={handleModalSignup} />
+               <QuickSolution />
+               <Services handleModalSignup={handleModalSignup} />
+               <Footer />
+            </div>
          </div>
          <Registration
             modalLogin={modalLogin}

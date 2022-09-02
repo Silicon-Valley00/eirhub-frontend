@@ -16,7 +16,7 @@ function Loading(props) {
    const patientID = useSelector((state) => state.user.id_patient);
    const dispatch = useDispatch();
    useEffect(() => {
-      dispatch(addNewHealthDetails(patientID, props.savedProfile));
+      dispatch(addNewHealthDetails(props.savedHealthDetails,props.savedGuardianDetails,patientID, props.savedProfile));
    });
    return (
       <>
