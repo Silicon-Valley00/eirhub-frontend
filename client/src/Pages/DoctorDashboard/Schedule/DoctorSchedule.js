@@ -63,7 +63,7 @@ const DoctorSchedule = (props) => {
             {
                ...scheduledAppointment,
                appointment_status: 'Accepted',
-            }),
+            },
             {
                headers: {
                   'Access-Control-Allow-Origin': '*',
