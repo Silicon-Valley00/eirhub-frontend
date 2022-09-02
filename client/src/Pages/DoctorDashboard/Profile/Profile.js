@@ -5,6 +5,7 @@ import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setDoctorProfile } from '../../../Store/DoctorAction';
+import { cloudinary } from '../../../utils/cloudinary';
 
 function DoctorProfile(props) {
    const data = props.doctorProfile;
@@ -89,13 +90,18 @@ function DoctorProfile(props) {
          return false;
       } else {
 
-         const formData = new FormData();
-         formData.append('image', userimage);
-         formData.append('upload_preset', 'n6r1o2rk')
+         // const formData = new FormData();
+         // formData.append('file', userimage);
+         // formData.append('upload_preset', 'n6r1o2rk')
+         // formData.append('api_key', '351986477123397')
 
-         axios
-         .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
-         .then((response) => console.log(response))
+         // axios
+         // .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
+         // .then((response) => {
+         //    const image_url = response.data.url;
+         //    setUserImage(image_url);
+         // })
+         // .catch((error) => console.log(error));
 
          let reader = new FileReader();
          reader.onloadend = function () {
