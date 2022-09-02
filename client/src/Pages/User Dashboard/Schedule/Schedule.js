@@ -44,10 +44,10 @@ function Schedule() {
          doctorFirstName === null ||
          doctorFirstName === ''
       ) {
-         alert('First request an appointment from a doctor');
+         //alert('First request an appointment from a doctor');
       } else {
          if (condition === '') {
-            alert('Please enter condition');
+            //alert('Please enter condition');
             return;
          }
 

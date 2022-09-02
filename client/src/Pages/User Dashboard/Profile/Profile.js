@@ -139,7 +139,7 @@ function Profile(props) {
       const userimage = e.target.files[0];
       if (!/^image\//.test(userimage.type)) {
          //Checks for the image format
-         alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
+         //alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
          let reader = new FileReader();

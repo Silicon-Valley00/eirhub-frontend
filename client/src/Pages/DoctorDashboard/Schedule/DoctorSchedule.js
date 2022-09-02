@@ -9,12 +9,14 @@ import avatarOne from '../../../assets/Rectangle-1.png';
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
 
+   // States that would be used as data for the PUT method
    const [allAppointments, setAllAppointments] = useState([]);
    const [selectedAppointment, setSelectedAppointment] = useState([]);
    const [appointment_date, setAppointmentDate] = useState('');
    const [appointment_start_time, setAppointmentStartTime] = useState('');
    const [appointment_end_time, setAppointmentEndTime] = useState('');
 
+   // Data to be sent over to the backend
    let scheduledAppointment = {
       appointment_date,
       appointment_end_time,
@@ -22,10 +24,9 @@ const DoctorSchedule = (props) => {
       appointment_start_time,
       appointment_status: 'Pending',
       appointment_location: selectedAppointment?.appointment_location,
-      id_doctor: 21,
-      id_patient: 31,
+      id_doctor: selectedAppointment?.id_doctor,
+      id_patient: selectedAppointment?.id_patient,
    };
-   console.log(scheduledAppointment);
 
    // endpoint for updating doctor profile
    const baseURL = 'http://127.0.0.1:5000';
@@ -54,14 +55,15 @@ const DoctorSchedule = (props) => {
       getAllAppointmentsForADoctor();
    }, []);
 
-   const scheduleAppointment = () => {
-      axios
+   // Function that sends the data to the server
+   const scheduleAppointment = async () => {
+      await axios
          .put(
-            `${baseURL}/appointments/?appointment_id=${selectedAppointment?.appointment_id}`,
-            (scheduledAppointment = {
+            `${baseURL}/appointments/?id_appointment=${selectedAppointment?.id_appointment}`,
+            {
                ...scheduledAppointment,
                appointment_status: 'Accepted',
-            }),
+            },
             {
                headers: {
                   'Access-Control-Allow-Origin': '*',
@@ -70,15 +72,39 @@ const DoctorSchedule = (props) => {
                },
             }
          )
-         .then(() => console.log('successul put'))
-         .catch((error) => console.log(error));
+         .then(() => {})
+         .catch((error) => {
+            console.log(error.message);
+         });
+   };
+
+   // dispatches when doctor cancels an appointment
+   const cancelAppointment = async (index) => {
+      setSelectedAppointment(allAppointments[index]);
+      await axios
+         .put(
+            `${baseURL}/appointments/?id_appointment=${selectedAppointment?.id_appointment}`,
+            {
+               ...scheduledAppointment,
+               appointment_status: 'Declined',
+            },
+            {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            }
+         )
+         .then(() => {})
+         .catch((error) => {
+            console.log(error.message);
+         });
    };
 
    const displaySelectedPatientDetails = (patientKeyNum) => {
       const selectedPatient = allAppointments[patientKeyNum];
       setSelectedAppointment(selectedPatient);
-      console.log('was clicked', selectedPatient);
-      console.log(patientKeyNum);
    };
 
    // let appointmentsData;
@@ -184,7 +210,7 @@ const DoctorSchedule = (props) => {
                   <div className={DSstyles.DSbuttondiv}>
                      <button
                         className={DSstyles.DSbutton}
-                        onClick={() => scheduleAppointment}
+                        onClick={() => scheduleAppointment()}
                      >
                         Schedule Appointment
                      </button>
@@ -237,7 +263,7 @@ const DoctorSchedule = (props) => {
                                           color: '#EC6464',
                                           cursor: 'pointer',
                                        }}
-                                       onClick=""
+                                       onClick={() => cancelAppointment(index)}
                                     >
                                        Cancel
                                     </td>

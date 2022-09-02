@@ -47,15 +47,15 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               alert('doctor profile fetched');
+               //alert('doctor profile fetched');
                dispatch(setDoctorProfile(response.data.msg));
             }
          } else {
             //takes all statuses aside 200
-            alert('Something went wrong. Try again');
+            //alert('Something went wrong. Try again');
          }
       } catch (error) {
-         alert('caughterror', error);
+         //alert('caughterror', error);
          console.log(error);
       }
    };
@@ -78,15 +78,15 @@ export async function fetchPatientsByDoctorId(idDoctor) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            alert('patients by doctor id worked fetch worked');
+            //alert('patients by doctor id worked fetch worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         alert('Something went wrong. Try again, doctor 1');
+         //alert('Something went wrong. Try again, doctor 1');
       }
    } catch (error) {
-      alert(error, 'doctors 2');
+      //alert(error, 'doctors 2');
    }
 }
 
