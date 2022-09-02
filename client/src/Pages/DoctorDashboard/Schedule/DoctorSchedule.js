@@ -71,7 +71,7 @@ const DoctorSchedule = (props) => {
                   'Access-Control-Allow-Methods': '*',
                },
             }
-         )
+         
          .then(() => console.log('successul put'))
          .catch((error) => console.log(error));
    };
@@ -233,10 +233,7 @@ const DoctorSchedule = (props) => {
                                        throat and chest
                                     </td>
                                     <td
-                                       style={{
-                                          color: '#EC6464',
-                                          cursor: 'pointer',
-                                       }}
+                                    className={DSstyles.tdCancel}
                                        onClick=""
                                     >
                                        Cancel
