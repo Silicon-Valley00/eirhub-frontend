@@ -323,7 +323,7 @@ export const updateGuardianInfo = (
 };
 
 //Create new user health details
-export const addNewHealthDetails = (patientId, profileData) => {
+export const addNewHealthDetails = (healthData,guardianData,patientId, profileData) => {
    return async function (dispatch) {
       try {
          const response = await axios({
@@ -335,13 +335,14 @@ export const addNewHealthDetails = (patientId, profileData) => {
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
             },
+            data:healthData
          });
          if (response.status === 200) {
             //checks details of response
             if (response.data.status === true) {
                //returns response
                dispatch(setHealthInfo(response.data.msg));
-               dispatch(addNewGuardianInfo(profileData));
+               dispatch(addNewGuardianInfo(guardianData,profileData));
             }
          } else {
             //takes all statuses aside 200
@@ -354,7 +355,7 @@ export const addNewHealthDetails = (patientId, profileData) => {
 };
 
 //Creates guardian details
-export const addNewGuardianInfo = (profileData) => {
+export const addNewGuardianInfo = (guardianData,profileData) => {
    return async function (dispatch) {
       try {
          const response = await axios({
@@ -366,6 +367,7 @@ export const addNewGuardianInfo = (profileData) => {
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
             },
+            data: guardianData
          });
          if (response.status === 200) {
             //checks details of response

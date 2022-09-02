@@ -17,6 +17,7 @@ import {
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
+import store from '../../../Store/ReducerStore'
 
 const mapStateToProps = (state) => {
    return {
@@ -26,6 +27,7 @@ const mapStateToProps = (state) => {
 };
 
 function Dashboard(props) {
+   console.log(store.getState())
    const dispatch = useDispatch();
    const [medications, setMedications] = useState([]);
    const [appointments, setAppointments] = useState([]);
