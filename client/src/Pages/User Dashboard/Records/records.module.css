@@ -192,6 +192,12 @@
    width: 65%;
    float: left;
 }
+@media (min-width: 2001px) {
+   .recordTable {
+      height: calc(100vh - 20vh);
+      min-height: calc(100vh - 20vh);
+   }
+}
 @media only screen and (min-width: 1400px) and (max-width: 2000px) {
    .recordTable {
       height: calc(100vh - 20vh);

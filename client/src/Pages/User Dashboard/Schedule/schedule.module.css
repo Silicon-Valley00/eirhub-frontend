@@ -229,6 +229,18 @@
    border-radius: 10%;
    cursor: pointer;
 }
+@media (min-width: 2001px) {
+   .appointmentsBox {
+      margin-top: 10rem;
+   }
+   .appointmentsBox h2 {
+      font-size: 1.3rem;
+   }
+   .appointmentTable {
+      width: 100%;
+      height: calc(100vh - 60vh);
+   }
+}
 @media only screen and (min-width: 1400px) and (max-width: 2000px) {
    .appointmentsBox {
       margin-top: 10rem;

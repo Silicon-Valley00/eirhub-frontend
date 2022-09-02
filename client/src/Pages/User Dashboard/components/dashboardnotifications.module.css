@@ -32,7 +32,6 @@ padding-right: 2.6rem; */
 .notificationBox {
    height: 22rem;
    min-height: 22rem;
-   max-height: 22rem;
    width: 100%;
    overflow: auto;
 }
@@ -136,15 +135,39 @@ padding-right: 2.6rem; */
 }
 
 /* MEADIA QUERIES */
-@media only screen and (min-width: 1400px) and (max-width: 20000px) {
+@media (min-width: 2001px) {
    .recentNotifications {
       overflow: auto;
       position: absolute;
       bottom: 0.5rem;
       width: auto;
-      height: 25rem;
-      min-height: 25rem;
-      padding-right: 2.6rem;
+      height: calc(100vh - 45vh);
+      min-height: calc(100vh - 45vh);
+      padding-right: 1rem;
+   }
+   .notificationBox {
+      height: calc(100vh - 50vh);
+      min-height: calc(100vh - 50vh);
+   }
+   .calendar {
+      height: 18rem;
+      min-height: 18rem;
+   }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+   .recentNotifications {
+      overflow: auto;
+      position: absolute;
+      bottom: 0.5rem;
+      width: auto;
+      height: calc(100vh - 45vh);
+      min-height: calc(100vh - 45vh);
+      padding-right: 1rem;
+   }
+   .notificationBox {
+      height: calc(100vh - 50vh);
+      min-height: calc(100vh - 50vh);
    }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1399px) {
