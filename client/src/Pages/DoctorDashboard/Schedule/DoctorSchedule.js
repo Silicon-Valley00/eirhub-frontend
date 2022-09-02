@@ -63,7 +63,7 @@ const DoctorSchedule = (props) => {
             {
                ...scheduledAppointment,
                appointment_status: 'Accepted',
-            },
+            }),
             {
                headers: {
                   'Access-Control-Allow-Origin': '*',
@@ -72,34 +72,8 @@ const DoctorSchedule = (props) => {
                },
             }
          )
-         .then(() => {})
-         .catch((error) => {
-            console.log(error.message);
-         });
-   };
-
-   // dispatches when doctor cancels an appointment
-   const cancelAppointment = async (index) => {
-      setSelectedAppointment(allAppointments[index]);
-      await axios
-         .put(
-            `${baseURL}/appointments/?id_appointment=${selectedAppointment?.id_appointment}`,
-            {
-               ...scheduledAppointment,
-               appointment_status: 'Declined',
-            },
-            {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
-            }
-         )
-         .then(() => {})
-         .catch((error) => {
-            console.log(error.message);
-         });
+         .then(() => console.log('successul put'))
+         .catch((error) => console.log(error));
    };
 
    const displaySelectedPatientDetails = (patientKeyNum) => {
@@ -115,27 +89,26 @@ const DoctorSchedule = (props) => {
    //    if (allAppointments.length !== 0) {
    //       allAppointments.map((data, index) => {
    //          return (
-   //             <tr key={index}>
-   //                <td className={DSstyles.imgSection}>
-   //                   <img src={data?.patient_info.person_image} alt={'img'} />
-   //                </td>
-   //                <td>
-   //                   {data?.patient_info.first_name}{' '}
-   //                   {data?.patient_info.last_name}{' '}
-   //                </td>
-   //                <td className={DSstyles.tdCondition}>
-   //                   Swollen tonsils with severe pains in throat and chest
-   //                </td>
-   //                <td
-   //                   style={{
-   //                      color: '#EC6464',
-   //                      cursor: 'pointer',
-   //                   }}
-   //                   onClick=""
-   //                >
-   //                   Cancel
-   //                </td>
-   //             </tr>
+   // <tr key={index}>
+   //    <td className={DSstyles.imgSection}>
+   //       <img src={data?.patient_info.person_image} alt={'img'} />
+   //    </td>
+   //    <td>
+   //       {data?.patient_info.first_name} {data?.patient_info.last_name}{' '}
+   //    </td>
+   //    <td className={DSstyles.tdCondition}>
+   //       Swollen tonsils with severe pains in throat and chest
+   //    </td>
+   //    <td
+   //       style={{
+   //          color: '#EC6464',
+   //          cursor: 'pointer',
+   //       }}
+   //       onClick=""
+   //    >
+   //       Cancel
+   //    </td>
+   // </tr>;
    //          );
    //       });
    //    } else if (allAppointments.length === 0) {
@@ -245,6 +218,7 @@ const DoctorSchedule = (props) => {
                                        onClick={() =>
                                           displaySelectedPatientDetails(index)
                                        }
+                                       className={DSstyles.tdName}
                                     >
                                        {data?.patient_info.first_name}{' '}
                                        {data?.patient_info.last_name}{' '}
@@ -263,13 +237,28 @@ const DoctorSchedule = (props) => {
                                           color: '#EC6464',
                                           cursor: 'pointer',
                                        }}
-                                       onClick={() => cancelAppointment(index)}
+                                       onClick=""
                                     >
                                        Cancel
                                     </td>
                                  </tr>
                               );
                            })}
+                           {/*Dummy Texts*/}
+                           {/* <tr>
+                              <td className={DSstyles.imgSection}>
+                                 <img src={avatarOne} alt={'img'} />
+                              </td>
+                              <td className={DSstyles.tdName}>Ama Osaba</td>
+                              <td className={DSstyles.tdCondition}>
+                                 Swollen tonsils with severe pains in throat and
+                                 chest
+                              </td>
+                              <td className={DSstyles.tdCancel} onClick="">
+                                 Cancel
+                              </td>
+                           </tr> */}
+                           {/*Dummy text End */}
                         </tbody>
                      </table>
                   </div>
