@@ -280,7 +280,7 @@ function Registration(props) {
             'Password must contain at least an uppercase character'
          );
          setRegisterPasswordOneError(true);
-      } else if (enteredSignUpPassword.search(/[,./;%^&*<>?:|]/) === -1) {
+      } else if (enteredSignUpPassword.search(/[!@#$%^&*()_{}<>?/,.';:"|]/) === -1) {
          setRegisterPasswordOneErrorMessage(
             'Password must contain at least a special character'
          );
@@ -381,7 +381,7 @@ function Registration(props) {
             'Password must contain at least an uppercase character'
          );
          setRegisterDoctorPasswordOneError(true);
-      } else if (enteredSignUpPassword.search(/[,./;%^&*<>?:|]/) === -1) {
+      } else if (enteredSignUpPassword.search(/[!@#$%^&*()_{}<>?/,.';:"|]/) === -1) {
          setRegisterDoctorPasswordOneErrorMessage(
             'Password must contain at least a special character'
          );
