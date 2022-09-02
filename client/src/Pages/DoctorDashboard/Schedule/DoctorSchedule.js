@@ -71,15 +71,17 @@ const DoctorSchedule = (props) => {
                   'Access-Control-Allow-Methods': '*',
                },
             }
+         )
          
          .then(() => console.log('successul put'))
-         .catch((error) => console.log(error));
-   };
+         .catch((error) => console.log(error))
+            };
 
    const displaySelectedPatientDetails = (patientKeyNum) => {
       const selectedPatient = allAppointments[patientKeyNum];
       setSelectedAppointment(selectedPatient);
    };
+
 
    // let appointmentsData;
    // //displays medications
