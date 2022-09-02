@@ -5,7 +5,6 @@ import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setDoctorProfile } from '../../../Store/DoctorAction';
-import { cloudinary } from '../../../utils/cloudinary';
 
 function DoctorProfile(props) {
    const data = props.doctorProfile;
@@ -89,7 +88,6 @@ function DoctorProfile(props) {
          //alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
-
          // const formData = new FormData();
          // formData.append('file', userimage);
          // formData.append('upload_preset', 'n6r1o2rk')

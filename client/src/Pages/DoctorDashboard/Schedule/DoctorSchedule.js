@@ -72,16 +72,15 @@ const DoctorSchedule = (props) => {
                },
             }
          )
-         
+
          .then(() => console.log('successul put'))
-         .catch((error) => console.log(error))
-            };
+         .catch((error) => console.log(error));
+   };
 
    const displaySelectedPatientDetails = (patientKeyNum) => {
       const selectedPatient = allAppointments[patientKeyNum];
       setSelectedAppointment(selectedPatient);
    };
-
 
    // let appointmentsData;
    // //displays medications
@@ -202,7 +201,7 @@ const DoctorSchedule = (props) => {
                            <th className={DSstyles.tAction}>Action</th>
                         </thead>
                         <tbody>
-                           {allAppointments.map((data, index) => {
+                           {/* {allAppointments.map((data, index) => {
                               return (
                                  <tr key={index}>
                                     <td
@@ -242,11 +241,13 @@ const DoctorSchedule = (props) => {
                                     </td>
                                  </tr>
                               );
-                           })}
+                           })} */}
                            {/*Dummy Texts*/}
-                           {/* <tr>
+                           <tr>
                               <td className={DSstyles.imgSection}>
-                                 <img src={avatarOne} alt={'img'} />
+                                 <div className={DSstyles.profileImageDiv}>
+                                    <img src={avatarOne} alt={'img'} />
+                                 </div>
                               </td>
                               <td className={DSstyles.tdName}>Ama Osaba</td>
                               <td className={DSstyles.tdCondition}>
@@ -256,7 +257,7 @@ const DoctorSchedule = (props) => {
                               <td className={DSstyles.tdCancel} onClick="">
                                  Cancel
                               </td>
-                           </tr> */}
+                           </tr>
                            {/*Dummy text End */}
                         </tbody>
                      </table>
