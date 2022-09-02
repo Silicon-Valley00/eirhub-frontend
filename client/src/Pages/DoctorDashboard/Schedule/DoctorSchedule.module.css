@@ -249,6 +249,16 @@
    border-radius: 50%;
    clip-path: circle();
 }
+@media (min-width: 2000px) {
+   .DSContainer{
+      width: 100rem;
+      margin: auto
+   }
+   .appointmentContainer{
+      height: 35rem;
+   }
+   
+}
 /*Responsive*/
 @media only screen and (min-width: 1200px) and (max-width: 1440px) {
    .DSContainer1 h2 {
