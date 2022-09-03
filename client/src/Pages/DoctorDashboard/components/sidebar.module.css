@@ -9,6 +9,11 @@
    border-radius: 0 5px 5px 0;
    padding: 1rem 0;
    overflow-y: hidden;
+   /* border: 2px solid blue; */
+}
+
+.main > ::-webkit-scrollbar {
+   display: none;
 }
 
 .menu {
@@ -18,6 +23,7 @@
    position: absolute;
    top: 1rem;
    left: 4.5rem;
+   z-index: 9999;
 }
 
 .show_sidebar {
@@ -114,16 +120,18 @@
    }
 
    .main {
+      position: absolute;
       width: 6rem;
-      top: 3rem;
+      /* left: 40rem; */
+      top: 5rem;
       height: calc(100vh - 50px);
    }
 
    .hide_sidebar {
       width: 6rem;
-      height: 92vh;
+      height: calc(100vh - 6rem);
       position: absolute;
-      top: 3rem;
+      top: 5rem;
       border-radius: 0 5px 5px 0;
       padding: 0rem 0;
       left: 0rem;
@@ -164,7 +172,7 @@
 }
 
 /* sidebar on desktop screens */
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
    .main {
       width: 12rem;
    }

@@ -4,6 +4,7 @@
    justify-content: space-evenly;
    box-sizing: border-box;
    margin-right: 0;
+   padding-top: 6rem;
    gap: 1.25rem;
    min-height: 59rem;
    height: 93.5vh;
@@ -654,7 +655,7 @@
    .appointmentContainer .imgSection {
       padding-left: 0;
    }
-    .appointmentContainer .tdCancel {
+   .appointmentContainer .tdCancel {
       padding-left: 0;
    }
    .appointmentContainer table th {
@@ -698,5 +699,17 @@
    }
    .appointmentContainer .imgSection {
       padding-left: 0;
+   }
+}
+
+@media (min-width: 1920px) {
+   .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .DSContainer {
+      max-width: 1200px;
    }
 }

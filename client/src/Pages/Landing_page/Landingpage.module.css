@@ -13,8 +13,24 @@
    max-height: 100vh;
 }
 
-/* @media (min-width: 1500px) {
-   .landingPage {
-      padding: 0 15%;
+@media (min-width: 1920px) {
+   .inner_div {
+      max-width: 1920px;
    }
-} */
+
+   .back {
+      min-width: 100vw;
+      background: var(--gray);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .backwhite {
+      min-width: 100vw;
+      background: var(--white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+}

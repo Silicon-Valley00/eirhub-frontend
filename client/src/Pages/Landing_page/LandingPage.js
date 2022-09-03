@@ -68,6 +68,8 @@ const LandingPage = () => {
             }
             // handleModalsClose={handleModalsClose}
          >
+            {/* navbar */}
+
             <Navbar
                handleModalLogin={handleModalLogin}
                handleModalSignup={handleModalSignup}
@@ -75,11 +77,33 @@ const LandingPage = () => {
                handleModalSignupDoctor={handleModalSignupDoctor}
                indicator={1}
             />
-            <div className={styles.landingPage}>
-               <Hero handleModalSignup={handleModalSignup} />
-               <QuickSolution />
-               <Services handleModalSignup={handleModalSignup} />
-               <Footer />
+
+            {/* Hero */}
+            <div className={styles.back}>
+               <div className={styles.inner_div}>
+                  <Hero handleModalSignup={handleModalSignup} />
+               </div>
+            </div>
+
+            {/* Quick soluton */}
+            <div className={styles.backwhite}>
+               <div className={styles.inner_div}>
+                  <QuickSolution />
+               </div>
+            </div>
+
+            {/* Services */}
+            <div className={styles.backwhite}>
+               <div className={styles.inner_div}>
+                  <Services handleModalSignup={handleModalSignup} />
+               </div>
+            </div>
+
+            {/* footer */}
+            <div className={styles.back}>
+               <div className={styles.inner_div}>
+                  <Footer />
+               </div>
             </div>
          </div>
          <Registration

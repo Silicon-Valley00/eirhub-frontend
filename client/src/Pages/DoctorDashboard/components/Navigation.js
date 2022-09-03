@@ -24,7 +24,7 @@ function Navigation({ nav }) {
             </div>
          </div>
 
-         <Sidebar indicator={nav} />
+         {/* <Sidebar indicator={nav} /> */}
       </nav>
    );
 }

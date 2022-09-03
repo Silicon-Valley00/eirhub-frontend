@@ -1,9 +1,11 @@
 .main {
-   padding: 0 12px 3rem 12px;
+   display: flex;
+   padding-top: 6rem;
 }
 
 #profileBody {
-   margin-top: 2rem;
+   padding-top: 2rem;
+   margin-right: 7rem;
 }
 
 .upperContent {
@@ -101,7 +103,7 @@ form.personalInfoFormBox {
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: center;
+   align-items: flex-start;
    gap: 4px;
    height: max-content;
    min-height: max-content;
@@ -281,8 +283,13 @@ select::-ms-expand {
 }
 
 @media (min-width: 1024px) {
+   .wrapper {
+      min-width: 100vw;
+   }
+
    .main {
-      margin-left: 16rem;
+      margin-left: 15rem;
+      max-width: calc(1024px - 30rem);
    }
 
    .upperContent {
@@ -300,10 +307,13 @@ select::-ms-expand {
    .forFirst {
       flex-direction: row;
       gap: 3rem;
+      padding-bottom: 10px;
    }
 
    .forSecond {
       flex-direction: row;
+      padding-bottom: 10px;
+      align-items: flex-start;
    }
 
    .forThird {
