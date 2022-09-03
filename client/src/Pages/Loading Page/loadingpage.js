@@ -23,6 +23,14 @@ function Loading(props) {
       if (auth === true && location.state === true) {
          dispatch(addNewHealthDetails(patientID, props.savedProfile));
       }
+      dispatch(
+         addNewHealthDetails(
+            props.savedHealthDetails,
+            props.savedGuardianDetails,
+            patientID,
+            props.savedProfile
+         )
+      );
    });
    return (
       <>

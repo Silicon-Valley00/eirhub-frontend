@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
 import avatarOne from '../../../assets/Rectangle-1.png';
 import avatarTwo from '../../../assets/Rectangle-2.png';
 import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
@@ -17,6 +17,7 @@ import {
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
+import store from '../../../Store/ReducerStore'
 
 const mapStateToProps = (state) => {
    return {
@@ -26,6 +27,7 @@ const mapStateToProps = (state) => {
 };
 
 function Dashboard(props) {
+   console.log(store.getState())
    const dispatch = useDispatch();
    const [medications, setMedications] = useState([]);
    const [appointments, setAppointments] = useState([]);

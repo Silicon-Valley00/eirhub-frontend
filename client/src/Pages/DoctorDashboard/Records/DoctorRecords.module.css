@@ -11,12 +11,12 @@
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-*::-webkit-scrollbar {
+.docRecordsContainer>::-webkit-scrollbar {
    display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-* {
+.docRecordsContainer>*{
    -ms-overflow-style: none; /* IE and Edge */
    scrollbar-width: none; /* Firefox */
 }
@@ -62,10 +62,10 @@
    align-items: center;
    display: grid;
    grid-template-columns: repeat(1, 1fr);
-   grid-template-rows: repeat(1, 1fr);
+   grid-template-rows: 1fr 1fr;
    border-radius: 20px;
    border: 2px dashed #05a6c2;
-   padding-top: 54px;
+   padding-top: 20px;
 }
 .docRecordsHeader h1 {
    display: inline-block;
@@ -75,10 +75,27 @@
    color: #0d3f58;
 }
 .docRecordsSheader {
-   align-self: center;
+   align-self: flex-start;
    color: #0d3f58;
-   font-size: 0.9375rem;
+   font-size: 0.9375rem; 
 }
+
+.btn {
+   margin: 0.5rem;
+   background-color: var(--light-blue);
+   color: white;
+   font-weight: 500;
+   height: var(--height);
+   width: 145px;
+   border-radius: var(--field-radius);
+   text-transform: capitalize;
+   text-align: center;
+   box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.4);
+   overflow: hidden;
+   position: relative;
+   cursor: pointer;
+}
+
 .docRecordsFiles {
    text-align: center;
    display: flex;
@@ -152,6 +169,7 @@
    width: 50px;
    fill: #05a6c2;
    justify-self: center;
+   align-self: flex-end;
 }
 .docRecordsicons {
    height: 5rem;
@@ -168,6 +186,12 @@
 .docRecordstrash {
    fill: red;
    cursor: pointer;
+}
+@media(min-width:2000px){
+   .docRecordsContainer{
+         width: 90rem;
+      margin: auto;
+   }
 }
 
 /*bigger laptops*/
