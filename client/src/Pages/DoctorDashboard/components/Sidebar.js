@@ -110,8 +110,7 @@ const Sidebar = ({ indicator }) => {
                </div>
 
                {/* logout button */}
-               <Link
-                  to=""
+               <div
                   className={styles.link}
                   onClick={() => {
                      logout();
@@ -119,7 +118,7 @@ const Sidebar = ({ indicator }) => {
                >
                   <ImExit className={styles.icon} />
                   <p className={styles.title}>Logout</p>
-               </Link>
+               </div>
             </nav>
          </main>
       </>

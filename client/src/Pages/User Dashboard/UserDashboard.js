@@ -19,12 +19,11 @@ function UserDashboard(props) {
    useEffect(() => {
       if (
          new Date().setHours(0, 0, 0, 0) ===
-         // new Date(
-         //    `${new Date(patientDOB).getFullYear()}-${
-         //       new Date(patientDOB).getMonth() + 1
-         //    }-${new Date(patientDOB).getDate() + 1}`
-         // ).getTime()
-         new Date('2022-08-30').getTime()
+         new Date(
+            `${new Date(patientDOB).getFullYear()}-${
+               new Date(patientDOB).getMonth() + 1
+            }-${new Date(patientDOB).getDate() + 1}`
+         ).getTime()
       ) {
          setBirthdayModal(true);
       }

@@ -68,7 +68,7 @@ function Signup(props) {
             })
          );
          dispatch(fetchProfileOnSignup(feedback[1].id_patient));
-         navigate('/loading');
+         navigate('/loading', { state: true });
 
          dispatch(setPatientAuth(true));
 
@@ -95,6 +95,8 @@ function Signup(props) {
                   signUpFormRef.current.reset();
                   props.reset();
                   setIsError(false);
+                  setBtnActive(false);
+                  setBtnValue('Create Account');
                }}
             >
                <i>

@@ -64,6 +64,8 @@ function DoctorLogin(props) {
                   docLoginFormRef.current.reset();
                   props.reset();
                   setIsError(false);
+                  setBtnActive(false);
+                  setBtnValue('Login');
                }}
             >
                <i>
