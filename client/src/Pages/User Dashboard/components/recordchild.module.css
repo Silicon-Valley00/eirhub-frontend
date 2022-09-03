@@ -1,0 +1,49 @@
+/* .recordChildBody {
+   margin-top: 1rem;
+   width: 100%;
+   height: 95%;
+   min-height: 95%;
+   max-height: 95%;
+   padding: 2rem 0.5rem 0 0.5rem;
+   border-top-left-radius: 2rem;
+   border-top-right-radius: 2rem;
+} */
+.calendar {
+   margin-top: 1rem;
+   background-color: var(--gray);
+   height: 14rem;
+   width: 100%;
+   overflow: hidden;
+   padding: 0.2rem;
+   border-radius: 1rem;
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+   .calendar {
+      margin-top: 1rem;
+      background-color: var(--gray);
+      height: 15rem;
+      width: 80%;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+   .calendar {
+      margin-top: 1rem;
+      background-color: var(--gray);
+      height: 15rem;
+      width: 100%;
+   }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .calendar {
+      width: 60%;
+      margin: 0 auto;
+   }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   .calendar {
+      width: 80%;
+      margin: 0 auto;
+   }
+}

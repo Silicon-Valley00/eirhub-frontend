@@ -1,0 +1,186 @@
+.patientsSection {
+   width: 20rem;
+   min-width: 200px;
+   background-color: #ecf3fc;
+   border-radius: 1.25rem;
+   height: 100%;
+   margin: 0 1.25rem;
+}
+
+.patientsSection h2 {
+   color: #0d3f58;
+   text-align: center;
+}
+.patientsSection::-webkit-scrollbar,
+.patientsSection::-webkit-scrollbar {
+   width: 0.3rem;
+   height: 0.3rem;
+   cursor: pointer;
+}
+.patientsSection::-webkit-scrollbar-track,
+.patientsSection::-webkit-scrollbar-track {
+   margin: 20px;
+   cursor: pointer;
+   --webkit-box-shadow: inset 0 0 10px var(--white);
+}
+.patientsSection::-webkit-scrollbar-thumb,
+.patientsSection::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+}
+
+.patientsSection h2 {
+   color: #0d3f58;
+   text-align: center;
+}
+.patientsSection li {
+   font-weight: 600;
+   color: #0d3f58;
+   font-size: 1rem;
+}
+
+.imageDiv {
+   margin: 15px 0;
+   display: flex;
+   align-items: center;
+   width: 90%;
+   
+}
+.imageDiv img {
+   margin: 0 20px;
+   width: 40px;
+   height: 40px;
+   clip-path: circle();
+}
+
+.menu {
+   display: none;
+}
+
+.close {
+   display: none;
+}
+@media (max-width: 1200px) {
+   .patientsSection {
+      grid-column: 1/2;
+      /* height: 59rem; */
+      overflow: scroll;
+      border-radius: 20px;
+   }
+}
+@media (max-width: 1024px) {
+   .patientsSection {
+      width: 40%;
+      /* height: 400px; */
+      overflow-y: scroll;
+   }
+   .patientsSection ul {
+      text-align: center;
+      padding-left: 0;
+   }
+   .imageDiv {
+      width: 90%;
+   }
+   .patientsSection::-webkit-scrollbar,
+   .patientsSection::-webkit-scrollbar {
+      width: 0.3rem;
+      height: 0.3rem;
+      cursor: pointer;
+   }
+   .patientsSection li {
+      font-size: 0.9rem;
+   }
+   .patientsSection::-webkit-scrollbar-track,
+   .patientsSection::-webkit-scrollbar-track {
+      margin: 20px;
+      cursor: pointer;
+      --webkit-box-shadow: inset 0 0 10px var(--white);
+   }
+   .patientsSection::-webkit-scrollbar-thumb,
+   .patientsSection::-webkit-scrollbar-thumb {
+      background-color: var(--lightcol);
+      border-radius: 10%;
+      cursor: pointer;
+   }
+}
+@media(max-width: 600px){
+   .patientsSection{
+      margin: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+   }
+
+   .patientsSection ul {
+      width: 50%;
+      min-width: 300px;
+   }
+   .menu {
+   display: block;
+   width: 20px;
+   height: 20px;
+   cursor: pointer;
+   position: absolute;
+   top: 1rem;
+   right: 1rem;
+   }
+   .show{
+      border-radius: 0;
+      display: block;
+   }
+   .hide {
+      display: none;
+      position: absolute;
+      right: -40rem;
+   }
+   .logo_close {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 2rem;
+}
+
+/* .logo {
+   font-size: 20px;
+   color: var(--lightcol);
+   font-weight: 600;
+   font-family: var(--logofont);
+   padding-left: 10px;
+} */
+.close {
+   display: block;
+   color: var(--midcol);
+   cursor: pointer;
+}
+}
+
+@media (max-width: 375px) {
+   
+   .patientsSection::-webkit-scrollbar,
+   .patientsSection::-webkit-scrollbar {
+      width: 0.3rem;
+      height: 0.3rem;
+      cursor: pointer;
+   }
+   .patientsSection::-webkit-scrollbar-track,
+   .patientsSection::-webkit-scrollbar-track {
+      margin: 20px;
+      cursor: pointer;
+      --webkit-box-shadow: inset 0 0 10px var(--white);
+   }
+   .patientsSection::-webkit-scrollbar-thumb,
+   .patientsSection::-webkit-scrollbar-thumb {
+      background-color: var(--lightcol);
+      border-radius: 10%;
+      cursor: pointer;
+   }
+}
+@media(max-width: 320px){
+   .patientsSection{
+      width: 100%;
+   }
+
+}

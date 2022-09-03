@@ -2,25 +2,40 @@
    "scripts": {
       "install-all": "sh ./bin/install.sh",
       "install-windows": ".\\bin\\install.cmd",
-      "prepare": "husky install"
+      "prepare": "husky install",
+      "lint": "eslint ."
    },
    "devDependencies": {
-      "eslint": "^8.18.0",
+      "eslint": "^8.23.0",
       "eslint-config-airbnb": "^19.0.4",
       "eslint-config-node": "^4.1.0",
       "eslint-config-prettier": "^8.5.0",
       "eslint-plugin-import": "^2.26.0",
-      "eslint-plugin-jsx-a11y": "^6.6.0",
+      "eslint-plugin-jsx-a11y": "^6.6.1",
       "eslint-plugin-node": "^11.1.0",
       "eslint-plugin-prettier": "^4.0.0",
-      "eslint-plugin-react": "^7.30.1",
+      "eslint-plugin-react": "^7.31.1",
       "eslint-plugin-react-hooks": "^4.6.0",
-      "husky": "^8.0.1",
+      "husky": "^8.0.0",
       "lint-staged": "^13.0.3",
       "prettier": "^2.7.1"
    },
+   "husky": {
+      "hooks": {
+         "pre-commit": "echo \"[Husky] pre-commit\"",
+         "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
+         "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
+         "post-applypatch": "echo \"[Husky] post-applypatch\""
+      }
+   },
    "lint-staged": {
-      "*.js": "eslint --cache --fix",
-      "*.{js, json, html, css, md}": "prettier --write"
+      "/client/src/*.js": "eslint --cache --fix",
+      "/client/src/*.{js, json, html, css, md}": "prettier --write"
+   },
+   "dependencies": {
+      "aos": "^3.0.0-beta.6",
+      "react-gtm-module": "^2.0.11",
+      "react-router-dom": "^6.3.0",
+      "typewriter-effect": "^2.19.0"
    }
 }
