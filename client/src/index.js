@@ -28,6 +28,7 @@ import * as CONSTANTS from './constants/constants';
 import store, { persistor } from '../src/Store/ReducerStore';
 import { PersistGate } from 'redux-persist/integration/react';
 import { LoginUser } from './context/authcontext';
+import ScrollToTop from './utils/scrollToTop';
 // import { CometChatWidget } from 'https://widget-js.cometchat.io/v3/cometchatwidget.js';
 
 let appSetting = new CometChat.AppSettingsBuilder()
@@ -40,6 +41,7 @@ CometChat.init(CONSTANTS.APP_ID, appSetting).then(
    () => {
       ReactDOM.render(
          <BrowserRouter>
+            <ScrollToTop />
             <Provider store={store}>
                <PersistGate persistor={persistor}>
                   <App />
