@@ -262,7 +262,9 @@ const DoctorSchedule = (props) => {
                               {/*Dummy Texts*/}
                               {/* <tr>
                               <td className={DSstyles.imgSection}>
-                                 <img src={avatarOne} alt={'img'} />
+                                 <div className={DSstyles.profileImageDiv}>
+                                    <img src={avatarOne} alt={'img'} />
+                                 </div>
                               </td>
                               <td className={DSstyles.tdName}>Ama Osaba</td>
                               <td className={DSstyles.tdCondition}>

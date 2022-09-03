@@ -3,6 +3,7 @@ import styles from './loading.module.css';
 import spinner from '../../assets/loading-gif.gif';
 import { useDispatch, connect, useSelector } from 'react-redux';
 import { addNewHealthDetails } from '../../Store/Actions';
+import { useLocation } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
    return {
@@ -14,9 +15,22 @@ const mapStateToProps = (state) => {
 
 function Loading(props) {
    const patientID = useSelector((state) => state.user.id_patient);
+   const auth = useSelector((state) => state.isPatient);
+   const location = useLocation();
+
    const dispatch = useDispatch();
    useEffect(() => {
-      dispatch(addNewHealthDetails(props.savedHealthDetails,props.savedGuardianDetails,patientID, props.savedProfile));
+      if (auth === true && location.state === true) {
+         dispatch(addNewHealthDetails(patientID, props.savedProfile));
+      }
+      dispatch(
+         addNewHealthDetails(
+            props.savedHealthDetails,
+            props.savedGuardianDetails,
+            patientID,
+            props.savedProfile
+         )
+      );
    });
    return (
       <>

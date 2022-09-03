@@ -212,7 +212,7 @@
    cursor: pointer;
 }
 .appointmentContainer .imgHeader {
-   width: 10%;
+   width: 80px;
 }
 .appointmentContainer .tCondition {
    text-align: left;
@@ -239,14 +239,27 @@
    color: #0d3f58;
    font-size: 1rem;
 }
-.imageDiv {
-   margin: 15px 0;
-   width: 17rem;
+.appointmentContainer .profileImageDiv {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 2.8rem;
+   min-height: 2.8rem;
+   max-height: 2.8rem;
+   width: 100%;
+   border-radius: 50%;
+   clip-path: circle();
 }
-.imageDiv img {
-   margin: 0 20px;
-   width: 40px;
-   height: 40px;
+@media (min-width: 2000px) {
+   .DSContainer {
+      width: 100rem;
+      margin: auto;
+      min-height: 71rem;
+   }
+   .appointmentContainer {
+      min-height: 25rem;
+      height: 35rem;
+   }
 }
 /*Responsive*/
 @media only screen and (min-width: 1200px) and (max-width: 1440px) {
@@ -314,7 +327,7 @@
       width: 20%;
    }
    .appointmentContainer .imgHeader {
-      width: 10%;
+      width: 80px;
    }
    .appointmentContainer .tAction {
       width: 20%;
@@ -418,7 +431,7 @@
       width: 20%;
    }
    .appointmentContainer .imgHeader {
-      width: 10%;
+      width: 80px;
    }
    .appointmentContainer .tAction {
       width: 20%;
@@ -689,9 +702,6 @@
    .appointmentContainer table td {
       padding-left: 20px;
    }
-   /* .appointmentContainer td {
-      width: 1000px;
-   } */
    .appointmentContainer .nameSection {
       width: 100px;
       gap: 1rem;
@@ -699,6 +709,10 @@
    }
    .appointmentContainer .imgSection {
       padding-left: 0;
+   }
+   .appointmentContainer .imgSection {
+      width: 40px;
+      height: 40px;
    }
 }
 

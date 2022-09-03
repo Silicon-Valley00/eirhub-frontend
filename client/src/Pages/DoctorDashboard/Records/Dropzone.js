@@ -20,8 +20,9 @@ function Dropzone() {
    const handleSubmission = () => {};
 
    const onDrop = useCallback((acceptedFiles) => {
-      // Do something with the files
-      //alert(acceptedFiles)
+      // Do something with the files'
+      setIsSelected(true)
+      setSelectedFile(acceptedFiles[0])
    }, []);
    const { getRootProps, getInputProps, isDragActive } = useDropzone({
       onDrop,
@@ -38,33 +39,32 @@ function Dropzone() {
             name="file"
             onChange={changeHandler}
          />
-         {isSelected && isDragActive ? (
+         {isSelected ? (
             <div>
                <p>Filename: {selectedFile.name}</p>
                <p>Filetype: {selectedFile.type}</p>
-               <p>Size: {selectedFile.size / 1024 / 1024}MB</p>
-               <p>
-                  lastModifiedDate:{' '}
-                  {selectedFile.lastModifiedDate.toLocaleDateString()}
-               </p>
-               <button onClick={handleSubmission}>Submit</button>
+               <p>Size: {(selectedFile.size / 1024 / 1024).toString().slice(0,4)}MB</p>
+               <button className={styles.btn} onClick={handleSubmission}>Submit</button>
             </div>
          ) : (
+
+            <div>
             <FaFileUpload
-               className={styles.docRecordsUploadimg}
-               onClick={uploadFile}
+            className={styles.docRecordsUploadimg}
+            onClick={uploadFile}
             />
-         )}
-         <h2 className={styles.docRecordsSheader}>
+            <h2 className={styles.docRecordsSheader}>
             Drag and drop file or{' '}
             <span className={styles.docRecordsButtonLink} onClick={uploadFile}>
                browse
             </span>
             {/* Drag and drop file or{' '}
-                  <Link to="/" className={styles.docRecordsButtonLink}>
-                     browse
-                  </Link> */}
+            <Link to="/" className={styles.docRecordsButtonLink}>
+            browse
+         </Link> */}
          </h2>
+         </div>
+               )}
       </div>
    );
 }

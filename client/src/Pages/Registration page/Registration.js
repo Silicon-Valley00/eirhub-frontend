@@ -285,15 +285,21 @@ function Registration(props) {
             'Password must contain at least a special character'
          );
          setRegisterPasswordOneError(true);
-      } else if ((enteredSignUpPassword !== enteredSignUpPasswordconfirm) && (enteredSignUpPasswordconfirm !== '')) {
+      } else if (
+         enteredSignUpPassword !== enteredSignUpPasswordconfirm &&
+         enteredSignUpPasswordconfirm !== ''
+      ) {
          setRegisterPasswordTwoErrorMessage('Passwords do not match');
          setRegisterPasswordTwoError(true);
-      } else if ((enteredSignUpPassword === enteredSignUpPasswordconfirm) && (enteredSignUpPasswordconfirm !== '')) {
+      } else if (
+         enteredSignUpPassword === enteredSignUpPasswordconfirm &&
+         enteredSignUpPasswordconfirm !== ''
+      ) {
          setRegisterPasswordTwoError(false);
          setRegisterPasswordTwoError(false);
       } else {
          setRegisterPasswordOneError(false);
-         setRegisterPasswordTwoError(null)
+         setRegisterPasswordTwoError(null);
       }
    }
 
@@ -386,10 +392,16 @@ function Registration(props) {
             'Password must contain at least a special character'
          );
          setRegisterDoctorPasswordOneError(true);
-      } else if ((enteredSignUpPassword !== enteredSignUpPasswordconfirm) && (enteredSignUpPasswordconfirm!== '')) {
+      } else if (
+         enteredSignUpPassword !== enteredSignUpPasswordconfirm &&
+         enteredSignUpPasswordconfirm !== ''
+      ) {
          setRegisterDoctorPasswordTwoErrorMessage('Passwords do not match');
          setRegisterDoctorPasswordTwoError(true);
-      } else if ((enteredSignUpPassword === enteredSignUpPasswordconfirm) && (enteredSignUpPasswordconfirm !== '')) {
+      } else if (
+         enteredSignUpPassword === enteredSignUpPasswordconfirm &&
+         enteredSignUpPasswordconfirm !== ''
+      ) {
          setRegisterDoctorPasswordTwoError(false);
          setRegisterDoctorPasswordTwoError(false);
       } else {
@@ -514,6 +526,8 @@ function Registration(props) {
    // Function submits data to database via an api
    async function submitCredentials(path, data) {
       //Function takes path and data to make request
+      axios.defaults.timeout = 15000;
+      axios.defaults.timeoutErrorMessage = 'timeout';
       try {
          const response = await axios({
             method: 'POST',
@@ -526,6 +540,7 @@ function Registration(props) {
             },
             data: data,
          });
+
          if (response.status === 200) {
             //checks if connection and data was accepted
             //checks details of response
@@ -547,7 +562,10 @@ function Registration(props) {
          }
       } catch (error) {
          // catches all errors
-         if (error.response) {
+
+         if (error.message === 'timeout' || error.code === 'ECONNABORTED') {
+            return [false, 'Request timeout, Try again', 'Create Account'];
+         } else if (error.response) {
             return [false, error.response.data.msg.message, 'Create Account'];
          } else if (error.request) {
             return [false, error.response.data.msg.message, 'Create Account'];

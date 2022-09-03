@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
 import avatarOne from '../../../assets/Rectangle-1.png';
 import avatarTwo from '../../../assets/Rectangle-2.png';
 import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
@@ -31,7 +31,7 @@ function Dashboard(props) {
    const dispatch = useDispatch();
    const [medications, setMedications] = useState([]);
    const [appointments, setAppointments] = useState([]);
-   const patientID = useSelector((state) => state.profile.id_patient);
+   const patientID = useSelector((state) => state.user.id_patient);
 
    // useEffect(() => {
    //    async function fetchUserData() {
