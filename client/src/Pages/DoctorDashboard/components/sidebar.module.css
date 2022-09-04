@@ -12,9 +12,9 @@
    /* border: 2px solid blue; */
 }
 
-.main > ::-webkit-scrollbar {
+/* .main > ::-webkit-scrollbar {
    display: none;
-}
+} */
 
 .menu {
    width: 20px;
@@ -125,6 +125,7 @@
       /* left: 40rem; */
       top: 5rem;
       height: calc(100vh - 50px);
+      overflow-y: scroll;
    }
 
    .hide_sidebar {

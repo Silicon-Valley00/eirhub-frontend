@@ -139,6 +139,7 @@ function MidDashboard(props) {
                         <h1 className={styles.heading}>
                            Upcoming appointments
                         </h1>
+                        {/* Table for upcoming appointment */}
                         <div className={styles.appointmentTable}>
                            <table>
                               <thead>

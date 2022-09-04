@@ -96,7 +96,7 @@ function DoctorCalendar() {
       }
    }
    return (
-      <>
+      <main className={styles.main}>
          <div className={styles.calendarHeader}>
             <div className={styles.selectMonthYear}>
                <span className={styles.monthChange} id={styles.prevMonth}>
@@ -128,7 +128,7 @@ function DoctorCalendar() {
             </div>
             <div className={styles.calendarDays}>{days}</div>
          </div>
-      </>
+      </main>
    );
 }
 export default DoctorCalendar;
