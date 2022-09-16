@@ -11,26 +11,8 @@ import { CgPill } from 'react-icons/cg';
 import { TbCalendarTime } from 'react-icons/tb';
 import { GiLabCoat } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
-import { persistor } from '../../../Store/ReducerStore';
-import { useNavigate } from 'react-router-dom';
-import { Logout } from '../../../context/authcontext';
-import { useDispatch } from 'react-redux';
-import { setPatientAuth } from '../../../Store/Actions';
 
 function Navigation(props) {
-   const navigate = useNavigate();
-   const dispatch = useDispatch();
-
-   function logout() {
-      try {
-         setTimeout(() => persistor.purge(), 200);
-         dispatch(setPatientAuth(false));
-         Logout();
-         navigate('/landing-page');
-      } catch (err) {
-         console.log(err);
-      }
-   }
    return (
       <>
          <div className={styles.navbody}>
@@ -166,7 +148,7 @@ function Navigation(props) {
                      <li
                         className={props.page === 'logout' ? styles.active : ''}
                         onClick={() => {
-                           logout();
+                           props.handleLogoutModal();
                         }}
                      >
                         <span className={styles.icons}>

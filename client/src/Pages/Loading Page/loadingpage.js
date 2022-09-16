@@ -5,6 +5,7 @@ import { useDispatch, connect, useSelector } from 'react-redux';
 import { addNewHealthDetails } from '../../Store/Actions';
 import { useLocation } from 'react-router-dom';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
+import LogoutModal from '../General Components/Logout Modal/LogoutModal';
 
 const mapStateToProps = (state) => {
    return {
@@ -36,13 +37,14 @@ function Loading(props) {
    return (
       <>
          <AlertsMessageBox />
-         <main>
+         <LogoutModal />
+         {/* <main>
             <div className={styles.homeloadingbg}>
                <div className={styles.loadingspinner}>
                   <img src={spinner} alt="" />
                </div>
             </div>
-         </main>
+         </main> */}
       </>
    );
 }
