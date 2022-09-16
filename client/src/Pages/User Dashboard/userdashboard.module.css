@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+/* @media (min-width: 1920px) { */
+/* .max_div {
+   max-width: 1920px;
+   margin: auto;
+} */
+/* } */
+
 .userbody {
-   width: 100vw;
+   width: 100%;
    height: 100vh;
    background-color: var(#f6f6f9);
    overflow: hidden;
