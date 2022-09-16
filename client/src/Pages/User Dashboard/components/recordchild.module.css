@@ -11,11 +11,12 @@
 .calendar {
    margin-top: 1rem;
    background-color: var(--gray);
-   height: 14rem;
+   height: 18rem;
    width: 100%;
    overflow: hidden;
    padding: 0.2rem;
    border-radius: 1rem;
+   border: 1px solid red;
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
    .calendar {

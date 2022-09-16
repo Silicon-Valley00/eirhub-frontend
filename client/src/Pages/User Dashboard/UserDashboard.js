@@ -33,7 +33,7 @@ function UserDashboard(props) {
       setBirthdayModal(false);
    }
    return (
-      <>
+      <div className={ styles.max_div }>
          <div id={styles.blur} className={birthdayModal ? styles.active : ''}>
             <div className={styles.userbody}>
                <div className={styles.container}>
@@ -80,7 +80,7 @@ function UserDashboard(props) {
             birthdayModal={birthdayModal}
             handleBirthdayModalClose={handleBirthdayModalClose}
          />
-      </>
+      </ div>
    );
 }
 export default UserDashboard;
