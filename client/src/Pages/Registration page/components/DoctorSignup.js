@@ -57,7 +57,7 @@ function DoctorSignup(props) {
             }`
          );
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
-         navigate('/loading');
+         navigate('/loading', { state: false });
 
          dispatch(setDoctorAuth(true));
          setTimeout(() => {

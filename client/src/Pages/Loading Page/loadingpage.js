@@ -4,6 +4,7 @@ import spinner from '../../assets/loading-gif.gif';
 import { useDispatch, connect, useSelector } from 'react-redux';
 import { addNewHealthDetails } from '../../Store/Actions';
 import { useLocation } from 'react-router-dom';
+import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 
 const mapStateToProps = (state) => {
    return {
@@ -34,12 +35,9 @@ function Loading(props) {
    });
    return (
       <>
+         {/* <AlertsMessageBox /> */}
+
          <main id={styles.loadingBody}>
-            {/* <div className={styles.homeloadingbg}>
-               <div className={styles.loadingspinner}>
-                  <img src={spinner} alt="" />
-               </div>
-            </div> */}
             <div className={styles.loader}>
                <span style={{ '--i': 1 }}></span>
                <span style={{ '--i': 2 }}></span>

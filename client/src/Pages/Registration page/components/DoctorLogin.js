@@ -36,7 +36,7 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
-         navigate('/loading');
+         navigate('/loading', { state: false });
 
          dispatch(setDoctorAuth(true));
          setTimeout(() => {

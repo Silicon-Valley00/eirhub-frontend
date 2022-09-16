@@ -59,7 +59,7 @@ function Login(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
-         navigate('/loading');
+         navigate('/loading', { state: false });
          dispatch(setPatientAuth(true));
 
          setTimeout(() => {
