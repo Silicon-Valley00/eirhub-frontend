@@ -35,7 +35,7 @@ const links = [
    },
    {
       icon: <AiFillFile />,
-      title: 'record',
+      title: 'records',
       to: '/doctorrecords',
       highlight: 4,
    },

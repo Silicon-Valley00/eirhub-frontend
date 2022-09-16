@@ -15,56 +15,61 @@ function Dropzone() {
    const changeHandler = (e) => {
       setSelectedFile(e.target.files[0]);
       setIsSelected(true);
+      console.log(selectedFile)
    };
 
-   const handleSubmission = () => {};
+   const handleSubmission = () => { };
 
    const onDrop = useCallback((acceptedFiles) => {
       // Do something with the files'
-      setIsSelected(true)
+      
       setSelectedFile(acceptedFiles[0])
+      setIsSelected(true)
+      // console.log(selectedFile)
+      // console.log(e)
+      // e.preventDefault()
    }, []);
    const { getRootProps, getInputProps, isDragActive } = useDropzone({
-      onDrop,
+      onDrop
    });
 
    return (
       <div {...getRootProps()} className={styles.docRecordsUpload}>
          <input
-            {...getInputProps()}
+            {...getInputProps({ onChange: { changeHandler } })}
             ref={docRecordsUploadRef}
             style={{ display: 'none' }}
             type="file"
             accept=".doc,.docx,.pdf,.txt"
             name="file"
-            onChange={changeHandler}
+
          />
-         {isSelected ? (
+         {isSelected && selectedFile ?
             <div>
                <p>Filename: {selectedFile.name}</p>
                <p>Filetype: {selectedFile.type}</p>
-               <p>Size: {(selectedFile.size / 1024 / 1024).toString().slice(0,4)}MB</p>
+               <p>Size: {(selectedFile.size / 1024 / 1024).toString().slice(0, 4)}MB</p>
                <button className={styles.btn} onClick={handleSubmission}>Submit</button>
             </div>
-         ) : (
-
-            <div>
-            <FaFileUpload
-            className={styles.docRecordsUploadimg}
-            onClick={uploadFile}
-            />
-            <h2 className={styles.docRecordsSheader}>
-            Drag and drop file or{' '}
-            <span className={styles.docRecordsButtonLink} onClick={uploadFile}>
-               browse
+            : isDragActive ?
+               <h2>Drop files here</h2>
+               : <div>
+                  <FaFileUpload
+                     className={styles.docRecordsUploadimg}
+                     onClick={uploadFile}
+                  />
+                  <h2 className={styles.docRecordsSheader}>
+                     Drag and drop file or{' '}
+                     <span className={styles.docRecordsButtonLink} onClick={uploadFile}>
+                        browse
             </span>
-            {/* Drag and drop file or{' '}
+                     {/* Drag and drop file or{' '}
             <Link to="/" className={styles.docRecordsButtonLink}>
             browse
          </Link> */}
-         </h2>
-         </div>
-               )}
+                  </h2>
+               </div>
+         }
       </div>
    );
 }

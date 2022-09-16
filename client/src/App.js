@@ -248,7 +248,6 @@ function App() {
       // </Routes>
 
       //    /* Use the routes below if you do not want restrictions with your routes */
-      <div className='max_div'>
       <Routes>
          <Route path="*" exact element={<PageNotFound />} />
          <Route path="/loading" exact element={<Loading />} />
@@ -356,7 +355,6 @@ function App() {
          <Route path="/doctorschedule" exact element={<DoctorSchedule />} />
          {/* End of route for doctor-dashboard */}
       </Routes>
-      </div>
    );
 }
 
