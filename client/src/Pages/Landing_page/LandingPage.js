@@ -54,6 +54,7 @@ const LandingPage = () => {
       setModalLoginDoctor(false);
       setModalSignupDoctor(false);
    }
+
    return (
       <>
          <div

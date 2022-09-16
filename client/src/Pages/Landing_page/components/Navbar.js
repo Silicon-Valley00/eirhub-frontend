@@ -7,6 +7,24 @@ import { Link } from 'react-router-dom';
 import LoginDropdown from './LoginDropdown';
 import SignUpDropdown from './SignUpDropdown';
 
+
+// Function to use when the user clicks outside of the dropdown.
+function useClickOutside(Handler){
+   let menuRef = useRef();
+   useEffect(() => {
+   let secondHandler = (event) => {
+      if (!menuRef.current.contains(event.target)) {
+         Handler();
+      }
+   };
+   document.addEventListener('mousedown', secondHandler);
+   return () => {
+      document.addEventListener('mousedown', secondHandler);
+   };
+});
+return menuRef;
+};
+
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
    const [loginClick, setLoginClick] = useState(false);
@@ -15,31 +33,23 @@ const Navbar = (props) => {
    const showSidebar = () => setSidebar(!sidebar);
    const handleSignUpClick = () => {
       setSignUpClick(!signUpClick);
+      console.log(signUpClick)
       setLoginClick(false);
    };
    const handleLoginClick = () => {
       setLoginClick(!loginClick);
+      console.log(loginClick)
       setSignUpClick(false);
    };
-   //Function to use when the user clicks outside of the dropdown.
-   // let menuRef = useRef();
-   // useEffect(() => {
-   //    let Handler = (event) => {
-   //       if (!menuRef.current.contains(event.target)) {
-   //          //menuRef is the menu reference used so that the function knows where the event will happen
-   //          setLoginClick(false);
-   //          setSignUpClick(false);
-   //       }
-   //    };
-   //    document.addEventListener('mousedown', Handler);
-   //    return () => {
-   //       document.addEventListener('mousedown', Handler);
-   //    };
-   // });
+
+   let menuRef = useClickOutside(()=>{
+      setLoginClick(false);
+      setSignUpClick(false);
+   })
 
    return (
       <main className={styles.main}>
-         <div className={styles.back}>
+         <div className={styles.back} ref={menuRef}>
             <nav id={styles.nav}>
                {/* Logo */}
                <Link to="/" id={styles.img}>
