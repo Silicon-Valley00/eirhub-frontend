@@ -1,5 +1,4 @@
 import styles from './navigation.module.css';
-import Sidebar from './Sidebar';
 import { useSelector } from 'react-redux';
 
 function Navigation({ nav }) {
@@ -23,8 +22,6 @@ function Navigation({ nav }) {
                <p className={styles.hello_msg}>Hello, {user}</p>
             </div>
          </div>
-
-         <Sidebar indicator={nav} />
       </nav>
    );
 }

@@ -282,9 +282,3 @@ footer {
       width: 70%;
    }
 }
-
-@media (min-width: 1500px) {
-   footer {
-      padding: 0 15%;
-   }
-}

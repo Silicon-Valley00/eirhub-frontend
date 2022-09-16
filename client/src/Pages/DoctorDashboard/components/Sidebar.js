@@ -19,31 +19,31 @@ const links = [
       icon: <MdSpaceDashboard />,
       title: 'dashboard',
       to: '/doctordashboard',
-      highlight: 13,
+      highlight: 1,
    },
    {
       icon: <FaUser />,
       title: 'profile',
       to: '/doctorprofile',
-      highlight: 12,
+      highlight: 2,
    },
    {
       icon: <TbCalendarTime />,
       title: 'Schedule',
       to: '/doctorschedule',
-      highlight: 14,
+      highlight: 3,
    },
    {
       icon: <AiFillFile />,
       title: 'record',
       to: '/doctorrecords',
-      highlight: 15,
+      highlight: 4,
    },
    {
       icon: <TiMessages />,
       title: 'messages',
       to: '/doctormessages',
-      highlight: 16,
+      highlight: 5,
    },
 ];
 

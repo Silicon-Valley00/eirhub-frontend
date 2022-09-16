@@ -1,4 +1,8 @@
-
+.main {
+   background-color: var(--gray);
+   padding: 3rem 10px;
+   border-radius: 10px;
+}
 .calendarHeader {
    display: flex;
    justify-content: space-between;

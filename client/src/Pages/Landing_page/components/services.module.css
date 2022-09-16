@@ -145,7 +145,7 @@
    }
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
    .services_title {
       width: 100%;
       font-size: 35px;
@@ -183,7 +183,7 @@
 
    .services_ad {
       color: var(--white);
-      font-size: 20px;
+      font-size: 30px;
       font-weight: 700;
       font-family: var(--mainfont);
       width: 70%;
@@ -236,7 +236,7 @@
 
    .square {
       position: relative;
-      width: 60%;
+      width: 50%;
    }
 
    .square_2 {
@@ -255,8 +255,23 @@
    }
 
    .services_ad {
-      /* font-size: 35px; */
+      font-size: 35px;
       padding-top: 2rem;
+   }
+
+   .services_message {
+      display: block;
+      padding: 2rem;
+      padding-left: 6rem;
+      padding-right: 6rem;
+   }
+
+   .services_message_box {
+      height: 23rem;
+   }
+
+   .services_ad {
+      font-size: 35px;
    }
 
    .message_btn {
@@ -270,9 +285,13 @@
    }
 }
 
-/* @media (min-width: 1400px) {
+@media (min-width: 1400px) {
    .card {
       height: 28rem;
+   }
+
+   .services_ad {
+      font-size: 40px;
    }
 
    .message_btn {
@@ -281,14 +300,8 @@
    }
 } */
 
-@media (min-width: 1500px) {
+/* @media (min-width: 1500px) {
    #services_body {
-      padding: 5rem 15% 10rem 15%;
+      padding: 6rem 15%;
    }
-}
-
-@media (min-width: 2050px) {
-   #services_body {
-      padding: 5rem 15% 10rem 15%;
-   }
-}
+} */
