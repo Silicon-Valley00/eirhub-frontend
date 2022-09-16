@@ -56,7 +56,7 @@ const Services = (props) => {
 
             {/* Box that displays and ad and book an appointment */}
             <div className={Styles.services_message}>
-               <div className={Styles.services_message_boxservices_body}>
+               <div className={Styles.services_message_box}>
                   <div className={Styles.services_message_info}>
                      <h4 className={Styles.services_ad}>
                         Don't Delay Care For You and those You Love.

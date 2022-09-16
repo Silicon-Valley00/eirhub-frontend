@@ -109,6 +109,11 @@
 }
 
 @media (min-width: 700px) {
+   #services_body {
+      padding-top: 5rem;
+      padding-bottom: 8rem;
+   }
+
    .services_doctors_box {
       padding: 5%;
       display: grid;
@@ -145,20 +150,11 @@
    }
 }
 
-/* @media (min-width: 1024px) {
-   .services_title {
-      width: 100%;
-      font-size: 35px;
+@media (min-width: 1024px) {
+   #services_body {
+      padding-top: 5rem;
+      padding-bottom: 8rem;
    }
-   .services_doctors_box {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-   }
-
    .services_message {
       display: block;
       padding: 2rem;
@@ -179,11 +175,13 @@
       gap: 1rem;
       padding-left: 10rem;
       padding-bottom: 3rem;
+      padding: 2rem 0 3rem 10rem;
+      height: max-content;
    }
 
    .services_ad {
       color: var(--white);
-      font-size: 30px;
+      font-size: 20px;
       font-weight: 700;
       font-family: var(--mainfont);
       width: 70%;
@@ -253,36 +251,6 @@
    .services_doctors_box {
       gap: 10rem;
    }
-
-   .services_ad {
-      font-size: 35px;
-      padding-top: 2rem;
-   }
-
-   .services_message {
-      display: block;
-      padding: 2rem;
-      padding-left: 6rem;
-      padding-right: 6rem;
-   }
-
-   .services_message_box {
-      height: 23rem;
-   }
-
-   .services_ad {
-      font-size: 35px;
-   }
-
-   .message_btn {
-      height: 4rem;
-      width: 30rem;
-      font-size: 16px;
-   }
-
-   .services_button_input {
-      width: 25rem;
-   }
 }
 
 @media (min-width: 1400px) {
@@ -298,10 +266,4 @@
       margin-top: 3rem;
       font-size: 20px;
    }
-} */
-
-/* @media (min-width: 1500px) {
-   #services_body {
-      padding: 6rem 15%;
-   }
-} */
+}

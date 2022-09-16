@@ -122,10 +122,8 @@
    .main {
       position: absolute;
       width: 6rem;
-      /* left: 40rem; */
       top: 5rem;
       height: calc(100vh - 50px);
-      overflow-y: scroll;
    }
 
    .hide_sidebar {
@@ -150,8 +148,8 @@
    /* styling for links */
    .nav {
       margin-top: 1rem;
-      padding: 0;
-      padding-left: 1rem;
+      padding: 0 0 6rem 1rem;
+      justify-content: space-between;
    }
 
    .upper_links {
@@ -178,7 +176,7 @@
       width: 12rem;
    }
    .hide_sidebar {
-      width: 12rem;
+      width: 14rem;
    }
 
    /* styling for links */
