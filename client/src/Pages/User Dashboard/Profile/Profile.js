@@ -235,7 +235,8 @@ function Profile(props) {
                   </div>
                   <div className={styles.profileIntro}>
                      <div className={styles.profileName}>
-                        <h2>{`${props.savedProfile.first_name} ${props.savedProfile.last_name}`}</h2>
+                        <h2>Maxwell Mawube</h2>
+                        {/* <h2>{`${props.savedProfile.first_name} ${props.savedProfile.last_name}`}</h2> */}
                      </div>
                      <div className={styles.uploadImageBtn}>
                         <label htmlFor="file-upload-button">{uploadBtn}</label>
