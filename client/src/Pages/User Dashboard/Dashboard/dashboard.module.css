@@ -403,30 +403,30 @@ main#midsection::-webkit-scrollbar-thumb {
       justify-content: space-around;
    }
    main .vitalsBox .vitals {
-      height: calc(100vh - 85vh);
-      min-height: calc(100vh - 85vh);
+      height: 200px;
+      min-height: 200px;
    }
    .vitalsInfo {
-      font-size: 0.8rem;
+      font-size: 12.8px;
    }
    /* MEDICATIONS */
    .medicationBox {
-      margin-top: 1rem;
+      margin-top: 40px;
    }
    .medicationBox h2 {
-      margin-bottom: 0.2rem;
-      font-size: 1.4rem;
+      margin-bottom: 10px;
+      font-size: 25px;
    }
    .medicationTable {
       height: calc(100vh - 75vh);
       /* min-height: 13rem; */
    }
    .appointmentsBox {
-      margin-top: 0.8rem;
+      margin-top: 40px;
    }
    .appointmentsBox h2 {
-      margin-bottom: 0.2rem;
-      font-size: 1.4rem;
+      margin-bottom: 10px;
+      font-size: 25px;
    }
    .appointmentTable {
       height: calc(100vh - 71vh);

@@ -1,0 +1,90 @@
+#alertBody {
+   overflow: hidden;
+   width: 100vw;
+   height: 100%;
+   padding: 0;
+   margin: 0;
+}
+.alertBox {
+   position: fixed;
+   width: 100%;
+   z-index: 999;
+}
+
+.alert {
+   background: #ffdb9b;
+   padding: 1.25rem 2.5rem;
+   min-width: 26.25rem;
+   overflow: hidden;
+   position: absolute;
+   right: 0;
+   top: 0.7rem;
+   border-radius: 0.25rem;
+   border-left: 0.5rem solid #ffa502;
+   z-index: 10;
+}
+
+.alert.show {
+   animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+   0% {
+      transform: translateX(100%);
+   }
+   40% {
+      transform: translateX(-10%);
+   }
+   80% {
+      transform: translateX(0%);
+   }
+   100% {
+      transform: translateX(-10px);
+   }
+}
+.alert.hide {
+   animation: hide_slide 1s ease forwards;
+}
+@keyframes hide_slide {
+   0% {
+      transform: translateX(-10px);
+   }
+   40% {
+      transform: translateX(0%);
+   }
+   80% {
+      transform: translateX(-10%);
+   }
+   100% {
+      transform: translateX(100%);
+   }
+}
+.alert .iconBox {
+   position: absolute;
+   left: 1.25rem;
+   top: 50%;
+   transform: translateY(-50%);
+   color: #ce8500;
+   font-size: 1.87rem;
+}
+.alert .message {
+   padding: 0 1.25rem;
+   font-size: 1.12rem;
+   color: #ce8500;
+}
+.alert .closeBtn {
+   position: absolute;
+   right: 0;
+   top: 50%;
+   transform: translateY(-50%);
+   background: #ffd080;
+   padding: 1.25rem 1.12rem;
+   cursor: pointer;
+}
+.closeBtn:hover {
+   background: #ffc766;
+}
+.closeBtn i {
+   color: #ce8500;
+   font-size: 1.3rem;
+   line-height: 2.5rem;
+}

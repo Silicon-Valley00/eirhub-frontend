@@ -309,6 +309,56 @@ select::-ms-expand {
    cursor: pointer;
 }
 
+@media (min-width: 2001px) {
+   .searchRegion {
+      height: 70px;
+   }
+   .searchRegion div {
+      height: 100%;
+   }
+   .searchRegion input[type='text'] {
+      font-size: 18px;
+   }
+   .searchRegion button {
+      font-size: 18px;
+   }
+   .filterRegion {
+      height: 70px;
+   }
+   .formRegion form p {
+      font-size: 20px;
+   }
+   .selectOne::after {
+      padding: 1.8rem 0.5rem;
+   }
+   .selectTwo::after {
+      padding: 1.8rem 0.5rem;
+   }
+   .selectOne select {
+      font-size: 20px;
+   }
+   .selectTwo select {
+      font-size: 20px;
+   }
+   .doctorBox {
+      height: 160px;
+   }
+   .doctorName h3 {
+      font-size: 16px;
+   }
+   .doctorDetails p {
+      font-size: 12px;
+   }
+   .doctorInfoLink {
+      height: 10%;
+   }
+   .doctorInfoLink p {
+      font-size: 13px;
+   }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+}
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .title h1 {
       font-size: 1.5rem;
