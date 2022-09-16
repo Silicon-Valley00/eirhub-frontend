@@ -23,9 +23,8 @@ function Dropzone() {
    const onDrop = useCallback((acceptedFiles) => {
       // Do something with the files'
       
-      setIsSelected(true)
-      console.log(acceptedFiles)
       setSelectedFile(acceptedFiles[0])
+      setIsSelected(true)
       // console.log(selectedFile)
       // console.log(e)
       // e.preventDefault()
@@ -45,7 +44,7 @@ function Dropzone() {
             name="file"
 
          />
-         {isSelected ?
+         {isSelected && selectedFile ?
             <div>
                <p>Filename: {selectedFile.name}</p>
                <p>Filetype: {selectedFile.type}</p>
