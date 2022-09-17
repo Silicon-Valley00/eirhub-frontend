@@ -19,7 +19,7 @@ function Navigation(props) {
             <aside
                className={props.openMenu ? styles.active : styles.notActive}
             >
-               <div className={styles.top}>
+               {/* <div className={styles.top}>
                   <div className={styles.logo}>
                      <h2>Eirhub</h2>
                   </div>
@@ -32,7 +32,7 @@ function Navigation(props) {
                         <GrClose />
                      </i>
                   </div>
-               </div>
+               </div> */}
                <div className={styles.sidebar}>
                   <ul>
                      <Link to={'/userdashboard'}>
