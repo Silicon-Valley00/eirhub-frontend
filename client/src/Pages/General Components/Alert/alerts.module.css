@@ -11,8 +11,8 @@
    z-index: 999;
 }
 
-.alert {
-   background: #ffdb9b;
+.alertSuccess {
+   background: var(--successSoft);
    padding: 1.25rem 2.5rem;
    min-width: 26.25rem;
    overflow: hidden;
@@ -20,11 +20,25 @@
    right: 0;
    top: 0.7rem;
    border-radius: 0.25rem;
-   border-left: 0.5rem solid #ffa502;
+   border-left: 0.5rem solid var(--successbold);
    z-index: 10;
 }
-
-.alert.show {
+.alertError {
+   background: var(--errorSoft);
+   padding: 1.25rem 2.5rem;
+   min-width: 26.25rem;
+   overflow: hidden;
+   position: absolute;
+   right: 0;
+   top: 0.7rem;
+   border-radius: 0.25rem;
+   border-left: 0.5rem solid var(--errorbold);
+   z-index: 10;
+}
+.alertSuccess.show {
+   animation: show_slide 1s ease forwards;
+}
+.alertError.show {
    animation: show_slide 1s ease forwards;
 }
 @keyframes show_slide {
@@ -41,7 +55,10 @@
       transform: translateX(-10px);
    }
 }
-.alert.hide {
+.alertSuccess.hide {
+   animation: hide_slide 1s ease forwards;
+}
+.alertError.hide {
    animation: hide_slide 1s ease forwards;
 }
 @keyframes hide_slide {
@@ -58,33 +75,72 @@
       transform: translateX(100%);
    }
 }
-.alert .iconBox {
+.alertSuccess .iconBox {
    position: absolute;
    left: 1.25rem;
-   top: 50%;
+   top: 57%;
    transform: translateY(-50%);
-   color: #ce8500;
-   font-size: 1.87rem;
+   color: var(--successMild);
+   font-size: 2rem;
+   padding: 0.2rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
-.alert .message {
+.alertError .iconBox {
+   position: absolute;
+   left: 1.25rem;
+   top: 57%;
+   transform: translateY(-50%);
+   color: var(--errorMild);
+   font-size: 2rem;
+   padding: 0.2rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.alertSuccess .message {
    padding: 0 1.25rem;
    font-size: 1.12rem;
-   color: #ce8500;
+   color: var(--successMild);
 }
-.alert .closeBtn {
+.alertError .message {
+   padding: 0 1.25rem;
+   font-size: 1.12rem;
+   color: var(--errorMild);
+}
+.alertSuccess .closeBtn {
    position: absolute;
    right: 0;
-   top: 50%;
+   top: 55%;
    transform: translateY(-50%);
-   background: #ffd080;
-   padding: 1.25rem 1.12rem;
+   background: var(--successMildLow);
+   padding: 2rem 1.12rem;
    cursor: pointer;
 }
-.closeBtn:hover {
-   background: #ffc766;
+.alertError .closeBtn {
+   position: absolute;
+   right: 0;
+   top: 55%;
+   transform: translateY(-50%);
+   background: var(--errorMildLow);
+   padding: 2rem 1.12rem;
+   cursor: pointer;
 }
-.closeBtn i {
-   color: #ce8500;
+.alertSuccess .closeBtn:hover {
+   background: var(--successMildHigh);
+}
+.alertError .closeBtn:hover {
+   background: var(--errorMildHigh);
+}
+.alertSuccess .closeBtn i {
+   color: var(--successMild);
+   font-size: 1.3rem;
+   line-height: 2.5rem;
+}
+.alertError .closeBtn i {
+   color: var(--errorMild);
    font-size: 1.3rem;
    line-height: 2.5rem;
 }

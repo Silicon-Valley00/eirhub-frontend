@@ -9,11 +9,12 @@ import {
    SET_APPOINTMENTS_DATES,
    SET_PATIENT_AUTH,
    SET_USER_INFO,
+   SET_OK_TO_ROUTE,
 } from './ActionTypes';
 
 import axios from 'axios';
 
-// Sets profile details
+// Sets user details
 export const setUserInfo = (user) => {
    return {
       type: SET_USER_INFO,
@@ -42,7 +43,13 @@ export const setGuardianInfo = (guardianData) => {
       payload: guardianData,
    };
 };
-
+//sets ok to route after an registration action
+export const setOkToRoute = (state) => {
+   return {
+      type: SET_OK_TO_ROUTE,
+      payload: state,
+   };
+};
 // Sets the profile details for doctors
 export const setDoctorProfile = (doctorProfile) => {
    return {
@@ -167,6 +174,7 @@ export const fetchHealthDetails = (userID) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setHealthInfo(response.data.msg));
+               dispatch(setOkToRoute(true));
             }
          } else {
             //takes all statuses aside 200
@@ -323,7 +331,12 @@ export const updateGuardianInfo = (
 };
 
 //Create new user health details
-export const addNewHealthDetails = (healthData,guardianData,patientId, profileData) => {
+export const addNewHealthDetails = (
+   healthData,
+   guardianData,
+   patientId,
+   profileData
+) => {
    return async function (dispatch) {
       try {
          const response = await axios({
@@ -335,14 +348,14 @@ export const addNewHealthDetails = (healthData,guardianData,patientId, profileDa
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
             },
-            data:healthData
+            data: healthData,
          });
          if (response.status === 200) {
             //checks details of response
             if (response.data.status === true) {
                //returns response
                dispatch(setHealthInfo(response.data.msg));
-               dispatch(addNewGuardianInfo(guardianData,profileData));
+               dispatch(addNewGuardianInfo(guardianData, profileData));
             }
          } else {
             //takes all statuses aside 200
@@ -355,7 +368,7 @@ export const addNewHealthDetails = (healthData,guardianData,patientId, profileDa
 };
 
 //Creates guardian details
-export const addNewGuardianInfo = (guardianData,profileData) => {
+export const addNewGuardianInfo = (guardianData, profileData) => {
    return async function (dispatch) {
       try {
          const response = await axios({
@@ -367,7 +380,7 @@ export const addNewGuardianInfo = (guardianData,profileData) => {
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
             },
-            data: guardianData
+            data: guardianData,
          });
          if (response.status === 200) {
             //checks details of response

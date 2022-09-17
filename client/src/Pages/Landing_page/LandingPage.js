@@ -6,8 +6,12 @@ import Navbar from './components/Navbar';
 import QuickSolution from './components/QuickSolution';
 import Services from './components/Services';
 import styles from './Landingpage.module.css';
+import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
+import { useLocation } from 'react-router-dom';
 
 const LandingPage = () => {
+   const location = useLocation();
+
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
    const [modalSignup, setModalSignup] = useState(false);
    const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
@@ -54,6 +58,7 @@ const LandingPage = () => {
       setModalLoginDoctor(false);
       setModalSignupDoctor(false);
    }
+   console.log(location.state);
    return (
       <>
          <div
@@ -68,6 +73,11 @@ const LandingPage = () => {
             }
             // handleModalsClose={handleModalsClose}
          >
+            <AlertsMessageBox
+               show={location.state === null ? false : location.state}
+               state={0}
+               message={'Profile could not load. Try again.'}
+            />
             {/* navbar */}
 
             <Navbar
