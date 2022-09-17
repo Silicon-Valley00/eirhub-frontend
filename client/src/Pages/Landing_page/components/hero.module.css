@@ -13,7 +13,6 @@
    align-items: center;
    justify-content: center;
    height: 100%;
-   z-index: 4;
 }
 
 .hero_wrapper {
@@ -62,7 +61,6 @@
 }
 
 .content__button {
-   display: flex;
    display: flex;
    align-items: center;
    justify-content: center;
