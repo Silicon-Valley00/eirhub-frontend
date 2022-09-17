@@ -1,314 +1,205 @@
- import React, { useState, useEffect } from 'react';
-import avatarOne from '../../../assets/Rectangle-1.png';
-import avatarTwo from '../../../assets/Rectangle-2.png';
-import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
-import avatarThree from '../../../assets/Rectangle.png';
-import glucometer from '../../../images/Glucometer.svg';
-import { ImDroplet } from 'react-icons/im';
-import { RiHeartPulseFill } from 'react-icons/ri';
-import { GiMedicalThermometer } from 'react-icons/gi';
+import React, { useEffect, useState } from 'react';
 import styles from './dashboard.module.css';
-import { connect, useDispatch } from 'react-redux';
-import {
-   fetchAppointments,
-   fetchMedications,
-   fetchProfile,
-   setAppointmentDates,
-   updatePrescriptions,
-} from '../../../Store/Actions.js';
-import { useSelector } from 'react-redux';
-import store from '../../../Store/ReducerStore'
+import { IoIosPeople } from 'react-icons/io';
+import { AiFillFile } from 'react-icons/ai';
+import { CgCalendar } from 'react-icons/cg';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
-const mapStateToProps = (state) => {
-   return {
-      savedHealthDetails: state.health,
-      savedUserInfo: state.user,
-   };
-};
+function MidDashboard(props) {
+   const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
+   console.log(getacceptedAppointment);
 
-function Dashboard(props) {
-   console.log(store.getState())
-   const dispatch = useDispatch();
-   const [medications, setMedications] = useState([]);
-   const [appointments, setAppointments] = useState([]);
-   const patientID = useSelector((state) => state.user.id_patient);
+   // States to keep the counts of the number of patients, reports and appointments
+   const [numOfPatients, setNumOfPatients] = useState(0);
+   const [numOfReports, setNumOfReports] = useState(0);
+   const [numOfAppointments, setNumOfAppointments] = useState(0);
 
-   // useEffect(() => {
-   //    async function fetchUserData() {
-   //       dispatch(
-   //          fetchProfile(
-   //             props.savedUserInfo.id_patient,
-   //             props.savedUserInfo.id_guardian
-   //          )
-   //       );
-   //    }
-   //    fetchUserData();
-   // }, []);
+   const data = props.doctorProfile;
+   const baseURL = 'http://127.0.0.1:5000';
+
+   // endpoint for updating doctor profile
+   // const accepted_appointment_endpoint = `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`;
+   // const numberOfPatients_endpoint = `${baseURL}/doctors/patient/?id_doctor=${data?.id_doctor}`;
+   // const numberOfRecords_endpoint = `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`;
+   // const numberOfAppointments_endpoint = `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`;
+
+   const endpoints = [
+      `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`,
+      `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`,
+      `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`,
+      `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`,
+   ];
+
+   // TODO: add interceptors to catch errors
    useEffect(() => {
-      async function fetchdata() {
-         const items = await fetchMedications(patientID);
-         setMedications(items);
-         const schedules = await fetchAppointments(patientID, true);
-         setAppointments(schedules);
-      }
-      fetchdata();
+      const fetchAcceptedAppointments = async () => {
+         axios
+            .get(
+               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`,
+               {
+                  headers: {
+                     'Access-Control-Allow-Origin': '*',
+                     'Access-Control-Allow-Headers': '*',
+                     'Access-Control-Allow-Methods': '*',
+                  },
+               }
+            )
+            .then((res) => {
+               setAcceptedAppointment(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
+      };
+      fetchAcceptedAppointments();
    }, []);
 
-   let appointment_dates = [];
-   useEffect(() => {
-      if (appointments === undefined) return;
-      if (
-         appointments !== undefined ||
-         appointments !== null ||
-         appointments.length !== 0
-      ) {
-         for (let item of appointments) {
-            if (
-               new Date().getTime() <= new Date(item.appointment_date).getTime()
-            ) {
-               appointment_dates.push(
-                  new Date(item.appointment_date).getTime()
-               );
-            }
-         }
-      }
-      dispatch(setAppointmentDates(appointment_dates));
-   }, [appointments]);
-
-   var list;
-   //displays medications
-
-   if (medications === undefined) {
-      list = <p>Nothing to show here.</p>;
-   } else {
-      if (medications.length !== 0) {
-         list = medications.map((item, j) => {
-            return (
-               <tr key={`${item.drug_name}-${j}`}>
-                  <td>{`${item.drug_name}`}</td>
-                  <td>{`${item.dosage}`}</td>
-                  <td>{`${item.time_of_administration}`}</td>
-                  <td>
-                     <input
-                        type={'checkbox'}
-                        defaultChecked={
-                           new Date(item.last_taken_date).setHours(
-                              0,
-                              0,
-                              0,
-                              0
-                           ) === new Date().setHours(0, 0, 0, 0)
-                              ? true
-                              : false
-                        }
-                        onClick={(event) => changeCheckBox(event, item)}
-                     />
-                  </td>
-               </tr>
-            );
-         });
-      } else if (medications.length === 0) {
-         // Sends message to be displayed when saved videos is empty
-         list = <p>Nothing to show here.</p>;
-      }
-   }
-   var appointmentsData;
-   //gets all apoints for display
-
-   if (appointments === undefined) {
-      appointmentsData = <p>Nothing to show here.</p>;
-   } else {
-      if (appointments.length !== 0) {
-         appointmentsData = appointments.map((item, j) => {
-            return (
-               <tr key={`${item.appointment_reason}-${j}`}>
-                  <td>
-                     <div>
-                        <img src={item.doctor_info.person_image} alt="avatar" />
-                     </div>
-                  </td>
-                  <td>{`Dr. ${item.doctor_info.first_name} ${item.doctor_info.last_name}`}</td>
-                  <td>{item.appointment_location}</td>
-                  <td>
-                     {`${new Date(item.appointment_date).getDate()}/${
-                        new Date(item.appointment_date).getMonth() + 1
-                     }/${new Date(item.appointment_date).getFullYear()}`}
-                  </td>
-                  <td>{`${item.appointment_start_time.slice(
-                     0,
-                     2
-                  )}:${item.appointment_start_time.slice(
-                     3,
-                     5
-                  )} - ${item.appointment_end_time.slice(
-                     0,
-                     2
-                  )}:${item.appointment_end_time.slice(3, 5)}`}</td>
-               </tr>
-            );
-         });
-      } else if (appointments.length === 0) {
-         // Sends message to be displayed when saved videos is empty
-         appointmentsData = <p>Nothing to show here.</p>;
-      }
-   }
-
-   function changeCheckBox(event, data) {
-      /*
-         Function updates last taken dates of presciptions when checkbox is checked
-         Args: Function takes event to check if box is checked and the presciptions
-         Return: Nothing is returned
-      */
-      if (event.target.checked) {
-         var today = new Date();
-         var date = `${today.getFullYear()}-${
-            (today.getMonth() + 1 < 10 ? '0' : '') + (today.getMonth() + 1)
-         }-${(today.getDate() < 10 ? '0' : '') + today.getDate()}`;
-
-         const updatedPrescription = {
-            drug_name: data.drug_name,
-            dosage: data.dosage,
-            time_of_administration: data.time_of_administration,
-            start_date: data.start_date,
-            end_date: data.end_date,
-            last_taken_date: date,
-            id_patient: patientID,
-         };
-         //updating prescription
-         dispatch(
-            updatePrescriptions(data.id_prescription, updatedPrescription)
-         );
-      } else {
-         //prevents checkbox from changing to false
-         event.preventDefault();
-         return false;
-      }
-   }
+   // Fetch all the data from the endpoints at once.
+   // useEffect(() => {
+   //    axios
+   //       .all(
+   //          [
+   //             axios.get(
+   //                `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`
+   //             ),
+   //             axios.get(
+   //                `${baseURL}/doctors/patients/?id_doctor=${data?.id_doctor}`
+   //             ),
+   //             axios.get(
+   //                `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`
+   //             ),
+   //             axios.get(
+   //                `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`
+   //             ),
+   //          ],
+   //          {
+   //             headers: {
+   //                'Access-Control-Allow-Origin': '*',
+   //                'Access-Control-Allow-Headers': '*',
+   //                'Access-Control-Allow-Methods': '*',
+   //             },
+   //          }
+   //       )
+   //       .then(
+   //          axios.spread(
+   //             (upcomingAppointments, patients, reports, appointments) => {
+   //                setAcceptedAppointment(upcomingAppointments);
+   //                setNumOfAppointments(appointments);
+   //                setNumOfPatients(patients);
+   //                setNumOfRecords(reports);
+   //             }
+   //          )
+   //       )
+   //       .catch((err) => {
+   //          console.log(err.message);
+   //       });
+   // }, []);
 
    return (
       <>
-         <main id={styles.midsection}>
-            <div className={styles.vitalsBox}>
-               <div className={styles.vitals}>
-                  <div className={styles.vitalsDetails}>
-                     <div className={styles.vitalsIcon}>
-                        <i>
-                           <RiHeartPulseFill />
-                        </i>
+         <div className={styles.wrapper}>
+            <main className={styles.main}>
+               <section className={styles.section}>
+                  <div className={styles.middle_section}>
+                     {/* box that containst the summary display for the doctor */}
+                     <div className={styles.doctor_display}>
+                        {/* Each display make into a card and joined together on large screens */}
+                        <div className={styles.card} id={styles.first_card}>
+                           <IoIosPeople className={styles.icon} />
+                           <div>
+                              <p className={styles.digits}>132</p>
+                              <p className={styles.text}>Patients</p>
+                           </div>
+                        </div>
+                        <div className={styles.card} id={styles.second_card}>
+                           <AiFillFile className={styles.icon} />
+                           <div>
+                              <p className={styles.digits}>114</p>
+                              <p className={styles.text}>records</p>
+                           </div>
+                        </div>
+                        <div className={styles.card} id={styles.third_card}>
+                           <CgCalendar className={styles.icon} />
+                           <div>
+                              <p className={styles.digits}>132</p>
+                              <p className={styles.text}>appointments</p>
+                           </div>
+                        </div>
                      </div>
-                     <div className={styles.vitalsReadings}>
-                        <h4>
-                           {props.savedHealthDetails?.pulse
-                              ? `${props.savedHealthDetails?.pulse} bpm`
-                              : ''}
-                        </h4>
+                     {/* End of summary display */}
+
+                     {/* div for upcoming appointment */}
+                     <div className={styles.appointmentsBox}>
+                        <h1 className={styles.heading}>
+                           Upcoming appointments
+                        </h1>
+                        {/* Table for upcoming appointment */}
+                        <div className={styles.appointmentTable}>
+                           <table>
+                              <thead>
+                                 <th></th>
+                                 <th>Name</th>
+                                 <th>Condition</th>
+                                 <th>Date</th>
+                                 <th>Time</th>
+                              </thead>
+                              <tbody>
+                                 {getacceptedAppointment.map((data, index) => {
+                                    return (
+                                       <>
+                                          <tr key={index}>
+                                             <td>
+                                                <img
+                                                   src={
+                                                      data?.patient_info
+                                                         .person_image
+                                                   }
+                                                   alt=""
+                                                   className={styles.table_img}
+                                                />
+                                             </td>
+                                             {/* FIXME: Space name */}
+                                             <td>
+                                                {`${data?.patient_info.first_name} ${data?.patient_info.last_name}`}
+                                             </td>
+                                             <td>{data?.appointment_reason}</td>
+                                             <td>
+                                                {new Date(
+                                                   data?.appointment_date
+                                                ).getMonth() + 1}
+                                                /
+                                                {new Date(
+                                                   data?.appointment_date
+                                                ).getDate() + 1}
+                                                /
+                                                {new Date(
+                                                   data?.appointment_date
+                                                ).getFullYear()}
+                                             </td>
+                                             <td>
+                                                {data?.appointment_start_time}
+                                             </td>
+                                          </tr>
+                                       </>
+                                    );
+                                 })}
+                              </tbody>
+                           </table>
+                        </div>
                      </div>
                   </div>
-                  <div className={styles.vitalsTitle}>
-                     <h4>Heart Rate</h4>
-                  </div>
-                  <div className={styles.vitalsInfo}>
-                     <p>Pulse is the most important physiological indicator</p>
-                  </div>
-               </div>
-               <div className={styles.vitals}>
-                  <div className={styles.vitalsDetails}>
-                     <div className={styles.vitalsIcon}>
-                        <i>
-                           <GiMedicalThermometer />
-                        </i>
-                     </div>
-                     <div className={styles.vitalsReadings}>
-                        <h4>
-                           {props.savedHealthDetails?.temperature
-                              ? `${props.savedHealthDetails?.temperature} °C`
-                              : ''}
-                        </h4>
-                     </div>
-                  </div>
-                  <div className={styles.vitalsTitle}>
-                     <h4>Temperature</h4>
-                  </div>
-                  <div className={styles.vitalsInfo}>
-                     <p>Pulse is the most important physiological indicator </p>
-                  </div>
-               </div>
-               <div className={styles.vitals}>
-                  <div className={styles.vitalsDetails}>
-                     <div className={styles.vitalsIcon}>
-                        <i>
-                           <ImDroplet />
-                        </i>
-                     </div>
-                     <div className={styles.vitalsReadings}>
-                        <h4>
-                           {props.savedHealthDetails.blood_pressure
-                              ? `${props.savedHealthDetails.blood_pressure}`
-                              : ''}
-                        </h4>
-                     </div>
-                  </div>
-                  <div className={styles.vitalsTitle}>
-                     <h4>Blood Pressure</h4>
-                  </div>
-                  <div className={styles.vitalsInfo}>
-                     <p>Pulse is the most important physiological indicator </p>
-                  </div>
-               </div>
-               <div className={styles.vitals}>
-                  <div className={styles.vitalsDetails}>
-                     <div className={styles.vitalsIcon}>
-                        <i>
-                           <img src={glucometer} alt={'Glucometer'} />
-                        </i>
-                     </div>
-                     <div className={styles.vitalsReadings}>
-                        <h4>{`${props.savedHealthDetails.blood_sugar} mg/dL`}</h4>
-                     </div>
-                  </div>
-                  <div className={styles.vitalsTitle}>
-                     <h4>Blood Glucose</h4>
-                  </div>
-                  <div className={styles.vitalsInfo}>
-                     <p>Pulse is the most important physiological indicator </p>
-                  </div>
-               </div>
-            </div>
-            <div className={styles.medicationBox}>
-               <h2>Current Medications</h2>
-               <div className={styles.medicationTable}>
-                  <table>
-                     <thead>
-                        <tr>
-                           <th>Medicine</th>
-                           <th>Dosage</th>
-                           <th>Time</th>
-                           <th></th>
-                        </tr>
-                     </thead>
-                     <tbody>{list}</tbody>
-                  </table>
-               </div>
-            </div>
-            <div className={styles.appointmentsBox}>
-               <h2>Upcoming Appointments</h2>
-               <div className={styles.appointmentTable}>
-                  <table>
-                     <thead>
-                        <tr>
-                           <th></th>
-                           <th>Name</th>
-                           <th>Location</th>
-                           <th>Date</th>
-                           <th>Time</th>
-                        </tr>
-                     </thead>
-                     <tbody>{appointmentsData}</tbody>
-                  </table>
-               </div>
-            </div>
-         </main>
+               </section>
+            </main>
+         </div>
       </>
    );
 }
-export default connect(mapStateToProps)(Dashboard);
+
+const mapStateToProps = (state) => {
+   return {
+      doctorProfile: state.doctorProfile,
+   };
+};
+
+export default connect(mapStateToProps)(MidDashboard);

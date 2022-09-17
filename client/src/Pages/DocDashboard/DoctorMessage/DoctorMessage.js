@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './message.module.css';
 import { CometChatMessages } from '../../../Chat UI Kit/cometchat-pro-react-ui-kit/CometChatWorkspace/src';
 import MessagePatients from '../../DoctorDashboard/components/MessagePatients';
-import Navigation from '../../DoctorDashboard/components/Navigation';
-import Sidebar from '../../DoctorDashboard/components/Sidebar';
 
 const DoctorMessage = () => {
    const patientUID = useSelector((state) => state.patientToChatWith);

@@ -6,7 +6,7 @@
    height: 4rem;
    z-index: 99;
    background: var(--white);
-   box-shadow: 0 0.5rem 1rem rgba(174, 178, 214, 0.18);
+   box-shadow: 0 0.5rem 1rem rgba(174, 178, 214, 0.06);
 }
 
 .welcome_msg {

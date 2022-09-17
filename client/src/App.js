@@ -30,11 +30,14 @@ import Message from './Pages/User Dashboard/Message/Message';
 import MessageUsers from './Pages/User Dashboard/components/MessageUsers';
 
 // imports for doctor's dashboard
-import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
+import MidDashboard from './Pages/DocDashboard/Dashboard/Dashboard';
 import DoctorCalendar from './Pages/DocDashboard/components/Calendar';
 import DocDashboard from './Pages/DocDashboard/Docdashboard';
 import DocProfile from './Pages/DocDashboard/Profile/Profile';
 import DoctorPatients from './Pages/DocDashboard/DoctorPatients/DoctorPatients';
+import DoctorSchedule from './Pages/DocDashboard/Schedule/DoctorSchedule';
+import DoctorRecords from './Pages/DocDashboard/Records/DoctorRecords';
+import DoctorMessage from './Pages/DocDashboard/DoctorMessage/DoctorMessage';
 
 //Others
 import TagManager from 'react-gtm-module';
@@ -42,9 +45,6 @@ import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPati
 import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDoctor';
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
 import Loading from './Pages/Loading Page/loadingpage';
-import DoctorSchedule from './Pages/DocDashboard/Schedule/DoctorSchedule';
-import DoctorRecords from './Pages/DocDashboard/Records/DoctorRecords';
-import DoctorMessage from './Pages/DocDashboard/DoctorMessage/DoctorMessage';
 
 //Google analytics
 const tagManagerArgs = {
