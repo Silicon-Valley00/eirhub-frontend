@@ -350,8 +350,8 @@ function App() {
             }
          />
          {/* End of routes for user dashboard */}
-         {/* Start of route for doctor-dashboard. */}
 
+         {/* Start of route for doctor-dashboard. */}
          <Route
             path="/doctordashboard"
             exact
@@ -364,10 +364,10 @@ function App() {
             }
          />
          <Route
-            path="doctorprofile"
+            path="/doctorprofile"
             exact
             element={
-               <MidDashboard
+               <DocDashboard
                   middleSection={<DocProfile />}
                   page={'doctorprofile'}
                />
