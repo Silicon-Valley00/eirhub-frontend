@@ -496,4 +496,15 @@ input::placeholder {
    .closeModal i svg {
       font-size: 20px;
    }
+   .loginForm .title {
+      font-size: 2rem;
+   }
+   .loginForm h3 {
+      font-size: 1.2rem;
+   }
+   .loginForm .info,
+   .link,
+   p {
+      font-size: 14px;
+   }
 }

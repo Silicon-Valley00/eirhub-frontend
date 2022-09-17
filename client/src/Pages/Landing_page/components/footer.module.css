@@ -282,3 +282,17 @@ footer {
       width: 70%;
    }
 }
+
+@media (min-width: 1920px) {
+   .inner_div {
+      min-width: 1920px;
+   }
+
+   .back {
+      min-width: 100vw;
+      background: var(--gray);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+}

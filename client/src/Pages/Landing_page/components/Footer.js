@@ -7,6 +7,8 @@ import footerStyle from './footer.module.css';
 
 const Footer = () => {
    return (
+      <div className={footerStyle.back}>
+      <div className={footerStyle.inner_div}>
       <footer>
          {/* logo div*/}
          <div className={footerStyle.logo}>
@@ -72,6 +74,8 @@ const Footer = () => {
             </ul>
          </div>
       </footer>
+       </div>
+       </div>
    );
 };
 export default Footer;

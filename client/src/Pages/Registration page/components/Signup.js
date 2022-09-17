@@ -239,8 +239,6 @@ function Signup(props) {
                               onChange={() => {
                                  props.handleRegisterDate();
                                  setIsError(false);
-
-                                 setIsError(false);
                               }}
                               disabled={btnActive}
                            />
@@ -470,6 +468,8 @@ function Signup(props) {
                               signUpFormRef.current.reset();
                               props.reset();
                               setIsError(false);
+                              setBtnActive(false);
+                              setBtnValue('Create Account');
                            }}
                         >
                            Login

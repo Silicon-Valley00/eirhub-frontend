@@ -35,7 +35,11 @@ function Loading(props) {
    });
    return (
       <>
-         <AlertsMessageBox />
+         {/* <AlertsMessageBox
+            show={true}
+            state={1}
+            message={'Profile could not load. Try again.'}
+         /> */}
          <main>
             <div className={styles.homeloadingbg}>
                <div className={styles.loadingspinner}>

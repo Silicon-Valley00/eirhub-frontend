@@ -61,7 +61,8 @@
    margin: 20px 0;
    text-align: center;
    align-items: center;
-   display: grid;
+   display: flex;
+   justify-content: center;
    grid-template-columns: repeat(1, 1fr);
    grid-template-rows: 1fr 1fr;
    border-radius: 20px;
@@ -104,6 +105,7 @@
    margin-top: 4.5rem;
    background-color: white;
    width: 100%;
+   overflow-x: scroll;
    /* margin: auto; */
    overflow-y: scroll;
    border-radius: 20px;
@@ -151,6 +153,7 @@
    color: #c2c9d1;
 }
 .docRecordsFiles table {
+   min-width: 500px;
    width: 100%;
    margin-top: 30px;
 }

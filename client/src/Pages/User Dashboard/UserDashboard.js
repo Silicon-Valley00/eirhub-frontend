@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './userdashboard.module.css';
-import { MdMenu } from 'react-icons/md';
+import { MdMenu, MdOutlineAutoDelete } from 'react-icons/md';
 import avatarThree from '../../assets/Rectangle.png';
 import Navigation from './components/Navigation';
 import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
+import LogoutModal from '../General Components/Logout Modal/LogoutModal';
 
 function UserDashboard(props) {
    const user = useSelector((state) => state.user.name);
@@ -14,6 +15,7 @@ function UserDashboard(props) {
    // handles menu open and close for smaller devices
    const [openMenu, setOpenMenu] = useState(false);
    const [birthdayModal, setBirthdayModal] = useState(false);
+   const [logoutModal, setLogoutModal] = useState(false);
 
    //Display birthday card to user on their birthday
    useEffect(() => {
@@ -32,15 +34,23 @@ function UserDashboard(props) {
    function handleBirthdayModalClose() {
       setBirthdayModal(false);
    }
+
+   function handleLogoutModal() {
+      setLogoutModal(!logoutModal);
+   }
    return (
-      <div className={ styles.max_div }>
-         <div id={styles.blur} className={birthdayModal ? styles.active : ''}>
+      <div className={styles.max_div}>
+         <div
+            id={styles.blur}
+            className={birthdayModal || logoutModal ? styles.active : ''}
+         >
             <div className={styles.userbody}>
                <div className={styles.container}>
                   <Navigation
                      openMenu={openMenu}
                      setOpenMenu={setOpenMenu}
                      page={props.page}
+                     handleLogoutModal={handleLogoutModal}
                   />
                   {props.parent}
 
@@ -80,7 +90,11 @@ function UserDashboard(props) {
             birthdayModal={birthdayModal}
             handleBirthdayModalClose={handleBirthdayModalClose}
          />
-      </ div>
+         <LogoutModal
+            logoutModal={logoutModal}
+            handleLogoutModal={handleLogoutModal}
+         />
+      </div>
    );
 }
 export default UserDashboard;

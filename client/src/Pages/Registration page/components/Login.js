@@ -7,7 +7,7 @@ import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
    fetchGuardianInfo,
    fetchHealthDetails,
@@ -31,16 +31,19 @@ function Login(props) {
    const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
+   const okToRoute = useSelector((state) => state.okToRoute);
+
    // handles registeration flow based on feedback from database
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
 
       // checks if account is to be logged in
       if (feedback[0] === true) {
-         //logs user into cometchat
-
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
+         //logs user into cometchat
+         navigate('/loading', { state: false });
+
          LoginUser(
             `${feedback[1].first_name.toLowerCase()}${feedback[1].last_name.toLowerCase()}${
                feedback[1].id_patient
@@ -59,11 +62,14 @@ function Login(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
-         navigate('/loading', { state: false });
-         dispatch(setPatientAuth(true));
 
          setTimeout(() => {
-            navigate('/userdashboard');
+            if (okToRoute === true) {
+               navigate('/userdashboard');
+            } else {
+               dispatch(setPatientAuth(false));
+               navigate('/landing-page', { state: true });
+            }
          }, 2000);
       } else {
          setBtnActive(feedback[0]);
@@ -217,7 +223,7 @@ function Login(props) {
                            props.loginPasswordError === null ||
                            btnActive
                         }
-                        onClick={() => {
+                        onClick ={() =>{
                            setBtnValue('logging in');
                            setBtnActive(true);
                            submitCredentialsFeedback();
@@ -246,6 +252,8 @@ function Login(props) {
                                  props.handleModalSignup();
                                  loginFormRef.current.reset();
                                  props.reset();
+                                 setBtnValue('Login');
+                                 setBtnActive(false);
                                  setIsError(false);
                               }}
                            >
