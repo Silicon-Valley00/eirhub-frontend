@@ -37,7 +37,7 @@ const Footer = (props) => {
             <h2 className={footerStyle.fheader}>Our services</h2>
             <ul className={footerStyle.fdropdown}>
                <li className={footerStyle.flist}>Health Consultant</li>
-               <li className={footerStyle.flist}>Find Doctor</li>
+               <li className={footerStyle.flist} onClick={ () => props.handleModalSignup() }>Find a Doctor</li>
                <li className={footerStyle.flist}>E-Pharmacy</li>
             </ul>
          </div>
@@ -46,7 +46,7 @@ const Footer = (props) => {
          <div className={footerStyle.fsupport}>
             <h2 className={footerStyle.fheader}>Support</h2>
             <ul className={footerStyle.fdropdown}>
-               <li className={footerStyle.flist} >Find a Doctor</li>
+               <li className={footerStyle.flist} onClick={ () => props.handleModalSignup() }>Find a Doctor</li>
                <li className={footerStyle.flist}>How it Works</li>
                <li className={footerStyle.flist}>Book Appointment</li>
                <li className={footerStyle.flist}>Register</li>
