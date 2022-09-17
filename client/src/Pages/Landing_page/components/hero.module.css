@@ -87,7 +87,7 @@
    transition: all;
    transition-duration: 500ms;
 }
-   /* color: var(--lightcol);
+/* color: var(--lightcol);
    background-color: var(--white); */
 
 .content__button:hover {
@@ -194,11 +194,18 @@
 @media (min-width: 960px) {
    #hero_body {
       padding-top: 0;
-      /* background: red; */
+      height: 60rem;
    }
    .hero_container {
-      overflow: hidden;
-      padding-top: 0;
+      padding-top: 5rem;
+      height: 100%;
+   }
+
+   .hero_wrapper {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 5%;
    }
 
    .hero_content {
@@ -214,14 +221,19 @@
    .hero_image {
       padding-top: 4rem;
       width: 50%;
-      float: right;
       padding-right: 20px;
-      margin-top: 5rem;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
    }
 
    .hero__image {
       width: 100%;
       overflow: hidden;
+      display: absolute;
+      bottom: 0;
+      float: right;
+      height: 100%;
    }
 
    .content__title {
@@ -250,7 +262,7 @@
 @media (min-width: 1200px) {
    #hero_body {
       width: 100%;
-      height: 50rem;
+      /* height: 50rem; */
       background-color: var(--gray);
       padding-left: 4rem;
       padding-right: 4rem;
@@ -266,7 +278,7 @@
       font-weight: 600;
    }
 
-   .hero_image {
+   /* .hero_image {
       padding-top: 8rem;
       width: 50%;
       float: right;
@@ -277,19 +289,15 @@
    .hero__image {
       width: 100%;
       overflow: hidden;
-   }
+   } */
 
    .hero_content {
       padding-bottom: 7rem;
    }
 }
-
+/* 
 @media (min-width: 1400px) {
    #hero_body {
-      height: 50rem;
+      height: 80rem;
    }
-
-   .hero_image {
-      width: 50%;
-   }
-}
+} */
