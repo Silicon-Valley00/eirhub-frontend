@@ -22,21 +22,22 @@ const Footer = (props) => {
                practitioners
             </p>
             <div className={footerStyle.socialmedia}>
-               <span>
-                  <FaTwitter className={footerStyle.twit} />
+               <span  onClick={()=> window.open("https://twitter.com/",'_blank')}>
+                  <FaTwitter className={footerStyle.twit}/>
                </span>
-               <span>
+               <span onClick={()=> window.open("https://www.linkedin.com/",'_blank')}>
                   <FaLinkedinIn className={footerStyle.linked} />
                </span>
-               <span>
+               <span onClick={()=> window.open("https://www.instagram.com/",'_blank')}>
                   <RiInstagramFill className={footerStyle.insta} />
                </span>
             </div>
          </div>
          <div className={footerStyle.fourservices}>
+           
             <h2 className={footerStyle.fheader}>Our services</h2>
             <ul className={footerStyle.fdropdown}>
-               <li className={footerStyle.flist}>Health Consultant</li>
+               <li className={footerStyle.flist} onClick={ () => props.handleModalSignup() }>Health Consultant</li>
                <li className={footerStyle.flist} onClick={ () => props.handleModalSignup() }>Find a Doctor</li>
                <li className={footerStyle.flist}>E-Pharmacy</li>
             </ul>
@@ -47,9 +48,11 @@ const Footer = (props) => {
             <h2 className={footerStyle.fheader}>Support</h2>
             <ul className={footerStyle.fdropdown}>
                <li className={footerStyle.flist} onClick={ () => props.handleModalSignup() }>Find a Doctor</li>
+               <Link className={footerStyle.flist} to="/how-it-works">
                <li className={footerStyle.flist}>How it Works</li>
-               <li className={footerStyle.flist}>Book Appointment</li>
-               <li className={footerStyle.flist}>Register</li>
+               </Link>
+               <li className={footerStyle.flist} onClick={ () => props.handleModalSignup() }>Book Appointment</li>
+               <li className={footerStyle.flist} onClick={ () => props.handleModalSignup() }>Register</li>
                <li className={footerStyle.flist}>
                   <Link to="/FAQ" className={footerStyle.flist}>
                      FAQ
@@ -62,10 +65,10 @@ const Footer = (props) => {
          <div className={footerStyle.fcontact}>
             <h2 className={footerStyle.fheader}>Contact us</h2>
             <ul className={footerStyle.fdropdown}>
-               <li className={footerStyle.flist}>+(233) 576 678 238</li>
+               <li className={footerStyle.flist}  onClick={ () => window.open('tel:+233 576 678 238', '_self')}>+(233) 576 678 238</li>
             </ul>
             <ul className={footerStyle.fdropdown}>
-               <li className={footerStyle.flist}>info@Eirhub.com</li>
+               <li className={footerStyle.flist} onClick={ () => window.open('mailto:eirhub@gmail.com', '_self')}>info@Eirhub.com</li>
             </ul>
             <ul className={footerStyle.fdropdown}>
                <li className={footerStyle.flist}>

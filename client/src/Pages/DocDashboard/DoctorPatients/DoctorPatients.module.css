@@ -5,6 +5,7 @@
    border-radius: 1.25rem;
    height: 100%;
    margin-left: 1.25rem;
+   z-index: 10000;
 }
 
 .patientsSection h2 {
@@ -104,7 +105,7 @@
       cursor: pointer;
    }
 }
-@media(max-width: 600px){
+@media(max-width: 768px){
    .patientsSection{
       margin: auto;
       position: absolute;
@@ -126,6 +127,7 @@
    position: absolute;
    top: 1rem;
    right: 1rem;
+   z-index: 10000;
    }
    .show{
       border-radius: 0;
