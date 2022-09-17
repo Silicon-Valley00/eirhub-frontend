@@ -142,7 +142,7 @@
       height: 3rem;
       background-color: var(--gray);
       /* background-color: inherit; */
-      opacity: 0.9;
+      /* opacity: 0.9; */
    }
 
    .linkContainer {
@@ -269,10 +269,11 @@
    }
 }
 
-/* @media (min-width: 1920px) {
+@media (min-width: 1920px) {
    .main {
       min-width: 100vw;
       background-color: var(--gray);
+      position: fixed;
    }
    .back {
       display: flex;
@@ -281,6 +282,7 @@
       width: 100vw;
    }
    #nav {
+      position: relative;
       max-width: 1920px;
    }
-} */
+}

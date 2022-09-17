@@ -48,6 +48,7 @@ const Navbar = (props) => {
    })
 
    return (
+      <div className={ styles.nav_background }>
       <main className={styles.main}>
          <div className={styles.back} ref={menuRef}>
             <nav id={styles.nav}>
@@ -159,6 +160,7 @@ const Navbar = (props) => {
             </nav>
          </div>
       </main>
+      </div>
    );
 };
 

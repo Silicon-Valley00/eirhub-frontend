@@ -101,11 +101,11 @@ const LandingPage = () => {
             </div>
 
             {/* footer */}
-            <div className={styles.back}>
-               <div className={styles.inner_div}>
+            {/* <div className={styles.back}>
+               <div className={styles.inner_div}> */}
                   <Footer />
-               </div>
-            </div>
+               {/* </div>
+            </div> */}
          </div>
          <Registration
             modalLogin={modalLogin}

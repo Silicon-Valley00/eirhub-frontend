@@ -217,7 +217,7 @@ function Login(props) {
                            props.loginPasswordError === null ||
                            btnActive
                         }
-                        onClick={() => {
+                        onClick ={() =>{
                            setBtnValue('logging in');
                            setBtnActive(true);
                            submitCredentialsFeedback();
@@ -246,6 +246,8 @@ function Login(props) {
                                  props.handleModalSignup();
                                  loginFormRef.current.reset();
                                  props.reset();
+                                 setBtnValue('Login');
+                                 setBtnActive(false);
                                  setIsError(false);
                               }}
                            >

@@ -438,6 +438,8 @@ function DoctorSignup(props) {
                               docSignUpFormRef.current.reset();
                               props.reset();
                               setIsError(false);
+                              setBtnActive(false);
+                              setBtnValue('Create Account');
                            }}
                         >
                            Login
