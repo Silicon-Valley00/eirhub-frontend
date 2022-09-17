@@ -156,10 +156,10 @@ p.link {
    padding: 0 5px;
    border: none;
 }
-input{
+input {
    color: var(--text-color);
 }
-input::placeholder{
+input::placeholder {
    color: grey;
 }
 .submit {
@@ -481,9 +481,6 @@ input::placeholder{
    }
 }
 @media only screen and (max-width: 320px) {
-   * {
-      font-size: 14px;
-   }
    #loginContainer {
       font-size: 12px;
       height: 80vh;

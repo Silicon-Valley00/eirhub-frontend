@@ -1,8 +1,10 @@
 .main {
    background-color: var(--gray);
-   /* padding: 0 10px; */
    border-radius: 10px;
+   padding: 1rem;
+   height: 15rem;
 }
+
 .calendarHeader {
    display: flex;
    justify-content: space-between;
@@ -64,7 +66,22 @@
    border-radius: 50%;
    border: 2px solid var(--deepcol);
 }
+.calendarDays div.todayAppoint {
+   background-color: var(--gray);
+   border: 2px solid var(--deepcol);
+}
+.calendarDays div.appoint {
+   color: rgba(0, 0, 0, 0.6);
+   background-color: rgba(0, 0, 0, 0.05);
+   border-bottom: 2px solid var(--deepcol);
+}
 .calendarDays div.today span {
+   display: none;
+}
+.calendarDays div.appoint span {
+   display: none;
+}
+.calendarDays div.todayAppoint span {
    display: none;
 }
 
@@ -73,6 +90,7 @@
    align-items: center;
    justify-content: center;
    margin: 0 auto;
+   width: 100%;
 }
 .monthPicker {
    height: 1.5rem;
@@ -195,8 +213,39 @@
 .calendarDays div:hover span:nth-child(4) {
    transition-delay: 0.4s;
 }
+@media (min-width: 2001px) {
+   .calendarHeader {
+      font-size: 1.3rem;
+      padding: 0.2rem;
+   }
 
-@media only screen and (min-width: 1024px) and (max-width: 12024px) {
+   .calendar {
+      padding: 0.2rem;
+   }
+   .calendarWeekDay {
+      height: 1.8rem;
+   }
+
+   .calendarDays {
+      gap: 0.3rem;
+   }
+   .calendarDays div {
+      height: 1.8rem;
+      width: 2rem;
+      font-size: 1rem;
+      padding: 0.2rem;
+   }
+   .calendarDays div.empty {
+      height: 1.8rem;
+      width: 2rem;
+      padding: 0.2rem;
+      background-color: var(--gray);
+   }
+}
+/* Media Queries */
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+}
+@media only screen and (min-width: 1024px) and (max-width: 1399px) {
    .calendarWeekDay {
       font-size: 0.8rem;
    }

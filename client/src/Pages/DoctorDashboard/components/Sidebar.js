@@ -56,7 +56,7 @@ const Sidebar = ({ indicator }) => {
       setShow(!show);
    };
 
-   function logout() {
+   const logout = () => {
       try {
          setTimeout(() => persistor.purge(), 200);
          Logout();
@@ -66,15 +66,19 @@ const Sidebar = ({ indicator }) => {
       } catch (err) {
          console.log(err);
       }
-   }
+   };
 
    return (
       <>
-         <MdMenu
-            color="#05a6c2"
-            className={styles.menu}
-            onClick={() => setShow(!show)}
-         />
+         <div className={styles.menu_logo}>
+            <MdMenu
+               color="#05a6c2"
+               className={styles.menu}
+               onClick={() => setShow(!show)}
+            />
+            <p className={styles.sslogo}>Eirhub</p>
+         </div>
+
          <main
             className={`${
                show
@@ -84,12 +88,12 @@ const Sidebar = ({ indicator }) => {
          >
             {/* logo with close button */}
             <div className={styles.logo_close}>
-               <p className={styles.logo}>Eirhub</p>
                <GrClose className={styles.close} onClick={showSidebar} />
             </div>
 
             {/* links */}
             <nav className={styles.nav}>
+               <p className={styles.logo}>Eirhub</p>
                <div className={styles.upper_links}>
                   {links.map((item, index) => {
                      return (

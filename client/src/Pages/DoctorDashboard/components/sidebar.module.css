@@ -9,21 +9,22 @@
    border-radius: 0 5px 5px 0;
    padding: 1rem 0;
    overflow-y: hidden;
-   /* border: 2px solid blue; */
 }
-
-/* .main > ::-webkit-scrollbar {
-   display: none;
-} */
 
 .menu {
    width: 20px;
    height: 20px;
    cursor: pointer;
-   position: absolute;
    top: 1rem;
    left: 4.5rem;
    z-index: 9999;
+}
+
+.menu_logo {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 1rem 2rem;
 }
 
 .show_sidebar {
@@ -45,11 +46,19 @@
 .logo_close {
    display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: flex-end;
    padding: 0 2rem;
 }
 
 .logo {
+   font-size: 20px;
+   color: var(--lightcol);
+   font-weight: 600;
+   font-family: var(--logofont);
+   padding-left: 10px;
+}
+
+.sslogo {
    font-size: 20px;
    color: var(--lightcol);
    font-weight: 600;
@@ -115,24 +124,23 @@
 
 /* sidebar for bigger tablet screens */
 @media (min-width: 769px) {
-   .menu {
+   .menu_logo {
       display: none;
    }
 
    .main {
-      position: absolute;
-      width: 6rem;
+      position: relative;
+      /* width: 6rem;  */
       top: 5rem;
       height: calc(100vh - 50px);
    }
 
    .hide_sidebar {
-      width: 6rem;
+      /* width: 6rem; */
       height: calc(100vh - 6rem);
-      position: absolute;
+      position: relative;
       top: 5rem;
       border-radius: 0 5px 5px 0;
-      padding: 0rem 0;
       left: 0rem;
    }
 
@@ -141,16 +149,11 @@
    }
 
    /* logo does not show here.. refer to navigation.module.css */
-   .logo {
+   /* .logo {
       display: none;
-   }
+   } */
 
    /* styling for links */
-   .nav {
-      margin-top: 1rem;
-      padding: 0 0 6rem 1rem;
-      justify-content: space-between;
-   }
 
    .upper_links {
       width: 100%;
