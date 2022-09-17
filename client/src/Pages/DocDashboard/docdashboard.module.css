@@ -49,7 +49,6 @@
 .container {
    display: grid;
    width: 96%;
-   border: 1px solid red;
    height: 100vh;
    min-height: 100vh;
    max-height: 100vh;
@@ -62,6 +61,12 @@
 /* RIGHTSIDE */
 .menu {
    display: none;
+}
+
+@media (min-width: 768px) {
+   .userbody {
+      padding-top: 6.5rem;
+   }
 }
 
 @media (min-width: 2001px) {
@@ -99,6 +104,12 @@
    .container {
       width: 94%;
       grid-template-columns: 7rem auto 20rem;
+   }
+}
+
+@media (max-width: 860px) {
+   .container {
+      width: 120%;
    }
 }
 

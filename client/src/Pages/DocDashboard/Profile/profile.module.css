@@ -287,6 +287,12 @@ select::-ms-expand {
    }
 }
 
+@media (min-width: 860px) {
+   .main {
+      width: 110%;
+   }
+}
+
 @media (min-width: 1024px) {
    .upperContent {
       align-items: flex-start;
