@@ -86,7 +86,9 @@ function Sidebar(props) {
                      <Link to={'/doctorschedule'}>
                         <li
                            className={
-                              props.page === 'schedule' ? styles.active : ''
+                              props.page === 'doctorschedule'
+                                 ? styles.active
+                                 : ''
                            }
                         >
                            <span className={styles.icons}>
@@ -97,7 +99,7 @@ function Sidebar(props) {
                            <h3>Schedule</h3>
                         </li>
                      </Link>
-                     <Link to={'/doctorreports'}>
+                     <Link to={'/doctorrecords'}>
                         <li
                            className={
                               props.page === 'records' ? styles.active : ''

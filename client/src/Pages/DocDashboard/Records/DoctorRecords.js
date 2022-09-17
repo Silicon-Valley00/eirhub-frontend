@@ -1,19 +1,12 @@
 import styles from './DoctorRecords.module.css';
-import Navigation from '../components/Navigation';
-import { Link } from 'react-router-dom';
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
-import Patients from '../../DocDashboard/DoctorPatients/DoctorPatients';
-
 import Dropzone from './Dropzone';
-import Sidebar from '../components/Sidebar';
 
-function DoctorRecords() {
+const DoctorRecords = () => {
    return (
       <>
-         <Navigation />
          <div className={styles.wrapper}>
             <div className={styles.docRecordsContainer}>
-               <Sidebar indicator={4} />
                <div className={styles.docRecordsContainer1}>
                   <h1>Upload Files</h1>
                   {/* <div className={styles.docRecordsUpload}>
@@ -59,10 +52,9 @@ function DoctorRecords() {
                      </table>
                   </div>
                </div>
-               <Patients show />
             </div>
          </div>
       </>
    );
-}
+};
 export default DoctorRecords;

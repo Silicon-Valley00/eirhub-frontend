@@ -31,9 +31,10 @@ import MessageUsers from './Pages/User Dashboard/components/MessageUsers';
 
 // imports for doctor's dashboard
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
-import DoctorRecords from './Pages/DoctorDashboard/Records/DoctorRecords';
-import DoctorSchedule from './Pages/DoctorDashboard/Schedule/DoctorSchedule';
-import DoctorMessage from './Pages/DoctorDashboard/DoctorMessage/DoctorMessage';
+import DoctorCalendar from './Pages/DocDashboard/components/Calendar';
+import DocDashboard from './Pages/DocDashboard/Docdashboard';
+import DocProfile from './Pages/DocDashboard/Profile/Profile';
+import DoctorPatients from './Pages/DocDashboard/DoctorPatients/DoctorPatients';
 
 //Others
 import TagManager from 'react-gtm-module';
@@ -41,10 +42,9 @@ import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPati
 import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDoctor';
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
 import Loading from './Pages/Loading Page/loadingpage';
-import MainDoctor from './Pages/DoctorDashboard/MainDoctor';
-import DoctorCalendar from './Pages/DocDashboard/components/Calendar';
-import DocDashboard from './Pages/DocDashboard/Docdashboard';
-import DocProfile from './Pages/DocDashboard/Profile/Profile';
+import DoctorSchedule from './Pages/DocDashboard/Schedule/DoctorSchedule';
+import DoctorRecords from './Pages/DocDashboard/Records/DoctorRecords';
+
 //Google analytics
 const tagManagerArgs = {
    gtmID: 'GTM-WHSKBFK',
@@ -373,6 +373,29 @@ function App() {
                />
             }
          />
+         <Route
+            path="/doctorschedule"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorSchedule />}
+                  rightSection={<DoctorPatients />}
+                  page={'doctorschedule'}
+               />
+            }
+         />
+         <Route
+            path="/doctorrecords"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorRecords />}
+                  rightSection={<DoctorPatients />}
+                  page={'records'}
+               />
+            }
+         />
+
          {/* <Route path="/doctorrecords" exact element={<DoctorRecords />} />
          <Route path="/doctormessages" exact element={<DoctorMessage />} />
          <Route path="/doctorschedule" exact element={<DoctorSchedule />} />
