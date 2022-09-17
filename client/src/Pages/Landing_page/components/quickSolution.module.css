@@ -105,13 +105,15 @@
    border-radius: 5px;
    font-size: 15px;
    font-family: var(--mainfont);
+   transition: all;
+   transition-duration: 500ms;
+   cursor: pointer;
 }
 
 .contact__btn:hover {
-   background: var(--white);
-   color: var(--lightcol);
-   transition: all;
-   transition-duration: 500ms;
+   transform: translateY(-3px);
+   background-color: #3fb3c7;
+
 }
 
 @media (min-width: 600px) {

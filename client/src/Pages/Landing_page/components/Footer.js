@@ -5,7 +5,7 @@ import { RiInstagramFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import footerStyle from './footer.module.css';
 
-const Footer = () => {
+const Footer = (props) => {
    return (
       <div className={footerStyle.back}>
       <div className={footerStyle.inner_div}>
@@ -46,7 +46,7 @@ const Footer = () => {
          <div className={footerStyle.fsupport}>
             <h2 className={footerStyle.fheader}>Support</h2>
             <ul className={footerStyle.fdropdown}>
-               <li className={footerStyle.flist}>Find a Doctor</li>
+               <li className={footerStyle.flist} >Find a Doctor</li>
                <li className={footerStyle.flist}>How it Works</li>
                <li className={footerStyle.flist}>Book Appointment</li>
                <li className={footerStyle.flist}>Register</li>
