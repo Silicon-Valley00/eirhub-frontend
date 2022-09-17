@@ -116,7 +116,9 @@ function Sidebar(props) {
                      <Link to={'/doctormessaging'}>
                         <li
                            className={
-                              props.page === 'message' ? styles.active : ''
+                              props.page === 'doctormessage'
+                                 ? styles.active
+                                 : ''
                            }
                         >
                            <span className={styles.icons}>

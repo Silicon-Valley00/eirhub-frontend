@@ -2,18 +2,16 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './message.module.css';
 import { CometChatMessages } from '../../../Chat UI Kit/cometchat-pro-react-ui-kit/CometChatWorkspace/src';
-import MessagePatients from '../components/MessagePatients';
-import Navigation from '../components/Navigation';
-import Sidebar from '../components/Sidebar';
+import MessagePatients from '../../DoctorDashboard/components/MessagePatients';
+import Navigation from '../../DoctorDashboard/components/Navigation';
+import Sidebar from '../../DoctorDashboard/components/Sidebar';
 
-function Message() {
+const DoctorMessage = () => {
    const patientUID = useSelector((state) => state.patientToChatWith);
    return (
       <>
-         <Navigation nav={10} />
          <div className={styles.wrapper}></div>
          <main>
-            <Sidebar indicator={5} />
             <div className={styles.middle_section}>
                <div id={styles.messageBody}>
                   <CometChatMessages chatWithUser={patientUID} />
@@ -25,5 +23,5 @@ function Message() {
          </main>
       </>
    );
-}
-export default Message;
+};
+export default DoctorMessage;

@@ -44,6 +44,7 @@ import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLand
 import Loading from './Pages/Loading Page/loadingpage';
 import DoctorSchedule from './Pages/DocDashboard/Schedule/DoctorSchedule';
 import DoctorRecords from './Pages/DocDashboard/Records/DoctorRecords';
+import DoctorMessage from './Pages/DocDashboard/DoctorMessage/DoctorMessage';
 
 //Google analytics
 const tagManagerArgs = {
@@ -352,6 +353,7 @@ function App() {
          {/* End of routes for user dashboard */}
 
          {/* Start of route for doctor-dashboard. */}
+         {/* Routes for main dashboard */}
          <Route
             path="/doctordashboard"
             exact
@@ -363,6 +365,7 @@ function App() {
                />
             }
          />
+         {/* Routes for doctor profile */}
          <Route
             path="/doctorprofile"
             exact
@@ -373,6 +376,7 @@ function App() {
                />
             }
          />
+         {/* Routes for doctor schedule */}
          <Route
             path="/doctorschedule"
             exact
@@ -384,6 +388,7 @@ function App() {
                />
             }
          />
+         {/* Routes for doctor records */}
          <Route
             path="/doctorrecords"
             exact
@@ -395,11 +400,18 @@ function App() {
                />
             }
          />
-
-         {/* <Route path="/doctorrecords" exact element={<DoctorRecords />} />
-         <Route path="/doctormessages" exact element={<DoctorMessage />} />
-         <Route path="/doctorschedule" exact element={<DoctorSchedule />} />
-         End of route for doctor-dashboard */}
+         {/* Routes for doctor messages */}
+         <Route
+            path="/doctormessaging"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorMessage />}
+                  page={'doctormessage'}
+               />
+            }
+         />
+         {/* End of doctor routes */}
       </Routes>
    );
 }
