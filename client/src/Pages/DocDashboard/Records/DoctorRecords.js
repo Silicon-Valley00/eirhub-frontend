@@ -6,7 +6,7 @@ const DoctorRecords = () => {
    return (
       <>
          <div className={styles.wrapper}>
-            <div className={styles.docRecordsContainer}>
+            {/* <div className={styles.docRecordsContainer}> */}
                <div className={styles.docRecordsContainer1}>
                   <h1>Upload Files</h1>
                   {/* <div className={styles.docRecordsUpload}>
@@ -51,7 +51,7 @@ const DoctorRecords = () => {
                         </tbody>
                      </table>
                   </div>
-               </div>
+               {/* </div> */}
             </div>
          </div>
       </>
