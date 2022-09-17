@@ -38,6 +38,7 @@ function DoctorPatients() {
 
     const showPeople = ()=>{
         setShow(true)
+        console.log(show)
         body.styles.overflow = 'none'
     }
     const hidePeople = ()=> {

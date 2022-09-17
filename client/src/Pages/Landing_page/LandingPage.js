@@ -72,11 +72,11 @@ const LandingPage = () => {
             }
             // handleModalsClose={handleModalsClose}
          >
-            <AlertsMessageBox
+            {/* <AlertsMessageBox
                show={location.state === null ? false : location.state}
                state={0}
                message={'Profile could not load. Try again.'}
-            />
+            /> */}
             {/* navbar */}
 
             <Navbar
