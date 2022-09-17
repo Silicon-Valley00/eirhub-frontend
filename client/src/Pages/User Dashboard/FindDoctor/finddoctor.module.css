@@ -1,7 +1,7 @@
 #findDoctorBody {
    margin-top: 4rem;
    background-color: var(--gray);
-   padding: 2rem 1.2rem 0 1.4rem;
+   padding: 2rem;
    border-top-left-radius: 2rem;
    border-top-right-radius: 2rem;
    height: calc(100vh - 4rem);

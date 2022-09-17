@@ -1,13 +1,17 @@
+.wrapper{
+   min-height: 59rem;
+   /* height: 90vh; */
+}
 .DSContainer {
    margin-left: 16rem;
    display: flex;
    justify-content: space-evenly;
    box-sizing: border-box;
    margin-right: 0;
-   padding-top: 6rem;
+   padding-top: 5.5rem;
    gap: 1.25rem;
    min-height: 59rem;
-   height: 93.5vh;
+   height: 100vh;
 }
 .DSContainer1 {
    width: 78%;
@@ -157,6 +161,7 @@
 .appointmentContainer {
    background-color: white;
    margin: auto;
+   min-height: 20rem;
    height: 25rem;
    border-radius: 20px;
    margin-top: 20px;
