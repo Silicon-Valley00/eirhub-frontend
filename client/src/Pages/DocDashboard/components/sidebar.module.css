@@ -6,9 +6,8 @@
 }
 
 .navbody aside .top {
-   background: var(--white);
    display: flex;
-   justify-content: space-around;
+   justify-content: flex-end;
    align-items: center;
 }
 aside .logo {
@@ -250,19 +249,22 @@ aside .sidebar li.active {
    }
 }
 
-@media only screen and (min-width: 481px) and (max-width: 768px) {
+@media (max-width: 768px) {
    aside.active {
       position: fixed;
       left: 0;
+      top: 0;
       background: var(--white);
-      width: 15rem;
-      z-index: 3;
+      width: 100%;
+      z-index: 9999;
       box-shadow: 1rem 3rem 4rem rgba(132, 139, 200, 0.18);
       height: 100vh;
       max-height: 100vh;
       min-height: 100vh;
-      padding-right: 1.8rem;
+      padding: 1rem 3rem;
       display: block;
+      transition: all;
+      transition-duration: 0.5s;
    }
    aside.notActive {
       position: fixed;
@@ -277,13 +279,17 @@ aside .sidebar li.active {
       padding-right: 1.8rem;
       display: none;
       animation: showmenu 400ms ease forwards;
+      transition: all;
+      transition-duration: 500ms;
    }
    @keyframes showmenu {
       to {
          left: 0;
       }
    }
+}
 
+@media only screen and (min-width: 481px) and (max-width: 768px) {
    aside .top {
       display: flex;
       justify-content: space-around;
@@ -367,11 +373,11 @@ aside .sidebar li.active {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-   aside.active {
+   /* aside.active {
       position: fixed;
       left: 0;
       background: var(--white);
-      width: 18rem;
+      width: 100%;
       z-index: 3;
       box-shadow: 1rem 3rem 4rem rgba(132, 139, 200, 0.18);
       height: 100vh;
@@ -379,6 +385,8 @@ aside .sidebar li.active {
       min-height: 100vh;
       padding-right: 1.8rem;
       display: block;
+      transition: all 500ms ease;
+      transition-duration: 500ms;
    }
    aside.notActive {
       position: fixed;
@@ -393,7 +401,10 @@ aside .sidebar li.active {
       padding-right: 1.8rem;
       display: none;
       animation: showmenu 400ms ease-in-out forwards;
-   }
+      transition: all;
+      transition-delay: 500ms;
+   } */
+
    @keyframes showmenu {
       to {
          left: 0;

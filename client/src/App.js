@@ -364,7 +364,7 @@ function App() {
             }
          />
          <Route
-            path="/doctorprofile"
+            path="doctorprofile"
             exact
             element={
                <MidDashboard
@@ -373,10 +373,10 @@ function App() {
                />
             }
          />
-         <Route path="/doctorrecords" exact element={<DoctorRecords />} />
+         {/* <Route path="/doctorrecords" exact element={<DoctorRecords />} />
          <Route path="/doctormessages" exact element={<DoctorMessage />} />
          <Route path="/doctorschedule" exact element={<DoctorSchedule />} />
-         {/* End of route for doctor-dashboard */}
+         End of route for doctor-dashboard */}
       </Routes>
    );
 }
