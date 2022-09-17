@@ -111,6 +111,9 @@ const LandingPage = () => {
             {/* footer */}
             {/* <div className={styles.back}>
                <div className={styles.inner_div}> */}
+
+                  <Footer handleModalSignup={handleModalSignup}/>
+               {/* </div>
             <Footer />
             {/* </div>
             </div> */}

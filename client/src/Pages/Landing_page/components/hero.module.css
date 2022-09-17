@@ -87,10 +87,12 @@
    transition: all;
    transition-duration: 500ms;
 }
+   /* color: var(--lightcol);
+   background-color: var(--white); */
 
 .content__button:hover {
-   color: var(--lightcol);
-   background-color: var(--white);
+   transform: translateY(-3px);
+   background-color: #3fb3c7;
 }
 
 .hero_image {

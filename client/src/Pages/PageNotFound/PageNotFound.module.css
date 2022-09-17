@@ -44,18 +44,14 @@
    border-radius: 7px;
    font-weight: 700;
    color: #fff;
-   transition-timing-function: ease-in-out;
-   transition-duration: 0.1s;
+   transition: all;
+   transition-duration: 500ms;
    font-size: 1rem;
 }
 .PNFcontainer .button:hover {
    cursor: pointer;
-   transform: translateY(-1px);
-   box-shadow: 0px 5px 10px 1px #c5dbff;
-}
-.PNFcontainer .button:active {
-   transform: translateY(1px);
-   box-shadow: 0px 0px 5px 1px #c5dbff;
+   transform: translateY(-3px);
+   background-color: #3fb3c7;
 }
 .PNFimage {
    display: block;
