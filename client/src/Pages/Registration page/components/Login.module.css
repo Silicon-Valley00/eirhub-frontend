@@ -480,10 +480,8 @@ input::placeholder{
       display: none;
    }
 }
-@media only screen and (max-width: 320px) {
-   * {
-      font-size: 14px;
-   }
+@media only screen and (max-width: 480px) {
+   
    #loginContainer {
       font-size: 12px;
       height: 80vh;
@@ -492,11 +490,20 @@ input::placeholder{
    .loginBody {
       padding: 0;
    }
-
+   
    .inputField {
       height: var(--height);
    }
    .closeModal i svg {
       font-size: 20px;
+   }
+   .loginForm .title {
+      font-size: 2rem;
+   }
+   .loginForm h3 {
+      font-size: 1.2rem;
+   }
+   .loginForm .info, .link,p {
+      font-size: 14px;
    }
 }

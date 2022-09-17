@@ -274,6 +274,7 @@
       min-width: 100vw;
       background-color: var(--gray);
       position: fixed;
+      z-index: 99;
    }
    .back {
       display: flex;
