@@ -14,7 +14,6 @@ function MidDashboard(props) {
    const [numOfPatients, setNumOfPatients] = useState(0);
    const [numOfReports, setNumOfReports] = useState(0);
    const [numOfAppointments, setNumOfAppointments] = useState(0);
-
    const data = props.doctorProfile;
    const baseURL = 'http://127.0.0.1:5000';
 
