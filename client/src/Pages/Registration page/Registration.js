@@ -280,7 +280,9 @@ function Registration(props) {
             'Password must contain at least an uppercase character'
          );
          setRegisterPasswordOneError(true);
-      } else if (enteredSignUpPassword.search(/[!@#$%^&*()_{}<>?/,.';:"|]/) === -1) {
+      } else if (
+         enteredSignUpPassword.search(/[!@#$%^&*()_{}<>?/,.';:"|]/) === -1
+      ) {
          setRegisterPasswordOneErrorMessage(
             'Password must contain at least a special character'
          );
@@ -387,7 +389,9 @@ function Registration(props) {
             'Password must contain at least an uppercase character'
          );
          setRegisterDoctorPasswordOneError(true);
-      } else if (enteredSignUpPassword.search(/[!@#$%^&*()_{}<>?/,.';:"|]/) === -1) {
+      } else if (
+         enteredSignUpPassword.search(/[!@#$%^&*()_{}<>?/,.';:"|]/) === -1
+      ) {
          setRegisterDoctorPasswordOneErrorMessage(
             'Password must contain at least a special character'
          );
@@ -526,7 +530,7 @@ function Registration(props) {
    // Function submits data to database via an api
    async function submitCredentials(path, data) {
       //Function takes path and data to make request
-      axios.defaults.timeout = 15000;
+      axios.defaults.timeout = 3000;
       axios.defaults.timeoutErrorMessage = 'timeout';
       try {
          const response = await axios({
@@ -539,6 +543,7 @@ function Registration(props) {
                'Access-Control-Allow-Methods': '*',
             },
             data: data,
+            // timeout:2000,
          });
 
          if (response.status === 200) {
@@ -565,6 +570,12 @@ function Registration(props) {
 
          if (error.message === 'timeout' || error.code === 'ECONNABORTED') {
             return [false, 'Request timeout, Try again', 'Create Account'];
+         } else if (error.toJSON().message === 'Network Error') {
+            return [
+               false,
+               'No Internet Connection, try again',
+               'Create Account',
+            ];
          } else if (error.response) {
             return [false, error.response.data.msg.message, 'Create Account'];
          } else if (error.request) {

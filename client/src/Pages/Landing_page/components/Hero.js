@@ -28,7 +28,7 @@ const Hero = (props) => {
                                  ' <Strong>patients</Strong> get quick access to experienced practitioners and helps increase the visibility of these practitioners'
                               )
                               .deleteChars(14)
-                              .typeString(' <Strong>Practitioners</Strong>')
+                              .typeString(' <Strong>practitioners</Strong>')
                               .start();
                         }}
                      />
@@ -36,7 +36,10 @@ const Hero = (props) => {
                </div>
 
                <div className={heroStyles.content_button}>
-                  <button className={heroStyles.content__button} onClick={() => props.handleModalSignup()}>
+                  <button
+                     className={heroStyles.content__button}
+                     onClick={() => props.handleModalSignup()}
+                  >
                      Book an appointment
                   </button>
                </div>

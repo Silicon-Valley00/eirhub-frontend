@@ -12,10 +12,12 @@ import {
    SET_DOCTOR_AUTH,
    SET_PATIENT_AUTH,
    SET_USER_INFO,
+   SET_OK_TO_ROUTE,
 } from './ActionTypes';
 
 const initialState = {
    //Patient Dashboard
+   okToRoute: false,
    user: {
       name: '',
       id_patient: '',
@@ -95,7 +97,8 @@ const Reducers = (state = initialState, action) => {
             id_guardian: action.payload.id_guardian,
          };
          return { ...state, user: user };
-
+      case SET_OK_TO_ROUTE:
+         return { ...state, okToRoute: action.payload };
       case SET_PROFILE_INFO:
          let profile = {
             user_email: action.payload.user_email,

@@ -1,0 +1,339 @@
+.main {
+   background-color: var(--gray);
+   border-radius: 10px;
+   padding: 1rem;
+   height: 15rem;
+}
+
+.calendarHeader {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-size: 1rem;
+   font-weight: 600;
+   color: var(--deepcol);
+   padding: 0.2rem;
+}
+
+.calendar {
+   padding: 0.2rem;
+}
+.calendarWeekDay {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   font-weight: 600;
+   height: 1.5rem;
+}
+.calendarWeekDay div {
+   display: grid;
+   place-items: center;
+   color: var(--tablehead);
+}
+.calendarDays {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   gap: 0.3rem;
+   color: var(--midcol);
+   justify-items: center;
+   align-items: center;
+}
+.calendarDays div {
+   height: 1.3rem;
+   width: 1.3rem;
+   font-size: 0.7rem;
+   font-weight: 400;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0.7rem;
+   cursor: pointer;
+   position: relative;
+   background-color: var(--white);
+}
+.calendarDays div.empty {
+   height: 1.3rem;
+   width: 1.3rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0.7rem;
+   cursor: pointer;
+   position: relative;
+   background-color: var(--gray);
+}
+.calendarDays div.today {
+   background-color: var(--gray);
+   border-radius: 50%;
+   border: 2px solid var(--deepcol);
+}
+.calendarDays div.todayAppoint {
+   background-color: var(--gray);
+   border: 2px solid var(--deepcol);
+}
+.calendarDays div.appoint {
+   color: rgba(0, 0, 0, 0.6);
+   background-color: rgba(0, 0, 0, 0.05);
+   border-bottom: 2px solid var(--deepcol);
+}
+.calendarDays div.today span {
+   display: none;
+}
+.calendarDays div.appoint span {
+   display: none;
+}
+.calendarDays div.todayAppoint span {
+   display: none;
+}
+
+.selectMonthYear {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 0 auto;
+   width: 100%;
+}
+.monthPicker {
+   height: 1.5rem;
+   padding: 0 0.5rem;
+   cursor: pointer;
+   border-radius: 0.5rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.monthPicker:hover {
+   background-color: #ebf8fd;
+}
+.year {
+   padding: 0 0.5rem;
+   cursor: pointer;
+}
+
+.monthChange {
+   height: 1.5rem;
+   width: 1.5rem;
+   display: grid;
+   place-items: center;
+   margin: 0 10px;
+   cursor: pointer;
+   border-radius: 0.5rem;
+}
+.monthChange:hover {
+   background-color: #ebf8fd;
+}
+.calendarDays div span {
+   position: absolute;
+}
+.calendarDays div span:hover {
+   transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+.calendarDays div span:nth-child(1),
+.calendarDays div span:nth-child(3) {
+   width: 2px;
+   height: 0;
+   background-color: var(--deepcol);
+}
+
+.calendarDays div span:nth-child(1) {
+   bottom: 0;
+   left: 0;
+}
+.calendarDays div span:nth-child(3) {
+   top: 0;
+   right: 0;
+}
+.calendarDays div:hover span:nth-child(1),
+.calendarDays div:hover span:nth-child(3) {
+   height: 100%;
+}
+
+.calendarDays div span:nth-child(2),
+.calendarDays div span:nth-child(4) {
+   width: 0;
+   height: 2px;
+   background-color: var(--deepcol);
+}
+
+.calendarDays div span:nth-child(2) {
+   top: 0;
+   left: 0;
+}
+.calendarDays div span:nth-child(4) {
+   bottom: 0;
+   right: 0;
+}
+.calendarDays div:hover span:nth-child(2),
+.calendarDays div:hover span:nth-child(4) {
+   width: 100%;
+}
+
+.calendarDays div.empty span:nth-child(1),
+.calendarDays div.empty span:nth-child(3) {
+   width: 0;
+   height: 0;
+}
+
+.calendarDays div.empty span:nth-child(1) {
+   bottom: 0;
+   left: 0;
+}
+.calendarDays div.empty span:nth-child(3) {
+   top: 0;
+   right: 0;
+}
+.calendarDays div.empty:hover span:nth-child(1),
+.calendarDays div.empty:hover span:nth-child(3) {
+   height: 0;
+}
+
+.calendarDays div.empty span:nth-child(2),
+.calendarDays div.empty span:nth-child(4) {
+   width: 0;
+   height: 0;
+}
+
+.calendarDays div.empty span:nth-child(2) {
+   top: 0;
+   left: 0;
+}
+.calendarDays div.empty span:nth-child(4) {
+   bottom: 0;
+   right: 0;
+}
+.calendarDays div.empty:hover span:nth-child(2),
+.calendarDays div.empty:hover span:nth-child(4) {
+   width: 0;
+}
+.calendarDays div:hover span:nth-child(2) {
+   transition-delay: 0.2s;
+}
+.calendarDays div:hover span:nth-child(3) {
+   transition-delay: 0.3s;
+}
+.calendarDays div:hover span:nth-child(4) {
+   transition-delay: 0.4s;
+}
+@media (min-width: 2001px) {
+   .calendarHeader {
+      font-size: 1.3rem;
+      padding: 0.2rem;
+   }
+
+   .calendar {
+      padding: 0.2rem;
+   }
+   .calendarWeekDay {
+      height: 1.8rem;
+   }
+
+   .calendarDays {
+      gap: 0.3rem;
+   }
+   .calendarDays div {
+      height: 1.8rem;
+      width: 2rem;
+      font-size: 1rem;
+      padding: 0.2rem;
+   }
+   .calendarDays div.empty {
+      height: 1.8rem;
+      width: 2rem;
+      padding: 0.2rem;
+      background-color: var(--gray);
+   }
+}
+/* Media Queries */
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+}
+@media only screen and (min-width: 1024px) and (max-width: 1399px) {
+   .calendarWeekDay {
+      font-size: 0.8rem;
+   }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+   .calendarHeader {
+      font-size: 0.9rem;
+      padding: 0.1rem;
+   }
+   .calendar {
+      padding: 0.1rem;
+   }
+   .calendarDays div {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.empty {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.today {
+      border: 1px solid var(--deepcol);
+   }
+   .monthPicker {
+      height: 1.3rem;
+      padding: 0 0.5rem;
+   }
+   .calendarWeekDay {
+      font-size: 0.7rem;
+   }
+}
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .calendarHeader {
+      font-size: 0.9rem;
+      padding: 0.1rem;
+   }
+   .calendar {
+      padding: 0.1rem;
+   }
+   .calendarDays div {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.empty {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.today {
+      border: 1px solid var(--deepcol);
+   }
+   .monthPicker {
+      height: 1.3rem;
+      padding: 0 0.5rem;
+   }
+   .calendarWeekDay {
+      font-size: 0.7rem;
+   }
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+   .calendarHeader {
+      font-size: 0.9rem;
+      padding: 0.1rem;
+   }
+   .calendar {
+      padding: 0.1rem;
+   }
+   .calendarDays div {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.empty {
+      height: 1.1rem;
+      width: 1.1rem;
+      font-size: 0.6rem;
+   }
+   .calendarDays div.today {
+      border: 1px solid var(--deepcol);
+   }
+   .monthPicker {
+      height: 1.3rem;
+      padding: 0 0.5rem;
+   }
+   .calendarWeekDay {
+      font-size: 0.7rem;
+   }
+}

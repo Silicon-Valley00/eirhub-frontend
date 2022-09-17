@@ -6,7 +6,7 @@ import {
    MdOutlineArrowForwardIos,
 } from 'react-icons/md';
 
-function DoctorCalendar() {
+const DoctorCalendar = () => {
    // Array of months to display
    const months = [
       'January',
@@ -130,5 +130,5 @@ function DoctorCalendar() {
          </div>
       </main>
    );
-}
+};
 export default DoctorCalendar;

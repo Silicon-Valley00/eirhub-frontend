@@ -22,6 +22,16 @@
    --tablehead: #c2c9d1;
    --iconred: #dd7678;
    --iconback: #f7eef0;
+   --successbold: #34ff01;
+   --successMild: #29b905;
+   --successMildHigh: #88ff6b;
+   --successMildLow: #98fc7f;
+   --successSoft: #aaff94;
+   --errorbold: #ff3401;
+   --errorMild: #b92905;
+   --errorMildHigh: #ff886b;
+   --errorMildLow: #fc987f;
+   --errorSoft: #ffaa94;
    --mainfont: 'Poppins', sans-serif;
    --logofont: 'Comfortaa', cursive;
 }

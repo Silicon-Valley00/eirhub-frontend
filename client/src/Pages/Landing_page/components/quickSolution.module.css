@@ -140,6 +140,9 @@
 }
 
 @media (min-width: 900px) {
+   .main {
+      padding-top: 6rem;
+   }
    .caption {
       font-size: 35px;
    }
@@ -219,11 +222,5 @@
 @media (min-width: 1400px) {
    .card {
       height: 20rem;
-   }
-}
-
-@media (min-width: 1500px) {
-   .main {
-      padding: 0 15%;
    }
 }

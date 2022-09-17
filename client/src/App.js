@@ -31,7 +31,6 @@ import MessageUsers from './Pages/User Dashboard/components/MessageUsers';
 
 // imports for doctor's dashboard
 import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
-import DoctorProfile from './Pages/DoctorDashboard/Profile/Profile';
 import DoctorRecords from './Pages/DoctorDashboard/Records/DoctorRecords';
 import DoctorSchedule from './Pages/DoctorDashboard/Schedule/DoctorSchedule';
 import DoctorMessage from './Pages/DoctorDashboard/DoctorMessage/DoctorMessage';
@@ -42,6 +41,10 @@ import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPati
 import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDoctor';
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
 import Loading from './Pages/Loading Page/loadingpage';
+import MainDoctor from './Pages/DoctorDashboard/MainDoctor';
+import DoctorCalendar from './Pages/DocDashboard/components/Calendar';
+import DocDashboard from './Pages/DocDashboard/Docdashboard';
+import DocProfile from './Pages/DocDashboard/Profile/Profile';
 //Google analytics
 const tagManagerArgs = {
    gtmID: 'GTM-WHSKBFK',
@@ -348,8 +351,28 @@ function App() {
          />
          {/* End of routes for user dashboard */}
          {/* Start of route for doctor-dashboard. */}
-         <Route path="/doctordashboard" exact element={<MidDashboard />} />
-         <Route path="/doctorprofile" exact element={<DoctorProfile />} />
+
+         <Route
+            path="/doctordashboard"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<MidDashboard />}
+                  rightSection={<DoctorCalendar />}
+                  page={'dashboard'}
+               />
+            }
+         />
+         <Route
+            path="/doctorprofile"
+            exact
+            element={
+               <MidDashboard
+                  middleSection={<DocProfile />}
+                  page={'doctorprofile'}
+               />
+            }
+         />
          <Route path="/doctorrecords" exact element={<DoctorRecords />} />
          <Route path="/doctormessages" exact element={<DoctorMessage />} />
          <Route path="/doctorschedule" exact element={<DoctorSchedule />} />
