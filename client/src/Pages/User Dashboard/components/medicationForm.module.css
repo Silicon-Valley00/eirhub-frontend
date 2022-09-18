@@ -98,6 +98,23 @@
    position: relative;
 }
 
+.formCancelBtn {
+   background-color: #fff;
+   color: #05a6c2;
+   border: 2px solid #05a6c2;
+   width: 80%;
+   height: 100%;
+   outline: none;
+   border-radius: 0.3rem;
+   cursor: pointer;
+   text-transform: uppercase;
+   font-weight: 500;
+   font-size: 75%;
+   text-align: center;
+   overflow: hidden;
+   position: relative;
+}
+
 .error {
    margin-top: 2rem;
    height: 2rem;
@@ -159,6 +176,9 @@
    .formBtn {
       font-size: 16px;
    }
+   .formCancelBtn {
+      font-size: 16px;
+   }
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 2000px) {
@@ -181,6 +201,9 @@
       font-size: 0.8rem;
    }
    .formBtn {
+      font-size: 0.7rem;
+   }
+   .formCancelBtn {
       font-size: 0.7rem;
    }
 }
@@ -206,6 +229,9 @@
    .formBtn {
       font-size: 0.7rem;
    }
+   .formCancelBtn {
+      font-size: 0.7rem;
+   }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .formTitle {
@@ -227,6 +253,9 @@
       font-size: 0.8rem;
    }
    .formBtn {
+      font-size: 0.7rem;
+   }
+   .formCancelBtn {
       font-size: 0.7rem;
    }
 }
@@ -264,6 +293,10 @@
       margin-top: 1.5rem;
    }
    .formBtn {
+      font-size: 0.5rem;
+      font-weight: 600;
+   }
+   .formCancelBtn {
       font-size: 0.5rem;
       font-weight: 600;
    }
