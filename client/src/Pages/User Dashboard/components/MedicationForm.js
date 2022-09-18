@@ -5,7 +5,7 @@ import { GiMedicinePills, GiPillDrop } from 'react-icons/gi';
 import { TiTime } from 'react-icons/ti';
 import { IoCloseOutline } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
-import { addPrescriptions, updatePrescriptions } from '../../../Store/Actions';
+import { addPrescriptions, updatePrescriptions, setReloadMedications } from '../../../Store/Actions';
 import { useSelector } from 'react-redux';
 
 function Medication(props) {
@@ -15,7 +15,7 @@ function Medication(props) {
    const [editMedication, setEditMedication] = useState({});
    // This transfers the setProfile function outside of this function's scope
    pullData = setEditMedication;
-   console.log(editMedication);
+   // console.log(editMedication);
 
    // Handles error messages
    const [isError, setIsError] = useState(false);
@@ -100,6 +100,8 @@ function Medication(props) {
                   )
                );
             }
+            // sets variable to use to reload medications
+            // dispatch(setReloadMedications(true));
             //clears all input boxes and edit medication data
             setEditMedication({});
             setDrugName('');
@@ -113,6 +115,11 @@ function Medication(props) {
          setErrorMessage('Enter all input fields');
          setIsError(true);
       }
+
+      clearInputsAndMedicationData();
+   }
+   
+   function  clearInputsAndMedicationData() {
       //clears all input boxes and edit medication data
       setEditMedication({});
       setDrugName('');
@@ -250,6 +257,17 @@ function Medication(props) {
                            : 'Update Prescription'}
                      </button>
                   </div>
+                  { Object.keys(editMedication).length === 0 ? "": 
+                     <div className={styles.formButton}>
+                     <button
+                        id={styles.formBtn}
+                        className={styles.formCancelBtn}
+                        onClick={() => clearInputsAndMedicationData()}
+                     >
+                        Cancel
+                     </button>
+                     </div>
+                  }
                </div>
                <div className={isError ? styles.error : styles.noerror}>
                   <p>{errorMessage}</p>

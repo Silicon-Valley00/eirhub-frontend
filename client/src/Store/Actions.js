@@ -10,6 +10,7 @@ import {
    SET_PATIENT_AUTH,
    SET_USER_INFO,
    SET_OK_TO_ROUTE,
+   SET_RELOAD_MEDICATIONS,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -47,6 +48,13 @@ export const setGuardianInfo = (guardianData) => {
 export const setOkToRoute = (state) => {
    return {
       type: SET_OK_TO_ROUTE,
+      payload: state,
+   };
+};
+//sets ok to route after an registration action
+export const setReloadMedications = (state) => {
+   return {
+      type: SET_RELOAD_MEDICATIONS,
       payload: state,
    };
 };
@@ -113,7 +121,11 @@ export const fetchProfile = (userID, guardianID) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(fetchGuardianInfo(userID, guardianID));
+               if (guardianID) {
+                  dispatch(fetchGuardianInfo(userID, guardianID));
+               } else {
+                  dispatch(setOkToRoute(true));
+               }
             }
          } else {
             //takes all statuses aside 200
@@ -245,14 +257,18 @@ export const updateProfile = (
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(
-                  updateGuardianInfo(
-                     guardianID,
-                     guardianData,
-                     userID,
-                     healthData
-                  )
-               );
+               if (guardianID) {
+                  dispatch(
+                     updateGuardianInfo(
+                        guardianID,
+                        guardianData,
+                        userID,
+                        healthData
+                     )
+                  );
+               } else {
+                  dispatch(updateHealthDetails(userID, healthData));
+               }
             }
          } else {
             //takes all statuses aside 200
@@ -504,6 +520,7 @@ export const updatePrescriptions = (Id, data) => {
             if (response.data.status === true) {
                //returns response
                // alert('med update worked');
+               dispatch(setReloadMedications(true));
             }
          } else {
             //takes all statuses aside 200
@@ -535,6 +552,8 @@ export const addPrescriptions = (data) => {
             if (response.data.status === true) {
                //returns response
                // alert('med creation worked');
+               // sets variable to use to reload medications
+               dispatch(setReloadMedications(true));
             }
          } else {
             //takes all statuses aside 200
@@ -565,6 +584,7 @@ export const deletePrescriptions = (id) => {
             if (response.data.status === true) {
                //returns response
                // alert('med delete worked');
+               dispatch(setReloadMedications(true));
             }
          } else {
             //takes all statuses aside 200
