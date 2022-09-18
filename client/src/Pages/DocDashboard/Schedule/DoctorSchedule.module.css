@@ -73,12 +73,10 @@
    max-height: 100vh;
 }
 .DSContainer1 input {
+   background: var(--white);
    border: 1px solid #e1e4e8;
    border-radius: 7px;
    text-align: center;
-}
-.DSContainer1 input[type='text']{
-   background: var(--white);
 }
 .DSContainer1 h2 {
    color: #0d3f58;
