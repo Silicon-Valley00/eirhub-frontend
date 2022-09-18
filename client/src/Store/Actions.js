@@ -117,11 +117,12 @@ export const fetchProfile = (userID, guardianID) => {
             }
          } else {
             //takes all statuses aside 200
-            //alert('Something went wrong. Try again');
+            // alert('Something went wrong. Try again');
          }
       } catch (error) {
-         //alert(error, 'pro');
+         // alert(error, 'pro');
       }
+      console.log('Fetches Done');
    };
 };
 
@@ -147,10 +148,10 @@ export const fetchProfileOnSignup = (userID) => {
             }
          } else {
             //takes all statuses aside 200
-            //alert('Something went wrong. Try again');
+            // alert('Something went wrong. Try again');
          }
       } catch (error) {
-         //alert(error, 'pro');
+         // alert(error, 'pro');
       }
    };
 };
@@ -178,10 +179,10 @@ export const fetchHealthDetails = (userID) => {
             }
          } else {
             //takes all statuses aside 200
-            //alert('Something went wrong. Try again');
+            // alert('Something went wrong. Try again');
          }
       } catch (error) {
-         //alert(error, 'hel');
+         // alert(error, 'hel');
       }
    };
 };
@@ -209,10 +210,10 @@ export const fetchGuardianInfo = (userID, guardianID) => {
             }
          } else {
             //takes all statuses aside 200
-            //alert('Something went wrong. Try again');
+            // alert('Something went wrong. Try again');
          }
       } catch (error) {
-         //alert(error, 'gur');
+         // alert(error, 'gur');
       }
    };
 };
@@ -254,10 +255,10 @@ export const updateProfile = (
             }
          } else {
             //takes all statuses aside 200
-            //alert('Could not make update, try again up1');
+            // alert('Could not make update, try again up1');
          }
       } catch (error) {
-         //alert('Could not make update, try again up2');
+         // alert('Could not make update, try again up2');
       }
    };
 };
@@ -285,10 +286,10 @@ export const updateHealthDetails = (userID, data) => {
             }
          } else {
             //takes all statuses aside 200
-            //alert('Could not make update, try again uh1');
+            // alert('Could not make update, try again uh1');
          }
       } catch (error) {
-         //alert('Could not make update, try again uh2');
+         // alert('Could not make update, try again uh2');
       }
    };
 };
@@ -322,10 +323,10 @@ export const updateGuardianInfo = (
             }
          } else {
             //takes all statuses aside 200
-            //alert('Could not make update, try again ug1');
+            // alert('Could not make update, try again ug1');
          }
       } catch (error) {
-         //alert('Could not make update, try again ug2');
+         // alert('Could not make update, try again ug2');
       }
    };
 };
@@ -359,10 +360,10 @@ export const addNewHealthDetails = (
             }
          } else {
             //takes all statuses aside 200
-            //alert('Could not create health details, try again uh1');
+            // alert('Could not create health details, try again uh1');
          }
       } catch (error) {
-         //alert('Could not create health details, try again uh2');
+         // alert('Could not create health details, try again uh2');
       }
    };
 };
@@ -416,10 +417,10 @@ export const addNewGuardianInfo = (guardianData, profileData) => {
             }
          } else {
             //takes all statuses aside 200
-            //alert('Could not create guardian, try again ug1');
+            // alert('Could not create guardian, try again ug1');
          }
       } catch (error) {
-         //alert('Could not create guardian, try again ug2');
+         // alert('Could not create guardian, try again ug2');
       }
    };
 };
@@ -441,15 +442,15 @@ export async function fetchReports(userID) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            //alert('report fetched worked');
+            // alert('report fetched worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         //alert('Something went wrong. Try again');
+         // alert('Something went wrong. Try again');
       }
    } catch (error) {
-      //alert(error, 'pro');
+      // alert(error, 'pro');
    }
 }
 //Fetches user medications
@@ -469,16 +470,16 @@ export async function fetchMedications(userID) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            //alert('fetch med worked');
+            // alert('fetch med worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         //alert('Something went wrong. Try again');
+         // alert('Something went wrong. Try again');
          return [];
       }
    } catch (error) {
-      //alert(error, 'med2');
+      // alert(error, 'med2');
    }
 }
 
@@ -501,14 +502,14 @@ export const updatePrescriptions = (Id, data) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               //alert('med update worked');
+               // alert('med update worked');
             }
          } else {
             //takes all statuses aside 200
-            //alert('Could not make update, try again med update 1');
+            // alert('Could not make update, try again med update 1');
          }
       } catch (error) {
-         //alert('Could not make update, try again med update 2');
+         // alert('Could not make update, try again med update 2');
       }
    };
 };
@@ -532,14 +533,14 @@ export const addPrescriptions = (data) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               //alert('med creation worked');
+               // alert('med creation worked');
             }
          } else {
             //takes all statuses aside 200
-            //alert('Could not make update, try again med create 1');
+            // alert('Could not make update, try again med create 1');
          }
       } catch (error) {
-         //alert('Could not make update, try again med create 2');
+         // alert('Could not make update, try again med create 2');
       }
    };
 };
@@ -562,14 +563,14 @@ export const deletePrescriptions = (id) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               //alert('med delete worked');
+               // alert('med delete worked');
             }
          } else {
             //takes all statuses aside 200
-            //alert('Could not make update, try again med delete 1');
+            // alert('Could not make update, try again med delete 1');
          }
       } catch (error) {
-         //alert('Could not make update, try again med delete 2');
+         // alert('Could not make update, try again med delete 2');
       }
    };
 };
@@ -591,15 +592,15 @@ export async function fetchDoctors() {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            //alert('doctors fetch worked');
+            // alert('doctors fetch worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         //alert('Something went wrong. Try again, doctor 1');
+         // alert('Something went wrong. Try again, doctor 1');
       }
    } catch (error) {
-      //alert(error, 'doctors 2');
+      // alert(error, 'doctors 2');
    }
 }
 
@@ -620,15 +621,15 @@ export async function fetchDoctorsByPatient(userID) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            //alert('doctors by patient id worked fetch worked');
+            // alert('doctors by patient id worked fetch worked');
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         //alert('Something went wrong. Try again, doctor 1');
+         // alert('Something went wrong. Try again, doctor 1');
       }
    } catch (error) {
-      //alert(error, 'doctors 2');
+      // alert(error, 'doctors 2');
    }
 }
 
@@ -649,15 +650,17 @@ export async function fetchAppointments(userID, status) {
          //checks details of response
          if (response.data.status === true) {
             //returns response
-            //alert('appointments fetch worked');
+            // alert('appointments fetch worked');
+            console.log(response.data);
+            console.log(userID, status);
             return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         //alert('Something went wrong. Try again, accepted appments 1');
+         // alert('Something went wrong. Try again, accepted appments 1');
       }
    } catch (error) {
-      //alert(error, 'accepted appments 2');
+      // alert(error, 'accepted appments 2');
    }
 }
 
@@ -680,14 +683,14 @@ export const addAppointments = (data) => {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               //alert('appointments post worked');
+               // alert('appointments post worked');
             }
          } else {
             //takes all statuses aside 200
-            //alert('Something went wrong. Try again, post appments 1');
+            // alert('Something went wrong. Try again, post appments 1');
          }
       } catch (error) {
-         //alert(error, 'post appments 2');
+         // alert(error, 'post appments 2');
       }
    };
 };

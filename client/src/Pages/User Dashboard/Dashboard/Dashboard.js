@@ -1,4 +1,4 @@
- import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import avatarOne from '../../../assets/Rectangle-1.png';
 import avatarTwo from '../../../assets/Rectangle-2.png';
 import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
@@ -17,7 +17,7 @@ import {
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
-import store from '../../../Store/ReducerStore'
+import store from '../../../Store/ReducerStore';
 
 const mapStateToProps = (state) => {
    return {
@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
 };
 
 function Dashboard(props) {
-   console.log(store.getState())
+   console.log(store.getState());
    const dispatch = useDispatch();
    const [medications, setMedications] = useState([]);
    const [appointments, setAppointments] = useState([]);
@@ -50,6 +50,7 @@ function Dashboard(props) {
          setMedications(items);
          const schedules = await fetchAppointments(patientID, true);
          setAppointments(schedules);
+         console.log(schedules);
       }
       fetchdata();
    }, []);
@@ -79,7 +80,19 @@ function Dashboard(props) {
    //displays medications
 
    if (medications === undefined) {
-      list = <p>Nothing to show here.</p>;
+      list = (
+         <tr
+            style={{
+               width: '200%',
+               display: 'flex',
+               justifyContent: 'center',
+               alignItems: 'center',
+               color: '#c2c9d1',
+            }}
+         >
+            Nothing to show here.
+         </tr>
+      );
    } else {
       if (medications.length !== 0) {
          list = medications.map((item, j) => {
@@ -109,14 +122,38 @@ function Dashboard(props) {
          });
       } else if (medications.length === 0) {
          // Sends message to be displayed when saved videos is empty
-         list = <p>Nothing to show here.</p>;
+         list = (
+            <tr
+               style={{
+                  width: '200%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: '#c2c9d1',
+               }}
+            >
+               Nothing to show here.
+            </tr>
+         );
       }
    }
    var appointmentsData;
    //gets all apoints for display
 
    if (appointments === undefined) {
-      appointmentsData = <p>Nothing to show here.</p>;
+      appointmentsData = (
+         <tr
+            style={{
+               width: '700%',
+               display: 'flex',
+               justifyContent: 'center',
+               alignItems: 'center',
+               color: '#c2c9d1',
+            }}
+         >
+            Nothing to show here.
+         </tr>
+      );
    } else {
       if (appointments.length !== 0) {
          appointmentsData = appointments.map((item, j) => {
@@ -149,7 +186,19 @@ function Dashboard(props) {
          });
       } else if (appointments.length === 0) {
          // Sends message to be displayed when saved videos is empty
-         appointmentsData = <p>Nothing to show here.</p>;
+         appointmentsData = (
+            <tr
+               style={{
+                  width: '700%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: '#c2c9d1',
+               }}
+            >
+               Nothing to show here.
+            </tr>
+         );
       }
    }
 

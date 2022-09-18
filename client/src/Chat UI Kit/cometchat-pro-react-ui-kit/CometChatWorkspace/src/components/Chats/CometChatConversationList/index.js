@@ -481,7 +481,7 @@ class CometChatConversationList extends React.Component {
       }
 
       /**
-       * Sound //alert for incoming messages
+       * Sound // alert for incoming messages
        */
       const receiverType = message.getReceiverType();
       const receiverId =

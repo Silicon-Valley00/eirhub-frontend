@@ -16,6 +16,8 @@ import {
    setUserInfo,
 } from '../../../Store/Actions.js';
 import { LoginUser } from '../../../context/authcontext';
+import store from '../../../Store/ReducerStore';
+import { persistor } from '../../../Store/ReducerStore';
 
 function Login(props) {
    const loginFormRef = useRef();
@@ -42,7 +44,6 @@ function Login(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          //logs user into cometchat
-         navigate('/loading', { state: false });
 
          LoginUser(
             `${feedback[1].first_name.toLowerCase()}${feedback[1].last_name.toLowerCase()}${
@@ -62,15 +63,20 @@ function Login(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
+         navigate('/loading', { state: { status: false } });
 
          setTimeout(() => {
-            if (okToRoute === true) {
+            if (store.getState().okToRoute === true) {
                navigate('/userdashboard');
             } else {
+               setTimeout(() => {
+                  persistor.purge();
+               }, 200);
+
                dispatch(setPatientAuth(false));
                navigate('/landing-page', { state: true });
             }
-         }, 2000);
+         }, 2.5 * 1000);
       } else {
          setBtnActive(feedback[0]);
          setBtnValue('Login');
@@ -223,7 +229,7 @@ function Login(props) {
                            props.loginPasswordError === null ||
                            btnActive
                         }
-                        onClick ={() =>{
+                        onClick={() => {
                            setBtnValue('logging in');
                            setBtnActive(true);
                            submitCredentialsFeedback();

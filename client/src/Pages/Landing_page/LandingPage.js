@@ -58,6 +58,7 @@ const LandingPage = () => {
       setModalLoginDoctor(false);
       setModalSignupDoctor(false);
    }
+   console.log('ok', location.state);
    return (
       <>
          <div

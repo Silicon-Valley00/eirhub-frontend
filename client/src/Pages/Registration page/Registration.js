@@ -530,7 +530,7 @@ function Registration(props) {
    // Function submits data to database via an api
    async function submitCredentials(path, data) {
       //Function takes path and data to make request
-      axios.defaults.timeout = 3000;
+      axios.defaults.timeout = 15000;
       axios.defaults.timeoutErrorMessage = 'timeout';
       try {
          const response = await axios({
