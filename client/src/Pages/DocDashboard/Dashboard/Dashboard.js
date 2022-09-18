@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Navigation from '../components/Navigation';
-import DoctorCalendar from '../components/Calendar';
 import styles from './dashboard.module.css';
 import { IoIosPeople } from 'react-icons/io';
 import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import Sidebar from '../components/Sidebar';
 
 function MidDashboard(props) {
    const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
@@ -17,7 +14,6 @@ function MidDashboard(props) {
    const [numOfPatients, setNumOfPatients] = useState(0);
    const [numOfReports, setNumOfReports] = useState(0);
    const [numOfAppointments, setNumOfAppointments] = useState(0);
-
    const data = props.doctorProfile;
    const baseURL = 'http://127.0.0.1:5000';
 
@@ -101,10 +97,8 @@ function MidDashboard(props) {
 
    return (
       <>
-         <Navigation />
          <div className={styles.wrapper}>
             <main className={styles.main}>
-               <Sidebar indicator={1} />
                <section className={styles.section}>
                   <div className={styles.middle_section}>
                      {/* box that containst the summary display for the doctor */}
@@ -195,9 +189,6 @@ function MidDashboard(props) {
                      </div>
                   </div>
                </section>
-               <div className={styles.right_pane}>
-                  <DoctorCalendar />
-               </div>
             </main>
          </div>
       </>

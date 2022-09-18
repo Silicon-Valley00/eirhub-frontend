@@ -4,13 +4,23 @@
    position: fixed;
    width: 100%;
    height: 4rem;
-   z-index: 9999;
+   z-index: 99;
+   background: var(--white);
+   box-shadow: 0 0.5rem 1rem rgba(174, 178, 214, 0.06);
 }
 
 .welcome_msg {
    display: flex;
    align-items: center;
    justify-content: space-between;
+}
+
+.menu {
+   position: absolute;
+   left: 5.3rem;
+   top: 0.9rem;
+   cursor: pointer;
+   font-size: 2rem;
 }
 
 .logo {
@@ -55,12 +65,22 @@
       font-family: var(--logofont);
    }
 
+   .menu {
+      left: 8rem;
+   }
+
    .hello_msg {
       font-size: 16px;
    }
 
    .avatar {
       gap: 1rem;
+   }
+}
+
+@media (min-width: 768px) {
+   .menu {
+      display: none;
    }
 }
 

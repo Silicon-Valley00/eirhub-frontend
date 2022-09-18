@@ -68,6 +68,7 @@ function Login(props) {
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/userdashboard');
+               console.log(store.getState());
             } else {
                setTimeout(() => {
                   persistor.purge();
@@ -75,6 +76,7 @@ function Login(props) {
 
                dispatch(setPatientAuth(false));
                navigate('/landing-page', { state: true });
+               console.log(store.getState());
             }
          }, 2.5 * 1000);
       } else {

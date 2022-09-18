@@ -156,10 +156,10 @@ p.link {
    padding: 0 5px;
    border: none;
 }
-input{
+input {
    color: var(--text-color);
 }
-input::placeholder{
+input::placeholder {
    color: grey;
 }
 .submit {
@@ -480,8 +480,7 @@ input::placeholder{
       display: none;
    }
 }
-@media only screen and (max-width: 480px) {
-   
+@media only screen and (max-width: 320px) {
    #loginContainer {
       font-size: 12px;
       height: 80vh;
@@ -490,7 +489,7 @@ input::placeholder{
    .loginBody {
       padding: 0;
    }
-   
+
    .inputField {
       height: var(--height);
    }
@@ -503,7 +502,9 @@ input::placeholder{
    .loginForm h3 {
       font-size: 1.2rem;
    }
-   .loginForm .info, .link,p {
+   .loginForm .info,
+   .link,
+   p {
       font-size: 14px;
    }
 }

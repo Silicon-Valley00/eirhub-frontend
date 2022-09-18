@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
 import LogoutModal from '../General Components/Logout Modal/LogoutModal';
+import NavBar from '../DocDashboard/Navigation';
 
 function UserDashboard(props) {
    const user = useSelector((state) => state.user.name);
@@ -16,6 +17,9 @@ function UserDashboard(props) {
    const [openMenu, setOpenMenu] = useState(false);
    const [birthdayModal, setBirthdayModal] = useState(false);
    const [logoutModal, setLogoutModal] = useState(false);
+   const openFunc = () => {
+      setOpenMenu(!openMenu);
+   }
 
    //Display birthday card to user on their birthday
    useEffect(() => {
@@ -39,6 +43,8 @@ function UserDashboard(props) {
       setLogoutModal(!logoutModal);
    }
    return (
+      <>
+      <NavBar openFunc={openFunc} />
       <div className={styles.max_div}>
          <div
             id={styles.blur}
@@ -55,7 +61,7 @@ function UserDashboard(props) {
                   {props.parent}
 
                   <div className={styles.right}>
-                     <div className={styles.profile}>
+                     {/* <div className={styles.profile}>
                         <div className={styles.menu} id={styles.menuBtn}>
                            <i
                               onClick={() => {
@@ -80,7 +86,7 @@ function UserDashboard(props) {
                               Hey, <b>{user}</b>
                            </p>
                         </div>
-                     </div>
+                     </div> */}
                      {props.child}
                   </div>
                </div>
@@ -95,6 +101,7 @@ function UserDashboard(props) {
             handleLogoutModal={handleLogoutModal}
          />
       </div>
+      </>
    );
 }
 export default UserDashboard;

@@ -543,7 +543,7 @@ function Registration(props) {
                'Access-Control-Allow-Methods': '*',
             },
             data: data,
-            // timeout:2000,
+            timeout: 15000,
          });
 
          if (response.status === 200) {

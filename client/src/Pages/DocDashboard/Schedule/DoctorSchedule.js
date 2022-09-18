@@ -1,11 +1,8 @@
-import DSstyles from '../../DoctorDashboard/Schedule/DoctorSchedule.module.css';
-import Navigation from '../components/Navigation';
+import DSstyles from './DoctorSchedule.module.css';
 import DoctorPatients from '../DoctorPatients/DoctorPatients';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import avatarOne from '../../../assets/Rectangle-1.png';
-import Sidebar from '../components/Sidebar';
 
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
@@ -121,10 +118,8 @@ const DoctorSchedule = (props) => {
 
    return (
       <>
-         <Navigation />
          <div className={DSstyles.wrapper}>
             <div className={DSstyles.DSContainer}>
-               <Sidebar indicator={3} />
                <div className={DSstyles.DSContainer1}>
                   <h2>Apppoinment Details</h2>
                   <form>
@@ -201,7 +196,6 @@ const DoctorSchedule = (props) => {
                   </form>
                   <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
                   <div className={DSstyles.appointmentContainer}>
-                     <div className={DSstyles.DSFiles}>
                         <table>
                            <thead>
                               <th className={DSstyles.imgHeader}></th>
@@ -259,30 +253,9 @@ const DoctorSchedule = (props) => {
                                     </tr>
                                  );
                               })}
-                              {/*Dummy Texts*/}
-                              {/* <tr>
-                              <td className={DSstyles.imgSection}>
-                                 <div className={DSstyles.profileImageDiv}>
-                                    <img src={avatarOne} alt={'img'} />
-                                 </div>
-                              </td>
-                              <td className={DSstyles.tdName}>Ama Osaba</td>
-                              <td className={DSstyles.tdCondition}>
-                                 Swollen tonsils with severe pains in throat and
-                                 chest
-                              </td>
-                              <td className={DSstyles.tdCancel} onClick="">
-                                 Cancel
-                              </td>
-                           </tr> */}
-                              {/*Dummy text End */}
                            </tbody>
                         </table>
-                     </div>
                   </div>
-               </div>
-               <div className={DSstyles.DSpatientContainer}>
-                  <DoctorPatients show />
                </div>
             </div>
          </div>

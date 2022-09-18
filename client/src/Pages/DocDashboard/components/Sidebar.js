@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './navigation.module.css';
+import styles from './sidebar.module.css';
 import { GrClose } from 'react-icons/gr';
 import { MdSpaceDashboard } from 'react-icons/md';
 import { BsFillFileEarmarkFill } from 'react-icons/bs';
@@ -11,18 +11,33 @@ import { CgPill } from 'react-icons/cg';
 import { TbCalendarTime } from 'react-icons/tb';
 import { GiLabCoat } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import { persistor } from '../../../Store/ReducerStore';
+import { useNavigate } from 'react-router-dom';
+import { Logout } from '../../../context/authcontext';
+import { useDispatch } from 'react-redux';
+import { setPatientAuth } from '../../../Store/Actions';
 
-function Navigation(props) {
+const Sidebar = (props) => {
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
+
+   function logout() {
+      try {
+         setTimeout(() => persistor.purge(), 200);
+         dispatch(setPatientAuth(false));
+         Logout();
+         navigate('/landing-page');
+      } catch (err) {
+         console.log(err);
+      }
+   }
    return (
       <>
          <div className={styles.navbody}>
             <aside
                className={props.openMenu ? styles.active : styles.notActive}
             >
-               {/* <div className={styles.top}>
-                  <div className={styles.logo}>
-                     <h2>Eirhub</h2>
-                  </div>
+               <div className={styles.top}>
                   <div className={styles.close} id={styles.closeBtn}>
                      <i
                         onClick={() => {
@@ -32,10 +47,10 @@ function Navigation(props) {
                         <GrClose />
                      </i>
                   </div>
-               </div> */}
+               </div>
                <div className={styles.sidebar}>
                   <ul>
-                     <Link to={'/userdashboard'}>
+                     <Link to={'/doctordashboard'}>
                         <li
                            className={
                               props.page === 'dashboard' ? styles.active : ''
@@ -49,10 +64,12 @@ function Navigation(props) {
                            <h3>Dasboard</h3>
                         </li>
                      </Link>
-                     <Link to={'/userprofile'}>
+                     <Link to={'/doctorprofile'}>
                         <li
                            className={
-                              props.page === 'profile' ? styles.active : ''
+                              props.page === 'doctorprofile'
+                                 ? styles.active
+                                 : ''
                            }
                         >
                            <span className={styles.icons}>
@@ -63,7 +80,23 @@ function Navigation(props) {
                            <h3>Profile</h3>
                         </li>
                      </Link>
-                     <Link to={'/reports'}>
+                     <Link to={'/doctorschedule'}>
+                        <li
+                           className={
+                              props.page === 'doctorschedule'
+                                 ? styles.active
+                                 : ''
+                           }
+                        >
+                           <span className={styles.icons}>
+                              <i>
+                                 <TbCalendarTime />
+                              </i>
+                           </span>
+                           <h3>Schedule</h3>
+                        </li>
+                     </Link>
+                     <Link to={'/doctorrecords'}>
                         <li
                            className={
                               props.page === 'records' ? styles.active : ''
@@ -77,52 +110,12 @@ function Navigation(props) {
                            <h3>Reports</h3>
                         </li>
                      </Link>
-                     <Link to={'/prescriptions'}>
+                     <Link to={'/doctormessaging'}>
                         <li
                            className={
-                              props.page === 'medications' ? styles.active : ''
-                           }
-                        >
-                           <span className={styles.icons}>
-                              <i>
-                                 <CgPill />
-                              </i>
-                           </span>
-                           <h3>Prescriptions</h3>
-                        </li>
-                     </Link>
-                     <Link to={'/scheduling'}>
-                        <li
-                           className={
-                              props.page === 'schedule' ? styles.active : ''
-                           }
-                        >
-                           <span className={styles.icons}>
-                              <i>
-                                 <TbCalendarTime />
-                              </i>
-                           </span>
-                           <h3>Schedule</h3>
-                        </li>
-                     </Link>
-                     <Link to={'/find-a-doctor'}>
-                        <li
-                           className={
-                              props.page === 'finddoctor' ? styles.active : ''
-                           }
-                        >
-                           <span className={styles.icons}>
-                              <i>
-                                 <GiLabCoat />
-                              </i>
-                           </span>
-                           <h3>Find a Doctor</h3>
-                        </li>
-                     </Link>
-                     <Link to={'/usermessaging'}>
-                        <li
-                           className={
-                              props.page === 'message' ? styles.active : ''
+                              props.page === 'doctormessage'
+                                 ? styles.active
+                                 : ''
                            }
                         >
                            <span className={styles.icons}>
@@ -134,21 +127,9 @@ function Navigation(props) {
                         </li>
                      </Link>
                      <li
-                        className={
-                           props.page === 'settings' ? styles.active : ''
-                        }
-                     >
-                        <span className={styles.icons}>
-                           <i>
-                              <IoSettingsOutline />
-                           </i>
-                        </span>
-                        <h3>Settings</h3>
-                     </li>
-                     <li
                         className={props.page === 'logout' ? styles.active : ''}
                         onClick={() => {
-                           props.handleLogoutModal();
+                           logout();
                         }}
                      >
                         <span className={styles.icons}>
@@ -164,5 +145,5 @@ function Navigation(props) {
          </div>
       </>
    );
-}
-export default Navigation;
+};
+export default Sidebar;
