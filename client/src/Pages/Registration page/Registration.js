@@ -498,10 +498,11 @@ function Registration(props) {
          const signupDoctorData = {
             first_name: enteredSignUpFirstnameDoctor,
             last_name: enteredSignUpLastnameDoctor,
-            middle_name: ' ',
+            middle_name: '',
             hospital_code: enteredSignupHospitalCode,
             user_email: enteredSignUpEmailDoctor,
             user_password: enteredSignUpPasswordDoctor,
+            date_of_birth: '1999-09-09',
          };
 
          // makes api call with userdata

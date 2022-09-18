@@ -145,6 +145,7 @@ export const fetchProfileOnSignup = (userID) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
+               dispatch(setOkToRoute(true));
             }
          } else {
             //takes all statuses aside 200
