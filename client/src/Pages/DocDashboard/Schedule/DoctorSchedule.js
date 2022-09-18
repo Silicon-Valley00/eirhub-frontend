@@ -258,6 +258,7 @@ const DoctorSchedule = (props) => {
                            </tbody>
                         </table>
                   </div>
+
          <div className={DSstyles.DSContainer1}>
             <h2>Apppoinment Details</h2>
             <form>
@@ -372,10 +373,12 @@ const DoctorSchedule = (props) => {
                </table>
             </div>
          </div>
-      </>
-   );
-};
-
+         </div>
+         </div>
+         </div>
+</>
+);
+}
 const mapStateToProps = (state) => {
    return {
       doctorProfile: state.doctorProfile,
