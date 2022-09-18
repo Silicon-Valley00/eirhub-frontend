@@ -98,7 +98,7 @@ div.personalInfoFormBox {
 }
 .formBoxNameInputs {
    width: 100%;
-   height: 2rem;
+   height: 2.5rem;
    border-radius: 5px;
    display: flex;
    align-items: center;
@@ -250,7 +250,6 @@ select::-ms-expand {
    font-size: 1.5rem;
    font-weight: 600;
 }
-
 div.healthInfoFormBox {
    width: 100%;
    display: grid;
@@ -269,7 +268,6 @@ div.healthInfoFormBox {
    color: var(--deepcol);
    font-weight: 600;
 }
-
 #profileBody .healthInfo div.healthInfoFormBox div.healthFormBox:nth-child(1) {
    width: 90%;
    justify-self: start;
