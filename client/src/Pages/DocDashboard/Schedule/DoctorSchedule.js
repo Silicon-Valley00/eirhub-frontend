@@ -196,7 +196,6 @@ const DoctorSchedule = (props) => {
                   </form>
                   <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
                   <div className={DSstyles.appointmentContainer}>
-                     <div className={DSstyles.DSFiles}>
                         <table>
                            <thead>
                               <th className={DSstyles.imgHeader}></th>
@@ -256,7 +255,6 @@ const DoctorSchedule = (props) => {
                               })}
                            </tbody>
                         </table>
-                     </div>
                   </div>
                </div>
             </div>

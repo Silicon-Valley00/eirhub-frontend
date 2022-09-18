@@ -1,23 +1,28 @@
+/* My screen >1900px*/
 .wrapper{
    min-height: 59rem;
-   /* height: 90vh; */
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   justify-content: end;
 }
 .DSContainer {
-   margin-left: 16rem;
-   display: flex;
-   justify-content: space-evenly;
+   /* display: flex;
+   justify-content: space-evenly; */
    box-sizing: border-box;
    margin-right: 0;
-   padding-top: 5.5rem;
-   gap: 1.25rem;
    min-height: 59rem;
    height: 100vh;
+   width: 45rem;
 }
 .DSContainer1 {
-   width: 78%;
+   width: 60rem;
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
+   height: 100vh;
+   min-height: 55rem;
+   flex-grow: inherit;
 }
 
 .DSContainer2 {
@@ -515,7 +520,7 @@
       overflow-y: scroll;
    }
    .appointmentContainer .nameSection {
-      width: 200px;
+      width: 12.5rem;
    }
 }
 /*Mobile screens*/
@@ -602,6 +607,10 @@
    .appointmentContainer .imgSection {
       padding-left: 0;
    }
+   .appointmentContainer .imgHeader{
+      padding: 0;
+      width: 1rem;
+   }
    .appointmentContainer .tdCancel {
       padding-left: 0;
    }
@@ -673,6 +682,10 @@
    .appointmentContainer .imgSection {
       padding-left: 0;
    }
+   .appointmentContainer .imgHeader{
+      width: 1rem;
+      padding: 0;
+   }
    .appointmentContainer .tdCancel {
       padding-left: 0;
    }
@@ -693,13 +706,15 @@
       width: 100%;
    }
    .appointmentContainer {
-      width: 100%;
+      width: 15rem;
       margin: auto;
       text-align: center;
+      display: flex;
+      justify-content: center;
    }
    .appointmentContainer table {
       width: 100%;
-      overflow-x: scroll;
+      overflow-y: scroll;
    }
    .appointmentContainer table th {
       padding-left: 20px;
@@ -714,14 +729,16 @@
    }
    .appointmentContainer .imgSection {
       padding-left: 0;
-   }
-   .appointmentContainer .imgSection {
       width: 40px;
       height: 40px;
    }
+   .appointmentContainer .imgHeader{
+      width: 1rem;
+      padding: 0;
+   }
 }
 
-@media (min-width: 1920px) {
+/* @media (min-width: 1920px) {
    .wrapper {
       display: flex;
       align-items: center;
@@ -731,4 +748,4 @@
    .DSContainer {
       max-width: 1200px;
    }
-}
+} */
