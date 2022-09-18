@@ -94,13 +94,13 @@ function FindingDoctor(props) {
             </div>
          ) : (
             <div className={styles.profileBody}>
-               <div className={styles.profileImage}>
+               {/* <div className={styles.profileImage}>
                   <img src={doctorProfileOne} alt="doctor-profile" />
                </div>
                <div className={styles.profileDetails}>
                   <h3></h3>
-               </div>
-               <div className={styles.profileInfo}>
+               </div> */}
+               {/* <div className={styles.profileInfo}>
                   <div className={styles.profileRatings}>
                      <h3>Ratings</h3>
                      <div className={styles.profileRatingsContent}>
@@ -114,7 +114,7 @@ function FindingDoctor(props) {
                      <h3>Hospital</h3>
                      <p></p>
                   </div>
-               </div>
+               </div> */}
                <div className={styles.profileButton}></div>
             </div>
          )}

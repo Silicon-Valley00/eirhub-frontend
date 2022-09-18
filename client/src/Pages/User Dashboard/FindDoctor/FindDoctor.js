@@ -303,7 +303,7 @@ function FindingDoctor(props) {
             </div>
             <div className={styles.doctorsBox}>
                {list}
-               <div className={styles.doctorBox}>
+               {/* <div className={styles.doctorBox}>
                   <div className={styles.doctorImage}>
                      <img src={doctorProfileTwo} alt="doctor-profile" />
                   </div>
@@ -321,9 +321,9 @@ function FindingDoctor(props) {
                         <p>View Profile</p>
                      </div>
                   </div>
-               </div>
+               </div> */}
 
-               <div className={styles.doctorBox}>
+               {/* <div className={styles.doctorBox}>
                   <div className={styles.doctorImage}>
                      <img src={doctorProfileThree} alt="doctor-profile" />
                   </div>
@@ -341,7 +341,7 @@ function FindingDoctor(props) {
                         <p>View Profile</p>
                      </div>
                   </div>
-               </div>
+               </div> */}
             </div>
          </div>
       </>
