@@ -92,6 +92,7 @@
    /* max-height: 100%; */
    /* padding-right: 20px; */
    pointer-events: none;
+   border: 2px solid red;
 }
 
 .hero__image {
@@ -293,12 +294,8 @@
 
    .hero__image {
       width: 100%;
-      overflow: hidden;
-      /* display: absolute; */
-      /* bottom: 0; */
-      /* float: right; */
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
    }
 
    .content_title {
