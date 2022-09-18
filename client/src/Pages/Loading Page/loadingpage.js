@@ -22,16 +22,16 @@ function Loading(props) {
    const dispatch = useDispatch();
    useEffect(() => {
       if (auth === true && location.state === true) {
-         dispatch(addNewHealthDetails(patientID, props.savedProfile));
+         dispatch(addNewHealthDetails(patientID, props.savedProfile,props.savedHealthDetails,
+            props.savedGuardianDetails));
       }
-      dispatch(
-         addNewHealthDetails(
-            props.savedHealthDetails,
-            props.savedGuardianDetails,
-            patientID,
-            props.savedProfile
-         )
-      );
+   //    dispatch(
+   //       addNewHealthDetails(
+   //        
+   //          patientID,
+   //          props.savedProfile
+   //       )
+   //    );
    });
    return (
       <>
