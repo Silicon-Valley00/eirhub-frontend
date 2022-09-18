@@ -22,6 +22,7 @@
 .emptyMessageContainer {
    display: flex;
    justify-content: center;
+   width: 200%;
 }
 .medicationsBoxContent p.emptyMessage {
    color: var(--tablehead);

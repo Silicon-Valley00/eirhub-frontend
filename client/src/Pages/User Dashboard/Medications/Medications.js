@@ -67,10 +67,9 @@ function Medication(props) {
                            {`${Math.round(
                               (new Date(item.end_date) -
                                  new Date(item.last_taken_date)) /
-                                 (1000 * 3600 * 24) /
-                                 parseFloat(item.dosage[0])
+                                 (1000 * 3600 * 24) 
                            )}
-                        left`}
+                        days left`}
                         </p>
                      </div>
                   </div>
@@ -127,8 +126,11 @@ function Medication(props) {
             );
          });
       } else if (prescriptions.length === 0) {
-         // Sends message to be displayed when saved videos is empty
-         list = <p>Nothing to show here.</p>;
+         // Sends message to be displayed when saved prescriptions is empty
+         list = 
+         <div className={styles.emptyMessageContainer}>
+            <p>Nothing to show here.</p>
+            </div>;
       }
    }
 
