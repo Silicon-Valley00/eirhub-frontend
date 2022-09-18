@@ -252,6 +252,12 @@
    }
 }
 
+@media (min-width: 769px) and (max-width: 860px) {
+   .section {
+      width: 120%;
+   }
+}
+
 @media (min-width: 1024px) {
    /* .wrapper {
       min-width: 100vw;

@@ -3,8 +3,8 @@
    height: 45rem;
    padding-top: 6rem;
    background-color: var(--gray);
-   padding-left: 4rem;
-   padding-right: 4rem;
+   padding-left: 1rem;
+   padding-right: 1rem;
 }
 
 .hero_container {
@@ -89,15 +89,14 @@
 .hero_image {
    padding-top: 2rem;
    width: 50%;
-   max-height: 100%;
-   padding-right: 20px;
+   /* max-height: 100%; */
+   /* padding-right: 20px; */
    pointer-events: none;
 }
 
-/* .hero__image {
-   width: 100%;
-   pointer-events: none;
-} */
+.hero__image {
+   object-fit: cover;
+}
 
 /* ========================== covers the background image on mobile screens ========================= */
 @media (max-width: 368px) {
@@ -187,6 +186,7 @@
       padding-top: 0;
       height: 60rem;
    }
+
    .hero_container {
       padding-top: 5rem;
       height: 100%;
@@ -195,14 +195,15 @@
    .hero_wrapper {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       height: 100%;
-      gap: 5%;
+      /* gap: 5%; */
    }
 
    .hero_content {
       color: var(--midcol);
       position: initial;
-      width: 50%;
+      width: 40%;
       height: 30rem;
       display: flex;
       flex-direction: column;
@@ -210,21 +211,19 @@
    }
 
    .hero_image {
-      padding-top: 4rem;
-      width: 50%;
-      padding-right: 20px;
+      width: 50rem;
       height: 100%;
-      position: relative;
-      overflow: hidden;
+      /* position: relative; */
    }
 
    .hero__image {
       width: 100%;
       overflow: hidden;
-      display: absolute;
-      bottom: 0;
-      float: right;
+      /* display: absolute; */
+      /* bottom: 0; */
+      /* float: right; */
       height: 100%;
+      object-fit: cover;
    }
 
    .content__title {
@@ -264,11 +263,6 @@
       font-weight: 600;
    }
 
-   .content__title {
-      font-size: 30pt;
-      font-weight: 600;
-   }
-
    /* .hero_image {
       padding-top: 8rem;
       width: 50%;
@@ -286,9 +280,21 @@
       padding-bottom: 7rem;
    }
 }
-/* 
-@media (min-width: 1400px) {
+
+@media (min-width: 1920px) {
    #hero_body {
-      height: 80rem;
+      height: 90rem;
    }
-} */
+
+   .hero_image {
+      width: 50%;
+   }
+
+   .content__title {
+      font-size: 50pt;
+   }
+
+   .content__info {
+      font-size: 20pt;
+   }
+}
