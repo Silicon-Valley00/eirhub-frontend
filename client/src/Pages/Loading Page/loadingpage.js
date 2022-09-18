@@ -16,22 +16,24 @@ const mapStateToProps = (state) => {
 
 function Loading(props) {
    const patientID = useSelector((state) => state.user.id_patient);
-   const auth = useSelector((state) => state.isPatient);
-   const location = useLocation();
+   const auth = useSelector((state) => state.isPatientAuth);
+   const { state } = useLocation();
+   const { status } = state;
 
    const dispatch = useDispatch();
+
    useEffect(() => {
-      if (auth === true && location.state === true) {
-         dispatch(addNewHealthDetails(patientID, props.savedProfile,props.savedHealthDetails,
-            props.savedGuardianDetails));
+      if (auth === true && status === true) {
+         console.log('running');
+         dispatch(
+            addNewHealthDetails(
+               props.savedHealthDetails,
+               props.savedGuardianDetails,
+               patientID,
+               props.savedProfile
+            )
+         );
       }
-   //    dispatch(
-   //       addNewHealthDetails(
-   //        
-   //          patientID,
-   //          props.savedProfile
-   //       )
-   //    );
    });
    return (
       <>

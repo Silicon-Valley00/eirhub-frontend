@@ -67,8 +67,9 @@ function Signup(props) {
                id_guardian: '',
             })
          );
+         console.log('patient', feedback[1].id_patient);
          dispatch(fetchProfileOnSignup(feedback[1].id_patient));
-         navigate('/loading', { state: true });
+         navigate('/loading', { state: { status: true } });
 
          dispatch(setPatientAuth(true));
 

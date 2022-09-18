@@ -4,7 +4,7 @@
 
 #profileBody {
    margin-top: 4rem;
-   background-color: var(--white);
+   background-color: var(--gray);
    padding: 2rem 3rem 0 3rem;
    border-top-left-radius: 2rem;
    border-top-right-radius: 2rem;
@@ -191,7 +191,7 @@ select::-ms-expand {
    .personalInfo
    div.personalInfoFormBox
    div.profileFormBox:nth-child(4) {
-   width: 100%;
+   width: 95%;
    justify-self: start;
 }
 
@@ -200,20 +200,20 @@ select::-ms-expand {
    div.personalInfoFormBox
    div.profileFormBox:nth-child(5) {
    width: 90%;
-   justify-self: end;
+   justify-self: start;
 }
 #profileBody
    .personalInfo
    div.personalInfoFormBox
    div.profileFormBox:nth-child(6) {
    width: 85%;
-   justify-self: end;
+   justify-self: start;
 }
 #profileBody
    .personalInfo
    div.personalInfoFormBox
    div.profileFormBox:nth-child(7) {
-   width: 100%;
+   width: 95%;
    justify-self: start;
    text-transform: capitalize;
 }
@@ -223,20 +223,20 @@ select::-ms-expand {
    div.personalInfoFormBox
    div.profileFormBox:nth-child(8) {
    width: 80%;
-   justify-self: center;
+   justify-self: start;
 }
 #profileBody
    .personalInfo
    div.personalInfoFormBox
    div.profileFormBox:nth-child(9) {
    width: 98%;
-   justify-self: end;
+   justify-self: start;
 }
 #profileBody
    .personalInfo
    div.personalInfoFormBox
    div.profileFormBox:nth-child(10) {
-   width: 95%;
+   width: 100%;
    justify-self: start;
 }
 
@@ -281,7 +281,7 @@ div.healthInfoFormBox {
 }
 #profileBody .healthInfo div.healthInfoFormBox div.healthFormBox:nth-child(3) {
    width: 95%;
-   justify-self: end;
+   justify-self: start;
 }
 #profileBody .healthInfo div.healthInfoFormBox div.healthFormBox:nth-child(4) {
    width: 90%;
@@ -293,9 +293,9 @@ div.healthInfoFormBox {
    justify-self: start;
 }
 #profileBody .healthInfo div.healthInfoFormBox div.healthFormBox:nth-child(6) {
-   width: 105%;
-   justify-self: end;
-   text-transform: capitalize;
+   width: 95%;
+   justify-self: start;
+   /* text-transform: capitalize; */
 }
 #profileBody .healthInfo div.healthInfoFormBox div.healthFormBox:nth-child(7) {
    width: 80%;
@@ -308,7 +308,7 @@ div.healthInfoFormBox {
 }
 #profileBody .healthInfo div.healthInfoFormBox div.healthFormBox:nth-child(9) {
    width: 95%;
-   justify-self: end;
+   justify-self: start;
 }
 
 .guardianInfo {
@@ -366,7 +366,7 @@ div.guardianInfoFormBox {
    div.guardianInfoFormBox
    div.guardianFormBox:nth-child(3) {
    width: 100%;
-   justify-self: end;
+   justify-self: start;
    text-transform: capitalize;
 }
 #profileBody
@@ -382,14 +382,14 @@ div.guardianInfoFormBox {
    div.guardianInfoFormBox
    div.guardianFormBox:nth-child(5) {
    width: 90%;
-   justify-self: end;
+   justify-self: start;
 }
 #profileBody
    .guardianInfo
    div.guardianInfoFormBox
    div.guardianFormBox:nth-child(6) {
    width: 85%;
-   justify-self: end;
+   justify-self: start;
 }
 #profileBody
    .guardianInfo
@@ -404,27 +404,27 @@ div.guardianInfoFormBox {
    div.guardianInfoFormBox
    div.guardianFormBox:nth-child(8) {
    width: 80%;
-   justify-self: center;
+   justify-self: start;
 }
 #profileBody
    .guardianInfo
    div.guardianInfoFormBox
    div.guardianFormBox:nth-child(9) {
    width: 98%;
-   justify-self: end;
+   justify-self: start;
 }
 
 .formButton {
-   width: 30%;
+   width: 100%;
    height: 2rem;
    display: flex;
-   align-items: flex-start;
-   justify-content: flex-start;
+   align-items: center;
+   justify-content: center;
    margin: 3rem 0;
 }
 
 .formBtn {
-   width: 70%;
+   width: 13.3rem;
    height: 100%;
    border: none;
    outline: none;
@@ -528,9 +528,9 @@ div.guardianInfoFormBox {
 }
 @media only screen and (min-width: 1025px) and (max-width: 1399px) {
    #profileBody {
-      width: 137%;
-      min-width: 137%;
-      max-width: 137%;
+      width: 127%;
+      min-width: 127%;
+      max-width: 127%;
    }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
