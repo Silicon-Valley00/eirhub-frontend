@@ -257,7 +257,7 @@ function Dashboard(props) {
                      <h4>Heart Rate</h4>
                   </div>
                   <div className={styles.vitalsInfo}>
-                     <p>Pulse is the most important physiological indicator</p>
+                     <p>Your heart rate is the number of times each minute that your heart beats</p>
                   </div>
                </div>
                <div className={styles.vitals}>
@@ -279,7 +279,7 @@ function Dashboard(props) {
                      <h4>Temperature</h4>
                   </div>
                   <div className={styles.vitalsInfo}>
-                     <p>Pulse is the most important physiological indicator </p>
+                     <p>Body temperature is a measure of how body heat. </p>
                   </div>
                </div>
                <div className={styles.vitals}>
@@ -301,7 +301,7 @@ function Dashboard(props) {
                      <h4>Blood Pressure</h4>
                   </div>
                   <div className={styles.vitalsInfo}>
-                     <p>Pulse is the most important physiological indicator </p>
+                     <p>Blood pressure is the force of blood pushing against the artery walls</p>
                   </div>
                </div>
                <div className={styles.vitals}>
@@ -319,7 +319,7 @@ function Dashboard(props) {
                      <h4>Blood Glucose</h4>
                   </div>
                   <div className={styles.vitalsInfo}>
-                     <p>Pulse is the most important physiological indicator </p>
+                     <p>A test that screens for diabetes by measuring the level of glucose sugar.</p>
                   </div>
                </div>
             </div>
