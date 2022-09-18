@@ -30,10 +30,14 @@ import Message from './Pages/User Dashboard/Message/Message';
 import MessageUsers from './Pages/User Dashboard/components/MessageUsers';
 
 // imports for doctor's dashboard
-import MidDashboard from './Pages/DoctorDashboard/Dashboard/Dashboard';
-import DoctorRecords from './Pages/DoctorDashboard/Records/DoctorRecords';
-import DoctorSchedule from './Pages/DoctorDashboard/Schedule/DoctorSchedule';
-import DoctorMessage from './Pages/DoctorDashboard/DoctorMessage/DoctorMessage';
+import MidDashboard from './Pages/DocDashboard/Dashboard/Dashboard';
+import DoctorCalendar from './Pages/DocDashboard/components/Calendar';
+import DocDashboard from './Pages/DocDashboard/Docdashboard';
+import DocProfile from './Pages/DocDashboard/Profile/Profile';
+import DoctorPatients from './Pages/DocDashboard/DoctorPatients/DoctorPatients';
+import DoctorSchedule from './Pages/DocDashboard/Schedule/DoctorSchedule';
+import DoctorRecords from './Pages/DocDashboard/Records/DoctorRecords';
+import DoctorMessage from './Pages/DocDashboard/DoctorMessage/DoctorMessage';
 
 //Others
 import TagManager from 'react-gtm-module';
@@ -41,10 +45,7 @@ import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPati
 import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDoctor';
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
 import Loading from './Pages/Loading Page/loadingpage';
-import MainDoctor from './Pages/DoctorDashboard/MainDoctor';
-import DoctorCalendar from './Pages/DocDashboard/components/Calendar';
-import DocDashboard from './Pages/DocDashboard/Docdashboard';
-import DocProfile from './Pages/DocDashboard/Profile/Profile';
+
 //Google analytics
 const tagManagerArgs = {
    gtmID: 'GTM-WHSKBFK',
@@ -350,8 +351,9 @@ function App() {
             }
          />
          {/* End of routes for user dashboard */}
-         {/* Start of route for doctor-dashboard. */}
 
+         {/* Start of route for doctor-dashboard. */}
+         {/* Routes for main dashboard */}
          <Route
             path="/doctordashboard"
             exact
@@ -363,20 +365,53 @@ function App() {
                />
             }
          />
+         {/* Routes for doctor profile */}
          <Route
             path="/doctorprofile"
             exact
             element={
-               <MidDashboard
+               <DocDashboard
                   middleSection={<DocProfile />}
                   page={'doctorprofile'}
                />
             }
          />
-         <Route path="/doctorrecords" exact element={<DoctorRecords />} />
-         <Route path="/doctormessages" exact element={<DoctorMessage />} />
-         <Route path="/doctorschedule" exact element={<DoctorSchedule />} />
-         {/* End of route for doctor-dashboard */}
+         {/* Routes for doctor schedule */}
+         <Route
+            path="/doctorschedule"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorSchedule />}
+                  rightSection={<DoctorPatients />}
+                  page={'doctorschedule'}
+               />
+            }
+         />
+         {/* Routes for doctor records */}
+         <Route
+            path="/doctorrecords"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorRecords />}
+                  rightSection={<DoctorPatients />}
+                  page={'records'}
+               />
+            }
+         />
+         {/* Routes for doctor messages */}
+         <Route
+            path="/doctormessaging"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorMessage />}
+                  page={'doctormessage'}
+               />
+            }
+         />
+         {/* End of doctor routes */}
       </Routes>
    );
 }

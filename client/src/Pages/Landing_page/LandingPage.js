@@ -73,11 +73,11 @@ const LandingPage = () => {
             }
             // handleModalsClose={handleModalsClose}
          >
-            <AlertsMessageBox
+            {/* <AlertsMessageBox
                show={location.state === null ? false : location.state}
                state={0}
                message={'Profile could not load. Try again.'}
-            />
+            /> */}
             {/* navbar */}
 
             <Navbar
@@ -112,6 +112,9 @@ const LandingPage = () => {
             {/* footer */}
             {/* <div className={styles.back}>
                <div className={styles.inner_div}> */}
+
+                  <Footer handleModalSignup={handleModalSignup}/>
+               {/* </div>
             <Footer />
             {/* </div>
             </div> */}

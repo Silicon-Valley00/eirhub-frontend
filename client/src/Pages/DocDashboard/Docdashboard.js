@@ -50,10 +50,7 @@ const DocDashboard = (props) => {
                   />
                   {props.middleSection}
 
-                  <div className={styles.right}>
-                     <div className={styles.profile}></div>
-                     {props.rightSection}
-                  </div>
+                  <div className={styles.right}>{props.rightSection}</div>
                </div>
             </div>{' '}
          </div>

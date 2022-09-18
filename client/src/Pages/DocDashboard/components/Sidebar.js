@@ -17,7 +17,7 @@ import { Logout } from '../../../context/authcontext';
 import { useDispatch } from 'react-redux';
 import { setPatientAuth } from '../../../Store/Actions';
 
-function Sidebar(props) {
+const Sidebar = (props) => {
    const navigate = useNavigate();
    const dispatch = useDispatch();
 
@@ -38,9 +38,6 @@ function Sidebar(props) {
                className={props.openMenu ? styles.active : styles.notActive}
             >
                <div className={styles.top}>
-                  {/* <div className={styles.logo}>
-                     <h2>Eirhub</h2>
-                  </div> */}
                   <div className={styles.close} id={styles.closeBtn}>
                      <i
                         onClick={() => {
@@ -86,7 +83,9 @@ function Sidebar(props) {
                      <Link to={'/doctorschedule'}>
                         <li
                            className={
-                              props.page === 'schedule' ? styles.active : ''
+                              props.page === 'doctorschedule'
+                                 ? styles.active
+                                 : ''
                            }
                         >
                            <span className={styles.icons}>
@@ -97,7 +96,7 @@ function Sidebar(props) {
                            <h3>Schedule</h3>
                         </li>
                      </Link>
-                     <Link to={'/doctorreports'}>
+                     <Link to={'/doctorrecords'}>
                         <li
                            className={
                               props.page === 'records' ? styles.active : ''
@@ -114,7 +113,9 @@ function Sidebar(props) {
                      <Link to={'/doctormessaging'}>
                         <li
                            className={
-                              props.page === 'message' ? styles.active : ''
+                              props.page === 'doctormessage'
+                                 ? styles.active
+                                 : ''
                            }
                         >
                            <span className={styles.icons}>
@@ -144,5 +145,5 @@ function Sidebar(props) {
          </div>
       </>
    );
-}
+};
 export default Sidebar;
