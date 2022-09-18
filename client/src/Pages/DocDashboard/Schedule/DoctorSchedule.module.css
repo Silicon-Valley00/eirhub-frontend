@@ -1,10 +1,10 @@
 /* My screen >1900px*/
 .wrapper {
    min-height: 59rem;
-   width: 100%;
+   width: 60vw;
    height: 100vh;
    display: flex;
-   justify-content: end;
+justify-content: center;
 }
 .DSContainer {
    /* display: flex;
@@ -17,13 +17,13 @@
 }
 
 .DSContainer1 {
-   width: 60rem;
+   width: 45vw;
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
    height: 100vh;
    min-height: 55rem;
-   flex-grow: inherit;
+   justify-self: center
 }
 
 .DSContainer2 {
@@ -450,19 +450,18 @@
 }
 /*smaller laptop screens*/
 @media (max-width: 1024px) {
+   .wrapper{
+      width: 100%;
+   }
    .DSContainer {
-      margin-left: 5rem;
-      display: grid;
-      width: auto;
       height: 90rem;
       font-size: 1rem;
-      grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: 0.4fr 0.3fr;
    }
    .DSContainer1 {
-      width: 78%;
-      margin-left: 10rem;
+      width: 100%;
+      /* margin-left: 10rem; */
       height: 59rem;
+      justify-self: flex-start;
    }
    .DSpatientContainer {
       width: 90%;

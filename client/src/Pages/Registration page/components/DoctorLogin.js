@@ -14,6 +14,8 @@ import {
    setDoctorAuth,
 } from '../../../Store/DoctorAction.js';
 import store from '../../../Store/ReducerStore';
+import { persistor } from '../../../Store/ReducerStore';
+
 function DoctorLogin(props) {
    const docLoginFormRef = useRef();
    const navigate = useNavigate();
@@ -36,13 +38,23 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
-         navigate('/loading', { state: false });
+         
 
          dispatch(setDoctorAuth(true));
          setTimeout(() => {
-            navigate('/doctordashboard');
-         }, 1500);
-         console.log(store.getState());
+            if (store.getState().okToRoute === true) {
+               navigate('/doctordashboard');
+               console.log(store.getState());
+            } else {
+               setTimeout(() => {
+                  persistor.purge();
+               }, 200);
+
+               dispatch(setDoctorAuth(false));
+               navigate('/landing-page', { state: true });
+               console.log(store.getState());
+            }
+         }, 1.5 * 1000);
       } else {
          // when account fails to login
          setBtnActive(feedback[0]);

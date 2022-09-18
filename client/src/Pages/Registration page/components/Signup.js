@@ -16,6 +16,8 @@ import {
    setUserInfo,
 } from '../../../Store/Actions.js';
 import { SignUpUser } from '../../../context/authcontext';
+import store from '../../../Store/ReducerStore';
+import { persistor } from '../../../Store/ReducerStore';
 
 function Signup(props) {
    const navigate = useNavigate();
@@ -69,13 +71,23 @@ function Signup(props) {
          );
          console.log('patient', feedback[1].id_patient);
          dispatch(fetchProfileOnSignup(feedback[1].id_patient));
-         navigate('/loading', { state: { status: true } });
 
          dispatch(setPatientAuth(true));
 
          setTimeout(() => {
-            navigate('/userdashboard');
-         }, 1500);
+            if (store.getState().okToRoute === true) {
+               navigate('/userdashboard');
+               console.log(store.getState());
+            } else {
+               setTimeout(() => {
+                  persistor.purge();
+               }, 200);
+
+               dispatch(setPatientAuth(false));
+               navigate('/landing-page', { state: true });
+               console.log(store.getState());
+            }
+         }, 1.5 * 1000);
       } else {
          setBtnActive(feedback[0]);
          setBtnValue('Create Account');

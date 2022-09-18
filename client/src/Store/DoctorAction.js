@@ -5,6 +5,8 @@ import {
 } from './ActionTypes';
 import axios from 'axios';
 
+import { setOkToRoute } from './Actions';
+
 // Action: Sets the profile details for doctors
 export const setDoctorProfile = (doctorProfile) => {
    return {
@@ -49,6 +51,7 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
                //returns response
                // alert('doctor profile fetched');
                dispatch(setDoctorProfile(response.data.msg));
+               dispatch(setOkToRoute(true));
             }
          } else {
             //takes all statuses aside 200
