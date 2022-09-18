@@ -87,7 +87,7 @@
 }
 
 .hero_image {
-   padding-top: 2rem;
+   /* padding-top: 2rem; */
    width: 50%;
    /* max-height: 100%; */
    /* padding-right: 20px; */
@@ -184,6 +184,75 @@
 @media (min-width: 960px) {
    #hero_body {
       padding-top: 0;
+      height: 40rem;
+   }
+
+   .hero_container {
+      padding-top: 5rem;
+      height: 100%;
+   }
+
+   .hero_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      padding: 0 3rem;
+      /* gap: 5%; */
+   }
+
+   .hero_content {
+      color: var(--midcol);
+      position: initial;
+      width: 50%;
+      height: 30rem;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+   }
+
+   .hero_image {
+      width: 35rem;
+      height: 100%;
+      /* position: relative; */
+   }
+
+   .hero__image {
+      width: 100%;
+      overflow: hidden;
+      /* display: absolute; */
+      /* bottom: 0; */
+      /* float: right; */
+      height: 100%;
+      object-fit: cover;
+   }
+
+   .content__title {
+      color: var(--deepcol);
+      text-align: left;
+      font-size: 18pt;
+   }
+
+   .content__info {
+      font-size: 10pt;
+      color: var(--deepcol);
+   }
+
+   .content_button {
+      justify-content: flex-start;
+      padding-top: 3rem;
+   }
+}
+
+@media (min-width: 1024px) {
+   .content__button {
+      width: 25rem;
+   }
+}
+
+@media (min-width: 1200px) {
+   #hero_body {
+      padding-top: 0;
       height: 60rem;
    }
 
@@ -203,7 +272,7 @@
    .hero_content {
       color: var(--midcol);
       position: initial;
-      width: 40%;
+      width: 50%;
       height: 30rem;
       display: flex;
       flex-direction: column;
@@ -226,10 +295,13 @@
       object-fit: cover;
    }
 
+   .content_title {
+      width: 100%;
+   }
    .content__title {
       color: var(--deepcol);
       text-align: left;
-      font-size: 25pt;
+      font-size: 20pt;
    }
 
    .content__info {
@@ -240,44 +312,6 @@
    .content_button {
       justify-content: flex-start;
       padding-top: 3rem;
-   }
-}
-
-@media (min-width: 1024px) {
-   .content__button {
-      width: 25rem;
-   }
-}
-
-@media (min-width: 1200px) {
-   #hero_body {
-      width: 100%;
-      /* height: 50rem; */
-      background-color: var(--gray);
-      padding-left: 4rem;
-      padding-right: 4rem;
-   }
-
-   .content__title {
-      font-size: 30pt;
-      font-weight: 600;
-   }
-
-   /* .hero_image {
-      padding-top: 8rem;
-      width: 50%;
-      float: right;
-      overflow: hidden;
-      margin-left: 2rem;
-   }
-
-   .hero__image {
-      width: 100%;
-      overflow: hidden;
-   } */
-
-   .hero_content {
-      padding-bottom: 7rem;
    }
 }
 

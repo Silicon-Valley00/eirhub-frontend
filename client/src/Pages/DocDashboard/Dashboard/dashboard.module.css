@@ -4,13 +4,6 @@
    height: 100vh;
    color: var((--midcol));
    padding: 4rem 2rem 4rem 2rem;
-   overflow-y: scroll;
-   scrollbar-width: none;
-   -ms-overflow-style: none;
-}
-
-.section::-webkit-scrollbar {
-   display: none;
 }
 
 .middle_section {
@@ -18,6 +11,12 @@
    flex-direction: column;
    align-items: center;
    gap: 3rem;
+   overflow-y: scroll;
+   scrollbar-width: none;
+   -ms-overflow-style: none;
+}
+.middle_section::-webkit-scrollbar {
+   display: none;
 }
 
 .right_pane {
