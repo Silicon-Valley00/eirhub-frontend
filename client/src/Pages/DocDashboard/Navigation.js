@@ -11,6 +11,13 @@ const Navigation = ({ nav, openFunc }) => {
    const userPatient = useSelector((state) => state?.profile.first_name);
    const userDoctor = useSelector((state) => state?.doctorProfile.first_name);
 
+   var nameToShow;
+   if (isPatientAuth === true) {
+      nameToShow = userPatient;
+   } else if (isDoctorAuth === true) {
+      nameToShow = userDoctor;
+   }
+
    const userProfileImage = useSelector(
       (state) => state.doctorProfile?.person_image
    );
@@ -37,9 +44,7 @@ const Navigation = ({ nav, openFunc }) => {
                   alt="avatar"
                   className={styles.avatar_img}
                />
-               <p className={styles.hello_msg}>
-                  Hello, {isPatientAuth === true ? userPatient : userDoctor}
-               </p>
+               <p className={styles.hello_msg}>Hello, {nameToShow}</p>
             </div>
          </div>
       </nav>
