@@ -1,5 +1,5 @@
 import React from 'react';
-import landingpageImage from '../../../assets/Reduced_hero.png';
+import landingpageImage from '../../../assets/doctor_reduced.svg';
 import heroStyles from './hero.module.css';
 import Typewriter from 'typewriter-effect';
 
