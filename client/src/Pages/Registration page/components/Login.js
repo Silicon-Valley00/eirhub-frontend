@@ -75,7 +75,7 @@ function Login(props) {
 
                dispatch(setPatientAuth(false));
                navigate('/landing-page', { state: true });
-               console.log(store.getState());
+               console.log("Store State", store.getState());
             }
          }, 1.5 * 1000);
       } else {

@@ -121,7 +121,11 @@ export const fetchProfile = (userID, guardianID) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(fetchGuardianInfo(userID, guardianID));
+               if (guardianID) {
+                  dispatch(fetchGuardianInfo(userID, guardianID));
+               } else {
+                  dispatch(setOkToRoute(true));
+               }
             }
          } else {
             //takes all statuses aside 200
@@ -253,14 +257,18 @@ export const updateProfile = (
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(
-                  updateGuardianInfo(
-                     guardianID,
-                     guardianData,
-                     userID,
-                     healthData
-                  )
-               );
+               if (guardianID) {
+                  dispatch(
+                     updateGuardianInfo(
+                        guardianID,
+                        guardianData,
+                        userID,
+                        healthData
+                     )
+                  );
+               } else {
+                  dispatch(updateHealthDetails(userID, healthData));
+               }
             }
          } else {
             //takes all statuses aside 200
