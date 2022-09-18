@@ -215,7 +215,7 @@ const DoctorSchedule = (props) => {
                                              )
                                           }
                                        >
-                                          <div className={DSstyles.profileImageDic}>
+                                          <div className={DSstyles.profileImageDiv}>
                                           <img
                                              src={
                                                 data?.patient_info.person_image
