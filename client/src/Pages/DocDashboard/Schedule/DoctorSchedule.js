@@ -215,12 +215,14 @@ const DoctorSchedule = (props) => {
                                              )
                                           }
                                        >
+                                          <div className={DSstyles.profileImageDic}>
                                           <img
                                              src={
                                                 data?.patient_info.person_image
                                              }
                                              alt={'img'}
                                           />
+                                          </div>
                                        </td>
                                        <td
                                           onClick={() =>
