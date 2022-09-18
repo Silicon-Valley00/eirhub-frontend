@@ -77,6 +77,9 @@
    border-radius: 7px;
    text-align: center;
 }
+.DSContainer1 input[type='text']{
+   background: var(--white);
+}
 .DSContainer1 h2 {
    color: #0d3f58;
    width: 70%;
