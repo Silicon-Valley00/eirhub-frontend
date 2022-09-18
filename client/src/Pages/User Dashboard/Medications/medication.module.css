@@ -19,12 +19,15 @@
    min-height: 36rem;
    padding-bottom: 1rem;
 }
+.emptyMessageContainer {
+   display: flex;
+   justify-content: center;
+}
 .medicationsBoxContent p.emptyMessage {
    color: var(--tablehead);
    font-weight: 400;
    font-family: 'Poppins';
    font-size: 1.2rem;
-   text-align: center;
 }
 
 .medicationBox {
