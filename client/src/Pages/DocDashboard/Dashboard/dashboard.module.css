@@ -253,6 +253,9 @@
 
 @media (min-width: 769px) and (max-width: 860px) {
    .section {
+      width: 130%;
+   }
+   .middle_section {
       width: 120%;
    }
 }
