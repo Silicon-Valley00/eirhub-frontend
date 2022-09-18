@@ -208,6 +208,7 @@
       height: 30rem;
       display: flex;
       flex-direction: column;
+      padding-bottom: 6rem;
       margin-bottom: 2rem;
    }
 
@@ -233,6 +234,11 @@
       font-size: 18pt;
    }
 
+   .content_info {
+      height: 7rem;
+      max-height: 10rem;
+   }
+
    .content__info {
       font-size: 10pt;
       color: var(--deepcol);
@@ -240,7 +246,7 @@
 
    .content_button {
       justify-content: flex-start;
-      padding-top: 3rem;
+      padding-top: 2rem;
    }
 }
 
