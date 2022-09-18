@@ -1,5 +1,4 @@
 .calendar {
-   margin-top: 1rem;
    background-color: var(--gray);
    height: 14rem;
    width: 100%; /*
@@ -25,7 +24,7 @@ padding-right: 2.6rem; */
    margin-top: 1rem;
    margin-bottom: 0.2rem;
    color: var(--midcol);
-   font-weight: 600; 
+   font-weight: 600;
    font-size: 1.5rem;
    text-align: center;
 }

@@ -10,12 +10,17 @@ const Navigation = ({ nav, openFunc }) => {
 
    const userPatient = useSelector((state) => state?.profile.first_name);
    const userDoctor = useSelector((state) => state?.doctorProfile.first_name);
+   const docImage = useSelector((state) => state.doctorProfile?.person_image);
+   const patientImage = useSelector((state) => state.profile?.person_image);
 
    var nameToShow;
+   var imageToShow;
    if (isPatientAuth === true) {
       nameToShow = userPatient;
+      imageToShow = patientImage;
    } else if (isDoctorAuth === true) {
       nameToShow = userDoctor;
+      imageToShow = docImage;
    }
 
    const userProfileImage = useSelector(
@@ -40,7 +45,7 @@ const Navigation = ({ nav, openFunc }) => {
             {/* Avatar with welcome message */}
             <div className={styles.avatar}>
                <img
-                  src={userProfileImage !== '' ? userProfileImage : avatarThree}
+                  src={imageToShow}
                   alt="avatar"
                   className={styles.avatar_img}
                />
