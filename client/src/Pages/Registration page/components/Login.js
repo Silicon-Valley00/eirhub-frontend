@@ -33,9 +33,7 @@ function Login(props) {
    const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
-   const okToRoute = useSelector((state) => state.okToRoute);
-
-   // handles registration flow based on feedback from database
+   // handles registeration flow based on feedback from database
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
 

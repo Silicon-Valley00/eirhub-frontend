@@ -22,19 +22,19 @@ function Loading(props) {
 
    const dispatch = useDispatch();
 
-   useEffect(() => {
-      if (auth === true && status === true) {
-         console.log('running');
-         dispatch(
-            addNewHealthDetails(
-               props.savedHealthDetails,
-               props.savedGuardianDetails,
-               patientID,
-               props.savedProfile
-            )
-         );
-      }
-   });
+   // useEffect(() => {
+   //    if (auth === true && status === true) {
+   //       console.log('running');
+   //       dispatch(
+   //          addNewHealthDetails(
+   //             props.savedHealthDetails,
+   //             props.savedGuardianDetails,
+   //             patientID,
+   //             props.savedProfile
+   //          )
+   //       );
+   //    }
+   // });
    return (
       <>
          {/* <AlertsMessageBox
