@@ -1,5 +1,5 @@
 /* My screen >1900px*/
-.wrapper{
+.wrapper {
    min-height: 59rem;
    width: 100%;
    height: 100vh;
@@ -15,6 +15,7 @@
    height: 100vh;
    width: 45rem;
 }
+
 .DSContainer1 {
    width: 60rem;
    background-color: #ecf3fc;
@@ -607,7 +608,7 @@
    .appointmentContainer .imgSection {
       padding-left: 0;
    }
-   .appointmentContainer .imgHeader{
+   .appointmentContainer .imgHeader {
       padding: 0;
       width: 1rem;
    }
@@ -682,7 +683,7 @@
    .appointmentContainer .imgSection {
       padding-left: 0;
    }
-   .appointmentContainer .imgHeader{
+   .appointmentContainer .imgHeader {
       width: 1rem;
       padding: 0;
    }
@@ -732,7 +733,7 @@
       width: 40px;
       height: 40px;
    }
-   .appointmentContainer .imgHeader{
+   .appointmentContainer .imgHeader {
       width: 1rem;
       padding: 0;
    }

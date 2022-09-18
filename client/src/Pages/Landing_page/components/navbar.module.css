@@ -141,15 +141,12 @@
       padding-right: 2rem;
       height: 3rem;
       background-color: var(--gray);
-      /* background-color: inherit; */
-      /* opacity: 0.9; */
    }
 
    .linkContainer {
       display: flex;
       width: 100%;
       position: unset;
-      /* background-color: var(--gray); */
       background-color: inherit;
       align-items: center;
       justify-content: center;
