@@ -71,6 +71,7 @@ main .vitalsBox .vitals:hover {
 }
 .vitalsInfo {
    width: 100%;
+   height: 50%;
    -webkit-line-clamp: 2;
    text-overflow: ellipsis;
    display: -webkit-box;
@@ -499,7 +500,7 @@ main#midsection::-webkit-scrollbar-thumb {
    }
    .vitalsInfo {
       -webkit-line-clamp: 4;
-      font-size: 55%;
+      font-size: 45%;
    }
 
    main#midsection
@@ -631,7 +632,7 @@ main#midsection::-webkit-scrollbar-thumb {
       height: 65%;
       width: 61%;
       -webkit-line-clamp: 5;
-      font-size: 60%;
+      font-size: 50%;
       float: right;
       display: block;
    }
@@ -681,7 +682,7 @@ main#midsection::-webkit-scrollbar-thumb {
    }
    .vitalsInfo {
       -webkit-line-clamp: 3;
-      font-size: 0.5rem;
+      font-size: 0.4rem;
       font-weight: 400;
    }
    .medicationBox h2 {
@@ -755,7 +756,7 @@ main#midsection::-webkit-scrollbar-thumb {
    }
    .vitalsInfo {
       -webkit-line-clamp: 3;
-      font-size: 0.6rem;
+      font-size: 0.5rem;
       width: 65%;
       float: right;
    }
