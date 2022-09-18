@@ -33,8 +33,6 @@ function Login(props) {
    const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
-   const okToRoute = useSelector((state) => state.okToRoute);
-
    // handles registeration flow based on feedback from database
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
@@ -63,7 +61,7 @@ function Login(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
-         navigate('/loading', { state: { status: false } });
+         // 
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
@@ -78,7 +76,7 @@ function Login(props) {
                navigate('/landing-page', { state: true });
                console.log(store.getState());
             }
-         }, 2.5 * 1000);
+         }, 1.5 * 1000);
       } else {
          setBtnActive(feedback[0]);
          setBtnValue('Login');

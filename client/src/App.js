@@ -46,13 +46,6 @@ import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDocto
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
 import Loading from './Pages/Loading Page/loadingpage';
 
-//Google analytics
-const tagManagerArgs = {
-   gtmID: 'GTM-WHSKBFK',
-};
-
-TagManager.initialize(tagManagerArgs);
-
 AOS.init();
 
 function App() {

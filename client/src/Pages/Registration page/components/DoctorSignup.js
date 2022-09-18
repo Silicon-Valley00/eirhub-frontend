@@ -15,6 +15,8 @@ import {
    setDoctorAuth,
 } from '../../../Store/DoctorAction.js';
 import { SignUpUser } from '../../../context/authcontext';
+import store from '../../../Store/ReducerStore';
+import { persistor } from '../../../Store/ReducerStore';
 
 function DoctorSignup(props) {
    const navigate = useNavigate();
@@ -57,12 +59,23 @@ function DoctorSignup(props) {
          //       }`
          //    );
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
-         navigate('/loading', { state: false });
 
          dispatch(setDoctorAuth(true));
+
          setTimeout(() => {
-            navigate('/doctordashboard');
-         }, 1500);
+            if (store.getState().okToRoute === true) {
+               navigate('/doctordashboard');
+               console.log(store.getState());
+            } else {
+               setTimeout(() => {
+                  persistor.purge();
+               }, 200);
+
+               dispatch(setDoctorAuth(false));
+               navigate('/landing-page', { state: true });
+               console.log(store.getState());
+            }
+         }, 1.5 * 1000);
       } else {
          // when signup was unsuccessful
          setBtnActive(feedback[0]);
