@@ -13,3 +13,8 @@
    box-sizing: border-box;
    font-family: 'Poppins', sans-serif;
 }
+
+input::placeholder {
+   font-weight: bolder;
+   color: grey;
+}

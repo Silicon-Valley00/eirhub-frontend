@@ -20,6 +20,11 @@
    width: 100%;
    /* height: 84%; */
 }
+
+/* .form input::placeholder{
+   font-weight: bolder;
+   color: grey;
+} */
 .formTitle {
    width: 80%;
    color: var(--deepcol);

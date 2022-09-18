@@ -1,10 +1,12 @@
-/* .main {
-   display: none;
-} */
+.main {
+   /* display: none; */
+   /* width: 15rem; */
+   min-width: 250px;
+}
 
 .patientsSection {
-   width: 20rem;
-   min-width: 200px;
+   
+   min-width: 250px;
    background-color: #ecf3fc;
    border-radius: 1.25rem;
    height: 100%;
