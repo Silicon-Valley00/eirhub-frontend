@@ -110,6 +110,7 @@ function Medication(props) {
                      </button>
                      <button
                         onClick={() => {
+                           console.log(item.id)
                            dispatch(deletePrescriptions(item.id));
                         }}
                      >

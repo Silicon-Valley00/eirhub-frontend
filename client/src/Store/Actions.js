@@ -639,7 +639,7 @@ export async function fetchAppointments(userID, status) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/appointments/?patient_id=${userID}&accepted=${status}`,
+         url: `http://127.0.0.1:5000/appointments/?id_patient=${userID}&accepted=${status}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
