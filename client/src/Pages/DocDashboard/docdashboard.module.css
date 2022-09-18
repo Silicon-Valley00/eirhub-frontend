@@ -111,12 +111,6 @@
    }
 }
 
-@media (max-width: 860px) {
-   .container {
-      width: 120%;
-   }
-}
-
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    .userbody {
       overflow-x: hidden;

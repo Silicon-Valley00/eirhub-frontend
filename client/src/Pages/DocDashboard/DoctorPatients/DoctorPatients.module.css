@@ -1,3 +1,7 @@
+/* .main {
+   display: none;
+} */
+
 .patientsSection {
    width: 20rem;
    min-width: 200px;
@@ -46,7 +50,6 @@
    display: flex;
    align-items: center;
    width: 90%;
-   
 }
 .imageDiv img {
    margin: 0 20px;
@@ -62,18 +65,23 @@
 .close {
    display: none;
 }
+
+@media (min-width: 920px) {
+   .main {
+      display: block;
+      height: 100%;
+   }
+}
+
 @media (max-width: 1200px) {
    .patientsSection {
       grid-column: 1/2;
-      /* height: 59rem; */
       overflow: scroll;
       border-radius: 20px;
    }
 }
 @media (max-width: 1024px) {
    .patientsSection {
-      width: 40%;
-      /* height: 400px; */
       overflow-y: scroll;
    }
    .patientsSection ul {
@@ -105,8 +113,8 @@
       cursor: pointer;
    }
 }
-@media(max-width: 768px){
-   .patientsSection{
+@media (max-width: 800px) {
+   .patientsSection {
       margin: auto;
       position: absolute;
       top: 0;
@@ -120,16 +128,16 @@
       min-width: 300px;
    }
    .menu {
-   display: block;
-   width: 20px;
-   height: 20px;
-   cursor: pointer;
-   position: absolute;
-   top: 1rem;
-   right: 1rem;
-   z-index: 10000;
+      display: block;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10000;
    }
-   .show{
+   .show {
       border-radius: 0;
       display: block;
    }
@@ -139,28 +147,27 @@
       right: -40rem;
    }
    .logo_close {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   padding: 0 2rem;
-}
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+   }
 
-/* .logo {
+   /* .logo {
    font-size: 20px;
    color: var(--lightcol);
    font-weight: 600;
    font-family: var(--logofont);
    padding-left: 10px;
 } */
-.close {
-   display: block;
-   color: var(--midcol);
-   cursor: pointer;
-}
+   .close {
+      display: block;
+      color: var(--midcol);
+      cursor: pointer;
+   }
 }
 
 @media (max-width: 375px) {
-   
    .patientsSection::-webkit-scrollbar,
    .patientsSection::-webkit-scrollbar {
       width: 0.3rem;
@@ -180,9 +187,8 @@
       cursor: pointer;
    }
 }
-@media(max-width: 320px){
-   .patientsSection{
+@media (max-width: 320px) {
+   .patientsSection {
       width: 100%;
    }
-
 }
