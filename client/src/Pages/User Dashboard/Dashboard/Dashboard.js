@@ -14,6 +14,7 @@ import {
    fetchMedications,
    fetchProfile,
    setAppointmentDates,
+   setMedicationsTemp,
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
@@ -23,6 +24,7 @@ const mapStateToProps = (state) => {
    return {
       savedHealthDetails: state.health,
       savedUserInfo: state.user,
+      tempMeds: state.tempMedications,
    };
 };
 
@@ -32,6 +34,7 @@ function Dashboard(props) {
    const [medications, setMedications] = useState([]);
    const [appointments, setAppointments] = useState([]);
    const patientID = useSelector((state) => state.user.id_patient);
+   const [counter, setCounter] = useState(1);
 
    // useEffect(() => {
    //    async function fetchUserData() {
@@ -48,6 +51,7 @@ function Dashboard(props) {
       async function fetchdata() {
          const items = await fetchMedications(patientID);
          setMedications(items);
+
          const schedules = await fetchAppointments(patientID, true);
          setAppointments(schedules);
          console.log(schedules);
@@ -83,11 +87,13 @@ function Dashboard(props) {
       list = (
          <tr
             style={{
-               width: '200%',
+               width: '250%',
                display: 'flex',
                justifyContent: 'center',
                alignItems: 'center',
                color: '#c2c9d1',
+               marginTop: '2rem',
+               fontSize: '150%',
             }}
          >
             Nothing to show here.
@@ -125,11 +131,13 @@ function Dashboard(props) {
          list = (
             <tr
                style={{
-                  width: '200%',
+                  width: '250%',
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                   color: '#c2c9d1',
+                  marginTop: '2rem',
+                  fontSize: '150%',
                }}
             >
                Nothing to show here.
@@ -145,11 +153,13 @@ function Dashboard(props) {
       appointmentsData = (
          <tr
             style={{
-               width: '700%',
+               width: '1200%',
                display: 'flex',
                justifyContent: 'center',
                alignItems: 'center',
                color: '#c2c9d1',
+               marginTop: '2.5rem',
+               fontSize: '150%',
             }}
          >
             Nothing to show here.
@@ -190,11 +200,13 @@ function Dashboard(props) {
          appointmentsData = (
             <tr
                style={{
-                  width: '900%',
+                  width: '1200%',
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                   color: '#c2c9d1',
+                  marginTop: '2.5rem',
+                  fontSize: '150%',
                }}
             >
                Nothing to show here.
@@ -229,9 +241,35 @@ function Dashboard(props) {
             updatePrescriptions(data.id_prescription, updatedPrescription)
          );
       } else {
+         console.log('uncheck run');
+         console.log('data id', data.id_prescription);
+         console.log('data itmes stored', props.tempMeds);
+
          //prevents checkbox from changing to false
-         event.preventDefault();
-         return false;
+         var result = props.tempMeds.find(
+            (item) => item.id_prescription === data.id_prescription
+         );
+         console.log('result', result);
+
+         if (result === undefined || result === null) {
+            console.log('prevented');
+            event.preventDefault();
+            return false;
+         } else {
+            const updatedPrescription = {
+               drug_name: data.drug_name,
+               dosage: data.dosage,
+               time_of_administration: data.time_of_administration,
+               start_date: data.start_date,
+               end_date: data.end_date,
+               last_taken_date: result.last_taken_date,
+               id_patient: patientID,
+            };
+            //updating prescription
+            dispatch(
+               updatePrescriptions(data.id_prescription, updatedPrescription)
+            );
+         }
       }
    }
 
@@ -258,7 +296,10 @@ function Dashboard(props) {
                      <h4>Heart Rate</h4>
                   </div>
                   <div className={styles.vitalsInfo}>
-                     <p>Your heart rate is the number of times each minute that your heart beats</p>
+                     <p>
+                        Your heart rate is the number of times each minute that
+                        your heart beats
+                     </p>
                   </div>
                </div>
                <div className={styles.vitals}>
@@ -302,7 +343,10 @@ function Dashboard(props) {
                      <h4>Blood Pressure</h4>
                   </div>
                   <div className={styles.vitalsInfo}>
-                     <p>Blood pressure is the force of blood pushing against the artery walls</p>
+                     <p>
+                        Blood pressure is the force of blood pushing against the
+                        artery walls
+                     </p>
                   </div>
                </div>
                <div className={styles.vitals}>
@@ -320,7 +364,10 @@ function Dashboard(props) {
                      <h4>Blood Glucose</h4>
                   </div>
                   <div className={styles.vitalsInfo}>
-                     <p>A test that screens for diabetes by measuring the level of glucose sugar.</p>
+                     <p>
+                        A test that screens for diabetes by measuring the level
+                        of glucose sugar.
+                     </p>
                   </div>
                </div>
             </div>

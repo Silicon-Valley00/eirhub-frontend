@@ -40,6 +40,7 @@ import DoctorRecords from './Pages/DocDashboard/Records/DoctorRecords';
 import DoctorMessage from './Pages/DocDashboard/DoctorMessage/DoctorMessage';
 
 //Others
+import Loading from './Pages/Loading Page/loadingpage';
 import TagManager from 'react-gtm-module';
 import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPatient';
 import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDoctor';
@@ -246,6 +247,7 @@ function App() {
       //    /* Use the routes below if you do not want restrictions with your routes */
       <Routes>
          <Route path="*" exact element={<PageNotFound />} />
+         <Route path="/loading" exact element={<Loading />} />
          {/* Route for landing page and it's sub-pages */}
 
          <Route
