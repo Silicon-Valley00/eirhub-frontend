@@ -157,7 +157,7 @@ function Medication(props) {
                      </div>
                   </div>
                   <div className={styles.formBox}>
-                     <label htmlFor="dosage"> Dosage</label>
+                     <label htmlFor="dosage">Dosage</label>
                      <div className={styles.formBoxInputs}>
                         <i>
                            <GiPillDrop />
@@ -166,7 +166,7 @@ function Medication(props) {
                            name="dosage"
                            type="text"
                            id="dosage"
-                           placeholder="eg.1/x3"
+                           placeholder="eg. 1/x3"
                            onChange={(event) => {
                               setDrugDosage(event.target.value);
                               setIsError(false);
@@ -176,7 +176,7 @@ function Medication(props) {
                      </div>
                   </div>
                   <div className={styles.formBox}>
-                     <label htmlFor="time"> Time</label>
+                     <label htmlFor="time"> Time Period</label>
                      <div className={styles.formBoxInputs}>
                         <i>
                            <TiTime />
@@ -185,7 +185,7 @@ function Medication(props) {
                            name="time"
                            type="text"
                            id="time"
-                           placeholder="Select period to take drug"
+                           placeholder="eg. Before Meal"
                            onChange={(event) => {
                               setDrugTime(event.target.value);
                               setIsError(false);

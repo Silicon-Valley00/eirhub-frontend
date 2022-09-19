@@ -22,6 +22,7 @@
    color: var(--midcol);
    font-size: 1.2rem;
    font-weight: 500;
+   margin-bottom: 0.6rem;
 }
 .doctorDetailsField input[type='text'] {
    justify-content: flex-start;
@@ -48,6 +49,7 @@
    color: var(--midcol);
    font-size: 1.2rem;
    font-weight: 500;
+   margin-bottom: 0.6rem;
 }
 .conditionDetails {
    display: flex;

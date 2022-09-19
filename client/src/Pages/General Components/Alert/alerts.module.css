@@ -12,27 +12,27 @@
 }
 
 .alertSuccess {
-   background: var(--successSoft);
-   padding: 1.25rem 2.5rem;
-   min-width: 26.25rem;
+   background: var(--white);
+   padding: 0.5rem 2.5rem;
+   min-width: 23.25rem;
    overflow: hidden;
    position: absolute;
    right: 0;
    top: 0.7rem;
    border-radius: 0.25rem;
-   border-left: 0.5rem solid var(--successbold);
+   border: 1px solid var(--midcol);
    z-index: 10;
 }
 .alertError {
-   background: var(--errorSoft);
-   padding: 1.25rem 2.5rem;
-   min-width: 26.25rem;
+   background: var(--white);
+   padding: 0.5rem 2.5rem;
+   min-width: 23.25rem;
    overflow: hidden;
    position: absolute;
    right: 0;
    top: 0.7rem;
    border-radius: 0.25rem;
-   border-left: 0.5rem solid var(--errorbold);
+   border: 1px solid red;
    z-index: 10;
 }
 .alertSuccess.show {
@@ -80,8 +80,8 @@
    left: 1.25rem;
    top: 57%;
    transform: translateY(-50%);
-   color: var(--successMild);
-   font-size: 2rem;
+   color: var(--lightcol);
+   font-size: 1.5rem;
    padding: 0.2rem;
    display: flex;
    justify-content: center;
@@ -92,8 +92,8 @@
    left: 1.25rem;
    top: 57%;
    transform: translateY(-50%);
-   color: var(--errorMild);
-   font-size: 2rem;
+   color: red;
+   font-size: 1.5rem;
    padding: 0.2rem;
    display: flex;
    justify-content: center;
@@ -102,20 +102,20 @@
 
 .alertSuccess .message {
    padding: 0 1.25rem;
-   font-size: 1.12rem;
-   color: var(--successMild);
+   font-size: 0.8rem;
+   color: var(--lightcol);
 }
 .alertError .message {
    padding: 0 1.25rem;
-   font-size: 1.12rem;
-   color: var(--errorMild);
+   font-size: 0.8rem;
+   color: red;
 }
 .alertSuccess .closeBtn {
    position: absolute;
    right: 0;
    top: 55%;
    transform: translateY(-50%);
-   background: var(--successMildLow);
+   background: var(--gray);
    padding: 2rem 1.12rem;
    cursor: pointer;
 }
@@ -129,18 +129,18 @@
    cursor: pointer;
 }
 .alertSuccess .closeBtn:hover {
-   background: var(--successMildHigh);
+   background: var(--gray);
 }
 .alertError .closeBtn:hover {
    background: var(--errorMildHigh);
 }
 .alertSuccess .closeBtn i {
-   color: var(--successMild);
+   color: var(--midcol);
    font-size: 1.3rem;
    line-height: 2.5rem;
 }
 .alertError .closeBtn i {
-   color: var(--errorMild);
+   color: red;
    font-size: 1.3rem;
    line-height: 2.5rem;
 }

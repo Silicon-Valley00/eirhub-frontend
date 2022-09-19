@@ -203,7 +203,7 @@ select::-ms-expand {
    max-width: 100%;
    width: 100%;
    height: calc(100vh -55vh);
-   min-height: calc(100vh - 55vh);
+   max-height: calc(100vh - 55vh);
    /* max-height: calc(666px - 21rem); */
    padding-bottom: 2rem;
 }
