@@ -15,6 +15,6 @@
 }
 
 input::placeholder {
-   font-weight: bolder;
+   font-weight: bold;
    color: grey;
 }
