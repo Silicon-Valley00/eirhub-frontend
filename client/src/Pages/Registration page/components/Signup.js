@@ -73,6 +73,7 @@ function Signup(props) {
          dispatch(fetchProfileOnSignup(feedback[1].id_patient));
 
          dispatch(setPatientAuth(true));
+         navigate('/loading', { state: { status: true } });
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
