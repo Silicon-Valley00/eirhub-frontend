@@ -84,7 +84,7 @@ function Signup(props) {
                }, 200);
 
                dispatch(setPatientAuth(false));
-               navigate('/landing-page', { state: true });
+               navigate('/landing-page', { state: { status: true } });
                console.log(store.getState());
             }
          }, 1.5 * 1000);
