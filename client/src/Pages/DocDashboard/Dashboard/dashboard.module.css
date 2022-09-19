@@ -264,7 +264,7 @@
    /* .wrapper {
       min-width: 100vw;
    } */
-
+   
    .doctor_display {
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
@@ -276,7 +276,7 @@
       overflow: hidden;
       min-height: 9rem;
    }
-
+   
    .card {
       height: 100%;
       padding: 0;
@@ -287,28 +287,36 @@
       backdrop-filter: blur(0) saturate(0);
       -webkit-backdrop-filter: blur(0) saturate(0);
    }
-
+   
    #first_card {
       justify-content: center;
       padding-right: 10%;
    }
-
+   
    #second_card {
       justify-content: start;
       padding: 0 2rem;
       padding-left: 25%;
    }
-
+   
    #third_card {
       justify-content: center;
    }
-
+   
    .digits {
       font-size: 15px;
    }
-
+   
    .heading {
       text-align: left;
       font-size: 20px;
    }
 }
+
+@media (min-width: 1920px) {
+   .appointmentTable {
+      min-height: 25rem;
+      height: 30 rem;
+   }
+}
+
