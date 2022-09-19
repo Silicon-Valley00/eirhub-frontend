@@ -19,7 +19,6 @@ import { LoginUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
 
-
 function Login(props) {
    const loginFormRef = useRef();
 
@@ -64,23 +63,22 @@ function Login(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
-         navigate('/loading', { state: false });
-
+         navigate('/loading', { state: { status: false } });
 
          setTimeout(() => {
-            // if (okToRoute === true) {
-            //    console.log(okToRoute)
+            if (store.getState().okToRoute === true) {
                navigate('/userdashboard');
-            //    console.log(store.getState())
-            // } else {
-            //    console.log(okToRoute);
-            //    setTimeout(() => {persistor.purge();console.log(store.getState())}, 200);
-            //    dispatch(setPatientAuth(false));
-            //    navigate('/landing-page', { state: true });
-            //    console.log(store.getState())
+               console.log(store.getState());
+            } else {
+               setTimeout(() => {
+                  persistor.purge();
+               }, 200);
 
-            // }
-         }, 2000);
+               dispatch(setPatientAuth(false));
+               navigate('/landing-page', { state: true });
+               console.log(store.getState());
+            }
+         }, 2.5 * 1000);
       } else {
          setBtnActive(feedback[0]);
          setBtnValue('Login');
@@ -233,7 +231,7 @@ function Login(props) {
                            props.loginPasswordError === null ||
                            btnActive
                         }
-                        onClick ={() =>{
+                        onClick={() => {
                            setBtnValue('logging in');
                            setBtnActive(true);
                            submitCredentialsFeedback();

@@ -74,7 +74,7 @@ function UserDashboard(props) {
                         <div className={styles.profileImage}>
                            <img
                               src={
-                                 userProfileImage
+                                 userProfileImage !== ''
                                     ? userProfileImage
                                     : avatarThree
                               }

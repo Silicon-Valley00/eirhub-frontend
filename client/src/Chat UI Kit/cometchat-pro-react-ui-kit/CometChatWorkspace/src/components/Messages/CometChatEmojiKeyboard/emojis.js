@@ -5037,7 +5037,7 @@ export const Emojis = [
                   'ambulance',
                   '911',
                   'emergency',
-                  '//alert',
+                  '// alert',
                   'error',
                   'pinged',
                   'law',
@@ -7404,7 +7404,7 @@ export const Emojis = [
                keywords: [
                   'exclamation',
                   'wip',
-                  '//alert',
+                  '// alert',
                   'error',
                   'problem',
                   'issue',

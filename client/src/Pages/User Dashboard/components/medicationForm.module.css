@@ -145,7 +145,7 @@
 
 @media (min-width: 2001px) {
    .formTitle {
-      height: 5%;
+      height: 70px;
    }
    .formTitle h3 {
       font-size: 20px;
@@ -162,6 +162,29 @@
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 2000px) {
+   .formTitle {
+      width: 100%;
+      height: 4rem;
+   }
+   .formTitle h3 {
+      font-size: 1.2rem;
+   }
+   .formBox label {
+      font-size: 0.75rem;
+   }
+   .formBoxInputs {
+      margin: 0.2rem 0;
+
+      height: 2rem;
+   }
+   .formBox .formBoxInputs input {
+      font-size: 0.8rem;
+   }
+   .formBtn {
+      font-size: 0.7rem;
+   }
+}
+@media only screen and (min-width: 1201px) and (max-width: 1399px) {
    .formTitle {
       width: 100%;
       height: 4rem;

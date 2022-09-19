@@ -58,7 +58,6 @@ const LandingPage = () => {
       setModalLoginDoctor(false);
       setModalSignupDoctor(false);
    }
-   console.log(location.state);
    return (
       <>
          <div
@@ -113,8 +112,8 @@ const LandingPage = () => {
             {/* <div className={styles.back}>
                <div className={styles.inner_div}> */}
 
-                  <Footer handleModalSignup={handleModalSignup}/>
-               {/* </div>
+            <Footer handleModalSignup={handleModalSignup} />
+            {/* </div>
             <Footer />
             {/* </div>
             </div> */}

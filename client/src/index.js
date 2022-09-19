@@ -52,11 +52,11 @@ CometChat.init(CONSTANTS.APP_ID, appSetting).then(
          document.getElementById('root')
       );
 
-      //alert('worked');
+      // // alert('worked');
       //  Logout();
       // LoginUser('superhero3');
    },
    (error) => {
-      //alert('did not work');
+      // alert('did not work');
    }
 );

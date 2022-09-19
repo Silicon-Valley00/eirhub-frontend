@@ -16,7 +16,10 @@ function AlertsMessageBox(props) {
       setShow(false);
    }
    return (
-      <main id={styles.alertBody}>
+      <main
+         id={styles.alertBody}
+         style={{ display: show === false ? 'none' : '' }}
+      >
          <div className={styles.alertBox}>
             <div
                className={`${
