@@ -80,13 +80,12 @@ export async function fetchPatientsByDoctorId(id_doctor) {
       });
       if (response.status === 200) {
          //checks details of response
-         console.log(response);
-         console.log(response.data.status);
-         console.log(response.data[0].status);
 
          if (response.data) {
             //returns response
             // alert('patients by doctor id worked fetch worked');
+            console.log(id_doctor,response.data);
+            
             return response.data;
          }
       } else {

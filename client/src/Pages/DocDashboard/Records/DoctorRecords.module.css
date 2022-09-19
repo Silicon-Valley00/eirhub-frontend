@@ -114,7 +114,7 @@
    height: 100%;
    /* max-height: 100vh; */
 }
-/* .docRecordsFiles::-webkit-scrollbar,
+.docRecordsFiles::-webkit-scrollbar,
 .docRecordsFiles::-webkit-scrollbar {
    width: 0.3rem;
    height: 0.3rem;
@@ -150,7 +150,7 @@
    background-color: var(--lightcol);
    border-radius: 10%;
    cursor: pointer;
-} */
+}
 .docRecordsFiles th {
    color: #c2c9d1;
 }
@@ -165,6 +165,21 @@
    font-weight: 600;
    font-size: 0.9375rem;
 }
+
+.emptyMessageContainer {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+p.emptyMessage {
+   color: var(--tablehead);
+   font-weight: 400;
+   font-family: 'Poppins';
+   font-size: 1.2rem;
+}
+
 .docRecordsButtonLink {
    cursor: pointer;
    color: #05a6c2;
