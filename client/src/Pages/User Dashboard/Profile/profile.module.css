@@ -532,7 +532,6 @@ div.guardianInfoFormBox {
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
    #profileBody {
-      margin-top: 4rem;
       padding: 1rem 1rem 0 01rem;
       width: 140%;
       min-width: 140%;
@@ -559,7 +558,6 @@ div.guardianInfoFormBox {
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    #profileBody {
-      margin-top: 4rem;
       padding: 1rem 1rem 0 01rem;
       width: 100%;
       min-width: 100%;
@@ -797,7 +795,6 @@ div.guardianInfoFormBox {
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
    #profileBody {
-      margin-top: 4rem;
       padding: 1rem 1rem 0 01rem;
       width: 100%;
       min-width: 100%;

@@ -11,6 +11,7 @@ import {
    SET_USER_INFO,
    SET_OK_TO_ROUTE,
    SET_RELOAD_MEDICATIONS,
+   SET_MESSAGE,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -100,6 +101,14 @@ export const setPatientAuth = (auth) => {
    return {
       type: SET_PATIENT_AUTH,
       payload: auth,
+   };
+};
+
+//Sets messages to be displayed to users
+export const setMessage = (msgObj) => {
+   return {
+      type: SET_MESSAGE,
+      payload: msgObj,
    };
 };
 //Fetches user profile details

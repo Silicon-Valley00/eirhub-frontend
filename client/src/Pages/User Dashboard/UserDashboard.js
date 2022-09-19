@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
 import LogoutModal from '../General Components/Logout Modal/LogoutModal';
 import NavBar from '../DocDashboard/Navigation';
+import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 
 function UserDashboard(props) {
    const user = useSelector((state) => state.user.name);
@@ -41,8 +42,10 @@ function UserDashboard(props) {
    function handleLogoutModal() {
       setLogoutModal(!logoutModal);
    }
+   // console.log(props.message.show);
    return (
       <>
+         <AlertsMessageBox />
          <NavBar openFunc={openFunc} />
          <div className={styles.max_div}>
             <div
