@@ -129,7 +129,7 @@ const Sidebar = (props) => {
                      <li
                         className={props.page === 'logout' ? styles.active : ''}
                         onClick={() => {
-                           logout();
+                           props.handleLogoutModal();
                         }}
                      >
                         <span className={styles.icons}>

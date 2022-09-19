@@ -6,10 +6,13 @@ import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
 import Sidebar from './components/Sidebar';
 import Navigation from './Navigation';
+import LogoutModal from '../General Components/Logout Modal/LogoutModal';
 
 const DocDashboard = (props) => {
    const user = useSelector((state) => state.user.name);
    const userProfileImage = useSelector((state) => state.profile.person_image);
+   const [logoutModal, setLogoutModal] = useState(false);
+
    const patientDOB = useSelector((state) => state.profile.date_of_birth);
 
    // handles menu open and close for smaller devices
@@ -37,16 +40,24 @@ const DocDashboard = (props) => {
    function handleBirthdayModalClose() {
       setBirthdayModal(false);
    }
+
+   function handleLogoutModal() {
+      setLogoutModal(!logoutModal);
+   }
    return (
       <div className={styles.max_div}>
-         <Navigation openFunc={openFunc} />
-         <div id={styles.blur} className={birthdayModal ? styles.active : ''}>
+         <div
+            id={styles.blur}
+            className={birthdayModal || logoutModal ? styles.active : ''}
+         >
+            <Navigation openFunc={openFunc} />
             <div className={styles.userbody}>
                <div className={styles.container}>
                   <Sidebar
                      openMenu={openMenu}
                      setOpenMenu={setOpenMenu}
                      page={props.page}
+                     handleLogoutModal={handleLogoutModal}
                   />
                   {props.middleSection}
 
@@ -57,6 +68,11 @@ const DocDashboard = (props) => {
          <BirthdayCard
             birthdayModal={birthdayModal}
             handleBirthdayModalClose={handleBirthdayModalClose}
+         />
+
+         <LogoutModal
+            logoutModal={logoutModal}
+            handleLogoutModal={handleLogoutModal}
          />
       </div>
    );

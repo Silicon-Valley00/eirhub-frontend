@@ -124,7 +124,7 @@
    right: 0;
    top: 55%;
    transform: translateY(-50%);
-   background: var(--errorMildLow);
+   background: #fce8e6;
    padding: 2rem 1.12rem;
    cursor: pointer;
 }
