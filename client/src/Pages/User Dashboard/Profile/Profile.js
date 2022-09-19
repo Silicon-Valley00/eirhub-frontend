@@ -40,6 +40,7 @@ function Profile(props) {
    const [middleName, setMiddleName] = useState(props.savedProfile.middle_name);
    const [lastName, setLastName] = useState(props.savedProfile.last_name);
    const [email, setEmail] = useState(props.savedProfile.user_email);
+   console.log(email)
    const [dateOfBirth, setDateOfBirth] = useState(
       props.savedProfile.date_of_birth !== ''
          ? `${new Date(props.savedProfile.date_of_birth).getFullYear()}-${
@@ -152,6 +153,10 @@ function Profile(props) {
       }
    }
 
+   function enableUpdateButton() {
+      return true;
+   }
+
    function handleProfileUpdate() {
       /*
          Function updates user profile, health and guardian details
@@ -195,8 +200,7 @@ function Profile(props) {
          house_address: guardianAddress,
          id_number: guardianIdNumber,
       };
-
-      console.log(enteredProfileInfo);
+      // console.log(enteredProfileInfo);
       dispatch(
          updateProfile(
             patientID,
@@ -482,7 +486,7 @@ function Profile(props) {
                                  }
                               }}
                               onChange={(event) =>
-                                 setTemperature(event.target.value)
+                                 setTemperature(Number.parseFloat(event.target.value))
                               }
                               disabled={disableFormBtn}
                            />
@@ -560,18 +564,23 @@ function Profile(props) {
                      <div className={styles.healthFormBox}>
                         <h3>Blood Group</h3>
                         <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="bloodgroup"
-                              type="text"
-                              id="bloodgroup"
-                              placeholder="Enter blood group"
-                              required
-                              value={bloodGroup}
-                              onChange={(event) =>
-                                 setBloodGroup(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
+                           <div className={styles.select}>
+                              <select
+                                 placeholder="Blood Group"
+                                 required
+                                 value={bloodGroup}
+                                 onChange={(event) =>
+                                    setBloodGroup(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              >
+                                 <option value={'unknown'}>Select Blood Group</option>
+                                 <option value={'A'}>A</option>
+                                 <option value={'B'}>B</option>
+                                 <option value={'AB'}>AB</option>
+                                 <option value={'O'}>O</option>
+                              </select>
+                           </div>
                         </div>
                      </div>
                      <div className={styles.healthFormBox}>
@@ -836,34 +845,7 @@ function Profile(props) {
                         onClick={() => {
                            handleProfileUpdate();
                         }}
-                        disabled={
-                           firstName === '' ||
-                           lastName === '' ||
-                           dateOfBirth === '' ||
-                           gender === '' ||
-                           idNumber === '' ||
-                           email === '' ||
-                           address === '' ||
-                           mobileNumber === '' ||
-                           nationality === '' ||
-                           weight === '' ||
-                           height === '' ||
-                           heartRate === '' ||
-                           temperature === '' ||
-                           bloodGlucose === '' ||
-                           bloodGroup === '' ||
-                           bloodPressure === '' ||
-                           respiratoryRate === '' ||
-                           lastVisitDate === '' ||
-                           guardianAddress === '' ||
-                           guardianDateOfBirth === '' ||
-                           guardianEmail === '' ||
-                           guardianFirstName === '' ||
-                           guardianGender === '' ||
-                           guardianIdNumber === '' ||
-                           guardianLastName === '' ||
-                           guardianMobileNumber === ''
-                        }
+                        disabled={!enableUpdateButton()}
                      >
                         Update
                      </button>
