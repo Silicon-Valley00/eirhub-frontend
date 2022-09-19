@@ -44,6 +44,7 @@ import TagManager from 'react-gtm-module';
 import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPatient';
 import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDoctor';
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
+import MessagePatients from './Pages/DocDashboard/components/MessagePatients';
 
 AOS.init();
 
@@ -397,6 +398,7 @@ function App() {
             element={
                <DocDashboard
                   middleSection={<DoctorMessage />}
+                  rightSection={<MessagePatients />}
                   page={'doctormessage'}
                />
             }

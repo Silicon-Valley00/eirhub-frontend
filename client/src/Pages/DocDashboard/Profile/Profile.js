@@ -4,14 +4,11 @@ import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setDoctorProfile } from '../../../Store/DoctorAction';
-import Sidebar from '../components/Sidebar';
-import Navigation from '../Navigation';
 // import { cloudinary } from '../../../utils/cloudinary';
 
 const DocProfile = (props) => {
    const data = props.doctorProfile;
 
-   console.log('the data: ', data);
    const [first_name, setFirstName] = useState(data?.first_name);
    const [last_name, setLastName] = useState(data?.last_name);
    const [middle_name, setMiddleName] = useState(
@@ -50,7 +47,6 @@ const DocProfile = (props) => {
       house_address,
       license_number,
    };
-   console.log('sending', doctorEditedProfile);
 
    // endpoint for updating doctor profile
    const endpoint = `http://127.0.0.1:5000/doctor/${data?.id_doctor}`;
@@ -117,6 +113,7 @@ const DocProfile = (props) => {
       <>
          <div className={styles.main}>
             <div id={styles.profileBody}>
+               {/* BUG: Form is not aligned. */}
                {/* Avatar with name and upload image button */}
                <div className={styles.upperContent}>
                   <div className={styles.profileImage}>

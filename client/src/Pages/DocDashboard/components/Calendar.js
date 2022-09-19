@@ -157,6 +157,7 @@ const Calendar = (props) => {
       }
    }
    return (
+      // BUG: KD Obeng said the calendar is big
       <div className={styles.main}>
          <div className={styles.calendarHeader}>
             <div className={styles.selectMonthYear}>

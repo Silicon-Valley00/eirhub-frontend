@@ -54,6 +54,69 @@ function MidDashboard(props) {
       fetchAcceptedAppointments();
    }, []);
 
+   useEffect(() => {
+      const fetchNumberOfPatients = async () => {
+         axios
+            .get(`${baseURL}/doctors/patient/?id_doctor=${data?.id_doctor}`, {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            })
+            .then((res) => {
+               setNumOfPatients(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
+      };
+      fetchNumberOfPatients();
+   }, []);
+
+   useEffect(() => {
+      const fetchNumberOfRecords = async () => {
+         axios
+            .get(`${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`, {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            })
+            .then((res) => {
+               setNumOfReports(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
+      };
+      fetchNumberOfRecords();
+   }, []);
+
+   useEffect(() => {
+      const fetchNumberOfAppointments = async () => {
+         axios
+            .get(
+               `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`,
+               {
+                  headers: {
+                     'Access-Control-Allow-Origin': '*',
+                     'Access-Control-Allow-Headers': '*',
+                     'Access-Control-Allow-Methods': '*',
+                  },
+               }
+            )
+            .then((res) => {
+               setNumOfAppointments(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
+      };
+      fetchNumberOfAppointments();
+   }, []);
+
    // Fetch all the data from the endpoints at once.
    // useEffect(() => {
    //    axios
@@ -107,21 +170,23 @@ function MidDashboard(props) {
                         <div className={styles.card} id={styles.first_card}>
                            <IoIosPeople className={styles.icon} />
                            <div>
-                              <p className={styles.digits}>132</p>
+                              <p className={styles.digits}>{numOfPatients}</p>
                               <p className={styles.text}>Patients</p>
                            </div>
                         </div>
                         <div className={styles.card} id={styles.second_card}>
                            <AiFillFile className={styles.icon} />
                            <div>
-                              <p className={styles.digits}>114</p>
+                              <p className={styles.digits}>{numOfReports}</p>
                               <p className={styles.text}>records</p>
                            </div>
                         </div>
                         <div className={styles.card} id={styles.third_card}>
                            <CgCalendar className={styles.icon} />
                            <div>
-                              <p className={styles.digits}>132</p>
+                              <p className={styles.digits}>
+                                 {numOfAppointments}
+                              </p>
                               <p className={styles.text}>appointments</p>
                            </div>
                         </div>
