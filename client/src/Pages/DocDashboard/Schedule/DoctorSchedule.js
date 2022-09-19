@@ -6,10 +6,13 @@ import { connect } from 'react-redux';
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
 
+   // BUG: Make doctor not able to make schedules when fields are empty.
+   // BUG: Refresh the page after making a schedule.
+   // BUG: Refresh the page after deleting a schedule.
+
    // States that would be used as data for the PUT method
    const [allAppointments, setAllAppointments] = useState([]);
    const [selectedAppointment, setSelectedAppointment] = useState([]);
-   console.log(selectedAppointment);
    const [appointment_date, setAppointmentDate] = useState('');
    const [appointment_start_time, setAppointmentStartTime] = useState('');
    const [appointment_end_time, setAppointmentEndTime] = useState('');
@@ -25,6 +28,7 @@ const DoctorSchedule = (props) => {
       id_doctor: selectedAppointment?.id_doctor,
       id_patient: selectedAppointment?.id_patient,
    };
+   console.log(scheduledAppointment);
 
    // endpoint for updating doctor profile
    const baseURL = 'http://127.0.0.1:5000';
@@ -77,12 +81,16 @@ const DoctorSchedule = (props) => {
 
    // Function to cancel an appointment
    const cancelAppointment = async () => {
+      // console.log(selectedAppointment.id_appointment);
       await axios
          .put(
             `${baseURL}/appointments/?id_appointment=${selectedAppointment?.id_appointment}`,
             {
                ...scheduledAppointment,
                appointment_status: 'Declined',
+               appointment_date: '2021-06-01',
+               appointment_start_time: '10:00:00',
+               appointment_end_time: '11:00:00',
             },
             {
                headers: {
@@ -93,11 +101,23 @@ const DoctorSchedule = (props) => {
             }
          )
 
-         .then(() => console.log('successul put'))
+         .then(() =>
+            axios.get(
+               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&status=Pending`,
+               {
+                  headers: {
+                     'Access-Control-Allow-Origin': '*',
+                     'Access-Control-Allow-Headers': '*',
+                     'Access-Control-Allow-Methods': '*',
+                  },
+               }
+            )
+         )
          .catch((error) => console.log(error));
    };
 
    const displaySelectedPatientDetails = (patientKeyNum) => {
+      console.log('patient: ', patientKeyNum);
       const selectedPatient = allAppointments[patientKeyNum];
       setSelectedAppointment(selectedPatient);
    };

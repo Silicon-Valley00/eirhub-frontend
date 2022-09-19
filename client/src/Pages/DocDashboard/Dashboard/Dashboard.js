@@ -131,7 +131,7 @@ const MidDashboard = (props) => {
                         <div className={styles.card} id={styles.third_card}>
                            <CgCalendar className={styles.icon} />
                            <div>
-                              <p className={styles.digits}>787</p>
+                              <p className={styles.digits}>787:</p>
                               <p className={styles.text}>appointments</p>
                            </div>
                         </div>
