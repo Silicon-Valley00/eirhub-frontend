@@ -60,32 +60,6 @@ function UserDashboard(props) {
                      {props.parent}
 
                      <div className={styles.right}>
-                        {/* <div className={styles.profile}>
-                        <div className={styles.menu} id={styles.menuBtn}>
-                           <i
-                              onClick={() => {
-                                 setOpenMenu(true);
-                              }}
-                           >
-                              <MdMenu />
-                           </i>
-                        </div>
-                        <div className={styles.profileImage}>
-                           <img
-                              src={
-                                 userProfileImage !== ''
-                                    ? userProfileImage
-                                    : avatarThree
-                              }
-                              alt="avatar"
-                           />
-                        </div>
-                        <div className={styles.info}>
-                           <p>
-                              Hey, <b>{user}</b>
-                           </p>
-                        </div>
-                     </div> */}
                         {props.child}
                      </div>
                   </div>
