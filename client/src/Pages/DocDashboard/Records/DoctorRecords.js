@@ -8,8 +8,8 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const DoctorRecords = () => {
-   const doctorID = useSelector((state)=> state.profile.id_doctor);
-   console.log(doctorID)
+   const patientID = useSelector((state)=> state.profile.id_patient);
+   console.log(patientID)
    
    const [reports,setReports] = useState([]);
 

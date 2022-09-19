@@ -515,10 +515,10 @@ export async function fetchReports(userID) {
       });
       if (response.status === 200) {
          //checks details of response
-         if (response.data.status === true) {
+         if (response.data) {
             //returns response
             // alert('report fetched worked');
-            return response.data.msg;
+            return response.data;
          }
       } else {
          //takes all statuses aside 200
