@@ -12,6 +12,7 @@ import {
    SET_OK_TO_ROUTE,
    SET_RELOAD_MEDICATIONS,
    SET_MESSAGE,
+   SET_TEMP_MEDICATIONS,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -111,6 +112,15 @@ export const setMessage = (msgObj) => {
       payload: msgObj,
    };
 };
+
+//Holds prescriptions for last taken date uncheck
+export const setMedicationsTemp = (medicationsObj) => {
+   return {
+      type: SET_TEMP_MEDICATIONS,
+      payload: medicationsObj,
+   };
+};
+
 //Fetches user profile details
 export const fetchProfile = (userID, guardianID) => {
    return async function (dispatch) {
@@ -777,32 +787,33 @@ export async function fetchDoctorsByPatient(userID) {
 
 //Fetches user accepted appointments
 export async function fetchAppointments(userID, status) {
-   try {
-      const response = await axios({
-         method: 'GET',
-         url: `http://127.0.0.1:5000/appointments/?id_patient=${userID}&accepted=${status}`,
-         headers: {
-            'Access-Control-Allow-Origin': '*',
-            //Helpful in some cases.
-            'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Methods': '*',
-         },
-      });
-      if (response.status === 200) {
-         //checks details of response
-         if (response.data.status === true) {
-            //returns response
-            // alert('appointments fetch worked');
-            console.log(response.data);
-            console.log(userID, status);
-            return response.data.msg;
+   if (userID) {
+      try {
+         const response = await axios({
+            method: 'GET',
+            url: `http://127.0.0.1:5000/appointments/?id_patient=${userID}&accepted=${status}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
+         });
+         if (response.status === 200) {
+            //checks details of response
+            if (response.data.status === true) {
+               //returns response
+               // alert('appointments fetch worked');
+
+               return response.data.msg;
+            }
+         } else {
+            //takes all statuses aside 200
+            // alert('Something went wrong. Try again, accepted appments 1');
          }
-      } else {
-         //takes all statuses aside 200
-         // alert('Something went wrong. Try again, accepted appments 1');
+      } catch (error) {
+         // alert(error, 'accepted appments 2');
       }
-   } catch (error) {
-      // alert(error, 'accepted appments 2');
    }
 }
 

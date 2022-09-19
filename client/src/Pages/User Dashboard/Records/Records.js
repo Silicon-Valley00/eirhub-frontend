@@ -50,7 +50,21 @@ function Records(props) {
 
    var list;
    if (reports === undefined) {
-      list = <p className={styles.emptyMessage}>Nothing to show here.</p>;
+      list = (
+         <tr
+            style={{
+               width: '290%',
+               display: 'flex',
+               justifyContent: 'center',
+               alignItems: 'center',
+               color: '#c2c9d1',
+               marginTop: '10rem',
+               fontSize: '150%',
+            }}
+         >
+            Nothing to show here.
+         </tr>
+      );
    } else {
       if (reports.length !== 0) {
          list = reports.map((item, j) => {
@@ -81,7 +95,21 @@ function Records(props) {
          });
       } else if (reports.length === 0) {
          // Sends message to be displayed when saved videos is empty
-         list = <p>Nothing to show here.</p>;
+         list = (
+            <tr
+               style={{
+                  width: '290%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: '#c2c9d1',
+                  marginTop: '10rem',
+                  fontSize: '150%',
+               }}
+            >
+               Nothing to show here.
+            </tr>
+         );
       }
    }
 
@@ -99,24 +127,7 @@ function Records(props) {
                            <th>Option</th>
                         </tr>
                      </thead>
-                     <tbody>
-                        <tr>
-                           <td>Lab_report</td>
-                           <td>Lab report </td>
-                           <td>07/02/2020</td>
-                           <td>
-                              <div className={styles.options}>
-                                 <i onClick={() => handleChangePage()}>
-                                    <FaClipboardList />
-                                 </i>
-                                 <i>
-                                    <BsDownload />
-                                 </i>
-                              </div>
-                           </td>
-                        </tr>
-                        {list}
-                     </tbody>
+                     <tbody>{list}</tbody>
                   </table>
                   <div
                      className={

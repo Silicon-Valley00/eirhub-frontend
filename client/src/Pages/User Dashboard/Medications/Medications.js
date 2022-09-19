@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styles from './medication.module.css';
 import { CgPill } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
-import { fetchMedications, deletePrescriptions, setReloadMedications } from '../../../Store/Actions';
+import {
+   fetchMedications,
+   deletePrescriptions,
+   setReloadMedications,
+} from '../../../Store/Actions';
 import { useSelector, connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -37,13 +41,26 @@ function Medication(props) {
          setPrescriptions(items);
       }
       fetchdata();
-      dispatch(setReloadMedications(false))
+      dispatch(setReloadMedications(false));
    }, [props.reloadMedications]);
 
    var list;
    //displays prescriptions
    if (prescriptions === undefined) {
-      list = <p className={styles.emptyMessage}>Nothing to show here.</p>;
+      list = (
+         <p
+            style={{
+               width: '200%',
+               display: 'flex',
+               justifyContent: 'center',
+               alignItems: 'center',
+               color: '#c2c9d1',
+               fontSize: '150%',
+            }}
+         >
+            Nothing to show here.
+         </p>
+      );
    } else {
       if (prescriptions.length !== 0) {
          list = prescriptions.map((item, j) => {
@@ -64,11 +81,19 @@ function Medication(props) {
                      </div>
                      <div className={styles.medicationCounter}>
                         <p>
-                           {`${Math.round(
-                              (new Date(item.end_date) -
-                                 new Date(item.last_taken_date)) /
-                                 (1000 * 3600 * 24) 
-                           )}
+                           {`${
+                              Math.round(
+                                 (new Date(item.end_date) -
+                                    new Date(item.last_taken_date)) /
+                                    (1000 * 3600 * 24)
+                              ) < 0
+                                 ? '0'
+                                 : Math.round(
+                                      (new Date(item.end_date) -
+                                         new Date(item.last_taken_date)) /
+                                         (1000 * 3600 * 24)
+                                   )
+                           }
                         days left`}
                         </p>
                      </div>
@@ -127,10 +152,20 @@ function Medication(props) {
          });
       } else if (prescriptions.length === 0) {
          // Sends message to be displayed when saved prescriptions is empty
-         list = 
-         <div className={styles.emptyMessageContainer}>
-            <p>Nothing to show here.</p>
-            </div>;
+         list = (
+            <p
+               style={{
+                  width: '200%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: '#c2c9d1',
+                  fontSize: '150%',
+               }}
+            >
+               Nothing to show here.
+            </p>
+         );
       }
    }
 

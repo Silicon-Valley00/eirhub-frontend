@@ -46,12 +46,13 @@ function UserDashboard(props) {
    return (
       <>
          <AlertsMessageBox />
-         <NavBar openFunc={openFunc} />
          <div className={styles.max_div}>
             <div
                id={styles.blur}
                className={birthdayModal || logoutModal ? styles.active : ''}
             >
+               {' '}
+               <NavBar openFunc={openFunc} />
                <div className={styles.userbody}>
                   <div className={styles.container}>
                      <Navigation
@@ -62,9 +63,7 @@ function UserDashboard(props) {
                      />
                      {props.parent}
 
-                     <div className={styles.right}>
-                        {props.child}
-                     </div>
+                     <div className={styles.right}>{props.child}</div>
                   </div>
                </div>{' '}
             </div>
