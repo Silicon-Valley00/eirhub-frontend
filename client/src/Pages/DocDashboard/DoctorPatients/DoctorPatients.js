@@ -5,49 +5,28 @@ import { GrClose } from 'react-icons/gr';
 import { useState, useEffect } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { fetchPatientsByDoctorId } from '../../../Store/DoctorAction';
+import { useSelector } from 'react-redux';
 
-const patients = [
-   {
-      image: femaleProfile,
-      name: 'Melissa Burkinstock',
-   },
-   {
-      image: maleProfile,
-      name: 'James Freeman',
-   },
-   {
-      image: femaleProfile,
-      name: 'Chioma Ukechukwu',
-   },
-   {
-      image: femaleProfile,
-      name: 'Melissa Burkinstock',
-   },
-   {
-      image: femaleProfile,
-      name: 'Melissa Burkinstock',
-   },
-];
+
 
 function DoctorPatients() {
-   // const [patients,setPatients] = useState()
+   const doctorId = useSelector((state) => state.profile.id_doctor);
+   const [patients,setPatients] = useState()
+   useEffect(()=>{
+      async function fetchPatients(){
+         const items = await fetchPatientsByDoctorId(doctorId)
+         setPatients(items)
+         
+      }
+      fetchPatients();
+   },[])
+
    const [show, setShow] = useState(false);
-   const body = document.querySelector('body');
 
    const showPeople = () => {
       setShow(!show);
    };
-   const hidePeople = () => {
-      setShow(false);
-      body.styles.overflow = 'auto';
-   };
 
-   // useEffect(()=>{
-   //     async function fetchdata(){
-   //         const items = await fetchPatientsByDoctorId(doctorId)
-   //         setPatients(items)
-   //     }
-   // })
 
    return (
       <>
@@ -65,18 +44,18 @@ function DoctorPatients() {
                }
             >
                <div className={styles.logo_close}>
+                  <h2>Patients</h2>
                   <GrClose
                      className={styles.close}
                      onClick={() => showPeople()}
                   />
-                  <h2>Patients</h2>
                </div>
                <ul>
-                  {patients.map((patients, index) => {
+                  {patients?.map((patient, index) => {
                      return (
                         <div className={styles.imageDiv}>
-                           <img src={patients.image} alt={patients.name}></img>
-                           <li key={index}>{patients.name}</li>
+                           <img src={patient.msg.person_image} alt={patient.msg.first_name}></img>
+                           <li key={index}>{patient.msg.first_name} {patient.msg.middle_name} {patient.msg.last_name}</li>
                         </div>
                      );
                   })}

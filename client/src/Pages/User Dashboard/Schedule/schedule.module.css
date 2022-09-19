@@ -33,7 +33,7 @@
    line-height: 1;
    font-weight: 500;
    font-size: 0.9rem;
-   color: var(--tablehead);
+   color: var(--midcol);
    width: 100%;
    border-radius: 0.4rem;
    padding: 0.5rem;
@@ -67,7 +67,7 @@
    line-height: 1;
    font-weight: 500;
    font-size: 0.9rem;
-   color: var(--tablehead);
+   color: var(--midcol);
    width: 70%;
    border-radius: 0.4rem;
    padding: 0.5rem;

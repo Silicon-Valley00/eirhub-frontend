@@ -15,10 +15,12 @@ import {
    SET_OK_TO_ROUTE,
    SET_RELOAD_MEDICATIONS,
    SET_MESSAGE,
+   SET_TEMP_MEDICATIONS,
 } from './ActionTypes';
 
 const initialState = {
    //Patient Dashboard
+   tempMedications: [],
    reloadMedications: false,
    message: {
       show: false,
@@ -109,6 +111,22 @@ const Reducers = (state = initialState, action) => {
          return { ...state, okToRoute: action.payload };
       case SET_RELOAD_MEDICATIONS:
          return { ...state, reloadMedications: action.payload };
+
+      case SET_TEMP_MEDICATIONS:
+         console.log('entry', action.payload);
+         var obj = action.payload.map((item) => {
+            console.log(item);
+            if (initialState.tempMedications.includes(item) === false) {
+               return item;
+            }
+         });
+
+         console.log('obj', obj);
+         console.log('obj spread', ...obj);
+         return {
+            ...state,
+            tempMedications: [...initialState.tempMedications, ...obj],
+         };
       case SET_MESSAGE:
          return {
             ...state,
