@@ -7,6 +7,7 @@ import {
    fetchMedications,
    setMedicationsTemp,
 } from '../../Store/Actions';
+import { addNewGuardianInfo, addNewHealthDetails } from '../../Store/Actions';
 import { useLocation } from 'react-router-dom';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 
@@ -46,6 +47,19 @@ function Loading(props) {
 
       fetchdata();
    }, []);
+      if (auth === true && status === true) {
+         console.log('running');
+         dispatch(
+            addNewGuardianInfo(props.savedGuardianDetails,props.savedProfile)
+            // addNewHealthDetails(
+            //    props.savedHealthDetails,
+            //    props.savedGuardianDetails,
+            //    patientID,
+            //    props.savedProfile
+            // )
+         );
+      }
+   ;
    return (
       <>
          {/* <AlertsMessageBox
