@@ -15,9 +15,9 @@ const DoctorMessage = () => {
                   <CometChatMessages chatWithUser={patientUID} />
                </div>
             </div>
-            <div className={styles.right_pane}>
+            {/* <div className={styles.right_pane}>
                <MessagePatients />
-            </div>
+            </div> */}
          </main>
       </>
    );

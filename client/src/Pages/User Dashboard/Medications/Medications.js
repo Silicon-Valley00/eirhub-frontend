@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styles from './medication.module.css';
 import { CgPill } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
-import { fetchMedications, deletePrescriptions } from '../../../Store/Actions';
-import { useSelector } from 'react-redux';
+import { fetchMedications, deletePrescriptions, setReloadMedications } from '../../../Store/Actions';
+import { useSelector, connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+   return {
+      reloadMedications: state.reloadMedications,
+   };
+};
 
 function Medication(props) {
    const dispatch = useDispatch();
@@ -31,7 +37,8 @@ function Medication(props) {
          setPrescriptions(items);
       }
       fetchdata();
-   }, []);
+      dispatch(setReloadMedications(false))
+   }, [props.reloadMedications]);
 
    var list;
    //displays prescriptions
@@ -60,10 +67,9 @@ function Medication(props) {
                            {`${Math.round(
                               (new Date(item.end_date) -
                                  new Date(item.last_taken_date)) /
-                                 (1000 * 3600 * 24) /
-                                 parseFloat(item.dosage[0])
+                                 (1000 * 3600 * 24) 
                            )}
-                        left`}
+                        days left`}
                         </p>
                      </div>
                   </div>
@@ -110,7 +116,7 @@ function Medication(props) {
                      </button>
                      <button
                         onClick={() => {
-                           dispatch(deletePrescriptions(item.id));
+                           dispatch(deletePrescriptions(item.id_prescription));
                         }}
                      >
                         Delete
@@ -120,8 +126,11 @@ function Medication(props) {
             );
          });
       } else if (prescriptions.length === 0) {
-         // Sends message to be displayed when saved videos is empty
-         list = <p>Nothing to show here.</p>;
+         // Sends message to be displayed when saved prescriptions is empty
+         list = 
+         <div className={styles.emptyMessageContainer}>
+            <p>Nothing to show here.</p>
+            </div>;
       }
    }
 
@@ -133,4 +142,5 @@ function Medication(props) {
       </>
    );
 }
-export default Medication;
+// export default Medication;
+export default connect(mapStateToProps)(Medication);

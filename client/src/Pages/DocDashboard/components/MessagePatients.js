@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './messagepatients.module.css';
-import avatarThree from '../../../assets/doc profile 1.png';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {

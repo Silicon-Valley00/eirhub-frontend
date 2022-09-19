@@ -1,5 +1,4 @@
 import DSstyles from './DoctorSchedule.module.css';
-import DoctorPatients from '../DoctorPatients/DoctorPatients';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
@@ -53,6 +52,8 @@ const DoctorSchedule = (props) => {
       getAllAppointmentsForADoctor();
    }, []);
 
+   console.log(allAppointments.length);
+
    // Function that sends the data to the server
    const scheduleAppointment = async () => {
       await axios
@@ -75,195 +76,145 @@ const DoctorSchedule = (props) => {
          .catch((error) => console.log(error));
    };
 
+   // Function to cancel an appointment
+   const cancelAppointment = async () => {};
+
    const displaySelectedPatientDetails = (patientKeyNum) => {
       const selectedPatient = allAppointments[patientKeyNum];
       setSelectedAppointment(selectedPatient);
    };
 
-   // let appointmentsData;
-   // //displays medications
-   // if (allAppointments === undefined) {
-   //    appointmentsData = <p>Nothing to show here.</p>;
-   // } else {
-   //    if (allAppointments.length !== 0) {
-   //       allAppointments.map((data, index) => {
-   //          return (
-   // <tr key={index}>
-   //    <td className={DSstyles.imgSection}>
-   //       <img src={data?.patient_info.person_image} alt={'img'} />
-   //    </td>
-   //    <td>
-   //       {data?.patient_info.first_name} {data?.patient_info.last_name}{' '}
-   //    </td>
-   //    <td className={DSstyles.tdCondition}>
-   //       Swollen tonsils with severe pains in throat and chest
-   //    </td>
-   //    <td
-   //       style={{
-   //          color: '#EC6464',
-   //          cursor: 'pointer',
-   //       }}
-   //       onClick=""
-   //    >
-   //       Cancel
-   //    </td>
-   // </tr>;
-   //          );
-   //       });
-   //    } else if (allAppointments.length === 0) {
-   //       // Sends message to be displayed when saved videos is empty
-   //       appointmentsData = <p>Nothing to show here.</p>;
-   //    }
-   // }
+   let displayData;
+   if (allAppointments.length === 0) {
+      displayData = (
+         <div className={DSstyles.emptyMessage}>
+            <p className={DSstyles.text}>Nothing to show here.</p>
+         </div>
+      );
+   } else {
+      displayData = (
+         <>
+            {allAppointments.map((data, index) => {
+               return (
+                  <tr key={index}>
+                     <td
+                        className={DSstyles.imgSection}
+                        onClick={() => displaySelectedPatientDetails(index)}
+                     >
+                        <div className={DSstyles.profileImageDiv}>
+                           <img
+                              src={data?.patient_info.person_image}
+                              alt={'img'}
+                           />
+                        </div>
+                     </td>
+                     <td
+                        onClick={() => displaySelectedPatientDetails(index)}
+                        className={DSstyles.tdName}
+                     >
+                        {data?.patient_info.first_name}
+                        {data?.patient_info.last_name}
+                     </td>
+                     <td
+                        className={DSstyles.tdCondition}
+                        onClick={() => displaySelectedPatientDetails(index)}
+                     >
+                        {data?.appointment_reason}
+                     </td>
+                     <td
+                        className={DSstyles.tdCancel}
+                        onClick={() => cancelAppointment()}
+                     >
+                        Cancel
+                     </td>
+                  </tr>
+               );
+            })}
+         </>
+      );
+   }
 
    return (
       <>
-         <div className={DSstyles.wrapper}>
-            <div className={DSstyles.DSContainer}>
-               <div className={DSstyles.DSContainer1}>
-                  <h2>Apppoinment Details</h2>
-                  <form>
-                     <div className={DSstyles.patientContainer}>
-                        <label className={DSstyles.labelName}>
-                           Patient Name
-                        </label>
-                        <input
-                           type="message"
-                           id="name"
-                           className={DSstyles.inputName}
-                           value={selectedAppointment?.patient_info?.first_name}
-                           disabled
-                        />
-                        <label className={DSstyles.labelCondition}>
-                           Condition
-                        </label>
-                        <input
-                           type="text"
-                           id="condition"
-                           className={DSstyles.inputCondition}
-                           value={selectedAppointment?.appointment_reason}
-                           disabled
-                        />
-                     </div>
-                     <div className={DSstyles.appointTime}>
-                        <label className={DSstyles.labelDate}>
-                           Appointment Date
-                        </label>
-                        <input
-                           type="text"
-                           id="date"
-                           placeholder="DD/MM/YYYY"
-                           onFocus={(e) => (e.target.type = 'date')}
-                           onBlur={(e) => (e.target.type = 'text')}
-                           className={DSstyles.inputDate}
-                           onChange={(e) => setAppointmentDate(e.target.value)}
-                        />
-                        <label className={DSstyles.labelSTime}>
-                           Start Time
-                        </label>
-                        <input
-                           type="text"
-                           id="start time"
-                           placeholder="HH:MM:SS"
-                           onFocus={(e) => (e.target.type = 'time')}
-                           onBlur={(e) => (e.target.type = 'text')}
-                           className={DSstyles.inputStartTime}
-                           onChange={(e) =>
-                              setAppointmentStartTime(e.target.value)
-                           }
-                        />
-                        <label className={DSstyles.labelETime}>End Time</label>
-                        <input
-                           type="text"
-                           id="end time"
-                           placeholder="HH:MM:SS"
-                           onFocus={(e) => (e.target.type = 'time')}
-                           onBlur={(e) => (e.target.type = 'text')}
-                           className={DSstyles.inputEndTime}
-                           onChange={(e) =>
-                              setAppointmentEndTime(e.target.value)
-                           }
-                        />
-                     </div>
-                     <div className={DSstyles.DSbuttondiv}>
-                        <button
-                           className={DSstyles.DSbutton}
-                           onClick={() => scheduleAppointment()}
-                        >
-                           Schedule Appointment
-                        </button>
-                     </div>
-                  </form>
-                  <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
-                  <div className={DSstyles.appointmentContainer}>
-                        <table>
-                           <thead>
-                              <th className={DSstyles.imgHeader}></th>
-                              <th className={DSstyles.tName}>Name</th>
-                              <th className={DSstyles.tCondition}>Condition</th>
-                              <th className={DSstyles.tAction}>Action</th>
-                           </thead>
-                           <tbody>
-                              {allAppointments.map((data, index) => {
-                                 return (
-                                    <tr key={index}>
-                                       <td
-                                          className={DSstyles.imgSection}
-                                          onClick={() =>
-                                             displaySelectedPatientDetails(
-                                                index
-                                             )
-                                          }
-                                       >
-                                          <div className={DSstyles.profileImageDiv}>
-                                          <img
-                                             src={
-                                                data?.patient_info.person_image
-                                             }
-                                             alt={'img'}
-                                          />
-                                          </div>
-                                       </td>
-                                       <td
-                                          onClick={() =>
-                                             displaySelectedPatientDetails(
-                                                index
-                                             )
-                                          }
-                                          className={DSstyles.tdName}
-                                       >
-                                          {data?.patient_info.first_name}{' '}
-                                          {data?.patient_info.last_name}{' '}
-                                       </td>
-                                       <td
-                                          className={DSstyles.tdCondition}
-                                          onClick={() =>
-                                             displaySelectedPatientDetails(
-                                                index
-                                             )
-                                          }
-                                       >
-                                          Swollen tonsils with severe pains in
-                                          throat and chest
-                                       </td>
-                                       <td
-                                          className={DSstyles.tdCancel}
-                                          onClick=""
-                                       >
-                                          Cancel
-                                       </td>
-                                    </tr>
-                                 );
-                              })}
-                           </tbody>
-                        </table>
-                  </div>
+         <div className={DSstyles.DSContainer1}>
+            <h2>Apppoinment Details</h2>
+            <form>
+               <div className={DSstyles.patientContainer}>
+                  <label className={DSstyles.labelName}>Patient Name</label>
+                  <input
+                     type="message"
+                     id="name"
+                     className={DSstyles.inputName}
+                     value={selectedAppointment?.patient_info?.first_name}
+                     disabled
+                  />
+                  <label className={DSstyles.labelCondition}>Condition</label>
+                  <input
+                     type="text"
+                     id="condition"
+                     className={DSstyles.inputCondition}
+                     value={selectedAppointment?.appointment_reason}
+                     disabled
+                  />
+               </div>
+               <div className={DSstyles.appointTime}>
+                  <label className={DSstyles.labelDate}>Appointment Date</label>
+                  <input
+                     type="text"
+                     id="date"
+                     placeholder="DD/MM/YYYY"
+                     onFocus={(e) => (e.target.type = 'date')}
+                     onBlur={(e) => (e.target.type = 'text')}
+                     className={DSstyles.inputDate}
+                     onChange={(e) => setAppointmentDate(e.target.value)}
+                  />
+                  <label className={DSstyles.labelSTime}>Start Time</label>
+                  <input
+                     type="text"
+                     id="start time"
+                     placeholder="HH:MM"
+                     onFocus={(e) => (e.target.type = 'time')}
+                     onBlur={(e) => (e.target.type = 'text')}
+                     className={DSstyles.inputStartTime}
+                     onChange={(e) => setAppointmentStartTime(e.target.value)}
+                  />
+                  <label className={DSstyles.labelETime}>End Time</label>
+                  <input
+                     type="text"
+                     id="end time"
+                     placeholder="HH:MM"
+                     onFocus={(e) => (e.target.type = 'time')}
+                     onBlur={(e) => (e.target.type = 'text')}
+                     className={DSstyles.inputEndTime}
+                     onChange={(e) => setAppointmentEndTime(e.target.value)}
+                  />
+               </div>
+               <div className={DSstyles.DSbuttondiv}>
+                  <button
+                     className={DSstyles.DSbutton}
+                     onClick={() => scheduleAppointment()}
+                  >
+                     Schedule Appointment
+                  </button>
+               </div>
+            </form>
+            <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
+            <div className={DSstyles.appointmentContainer}>
+               {/* BUG: Can't scroll all details. */}
+               <table>
+                  <thead>
+                     <th className={DSstyles.imgHeader}></th>
+                     <th className={DSstyles.tName}>Name</th>
+                     <th className={DSstyles.tCondition}>Condition</th>
+                     <th className={DSstyles.tAction}>Action</th>
+                  </thead>
+                  <tbody className={DSstyles.tbody}>{displayData}</tbody>
+               </table>
             </div>
          </div>
-         </div>
-</>
-);
-}
+      </>
+   );
+};
 const mapStateToProps = (state) => {
    return {
       doctorProfile: state.doctorProfile,

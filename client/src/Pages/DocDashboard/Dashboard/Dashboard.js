@@ -17,11 +17,11 @@ function MidDashboard(props) {
    const data = props.doctorProfile;
    const baseURL = 'http://127.0.0.1:5000';
 
-   // endpoint for updating doctor profile
-   // const accepted_appointment_endpoint = `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`;
-   // const numberOfPatients_endpoint = `${baseURL}/doctors/patient/?id_doctor=${data?.id_doctor}`;
-   // const numberOfRecords_endpoint = `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`;
-   // const numberOfAppointments_endpoint = `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`;
+   //endpoint for updating doctor profile
+   const accepted_appointment_endpoint = `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`;
+   const numberOfPatients_endpoint = `${baseURL}/doctors/patient/?id_doctor=${data?.id_doctor}`;
+   const numberOfRecords_endpoint = `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`;
+   const numberOfAppointments_endpoint = `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`;
 
    const endpoints = [
       `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`,
@@ -54,46 +54,109 @@ function MidDashboard(props) {
       fetchAcceptedAppointments();
    }, []);
 
+   useEffect(() => {
+      const fetchNumberOfPatients = async () => {
+         axios
+            .get(`${baseURL}/doctors/patient/?id_doctor=${data?.id_doctor}`, {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            })
+            .then((res) => {
+               setNumOfPatients(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
+      };
+      fetchNumberOfPatients();
+   }, []);
+
+   useEffect(() => {
+      const fetchNumberOfRecords = async () => {
+         axios
+            .get(`${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`, {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            })
+            .then((res) => {
+               setNumOfReports(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
+      };
+      fetchNumberOfRecords();
+   }, []);
+
+   useEffect(() => {
+      const fetchNumberOfAppointments = async () => {
+         axios
+            .get(
+               `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`,
+               {
+                  headers: {
+                     'Access-Control-Allow-Origin': '*',
+                     'Access-Control-Allow-Headers': '*',
+                     'Access-Control-Allow-Methods': '*',
+                  },
+               }
+            )
+            .then((res) => {
+               setNumOfAppointments(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
+      };
+      fetchNumberOfAppointments();
+   }, []);
+
    // Fetch all the data from the endpoints at once.
-   // useEffect(() => {
-   //    axios
-   //       .all(
-   //          [
-   //             axios.get(
-   //                `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`
-   //             ),
-   //             axios.get(
-   //                `${baseURL}/doctors/patients/?id_doctor=${data?.id_doctor}`
-   //             ),
-   //             axios.get(
-   //                `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`
-   //             ),
-   //             axios.get(
-   //                `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`
-   //             ),
-   //          ],
-   //          {
-   //             headers: {
-   //                'Access-Control-Allow-Origin': '*',
-   //                'Access-Control-Allow-Headers': '*',
-   //                'Access-Control-Allow-Methods': '*',
-   //             },
-   //          }
-   //       )
-   //       .then(
-   //          axios.spread(
-   //             (upcomingAppointments, patients, reports, appointments) => {
-   //                setAcceptedAppointment(upcomingAppointments);
-   //                setNumOfAppointments(appointments);
-   //                setNumOfPatients(patients);
-   //                setNumOfRecords(reports);
-   //             }
-   //          )
-   //       )
-   //       .catch((err) => {
-   //          console.log(err.message);
-   //       });
-   // }, []);
+   useEffect(() => {
+      axios
+         .all(
+            [
+               axios.get(
+                  `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=true`
+               ),
+               axios.get(
+                  `${baseURL}/doctors/patients/?id_doctor=${data?.id_doctor}`
+               ),
+               axios.get(
+                  `${baseURL}/doctors/reports/?id_doctor=${data?.id_doctor}`
+               ),
+               axios.get(
+                  `${baseURL}/doctors/appointments/?id_doctor=${data?.id_doctor}`
+               ),
+            ],
+            {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            }
+         )
+         .then(
+            axios.spread(
+               (upcomingAppointments, patients, reports, appointments) => {
+                  setAcceptedAppointment(upcomingAppointments);
+                  setNumOfAppointments(appointments);
+                  setNumOfPatients(patients);
+                  setNumOfReports(reports);
+               }
+            )
+         )
+         .catch((err) => {
+            console.log(err.message);
+         });
+   }, []);
 
    return (
       <>
@@ -107,21 +170,23 @@ function MidDashboard(props) {
                         <div className={styles.card} id={styles.first_card}>
                            <IoIosPeople className={styles.icon} />
                            <div>
-                              <p className={styles.digits}>132</p>
+                              <p className={styles.digits}>{numOfPatients}</p>
                               <p className={styles.text}>Patients</p>
                            </div>
                         </div>
                         <div className={styles.card} id={styles.second_card}>
                            <AiFillFile className={styles.icon} />
                            <div>
-                              <p className={styles.digits}>114</p>
+                              <p className={styles.digits}>{numOfReports}</p>
                               <p className={styles.text}>records</p>
                            </div>
                         </div>
                         <div className={styles.card} id={styles.third_card}>
                            <CgCalendar className={styles.icon} />
                            <div>
-                              <p className={styles.digits}>132</p>
+                              <p className={styles.digits}>
+                                 {numOfAppointments}
+                              </p>
                               <p className={styles.text}>appointments</p>
                            </div>
                         </div>

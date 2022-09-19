@@ -1,29 +1,17 @@
 /* My screen >1900px*/
-.wrapper {
-   min-height: 59rem;
-   width: 60vw;
-   height: 100vh;
-   display: flex;
-   justify-content: center;
-}
-.DSContainer {
-   /* display: flex;
-   justify-content: space-evenly; */
-   box-sizing: border-box;
-   margin-right: 0;
-   min-height: 59rem;
-   height: 100vh;
-   width: 45rem;
-}
-
 .DSContainer1 {
-   width: 45vw;
+   width: 100%;
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
    height: 100vh;
    min-height: 55rem;
    justify-self: center;
+   overflow-y: scroll;
+}
+
+.DSContainer1::-webkit-scrollbar {
+   display: none;
 }
 
 .DSContainer2 {
@@ -85,6 +73,7 @@
    max-height: 100vh;
 }
 .DSContainer1 input {
+   background: var(--white);
    border: 1px solid #e1e4e8;
    border-radius: 7px;
    text-align: center;
@@ -173,6 +162,7 @@
    margin-top: 20px;
    box-sizing: border-box;
    overflow-y: scroll;
+   overflow-x: scroll;
 }
 .appointmentContainer::-webkit-scrollbar,
 .appointmentContainer::-webkit-scrollbar {
@@ -197,10 +187,30 @@
    top: 0;
    background: var(--white);
 }
+
+.tbody {
+   position: relative;
+}
+
+.emptyMessage {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   margin-top: 8rem;
+}
+
+.text {
+   color: var(--midcol);
+   font-size: 1.5rem;
+   font-weight: 500;
+}
+
 .appointmentContainer table {
    margin: auto;
    text-align: center;
    table-layout: fixed;
+   min-width: 35rem;
    width: 100%;
 }
 .appointmentContainer th {
@@ -224,6 +234,7 @@
 }
 .appointmentContainer .imgHeader {
    width: 80px;
+   background-color: var(--white);
 }
 .appointmentContainer .tCondition {
    text-align: left;
@@ -255,7 +266,6 @@
    height: 2.8rem;
    min-height: 2.8rem;
    max-height: 2.8rem;
-   width: 100%;
    border-radius: 50%;
    clip-path: circle();
 }
@@ -443,16 +453,8 @@
 
 /*smaller laptop screens*/
 @media (max-width: 1024px) {
-   .wrapper {
-      width: 100%;
-   }
-   .DSContainer {
-      height: 90rem;
-      font-size: 1rem;
-   }
    .DSContainer1 {
       width: 100%;
-      /* margin-left: 10rem; */
       height: 59rem;
       justify-self: flex-start;
    }

@@ -12,10 +12,10 @@ function DashboardNotificationAlerts() {
          <div className={styles.calendar}>
             <Calendar />
          </div>
-         <div className={styles.recentNotifications}>
-            <h2>Recent Notifications</h2>
-            <div className={styles.notificationBox}>
-               <div className={styles.notifications}>
+         {/* <div className={styles.recentNotifications}> */}
+            {/* <h2>Recent Notifications</h2> */}
+            {/* <div className={styles.notificationBox}> */}
+               {/* <div className={styles.notifications}>
                   <div className={styles.notificationsHeadings}>
                      <div className={styles.notificationsImage}>
                         <img src={avatarTwo} alt="avatar" />
@@ -39,8 +39,8 @@ function DashboardNotificationAlerts() {
                         tests. Take care of yourself. Bye
                      </p>
                   </div>
-               </div>
-               <div className={styles.notifications}>
+               </div> */}
+               {/* <div className={styles.notifications}>
                   <div className={styles.notificationsHeadings}>
                      <div className={styles.notificationsImage}>
                         <img src={avatarThree} alt="avatar" />
@@ -64,8 +64,8 @@ function DashboardNotificationAlerts() {
                         tests. Take care of yourself. Bye
                      </p>
                   </div>
-               </div>
-               <div className={styles.notifications}>
+               </div> */}
+               {/* <div className={styles.notifications}>
                   <div className={styles.notificationsHeadings}>
                      <div className={styles.notificationsImage}>
                         <img src={avatarFour} alt="avatar" />
@@ -89,8 +89,8 @@ function DashboardNotificationAlerts() {
                         tests. Take care of yourself. Bye
                      </p>
                   </div>
-               </div>
-               <div className={styles.notifications}>
+               </div> */}
+               {/* <div className={styles.notifications}>
                   <div className={styles.notificationsHeadings}>
                      <div className={styles.notificationsImage}>
                         <img src={avatarThree} alt="avatar" />
@@ -114,9 +114,9 @@ function DashboardNotificationAlerts() {
                         tests. Take care of yourself. Bye
                      </p>
                   </div>
-               </div>
-            </div>
-         </div>
+               </div> */}
+            {/* </div> */}
+    {/* </div> */}
       </>
    );
 }

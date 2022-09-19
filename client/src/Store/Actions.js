@@ -10,6 +10,8 @@ import {
    SET_PATIENT_AUTH,
    SET_USER_INFO,
    SET_OK_TO_ROUTE,
+   SET_RELOAD_MEDICATIONS,
+   SET_MESSAGE,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -47,6 +49,13 @@ export const setGuardianInfo = (guardianData) => {
 export const setOkToRoute = (state) => {
    return {
       type: SET_OK_TO_ROUTE,
+      payload: state,
+   };
+};
+//sets ok to route after an registration action
+export const setReloadMedications = (state) => {
+   return {
+      type: SET_RELOAD_MEDICATIONS,
       payload: state,
    };
 };
@@ -94,6 +103,14 @@ export const setPatientAuth = (auth) => {
       payload: auth,
    };
 };
+
+//Sets messages to be displayed to users
+export const setMessage = (msgObj) => {
+   return {
+      type: SET_MESSAGE,
+      payload: msgObj,
+   };
+};
 //Fetches user profile details
 export const fetchProfile = (userID, guardianID) => {
    return async function (dispatch) {
@@ -113,7 +130,11 @@ export const fetchProfile = (userID, guardianID) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(fetchGuardianInfo(userID, guardianID));
+               if (guardianID) {
+                  dispatch(fetchGuardianInfo(userID, guardianID));
+               } else {
+                  dispatch(setOkToRoute(true));
+               }
             }
          } else {
             //takes all statuses aside 200
@@ -245,21 +266,39 @@ export const updateProfile = (
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(
-                  updateGuardianInfo(
-                     guardianID,
-                     guardianData,
-                     userID,
-                     healthData
-                  )
-               );
+               if (guardianID) {
+                  dispatch(
+                     updateGuardianInfo(
+                        guardianID,
+                        guardianData,
+                        userID,
+                        healthData
+                     )
+                  );
+               } else {
+                  dispatch(updateHealthDetails(userID, healthData));
+               }
             }
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again up1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Update unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again up2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Update unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -284,13 +323,34 @@ export const updateHealthDetails = (userID, data) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setHealthInfo(response.data.msg));
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Profile updated.',
+                     state: 1,
+                  })
+               );
             }
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again uh1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Update unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again uh2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Update unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -325,9 +385,23 @@ export const updateGuardianInfo = (
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again ug1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Update unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again ug2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Update unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -504,13 +578,35 @@ export const updatePrescriptions = (Id, data) => {
             if (response.data.status === true) {
                //returns response
                // alert('med update worked');
+               dispatch(setReloadMedications(true));
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Prescription updated.',
+                     state: 1,
+                  })
+               );
             }
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again med update 1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Update unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again med update 2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Update unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -535,13 +631,36 @@ export const addPrescriptions = (data) => {
             if (response.data.status === true) {
                //returns response
                // alert('med creation worked');
+               // sets variable to use to reload medications
+               dispatch(setReloadMedications(true));
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Prescription added.',
+                     state: 1,
+                  })
+               );
             }
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again med create 1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Creation unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again med create 2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Creation unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -565,13 +684,35 @@ export const deletePrescriptions = (id) => {
             if (response.data.status === true) {
                //returns response
                // alert('med delete worked');
+               dispatch(setReloadMedications(true));
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Prescription deleted.',
+                     state: 1,
+                  })
+               );
             }
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again med delete 1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Delete unsuccessful.',
+                  state: 1,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again med delete 2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Delete unsuccessful.',
+               state: 1,
+            })
+         );
       }
    };
 };
@@ -639,7 +780,7 @@ export async function fetchAppointments(userID, status) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/appointments/?patient_id=${userID}&accepted=${status}`,
+         url: `http://127.0.0.1:5000/appointments/?id_patient=${userID}&accepted=${status}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
