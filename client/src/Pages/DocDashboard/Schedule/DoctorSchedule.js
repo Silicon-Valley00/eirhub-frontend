@@ -9,6 +9,7 @@ const DoctorSchedule = (props) => {
    // States that would be used as data for the PUT method
    const [allAppointments, setAllAppointments] = useState([]);
    const [selectedAppointment, setSelectedAppointment] = useState([]);
+   console.log(selectedAppointment);
    const [appointment_date, setAppointmentDate] = useState('');
    const [appointment_start_time, setAppointmentStartTime] = useState('');
    const [appointment_end_time, setAppointmentEndTime] = useState('');
@@ -33,7 +34,7 @@ const DoctorSchedule = (props) => {
       const getAllAppointmentsForADoctor = async () => {
          axios
             .get(
-               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&accepted=false`,
+               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&status=Pending`,
                {
                   headers: {
                      'Access-Control-Allow-Origin': '*',
@@ -51,8 +52,6 @@ const DoctorSchedule = (props) => {
       };
       getAllAppointmentsForADoctor();
    }, []);
-
-   console.log(allAppointments.length);
 
    // Function that sends the data to the server
    const scheduleAppointment = async () => {
@@ -77,7 +76,26 @@ const DoctorSchedule = (props) => {
    };
 
    // Function to cancel an appointment
-   const cancelAppointment = async () => {};
+   const cancelAppointment = async () => {
+      await axios
+         .put(
+            `${baseURL}/appointments/?id_appointment=${selectedAppointment?.id_appointment}`,
+            {
+               ...scheduledAppointment,
+               appointment_status: 'Declined',
+            },
+            {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            }
+         )
+
+         .then(() => console.log('successul put'))
+         .catch((error) => console.log(error));
+   };
 
    const displaySelectedPatientDetails = (patientKeyNum) => {
       const selectedPatient = allAppointments[patientKeyNum];
@@ -123,7 +141,10 @@ const DoctorSchedule = (props) => {
                      </td>
                      <td
                         className={DSstyles.tdCancel}
-                        onClick={() => cancelAppointment()}
+                        onClick={() => {
+                           displaySelectedPatientDetails(index);
+                           cancelAppointment();
+                        }}
                      >
                         Cancel
                      </td>
