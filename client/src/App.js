@@ -56,343 +56,179 @@ function App() {
    return (
       //    /* Use the routes below if you do want restrictions with your routes */
 
-      <Routes>
-         <Route path="*" exact element={<PageNotFound />} />
-         <Route path="/loading" exact element={<Loading />} />
-         {/* Route for landing page and it's sub-pages */}
-         <Route
-            element={
-               <ProtectedRoutesLanding
-                  isDoctorAuth={isDoctorAuth}
-                  isPatientAuth={isPatientAuth}
-               />
-            }
-         >
-            <Route
-               path="/"
-               exact
-               element={<Navigate replace to={'/landing-page'} />}
-            />
-         </Route>
-         <Route
-            element={
-               <ProtectedRoutesLanding
-                  isDoctorAuth={isDoctorAuth}
-                  isPatientAuth={isPatientAuth}
-               />
-            }
-         >
-            <Route path="/landing-page" exact element={<LandingPage />} />
-         </Route>{' '}
-         <Route
-            element={
-               <ProtectedRoutesLanding
-                  isDoctorAuth={isDoctorAuth}
-                  isPatientAuth={isPatientAuth}
-               />
-            }
-         ></Route>{' '}
-         <Route
-            element={
-               <ProtectedRoutesLanding
-                  isDoctorAuth={isDoctorAuth}
-                  isPatientAuth={isPatientAuth}
-               />
-            }
-         >
-            <Route path="/our-services" exact element={<ServicesPage />} />
-         </Route>{' '}
-         <Route
-            element={
-               <ProtectedRoutesLanding
-                  isDoctorAuth={isDoctorAuth}
-                  isPatientAuth={isPatientAuth}
-               />
-            }
-         >
-            <Route path="/how-it-works" exact element={<HowItWorks />} />
-         </Route>{' '}
-         <Route
-            element={
-               <ProtectedRoutesLanding
-                  isDoctorAuth={isDoctorAuth}
-                  isPatientAuth={isPatientAuth}
-               />
-            }
-         >
-            <Route path="/FAQ" exact element={<FAQ />} />
-         </Route>
-         {/* End of routes for landing page */}
-         {/* Route for user-dashboard */}
-         <Route
-            element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
-         >
-            <Route
-               path="/userdashboard"
-               exact
-               element={
-                  <UserDashboard
-                     parent={<Dashboard />}
-                     child={<DashboardNotificationAlerts />}
-                     page={'dashboard'}
-                  />
-               }
-            />
-         </Route>
-         <Route
-            element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
-         >
-            <Route
-               path="/userprofile"
-               exact
-               element={<UserDashboard parent={<Profile />} page={'profile'} />}
-            />
-         </Route>
-         <Route
-            element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
-         >
-            <Route
-               path="/reports"
-               exact
-               element={
-                  <UserDashboard
-                     parent={<Records />}
-                     child={<RecordChild />}
-                     page={'records'}
-                  />
-               }
-            />
-         </Route>
-         <Route
-            element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
-         >
-            <Route
-               path="/prescriptions"
-               exact
-               element={
-                  <UserDashboard
-                     parent={<Medications pushData={MedicationForm.pullData} />} //Transfers data from parent component to child component
-                     child={<MedicationForm />}
-                     page={'medications'}
-                  />
-               }
-            />
-         </Route>
-         <Route
-            element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
-         >
-            <Route
-               path="/find-a-doctor"
-               exact
-               element={
-                  <UserDashboard
-                     parent={
-                        <FindDoctor pushData={FindDoctorProfile.pullData} />
-                     } //Transfers data from parent component to child component
-                     child={<FindDoctorProfile />}
-                     page={'finddoctor'}
-                  />
-               }
-            />
-         </Route>
-         <Route
-            element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
-         >
-            <Route
-               path="/usermessaging"
-               exact
-               element={
-                  <UserDashboard
-                     parent={<Message />}
-                     child={<MessageUsers />}
-                     page={'message'}
-                  />
-               }
-            />
-         </Route>
-         <Route
-            element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
-         >
-            <Route
-               path="/scheduling"
-               exact
-               element={
-                  <UserDashboard
-                     parent={<Schedule />}
-                     child={<DashboardNotificationAlerts />}
-                     page={'schedule'}
-                  />
-               }
-            />
-         </Route>
-         {/* End of routes for user dashboard */}
-         
-         {/* Start of route for doctor-dashboard. */}
-         <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-         <Route
-            path="/doctordashboard"
-            exact
-            element={
-               <DocDashboard
-                  middleSection={<MidDashboard />}
-                  rightSection={<DoctorCalendar />}
-                  page={'dashboard'}
-               />
-            }
-         />         </Route>
-         <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-         <Route
-            path="/doctorprofile"
-            exact
-            element={
-               <DocDashboard
-                  middleSection={<DocProfile />}
-                  page={'doctorprofile'}
-               />
-            }
-         />         </Route>
-         <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-         <Route
-            path="/doctorrecords"
-            exact
-            element={
-               <DocDashboard
-                  middleSection={<DoctorRecords />}
-                  rightSection={<DoctorPatients />}
-                  page={'records'}
-               />
-            }
-         />         </Route>
-         <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-         <Route
-            path="/doctormessaging"
-            exact
-            element={
-               <DocDashboard
-                  middleSection={<DoctorMessage />}
-                  rightSection={<MessagePatients />}
-                  page={'doctormessage'}
-               />
-            }
-         />         </Route>
-         <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-         <Route
-            path="/doctorschedule"
-            exact
-            element={
-               <DocDashboard
-                  middleSection={<DoctorSchedule />}
-                  rightSection={<DoctorPatients />}
-                  page={'doctorschedule'}
-               />
-            }
-         />         </Route>
-         {/* End of route for doctor-dashboard */}
-      </Routes>
-
-      //    /* Use the routes below if you do not want restrictions with your routes */
       // <Routes>
       //    <Route path="*" exact element={<PageNotFound />} />
       //    <Route path="/loading" exact element={<Loading />} />
       //    {/* Route for landing page and it's sub-pages */}
-
       //    <Route
-      //       path="/"
-      //       exact
-      //       element={<Navigate replace to={'/landing-page'} />}
-      //    />
-
-      //    <Route path="/landing-page" exact element={<LandingPage />} />
-
-      //    <Route path="/our-services" exact element={<ServicesPage />} />
-
-      //    <Route path="/how-it-works" exact element={<HowItWorks />} />
-
-      //    <Route path="/FAQ" exact element={<FAQ />} />
+      //       element={
+      //          <ProtectedRoutesLanding
+      //             isDoctorAuth={isDoctorAuth}
+      //             isPatientAuth={isPatientAuth}
+      //          />
+      //       }
+      //    >
+      //       <Route
+      //          path="/"
+      //          exact
+      //          element={<Navigate replace to={'/landing-page'} />}
+      //       />
+      //    </Route>
+      //    <Route
+      //       element={
+      //          <ProtectedRoutesLanding
+      //             isDoctorAuth={isDoctorAuth}
+      //             isPatientAuth={isPatientAuth}
+      //          />
+      //       }
+      //    >
+      //       <Route path="/landing-page" exact element={<LandingPage />} />
+      //    </Route>{' '}
+      //    <Route
+      //       element={
+      //          <ProtectedRoutesLanding
+      //             isDoctorAuth={isDoctorAuth}
+      //             isPatientAuth={isPatientAuth}
+      //          />
+      //       }
+      //    ></Route>{' '}
+      //    <Route
+      //       element={
+      //          <ProtectedRoutesLanding
+      //             isDoctorAuth={isDoctorAuth}
+      //             isPatientAuth={isPatientAuth}
+      //          />
+      //       }
+      //    >
+      //       <Route path="/our-services" exact element={<ServicesPage />} />
+      //    </Route>{' '}
+      //    <Route
+      //       element={
+      //          <ProtectedRoutesLanding
+      //             isDoctorAuth={isDoctorAuth}
+      //             isPatientAuth={isPatientAuth}
+      //          />
+      //       }
+      //    >
+      //       <Route path="/how-it-works" exact element={<HowItWorks />} />
+      //    </Route>{' '}
+      //    <Route
+      //       element={
+      //          <ProtectedRoutesLanding
+      //             isDoctorAuth={isDoctorAuth}
+      //             isPatientAuth={isPatientAuth}
+      //          />
+      //       }
+      //    >
+      //       <Route path="/FAQ" exact element={<FAQ />} />
+      //    </Route>
       //    {/* End of routes for landing page */}
       //    {/* Route for user-dashboard */}
-
       //    <Route
-      //       path="/userdashboard"
-      //       exact
-      //       element={
-      //          <UserDashboard
-      //             parent={<Dashboard />}
-      //             child={<DashboardNotificationAlerts />}
-      //             page={'dashboard'}
-      //          />
-      //       }
-      //    />
-
+      //       element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
+      //    >
+      //       <Route
+      //          path="/userdashboard"
+      //          exact
+      //          element={
+      //             <UserDashboard
+      //                parent={<Dashboard />}
+      //                child={<DashboardNotificationAlerts />}
+      //                page={'dashboard'}
+      //             />
+      //          }
+      //       />
+      //    </Route>
       //    <Route
-      //       path="/userprofile"
-      //       exact
-      //       element={<UserDashboard parent={<Profile />} page={'profile'} />}
-      //    />
-
+      //       element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
+      //    >
+      //       <Route
+      //          path="/userprofile"
+      //          exact
+      //          element={<UserDashboard parent={<Profile />} page={'profile'} />}
+      //       />
+      //    </Route>
       //    <Route
-      //       path="/reports"
-      //       exact
-      //       element={
-      //          <UserDashboard
-      //             parent={<Records />}
-      //             child={<RecordChild />}
-      //             page={'records'}
-      //          />
-      //       }
-      //    />
-
+      //       element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
+      //    >
+      //       <Route
+      //          path="/reports"
+      //          exact
+      //          element={
+      //             <UserDashboard
+      //                parent={<Records />}
+      //                child={<RecordChild />}
+      //                page={'records'}
+      //             />
+      //          }
+      //       />
+      //    </Route>
       //    <Route
-      //       path="/prescriptions"
-      //       exact
-      //       element={
-      //          <UserDashboard
-      //             parent={<Medications pushData={MedicationForm.pullData} />} //Transfers data from parent component to child component
-      //             child={<MedicationForm />}
-      //             page={'medications'}
-      //          />
-      //       }
-      //    />
-
+      //       element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
+      //    >
+      //       <Route
+      //          path="/prescriptions"
+      //          exact
+      //          element={
+      //             <UserDashboard
+      //                parent={<Medications pushData={MedicationForm.pullData} />} //Transfers data from parent component to child component
+      //                child={<MedicationForm />}
+      //                page={'medications'}
+      //             />
+      //          }
+      //       />
+      //    </Route>
       //    <Route
-      //       path="/find-a-doctor"
-      //       exact
-      //       element={
-      //          <UserDashboard
-      //             parent={<FindDoctor pushData={FindDoctorProfile.pullData} />} //Transfers data from parent component to child component
-      //             child={<FindDoctorProfile />}
-      //             page={'finddoctor'}
-      //          />
-      //       }
-      //    />
-
+      //       element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
+      //    >
+      //       <Route
+      //          path="/find-a-doctor"
+      //          exact
+      //          element={
+      //             <UserDashboard
+      //                parent={
+      //                   <FindDoctor pushData={FindDoctorProfile.pullData} />
+      //                } //Transfers data from parent component to child component
+      //                child={<FindDoctorProfile />}
+      //                page={'finddoctor'}
+      //             />
+      //          }
+      //       />
+      //    </Route>
       //    <Route
-      //       path="/usermessaging"
-      //       exact
-      //       element={
-      //          <UserDashboard
-      //             parent={<Message />}
-      //             child={<MessageUsers />}
-      //             page={'message'}
-      //          />
-      //       }
-      //    />
-
+      //       element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
+      //    >
+      //       <Route
+      //          path="/usermessaging"
+      //          exact
+      //          element={
+      //             <UserDashboard
+      //                parent={<Message />}
+      //                child={<MessageUsers />}
+      //                page={'message'}
+      //             />
+      //          }
+      //       />
+      //    </Route>
       //    <Route
-      //       path="/scheduling"
-      //       exact
-      //       element={
-      //          <UserDashboard
-      //             parent={<Schedule />}
-      //             child={<DashboardNotificationAlerts />}
-      //             page={'schedule'}
-      //          />
-      //       }
-      //    />
+      //       element={<ProtectedRoutesPatient isPatientAuth={isPatientAuth} />}
+      //    >
+      //       <Route
+      //          path="/scheduling"
+      //          exact
+      //          element={
+      //             <UserDashboard
+      //                parent={<Schedule />}
+      //                child={<DashboardNotificationAlerts />}
+      //                page={'schedule'}
+      //             />
+      //          }
+      //       />
+      //    </Route>
       //    {/* End of routes for user dashboard */}
-
+         
       //    {/* Start of route for doctor-dashboard. */}
-      //    {/* Routes for main dashboard */}
+      //    <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
       //    <Route
       //       path="/doctordashboard"
       //       exact
@@ -403,8 +239,8 @@ function App() {
       //             page={'dashboard'}
       //          />
       //       }
-      //    />
-      //    {/* Routes for doctor profile */}
+      //    />         </Route>
+      //    <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
       //    <Route
       //       path="/doctorprofile"
       //       exact
@@ -414,20 +250,8 @@ function App() {
       //             page={'doctorprofile'}
       //          />
       //       }
-      //    />
-      //    {/* Routes for doctor schedule */}
-      //    <Route
-      //       path="/doctorschedule"
-      //       exact
-      //       element={
-      //          <DocDashboard
-      //             middleSection={<DoctorSchedule />}
-      //             rightSection={<DoctorPatients />}
-      //             page={'doctorschedule'}
-      //          />
-      //       }
-      //    />
-      //    {/* Routes for doctor records */}
+      //    />         </Route>
+      //    <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
       //    <Route
       //       path="/doctorrecords"
       //       exact
@@ -438,8 +262,8 @@ function App() {
       //             page={'records'}
       //          />
       //       }
-      //    />
-      //    {/* Routes for doctor messages */}
+      //    />         </Route>
+      //    <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
       //    <Route
       //       path="/doctormessaging"
       //       exact
@@ -450,9 +274,185 @@ function App() {
       //             page={'doctormessage'}
       //          />
       //       }
-      //    />
-      //    {/* End of doctor routes */}
+      //    />         </Route>
+      //    <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
+      //    <Route
+      //       path="/doctorschedule"
+      //       exact
+      //       element={
+      //          <DocDashboard
+      //             middleSection={<DoctorSchedule />}
+      //             rightSection={<DoctorPatients />}
+      //             page={'doctorschedule'}
+      //          />
+      //       }
+      //    />         </Route>
+      //    {/* End of route for doctor-dashboard */}
       // </Routes>
+
+      //    /* Use the routes below if you do not want restrictions with your routes */
+      <Routes>
+         <Route path="*" exact element={<PageNotFound />} />
+         <Route path="/loading" exact element={<Loading />} />
+         {/* Route for landing page and it's sub-pages */}
+
+         <Route
+            path="/"
+            exact
+            element={<Navigate replace to={'/landing-page'} />}
+         />
+
+         <Route path="/landing-page" exact element={<LandingPage />} />
+
+         <Route path="/our-services" exact element={<ServicesPage />} />
+
+         <Route path="/how-it-works" exact element={<HowItWorks />} />
+
+         <Route path="/FAQ" exact element={<FAQ />} />
+         {/* End of routes for landing page */}
+         {/* Route for user-dashboard */}
+
+         <Route
+            path="/userdashboard"
+            exact
+            element={
+               <UserDashboard
+                  parent={<Dashboard />}
+                  child={<DashboardNotificationAlerts />}
+                  page={'dashboard'}
+               />
+            }
+         />
+
+         <Route
+            path="/userprofile"
+            exact
+            element={<UserDashboard parent={<Profile />} page={'profile'} />}
+         />
+
+         <Route
+            path="/reports"
+            exact
+            element={
+               <UserDashboard
+                  parent={<Records />}
+                  child={<RecordChild />}
+                  page={'records'}
+               />
+            }
+         />
+
+         <Route
+            path="/prescriptions"
+            exact
+            element={
+               <UserDashboard
+                  parent={<Medications pushData={MedicationForm.pullData} />} //Transfers data from parent component to child component
+                  child={<MedicationForm />}
+                  page={'medications'}
+               />
+            }
+         />
+
+         <Route
+            path="/find-a-doctor"
+            exact
+            element={
+               <UserDashboard
+                  parent={<FindDoctor pushData={FindDoctorProfile.pullData} />} //Transfers data from parent component to child component
+                  child={<FindDoctorProfile />}
+                  page={'finddoctor'}
+               />
+            }
+         />
+
+         <Route
+            path="/usermessaging"
+            exact
+            element={
+               <UserDashboard
+                  parent={<Message />}
+                  child={<MessageUsers />}
+                  page={'message'}
+               />
+            }
+         />
+
+         <Route
+            path="/scheduling"
+            exact
+            element={
+               <UserDashboard
+                  parent={<Schedule />}
+                  child={<DashboardNotificationAlerts />}
+                  page={'schedule'}
+               />
+            }
+         />
+         {/* End of routes for user dashboard */}
+
+         {/* Start of route for doctor-dashboard. */}
+         {/* Routes for main dashboard */}
+         <Route
+            path="/doctordashboard"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<MidDashboard />}
+                  rightSection={<DoctorCalendar />}
+                  page={'dashboard'}
+               />
+            }
+         />
+         {/* Routes for doctor profile */}
+         <Route
+            path="/doctorprofile"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DocProfile />}
+                  page={'doctorprofile'}
+               />
+            }
+         />
+         {/* Routes for doctor schedule */}
+         <Route
+            path="/doctorschedule"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorSchedule />}
+                  rightSection={<DoctorPatients />}
+                  page={'doctorschedule'}
+               />
+            }
+         />
+         {/* Routes for doctor records */}
+         <Route
+            path="/doctorrecords"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorRecords />}
+                  rightSection={<DoctorPatients />}
+                  page={'records'}
+               />
+            }
+         />
+         {/* Routes for doctor messages */}
+         <Route
+            path="/doctormessaging"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorMessage />}
+                  rightSection={<MessagePatients />}
+                  page={'doctormessage'}
+               />
+            }
+         />
+         {/* End of doctor routes */}
+      </Routes>
    );
 }
 

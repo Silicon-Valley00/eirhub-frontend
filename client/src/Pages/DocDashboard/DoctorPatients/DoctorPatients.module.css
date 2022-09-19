@@ -113,8 +113,11 @@
    .logo_close {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding: 0 2rem;
+      justify-content: space-between;
+   }
+   .logo_close h2{
+      padding-left: 42.5%;
    }
 }
 @media (max-width: 1024px) {
@@ -186,6 +189,12 @@
       cursor: pointer;
    }
 }
+/* made changes here */
+@media(max-width:425px){
+   .logo_close h2{
+      padding-left: 30%;
+   }
+}
 
 @media (max-width: 375px) {
    .patientsSection::-webkit-scrollbar,
@@ -205,6 +214,9 @@
       background-color: var(--lightcol);
       border-radius: 10%;
       cursor: pointer;
+   }
+   .logo_close h2{
+      padding-left: 30%;/*made change here*/
    }
 }
 @media (max-width: 320px) {
