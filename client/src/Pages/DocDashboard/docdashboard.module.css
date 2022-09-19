@@ -86,8 +86,8 @@
       grid-template-columns: 15rem auto 20rem;
    }
 }
-
-@media only screen and (min-width: 1025px) and (max-width: 1399px) {
+/* Made changes here Ama*/
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .userbody {
       overflow-x: hidden;
       width: 100vw;
@@ -95,7 +95,8 @@
    }
    .container {
       width: 98%;
-      grid-template-columns: 14rem auto 20rem;
+      grid-template-columns: 14rem auto /*20rem*/;
+
    }
 }
 
@@ -107,7 +108,7 @@
    }
    .container {
       width: 94%;
-      grid-template-columns: 7rem auto 20rem;
+      grid-template-columns: 7rem auto /*20rem*/;
    }
 }
 
@@ -116,7 +117,7 @@
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
-      overflow-y: auto;
+      /* overflow-y: auto; */
    }
    .container {
       width: 100%;

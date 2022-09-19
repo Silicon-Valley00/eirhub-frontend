@@ -66,8 +66,10 @@ function Schedule() {
             return;
          }
 
+         const dt = new Date();
+
          const appointMentDetails = {
-            appointment_date: '',
+            appointment_date: `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getDate()}`,
             appointment_start_time: '',
             appointment_end_time: '',
             appointment_reason: condition,

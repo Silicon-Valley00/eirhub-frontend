@@ -7,6 +7,7 @@ import {
    fetchMedications,
    setMedicationsTemp,
 } from '../../Store/Actions';
+import { addNewGuardianInfo } from '../../Store/Actions';
 import { useLocation } from 'react-router-dom';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 
@@ -21,23 +22,23 @@ const mapStateToProps = (state) => {
 function Loading(props) {
    const patientID = useSelector((state) => state.user.id_patient);
    const auth = useSelector((state) => state.isPatientAuth);
-   // const { state } = useLocation();
-   // const { status } = state;
+   const { state } = useLocation();
+   const { status } = state;
 
    const dispatch = useDispatch();
 
    useEffect(() => {
-      // if (auth === true && status === true) {
-      //    console.log('running');
-      //    dispatch(
-      //       addNewHealthDetails(
-      //          props.savedHealthDetails,
-      //          props.savedGuardianDetails,
-      //          patientID,
-      //          props.savedProfile
-      //       )
-      //    );
-      // }
+      if (auth === true && status === true) {
+         console.log('running');
+         dispatch(
+            addNewHealthDetails(
+               props.savedHealthDetails,
+               props.savedGuardianDetails,
+               patientID,
+               props.savedProfile
+            )
+         );
+      }
       async function fetchdata() {
          const items = await fetchMedications(patientID);
          console.log('setting temp');
@@ -46,6 +47,18 @@ function Loading(props) {
 
       fetchdata();
    }, []);
+   if (auth === true && status === true) {
+      console.log('running');
+      dispatch(
+         addNewGuardianInfo(props.savedGuardianDetails, props.savedProfile)
+         // addNewHealthDetails(
+         //    props.savedHealthDetails,
+         //    props.savedGuardianDetails,
+         //    patientID,
+         //    props.savedProfile
+         // )
+      );
+   }
    return (
       <>
          {/* <AlertsMessageBox

@@ -2,6 +2,7 @@
    /* display: none; */
    /* width: 15rem; */
    min-width: 250px;
+   height: 100%;
 }
 
 .patientsSection {
@@ -68,7 +69,6 @@
 @media (min-width: 920px) {
    .main {
       display: block;
-      height: 100%;
    }
 }
 
@@ -77,6 +77,44 @@
       grid-column: 1/2;
       overflow: scroll;
       border-radius: 20px;
+   }
+   .show {
+      border-radius: 0;
+      display: block;
+   }
+   .hide {
+      display: none;
+      position: absolute;
+      right: -40rem;
+   }
+   .menu {
+      display: block;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10000;
+   }
+   .patientsSection {
+      margin: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+   }
+   .close {
+      display: block;
+      color: var(--midcol);
+      cursor: pointer;
+   }
+   .logo_close {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
    }
 }
 @media (max-width: 1024px) {
@@ -111,6 +149,7 @@
       border-radius: 10%;
       cursor: pointer;
    }
+   
 }
 @media (max-width: 800px) {
    .patientsSection {
@@ -126,25 +165,7 @@
       width: 50%;
       min-width: 300px;
    }
-   .menu {
-      display: block;
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      z-index: 10000;
-   }
-   .show {
-      border-radius: 0;
-      display: block;
-   }
-   .hide {
-      display: none;
-      position: absolute;
-      right: -40rem;
-   }
+ 
    .logo_close {
       display: flex;
       align-items: center;

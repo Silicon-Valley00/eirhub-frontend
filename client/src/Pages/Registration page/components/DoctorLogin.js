@@ -38,9 +38,10 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
-         
 
          dispatch(setDoctorAuth(true));
+         navigate('/loading', { state: { status: false } });
+
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/doctordashboard');

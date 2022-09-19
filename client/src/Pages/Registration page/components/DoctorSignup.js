@@ -61,6 +61,7 @@ function DoctorSignup(props) {
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
 
          dispatch(setDoctorAuth(true));
+         navigate('/loading', { state: { status: false } });
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
