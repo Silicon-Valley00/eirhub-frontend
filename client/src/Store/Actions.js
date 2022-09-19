@@ -282,9 +282,23 @@ export const updateProfile = (
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again up1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Update unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again up2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Update unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -309,13 +323,34 @@ export const updateHealthDetails = (userID, data) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setHealthInfo(response.data.msg));
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Profile updated.',
+                     state: 1,
+                  })
+               );
             }
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again uh1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Update unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again uh2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Update unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -350,9 +385,23 @@ export const updateGuardianInfo = (
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again ug1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Update unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again ug2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Update unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -530,13 +579,34 @@ export const updatePrescriptions = (Id, data) => {
                //returns response
                // alert('med update worked');
                dispatch(setReloadMedications(true));
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Prescription updated.',
+                     state: 1,
+                  })
+               );
             }
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again med update 1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Update unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again med update 2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Update unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -563,13 +633,34 @@ export const addPrescriptions = (data) => {
                // alert('med creation worked');
                // sets variable to use to reload medications
                dispatch(setReloadMedications(true));
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Prescription added.',
+                     state: 1,
+                  })
+               );
             }
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again med create 1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Creation unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again med create 2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Creation unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };
@@ -594,13 +685,34 @@ export const deletePrescriptions = (id) => {
                //returns response
                // alert('med delete worked');
                dispatch(setReloadMedications(true));
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Prescription deleted.',
+                     state: 1,
+                  })
+               );
             }
          } else {
             //takes all statuses aside 200
             // alert('Could not make update, try again med delete 1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Delete unsuccessful.',
+                  state: 1,
+               })
+            );
          }
       } catch (error) {
          // alert('Could not make update, try again med delete 2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Delete unsuccessful.',
+               state: 1,
+            })
+         );
       }
    };
 };

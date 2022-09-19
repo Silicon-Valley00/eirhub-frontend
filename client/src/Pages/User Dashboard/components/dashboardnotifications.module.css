@@ -33,7 +33,9 @@ padding-right: 2.6rem; */
    width: 100%;
    overflow: scroll;
    width: auto;
-   height: 600px;
+   height: 20rem;
+   min-height: 20rem;
+   max-height: 35rem;
    padding-right: 1rem;
 }
 

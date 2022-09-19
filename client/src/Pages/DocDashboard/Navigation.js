@@ -23,9 +23,6 @@ const Navigation = ({ nav, openFunc }) => {
       imageToShow = docImage;
    }
 
-   const userProfileImage = useSelector(
-      (state) => state.doctorProfile?.person_image
-   );
    const [openMenu, setOpenMenu] = useState(false);
 
    return (

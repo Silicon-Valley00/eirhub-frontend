@@ -5,7 +5,11 @@ import { GiMedicinePills, GiPillDrop } from 'react-icons/gi';
 import { TiTime } from 'react-icons/ti';
 import { IoCloseOutline } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
-import { addPrescriptions, updatePrescriptions, setReloadMedications } from '../../../Store/Actions';
+import {
+   addPrescriptions,
+   updatePrescriptions,
+   setReloadMedications,
+} from '../../../Store/Actions';
 import { useSelector } from 'react-redux';
 
 function Medication(props) {
@@ -103,12 +107,7 @@ function Medication(props) {
             // sets variable to use to reload medications
             // dispatch(setReloadMedications(true));
             //clears all input boxes and edit medication data
-            setEditMedication({});
-            setDrugName('');
-            setDrugDosage('');
-            setDrugTime('');
-            setDrugStartDate('');
-            setDrugEndDate('');
+            clearInputsAndMedicationData();
          }
       } else {
          // alerts user when all input fields have not been filled
@@ -118,8 +117,8 @@ function Medication(props) {
 
       clearInputsAndMedicationData();
    }
-   
-   function  clearInputsAndMedicationData() {
+
+   function clearInputsAndMedicationData() {
       //clears all input boxes and edit medication data
       setEditMedication({});
       setDrugName('');
@@ -157,7 +156,7 @@ function Medication(props) {
                      </div>
                   </div>
                   <div className={styles.formBox}>
-                     <label htmlFor="dosage"> Dosage</label>
+                     <label htmlFor="dosage">Dosage</label>
                      <div className={styles.formBoxInputs}>
                         <i>
                            <GiPillDrop />
@@ -166,7 +165,7 @@ function Medication(props) {
                            name="dosage"
                            type="text"
                            id="dosage"
-                           placeholder="eg.1/x3"
+                           placeholder="eg. 1/x3"
                            onChange={(event) => {
                               setDrugDosage(event.target.value);
                               setIsError(false);
@@ -176,7 +175,7 @@ function Medication(props) {
                      </div>
                   </div>
                   <div className={styles.formBox}>
-                     <label htmlFor="time"> Time</label>
+                     <label htmlFor="time"> Time Period</label>
                      <div className={styles.formBoxInputs}>
                         <i>
                            <TiTime />
@@ -185,7 +184,7 @@ function Medication(props) {
                            name="time"
                            type="text"
                            id="time"
-                           placeholder="Select period to take drug"
+                           placeholder="eg. Before Meal"
                            onChange={(event) => {
                               setDrugTime(event.target.value);
                               setIsError(false);
@@ -257,17 +256,19 @@ function Medication(props) {
                            : 'Update Prescription'}
                      </button>
                   </div>
-                  { Object.keys(editMedication).length === 0 ? "": 
+                  {Object.keys(editMedication).length === 0 ? (
+                     ''
+                  ) : (
                      <div className={styles.formButton}>
-                     <button
-                        id={styles.formBtn}
-                        className={styles.formCancelBtn}
-                        onClick={() => clearInputsAndMedicationData()}
-                     >
-                        Cancel
-                     </button>
+                        <button
+                           id={styles.formBtn}
+                           className={styles.formCancelBtn}
+                           onClick={() => clearInputsAndMedicationData()}
+                        >
+                           Cancel
+                        </button>
                      </div>
-                  }
+                  )}
                </div>
                <div className={isError ? styles.error : styles.noerror}>
                   <p>{errorMessage}</p>

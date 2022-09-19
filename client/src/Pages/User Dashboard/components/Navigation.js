@@ -133,18 +133,7 @@ function Navigation(props) {
                            <h3>Messages</h3>
                         </li>
                      </Link>
-                     <li
-                        className={
-                           props.page === 'settings' ? styles.active : ''
-                        }
-                     >
-                        <span className={styles.icons}>
-                           <i>
-                              <IoSettingsOutline />
-                           </i>
-                        </span>
-                        <h3>Settings</h3>
-                     </li>
+
                      <li
                         className={props.page === 'logout' ? styles.active : ''}
                         onClick={() => {

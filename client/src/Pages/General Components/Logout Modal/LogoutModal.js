@@ -5,6 +5,7 @@ import { Logout } from '../../../context/authcontext';
 import { setPatientAuth } from '../../../Store/Actions';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { setDoctorAuth } from '../../../Store/DoctorAction';
 
 function LogoutModal(props) {
    const navigate = useNavigate();
@@ -14,6 +15,7 @@ function LogoutModal(props) {
       try {
          setTimeout(() => persistor.purge(), 200);
          dispatch(setPatientAuth(false));
+         dispatch(setDoctorAuth(false));
          Logout();
          navigate('/landing-page');
       } catch (err) {

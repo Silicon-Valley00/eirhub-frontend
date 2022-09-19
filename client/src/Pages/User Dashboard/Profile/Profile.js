@@ -95,7 +95,7 @@ function Profile(props) {
       props.savedGuardianDetails.last_name
    );
    const [guardianEmail, setGuardianEmail] = useState(
-      props.savedGuardianDetails.email
+      props.savedGuardianDetails.user_email
    );
    const [guardianDateOfBirth, setGuardianDateOfBirth] = useState(
       props.savedGuardianDetails.date_of_birth !== ''
