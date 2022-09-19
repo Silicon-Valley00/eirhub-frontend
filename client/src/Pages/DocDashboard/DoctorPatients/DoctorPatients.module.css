@@ -10,14 +10,10 @@
    background-color: #ecf3fc;
    border-radius: 1.25rem;
    height: 100%;
-   /* margin-left: 1.25rem; */
+   padding-top: 2rem;
    z-index: 10000;
 }
 
-.patientsSection h2 {
-   color: #0d3f58;
-   text-align: center;
-}
 .patientsSection::-webkit-scrollbar,
 .patientsSection::-webkit-scrollbar {
    width: 0.3rem;
@@ -48,6 +44,7 @@
 }
 
 .imageDiv {
+   width: 90%;
    margin: 15px 0;
    display: flex;
    align-items: center;

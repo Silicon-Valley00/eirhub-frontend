@@ -65,11 +65,12 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
 };
 
 //Fectches patients by doctor id
-export async function fetchPatientsByDoctorId(idDoctor) {
+export async function fetchPatientsByDoctorId(id_doctor) {
    try {
+      
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/doctors/?id_doctor=${idDoctor}`,
+         url: `http://127.0.0.1:5000/doctors/?id_doctor=${id_doctor}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -79,10 +80,14 @@ export async function fetchPatientsByDoctorId(idDoctor) {
       });
       if (response.status === 200) {
          //checks details of response
-         if (response.data.status === true) {
+         console.log(response);
+         console.log(response.data.status);
+         console.log(response.data[0].status);
+
+         if (response.data) {
             //returns response
             // alert('patients by doctor id worked fetch worked');
-            return response.data.msg;
+            return response.data;
          }
       } else {
          //takes all statuses aside 200

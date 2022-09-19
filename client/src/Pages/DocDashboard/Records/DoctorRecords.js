@@ -1,8 +1,24 @@
 import styles from './DoctorRecords.module.css';
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
 import Dropzone from './Dropzone';
+import {
+   fetchReports,
+} from '../../../Store/Actions';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const DoctorRecords = () => {
+   const doctorID = useSelector((state)=> state.profile.id_doctor);
+   console.log(doctorID)
+   
+   const [reports,setReports] = useState([]);
+
+   useState(()=>{
+      async function fetchdata(){
+         const items = await fetchReports(patientID);
+         setReports([items]);
+      }
+   },[])
    return (
       <>
          {/* <div className={styles.docRecordsContainer}> */}
