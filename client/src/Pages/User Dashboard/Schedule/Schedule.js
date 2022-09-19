@@ -86,7 +86,21 @@ function Schedule() {
    var appointmentsData;
    //displays medications
    if (appointments === undefined) {
-      appointmentsData = <p>Nothing to show here.</p>;
+      appointmentsData = (
+         <tr
+            style={{
+               width: '1200%',
+               display: 'flex',
+               justifyContent: 'center',
+               alignItems: 'center',
+               color: '#c2c9d1',
+               marginTop: '5rem',
+               fontSize: '150%',
+            }}
+         >
+            Nothing to show here.
+         </tr>
+      );
    } else {
       if (appointments.length !== 0) {
          appointmentsData = appointments.map((item, j) => {
@@ -113,7 +127,21 @@ function Schedule() {
          });
       } else if (appointments.length === 0) {
          // Sends message to be displayed when saved videos is empty
-         appointmentsData = <p>Nothing to show here.</p>;
+         appointmentsData = (
+            <tr
+               style={{
+                  width: '1200%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: '#c2c9d1',
+                  marginTop: '5rem',
+                  fontSize: '150%',
+               }}
+            >
+               Nothing to show here.
+            </tr>
+         );
       }
    }
    return (

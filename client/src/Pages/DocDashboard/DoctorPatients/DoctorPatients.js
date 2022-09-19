@@ -8,28 +8,6 @@ import { fetchPatientsByDoctorId } from '../../../Store/DoctorAction';
 import { useSelector } from 'react-redux';
 
 
-// const patients = [
-//    {
-//       image: femaleProfile,
-//       name: 'Melissa Burkinstock',
-//    },
-//    {
-//       image: maleProfile,
-//       name: 'James Freeman',
-//    },
-//    {
-//       image: femaleProfile,
-//       name: 'Chioma Ukechukwu',
-//    },
-//    {
-//       image: femaleProfile,
-//       name: 'Melissa Burkinstock',
-//    },
-//    {
-//       image: femaleProfile,
-//       name: 'Melissa Burkinstock',
-//    },
-// ];
 
 function DoctorPatients() {
    const doctorId = useSelector((state) => state.profile.id_doctor);
@@ -38,12 +16,10 @@ function DoctorPatients() {
       async function fetchPatients(){
          const items = await fetchPatientsByDoctorId(doctorId)
          setPatients(items)
-         console.log(items)
          
       }
       fetchPatients();
    },[])
-   console.log(typeof doctorId)
 
    const [show, setShow] = useState(false);
 

@@ -46,7 +46,7 @@ function Navigation(props) {
                                  <MdSpaceDashboard />
                               </i>
                            </span>
-                           <h3>Dasboard</h3>
+                           <h3>Dashboard</h3>
                         </li>
                      </Link>
                      <Link to={'/userprofile'}>
