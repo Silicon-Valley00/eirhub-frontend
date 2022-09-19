@@ -8,21 +8,21 @@ import LoginDropdown from './LoginDropdown';
 import SignUpDropdown from './SignUpDropdown';
 
 // Function to use when the user clicks outside of the dropdown.
-function useClickOutside(Handler) {
-   let menuRef = useRef();
-   useEffect(() => {
-      let secondHandler = (event) => {
-         if (!menuRef.current.contains(event.target)) {
-            Handler();
-         }
-      };
-      document.addEventListener('mousedown', secondHandler);
-      return () => {
-         document.addEventListener('mousedown', secondHandler);
-      };
-   });
-   return menuRef;
-}
+// function useClickOutside(Handler) {
+//    let menuRef = useRef();
+//    useEffect(() => {
+//       let secondHandler = (event) => {
+//          if (!menuRef.current.contains(event.target)) {
+//             Handler();
+//          }
+//       };
+//       document.addEventListener('mousedown', secondHandler);
+//       return () => {
+//          document.addEventListener('mousedown', secondHandler);
+//       };
+//    });
+//    return menuRef;
+// }
 
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
@@ -41,15 +41,15 @@ const Navbar = (props) => {
       setSignUpClick(false);
    };
 
-   let menuRef = useClickOutside(() => {
-      setLoginClick(false);
-      setSignUpClick(false);
-   });
+   // let menuRef = useClickOutside(() => {
+   //    setLoginClick(false);
+   //    setSignUpClick(false);
+   // });
 
    return (
       <div className={styles.nav_background}>
          <main className={styles.main}>
-            <div className={styles.back} ref={menuRef}>
+            <div className={styles.back}>
                <nav id={styles.nav}>
                   {/* Logo */}
                   <Link to="/" id={styles.img}>

@@ -28,17 +28,17 @@ function Loading(props) {
    const dispatch = useDispatch();
 
    useEffect(() => {
-      // if (auth === true && status === true) {
-      //    console.log('running');
-      //    dispatch(
-      //       addNewHealthDetails(
-      //          props.savedHealthDetails,
-      //          props.savedGuardianDetails,
-      //          patientID,
-      //          props.savedProfile
-      //       )
-      //    );
-      // }
+      if (auth === true && status === true) {
+         console.log('running');
+         dispatch(
+            addNewHealthDetails(
+               props.savedHealthDetails,
+               props.savedGuardianDetails,
+               patientID,
+               props.savedProfile
+            )
+         );
+      }
       async function fetchdata() {
          const items = await fetchMedications(patientID);
          console.log('setting temp');
