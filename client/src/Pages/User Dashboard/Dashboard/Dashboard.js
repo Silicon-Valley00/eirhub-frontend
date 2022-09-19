@@ -313,7 +313,7 @@ function Dashboard(props) {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>{`${props.savedHealthDetails.blood_sugar} mg/dL`}</h4>
+                        <h4>{props.savedHealthDetails.blood_sugar ? `${props.savedHealthDetails.blood_sugar} mg/dL` : ""}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>
