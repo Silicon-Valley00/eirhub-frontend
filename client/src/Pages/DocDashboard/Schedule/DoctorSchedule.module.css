@@ -9,7 +9,18 @@
    overflow-y: scroll;
    min-height: 35rem;
 } 
-
+.emptyMessage{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.emptyMessage .text{
+   color: var(--tablehead);
+   font-weight: 400;
+   font-family: 'Poppins';
+   font-size: 1.2rem;
+}
 
 /* .DSContainer1::-webkit-scrollbar {
    display: none;
