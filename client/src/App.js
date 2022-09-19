@@ -58,6 +58,7 @@ function App() {
 
       <Routes>
          <Route path="*" exact element={<PageNotFound />} />
+         <Route path="/loading" exact element={<Loading />} />
          {/* Route for landing page and it's sub-pages */}
          <Route
             element={
@@ -225,22 +226,67 @@ function App() {
             />
          </Route>
          {/* End of routes for user dashboard */}
+         
          {/* Start of route for doctor-dashboard. */}
          <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-            <Route path="/doctordashboard" exact element={<MidDashboard />} />
-         </Route>
+         <Route
+            path="/doctordashboard"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<MidDashboard />}
+                  rightSection={<DoctorCalendar />}
+                  page={'dashboard'}
+               />
+            }
+         />         </Route>
          <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-            <Route path="/doctorprofile" exact element={<DocProfile />} />
-         </Route>
+         <Route
+            path="/doctorprofile"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DocProfile />}
+                  page={'doctorprofile'}
+               />
+            }
+         />         </Route>
          <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-            <Route path="/doctorrecords" exact element={<DoctorRecords />} />
-         </Route>
+         <Route
+            path="/doctorrecords"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorRecords />}
+                  rightSection={<DoctorPatients />}
+                  page={'records'}
+               />
+            }
+         />         </Route>
          <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-            <Route path="/doctormessages" exact element={<DoctorMessage />} />
-         </Route>
+         <Route
+            path="/doctormessaging"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorMessage />}
+                  rightSection={<MessagePatients />}
+                  page={'doctormessage'}
+               />
+            }
+         />         </Route>
          <Route element={<ProtectedRoutesDoctor isDoctorAuth={isDoctorAuth} />}>
-            <Route path="/doctorschedule" exact element={<DoctorSchedule />} />
-         </Route>
+         <Route
+            path="/doctorschedule"
+            exact
+            element={
+               <DocDashboard
+                  middleSection={<DoctorSchedule />}
+                  rightSection={<DoctorPatients />}
+                  page={'doctorschedule'}
+               />
+            }
+         />         </Route>
          {/* End of route for doctor-dashboard */}
       </Routes>
 
