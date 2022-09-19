@@ -208,6 +208,7 @@ const DoctorSchedule = (props) => {
                      onBlur={(e) => (e.target.type = 'text')}
                      className={DSstyles.inputDate}
                      onChange={(e) => setAppointmentDate(e.target.value)}
+                     required
                   />
                   <label className={DSstyles.labelSTime}>Start Time</label>
                   <input
@@ -218,6 +219,7 @@ const DoctorSchedule = (props) => {
                      onBlur={(e) => (e.target.type = 'text')}
                      className={DSstyles.inputStartTime}
                      onChange={(e) => setAppointmentStartTime(e.target.value)}
+                     required
                   />
                   <label className={DSstyles.labelETime}>End Time</label>
                   <input
@@ -228,6 +230,7 @@ const DoctorSchedule = (props) => {
                      onBlur={(e) => (e.target.type = 'text')}
                      className={DSstyles.inputEndTime}
                      onChange={(e) => setAppointmentEndTime(e.target.value)}
+                     required
                   />
                </div>
                <div className={DSstyles.DSbuttondiv}>
