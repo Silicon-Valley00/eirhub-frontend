@@ -38,10 +38,11 @@ function Records(props) {
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchReports(patientID);
-
+         console.log(items);
          setReports(items);
       }
       fetchdata();
+      console.log(reports);
    }, []);
 
    function handleChangePage() {
