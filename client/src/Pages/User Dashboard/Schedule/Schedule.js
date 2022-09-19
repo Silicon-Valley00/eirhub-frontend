@@ -158,7 +158,7 @@ function Schedule() {
                <div className={styles.conditionDetails}>
                   <input
                      type={'text'}
-                     placeholder="Enter condtion"
+                     placeholder="Enter condition"
                      name="conditionBox"
                      onChange={(event) => setCondition(event.target.value)}
                      value={condition}
