@@ -36,7 +36,7 @@ function Login(props) {
 
    const okToRoute = useSelector((state) => state.okToRoute);
 
-   // handles registeration flow based on feedback from database
+   // handles registration flow based on feedback from database
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
 
@@ -68,18 +68,18 @@ function Login(props) {
 
 
          setTimeout(() => {
-            if (okToRoute === true) {
-               console.log(okToRoute)
+            // if (okToRoute === true) {
+            //    console.log(okToRoute)
                navigate('/userdashboard');
-               console.log(store.getState())
-            } else {
-               console.log(okToRoute);
-               setTimeout(() => {persistor.purge();console.log(store.getState())}, 200);
-               dispatch(setPatientAuth(false));
-               navigate('/landing-page', { state: true });
-               console.log(store.getState())
+            //    console.log(store.getState())
+            // } else {
+            //    console.log(okToRoute);
+            //    setTimeout(() => {persistor.purge();console.log(store.getState())}, 200);
+            //    dispatch(setPatientAuth(false));
+            //    navigate('/landing-page', { state: true });
+            //    console.log(store.getState())
 
-            }
+            // }
          }, 2000);
       } else {
          setBtnActive(feedback[0]);
