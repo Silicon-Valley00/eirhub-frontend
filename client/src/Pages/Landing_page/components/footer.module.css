@@ -102,6 +102,10 @@ footer {
 
 /*responsive*/
 @media (max-width: 1112px) {
+   .fourservices{
+      align-self: flex-start;
+      padding-top: 2px;
+   }
    footer {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -137,7 +141,7 @@ footer {
    }
 }
 /*All Mobile sizes*/
-@media (max-width: 756px) {
+@media (max-width: 768px) {
    .fourservices {
       width: 60%;
    }

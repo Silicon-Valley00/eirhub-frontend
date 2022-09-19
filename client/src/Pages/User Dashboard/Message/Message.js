@@ -11,7 +11,7 @@ function Message() {
             {doctorUID !== '' ? (
                <CometChatMessages chatWithUser={doctorUID} />
             ) : (
-               <div>
+               <div className={styles.messageDiv}>
                   <p>Select patient to start messaging</p>
                </div>
             )}

@@ -139,6 +139,7 @@ function Dashboard(props) {
    }
    var appointmentsData;
    //gets all apoints for display
+   console.log(appointments);
 
    if (appointments === undefined) {
       appointmentsData = (
@@ -158,7 +159,7 @@ function Dashboard(props) {
       if (appointments.length !== 0) {
          appointmentsData = appointments.map((item, j) => {
             return (
-               <tr key={`${item.appointment_reason}-${j}`}>
+               <tr key={`${item.appointment_reason}-${j * 3}`}>
                   <td>
                      <div>
                         <img src={item.doctor_info.person_image} alt="avatar" />
@@ -189,7 +190,7 @@ function Dashboard(props) {
          appointmentsData = (
             <tr
                style={{
-                  width: '700%',
+                  width: '900%',
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -312,7 +313,7 @@ function Dashboard(props) {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>{`${props.savedHealthDetails.blood_sugar} mg/dL`}</h4>
+                        <h4>{props.savedHealthDetails.blood_sugar ? `${props.savedHealthDetails.blood_sugar} mg/dL` : ""}</h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>

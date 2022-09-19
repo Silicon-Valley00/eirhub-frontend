@@ -172,7 +172,7 @@ const DoctorSchedule = (props) => {
                   <input
                      type="text"
                      id="start time"
-                     placeholder="HH:MM:SS"
+                     placeholder="HH:MM"
                      onFocus={(e) => (e.target.type = 'time')}
                      onBlur={(e) => (e.target.type = 'text')}
                      className={DSstyles.inputStartTime}
@@ -182,7 +182,7 @@ const DoctorSchedule = (props) => {
                   <input
                      type="text"
                      id="end time"
-                     placeholder="HH:MM:SS"
+                     placeholder="HH:MM"
                      onFocus={(e) => (e.target.type = 'time')}
                      onBlur={(e) => (e.target.type = 'text')}
                      className={DSstyles.inputEndTime}

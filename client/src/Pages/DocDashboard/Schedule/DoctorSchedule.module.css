@@ -73,6 +73,7 @@
    max-height: 100vh;
 }
 .DSContainer1 input {
+   background: var(--white);
    border: 1px solid #e1e4e8;
    border-radius: 7px;
    text-align: center;
@@ -161,6 +162,7 @@
    margin-top: 20px;
    box-sizing: border-box;
    overflow-y: scroll;
+   overflow-x: scroll;
 }
 .appointmentContainer::-webkit-scrollbar,
 .appointmentContainer::-webkit-scrollbar {
@@ -208,6 +210,7 @@
    margin: auto;
    text-align: center;
    table-layout: fixed;
+   min-width: 35rem;
    width: 100%;
 }
 .appointmentContainer th {
@@ -231,6 +234,7 @@
 }
 .appointmentContainer .imgHeader {
    width: 80px;
+   background-color: var(--white);
 }
 .appointmentContainer .tCondition {
    text-align: left;
@@ -262,7 +266,6 @@
    height: 2.8rem;
    min-height: 2.8rem;
    max-height: 2.8rem;
-   width: 100%;
    border-radius: 50%;
    clip-path: circle();
 }

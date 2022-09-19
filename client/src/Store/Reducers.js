@@ -13,10 +13,18 @@ import {
    SET_PATIENT_AUTH,
    SET_USER_INFO,
    SET_OK_TO_ROUTE,
+   SET_RELOAD_MEDICATIONS,
+   SET_MESSAGE,
 } from './ActionTypes';
 
 const initialState = {
    //Patient Dashboard
+   reloadMedications: false,
+   message: {
+      show: false,
+      msg: 'Error me',
+      state: 0,
+   },
    okToRoute: false,
    user: {
       name: '',
@@ -99,6 +107,17 @@ const Reducers = (state = initialState, action) => {
          return { ...state, user: user };
       case SET_OK_TO_ROUTE:
          return { ...state, okToRoute: action.payload };
+      case SET_RELOAD_MEDICATIONS:
+         return { ...state, reloadMedications: action.payload };
+      case SET_MESSAGE:
+         return {
+            ...state,
+            message: {
+               show: action.payload.show,
+               msg: action.payload.msg,
+               state: action.payload.state,
+            },
+         };
       case SET_PROFILE_INFO:
          let profile = {
             user_email: action.payload.user_email,
