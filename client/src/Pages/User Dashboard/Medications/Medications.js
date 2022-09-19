@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styles from './medication.module.css';
 import { CgPill } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
-import { fetchMedications, deletePrescriptions } from '../../../Store/Actions';
-import { useSelector } from 'react-redux';
+import { fetchMedications, deletePrescriptions, setReloadMedications } from '../../../Store/Actions';
+import { useSelector, connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+   return {
+      reloadMedications: state.reloadMedications,
+   };
+};
 
 function Medication(props) {
    const dispatch = useDispatch();
@@ -31,7 +37,8 @@ function Medication(props) {
          setPrescriptions(items);
       }
       fetchdata();
-   }, []);
+      dispatch(setReloadMedications(false))
+   }, [props.reloadMedications]);
 
    var list;
    //displays prescriptions
@@ -110,8 +117,7 @@ function Medication(props) {
                      </button>
                      <button
                         onClick={() => {
-                           console.log(item.id)
-                           dispatch(deletePrescriptions(item.id));
+                           dispatch(deletePrescriptions(item.id_prescription));
                         }}
                      >
                         Delete
@@ -134,4 +140,5 @@ function Medication(props) {
       </>
    );
 }
-export default Medication;
+// export default Medication;
+export default connect(mapStateToProps)(Medication);
