@@ -205,6 +205,7 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
    display: flex;
    justify-content: center;
    align-items: center;
+   cursor: pointer;
 }
 .medicationBox table thead th {
    color: var(--tablehead);

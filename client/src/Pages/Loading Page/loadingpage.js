@@ -2,11 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './loading.module.css';
 import spinner from '../../assets/loading-gif.gif';
 import { useDispatch, connect, useSelector } from 'react-redux';
-import {
-   addNewHealthDetails,
-   fetchMedications,
-   setMedicationsTemp,
-} from '../../Store/Actions';
+import { fetchMedications, setMedicationsTemp } from '../../Store/Actions';
 import { addNewGuardianInfo } from '../../Store/Actions';
 import { useLocation } from 'react-router-dom';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
@@ -31,34 +27,19 @@ function Loading(props) {
       if (auth === true && status === true) {
          console.log('running');
          dispatch(
-            addNewHealthDetails(
-               props.savedHealthDetails,
-               props.savedGuardianDetails,
-               patientID,
-               props.savedProfile
-            )
+            addNewGuardianInfo(props.savedGuardianDetails, props.savedProfile)
          );
       }
-      async function fetchdata() {
-         const items = await fetchMedications(patientID);
-         console.log('setting temp');
-         dispatch(setMedicationsTemp(items));
-      }
 
-      fetchdata();
+      if (patientID !== '') {
+         async function fetchdata() {
+            const items = await fetchMedications(patientID);
+            dispatch(setMedicationsTemp(items));
+         }
+
+         fetchdata();
+      }
    }, []);
-   if (auth === true && status === true) {
-      console.log('running');
-      dispatch(
-         addNewGuardianInfo(props.savedGuardianDetails, props.savedProfile)
-         // addNewHealthDetails(
-         //    props.savedHealthDetails,
-         //    props.savedGuardianDetails,
-         //    patientID,
-         //    props.savedProfile
-         // )
-      );
-   }
    return (
       <>
          {/* <AlertsMessageBox

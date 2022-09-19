@@ -28,9 +28,7 @@ import { CometChat } from '@cometchat-pro/chat';
 import * as CONSTANTS from './constants/constants';
 import store, { persistor } from '../src/Store/ReducerStore';
 import { PersistGate } from 'redux-persist/integration/react';
-import { LoginUser } from './context/authcontext';
 import ScrollToTop from './utils/scrollToTop';
-// import { CometChatWidget } from 'https://widget-js.cometchat.io/v3/cometchatwidget.js';
 
 let appSetting = new CometChat.AppSettingsBuilder()
    .subscribePresenceForAllUsers()
@@ -51,12 +49,6 @@ CometChat.init(CONSTANTS.APP_ID, appSetting).then(
          </BrowserRouter>,
          document.getElementById('root')
       );
-
-      // // alert('worked');
-      //  Logout();
-      // LoginUser('superhero3');
    },
-   (error) => {
-      // alert('did not work');
-   }
+   (error) => {}
 );

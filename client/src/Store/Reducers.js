@@ -107,26 +107,26 @@ const Reducers = (state = initialState, action) => {
             id_guardian: action.payload.id_guardian,
          };
          return { ...state, user: user };
+
       case SET_OK_TO_ROUTE:
          return { ...state, okToRoute: action.payload };
+
       case SET_RELOAD_MEDICATIONS:
          return { ...state, reloadMedications: action.payload };
 
       case SET_TEMP_MEDICATIONS:
-         console.log('entry', action.payload);
          var obj = action.payload.map((item) => {
-            console.log(item);
-            if (initialState.tempMedications.includes(item) === false) {
+            if (action.tempData.includes(item) === false) {
+               console.log(item);
+
                return item;
             }
          });
-
-         console.log('obj', obj);
-         console.log('obj spread', ...obj);
          return {
             ...state,
-            tempMedications: [...initialState.tempMedications, ...obj],
+            tempMedications: action.tempData.concat(obj),
          };
+
       case SET_MESSAGE:
          return {
             ...state,
@@ -136,6 +136,7 @@ const Reducers = (state = initialState, action) => {
                state: action.payload.state,
             },
          };
+
       case SET_PROFILE_INFO:
          let profile = {
             user_email: action.payload.user_email,

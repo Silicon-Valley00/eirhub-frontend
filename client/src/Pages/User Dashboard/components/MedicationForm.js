@@ -9,6 +9,7 @@ import {
    addPrescriptions,
    updatePrescriptions,
    setReloadMedications,
+   setMedicationsTemp,
 } from '../../../Store/Actions';
 import { useSelector } from 'react-redux';
 
@@ -85,6 +86,7 @@ function Medication(props) {
                };
 
                dispatch(addPrescriptions(medicationBody));
+               clearInputsAndMedicationData();
             } else {
                const medicationBody = {
                   drug_name: drugName,
@@ -103,6 +105,7 @@ function Medication(props) {
                      medicationBody
                   )
                );
+               clearInputsAndMedicationData();
             }
             // sets variable to use to reload medications
             // dispatch(setReloadMedications(true));
