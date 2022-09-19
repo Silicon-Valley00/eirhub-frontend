@@ -39,8 +39,11 @@ function DashboardNotificationAlerts() {
                         tests. Take care of yourself. Bye
                      </p>
                   </div>
+
                </div> */}
                {/* <div className={styles.notifications}>
+
+
                   <div className={styles.notificationsHeadings}>
                      <div className={styles.notificationsImage}>
                         <img src={avatarThree} alt="avatar" />
@@ -64,6 +67,7 @@ function DashboardNotificationAlerts() {
                         tests. Take care of yourself. Bye
                      </p>
                   </div>
+
                </div> */}
                {/* <div className={styles.notifications}>
                   <div className={styles.notificationsHeadings}>
@@ -89,6 +93,7 @@ function DashboardNotificationAlerts() {
                         tests. Take care of yourself. Bye
                      </p>
                   </div>
+
                </div> */}
                {/* <div className={styles.notifications}> */}
                   {/* <div className={styles.notificationsHeadings}>
@@ -104,8 +109,10 @@ function DashboardNotificationAlerts() {
                            <HiDotsVertical />
                         </i>
                      </div>
+
                   </div> */}
                   {/* <div className={styles.notificationsMessage}>
+
                      <p>
                         Hi Sebrina, we have your scans ready and i would like
                         you to come over so we could talk. I have some really
@@ -113,10 +120,12 @@ function DashboardNotificationAlerts() {
                         about plans that we would have to take based on the
                         tests. Take care of yourself. Bye
                      </p>
+
                   </div> */}
                {/* </div> */}
             {/* </div> */}
     {/* </div> */}
+
       </>
    );
 }

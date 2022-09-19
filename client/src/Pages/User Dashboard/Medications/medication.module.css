@@ -19,12 +19,16 @@
    min-height: 36rem;
    padding-bottom: 1rem;
 }
+.emptyMessageContainer {
+   display: flex;
+   justify-content: center;
+   width: 200%;
+}
 .medicationsBoxContent p.emptyMessage {
    color: var(--tablehead);
    font-weight: 400;
    font-family: 'Poppins';
    font-size: 1.2rem;
-   text-align: center;
 }
 
 .medicationBox {
@@ -55,7 +59,6 @@
 .medicationName {
    width: 70%;
    height: 100%;
-   padding: 0.2rem 0;
 }
 .medicationName h3 {
    color: var(--deepcol);
@@ -186,7 +189,82 @@
       height: calc(100vh - 20vh);
       min-height: calc(100vh - 20vh);
    }
+   .medicationsBoxContent {
+      grid-template-columns: 47% 47%;
+   }
+   .medicationBox {
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.2rem;
+   }
+   .medicationName p {
+      font-size: 0.8rem;
+   }
+   .medicationCounter p {
+      font-size: 0.75rem;
+      padding: 0.2rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 1rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.9rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+      font-size: 0.7rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.4rem;
+   }
 }
+@media only screen and (min-width: 1201px) and (max-width: 1399px) {
+   .medicationsBoxContent {
+      grid-template-columns: 47% 47%;
+   }
+   .medicationBox {
+      padding: 0.65rem 1rem;
+   }
+   .upperContent {
+      height: 3.5rem;
+   }
+   .medicationName h3 {
+      font-size: 1.2rem;
+   }
+   .medicationName p {
+      font-size: 0.8rem;
+   }
+   .medicationCounter p {
+      font-size: 0.7rem;
+      padding: 0.2rem;
+   }
+   .midContent {
+      height: 6.5rem;
+   }
+   .medicationDurations p {
+      font-size: 0.9rem;
+   }
+   .medicationDurations h3 {
+      font-size: 0.8rem;
+   }
+   .lowerContent {
+      height: 2rem;
+   }
+   .lowerContent button {
+      font-size: 0.7rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.4rem;
+   }
+}
+
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .medicationsBoxContent {
       grid-template-columns: 47% 47%;
@@ -214,7 +292,7 @@
       font-size: 0.8rem;
    }
    .medicationDurations h3 {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
    }
    .lowerContent {
       height: 2rem;

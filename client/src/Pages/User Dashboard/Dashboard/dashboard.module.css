@@ -1,6 +1,5 @@
 /* MAIN */
 main#midsection {
-   /* margin-top: 4rem; */
    background-color: var(--gray);
    padding: 2rem;
    border-top-left-radius: 2rem;
@@ -72,7 +71,7 @@ main .vitalsBox .vitals:hover {
 .vitalsInfo {
    width: 100%;
    height: 50%;
-   -webkit-line-clamp: 2;
+   -webkit-line-clamp: 3;
    text-overflow: ellipsis;
    display: -webkit-box;
    -webkit-box-orient: vertical;

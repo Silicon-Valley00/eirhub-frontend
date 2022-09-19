@@ -11,6 +11,7 @@ import {
    SET_USER_INFO,
    SET_OK_TO_ROUTE,
    SET_RELOAD_MEDICATIONS,
+   SET_MESSAGE,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -102,6 +103,14 @@ export const setPatientAuth = (auth) => {
       payload: auth,
    };
 };
+
+//Sets messages to be displayed to users
+export const setMessage = (msgObj) => {
+   return {
+      type: SET_MESSAGE,
+      payload: msgObj,
+   };
+};
 //Fetches user profile details
 export const fetchProfile = (userID, guardianID) => {
    return async function (dispatch) {
@@ -121,7 +130,11 @@ export const fetchProfile = (userID, guardianID) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(fetchGuardianInfo(userID, guardianID));
+               if (guardianID) {
+                  dispatch(fetchGuardianInfo(userID, guardianID));
+               } else {
+                  dispatch(setOkToRoute(true));
+               }
             }
          } else {
             //takes all statuses aside 200
@@ -253,14 +266,18 @@ export const updateProfile = (
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(
-                  updateGuardianInfo(
-                     guardianID,
-                     guardianData,
-                     userID,
-                     healthData
-                  )
-               );
+               if (guardianID) {
+                  dispatch(
+                     updateGuardianInfo(
+                        guardianID,
+                        guardianData,
+                        userID,
+                        healthData
+                     )
+                  );
+               } else {
+                  dispatch(updateHealthDetails(userID, healthData));
+               }
             }
          } else {
             //takes all statuses aside 200

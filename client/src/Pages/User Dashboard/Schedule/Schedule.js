@@ -4,14 +4,15 @@ import avatarOne from '../../../assets/Rectangle-1.png';
 import avatarTwo from '../../../assets/Rectangle-2.png';
 import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
 import avatarThree from '../../../assets/Rectangle.png';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
    addAppointments,
    clearDoctorForAppointment,
    fetchAppointments,
+   setMessage,
 } from '../../../Store/Actions.js';
 import store from '../../../Store/ReducerStore';
+import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 
 function Schedule() {
    const dispatch = useDispatch();
@@ -45,9 +46,23 @@ function Schedule() {
          doctorFirstName === ''
       ) {
          // alert('First request an appointment from a doctor');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Request appointment first.',
+               state: 0,
+            })
+         );
+         setCondition('');
       } else {
          if (condition === '') {
-            // alert('Please enter condition');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Enter condition.',
+                  state: 0,
+               })
+            );
             return;
          }
 
@@ -146,6 +161,7 @@ function Schedule() {
                      placeholder="Enter condtion"
                      name="conditionBox"
                      onChange={(event) => setCondition(event.target.value)}
+                     value={condition}
                   />
                   <button onClick={() => requestAppoinment()}>Submit</button>
                </div>

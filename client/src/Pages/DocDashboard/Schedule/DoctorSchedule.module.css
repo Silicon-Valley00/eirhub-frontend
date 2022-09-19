@@ -73,6 +73,7 @@
    max-height: 100vh;
 }
 .DSContainer1 input {
+   background: var(--white);
    border: 1px solid #e1e4e8;
    border-radius: 7px;
    text-align: center;
