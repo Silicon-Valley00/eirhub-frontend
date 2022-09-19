@@ -143,7 +143,7 @@ export const fetchProfile = (userID, guardianID) => {
                if (guardianID) {
                   dispatch(fetchGuardianInfo(userID, guardianID));
                } else {
-                  dispatch(setOkToRoute(true));
+                  dispatch(fetchHealthDetails(userID))
                }
             }
          } else {
@@ -176,7 +176,7 @@ export const fetchProfileOnSignup = (userID) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(setOkToRoute(true));
+               dispatch(fetchHealthDetails(userID));
             }
          } else {
             //takes all statuses aside 200
