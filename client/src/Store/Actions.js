@@ -533,7 +533,7 @@ export async function fetchReports(userID) {
          if (response.data) {
             //returns response
             // alert('report fetched worked');
-            return response.data;
+            return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
