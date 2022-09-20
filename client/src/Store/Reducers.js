@@ -16,9 +16,11 @@ import {
    SET_RELOAD_MEDICATIONS,
    SET_MESSAGE,
    SET_TEMP_MEDICATIONS,
+   SET_IS_LOADING,
 } from './ActionTypes';
 
 const initialState = {
+   isLoading: false,
    //Patient Dashboard
    tempMedications: [],
    reloadMedications: false,
@@ -99,6 +101,9 @@ const Reducers = (state = initialState, action) => {
    switch (action.type) {
       case PURGE:
          return initialState;
+
+      case SET_IS_LOADING:
+         return { ...state, isLoading: action.payload };
 
       case SET_USER_INFO:
          let user = {
