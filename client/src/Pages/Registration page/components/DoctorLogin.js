@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
-import loginImage from '../../../images/loginimage.svg';
+import docLoginImage from '../../../images/doctor login.svg'
 import { IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
@@ -115,7 +115,7 @@ function DoctorLogin(props) {
                   }}
                   className={loginStyles.loginForm}
                >
-                  <h1 className={loginStyles.title}>Welcome Back</h1>
+                  <h1 className={loginStyles.title}>Welcome Back Doc</h1>
                   <p className={loginStyles.info}>Please enter your details</p>
                   <h3>Email</h3>
                   <div
@@ -262,7 +262,7 @@ function DoctorLogin(props) {
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
-               <img id={loginStyles.loginImg} src={loginImage} alt="login" />
+               <img id={loginStyles.loginImg} src={docLoginImage} alt="login" />
             </div>
          </div>
       </section>

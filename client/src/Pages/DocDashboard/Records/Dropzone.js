@@ -9,14 +9,14 @@ function Dropzone() {
 
    const docRecordsUploadRef = useRef();
 
-   const uploadFile = () => {
-      docRecordsUploadRef.current.click();
-   };
-   const changeHandler = (e) => {
-      setSelectedFile(e.target.files[0]);
-      setIsSelected(true);
-      console.log(selectedFile)
-   };
+   // const uploadFile = () => {
+   //    docRecordsUploadRef.current.click();
+   // };
+   // const changeHandler = (e) => {
+   //    setSelectedFile(e.target.files[0]);
+   //    setIsSelected(true);
+   //    console.log(selectedFile)
+   // };
 
    const handleSubmission = () => { };
 
@@ -36,13 +36,13 @@ function Dropzone() {
    return (
       <div {...getRootProps()} className={styles.docRecordsUpload}>
          <input
-            {...getInputProps({ onChange: { changeHandler } })}
+            {...getInputProps()}
             ref={docRecordsUploadRef}
             style={{ display: 'none' }}
             type="file"
             accept=".doc,.docx,.pdf,.txt"
             name="file"
-
+            disabled={isSelected}
          />
          {isSelected && selectedFile ?
             <div>
@@ -56,11 +56,10 @@ function Dropzone() {
                : <div>
                   <FaFileUpload
                      className={styles.docRecordsUploadimg}
-                     onClick={uploadFile}
                   />
                   <h2 className={styles.docRecordsSheader}>
                      Drag and drop file or{' '}
-                     <span className={styles.docRecordsButtonLink} onClick={uploadFile}>
+                     <span className={styles.docRecordsButtonLink} >
                         browse
             </span>
                      {/* Drag and drop file or{' '}
