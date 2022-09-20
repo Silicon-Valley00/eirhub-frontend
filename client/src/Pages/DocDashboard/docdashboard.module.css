@@ -5,7 +5,7 @@
    height: 100vh;
    padding-top: 5rem;
    background-color: var(#f6f6f9);
-   /* overflow: hidden; */
+   overflow: hidden; 
    overflow-x: hidden;
    font-family: 'Poppins', sans-serif;
 }
@@ -66,6 +66,7 @@
       height: 100vh;
       min-height: 100vh;
       max-height: 100vh;
+      height: 10%;
       margin: 0 auto;
       /* padding: 0 2rem; */
       gap: 1rem;
