@@ -106,7 +106,10 @@ i.closeIcon {
    margin: auto;
    width: 100%;
    /* height: 100%; */
-   overflow: scroll;
+   overflow-y: scroll;
+}
+.loginForm::-webkit-scrollbar {
+   display: none;
 }
 .loginForm .title {
    font-size: 1.5rem;
@@ -474,6 +477,14 @@ input {
       max-width: 350px;
       padding: 0;
    }
+
+   .loginForm {
+   margin: auto;
+   width: 100%;
+   /* height: 100%; */
+   /* overflow-y: scroll; */
+}
+
    .loader {
       width: 15%;
    }

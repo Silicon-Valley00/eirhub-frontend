@@ -533,6 +533,9 @@ input{
 
    .rightRegion {
       padding: 0 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
    }
 
    .error {
@@ -604,7 +607,7 @@ input{
    }
    .signupFormButton {
       width: 100%;
-      height: 8%;
+      height: 2.5rem;
       margin-top: 0.5rem;
    }
 
@@ -659,6 +662,9 @@ input{
 
    .rightRegion {
       padding: 0 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
    }
 
    .error {
@@ -737,7 +743,7 @@ input{
    }
    .signupFormButton {
       width: 100%;
-      height: 8%;
+      height: 2.2rem;
       margin-top: 0.5rem;
    }
    .signupBtn {
@@ -858,7 +864,7 @@ input{
    }
    .signupFormButton {
       width: 100%;
-      height: 8%;
+      height: 2rem;
       margin-top: 0.5rem;
    }
    .signupBtn {
@@ -988,7 +994,7 @@ input{
    }
    .signupFormButton {
       width: 100%;
-      height: 8%;
+      height: 1.8rem;
       margin-top: 0.5rem;
    }
    .signupBtn {

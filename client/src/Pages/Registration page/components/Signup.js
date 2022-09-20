@@ -85,14 +85,17 @@ function Signup(props) {
                }, 200);
 
                dispatch(setPatientAuth(false));
-               navigate('/landing-page', { state: { status: true } });
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Fetching profile failed, log in.',
-                     state: 0,
-                  })
-               );
+               navigate('/landing-page');
+               setTimeout(() => {
+                  dispatch(
+                     setMessage({
+                        show: true,
+                        msg: 'Fetching profile failed, log in.',
+                        state: 0,
+                     })
+                  );
+               }, 2000);
+
                dispatch(setLoading(false));
 
                console.log(store.getState());
@@ -152,6 +155,8 @@ function Signup(props) {
                         <IoCloseOutline />
                      </i>
                   </div>
+                  <div className={styles.formSideContainer}>
+
                   <div className={styles.signupFormTitle}>
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
@@ -499,6 +504,8 @@ function Signup(props) {
                         </p>
                      </div>
                   </form>
+                  </div>
+                  <div></div>
                </div>
             </div>
          </div>

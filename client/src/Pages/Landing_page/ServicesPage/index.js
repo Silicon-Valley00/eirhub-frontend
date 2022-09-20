@@ -8,6 +8,7 @@ import pic3 from '../../../assets/prescription-drug-coverage-1-1x1.jpg';
 import pic4 from '../../../assets/weightloss.jpg';
 import Registration from '../../Registration page/Registration';
 import styles from '../Landingpage.module.css';
+import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 
 const ServicesPage = () => {
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
@@ -70,6 +71,7 @@ const ServicesPage = () => {
             }
             handleModalsClose={handleModalsClose}
          >
+            <AlertsMessageBox time={5000} />
             <Navbar
                handleModalLogin={handleModalLogin}
                handleModalSignup={handleModalSignup}
@@ -185,7 +187,7 @@ const ServicesPage = () => {
                   </section>
                </div>
             </main>
-            <Footer />
+            <Footer handleModalSignup={handleModalSignup} />
          </div>
          <Registration
             modalLogin={modalLogin}

@@ -5,6 +5,7 @@ import styles from './faq.module.css';
 import { data } from './FAQ_data';
 import { useState } from 'react';
 import Registration from '../../Registration page/Registration';
+import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 
 const FAQ = () => {
    const [selected, setSelected] = useState(null);
@@ -76,6 +77,8 @@ const FAQ = () => {
             }
             handleModalsClose={handleModalsClose}
          >
+            <AlertsMessageBox time={5000} />
+
             <Navbar
                handleModalLogin={handleModalLogin}
                handleModalSignup={handleModalSignup}
@@ -126,7 +129,7 @@ const FAQ = () => {
                </section>
             </main>
 
-            <Footer />
+            <Footer handleModalSignup={handleModalSignup} />
          </div>
          <Registration
             modalLogin={modalLogin}

@@ -42,7 +42,7 @@ function UserDashboard(props) {
    // console.log(props.message.show);
    return (
       <>
-         <AlertsMessageBox />
+         <AlertsMessageBox time={3000} />
          <div className={styles.max_div}>
             <div
                id={styles.blur}
