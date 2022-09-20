@@ -83,14 +83,12 @@ export async function fetchPatientsByDoctorId(id_doctor) {
 
          if (response.data) {
             //returns response
-            // alert('patients by doctor id worked fetch worked');
-            console.log(id_doctor,response.data);
-            
-            return response.data;
+            // alert('patients by doctor id worked fetch worked');            
+            return response.data.msg;
          }
       } else {
          //takes all statuses aside 200
-         // alert('Something went wrong. Try again, doctor 1');
+         alert('Something went wrong. Try again, doctor 1');
       }
    } catch (error) {
       // alert(error, 'doctors 2');

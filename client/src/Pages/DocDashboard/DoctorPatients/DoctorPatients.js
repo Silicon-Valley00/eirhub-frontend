@@ -10,13 +10,13 @@ import { useSelector } from 'react-redux';
 
 
 function DoctorPatients() {
-   const doctorId = useSelector((state) => state.profile.id_doctor);
+   const doctorId = useSelector((state) => state.doctorProfile.id_doctor);
+   // alert(doctorId)
    const [patients,setPatients] = useState()
    useEffect(()=>{
       async function fetchPatients(){
          const items = await fetchPatientsByDoctorId(doctorId)
-         setPatients(items)
-         
+         setPatients(items)         
       }
       fetchPatients();
    },[])
@@ -51,14 +51,16 @@ function DoctorPatients() {
                   />
                </div>
                <ul>
-                  {patients?.map((patient, index) => {
+                  {
+                  patients?.map((patient, index) => {
                      return (
                         <div className={styles.imageDiv}>
-                           <img src={patient.msg.person_image} alt={patient.msg.first_name}></img>
-                           <li key={index}>{patient.msg.first_name} {patient.msg.middle_name} {patient.msg.last_name}</li>
+                           <img src={patient.person_image} alt={patient.first_name}></img>
+                           <li key={index}>{patient.first_name} {patient.middle_name} {patient.last_name}</li>
                         </div>
                      );
-                  })}
+                  })
+                  }
                </ul>
             </div>
          </main>
