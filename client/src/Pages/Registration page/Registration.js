@@ -143,7 +143,7 @@ function Registration(props) {
       setDoctorLoginPasswordErrorMessage('');
    }
 
-   const pattern = /^[a-zA-Z ]+$/;
+   const pattern = /^[a-zA-Z- ]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
    // Functions below check user credentials in login form input
