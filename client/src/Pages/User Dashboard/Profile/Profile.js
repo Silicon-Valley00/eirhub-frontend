@@ -18,15 +18,15 @@ const mapStateToProps = (state) => {
 
 function Profile(props) {
    // Handles dispatching of actions
-   const patientID = useSelector((state) => state.user.id_patient);
-   const guardianID = useSelector((state) => state.user.id_guardian);
+   const patientID = useSelector((state) => state.profile.id_patient);
+   const guardianID = useSelector((state) => state.profile.id_guardian);
 
    const dispatch = useDispatch();
-   console.log(
-      props.savedProfile,
-      props.savedGuardianDetails,
-      props.savedGuardianDetails
-   );
+   // console.log(
+   //    props.savedProfile,
+   //    props.savedGuardianDetails,
+   //    props.savedGuardianDetails
+   // );
 
    // Handles values for input fields
    const [userImage, setUserImage] = useState(
@@ -40,7 +40,6 @@ function Profile(props) {
    const [middleName, setMiddleName] = useState(props.savedProfile.middle_name);
    const [lastName, setLastName] = useState(props.savedProfile.last_name);
    const [email, setEmail] = useState(props.savedProfile.user_email);
-   console.log(email)
    const [dateOfBirth, setDateOfBirth] = useState(
       props.savedProfile.date_of_birth !== ''
          ? `${new Date(props.savedProfile.date_of_birth).getFullYear()}-${
