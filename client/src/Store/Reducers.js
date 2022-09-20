@@ -11,14 +11,15 @@ import {
    SET_APPOINTMENTS_DATES,
    SET_DOCTOR_AUTH,
    SET_PATIENT_AUTH,
-   SET_USER_INFO,
    SET_OK_TO_ROUTE,
    SET_RELOAD_MEDICATIONS,
    SET_MESSAGE,
    SET_TEMP_MEDICATIONS,
+   SET_IS_LOADING,
 } from './ActionTypes';
 
 const initialState = {
+   isLoading: false,
    //Patient Dashboard
    tempMedications: [],
    reloadMedications: false,
@@ -64,7 +65,7 @@ const initialState = {
       middle_name: '',
       last_name: '',
       user_email: '',
-      date_of_birth: '',
+      date_of_birth: 'Tue Sep 20 2022 05:37:34',
       house_address: '',
       phone_number: '',
       id_number: '',
@@ -100,33 +101,28 @@ const Reducers = (state = initialState, action) => {
       case PURGE:
          return initialState;
 
-      case SET_USER_INFO:
-         let user = {
-            name: action.payload.name,
-            id_patient: action.payload.id_patient,
-            id_guardian: action.payload.id_guardian,
-         };
-         return { ...state, user: user };
+      case SET_IS_LOADING:
+         return { ...state, isLoading: action.payload };
+
       case SET_OK_TO_ROUTE:
          return { ...state, okToRoute: action.payload };
+
       case SET_RELOAD_MEDICATIONS:
          return { ...state, reloadMedications: action.payload };
 
       case SET_TEMP_MEDICATIONS:
-         console.log('entry', action.payload);
          var obj = action.payload.map((item) => {
-            console.log(item);
-            if (initialState.tempMedications.includes(item) === false) {
+            if (action.tempData.includes(item) === false) {
+               console.log(item);
+
                return item;
             }
          });
-
-         console.log('obj', obj);
-         console.log('obj spread', ...obj);
          return {
             ...state,
-            tempMedications: [...initialState.tempMedications, ...obj],
+            tempMedications: action.tempData.concat(obj),
          };
+
       case SET_MESSAGE:
          return {
             ...state,
@@ -136,6 +132,7 @@ const Reducers = (state = initialState, action) => {
                state: action.payload.state,
             },
          };
+
       case SET_PROFILE_INFO:
          let profile = {
             user_email: action.payload.user_email,

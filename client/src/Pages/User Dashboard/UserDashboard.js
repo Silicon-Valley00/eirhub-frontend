@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './userdashboard.module.css';
-import { MdMenu, MdOutlineAutoDelete } from 'react-icons/md';
 import Navigation from './components/Navigation';
 import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
@@ -9,8 +8,6 @@ import NavBar from '../DocDashboard/Navigation';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 
 function UserDashboard(props) {
-   const user = useSelector((state) => state.user.name);
-   const userProfileImage = useSelector((state) => state.profile.person_image);
    const patientDOB = useSelector((state) => state.profile.date_of_birth);
 
    // handles menu open and close for smaller devices

@@ -2,11 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './loading.module.css';
 import spinner from '../../assets/loading-gif.gif';
 import { useDispatch, connect, useSelector } from 'react-redux';
-import {
-   addNewHealthDetails,
-   fetchMedications,
-   setMedicationsTemp,
-} from '../../Store/Actions';
+import { fetchMedications, setMedicationsTemp } from '../../Store/Actions';
 import { addNewGuardianInfo } from '../../Store/Actions';
 import { useLocation } from 'react-router-dom';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
@@ -14,51 +10,41 @@ import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 const mapStateToProps = (state) => {
    return {
       savedProfile: state.profile,
-      savedHealthDetails: state.health,
       savedGuardianDetails: state.guardian,
+      patientID: state.profile.id_patient,
+      auth: state.isPatientAuth,
    };
 };
 
 function Loading(props) {
-   const patientID = useSelector((state) => state.user.id_patient);
-   const auth = useSelector((state) => state.isPatientAuth);
    const { state } = useLocation();
    const { status } = state;
 
    const dispatch = useDispatch();
 
    useEffect(() => {
-      if (auth === true && status === true) {
-         console.log('running');
-         dispatch(
-            addNewHealthDetails(
-               props.savedHealthDetails,
-               props.savedGuardianDetails,
-               patientID,
-               props.savedProfile
-            )
-         );
-      }
-      async function fetchdata() {
-         const items = await fetchMedications(patientID);
-         console.log('setting temp');
-         dispatch(setMedicationsTemp(items));
-      }
+      // console.log(status);
+      // console.log(props.auth);
+      // setTimeout(() => {
+      //    if (props.auth === true && status === true) {
+      //       console.log('running');
+      //       dispatch(
+      //          addNewGuardianInfo(
+      //             props.savedGuardianDetails,
+      //             props.savedProfile
+      //          )
+      //       );
+      //    }
+      // }, 1500);
+      if (props.patientID !== '') {
+         async function fetchdata() {
+            const items = await fetchMedications(props.patientID);
+            dispatch(setMedicationsTemp(items));
+         }
 
-      fetchdata();
+         fetchdata();
+      }
    }, []);
-   if (auth === true && status === true) {
-      console.log('running');
-      dispatch(
-         addNewGuardianInfo(props.savedGuardianDetails, props.savedProfile)
-         // addNewHealthDetails(
-         //    props.savedHealthDetails,
-         //    props.savedGuardianDetails,
-         //    patientID,
-         //    props.savedProfile
-         // )
-      );
-   }
    return (
       <>
          {/* <AlertsMessageBox

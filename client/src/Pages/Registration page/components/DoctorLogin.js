@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
-import loginImage from '../../../images/loginimage.svg';
+import docLoginImage from '../../../images/doctor login.svg'
 import { IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
@@ -15,6 +15,7 @@ import {
 } from '../../../Store/DoctorAction.js';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
+import { setLoading, setMessage } from '../../../Store/Actions';
 
 function DoctorLogin(props) {
    const docLoginFormRef = useRef();
@@ -38,14 +39,15 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
+         dispatch(setLoading(true));
 
-         dispatch(setDoctorAuth(true));
          navigate('/loading', { state: { status: false } });
+         dispatch(setDoctorAuth(true));
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/doctordashboard');
-               console.log(store.getState());
+               dispatch(setLoading(false));
             } else {
                setTimeout(() => {
                   persistor.purge();
@@ -53,7 +55,14 @@ function DoctorLogin(props) {
 
                dispatch(setDoctorAuth(false));
                navigate('/landing-page', { state: true });
-               console.log(store.getState());
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Fetching profile failed, try again.',
+                     state: 0,
+                  })
+               );
+               dispatch(setLoading(false));
             }
          }, 1.5 * 1000);
       } else {
@@ -107,7 +116,7 @@ function DoctorLogin(props) {
                   }}
                   className={loginStyles.loginForm}
                >
-                  <h1 className={loginStyles.title}>Welcome Back</h1>
+                  <h1 className={loginStyles.title}>Welcome Back Doc</h1>
                   <p className={loginStyles.info}>Please enter your details</p>
                   <h3>Email</h3>
                   <div
@@ -254,7 +263,7 @@ function DoctorLogin(props) {
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
-               <img id={loginStyles.loginImg} src={loginImage} alt="login" />
+               <img id={loginStyles.loginImg} src={docLoginImage} alt="login" />
             </div>
          </div>
       </section>

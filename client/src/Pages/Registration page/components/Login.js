@@ -12,8 +12,9 @@ import {
    fetchGuardianInfo,
    fetchHealthDetails,
    fetchProfile,
+   setLoading,
+   setMessage,
    setPatientAuth,
-   setUserInfo,
 } from '../../../Store/Actions.js';
 import { LoginUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
@@ -48,26 +49,18 @@ function Login(props) {
                feedback[1].id_patient
             }`
          );
-         dispatch(
-            setUserInfo({
-               name: `${
-                  feedback[1].first_name.charAt(0).toUpperCase() +
-                  feedback[1].first_name.slice(1)
-               }`,
-               id_patient: feedback[1].id_patient,
-               id_guardian: feedback[1].id_guardian,
-            })
-         );
+
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
-         dispatch(setPatientAuth(true));
+         dispatch(setLoading(true));
          navigate('/loading', { state: { status: false } });
+         dispatch(setPatientAuth(true));
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/userdashboard');
-               console.log(store.getState());
+               dispatch(setLoading(false));
             } else {
                setTimeout(() => {
                   persistor.purge();
@@ -75,7 +68,14 @@ function Login(props) {
 
                dispatch(setPatientAuth(false));
                navigate('/landing-page', { state: true });
-               console.log('Store State', store.getState());
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Fetching profile failed, try again.',
+                     state: 0,
+                  })
+               );
+               dispatch(setLoading(false));
             }
          }, 1.5 * 1000);
       } else {

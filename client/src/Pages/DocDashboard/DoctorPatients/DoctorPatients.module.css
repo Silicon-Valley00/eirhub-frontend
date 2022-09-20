@@ -10,7 +10,7 @@
    min-width: 250px;
    background-color: #ecf3fc;
    border-radius: 1.25rem;
-   height: 100%;
+   height: 85vh;
    padding-top: 2rem;
    z-index: 10000;
 }
