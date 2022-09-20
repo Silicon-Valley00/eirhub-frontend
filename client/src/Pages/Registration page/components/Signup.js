@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import {
    fetchProfile,
    fetchProfileOnSignup,
+   setMessage,
    setPatientAuth,
    setUserInfo,
 } from '../../../Store/Actions.js';
@@ -72,8 +73,8 @@ function Signup(props) {
          console.log('patient', feedback[1].id_patient);
          dispatch(fetchProfileOnSignup(feedback[1].id_patient));
 
-         dispatch(setPatientAuth(true));
          navigate('/loading', { state: { status: true } });
+         dispatch(setPatientAuth(true));
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
@@ -86,6 +87,13 @@ function Signup(props) {
 
                dispatch(setPatientAuth(false));
                navigate('/landing-page', { state: { status: true } });
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Fetching profile failed, try again.',
+                     state: 0,
+                  })
+               );
                console.log(store.getState());
             }
          }, 1.5 * 1000);

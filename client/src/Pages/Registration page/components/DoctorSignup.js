@@ -17,6 +17,7 @@ import {
 import { SignUpUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
+import { setMessage } from '../../../Store/Actions';
 
 function DoctorSignup(props) {
    const navigate = useNavigate();
@@ -60,8 +61,8 @@ function DoctorSignup(props) {
          //    );
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
 
-         dispatch(setDoctorAuth(true));
          navigate('/loading', { state: { status: false } });
+         dispatch(setDoctorAuth(true));
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
@@ -74,6 +75,13 @@ function DoctorSignup(props) {
 
                dispatch(setDoctorAuth(false));
                navigate('/landing-page', { state: true });
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Fetching profile failed, try again.',
+                     state: 0,
+                  })
+               );
                console.log(store.getState());
             }
          }, 1.5 * 1000);

@@ -1,3 +1,5 @@
+import store from './ReducerStore';
+
 import {
    SET_PROFILE_INFO,
    SET_HEALTH_INFO,
@@ -118,6 +120,7 @@ export const setMedicationsTemp = (medicationsObj) => {
    return {
       type: SET_TEMP_MEDICATIONS,
       payload: medicationsObj,
+      tempData: store.getState().tempMedications,
    };
 };
 
@@ -143,7 +146,7 @@ export const fetchProfile = (userID, guardianID) => {
                if (guardianID) {
                   dispatch(fetchGuardianInfo(userID, guardianID));
                } else {
-                  dispatch(fetchHealthDetails(userID))
+                  dispatch(fetchHealthDetails(userID));
                }
             }
          } else {
@@ -457,7 +460,7 @@ export const addNewHealthDetails = (
 export const addNewGuardianInfo = (guardianData, profileData) => {
    return async function (dispatch) {
       try {
-         if (Date.now() - profileData.date_of_birth < 18){
+         if (Date.now() - profileData.date_of_birth < 18) {
             const response = await axios({
                method: 'POST',
                url: `http://127.0.0.1:5000/guardians`,
@@ -507,8 +510,6 @@ export const addNewGuardianInfo = (guardianData, profileData) => {
                // alert('Could not create guardian, try again ug1');
             }
          }
-        
-         
       } catch (error) {
          // alert('Could not create guardian, try again ug2');
       }
@@ -644,6 +645,17 @@ export const addPrescriptions = (data) => {
          if (response.status === 200) {
             //checks details of response
             if (response.data.status === true) {
+               const medicationBody = {
+                  drug_name: data.drug_name,
+                  dosage: data.dosage,
+                  time_of_administration: data.time_of_administration,
+                  start_date: data.start_date,
+                  end_date: data.end_date,
+                  last_taken_date: data.last_taken_date,
+                  id_patient: data.id_patient,
+                  id_prescription: response.data.msg.id_prescription,
+               };
+
                //returns response
                // alert('med creation worked');
                // sets variable to use to reload medications
@@ -655,6 +667,7 @@ export const addPrescriptions = (data) => {
                      state: 1,
                   })
                );
+               dispatch(setMedicationsTemp([medicationBody]));
             }
          } else {
             //takes all statuses aside 200

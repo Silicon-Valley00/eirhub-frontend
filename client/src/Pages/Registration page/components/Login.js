@@ -12,6 +12,7 @@ import {
    fetchGuardianInfo,
    fetchHealthDetails,
    fetchProfile,
+   setMessage,
    setPatientAuth,
    setUserInfo,
 } from '../../../Store/Actions.js';
@@ -61,8 +62,8 @@ function Login(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
-         dispatch(setPatientAuth(true));
          navigate('/loading', { state: { status: false } });
+         dispatch(setPatientAuth(true));
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
@@ -75,6 +76,13 @@ function Login(props) {
 
                dispatch(setPatientAuth(false));
                navigate('/landing-page', { state: true });
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Fetching profile failed, try again.',
+                     state: 0,
+                  })
+               );
                console.log('Store State', store.getState());
             }
          }, 1.5 * 1000);

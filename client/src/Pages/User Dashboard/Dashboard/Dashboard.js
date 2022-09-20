@@ -15,6 +15,7 @@ import {
    fetchProfile,
    setAppointmentDates,
    setMedicationsTemp,
+   setMessage,
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
@@ -147,8 +148,6 @@ function Dashboard(props) {
    }
    var appointmentsData;
    //gets all apoints for display
-   console.log(appointments);
-
    if (appointments === undefined) {
       appointmentsData = (
          <tr
@@ -241,19 +240,20 @@ function Dashboard(props) {
             updatePrescriptions(data.id_prescription, updatedPrescription)
          );
       } else {
-         console.log('uncheck run');
-         console.log('data id', data.id_prescription);
-         console.log('data itmes stored', props.tempMeds);
-
          //prevents checkbox from changing to false
          var result = props.tempMeds.find(
             (item) => item.id_prescription === data.id_prescription
          );
-         console.log('result', result);
 
          if (result === undefined || result === null) {
-            console.log('prevented');
             event.preventDefault();
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Uncheck unsuccessful, try again',
+                  state: 0,
+               })
+            );
             return false;
          } else {
             const updatedPrescription = {
@@ -357,7 +357,11 @@ function Dashboard(props) {
                         </i>
                      </div>
                      <div className={styles.vitalsReadings}>
-                        <h4>{props.savedHealthDetails.blood_sugar ? `${props.savedHealthDetails.blood_sugar} mg/dL` : ""}</h4>
+                        <h4>
+                           {props.savedHealthDetails.blood_sugar
+                              ? `${props.savedHealthDetails.blood_sugar} mg/dL`
+                              : ''}
+                        </h4>
                      </div>
                   </div>
                   <div className={styles.vitalsTitle}>

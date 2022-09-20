@@ -37,7 +37,6 @@ const Navbar = (props) => {
    };
    const handleLoginClick = () => {
       setLoginClick(!loginClick);
-      console.log(loginClick);
       setSignUpClick(false);
    };
 

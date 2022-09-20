@@ -13,7 +13,8 @@ const MidDashboard = (props) => {
    // States to keep the counts of the number of patients, reports and appointments
    const [numOfPatients, setNumOfPatients] = useState(0);
    const [numOfReports, setNumOfReports] = useState(0);
-   const [numOfAppointments, setNumOfAppointments] = useState(0);
+   const [numOfdetails, setNumberofdetails] = useState(0);
+   console.log('the details', numOfdetails);
    const data = props.doctorProfile;
    const baseURL = 'http://127.0.0.1:5000';
 
@@ -38,27 +39,30 @@ const MidDashboard = (props) => {
                console.log(err.message);
             });
       };
+
+      const fetchStats = async () => {
+         axios
+            .get(`${baseURL}/doctors/stats/?id_doctor=${data?.id_doctor}`, {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            })
+            .then((res) => {
+               setNumberofdetails(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err.message);
+            });
+      };
       fetchAcceptedAppointments();
+      fetchStats();
    }, []);
 
    // useEffect(() => {
-   //    const fetchNumberOfPatients = async () => {
-   //       axios
-   //          .get(`${baseURL}/doctors/patient/?id_doctor=${data?.id_doctor}`, {
-   //             headers: {
-   //                'Access-Control-Allow-Origin': '*',
-   //                'Access-Control-Allow-Headers': '*',
-   //                'Access-Control-Allow-Methods': '*',
-   //             },
-   //          })
-   //          .then((res) => {
-   //             setNumOfPatients(res.data.msg);
-   //          })
-   //          .catch((err) => {
-   //             console.log(err.message);
-   //          });
-   //    };
-   //    fetchNumberOfPatients();
+
+   //    fetchStats();
    // }, []);
 
    // useEffect(() => {
