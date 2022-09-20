@@ -103,9 +103,10 @@ i.closeIcon {
 }
 
 .loginForm {
-   margin: 3rem auto;
+   margin: auto;
    width: 100%;
-   height: 100%;
+   /* height: 100%; */
+   overflow: scroll;
 }
 .loginForm .title {
    font-size: 1.5rem;
