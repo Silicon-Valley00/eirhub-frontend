@@ -257,6 +257,11 @@
       padding-right: 10px;
    }
 }
+@media (max-width:720px) {
+   .middle_section{
+      padding: 2rem 10px 4rem 10px;
+   }
+}
 
 /* HACK: add custom scroll to middle section */
 
@@ -271,10 +276,10 @@
 
 @media (min-width: 769px) and (max-width: 860px) {
    .section {
-      width: 130%;
+      width: 100%;
    }
    .middle_section {
-      width: 120%;
+      width: 100%;
    }
 }
 
