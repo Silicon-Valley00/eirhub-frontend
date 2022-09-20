@@ -17,17 +17,17 @@
    padding: 20px 0px;
 } */
 /* Hide scrollbar for IE, Edge and Firefox */
-.docRecordsContainer1 > * {
-   -ms-overflow-style: none; /* IE and Edge */
-   scrollbar-width: none; /* Firefox */
-}
+/* .docRecordsContainer1 > * {
+   -ms-overflow-style: none; IE and Edge
+   scrollbar-width: none; Firefox
+} */
 
 .docRecordsContainer1 {
    width: 100%;
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 4%;
-   height: 85vh;
+   height: 100vh;
    max-height: 2000px;
    overflow: scroll;
    /* margin-bottom: 2rem; */
