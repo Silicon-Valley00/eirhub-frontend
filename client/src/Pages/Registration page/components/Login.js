@@ -12,6 +12,7 @@ import {
    fetchGuardianInfo,
    fetchHealthDetails,
    fetchProfile,
+   setLoading,
    setMessage,
    setPatientAuth,
    setUserInfo,
@@ -62,13 +63,14 @@ function Login(props) {
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
+         dispatch(setLoading(true));
          navigate('/loading', { state: { status: false } });
          dispatch(setPatientAuth(true));
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/userdashboard');
-               console.log(store.getState());
+               dispatch(setLoading(false));
             } else {
                setTimeout(() => {
                   persistor.purge();
@@ -83,7 +85,7 @@ function Login(props) {
                      state: 0,
                   })
                );
-               console.log('Store State', store.getState());
+               dispatch(setLoading(false));
             }
          }, 1.5 * 1000);
       } else {
