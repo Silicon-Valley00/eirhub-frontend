@@ -79,7 +79,7 @@ function DoctorSignup(props) {
                dispatch(
                   setMessage({
                      show: true,
-                     msg: 'Fetching profile failed, try again.',
+                     msg: 'Fetching profile failed, log in.',
                      state: 0,
                   })
                );

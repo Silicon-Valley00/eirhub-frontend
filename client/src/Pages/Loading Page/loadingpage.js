@@ -10,30 +10,35 @@ import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 const mapStateToProps = (state) => {
    return {
       savedProfile: state.profile,
-      savedHealthDetails: state.health,
       savedGuardianDetails: state.guardian,
+      patientID: state.profile.id_patient,
+      auth: state.isPatientAuth,
    };
 };
 
 function Loading(props) {
-   const patientID = useSelector((state) => state.user.id_patient);
-   const auth = useSelector((state) => state.isPatientAuth);
    const { state } = useLocation();
    const { status } = state;
 
    const dispatch = useDispatch();
 
    useEffect(() => {
-      if (auth === true && status === true) {
-         console.log('running');
-         dispatch(
-            addNewGuardianInfo(props.savedGuardianDetails, props.savedProfile)
-         );
-      }
-
-      if (patientID !== '') {
+      // console.log(status);
+      // console.log(props.auth);
+      // setTimeout(() => {
+      //    if (props.auth === true && status === true) {
+      //       console.log('running');
+      //       dispatch(
+      //          addNewGuardianInfo(
+      //             props.savedGuardianDetails,
+      //             props.savedProfile
+      //          )
+      //       );
+      //    }
+      // }, 1500);
+      if (props.patientID !== '') {
          async function fetchdata() {
-            const items = await fetchMedications(patientID);
+            const items = await fetchMedications(props.patientID);
             dispatch(setMedicationsTemp(items));
          }
 

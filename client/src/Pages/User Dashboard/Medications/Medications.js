@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 
 function Medication(props) {
    const dispatch = useDispatch();
-   const patientID = useSelector((state) => state.user.id_patient);
+   const patientID = useSelector((state) => state.profile.id_patient);
 
    const [prescriptions, setPrescriptions] = useState([]);
    const months = [

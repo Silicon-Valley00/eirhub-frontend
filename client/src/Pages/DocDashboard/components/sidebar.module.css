@@ -25,6 +25,7 @@ aside .sidebar {
    flex-direction: column;
    height: 86vh;
    top: 1rem;
+   overflow-y: scroll;
 }
 aside h3 {
    font-weight: 500;

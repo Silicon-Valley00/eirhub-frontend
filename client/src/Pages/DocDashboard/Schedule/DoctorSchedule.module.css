@@ -4,12 +4,23 @@
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
-   height: 100vh;
+   height: 85vh;
    justify-self: center;
    overflow-y: scroll;
    min-height: 35rem;
 } 
-
+.emptyMessage{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.emptyMessage .text{
+   color: var(--tablehead);
+   font-weight: 400;
+   font-family: 'Poppins';
+   font-size: 1.2rem;
+}
 
 /* .DSContainer1::-webkit-scrollbar {
    display: none;

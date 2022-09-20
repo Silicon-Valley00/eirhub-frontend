@@ -143,12 +143,12 @@ function Registration(props) {
       setDoctorLoginPasswordErrorMessage('');
    }
 
-   const pattern = /^[a-zA-Z ]+$/;
+   const pattern = /^[a-zA-Z-]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
    // Functions below check user credentials in login form input
    function handleLoginEmail() {
-      let enteredloginName = loginEmail.current.value;
+      let enteredloginName = loginEmail.current.value.trim();
 
       if (enteredloginName === '') {
          setloginEmailError(true);
@@ -162,7 +162,7 @@ function Registration(props) {
    }
 
    function handleLoginPassword() {
-      let enteredloginPassword = loginPassword.current.value;
+      let enteredloginPassword = loginPassword.current.value.trim();
 
       if (enteredloginPassword === '') {
          setLoginPasswordErrorMessage('Password required');
@@ -180,7 +180,7 @@ function Registration(props) {
 
    // Functions below check doctor credentials in login form input
    function handleDoctorLoginEmail() {
-      let enteredloginName = doctorLoginEmail.current.value;
+      let enteredloginName = doctorLoginEmail.current.value.trim();
 
       if (enteredloginName === '') {
          setDoctorLoginEmailError(true);
@@ -193,7 +193,7 @@ function Registration(props) {
       }
    }
    function handleDoctorLoginPassword() {
-      let enteredloginPassword = doctorLoginPassword.current.value;
+      let enteredloginPassword = doctorLoginPassword.current.value.trim();
 
       if (enteredloginPassword === '') {
          setDoctorLoginPasswordErrorMessage('Password required');
@@ -211,8 +211,8 @@ function Registration(props) {
 
    // Functions below check user credentials in signup form
    function handleRegisterUser() {
-      let enteredSignUpFirstname = signupFirstname.current.value;
-      let enteredSignUpLastname = signupLastname.current.value;
+      let enteredSignUpFirstname = signupFirstname.current.value.trim();
+      let enteredSignUpLastname = signupLastname.current.value.trim();
 
       if (enteredSignUpFirstname === '' || enteredSignUpLastname === '') {
          setRegisterNameErrorMessage('Full name required');
@@ -223,14 +223,14 @@ function Registration(props) {
       ) {
          setRegisterNameError(false);
       } else {
-         setRegisterNameErrorMessage('Name must have only letters');
+         setRegisterNameErrorMessage('Name must have only letters and hyphens');
 
          setRegisterNameError(true);
       }
    }
 
    function handleRegisterEmail() {
-      let enteredSignUpEmail = signupEmail.current.value;
+      let enteredSignUpEmail = signupEmail.current.value.trim();
 
       if (enteredSignUpEmail === '') {
          setRegisterEmailErrorMessage('Email required');
@@ -243,7 +243,7 @@ function Registration(props) {
       }
    }
    function handleRegisterDate() {
-      let enteredSignUpDate = signupDate.current.value;
+      let enteredSignUpDate = signupDate.current.value.trim();
 
       if (enteredSignUpDate === '') {
          setRegisterDateErrorMessage('Date required');
@@ -254,8 +254,8 @@ function Registration(props) {
    }
 
    function handleRegisterPassword() {
-      let enteredSignUpPassword = signupPassword.current.value;
-      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
+      let enteredSignUpPassword = signupPassword.current.value.trim();
+      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value.trim();
 
       if (enteredSignUpPassword === '') {
          setRegisterPasswordOneErrorMessage('Password required');
@@ -306,8 +306,8 @@ function Registration(props) {
    }
 
    function handleRegisterPasswordConfirm() {
-      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value;
-      let enteredSignUpPassword = signupPassword.current.value;
+      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value.trim();
+      let enteredSignUpPassword = signupPassword.current.value.trim();
       if (enteredSignUpPasswordconfirm === '') {
          setRegisterPasswordTwoErrorMessage('Confirm password required');
          setRegisterPasswordTwoError(true);
@@ -321,8 +321,8 @@ function Registration(props) {
 
    // Functions below check doctor credentials in signup form
    function handleRegisterDoctor() {
-      let enteredSignUpFirstname = doctorSignupFirstname.current.value;
-      let enteredSignUpLastname = doctorSignupLastname.current.value;
+      let enteredSignUpFirstname = doctorSignupFirstname.current.value.trim();
+      let enteredSignUpLastname = doctorSignupLastname.current.value.trim();
 
       if (enteredSignUpFirstname === '' || enteredSignUpLastname === '') {
          setRegisterDoctorNameErrorMessage('Full name required');
@@ -333,13 +333,13 @@ function Registration(props) {
       ) {
          setRegisterDoctorNameError(false);
       } else {
-         setRegisterDoctorNameErrorMessage('Name must have only letters');
+         setRegisterDoctorNameErrorMessage('Name must have only letters and hyphens');
 
          setRegisterDoctorNameError(true);
       }
    }
    function handleRegisterDoctorEmail() {
-      let enteredSignUpEmail = doctorSignupEmail.current.value;
+      let enteredSignUpEmail = doctorSignupEmail.current.value.trim();
 
       if (enteredSignUpEmail === '') {
          setRegisterDoctorEmailErrorMessage('Email required');
@@ -352,7 +352,7 @@ function Registration(props) {
       }
    }
    function handleRegisterHospitalCode() {
-      let enteredSignupHospitalCode = signupHospitalCode.current.value;
+      let enteredSignupHospitalCode = signupHospitalCode.current.value.trim();
 
       if (enteredSignupHospitalCode === '') {
          setRegisterHospitalCodeErrorMessage('Hospital code required');
@@ -362,9 +362,9 @@ function Registration(props) {
       }
    }
    function handleRegisterDoctorPassword() {
-      let enteredSignUpPassword = doctorSignupPassword.current.value;
+      let enteredSignUpPassword = doctorSignupPassword.current.value.trim();
       let enteredSignUpPasswordconfirm =
-         doctorSignupPasswordconfirm.current.value;
+         doctorSignupPasswordconfirm.current.value.trim();
 
       if (enteredSignUpPassword === '') {
          setRegisterDoctorPasswordOneErrorMessage('Password required');
@@ -415,8 +415,8 @@ function Registration(props) {
    }
    function handleRegisterDoctorPasswordConfirm() {
       let enteredSignUpPasswordconfirm =
-         doctorSignupPasswordconfirm.current.value;
-      let enteredSignUpPassword = doctorSignupPassword.current.value;
+         doctorSignupPasswordconfirm.current.value.trim();
+      let enteredSignUpPassword = doctorSignupPassword.current.value.trim();
 
       if (enteredSignUpPasswordconfirm === '') {
          setRegisterDoctorPasswordTwoErrorMessage('Confirm password required');
@@ -432,23 +432,23 @@ function Registration(props) {
    // function handles submittion of user/doctor data to database
    async function submitUserCredentialsHandler() {
       // User entered credentials
-      let enteredloginEmail = loginEmail.current.value;
-      let enteredloginPassword = loginPassword.current.value;
+      let enteredloginEmail = loginEmail.current.value.trim();
+      let enteredloginPassword = loginPassword.current.value.trim();
 
-      let enteredloginEmailDoctor = doctorLoginEmail.current.value;
-      let enteredloginPasswordDoctor = doctorLoginPassword.current.value;
+      let enteredloginEmailDoctor = doctorLoginEmail.current.value.trim();
+      let enteredloginPasswordDoctor = doctorLoginPassword.current.value.trim();
 
-      let enteredSignUpFirstname = signupFirstname.current.value;
-      let enteredSignUpLastname = signupLastname.current.value;
-      let enteredSignUpDate = signupDate.current.value;
-      let enteredSignUpEmail = signupEmail.current.value;
-      let enteredSignUpPassword = signupPassword.current.value;
+      let enteredSignUpFirstname = signupFirstname.current.value.trim();
+      let enteredSignUpLastname = signupLastname.current.value.trim();
+      let enteredSignUpDate = signupDate.current.value.trim();
+      let enteredSignUpEmail = signupEmail.current.value.trim();
+      let enteredSignUpPassword = signupPassword.current.value.trim();
 
-      let enteredSignUpFirstnameDoctor = doctorSignupFirstname.current.value;
-      let enteredSignUpLastnameDoctor = doctorSignupLastname.current.value;
-      let enteredSignUpEmailDoctor = doctorSignupEmail.current.value;
-      let enteredSignUpPasswordDoctor = doctorSignupPassword.current.value;
-      let enteredSignupHospitalCode = signupHospitalCode.current.value;
+      let enteredSignUpFirstnameDoctor = doctorSignupFirstname.current.value.trim();
+      let enteredSignUpLastnameDoctor = doctorSignupLastname.current.value.trim();
+      let enteredSignUpEmailDoctor = doctorSignupEmail.current.value.trim();
+      let enteredSignUpPasswordDoctor = doctorSignupPassword.current.value.trim();
+      let enteredSignupHospitalCode = signupHospitalCode.current.value.trim();
 
       // Below code checks which modal form is open to take user credentials
       if (props.modalLogin) {
@@ -558,13 +558,13 @@ function Registration(props) {
                //returns response
                return [
                   response.data.status,
-                  response.data.msg.message,
+                  response.data.msg,
                   'Create Account',
                ];
             }
          } else {
             //takes all statuses aside 200
-            return [false, response.data.msg.message, 'Create Account'];
+            return [false, response.data.msg, 'Create Account'];
          }
       } catch (error) {
          // catches all errors
@@ -578,11 +578,11 @@ function Registration(props) {
                'Create Account',
             ];
          } else if (error.response) {
-            return [false, error.response.data.msg.message, 'Create Account'];
+            return [false, error.response.data.msg, 'Create Account'];
          } else if (error.request) {
-            return [false, error.response.data.msg.message, 'Create Account'];
+            return [false, error.response.data.msg, 'Create Account'];
          } else {
-            return [false, error.response.data.msg.message, 'Create Account'];
+            return [false, error.response.data.msg, 'Create Account'];
          }
       }
    }

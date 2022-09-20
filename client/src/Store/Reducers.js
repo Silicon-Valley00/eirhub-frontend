@@ -11,7 +11,6 @@ import {
    SET_APPOINTMENTS_DATES,
    SET_DOCTOR_AUTH,
    SET_PATIENT_AUTH,
-   SET_USER_INFO,
    SET_OK_TO_ROUTE,
    SET_RELOAD_MEDICATIONS,
    SET_MESSAGE,
@@ -66,7 +65,7 @@ const initialState = {
       middle_name: '',
       last_name: '',
       user_email: '',
-      date_of_birth: '',
+      date_of_birth: 'Tue Sep 20 2022 05:37:34',
       house_address: '',
       phone_number: '',
       id_number: '',
@@ -104,14 +103,6 @@ const Reducers = (state = initialState, action) => {
 
       case SET_IS_LOADING:
          return { ...state, isLoading: action.payload };
-
-      case SET_USER_INFO:
-         let user = {
-            name: action.payload.name,
-            id_patient: action.payload.id_patient,
-            id_guardian: action.payload.id_guardian,
-         };
-         return { ...state, user: user };
 
       case SET_OK_TO_ROUTE:
          return { ...state, okToRoute: action.payload };
