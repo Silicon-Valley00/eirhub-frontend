@@ -152,6 +152,8 @@ function Signup(props) {
                         <IoCloseOutline />
                      </i>
                   </div>
+                  <div className={styles.formSideContainer}>
+
                   <div className={styles.signupFormTitle}>
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
@@ -499,6 +501,8 @@ function Signup(props) {
                         </p>
                      </div>
                   </form>
+                  </div>
+                  <div></div>
                </div>
             </div>
          </div>
