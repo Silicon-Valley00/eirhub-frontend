@@ -24,12 +24,12 @@ const DoctorSchedule = (props) => {
    let scheduledAppointment = {
       appointment_date,
       appointment_end_time,
-      appointment_reason: selectedAppointment?.appointment_reason,
       appointment_start_time,
       appointment_status: 'Pending',
-      appointment_location: selectedAppointment?.appointment_location,
-      id_doctor: selectedAppointment?.id_doctor,
-      id_patient: selectedAppointment?.id_patient,
+      // appointment_location: allPendingAppointments[index].appointment_location,
+      // id_doctor: allPendingAppointments[index]?.id_doctor,
+      // id_patient: allPendingAppointments[index].id_patient,
+      // appointment_reason: allPendingAppointments[index]["appointment_reason"]
    };
 
    // endpoint for updating doctor profile
@@ -84,15 +84,22 @@ const DoctorSchedule = (props) => {
    // Function to cancel an appointment
    const cancelAppointment = async (index) => {
       // console.log(selectedAppointment.id_appointment);
+      var selectedId = allPendingAppointments[index]["id_appointment"];
+      alert(selectedId)
       await axios
          .put(
-            `${baseURL}/appointments/?id_appointment=${selectedAppointment?.id_appointment}`,
+            `${baseURL}/appointments/?id_appointment=${selectedId}`,
             {
                ...scheduledAppointment,
                appointment_status: 'Declined',
                appointment_date: '2021-06-01',
                appointment_start_time: '10:00:00',
                appointment_end_time: '11:00:00',
+               appointment_location: allPendingAppointments[index].appointment_location,
+               id_doctor: allPendingAppointments[index]?.id_doctor,
+               id_patient: allPendingAppointments[index].id_patient,
+               appointment_reason: allPendingAppointments[index]["appointment_reason"],
+
             },
             {
                headers: {
@@ -162,7 +169,7 @@ const DoctorSchedule = (props) => {
                      <td
                         className={DSstyles.tdCancel}
                         onClick={() => {
-                           displaySelectedPatientDetails(index);
+                           // displaySelectedPatientDetails(index);
                            cancelAppointment(index);
                         }}
                      >
