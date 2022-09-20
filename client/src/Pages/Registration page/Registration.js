@@ -143,7 +143,7 @@ function Registration(props) {
       setDoctorLoginPasswordErrorMessage('');
    }
 
-   const pattern = /^[a-zA-Z ]+$/;
+   const pattern = /^[a-zA-Z- ]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
    // Functions below check user credentials in login form input
@@ -432,23 +432,23 @@ function Registration(props) {
    // function handles submittion of user/doctor data to database
    async function submitUserCredentialsHandler() {
       // User entered credentials
-      let enteredloginEmail = loginEmail.current.value;
-      let enteredloginPassword = loginPassword.current.value;
+      let enteredloginEmail = loginEmail.current.value.trim();
+      let enteredloginPassword = loginPassword.current.value.trim();
 
-      let enteredloginEmailDoctor = doctorLoginEmail.current.value;
-      let enteredloginPasswordDoctor = doctorLoginPassword.current.value;
+      let enteredloginEmailDoctor = doctorLoginEmail.current.value.trim();
+      let enteredloginPasswordDoctor = doctorLoginPassword.current.value.trim();
 
-      let enteredSignUpFirstname = signupFirstname.current.value;
-      let enteredSignUpLastname = signupLastname.current.value;
-      let enteredSignUpDate = signupDate.current.value;
-      let enteredSignUpEmail = signupEmail.current.value;
-      let enteredSignUpPassword = signupPassword.current.value;
+      let enteredSignUpFirstname = signupFirstname.current.value.trim();
+      let enteredSignUpLastname = signupLastname.current.value.trim();
+      let enteredSignUpDate = signupDate.current.value.trim();
+      let enteredSignUpEmail = signupEmail.current.value.trim();
+      let enteredSignUpPassword = signupPassword.current.value.trim();
 
-      let enteredSignUpFirstnameDoctor = doctorSignupFirstname.current.value;
-      let enteredSignUpLastnameDoctor = doctorSignupLastname.current.value;
-      let enteredSignUpEmailDoctor = doctorSignupEmail.current.value;
-      let enteredSignUpPasswordDoctor = doctorSignupPassword.current.value;
-      let enteredSignupHospitalCode = signupHospitalCode.current.value;
+      let enteredSignUpFirstnameDoctor = doctorSignupFirstname.current.value.trim();
+      let enteredSignUpLastnameDoctor = doctorSignupLastname.current.value.trim();
+      let enteredSignUpEmailDoctor = doctorSignupEmail.current.value.trim();
+      let enteredSignUpPasswordDoctor = doctorSignupPassword.current.value.trim();
+      let enteredSignupHospitalCode = signupHospitalCode.current.value.trim();
 
       // Below code checks which modal form is open to take user credentials
       if (props.modalLogin) {

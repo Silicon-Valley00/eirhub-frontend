@@ -139,7 +139,7 @@ function Medication(props) {
          setIsError(true);
       }
 
-      clearInputsAndMedicationData();
+      // clearInputsAndMedicationData();
    }
 
    function clearInputsAndMedicationData() {
