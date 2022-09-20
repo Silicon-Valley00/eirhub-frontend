@@ -93,6 +93,7 @@
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
+      overflow-y: hidden;
    }
    .container {
       width: 98%;
@@ -106,6 +107,7 @@
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
+      overflow-y: hidden;
    }
    .container {
       width: 94%;
@@ -118,7 +120,7 @@
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
-      overflow-y: auto;
+      overflow-y: hidden;
    }
    .container {
       width: 100%;
