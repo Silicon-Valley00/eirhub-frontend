@@ -37,6 +37,23 @@
    outline: 1px solid #e1e5ee;
 }
 
+.tbody {
+   position: relative;
+}
+
+.emptyMessage {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.text {
+   color: var(--midcol);
+   font-size: 1.5rem;
+   font-weight: 500;
+}
+
 .appointmentsBox table {
    background: var(--white);
    padding: 1rem;
