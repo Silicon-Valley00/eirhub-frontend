@@ -4,10 +4,9 @@
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 20px;
-   height: 85vh;
+   height: 100vh;
    justify-self: center;
    overflow-y: scroll;
-   min-height: 35rem;
 }
 
 /* .DSContainer1::-webkit-scrollbar {
@@ -211,7 +210,7 @@
 }
 
 .text {
-   color: var(--midcol);
+   color: var(--tablehead);
    font-size: 1.5rem;
    font-weight: 500;
 }
