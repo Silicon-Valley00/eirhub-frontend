@@ -8,11 +8,14 @@ const DoctorSchedule = (props) => {
 
    // BUG: Make doctor not able to make schedules when fields are empty.
    // BUG: Refresh the page after making a schedule.
-   // BUG: Refresh the page after deleting a schedule.
+   // FIXME: Refresh the page after deleting a schedule.
+   // FIXME: Don't display the details of the schedule when the doctor clicks on cancel.
 
    // States that would be used as data for the PUT method
-   const [allAppointments, setAllAppointments] = useState([]);
+   const [allPendingAppointments, setAllPendingAppointments] = useState([]);
+   console.log('Pending appointments: ', allPendingAppointments);
    const [selectedAppointment, setSelectedAppointment] = useState([]);
+   console.log(selectedAppointment);
    const [appointment_date, setAppointmentDate] = useState('');
    const [appointment_start_time, setAppointmentStartTime] = useState('');
    const [appointment_end_time, setAppointmentEndTime] = useState('');
@@ -28,7 +31,6 @@ const DoctorSchedule = (props) => {
       id_doctor: selectedAppointment?.id_doctor,
       id_patient: selectedAppointment?.id_patient,
    };
-   console.log(scheduledAppointment);
 
    // endpoint for updating doctor profile
    const baseURL = 'http://127.0.0.1:5000';
@@ -36,7 +38,7 @@ const DoctorSchedule = (props) => {
    // Function to get all pending appointment.
    useEffect(() => {
       const getAllAppointmentsForADoctor = async () => {
-         axios
+         await axios
             .get(
                `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&status=Pending`,
                {
@@ -48,7 +50,7 @@ const DoctorSchedule = (props) => {
                }
             )
             .then((res) => {
-               setAllAppointments(res.data.msg);
+               setAllPendingAppointments(res.data.msg);
             })
             .catch((err) => {
                console.log(err.message);
@@ -80,7 +82,7 @@ const DoctorSchedule = (props) => {
    };
 
    // Function to cancel an appointment
-   const cancelAppointment = async () => {
+   const cancelAppointment = async (index) => {
       // console.log(selectedAppointment.id_appointment);
       await axios
          .put(
@@ -100,39 +102,36 @@ const DoctorSchedule = (props) => {
                },
             }
          )
-
+         // Filter out the appointment that was cancelled
          .then(() =>
-            axios.get(
-               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&status=Pending`,
-               {
-                  headers: {
-                     'Access-Control-Allow-Origin': '*',
-                     'Access-Control-Allow-Headers': '*',
-                     'Access-Control-Allow-Methods': '*',
-                  },
-               }
+            setAllPendingAppointments(
+               allPendingAppointments.filter((_, i) => i !== index)
             )
          )
          .catch((error) => console.log(error));
    };
 
+   // Function to display the details of the appointment that was clicked.
    const displaySelectedPatientDetails = (patientKeyNum) => {
       console.log('patient: ', patientKeyNum);
-      const selectedPatient = allAppointments[patientKeyNum];
+      const selectedPatient = allPendingAppointments[patientKeyNum];
       setSelectedAppointment(selectedPatient);
    };
 
+   // Handles whether to display a text or display the actual data
    let displayData;
-   if (allAppointments.length === 0) {
+   // Displays a text if there are no Pending appointments
+   if (allPendingAppointments.length === 0) {
       displayData = (
          <div className={DSstyles.emptyMessage}>
             <p className={DSstyles.text}>Nothing to show here.</p>
          </div>
       );
+      // If there are pending appointments, display the data
    } else {
       displayData = (
          <>
-            {allAppointments.map((data, index) => {
+            {allPendingAppointments.map((data, index) => {
                return (
                   <tr key={index}>
                      <td
@@ -159,11 +158,12 @@ const DoctorSchedule = (props) => {
                      >
                         {data?.appointment_reason}
                      </td>
+                     {/* Cancel appointments */}
                      <td
                         className={DSstyles.tdCancel}
                         onClick={() => {
                            displaySelectedPatientDetails(index);
-                           cancelAppointment();
+                           cancelAppointment(index);
                         }}
                      >
                         Cancel
@@ -252,6 +252,7 @@ const DoctorSchedule = (props) => {
                      <th className={DSstyles.tCondition}>Condition</th>
                      <th className={DSstyles.tAction}>Action</th>
                   </thead>
+                  {/* Body of the table that contains all the Pending appointments */}
                   <tbody className={DSstyles.tbody}>{displayData}</tbody>
                </table>
             </div>
