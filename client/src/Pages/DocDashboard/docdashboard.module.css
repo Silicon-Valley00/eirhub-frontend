@@ -5,7 +5,7 @@
    height: 100vh;
    padding-top: 5rem;
    background-color: var(#f6f6f9);
-   overflow: hidden;
+   /* overflow: hidden; */
    overflow-x: hidden;
    font-family: 'Poppins', sans-serif;
 }
@@ -57,7 +57,7 @@
 
 @media (min-width: 768px) {
    .userbody {
-      padding-top: 6.5rem;
+      /* padding-top: 6.5rem; */
    }
 
    .container {

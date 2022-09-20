@@ -7,11 +7,8 @@ import QuickSolution from './components/QuickSolution';
 import Services from './components/Services';
 import styles from './Landingpage.module.css';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
-import { useLocation } from 'react-router-dom';
 
 const LandingPage = () => {
-   const location = useLocation();
-
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
    const [modalSignup, setModalSignup] = useState(false);
    const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
@@ -72,7 +69,7 @@ const LandingPage = () => {
             }
             // handleModalsClose={handleModalsClose}
          >
-            <AlertsMessageBox />
+            <AlertsMessageBox time={5000} />
             {/* navbar */}
 
             <Navbar

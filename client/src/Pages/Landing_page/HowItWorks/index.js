@@ -7,6 +7,7 @@ import { HiCheck } from 'react-icons/hi';
 import { GiLabCoat, GiVideoConference } from 'react-icons/gi';
 import { IoIosClock } from 'react-icons/io';
 import { MdVerified } from 'react-icons/md';
+import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 
 const HowItWorks = () => {
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
@@ -68,6 +69,7 @@ const HowItWorks = () => {
             }
             handleModalsClose={handleModalsClose}
          >
+            <AlertsMessageBox time={5000} />
             <Navbar
                handleModalLogin={handleModalLogin}
                handleModalSignup={handleModalSignup}
@@ -180,7 +182,7 @@ const HowItWorks = () => {
                   </div>
                </section>
             </main>
-            <Footer />
+            <Footer handleModalSignup={handleModalSignup} />
          </div>
          <Registration
             modalLogin={modalLogin}

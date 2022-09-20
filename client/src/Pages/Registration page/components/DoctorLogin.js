@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
-import docLoginImage from '../../../images/doctor login.svg'
+import docLoginImage from '../../../images/doctor login.svg';
 import { IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
@@ -54,14 +54,17 @@ function DoctorLogin(props) {
                }, 200);
 
                dispatch(setDoctorAuth(false));
-               navigate('/landing-page', { state: true });
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Fetching profile failed, try again.',
-                     state: 0,
-                  })
-               );
+               navigate('/landing-page');
+
+               setTimeout(() => {
+                  dispatch(
+                     setMessage({
+                        show: true,
+                        msg: 'Fetching profile failed, try again.',
+                        state: 0,
+                     })
+                  );
+               }, 2000);
                dispatch(setLoading(false));
             }
          }, 1.5 * 1000);

@@ -67,14 +67,17 @@ function Login(props) {
                }, 200);
 
                dispatch(setPatientAuth(false));
-               navigate('/landing-page', { state: true });
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Fetching profile failed, try again.',
-                     state: 0,
-                  })
-               );
+               navigate('/landing-page');
+               console.log(store.getState());
+               setTimeout(() => {
+                  dispatch(
+                     setMessage({
+                        show: true,
+                        msg: 'Fetching profile failed, trying again.',
+                        state: 0,
+                     })
+                  );
+               }, 1000);
                dispatch(setLoading(false));
             }
          }, 1.5 * 1000);
