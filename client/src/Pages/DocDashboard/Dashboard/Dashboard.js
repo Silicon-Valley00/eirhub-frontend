@@ -33,6 +33,7 @@ const MidDashboard = (props) => {
                }
             )
             .then((res) => {
+               alert(res.data.msg)
                setAcceptedAppointment(res.data.msg);
             })
             .catch((err) => {
@@ -40,24 +41,47 @@ const MidDashboard = (props) => {
             });
       };
 
-      const fetchStats = async () => {
-         axios
-            .get(`${baseURL}/doctors/stats/?id_doctor=${data?.id_doctor}`, {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
-            })
-            .then((res) => {
-               setNumberofdetails(res.data.msg);
-            })
-            .catch((err) => {
-               console.log(err.message);
-            });
+      // ${data?.id_doctor}
+
+//Fetch Doctor Dashboard Details
+      const fetchDoctorDashboard = async () => {
+         if (data?.id_doctor) {
+            try {
+               const response = await axios({
+                  method: 'GET',
+                  url: `http://127.0.0.1:5000/doctor/dashboard/?id_doctor=${data?.id_doctor}`,
+                  headers: {
+                     'Access-Control-Allow-Origin': '*',
+                     //Helpful in some cases.
+                     'Access-Control-Allow-Headers': '*',
+                     'Access-Control-Allow-Methods': '*',
+                  },
+               });
+               if (response.status === 200) {
+                  //checks details of response
+                  if (response.data.status === true) {
+                     //returns response
+                     // alert('stats fetch worked');
+                     alert(response.data.msg.stats.number_of_appointments)
+                     // console.log(response.data.msg);
+                     s = response.data.msg.number_of_appointments;
+                     // return response.data.msg;
+                  }
+               } else {
+                  //takes all statuses aside 200
+                  // alert('Something went wrong. Try again, accepted appments 1');
+               }
+            } catch (error) {
+               // alert(error, 'accepted appments 2');
+            }
+         }
+         else{
+   
+         }
+
       };
-      fetchAcceptedAppointments();
-      fetchStats();
+      // fetchAcceptedAppointments();
+      fetchDoctorDashboard();
    }, []);
 
    // useEffect(() => {
@@ -212,6 +236,7 @@ const MidDashboard = (props) => {
 const mapStateToProps = (state) => {
    return {
       doctorProfile: state.doctorProfile,
+      savedSummary: state.doctorSummary,
    };
 };
 
