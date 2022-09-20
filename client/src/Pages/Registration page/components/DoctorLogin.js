@@ -15,7 +15,7 @@ import {
 } from '../../../Store/DoctorAction.js';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
-import { setMessage } from '../../../Store/Actions';
+import { setLoading, setMessage } from '../../../Store/Actions';
 
 function DoctorLogin(props) {
    const docLoginFormRef = useRef();
@@ -39,6 +39,7 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
+         dispatch(setLoading(true));
 
          navigate('/loading', { state: { status: false } });
          dispatch(setDoctorAuth(true));
@@ -46,7 +47,7 @@ function DoctorLogin(props) {
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/doctordashboard');
-               console.log(store.getState());
+               dispatch(setLoading(false));
             } else {
                setTimeout(() => {
                   persistor.purge();
@@ -61,7 +62,7 @@ function DoctorLogin(props) {
                      state: 0,
                   })
                );
-               console.log(store.getState());
+               dispatch(setLoading(false));
             }
          }, 1.5 * 1000);
       } else {

@@ -15,6 +15,7 @@ import {
    SET_RELOAD_MEDICATIONS,
    SET_MESSAGE,
    SET_TEMP_MEDICATIONS,
+   SET_IS_LOADING,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -121,6 +122,14 @@ export const setMedicationsTemp = (medicationsObj) => {
       type: SET_TEMP_MEDICATIONS,
       payload: medicationsObj,
       tempData: store.getState().tempMedications,
+   };
+};
+
+//Asserts whether a loading page route should happen
+export const setLoading = (state) => {
+   return {
+      type: SET_IS_LOADING,
+      payload: state,
    };
 };
 

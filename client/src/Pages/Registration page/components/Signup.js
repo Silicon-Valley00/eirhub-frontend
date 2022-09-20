@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import {
    fetchProfile,
    fetchProfileOnSignup,
+   setLoading,
    setMessage,
    setPatientAuth,
    setUserInfo,
@@ -72,6 +73,7 @@ function Signup(props) {
          );
          console.log('patient', feedback[1].id_patient);
          dispatch(fetchProfileOnSignup(feedback[1].id_patient));
+         dispatch(setLoading(true));
 
          navigate('/loading', { state: { status: true } });
          dispatch(setPatientAuth(true));
@@ -79,6 +81,8 @@ function Signup(props) {
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/userdashboard');
+               dispatch(setLoading(false));
+
                console.log(store.getState());
             } else {
                setTimeout(() => {
@@ -94,6 +98,8 @@ function Signup(props) {
                      state: 0,
                   })
                );
+               dispatch(setLoading(false));
+
                console.log(store.getState());
             }
          }, 1.5 * 1000);

@@ -17,7 +17,7 @@ import {
 import { SignUpUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
-import { setMessage } from '../../../Store/Actions';
+import { setLoading, setMessage } from '../../../Store/Actions';
 
 function DoctorSignup(props) {
    const navigate = useNavigate();
@@ -60,6 +60,7 @@ function DoctorSignup(props) {
          //       }`
          //    );
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
+         dispatch(setLoading(true));
 
          navigate('/loading', { state: { status: false } });
          dispatch(setDoctorAuth(true));
@@ -67,7 +68,7 @@ function DoctorSignup(props) {
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/doctordashboard');
-               console.log(store.getState());
+               dispatch(setLoading(false));
             } else {
                setTimeout(() => {
                   persistor.purge();
@@ -82,7 +83,7 @@ function DoctorSignup(props) {
                      state: 0,
                   })
                );
-               console.log(store.getState());
+               dispatch(setLoading(false));
             }
          }, 1.5 * 1000);
       } else {
