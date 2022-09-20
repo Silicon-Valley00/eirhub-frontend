@@ -7,26 +7,23 @@ import { FaUserCircle } from 'react-icons/fa';
 import { fetchPatientsByDoctorId } from '../../../Store/DoctorAction';
 import { useSelector } from 'react-redux';
 
-
-
 function DoctorPatients() {
    const doctorId = useSelector((state) => state.profile.id_doctor);
-   const [patients,setPatients] = useState()
-   useEffect(()=>{
-      async function fetchPatients(){
-         const items = await fetchPatientsByDoctorId(doctorId)
-         setPatients(items)
-         
-      }
-      fetchPatients();
-   },[])
+   const [patients, setPatients] = useState();
+   // useEffect(()=>{
+   //    async function fetchPatients(){
+   //       const items = await fetchPatientsByDoctorId(doctorId)
+   //       setPatients(items)
+
+   //    }
+   //    fetchPatients();
+   // },[])
 
    const [show, setShow] = useState(false);
 
    const showPeople = () => {
       setShow(!show);
    };
-
 
    return (
       <>
@@ -54,8 +51,14 @@ function DoctorPatients() {
                   {patients?.map((patient, index) => {
                      return (
                         <div className={styles.imageDiv}>
-                           <img src={patient.msg.person_image} alt={patient.msg.first_name}></img>
-                           <li key={index}>{patient.msg.first_name} {patient.msg.middle_name} {patient.msg.last_name}</li>
+                           <img
+                              src={patient.msg.person_image}
+                              alt={patient.msg.first_name}
+                           ></img>
+                           <li key={index}>
+                              {patient.msg.first_name} {patient.msg.middle_name}{' '}
+                              {patient.msg.last_name}
+                           </li>
                         </div>
                      );
                   })}
