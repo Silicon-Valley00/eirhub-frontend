@@ -558,13 +558,13 @@ function Registration(props) {
                //returns response
                return [
                   response.data.status,
-                  response.data.msg.message,
+                  response.data.msg,
                   'Create Account',
                ];
             }
          } else {
             //takes all statuses aside 200
-            return [false, response.data.msg.message, 'Create Account'];
+            return [false, response.data.msg, 'Create Account'];
          }
       } catch (error) {
          // catches all errors
@@ -578,11 +578,11 @@ function Registration(props) {
                'Create Account',
             ];
          } else if (error.response) {
-            return [false, error.response.data.msg.message, 'Create Account'];
+            return [false, error.response.data.msg, 'Create Account'];
          } else if (error.request) {
-            return [false, error.response.data.msg.message, 'Create Account'];
+            return [false, error.response.data.msg, 'Create Account'];
          } else {
-            return [false, error.response.data.msg.message, 'Create Account'];
+            return [false, error.response.data.msg, 'Create Account'];
          }
       }
    }

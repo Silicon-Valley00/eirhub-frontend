@@ -10,6 +10,7 @@ import {
    updatePrescriptions,
    setReloadMedications,
    setMedicationsTemp,
+   setMessage,
 } from '../../../Store/Actions';
 import { useSelector } from 'react-redux';
 
@@ -24,7 +25,6 @@ function Medication(props) {
 
    // Handles error messages
    const [isError, setIsError] = useState(false);
-   const [errorMessage, setErrorMessage] = useState('Dummy error message');
 
    // Handles user inputs for medication form
    const [drugName, setDrugName] = useState('');
@@ -60,17 +60,32 @@ function Medication(props) {
       ) {
          if (new Date().getTime() > new Date(drugEndDate).getTime()) {
             // checks if end date is in the past
-            setErrorMessage('End date must not be in the past');
-            setIsError(true);
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'End date must not be in the past.',
+                  state: 0,
+               })
+            );
          } else if (
             new Date(drugStartDate).getTime() > new Date(drugEndDate).getTime() //checks if end date comes before start date
          ) {
-            setErrorMessage('Enter appropriate dates.');
-            setIsError(true);
-         } else if (drugDosage.search(/^\d+\/\x+\d+$/) === -1) {
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Enter appropriate dates.',
+                  state: 0,
+               })
+            );
+         } else if (drugDosage.trim().search(/^\d+\/\x+\d+$/) === -1) {
             // checks if right dosage format has been entered
-            setErrorMessage('Use appropriate dosage format.');
-            setIsError(true);
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Use appropriate dosage format.',
+                  state: 0,
+               })
+            );
          } else {
             //prepares data for submition when no error is encountered
 
@@ -114,7 +129,13 @@ function Medication(props) {
          }
       } else {
          // alerts user when all input fields have not been filled
-         setErrorMessage('Enter all input fields');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Enter all fields.',
+               state: 0,
+            })
+         );
          setIsError(true);
       }
 
@@ -272,17 +293,6 @@ function Medication(props) {
                         </button>
                      </div>
                   )}
-               </div>
-               <div className={isError ? styles.error : styles.noerror}>
-                  <p>{errorMessage}</p>
-                  <i
-                     className={styles.closeIcon}
-                     onClick={() => {
-                        setIsError(false);
-                     }}
-                  >
-                     <IoCloseOutline />
-                  </i>
                </div>
             </div>
          </div>

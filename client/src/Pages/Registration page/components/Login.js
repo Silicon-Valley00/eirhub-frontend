@@ -15,7 +15,6 @@ import {
    setLoading,
    setMessage,
    setPatientAuth,
-   setUserInfo,
 } from '../../../Store/Actions.js';
 import { LoginUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
@@ -50,16 +49,7 @@ function Login(props) {
                feedback[1].id_patient
             }`
          );
-         dispatch(
-            setUserInfo({
-               name: `${
-                  feedback[1].first_name.charAt(0).toUpperCase() +
-                  feedback[1].first_name.slice(1)
-               }`,
-               id_patient: feedback[1].id_patient,
-               id_guardian: feedback[1].id_guardian,
-            })
-         );
+
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );

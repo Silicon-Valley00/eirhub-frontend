@@ -10,12 +10,10 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
-   fetchProfile,
    fetchProfileOnSignup,
    setLoading,
    setMessage,
    setPatientAuth,
-   setUserInfo,
 } from '../../../Store/Actions.js';
 import { SignUpUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
@@ -61,18 +59,15 @@ function Signup(props) {
          //       feedback[1].id_patient
          //    }`
          // );
-         dispatch(
-            setUserInfo({
-               name: `${
-                  feedback[1].first_name.charAt(0).toUpperCase() +
-                  feedback[1].first_name.slice(1)
-               }`,
-               id_patient: feedback[1].id_patient,
-               id_guardian: '',
-            })
-         );
          console.log('patient', feedback[1].id_patient);
-         dispatch(fetchProfileOnSignup(feedback[1].id_patient));
+         dispatch(
+            fetchProfileOnSignup(
+               feedback[1].id_patient,
+               feedback[1].date_of_birth,
+               store.getState().profile,
+               store.getState().guardian
+            )
+         );
          dispatch(setLoading(true));
 
          navigate('/loading', { state: { status: true } });
@@ -94,7 +89,7 @@ function Signup(props) {
                dispatch(
                   setMessage({
                      show: true,
-                     msg: 'Fetching profile failed, try again.',
+                     msg: 'Fetching profile failed, log in.',
                      state: 0,
                   })
                );

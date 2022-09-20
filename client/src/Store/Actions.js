@@ -10,7 +10,6 @@ import {
    SET_CHAT_WITH_DOCTOR,
    SET_APPOINTMENTS_DATES,
    SET_PATIENT_AUTH,
-   SET_USER_INFO,
    SET_OK_TO_ROUTE,
    SET_RELOAD_MEDICATIONS,
    SET_MESSAGE,
@@ -20,13 +19,6 @@ import {
 
 import axios from 'axios';
 
-// Sets user details
-export const setUserInfo = (user) => {
-   return {
-      type: SET_USER_INFO,
-      payload: user,
-   };
-};
 // Sets profile details
 export const setProfileInfo = (profileData) => {
    return {
@@ -170,7 +162,12 @@ export const fetchProfile = (userID, guardianID) => {
 };
 
 //Fetches user profile details
-export const fetchProfileOnSignup = (userID) => {
+export const fetchProfileOnSignup = (
+   userID,
+   dob,
+   guardianData,
+   profileData
+) => {
    return async function (dispatch) {
       try {
          const response = await axios({
@@ -188,7 +185,14 @@ export const fetchProfileOnSignup = (userID) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               dispatch(fetchHealthDetails(userID));
+               if (
+                  new Date().getFullYear() - new Date(dob).getFullYear() <
+                  18
+               ) {
+                  dispatch(addNewGuardianInfo(guardianData, profileData));
+               } else {
+                  dispatch(setOkToRoute(true));
+               }
             }
          } else {
             //takes all statuses aside 200
@@ -428,96 +432,51 @@ export const updateGuardianInfo = (
    };
 };
 
-//Create new user health details
-export const addNewHealthDetails = (
-   healthData,
-   guardianData,
-   patientId,
-   profileData
-) => {
+//Creates guardian details
+export const addNewGuardianInfo = (guardianData, profileData) => {
    return async function (dispatch) {
       try {
          const response = await axios({
             method: 'POST',
-            url: `http://127.0.0.1:5000/healthdetails/${patientId}`,
+            url: `http://127.0.0.1:5000/guardians`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
             },
-            data: healthData,
+            data: guardianData,
          });
+
          if (response.status === 200) {
             //checks details of response
             if (response.data.status === true) {
                //returns response
-               dispatch(setHealthInfo(response.data.msg));
-               dispatch(addNewGuardianInfo(guardianData, profileData));
+               dispatch(setGuardianInfo(response.data.msg));
+               console.log(response.data.msg);
+
+               const profile = {
+                  user_email: profileData.user_email,
+                  first_name: profileData.first_name,
+                  house_address: profileData.house_address,
+                  id_patient: profileData.id_patient,
+                  id_doctor: profileData.id_doctor,
+                  id_guardian: response.data.msg.id_guardian,
+                  id_number: profileData.id_number,
+                  last_name: profileData.last_name,
+                  middle_name: profileData.middle_name,
+                  nationality: profileData.nationality,
+                  phone_number: profileData.phone_number,
+                  person_image: profileData.person_image,
+                  date_of_birth: profileData.date_of_birth,
+                  gender: profileData.gender,
+               };
+               dispatch(setProfileInfo(profile));
+               dispatch(setOkToRoute(true));
             }
          } else {
             //takes all statuses aside 200
-            // alert('Could not create health details, try again uh1');
-         }
-      } catch (error) {
-         // alert('Could not create health details, try again uh2');
-      }
-   };
-};
-
-//Creates guardian details
-export const addNewGuardianInfo = (guardianData, profileData) => {
-   return async function (dispatch) {
-      try {
-         if (Date.now() - profileData.date_of_birth < 18) {
-            const response = await axios({
-               method: 'POST',
-               url: `http://127.0.0.1:5000/guardians`,
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  //Helpful in some cases.
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
-               data: guardianData,
-            });
-
-            if (response.status === 200) {
-               //checks details of response
-               if (response.data.status === true) {
-                  //returns response
-                  dispatch(setGuardianInfo(response.data.msg));
-                  const user = {
-                     name: `${
-                        profileData.first_name.charAt(0).toUpperCase() +
-                        profileData.slice(1)
-                     }`,
-                     id_patient: profileData.id_patient,
-                     id_guardian: response.data.msg.id_guardian,
-                  };
-                  const profile = {
-                     user_email: profileData.user_email,
-                     first_name: profileData.first_name,
-                     house_address: profileData.house_address,
-                     id_patient: profileData.id_patient,
-                     id_doctor: profileData.id_doctor,
-                     id_guardian: response.data.msg.id_guardian,
-                     id_number: profileData.id_number,
-                     last_name: profileData.last_name,
-                     middle_name: profileData.middle_name,
-                     nationality: profileData.nationality,
-                     phone_number: profileData.phone_number,
-                     person_image: profileData.person_image,
-                     date_of_birth: profileData.date_of_birth,
-                     gender: profileData.gender,
-                  };
-                  dispatch(setProfileInfo(profile));
-                  dispatch(setUserInfo(user));
-               }
-            } else {
-               //takes all statuses aside 200
-               // alert('Could not create guardian, try again ug1');
-            }
+            // alert('Could not create guardian, try again ug1');
          }
       } catch (error) {
          // alert('Could not create guardian, try again ug2');

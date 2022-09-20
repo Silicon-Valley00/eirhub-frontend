@@ -24,7 +24,6 @@ import store from '../../../Store/ReducerStore';
 const mapStateToProps = (state) => {
    return {
       savedHealthDetails: state.health,
-      savedUserInfo: state.user,
       tempMeds: state.tempMedications,
    };
 };
@@ -34,20 +33,8 @@ function Dashboard(props) {
    const dispatch = useDispatch();
    const [medications, setMedications] = useState([]);
    const [appointments, setAppointments] = useState([]);
-   const patientID = useSelector((state) => state.user.id_patient);
-   const [counter, setCounter] = useState(1);
+   const patientID = useSelector((state) => state.profile.id_patient);
 
-   // useEffect(() => {
-   //    async function fetchUserData() {
-   //       dispatch(
-   //          fetchProfile(
-   //             props.savedUserInfo.id_patient,
-   //             props.savedUserInfo.id_guardian
-   //          )
-   //       );
-   //    }
-   //    fetchUserData();
-   // }, []);
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchMedications(patientID);
