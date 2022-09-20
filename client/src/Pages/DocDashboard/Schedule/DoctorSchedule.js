@@ -34,7 +34,11 @@ const DoctorSchedule = (props) => {
 
    // endpoint for updating doctor profile
    const baseURL = 'http://127.0.0.1:5000';
-
+   const headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Methods': '*',
+   }
    // Function to get all pending appointment.
    useEffect(() => {
       const getAllAppointmentsForADoctor = async () => {
@@ -42,11 +46,7 @@ const DoctorSchedule = (props) => {
             .get(
                `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&status=Pending`,
                {
-                  headers: {
-                     'Access-Control-Allow-Origin': '*',
-                     'Access-Control-Allow-Headers': '*',
-                     'Access-Control-Allow-Methods': '*',
-                  },
+                  headers: headers ,
                }
             )
             .then((res) => {
@@ -69,11 +69,7 @@ const DoctorSchedule = (props) => {
                appointment_status: 'Accepted',
             },
             {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
+               headers
             }
          )
 
@@ -84,29 +80,25 @@ const DoctorSchedule = (props) => {
    // Function to cancel an appointment
    const cancelAppointment = async (index) => {
       // console.log(selectedAppointment.id_appointment);
-      var selectedId = allPendingAppointments[index]["id_appointment"];
-      alert(selectedId)
+      var indexedAppointment = allPendingAppointments[index];
+      // alert(selectedId)
       await axios
          .put(
-            `${baseURL}/appointments/?id_appointment=${selectedId}`,
+            `${baseURL}/appointments/?id_appointment=${indexedAppointment.id_appointment}`,
             {
                ...scheduledAppointment,
                appointment_status: 'Declined',
                appointment_date: '2021-06-01',
                appointment_start_time: '10:00:00',
                appointment_end_time: '11:00:00',
-               appointment_location: allPendingAppointments[index].appointment_location,
-               id_doctor: allPendingAppointments[index]?.id_doctor,
-               id_patient: allPendingAppointments[index].id_patient,
-               appointment_reason: allPendingAppointments[index]["appointment_reason"],
+               appointment_location: indexedAppointment.appointment_location,
+               id_doctor: indexedAppointment?.id_doctor,
+               id_patient: indexedAppointment.id_patient,
+               appointment_reason: indexedAppointment.appointment_reason,
 
             },
             {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
+               headers
             }
          )
          // Filter out the appointment that was cancelled
