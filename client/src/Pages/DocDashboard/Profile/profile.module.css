@@ -317,6 +317,7 @@ select::-ms-expand {
       flex-direction: row;
       padding-bottom: 10px;
       align-items: flex-start;
+      gap: 3rem;
    }
 
    .forThird {

@@ -60,6 +60,49 @@ const MidDashboard = (props) => {
       fetchDashboardData();
    }, []);
 
+   // Handles whether to display a text or display the actual data
+   let displayData;
+   // Displays a text if there are no Pending appointments
+   if (getacceptedAppointment.length === 0) {
+      displayData = (
+         <div className={styles.emptyMessage}>
+            <p className={styles.text}>Nothing to show here.</p>
+         </div>
+      );
+      // If there are pending appointments, display the data
+   } else {
+      displayData = (
+         <>
+            {getacceptedAppointment.map((data, index) => {
+               return (
+                  <>
+                     <tr key={index}>
+                        <td>
+                           <img
+                              src={data?.patient_info.person_image}
+                              alt=""
+                              className={styles.table_img}
+                           />
+                        </td>
+                        {/* FIXME: Space name */}
+                        <td>
+                           {`${data?.patient_info.first_name} ${data?.patient_info.last_name}`}
+                        </td>
+                        <td>{data?.appointment_reason}</td>
+                        <td>
+                           {new Date(data?.appointment_date).getMonth() + 1}/
+                           {new Date(data?.appointment_date).getDate() + 1}/
+                           {new Date(data?.appointment_date).getFullYear()}
+                        </td>
+                        <td>{data?.appointment_start_time}</td>
+                     </tr>
+                  </>
+               );
+            })}
+         </>
+      );
+   }
+
    return (
       <>
          <div className={styles.wrapper}>
@@ -114,46 +157,8 @@ const MidDashboard = (props) => {
                                  <th>Date</th>
                                  <th>Time</th>
                               </thead>
-                              <tbody>
-                                 {getacceptedAppointment.map((data, index) => {
-                                    return (
-                                       <>
-                                          <tr key={index}>
-                                             <td>
-                                                <img
-                                                   src={
-                                                      data?.patient_info
-                                                         .person_image
-                                                   }
-                                                   alt=""
-                                                   className={styles.table_img}
-                                                />
-                                             </td>
-                                             {/* FIXME: Space name */}
-                                             <td>
-                                                {`${data?.patient_info.first_name} ${data?.patient_info.last_name}`}
-                                             </td>
-                                             <td>{data?.appointment_reason}</td>
-                                             <td>
-                                                {new Date(
-                                                   data?.appointment_date
-                                                ).getMonth() + 1}
-                                                /
-                                                {new Date(
-                                                   data?.appointment_date
-                                                ).getDate() + 1}
-                                                /
-                                                {new Date(
-                                                   data?.appointment_date
-                                                ).getFullYear()}
-                                             </td>
-                                             <td>
-                                                {data?.appointment_start_time}
-                                             </td>
-                                          </tr>
-                                       </>
-                                    );
-                                 })}
+                              <tbody className={styles.tbody}>
+                                 {displayData}
                               </tbody>
                            </table>
                         </div>

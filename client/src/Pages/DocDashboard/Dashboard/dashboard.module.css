@@ -37,6 +37,23 @@
    outline: 1px solid #e1e5ee;
 }
 
+.tbody {
+   position: relative;
+}
+
+.emptyMessage {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.text {
+   color: var(--midcol);
+   font-size: 1.5rem;
+   font-weight: 500;
+}
+
 .appointmentsBox table {
    background: var(--white);
    padding: 1rem;
@@ -47,6 +64,7 @@
    table-layout: fixed;
    height: 100%;
 }
+
 .appointmentsBox table thead {
    box-shadow: 0 1px 4px #e1e5ee;
    position: sticky;
@@ -264,7 +282,7 @@
    /* .wrapper {
       min-width: 100vw;
    } */
-   
+
    .doctor_display {
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
@@ -276,7 +294,7 @@
       overflow: hidden;
       min-height: 9rem;
    }
-   
+
    .card {
       height: 100%;
       padding: 0;
@@ -287,26 +305,26 @@
       backdrop-filter: blur(0) saturate(0);
       -webkit-backdrop-filter: blur(0) saturate(0);
    }
-   
+
    #first_card {
       justify-content: center;
       padding-right: 10%;
    }
-   
+
    #second_card {
       justify-content: start;
       padding: 0 2rem;
       padding-left: 25%;
    }
-   
+
    #third_card {
       justify-content: center;
    }
-   
+
    .digits {
       font-size: 15px;
    }
-   
+
    .heading {
       text-align: left;
       font-size: 20px;
@@ -319,4 +337,3 @@
       height: 30 rem;
    }
 }
-

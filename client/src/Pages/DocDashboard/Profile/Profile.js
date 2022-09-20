@@ -113,7 +113,6 @@ const DocProfile = (props) => {
       <>
          <div className={styles.main}>
             <div id={styles.profileBody}>
-               {/* BUG: Form is not aligned. */}
                {/* Avatar with name and upload image button */}
                <div className={styles.upperContent}>
                   <div className={styles.profileImage}>
