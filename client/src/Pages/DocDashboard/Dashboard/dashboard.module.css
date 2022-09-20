@@ -14,6 +14,7 @@
    overflow-y: scroll;
    scrollbar-width: none;
    -ms-overflow-style: none;
+   padding: 2rem;
 }
 .middle_section::-webkit-scrollbar {
    display: none;
@@ -244,8 +245,10 @@
    .middle_section {
       height: 100%;
       background-color: var(--gray);
-      border-radius: 20px 20px 0 0;
-      padding: 2rem 10px 4rem 10px;
+      /* border-radius: 20px 20px 0 0; */
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+      /* padding: 2rem 10px 4rem 10px; */
       gap: 14%;
    }
 
@@ -255,6 +258,11 @@
       height: 100%;
       width: 30%;
       padding-right: 10px;
+   }
+}
+@media (max-width:720px) {
+   .middle_section{
+      padding: 2rem;
    }
 }
 
@@ -271,10 +279,10 @@
 
 @media (min-width: 769px) and (max-width: 860px) {
    .section {
-      width: 130%;
+      width: 100%;
    }
    .middle_section {
-      width: 120%;
+      width: 100%;
    }
 }
 

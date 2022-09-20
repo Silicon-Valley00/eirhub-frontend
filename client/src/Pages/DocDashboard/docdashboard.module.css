@@ -5,13 +5,13 @@
    height: 100vh;
    padding-top: 5rem;
    background-color: var(#f6f6f9);
-   /* overflow: hidden; */
+   overflow: hidden; 
    overflow-x: hidden;
    font-family: 'Poppins', sans-serif;
 }
 
 .container {
-   padding: 2rem 1rem;
+   /* padding: 2rem 1rem; */
 }
 
 #blur.active {
@@ -66,8 +66,9 @@
       height: 100vh;
       min-height: 100vh;
       max-height: 100vh;
+      height: 10%;
       margin: 0 auto;
-      padding: 0 2rem;
+      /* padding: 0 2rem; */
       gap: 1rem;
       grid-template-columns: 14rem auto 18rem;
    }
@@ -92,6 +93,7 @@
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
+      overflow-y: hidden;
    }
    .container {
       width: 98%;
@@ -105,6 +107,7 @@
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
+      overflow-y: hidden;
    }
    .container {
       width: 94%;
@@ -117,7 +120,7 @@
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
-      overflow-y: auto;
+      overflow-y: hidden;
    }
    .container {
       width: 100%;
