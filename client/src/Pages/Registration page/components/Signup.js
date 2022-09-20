@@ -85,14 +85,17 @@ function Signup(props) {
                }, 200);
 
                dispatch(setPatientAuth(false));
-               navigate('/landing-page', { state: { status: true } });
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Fetching profile failed, log in.',
-                     state: 0,
-                  })
-               );
+               navigate('/landing-page');
+               setTimeout(() => {
+                  dispatch(
+                     setMessage({
+                        show: true,
+                        msg: 'Fetching profile failed, log in.',
+                        state: 0,
+                     })
+                  );
+               }, 2000);
+
                dispatch(setLoading(false));
 
                console.log(store.getState());

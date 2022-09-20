@@ -58,50 +58,56 @@ function FindingDoctor(props) {
       let spt = specialty;
       let hpt = hospital;
 
-      let results = allDoctors
-         .filter((item) => {
-            //filter by entered doctor's name
-            if (nameToSearch === '') {
-               return item;
-            }
-            return (
-               `${item.first_name} ${item.middle_name} ${item.last_name}`
-                  .toLowerCase()
-                  .indexOf(nameToSearch) !== -1
-            );
-         })
-         .filter((item) => {
-            //filter by selected doctor's specialty
-            if (spt === '') {
-               return item;
-            } else {
-               if (
-                  item.doctor_specialties === null ||
-                  item.doctor_specialties === ''
-               ) {
-                  return;
+      if (allDoctors.length === 0 || allDoctors === undefined) {
+         return;
+      } else {
+         let results = allDoctors
+            .filter((item) => {
+               //filter by entered doctor's name
+               if (nameToSearch === '') {
+                  return item;
                }
-               var specialties = item.doctor_specialties
-                  .toLowerCase()
-                  .split(',');
-               return specialties.includes(spt);
-            }
-         })
-         .filter((item) => {
-            //filter by selected doctor's hospital
-            if (hpt === '') {
-               return item;
-            } else {
-               if (item.hospital_name === null || item.hospital_name === '') {
-                  return;
+               return (
+                  `${item.first_name} ${item.middle_name} ${item.last_name}`
+                     .toLowerCase()
+                     .indexOf(nameToSearch) !== -1
+               );
+            })
+            .filter((item) => {
+               //filter by selected doctor's specialty
+               if (spt === '') {
+                  return item;
+               } else {
+                  if (
+                     item.doctor_specialties === null ||
+                     item.doctor_specialties === ''
+                  ) {
+                     return;
+                  }
+                  var specialties = item.doctor_specialties
+                     .toLowerCase()
+                     .split(',');
+                  return specialties.includes(spt);
                }
+            })
+            .filter((item) => {
+               //filter by selected doctor's hospital
+               if (hpt === '') {
+                  return item;
+               } else {
+                  if (
+                     item.hospital_name === null ||
+                     item.hospital_name === ''
+                  ) {
+                     return;
+                  }
 
-               return item.hospital_name.toLowerCase().indexOf(hpt) !== -1;
-            }
-         });
-      setSearchResults(results);
+                  return item.hospital_name.toLowerCase().indexOf(hpt) !== -1;
+               }
+            });
+         setSearchResults(results);
+      }
    }
-
    var list;
 
    if (searchResults !== undefined) {

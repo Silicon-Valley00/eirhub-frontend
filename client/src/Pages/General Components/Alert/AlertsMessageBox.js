@@ -25,7 +25,7 @@ function AlertsMessageBox(props) {
                state: props.message.state,
             })
          );
-      }, 3000);
+      }, props.time);
    }, [props.message.show]);
 
    function handleClose() {
