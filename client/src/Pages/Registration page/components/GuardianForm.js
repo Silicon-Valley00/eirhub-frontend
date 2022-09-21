@@ -59,9 +59,14 @@ export function GuardianForm(props) {
     }
     
     function handleDateOfBirthChange() {
+        const guardianAge = new Date().getFullYear() - new Date(gurdianDateOfBirth.current.value).getFullYear();
         if (gurdianDateOfBirth.current.value === '') {
             setDateOfBirthError('Date required');
-        } else {
+        } 
+        else if (guardianAge < 18) {
+            setDateOfBirthError('Guardian must be 18 years or older.');
+        } 
+        else {
             setDateOfBirthError(null);
         }
         checkEnableButton()
@@ -90,6 +95,7 @@ export function GuardianForm(props) {
     }
 
     function formValid() {
+        const guardianAge = new Date().getFullYear() - new Date(gurdianDateOfBirth.current.value).getFullYear();
         if (
             guardianFirstName.current.value.length &&
             guardianLastName.current.value.length &&
@@ -101,7 +107,8 @@ export function GuardianForm(props) {
                 guardianFirstName.current.value.trim().match(namePattern) &&
                 guardianLastName.current.value.trim().match(namePattern) &&
                 guardianEmail.current.value.trim().match(emailPattern) &&
-                guardianIdNumber.current.value.trim().match(idNumberPattern)
+                guardianIdNumber.current.value.trim().match(idNumberPattern) &&
+                guardianAge >= 18
             ) {
                 return true
             } else {
