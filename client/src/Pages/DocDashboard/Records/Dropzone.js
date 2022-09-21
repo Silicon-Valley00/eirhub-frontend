@@ -1,10 +1,11 @@
 import styles from './DoctorRecords.module.css';
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FaFileUpload } from 'react-icons/fa';
+import axios from 'axios';
 
 function Dropzone() {
-   const [selectedFile, setSelectedFile] = useState();
+   const [selectedFiles, setSelectedFiles] = useState([]);
    const [isSelected, setIsSelected] = useState(false);
 
    const docRecordsUploadRef = useRef();
@@ -18,20 +19,47 @@ function Dropzone() {
    //    console.log(selectedFile)
    // };
 
-   const handleSubmission = () => { };
+   const handleSubmission = () => {
+               const formData = new FormData();
+         formData.append('file', selectedFiles[0]);
+         formData.append('upload_preset', 'ji5ue4f9')
 
-   const onDrop = useCallback((acceptedFiles) => {
-      // Do something with the files'
-      
-      setSelectedFile(acceptedFiles[0])
+         axios
+         .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
+         .then((response) => {
+            const image_url = response.data.url;
+            setUserImage(image_url);
+         })
+         .catch((error) => console.log(error));
+    };
+
+   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
       setIsSelected(true)
-      // console.log(selectedFile)
+      // setSelectedFiles(acceptedFiles)
+      // Do something with the files'
+      acceptedFiles.forEach(file => {
+         const reader = new FileReader()
+         reader.onload = ()=>{
+
+            setSelectedFiles(previous => [...previous,file])
+         }
+         reader.readAsDataURL(file)
+      })
+      // console.log(selectedFiles,acceptedFiles, rejectedFiles)
+      // console.log(typeof selectedFiles,typeof acceptedFiles)
       // console.log(e)
       // e.preventDefault()
    }, []);
    const { getRootProps, getInputProps, isDragActive } = useDropzone({
-      onDrop
+      onDrop,
+      accept: {'text/*': ['.txt','.pdf','.docx','.doc']},
+      multiple: true,
+      maxFiles: 3
    });
+
+   useEffect(()=>{
+      console.log(isSelected,selectedFiles)
+   },[selectedFiles])
 
    return (
       <div {...getRootProps()} className={styles.docRecordsUpload}>
@@ -42,15 +70,21 @@ function Dropzone() {
             type="file"
             accept=".doc,.docx,.pdf,.txt"
             name="file"
-            disabled={isSelected}
+         // disabled={isSelected}
          />
-         {isSelected && selectedFile ?
-            <div>
-               <p>Filename: {selectedFile.name}</p>
-               <p>Filetype: {selectedFile.type}</p>
-               <p>Size: {(selectedFile.size / 1024 / 1024).toString().slice(0, 4)}MB</p>
-               <button className={styles.btn} onClick={handleSubmission}>Submit</button>
-            </div>
+         {isSelected && (selectedFiles.length > 0) ?
+         <div>
+         <ul /*className={styles.selectedFiles}*/>
+            {selectedFiles.map((file,index) => <li key={index}>
+               <p>Filename: {file.name} Filetype: {file.type} Size: {(file.size / 1024 / 1024).toString().slice(0, 4)}MB</p>
+                  {/* <p>Filetype: {file.type}</p> */}
+                  {/* <p>Size: {(file.size / 1024 / 1024).toString().slice(0, 4)}MB</p> */}
+               </li>
+            )
+            }
+         </ul>
+            <button className={styles.btn} onClick={handleSubmission}>Submit</button>
+      </div>
             : isDragActive ?
                <h2>Drop files here</h2>
                : <div>
