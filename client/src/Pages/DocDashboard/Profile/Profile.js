@@ -4,7 +4,7 @@ import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setDoctorProfile } from '../../../Store/DoctorAction';
-// import { cloudinary } from '../../../utils/cloudinary';
+import { setMessage } from '../../../Store/Actions';
 
 const DocProfile = (props) => {
    const data = props.doctorProfile;
@@ -19,7 +19,7 @@ const DocProfile = (props) => {
       data?.date_of_birth !== ''
          ? `${new Date(data?.date_of_birth).getFullYear()}-${
               new Date(data?.date_of_birth).getMonth() + 1
-           }-${new Date(data?.date_of_birth).getDate() + 1}`
+           }-${new Date(data?.date_of_birth).getDate()}`
          : ''
    );
    const [person_image, setUserImage] = useState(data?.person_image);
@@ -70,7 +70,7 @@ const DocProfile = (props) => {
    // function handles image upload
    const [uploadBtn, setUploadBtn] = useState('Upload Image');
 
-   function handleImageUpload(e) {
+   async function handleImageUpload(e) {
       /*
          Function validates image file selected for upload.
          Args:
@@ -86,27 +86,36 @@ const DocProfile = (props) => {
          //alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
-         // const formData = new FormData();
-         // formData.append('file', userimage);
-         // formData.append('upload_preset', 'n6r1o2rk')
-         // formData.append('api_key', '351986477123397')
-
-         // axios
-         // .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
-         // .then((response) => {
-         //    const image_url = response.data.url;
-         //    setUserImage(image_url);
-         // })
-         // .catch((error) => console.log(error));
-
-         let reader = new FileReader();
-         reader.onloadend = function () {
-            setUserImage(reader.result);
-            console.log(reader.result.length);
-         };
-         reader.readAsDataURL(userimage);
-
-         setUploadBtn('Image Uploaded');
+         const doctorImagePreset='n6r1o2rk'
+         const formData = new FormData();
+         formData.append('file', userimage);
+         formData.append('upload_preset', doctorImagePreset);
+         setUploadBtn('Uploading...');
+         await axios
+         .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
+         .then((response) => {
+            const image_url = response.data.url;
+            setUserImage(image_url);
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Image Uploaded.',
+                  state: 1,
+               })
+            );
+            setUploadBtn('Uploaded Another');
+         })
+         .catch((error) => {
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'LOL! e fail... 😂',
+                  state: 0,
+               })
+            );
+            setUploadBtn('Upload Again.');
+            console.log("Cloudinary upload Error:", error);
+         });
       }
    }
    return (

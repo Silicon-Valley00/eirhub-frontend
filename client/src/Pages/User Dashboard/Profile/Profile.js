@@ -6,7 +6,9 @@ import {
    updateProfile,
    updateHealthDetails,
    updateGuardianInfo,
+   setMessage
 } from '../../../Store/Actions.js';
+import axios from 'axios';
 
 const mapStateToProps = (state) => {
    return {
@@ -44,7 +46,7 @@ function Profile(props) {
       props.savedProfile.date_of_birth !== ''
          ? `${new Date(props.savedProfile.date_of_birth).getFullYear()}-${
               new Date(props.savedProfile.date_of_birth).getMonth() + 1
-           }-${new Date(props.savedProfile.date_of_birth).getDate() + 1}`
+           }-${new Date(props.savedProfile.date_of_birth).getDate()}`
          : ''
    );
    const [gender, setGender] = useState(props.savedProfile.gender);
@@ -126,7 +128,7 @@ function Profile(props) {
    // handles state of input fields disability
    const [disableFormBtn, setDisableFormBtn] = useState(true);
 
-   function handleImageUpload(e) {
+   async function handleImageUpload(e) {
       /*
          Function validates image file selected for upload.
          Args:
@@ -142,13 +144,36 @@ function Profile(props) {
          // alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
-         let reader = new FileReader();
-         reader.onloadend = function () {
-            setUserImage(reader.result);
-         };
-         reader.readAsDataURL(userimage);
-
-         setUploadBtn('Image Uploaded');
+         const patientImagePreset='mcwvyjj5';
+         const formData = new FormData();
+         formData.append('file', userimage);
+         formData.append('upload_preset', patientImagePreset);
+         setUploadBtn('Uploading...');
+         await axios
+         .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
+         .then((response) => {
+            const image_url = response.data.url;
+            setUserImage(image_url);
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Image Uploaded.',
+                  state: 1,
+               })
+            );
+            setUploadBtn('Uploaded Another');
+         })
+         .catch((error) => {
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'LOL! e fail... 😂',
+                  state: 0,
+               })
+            );
+            setUploadBtn('Upload Again.');
+            console.log("Cloudinary upload Error:", error);
+         });
       }
    }
 

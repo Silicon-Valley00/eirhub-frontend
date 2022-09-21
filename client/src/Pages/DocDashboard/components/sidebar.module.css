@@ -1,9 +1,11 @@
 /* ASIDE */
+.navbody{
+   overflow-y: scroll;
+}
 .navbody aside {
    height: 100%;
    min-height: 100%;
    max-height: 100%;
-   overflow-y: scroll;
 }
 
 .navbody aside::-webkit-scrollbar {
@@ -23,8 +25,10 @@ aside .close {
 aside .sidebar {
    display: flex;
    flex-direction: column;
-   height: 86vh;
-   top: 1rem;
+   height: 91.12vh;
+   position: relative;
+   min-height: 32rem;
+   overflow: scroll;
 }
 aside h3 {
    font-weight: 500;
@@ -51,16 +55,16 @@ aside .sidebar span.icons {
    color: var(--midcol);
    transition: all 300ms ease;
 }
-aside .sidebar li:nth-child(8) {
+aside .sidebar li:nth-child(6) {
    position: absolute;
    bottom: 3rem;
    width: 86.5%;
 }
-aside .sidebar li:nth-child(9) {
+/* aside .sidebar li:nth-child(9) {
    position: absolute;
    width: 86.5%;
    bottom: 0rem;
-}
+} */
 
 aside .sidebar li.active {
    background-color: var(--gray);
@@ -165,7 +169,7 @@ aside .sidebar{
       padding: 0 0.5rem;
    }
 
-   aside .sidebar li:nth-child(8) {
+   aside .sidebar li:nth-child(6) {
       position: absolute;
       bottom: 3rem;
       width: 86.5%;
@@ -352,7 +356,8 @@ aside .sidebar{
       color: var(--midcol);
       transition: all 300ms ease;
    }
-   aside .sidebar li:nth-child(8) {
+
+   aside .sidebar li:nth-child(6) {
       position: absolute;
       bottom: 3rem;
       width: 86.5%;

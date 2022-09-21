@@ -95,7 +95,7 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
 export const fetchPatientsByDoctorId = (id_doctor) => {
    return async function (dispatch) {
       await axios
-         .get(`${baseURL}doctors/?id_doctor=${id_doctor}`, {
+         .get(`${baseURL}/doctors/?id_doctor=${id_doctor}`, {
             headers: {
                'Access-Control-Allow-Origin': '*',
                'Access-Control-Allow-Headers': '*',
