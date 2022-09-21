@@ -27,9 +27,10 @@
    background-color: #ecf3fc;
    border-radius: 20px;
    padding: 4%;
-   height: 100vh;
+   height: calc(100vh - 5rem);
    max-height: 2000px;
    overflow: scroll;
+
    /* margin-bottom: 2rem; */
 }
 
