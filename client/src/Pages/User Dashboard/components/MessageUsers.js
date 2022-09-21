@@ -70,48 +70,7 @@ function MessageUsers() {
          <div className={styles.messageUsersBody}>
             <div className={styles.usersBox}>
                <h2>Doctors</h2>
-               <div className={styles.usersBoxSection}>
-                  <div
-                     className={
-                        active && activeIndex === 0
-                           ? `${styles.userBox} ${styles.active}`
-                           : styles.userBox
-                     }
-                     onClick={() => {
-                        setActive(true);
-                        setActiveIndex(0);
-                        dispatch(setDoctorToChatWith('superhero5'));
-                     }}
-                  >
-                     <div className={styles.userImage}>
-                        <img src={avatarThree} alt="avatar" />
-                     </div>
-                     <div className={styles.userName}>
-                        <h3>Mellisaa James</h3>
-                     </div>
-                  </div>
-                  <div
-                     className={
-                        active && activeIndex === 1
-                           ? `${styles.userBox} ${styles.active}`
-                           : styles.userBox
-                     }
-                     onClick={() => {
-                        setActive(true);
-                        setActiveIndex(1);
-
-                        dispatch(setDoctorToChatWith('superhero1'));
-                     }}
-                  >
-                     <div className={styles.userImage}>
-                        <img src={avatarThree} alt="avatar" />
-                     </div>
-                     <div className={styles.userName}>
-                        <h3>Mellisaa James</h3>
-                     </div>
-                  </div>
-                  {myDoctors}
-               </div>
+               <div className={styles.usersBoxSection}>{myDoctors}</div>
             </div>
          </div>
       </>
