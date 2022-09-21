@@ -199,7 +199,7 @@
       color: var(--lightcol);
       padding: 10px;
       width: 40%;
-      height: 3.5rem;
+      /* height: 3.5rem; */
       border-radius: 5px;
       background: var(--white);
       display: flex;
@@ -289,6 +289,5 @@
 @media(max-width:1249px){
    .message_btn{
       width: 50%;
-      height: 1rem;
    }
 }
