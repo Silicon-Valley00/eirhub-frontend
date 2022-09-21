@@ -161,7 +161,7 @@ function Profile(props) {
                   state: 1,
                })
             );
-            setUploadBtn('Uploaded Another');
+            setUploadBtn('Upload Another.');
          })
          .catch((error) => {
             dispatch(
