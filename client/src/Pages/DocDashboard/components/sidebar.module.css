@@ -25,7 +25,7 @@ aside .close {
 aside .sidebar {
    display: flex;
    flex-direction: column;
-   height: 90.8vh;
+   height: 91.12vh;
    position: relative;
    min-height: 32rem;
    overflow: scroll;
