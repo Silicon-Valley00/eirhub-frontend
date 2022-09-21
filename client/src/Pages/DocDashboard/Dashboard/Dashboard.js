@@ -12,9 +12,15 @@ const MidDashboard = (props) => {
    // States to keep the counts of the number of patients, reports and appointments
    const [numOfdetails, setNumberofdetails] = useState(0);
    const data = props.doctorProfile;
+   console.log('data', data);
    const baseURL = 'http://127.0.0.1:5000';
 
    // TODO: add interceptors to catch errors
+   const currDate = new Date();
+   const currMonth = currDate.getMonth() + 1;
+   const currYear = currDate.getFullYear();
+   const currDay = currDate.getDate();
+
    const fetchAcceptedAppointments = async () => {
       await axios
          .get(
