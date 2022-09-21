@@ -166,7 +166,7 @@ const DoctorSchedule = (props) => {
    return (
       <>
          <div className={DSstyles.DSContainer1}>
-            <h2>Apppoinment Details</h2>
+            <h2>Appoinment Details</h2>
             <form
                onSubmit={(e) => {
                   e.preventDefault();
