@@ -276,18 +276,3 @@ p.emptyMessage {
       font-size: 0.8rem;
    }
 }
-
-/* BUG: for some wierd reasons, the max-width isn't taking effect */
-
-@media (min-width: 1920px) {
-   .wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-   }
-/* 
-   .docRecordsContainer {
-      max-width: 1920px;
-      border: 1px solid red;
-   } */
-}

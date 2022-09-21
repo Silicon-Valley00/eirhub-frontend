@@ -16,6 +16,8 @@ import {
    SET_MESSAGE,
    SET_TEMP_MEDICATIONS,
    SET_IS_LOADING,
+   SET_DOCTOR_AND_PATIENT,
+   SET_PATIENTS,
 } from './ActionTypes';
 
 const initialState = {
@@ -65,7 +67,7 @@ const initialState = {
       middle_name: '',
       last_name: '',
       user_email: '',
-      date_of_birth: 'Tue Sep 20 2022 05:37:34',
+      date_of_birth: '',
       house_address: '',
       phone_number: '',
       id_number: '',
@@ -94,6 +96,7 @@ const initialState = {
       id_doctor: '',
    },
    patientToChatWith: '',
+   allPendingAppointments: [],
 };
 
 const Reducers = (state = initialState, action) => {
@@ -194,9 +197,11 @@ const Reducers = (state = initialState, action) => {
 
       case SET_PATIENT_AUTH:
          return { ...state, isPatientAuth: action.payload };
+
       // Doctor dashboard
       case SET_DOCTOR_AUTH:
          return { ...state, isDoctorAuth: action.payload };
+
       case SET_DOCTOR_PROFILE_INFO:
          let doctor_profile_info = {
             first_name: action.payload.first_name,
@@ -214,6 +219,12 @@ const Reducers = (state = initialState, action) => {
             id_doctor: action.payload.id_doctor,
          };
          return { ...state, doctorProfile: doctor_profile_info };
+
+      case SET_DOCTOR_AND_PATIENT:
+         return {
+            ...state,
+            allPendingAppointments: action.allPendingAppointments,
+         };
 
       case SET_PATIENT_TO_CHAT_WITH:
          return { ...state, patientToChatWith: action.payload };

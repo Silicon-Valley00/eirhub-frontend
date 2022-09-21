@@ -5,19 +5,38 @@ import { GrClose } from 'react-icons/gr';
 import { useState, useEffect } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { fetchPatientsByDoctorId } from '../../../Store/DoctorAction';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import store from '../../../Store/ReducerStore';
+import axios from 'axios';
 
 function DoctorPatients() {
-   const doctorId = useSelector((state) => state.doctorProfile.id_doctor);
+   const id_doctor = useSelector((state) => state.doctorProfile.id_doctor);
    const [patients, setPatients] = useState();
-   useEffect(()=>{
-      async function fetchPatients(){
-         const items = await fetchPatientsByDoctorId(doctorId)
-         setPatients(items)
+   console.log(patients);
+   const baseURL = 'http://127.0.0.1:5000';
 
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      async function fetchPatients() {
+         await axios
+            .get(`${baseURL}/doctors/?id_doctor=${id_doctor}`, {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            })
+            .then((res) => {
+               setPatients(res.data.msg);
+            })
+            .catch((err) => {
+               console.log(err);
+            });
+         // const items = dispatch(fetchPatientsByDoctorId(doctorId));
       }
       fetchPatients();
-   },[])
+   }, []);
 
    const [show, setShow] = useState(false);
 
@@ -50,12 +69,12 @@ function DoctorPatients() {
                <ul>
                   {patients?.map((patient, index) => {
                      return (
-                        <div className={styles.imageDiv}>
+                        <div className={styles.imageDiv} key={index}>
                            <img
                               src={patient.person_image}
                               alt={patient.first_name}
                            ></img>
-                           <li key={index}>
+                           <li>
                               {patient.first_name} {patient.middle_name}{' '}
                               {patient.last_name}
                            </li>

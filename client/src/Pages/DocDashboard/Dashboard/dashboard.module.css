@@ -258,8 +258,6 @@
    }
 }
 
-/* HACK: add custom scroll to middle section */
-
 /* tablet queries */
 @media (min-width: 800px) {
    .section {

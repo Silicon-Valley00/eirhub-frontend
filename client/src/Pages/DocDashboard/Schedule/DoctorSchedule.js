@@ -1,13 +1,18 @@
 import DSstyles from './DoctorSchedule.module.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
+import {
+   setDoctorandPatient,
+   getAppointmentsAndPatient,
+} from '../../../Store/DoctorAction';
+import store from '../../../Store/ReducerStore';
 
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
+   const allPendingSchedules = props.allPendingAppointments;
+   console.log('pending', allPendingSchedules);
 
-   // BUG: Make doctor not able to make schedules when fields are empty.
-   // BUG: Refresh the page after making a schedule.
    // FIXME: Refresh the page after deleting a schedule.
    // FIXME: Don't display the details of the schedule when the doctor clicks on cancel.
 
@@ -31,33 +36,10 @@ const DoctorSchedule = (props) => {
       id_doctor: selectedAppointment?.id_doctor,
       id_patient: selectedAppointment?.id_patient,
    };
+   const dispatch = useDispatch();
 
    // endpoint for updating doctor profile
    const baseURL = 'http://127.0.0.1:5000';
-
-   // Function to get all pending appointment.
-   useEffect(() => {
-      const getAllAppointmentsForADoctor = async () => {
-         await axios
-            .get(
-               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&status=Pending`,
-               {
-                  headers: {
-                     'Access-Control-Allow-Origin': '*',
-                     'Access-Control-Allow-Headers': '*',
-                     'Access-Control-Allow-Methods': '*',
-                  },
-               }
-            )
-            .then((res) => {
-               setAllPendingAppointments(res.data.msg);
-            })
-            .catch((err) => {
-               console.log(err.message);
-            });
-      };
-      getAllAppointmentsForADoctor();
-   }, []);
 
    // Function that sends the data to the server
    const scheduleAppointment = async () => {
@@ -114,14 +96,14 @@ const DoctorSchedule = (props) => {
    // Function to display the details of the appointment that was clicked.
    const displaySelectedPatientDetails = (patientKeyNum) => {
       console.log('patient: ', patientKeyNum);
-      const selectedPatient = allPendingAppointments[patientKeyNum];
+      const selectedPatient = allPendingSchedules[patientKeyNum];
       setSelectedAppointment(selectedPatient);
    };
 
    // Handles whether to display a text or display the actual data
    let displayData;
    // Displays a text if there are no Pending appointments
-   if (allPendingAppointments.length === 0) {
+   if (allPendingSchedules.length === 0) {
       displayData = (
          <div className={DSstyles.emptyMessage}>
             <p className={DSstyles.text}>Nothing to show here.</p>
@@ -131,7 +113,7 @@ const DoctorSchedule = (props) => {
    } else {
       displayData = (
          <>
-            {allPendingAppointments.map((data, index) => {
+            {allPendingSchedules.map((data, index) => {
                return (
                   <tr key={index}>
                      <td
@@ -263,6 +245,7 @@ const DoctorSchedule = (props) => {
 const mapStateToProps = (state) => {
    return {
       doctorProfile: state.doctorProfile,
+      allPendingAppointments: state.allPendingAppointments,
    };
 };
 

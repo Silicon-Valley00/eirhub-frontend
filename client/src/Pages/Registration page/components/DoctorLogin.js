@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
-import docLoginImage from '../../../images/doctor login.svg'
+import docLoginImage from '../../../images/doctor login.svg';
 import { IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
    fetchDoctorsProfileInfo,
+   getAllPendingAppointmentsForADoctor,
    setDoctorAuth,
 } from '../../../Store/DoctorAction.js';
 import store from '../../../Store/ReducerStore';
@@ -39,6 +40,7 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
+         dispatch(getAllPendingAppointmentsForADoctor(feedback[1].id_doctor));
          dispatch(setLoading(true));
 
          navigate('/loading', { state: { status: false } });
