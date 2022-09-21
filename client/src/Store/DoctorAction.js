@@ -39,38 +39,55 @@ export const setDoctorAuth = (auth) => {
    };
 };
 
+//Headers for API Call.
+const headers = {
+   'Access-Control-Allow-Origin': '*',
+   'Access-Control-Allow-Headers': '*',
+   'Access-Control-Allow-Methods': '*',
+};
 const baseURL = 'http://127.0.0.1:5000';
-
 // Action creator: Fetch doctor profile info
 export const fetchDoctorsProfileInfo = (idDoctor) => {
    return async function (dispatch) {
-      try {
-         const response = await axios({
-            method: 'GET',
-            url: `http://127.0.0.1:5000/doctor/${idDoctor}`,
-            headers: {
-               'Access-Control-Allow-Origin': '*',
-               //Helpful in some cases.
-               'Access-Control-Allow-Headers': '*',
-               'Access-Control-Allow-Methods': '*',
-            },
-         });
-         if (response.status === 200) {
-            //checks details of response
+      await axios
+         .get(`${baseURL}/doctor/${idDoctor}`, {
+            headers,
+         })
+         .then((response) => {
             if (response.data.status === true) {
                //returns response
                // alert('doctor profile fetched');
                dispatch(setDoctorProfile(response.data.msg));
                dispatch(setOkToRoute(true));
+            } else {
             }
-         } else {
-            //takes all statuses aside 200
-            // alert('Something went wrong. Try again');
-         }
-      } catch (error) {
-         // alert('caughterror', error);
-         console.log(error);
-      }
+         })
+         .catch((error) => {
+            console.log(error);
+         });
+
+      //       try {
+      //    const response = await axios({
+      //       method: 'GET',
+      //       url:,
+      //       headers: headers,
+      //    });
+      //    if (response.status === 200) {
+      //       //checks details of response
+      //       if (response.data.status === true) {
+      //          //returns response
+      //          // alert('doctor profile fetched');
+      //          dispatch(setDoctorProfile(response.data.msg));
+      //          dispatch(setOkToRoute(true));
+      //       }
+      //    } else {
+      //       //takes all statuses aside 200
+      //       // alert('Something went wrong. Try again');
+      //    }
+      // } catch (error) {
+      //    // alert('caughterror', error);
+      //    console.log(error);
+      // }
    };
 };
 

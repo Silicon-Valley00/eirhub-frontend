@@ -56,14 +56,17 @@ function DoctorLogin(props) {
                }, 200);
 
                dispatch(setDoctorAuth(false));
-               navigate('/landing-page', { state: true });
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Fetching profile failed, try again.',
-                     state: 0,
-                  })
-               );
+               navigate('/landing-page');
+
+               setTimeout(() => {
+                  dispatch(
+                     setMessage({
+                        show: true,
+                        msg: 'Fetching profile failed, try again.',
+                        state: 0,
+                     })
+                  );
+               }, 2000);
                dispatch(setLoading(false));
             }
          }, 1.5 * 1000);

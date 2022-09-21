@@ -3,55 +3,36 @@ import styles from './loading.module.css';
 import spinner from '../../assets/loading-gif.gif';
 import { useDispatch, connect, useSelector } from 'react-redux';
 import { fetchMedications, setMedicationsTemp } from '../../Store/Actions';
-import { addNewGuardianInfo } from '../../Store/Actions';
-import { useLocation } from 'react-router-dom';
-import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
-
-const mapStateToProps = (state) => {
-   return {
-      savedProfile: state.profile,
-      savedGuardianDetails: state.guardian,
-      patientID: state.profile.id_patient,
-      auth: state.isPatientAuth,
-   };
-};
+import store from '../../Store/ReducerStore';
 
 function Loading(props) {
-   const { state } = useLocation();
-   const { status } = state;
-
    const dispatch = useDispatch();
+   const patientID = useSelector((state) => state.profile.id_patient);
 
    useEffect(() => {
-      // console.log(status);
-      // console.log(props.auth);
-      // setTimeout(() => {
-      //    if (props.auth === true && status === true) {
-      //       console.log('running');
-      //       dispatch(
-      //          addNewGuardianInfo(
-      //             props.savedGuardianDetails,
-      //             props.savedProfile
-      //          )
-      //       );
-      //    }
-      // }, 1500);
-      if (props.patientID !== '') {
-         async function fetchdata() {
-            const items = await fetchMedications(props.patientID);
-            dispatch(setMedicationsTemp(items));
-         }
+      console.log(' to run');
+      console.log(patientID);
+      console.log('outside', store.getState());
 
-         fetchdata();
-      }
+      setTimeout(() => {
+         if (store.getState().profile.id_patient !== '') {
+            console.log('running');
+            console.log('inside', store.getState().profile.id_patient);
+
+            async function fetchdata() {
+               const items = await fetchMedications(
+                  store.getState().profile.id_patient
+               );
+               console.log(items);
+               dispatch(setMedicationsTemp(items));
+            }
+
+            fetchdata();
+         }
+      }, 2000);
    }, []);
    return (
       <>
-         {/* <AlertsMessageBox
-            show={true}
-            state={1}
-            message={'Profile could not load. Try again.'}
-         /> */}
          <main>
             <div className={styles.homeloadingbg}>
                <div className={styles.loadingspinner}>
@@ -62,4 +43,4 @@ function Loading(props) {
       </>
    );
 }
-export default connect(mapStateToProps)(Loading);
+export default Loading;

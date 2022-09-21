@@ -11,7 +11,12 @@ import store from '../../../Store/ReducerStore';
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
    const allPendingSchedules = props.allPendingAppointments;
-   console.log('pending', allPendingSchedules);
+   const baseURL = 'http://127.0.0.1:5000';
+   const headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Methods': '*',
+   };
 
    // FIXME: Refresh the page after deleting a schedule.
    // FIXME: Don't display the details of the schedule when the doctor clicks on cancel.
@@ -29,17 +34,15 @@ const DoctorSchedule = (props) => {
    let scheduledAppointment = {
       appointment_date,
       appointment_end_time,
-      appointment_reason: selectedAppointment?.appointment_reason,
       appointment_start_time,
       appointment_status: 'Pending',
-      appointment_location: selectedAppointment?.appointment_location,
-      id_doctor: selectedAppointment?.id_doctor,
-      id_patient: selectedAppointment?.id_patient,
+      // appointment_location: allPendingAppointments[index].appointment_location,
+      // id_doctor: allPendingAppointments[index]?.id_doctor,
+      // id_patient: allPendingAppointments[index].id_patient,
+      // appointment_reason: allPendingAppointments[index]["appointment_reason"]
    };
-   const dispatch = useDispatch();
 
    // endpoint for updating doctor profile
-   const baseURL = 'http://127.0.0.1:5000';
 
    // Function that sends the data to the server
    const scheduleAppointment = async () => {
@@ -51,11 +54,7 @@ const DoctorSchedule = (props) => {
                appointment_status: 'Accepted',
             },
             {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
+               headers,
             }
          )
 
@@ -66,22 +65,24 @@ const DoctorSchedule = (props) => {
    // Function to cancel an appointment
    const cancelAppointment = async (index) => {
       // console.log(selectedAppointment.id_appointment);
+      var indexedAppointment = allPendingAppointments[index];
+      // alert(selectedId)
       await axios
          .put(
-            `${baseURL}/appointments/?id_appointment=${selectedAppointment?.id_appointment}`,
+            `${baseURL}/appointments/?id_appointment=${indexedAppointment.id_appointment}`,
             {
                ...scheduledAppointment,
                appointment_status: 'Declined',
                appointment_date: '2021-06-01',
                appointment_start_time: '10:00:00',
                appointment_end_time: '11:00:00',
+               appointment_location: indexedAppointment.appointment_location,
+               id_doctor: indexedAppointment?.id_doctor,
+               id_patient: indexedAppointment.id_patient,
+               appointment_reason: indexedAppointment.appointment_reason,
             },
             {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
+               headers,
             }
          )
          // Filter out the appointment that was cancelled
@@ -144,7 +145,7 @@ const DoctorSchedule = (props) => {
                      <td
                         className={DSstyles.tdCancel}
                         onClick={() => {
-                           displaySelectedPatientDetails(index);
+                           // displaySelectedPatientDetails(index);
                            cancelAppointment(index);
                         }}
                      >
@@ -226,7 +227,6 @@ const DoctorSchedule = (props) => {
             </form>
             <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
             <div className={DSstyles.appointmentContainer}>
-               {/* BUG: Can't scroll all details. */}
                <table>
                   <thead>
                      <th className={DSstyles.imgHeader}></th>

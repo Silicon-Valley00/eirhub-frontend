@@ -29,7 +29,7 @@ function Schedule() {
 
    const [condition, setCondition] = useState('');
    const [appointments, setAppointments] = useState([]);
-   const patientID = useSelector((state) => state.user.id_patient);
+   const patientID = useSelector((state) => state.profile.id_patient);
 
    useEffect(() => {
       async function fetchdata() {
@@ -69,7 +69,9 @@ function Schedule() {
          const dt = new Date();
 
          const appointMentDetails = {
-            appointment_date: `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getDate()}`,
+            appointment_date: `${dt.getFullYear()}-${
+               dt.getMonth() + 1
+            }-${dt.getDate()}`,
             appointment_start_time: '',
             appointment_end_time: '',
             appointment_reason: condition,

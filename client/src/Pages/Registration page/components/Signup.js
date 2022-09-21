@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../images/Patientsignup.svg';
+import { GuardianForm } from './GuardianForm';
 import { FaRegUser, FaTimes } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
@@ -38,6 +39,18 @@ function Signup(props) {
       'Email already in use. Want to login?'
    );
 
+   // handles if patient needs a guardian
+   const [needGuardian, setNeedGuardian] = useState(false);
+
+   function submitHandler() {
+      const age = new Date().getFullYear() - new Date(props.signupDate.current.value).getFullYear();
+      if (age > 18) {
+         submitCredentialsFeedback();
+      } else {
+         setNeedGuardian(true);
+      }
+   }
+
    // handles registeration flow based on feedback from database
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
@@ -59,13 +72,10 @@ function Signup(props) {
          //       feedback[1].id_patient
          //    }`
          // );
-         console.log('patient', feedback[1].id_patient);
+         // console.log('patient', feedback[1].id_patient);
          dispatch(
             fetchProfileOnSignup(
                feedback[1].id_patient,
-               feedback[1].date_of_birth,
-               store.getState().profile,
-               store.getState().guardian
             )
          );
          dispatch(setLoading(true));
@@ -85,14 +95,17 @@ function Signup(props) {
                }, 200);
 
                dispatch(setPatientAuth(false));
-               navigate('/landing-page', { state: { status: true } });
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Fetching profile failed, log in.',
-                     state: 0,
-                  })
-               );
+               navigate('/landing-page');
+               setTimeout(() => {
+                  dispatch(
+                     setMessage({
+                        show: true,
+                        msg: 'Fetching profile failed, log in.',
+                        state: 0,
+                     })
+                  );
+               }, 2000);
+
                dispatch(setLoading(false));
 
                console.log(store.getState());
@@ -120,6 +133,7 @@ function Signup(props) {
                   setIsError(false);
                   setBtnActive(false);
                   setBtnValue('Create Account');
+                  setNeedGuardian(false);
                }}
             >
                <i>
@@ -140,7 +154,8 @@ function Signup(props) {
                      <img src={signUp} alt="Sign-up" />
                   </div>
                </div>
-               <div className={styles.rightRegion}>
+               <div className={needGuardian ? `${styles.rightRegion} ${styles.hideForm}`: `${styles.rightRegion}`}
+               >
                   <div className={isError ? styles.error : styles.noerror}>
                      <p>{errorMessage}</p>
                      <i
@@ -152,6 +167,8 @@ function Signup(props) {
                         <IoCloseOutline />
                      </i>
                   </div>
+                  <div className={styles.formSideContainer}>
+
                   <div className={styles.signupFormTitle}>
                      <h3>Create New Account</h3>
                      <p>Take control of your health today</p>
@@ -464,7 +481,7 @@ function Signup(props) {
                            onClick={() => {
                               setBtnValue('Creating Account');
                               setBtnActive(true);
-                              submitCredentialsFeedback();
+                              submitHandler();
                            }}
                         >
                            <p>{btnValue}</p>
@@ -499,8 +516,11 @@ function Signup(props) {
                         </p>
                      </div>
                   </form>
+                  </div>
+                  <div></div>
                </div>
-            </div>
+                  <GuardianForm setNewGuardianId={props.setNewGuardianId} newGuardianId={props.newGuardianId} submitCredentialsFeedback={submitCredentialsFeedback} needGuardian={needGuardian} />
+            </div> 
          </div>
       </div>
    );
