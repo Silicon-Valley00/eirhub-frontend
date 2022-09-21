@@ -2,11 +2,7 @@ import DSstyles from './DoctorSchedule.module.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import {
-   setDoctorandPatient,
-   getAppointmentsAndPatient,
-} from '../../../Store/DoctorAction';
-import store from '../../../Store/ReducerStore';
+import { getAllPendingAppointmentsForADoctor } from '../../../Store/DoctorAction';
 
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
@@ -23,12 +19,18 @@ const DoctorSchedule = (props) => {
 
    // States that would be used as data for the PUT method
    const [allPendingAppointments, setAllPendingAppointments] = useState([]);
-   console.log('Pending appointments: ', allPendingAppointments);
+   console.log('states', allPendingAppointments);
    const [selectedAppointment, setSelectedAppointment] = useState([]);
-   console.log(selectedAppointment);
+   console.log('selected one', selectedAppointment);
    const [appointment_date, setAppointmentDate] = useState('');
    const [appointment_start_time, setAppointmentStartTime] = useState('');
    const [appointment_end_time, setAppointmentEndTime] = useState('');
+
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      setAllPendingAppointments(allPendingSchedules);
+   }, []);
 
    // Data to be sent over to the backend
    let scheduledAppointment = {
@@ -36,11 +38,12 @@ const DoctorSchedule = (props) => {
       appointment_end_time,
       appointment_start_time,
       appointment_status: 'Pending',
-      // appointment_location: allPendingAppointments[index].appointment_location,
-      // id_doctor: allPendingAppointments[index]?.id_doctor,
-      // id_patient: allPendingAppointments[index].id_patient,
-      // appointment_reason: allPendingAppointments[index]["appointment_reason"]
+      appointment_location: selectedAppointment?.appointment_location,
+      id_doctor: selectedAppointment?.id_doctor,
+      id_patient: selectedAppointment?.id_patient,
+      appointment_reason: selectedAppointment?.appointment_reason,
    };
+   console.log('scheduled one', scheduledAppointment);
 
    // endpoint for updating doctor profile
 
@@ -57,8 +60,10 @@ const DoctorSchedule = (props) => {
                headers,
             }
          )
-
-         .then(() => console.log('successul put'))
+         .then(() => {
+            dispatch(getAllPendingAppointmentsForADoctor(data.id_doctor));
+            console.log('dispatched');
+         })
          .catch((error) => console.log(error));
    };
 
@@ -162,7 +167,12 @@ const DoctorSchedule = (props) => {
       <>
          <div className={DSstyles.DSContainer1}>
             <h2>Apppoinment Details</h2>
-            <form>
+            <form
+               onSubmit={(e) => {
+                  e.preventDefault();
+               }}
+               id="form"
+            >
                <div className={DSstyles.patientContainer}>
                   <label className={DSstyles.labelName}>Patient Name</label>
                   <input
@@ -218,6 +228,8 @@ const DoctorSchedule = (props) => {
                </div>
                <div className={DSstyles.DSbuttondiv}>
                   <button
+                     form="form"
+                     type="submit"
                      className={DSstyles.DSbutton}
                      onClick={() => scheduleAppointment()}
                   >
@@ -242,6 +254,7 @@ const DoctorSchedule = (props) => {
       </>
    );
 };
+
 const mapStateToProps = (state) => {
    return {
       doctorProfile: state.doctorProfile,
