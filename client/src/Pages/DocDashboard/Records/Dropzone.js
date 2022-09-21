@@ -5,7 +5,7 @@ import { FaFileUpload } from 'react-icons/fa';
 import axios from 'axios';
 
 function Dropzone() {
-   const [selectedFiles, setSelectedFiles] = useState([]);
+   // const [selectedFiles, setSelectedFiles] = useState([]);
    const [isSelected, setIsSelected] = useState(false);
 
    const docRecordsUploadRef = useRef();
@@ -19,16 +19,36 @@ function Dropzone() {
    //    console.log(selectedFile)
    // };
 
+
+   function postReport(report_url){
+      const report_url = response.data.url;
+      reportData = {
+         "report_type": "Lab report",
+         "description": `Lab report posted by Cloudinary`,
+         "uploaddate": `${Date.now()}`,
+         "report_url": report_url
+      }
+      axios.post(`http://127.0.0.1:5000/report/`, formData)
+         .then(() => {
+            alert('Report Uploaded')
+         })
+         .catch((error)=>{
+            alert(`Failed:${error}`)
+         })
+   }
+
+
+
+
    const handleSubmission = () => {
-               const formData = new FormData();
+         const formData = new FormData();
          formData.append('file', selectedFiles[0]);
          formData.append('upload_preset', 'ji5ue4f9')
 
          axios
          .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
          .then((response) => {
-            const image_url = response.data.url;
-            setUserImage(image_url);
+           postReport(response.data.url)
          })
          .catch((error) => console.log(error));
     };
