@@ -154,7 +154,12 @@ export function GuardianForm(props) {
             props.setNewGuardianId(response.data.msg.id_guardian)
             dispatch(setGuardianInfo(response.data.msg))
         })
-        .catch((error) => {console.log(error); props.setNewGuardianId(null)})
+        .catch((error) => {
+            console.log(error); 
+            props.setNewGuardianId(null)
+            setErrorMessage("Error while adding guardian information. Please try again.");
+            setIsError(true);
+        })
     }
 
     useEffect(() => {
