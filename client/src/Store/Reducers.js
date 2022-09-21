@@ -65,7 +65,7 @@ const initialState = {
       middle_name: '',
       last_name: '',
       user_email: '',
-      date_of_birth: 'Tue Sep 20 2022 05:37:34',
+      date_of_birth: '',
       house_address: '',
       phone_number: '',
       id_number: '',
