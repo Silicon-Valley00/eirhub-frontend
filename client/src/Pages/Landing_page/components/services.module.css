@@ -271,3 +271,13 @@
       font-size: 20px;
    }
 }
+
+/* made changes here */
+@media (min-width:1920px) {
+   .services_message_box{
+      height: 22rem;
+   }
+   .message_btn{
+      margin-top: 5px;
+   }
+}
