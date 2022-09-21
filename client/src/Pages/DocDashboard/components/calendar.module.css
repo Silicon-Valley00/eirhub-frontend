@@ -81,7 +81,7 @@
    background-color: var(--gray);
 }
 .calendarDays div.today {
-   background-color: var(--gray);
+   background-color: skyblue;
    border-radius: 50%;
    border: 2px solid var(--deepcol);
 }
@@ -92,7 +92,7 @@
 .calendarDays div.appoint {
    color: rgba(0, 0, 0, 0.6);
    background-color: rgba(0, 0, 0, 0.05);
-   border-bottom: 2px solid var(--deepcol);
+   border-bottom: 5px solid var(--deepcol);
 }
 .calendarDays div.today span {
    display: none;
