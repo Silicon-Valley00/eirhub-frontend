@@ -41,9 +41,9 @@ export function GuardianForm(props) {
     const guardianIdNumber = useRef();
     const guardianFormRef = useRef();
 
-    if (!props.needGuardian) {
-        guardianFormRef.current.reset();
-    }
+    // if (!props.needGuardian) {
+    //     guardianFormRef.current.reset();
+    // }
 
     function handleGuardianNamesChange () {
         if (guardianFirstName.current.value.trim().length && guardianLastName.current.value.trim().length) {
@@ -192,7 +192,7 @@ export function GuardianForm(props) {
                 <p>Enter your guardian information</p>
             </div>
             <form
-                ref={guardianFormRef}
+                // ref={guardianFormRef}
                 className={styles.signupForm}
                 onSubmit={(e) => {
                 e.preventDefault();
@@ -216,7 +216,7 @@ export function GuardianForm(props) {
                         <input
                             name="firstname"
                             type="text"
-                            id="firstname"
+                            id="guardian-firstname"
                             placeholder="Enter Firstname"
                             ref={guardianFirstName}
                             onChange={() => {
@@ -242,7 +242,7 @@ export function GuardianForm(props) {
                         <input
                             name="lastname"
                             type="text"
-                            id="lastname"
+                            id="guardian-lastname"
                             placeholder="Enter Lastname"
                             ref={guardianLastName}
                             onChange={() => {
@@ -282,7 +282,7 @@ export function GuardianForm(props) {
                     <input
                         type="text"
                         name="date"
-                        id="date"
+                        id="guardian-date"
                         placeholder="DD/MM/YYYY"
                         ref={gurdianDateOfBirth}
                         onFocus={(event) => (event.target.type = 'date')}
@@ -327,7 +327,7 @@ export function GuardianForm(props) {
                     <input
                         name="email"
                         type="email"
-                        id="email"
+                        id="guardian-email"
                         placeholder="someone@example.com"
                         ref={guardianEmail}
                         onChange={() => {
@@ -367,7 +367,7 @@ export function GuardianForm(props) {
                     <input
                         name="id-number"
                         type="text"
-                        id="id-number"
+                        id="guardian-id-number"
                         placeholder="GHA-123456789-0"
                         ref={guardianIdNumber}
                         onChange={(e) => {
@@ -392,7 +392,7 @@ export function GuardianForm(props) {
                 
                 <div className={styles.signupFormButton}>
                 <button
-                    id="submit-btn"
+                    id="guardian-submit-btn"
                     className={
                         !enableButton ? styles.signupBtnInactive
                             : activateButtonLoading()
