@@ -558,7 +558,7 @@ function Registration(props) {
                //returns response
                return [
                   response.data.status,
-                  response.data.msg,
+                  response.data.msg.message,
                   'Create Account',
                ];
             }
@@ -578,11 +578,11 @@ function Registration(props) {
                'Create Account',
             ];
          } else if (error.response) {
-            return [false, error.response.data.msg, 'Create Account'];
+            return [false,  error.response.data.msg.message, 'Create Account'];
          } else if (error.request) {
-            return [false, error.response.data.msg, 'Create Account'];
+            return [false,  error.response.data.msg.message, 'Create Account'];
          } else {
-            return [false, error.response.data.msg, 'Create Account'];
+            return [false,  error.response.data.msg.message, 'Create Account'];
          }
       }
    }
