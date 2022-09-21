@@ -35,7 +35,7 @@ aside .sidebar {
    flex-direction: column;
    height: 86vh;
    position: relative;
-   min-height: 28rem;
+   min-height: 32rem;
    overflow-y: scroll;
 }
 aside h3 {
