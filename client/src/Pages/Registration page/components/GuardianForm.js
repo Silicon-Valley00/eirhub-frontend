@@ -8,15 +8,12 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import { setGuardianInfo } from '../../../Store/Actions';
+import { namePattern, emailPattern, idNumberPattern } from '../../../utils/FormValidators';
 
 
 
 export function GuardianForm(props) {
     const dispatch = useDispatch();
-
-    const namePattern = /^[a-zA-Z-]+$/;
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    const idNumberPattern = /GHA-[0-9]{9}-[0-9]{1}$/;
 
     // handles button changes
     const [btnValue, setBtnValue] = useState('Create Account');
