@@ -1,13 +1,23 @@
 import DSstyles from './DoctorSchedule.module.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
+import {
+   setDoctorandPatient,
+   getAppointmentsAndPatient,
+} from '../../../Store/DoctorAction';
+import store from '../../../Store/ReducerStore';
 
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
+   const allPendingSchedules = props.allPendingAppointments;
+   const baseURL = 'http://127.0.0.1:5000';
+   const headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Methods': '*',
+   };
 
-   // BUG: Make doctor not able to make schedules when fields are empty.
-   // BUG: Refresh the page after making a schedule.
    // FIXME: Refresh the page after deleting a schedule.
    // FIXME: Don't display the details of the schedule when the doctor clicks on cancel.
 
@@ -24,40 +34,15 @@ const DoctorSchedule = (props) => {
    let scheduledAppointment = {
       appointment_date,
       appointment_end_time,
-      appointment_reason: selectedAppointment?.appointment_reason,
       appointment_start_time,
       appointment_status: 'Pending',
-      appointment_location: selectedAppointment?.appointment_location,
-      id_doctor: selectedAppointment?.id_doctor,
-      id_patient: selectedAppointment?.id_patient,
+      // appointment_location: allPendingAppointments[index].appointment_location,
+      // id_doctor: allPendingAppointments[index]?.id_doctor,
+      // id_patient: allPendingAppointments[index].id_patient,
+      // appointment_reason: allPendingAppointments[index]["appointment_reason"]
    };
 
    // endpoint for updating doctor profile
-   const baseURL = 'http://127.0.0.1:5000';
-
-   // Function to get all pending appointment.
-   useEffect(() => {
-      const getAllAppointmentsForADoctor = async () => {
-         await axios
-            .get(
-               `${baseURL}/appointments/?id_doctor=${data?.id_doctor}&status=Pending`,
-               {
-                  headers: {
-                     'Access-Control-Allow-Origin': '*',
-                     'Access-Control-Allow-Headers': '*',
-                     'Access-Control-Allow-Methods': '*',
-                  },
-               }
-            )
-            .then((res) => {
-               setAllPendingAppointments(res.data.msg);
-            })
-            .catch((err) => {
-               console.log(err.message);
-            });
-      };
-      getAllAppointmentsForADoctor();
-   }, []);
 
    // Function that sends the data to the server
    const scheduleAppointment = async () => {
@@ -69,11 +54,7 @@ const DoctorSchedule = (props) => {
                appointment_status: 'Accepted',
             },
             {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
+               headers,
             }
          )
 
@@ -84,22 +65,24 @@ const DoctorSchedule = (props) => {
    // Function to cancel an appointment
    const cancelAppointment = async (index) => {
       // console.log(selectedAppointment.id_appointment);
+      var indexedAppointment = allPendingAppointments[index];
+      // alert(selectedId)
       await axios
          .put(
-            `${baseURL}/appointments/?id_appointment=${selectedAppointment?.id_appointment}`,
+            `${baseURL}/appointments/?id_appointment=${indexedAppointment.id_appointment}`,
             {
                ...scheduledAppointment,
                appointment_status: 'Declined',
                appointment_date: '2021-06-01',
                appointment_start_time: '10:00:00',
                appointment_end_time: '11:00:00',
+               appointment_location: indexedAppointment.appointment_location,
+               id_doctor: indexedAppointment?.id_doctor,
+               id_patient: indexedAppointment.id_patient,
+               appointment_reason: indexedAppointment.appointment_reason,
             },
             {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
+               headers,
             }
          )
          // Filter out the appointment that was cancelled
@@ -114,14 +97,14 @@ const DoctorSchedule = (props) => {
    // Function to display the details of the appointment that was clicked.
    const displaySelectedPatientDetails = (patientKeyNum) => {
       console.log('patient: ', patientKeyNum);
-      const selectedPatient = allPendingAppointments[patientKeyNum];
+      const selectedPatient = allPendingSchedules[patientKeyNum];
       setSelectedAppointment(selectedPatient);
    };
 
    // Handles whether to display a text or display the actual data
    let displayData;
    // Displays a text if there are no Pending appointments
-   if (allPendingAppointments.length === 0) {
+   if (allPendingSchedules.length === 0) {
       displayData = (
          <div className={DSstyles.emptyMessage}>
             <p className={DSstyles.text}>Nothing to show here.</p>
@@ -131,7 +114,7 @@ const DoctorSchedule = (props) => {
    } else {
       displayData = (
          <>
-            {allPendingAppointments.map((data, index) => {
+            {allPendingSchedules.map((data, index) => {
                return (
                   <tr key={index}>
                      <td
@@ -162,7 +145,7 @@ const DoctorSchedule = (props) => {
                      <td
                         className={DSstyles.tdCancel}
                         onClick={() => {
-                           displaySelectedPatientDetails(index);
+                           // displaySelectedPatientDetails(index);
                            cancelAppointment(index);
                         }}
                      >
@@ -244,7 +227,6 @@ const DoctorSchedule = (props) => {
             </form>
             <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
             <div className={DSstyles.appointmentContainer}>
-               {/* BUG: Can't scroll all details. */}
                <table>
                   <thead>
                      <th className={DSstyles.imgHeader}></th>
@@ -263,6 +245,7 @@ const DoctorSchedule = (props) => {
 const mapStateToProps = (state) => {
    return {
       doctorProfile: state.doctorProfile,
+      allPendingAppointments: state.allPendingAppointments,
    };
 };
 

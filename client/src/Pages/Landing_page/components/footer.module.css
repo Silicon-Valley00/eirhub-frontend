@@ -104,7 +104,6 @@ footer {
 @media (max-width: 1112px) {
    .fourservices{
       align-self: flex-start;
-      padding-top: 2px;
    }
    footer {
       display: grid;

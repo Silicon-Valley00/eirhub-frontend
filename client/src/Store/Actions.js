@@ -162,12 +162,7 @@ export const fetchProfile = (userID, guardianID) => {
 };
 
 //Fetches user profile details
-export const fetchProfileOnSignup = (
-   userID,
-   dob,
-   guardianData,
-   profileData
-) => {
+export const fetchProfileOnSignup = (userID) => {
    return async function (dispatch) {
       try {
          const response = await axios({
@@ -185,14 +180,7 @@ export const fetchProfileOnSignup = (
             if (response.data.status === true) {
                //returns response
                dispatch(setProfileInfo(response.data.msg));
-               if (
-                  new Date().getFullYear() - new Date(dob).getFullYear() <
-                  18
-               ) {
-                  dispatch(addNewGuardianInfo(guardianData, profileData));
-               } else {
-                  dispatch(setOkToRoute(true));
-               }
+               dispatch(fetchHealthDetails(userID));
             }
          } else {
             //takes all statuses aside 200

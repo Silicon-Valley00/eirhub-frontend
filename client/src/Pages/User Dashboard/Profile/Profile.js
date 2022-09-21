@@ -653,7 +653,7 @@ function Profile(props) {
                      </div>
                   </div>
                </div>
-               <div className={styles.guardianInfo}>
+               { guardianID ? <div className={styles.guardianInfo}>
                   <h2>Guardian Details(If applicable)</h2>
                   <div className={styles.guardianInfoFormBox}>
                      <div className={styles.guardianFormBox}>
@@ -826,7 +826,7 @@ function Profile(props) {
                         </div>
                      </div>
                   </div>
-               </div>
+               </div> : "" }
                <div className={styles.formButton}>
                   {disableFormBtn ? (
                      <button

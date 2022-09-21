@@ -42,7 +42,6 @@ function Dashboard(props) {
 
          const schedules = await fetchAppointments(patientID, true);
          setAppointments(schedules);
-         console.log(schedules);
       }
       fetchdata();
    }, []);
@@ -228,6 +227,7 @@ function Dashboard(props) {
          );
       } else {
          //prevents checkbox from changing to false
+         console.log(props.tempMeds);
          var result = props.tempMeds.find(
             (item) => item.id_prescription === data.id_prescription
          );

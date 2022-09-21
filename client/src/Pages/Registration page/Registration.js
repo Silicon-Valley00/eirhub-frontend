@@ -26,6 +26,7 @@ function Registration(props) {
    const signupPassword = useRef();
    const signupPasswordconfirm = useRef();
    const signupDate = useRef();
+   const [newGuardianId, setNewGuardianId] = useState(null);
 
    // Doctor sign up refs
    const doctorSignupFirstname = useRef();
@@ -471,11 +472,10 @@ function Registration(props) {
          const signupPatientData = {
             first_name: enteredSignUpFirstname,
             last_name: enteredSignUpLastname,
-            middle_name: ' ',
+            middle_name: '',
             date_of_birth: enteredSignUpDate,
             user_email: enteredSignUpEmail,
             user_password: enteredSignUpPassword,
-
             person_image: '',
             house_address: '',
             phone_number: '',
@@ -483,9 +483,10 @@ function Registration(props) {
             nationality: '',
             gender: '',
             doctor_id: '',
-            guardian_id: '',
+            id_guardian: newGuardianId,
          };
 
+         console.log("New Guardian ID", signupPatientData)
          // makes api call with userdata
          const feedback = await submitCredentials(
             'patients/signup',
@@ -558,7 +559,7 @@ function Registration(props) {
                //returns response
                return [
                   response.data.status,
-                  response.data.msg,
+                  response.data.msg.message,
                   'Create Account',
                ];
             }
@@ -578,11 +579,11 @@ function Registration(props) {
                'Create Account',
             ];
          } else if (error.response) {
-            return [false, error.response.data.msg, 'Create Account'];
+            return [false,  error.response.data.msg.message, 'Create Account'];
          } else if (error.request) {
-            return [false, error.response.data.msg, 'Create Account'];
+            return [false,  error.response.data.msg.message, 'Create Account'];
          } else {
-            return [false, error.response.data.msg, 'Create Account'];
+            return [false,  error.response.data.msg.message, 'Create Account'];
          }
       }
    }
@@ -647,6 +648,8 @@ function Registration(props) {
             handleRegisterDate={handleRegisterDate}
             handleRegisterPassword={handleRegisterPassword}
             handleRegisterPasswordConfirm={handleRegisterPasswordConfirm}
+            setNewGuardianId={setNewGuardianId}
+            newGuardianId={newGuardianId}
          />
          <DoctorSignup
             reset={reset}

@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
    fetchDoctorsProfileInfo,
+   getAllPendingAppointmentsForADoctor,
    setDoctorAuth,
 } from '../../../Store/DoctorAction.js';
 import store from '../../../Store/ReducerStore';
@@ -39,6 +40,7 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
+         dispatch(getAllPendingAppointmentsForADoctor(feedback[1].id_doctor));
          dispatch(setLoading(true));
 
          navigate('/loading', { state: { status: false } });
