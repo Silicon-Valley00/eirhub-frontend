@@ -133,6 +133,7 @@ function Signup(props) {
                   setIsError(false);
                   setBtnActive(false);
                   setBtnValue('Create Account');
+                  setNeedGuardian(false);
                }}
             >
                <i>

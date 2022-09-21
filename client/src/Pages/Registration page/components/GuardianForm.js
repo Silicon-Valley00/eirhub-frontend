@@ -41,6 +41,10 @@ export function GuardianForm(props) {
     const guardianIdNumber = useRef();
     const guardianFormRef = useRef();
 
+    if (!props.needGuardian) {
+        guardianFormRef.current.reset();
+    }
+
     function handleGuardianNamesChange () {
         if (guardianFirstName.current.value.trim().length && guardianLastName.current.value.trim().length) {
             if ((guardianFirstName.current.value.trim().match(namePattern)) && (guardianLastName.current.value.trim().match(namePattern))) {
@@ -182,6 +186,7 @@ export function GuardianForm(props) {
                 <IoCloseOutline />
                 </i>
             </div>
+            <div className={styles.formSideContainer}>
             <div className={styles.signupFormTitle}>
                 <h3>Guardian Details</h3>
                 <p>Enter your guardian information</p>
@@ -418,6 +423,8 @@ export function GuardianForm(props) {
                 <div className={styles.signupFormMessage}>
                 </div>
             </form>
+            </div>
+            <div></div>
         </div>
     )
 }
