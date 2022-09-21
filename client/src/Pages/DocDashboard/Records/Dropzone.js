@@ -5,7 +5,7 @@ import { FaFileUpload } from 'react-icons/fa';
 import axios from 'axios';
 
 function Dropzone() {
-   // const [selectedFiles, setSelectedFiles] = useState([]);
+   const [selectedFiles, setSelectedFiles] = useState([]);
    const [isSelected, setIsSelected] = useState(false);
 
    const docRecordsUploadRef = useRef();
@@ -21,14 +21,13 @@ function Dropzone() {
 
 
    function postReport(report_url){
-      const report_url = response.data.url;
-      reportData = {
+      const reportData = {
          "report_type": "Lab report",
          "description": `Lab report posted by Cloudinary`,
          "uploaddate": `${Date.now()}`,
          "report_url": report_url
       }
-      axios.post(`http://127.0.0.1:5000/report/`, formData)
+      axios.post(`http://127.0.0.1:5000/report/`, reportData)
          .then(() => {
             alert('Report Uploaded')
          })
@@ -41,30 +40,33 @@ function Dropzone() {
 
 
    const handleSubmission = () => {
-         const formData = new FormData();
-         formData.append('file', selectedFiles[0]);
-         formData.append('upload_preset', 'ji5ue4f9')
+      selectedFiles.map(file=>{
 
+         const formData = new FormData();
+         formData.append('file', file);
+         formData.append('upload_preset', 'ji5ue4f9')
+         
          axios
          .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
          .then((response) => {
-           postReport(response.data.url)
+            postReport(response.data.url)
          })
          .catch((error) => console.log(error));
+      })
     };
 
    const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
-      setIsSelected(true)
       // setSelectedFiles(acceptedFiles)
       // Do something with the files'
       acceptedFiles.forEach(file => {
          const reader = new FileReader()
          reader.onload = ()=>{
-
+            
             setSelectedFiles(previous => [...previous,file])
          }
          reader.readAsDataURL(file)
       })
+      setIsSelected(true)
       // console.log(selectedFiles,acceptedFiles, rejectedFiles)
       // console.log(typeof selectedFiles,typeof acceptedFiles)
       // console.log(e)
@@ -97,8 +99,6 @@ function Dropzone() {
          <ul /*className={styles.selectedFiles}*/>
             {selectedFiles.map((file,index) => <li key={index}>
                <p>Filename: {file.name} Filetype: {file.type} Size: {(file.size / 1024 / 1024).toString().slice(0, 4)}MB</p>
-                  {/* <p>Filetype: {file.type}</p> */}
-                  {/* <p>Size: {(file.size / 1024 / 1024).toString().slice(0, 4)}MB</p> */}
                </li>
             )
             }
