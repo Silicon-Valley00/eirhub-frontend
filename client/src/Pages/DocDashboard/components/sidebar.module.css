@@ -6,24 +6,14 @@
    overflow-y: scroll;
 }
 
+.navbody aside::-webkit-scrollbar {
+   display: none;
+}
+
 .navbody aside .top {
-   background: var(--white);
    display: flex;
-   justify-content: space-around;
+   justify-content: flex-end;
    align-items: center;
-}
-aside .logo {
-   display: flex;
-   gap: 0.8rem;
-   justify-content: center;
-   align-items: center;
-   height: 3.1rem;
-}
-aside .logo h2 {
-   color: var(--lightcol);
-   font-weight: 400;
-   font-size: 1.8rem;
-   font-family: var(--logofont);
 }
 
 aside .close {
@@ -34,9 +24,7 @@ aside .sidebar {
    display: flex;
    flex-direction: column;
    height: 86vh;
-   position: relative;
-   min-height: 28rem;
-   overflow-y: scroll;
+   top: 1rem;
 }
 aside h3 {
    font-weight: 500;
@@ -101,7 +89,12 @@ aside ul li {
       padding: 5rem 0;
    } */
 
-aside .sidebar li:nth-child(6) {
+aside .sidebar li:nth-child(8) {
+   position: absolute;
+   bottom: 5rem;
+   width: 86.5%;
+}
+aside .sidebar li:nth-child(9) {
    position: absolute;
    width: 86.5%;
    bottom: 0rem;
@@ -110,36 +103,11 @@ aside .sidebar li:nth-child(6) {
 aside .sidebar li.active {
    background-color: var(--gray);
 }
+@media (max-height:540px){
+aside .sidebar{
+   overflow-y: scroll;
+}
 
-@media (min-width: 2001px) {
-   aside .logo h2 {
-      font-size: 40px;
-   }
-   aside h3 {
-      font-size: 24px;
-   }
-   aside .sidebar span.icons {
-      font-size: 28px;
-   }
-   aside ul li {
-      height: 60px;
-      min-width: 60px;
-      padding: 0 10px;
-      margin-bottom: 10%;
-   }
-   aside .sidebar li:hover span.icons {
-      margin-left: 0px;
-   }
-
-   aside .sidebar li:nth-child(6) {
-      position: absolute;
-      width: 86.5%;
-      bottom: 0rem;
-   }
-
-   aside .sidebar li.active {
-      background-color: var(--gray);
-   }
 }
 @media only screen and (min-width: 1400px) and (max-width: 2000px) {
    aside h3 {
@@ -158,7 +126,12 @@ aside .sidebar li.active {
       padding: 5rem 0;
    } */
 
-   aside .sidebar li:nth-child(6) {
+   aside .sidebar li:nth-child(8) {
+      position: absolute;
+      bottom: 4.8rem;
+      width: 86.5%;
+   }
+   aside .sidebar li:nth-child(9) {
       position: absolute;
       width: 86.5%;
       bottom: 0rem;
@@ -194,6 +167,11 @@ aside .sidebar li.active {
 
    aside .sidebar li:nth-child(6) {
       position: absolute;
+      bottom: 3rem;
+      width: 86.5%;
+   }
+   aside .sidebar li:nth-child(9) {
+      position: absolute;
       width: 86.5%;
       bottom: 0rem;
    }
@@ -201,17 +179,8 @@ aside .sidebar li.active {
    aside .sidebar li.active {
       background-color: var(--gray);
    }
-   /* aside .sidebar li.active:before {
-      content: '';
-      width: 2%;
-   }
-   aside .sidebar li.active span.icons {
-      margin-left: 0.1rem;
-   }
-   aside .sidebar li:hover span.icons {
-      margin-left: 0.2rem;
-   } */
 }
+
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
    .aside .log h2 {
       display: none;
@@ -222,26 +191,32 @@ aside .sidebar li.active {
    aside ul li {
       width: 5.6rem;
    }
-
-   aside .sidebar li:nth-child(6) {
+   aside .sidebar li:nth-child(8) {
       position: relative;
-      margin-top: 0rem;
+      margin-top: 3rem;
+   }
+   aside .sidebar li:nth-child(9) {
+      position: relative;
+      margin-top: -2.5rem;
    }
 }
 
-@media only screen and (min-width: 481px) and (max-width: 768px) {
+@media (max-width: 768px) {
    aside.active {
       position: fixed;
       left: 0;
+      top: 0;
       background: var(--white);
-      width: 15rem;
-      z-index: 3;
+      width: 100%;
+      z-index: 9999;
       box-shadow: 1rem 3rem 4rem rgba(132, 139, 200, 0.18);
       height: 100vh;
       max-height: 100vh;
       min-height: 100vh;
-      padding-right: 1.8rem;
+      padding: 1rem 3rem;
       display: block;
+      transition: all;
+      transition-duration: 0.5s;
    }
    aside.notActive {
       position: fixed;
@@ -256,13 +231,17 @@ aside .sidebar li.active {
       padding-right: 1.8rem;
       display: none;
       animation: showmenu 400ms ease forwards;
+      transition: all;
+      transition-duration: 500ms;
    }
    @keyframes showmenu {
       to {
          left: 0;
       }
    }
+}
 
+@media only screen and (min-width: 481px) and (max-width: 768px) {
    aside .top {
       display: flex;
       justify-content: space-around;
@@ -290,8 +269,12 @@ aside .sidebar li.active {
       color: var(--midcol);
       transition: all 300ms ease;
    }
-
-   aside .sidebar li:nth-child(6) {
+   aside .sidebar li:nth-child(8) {
+      position: absolute;
+      bottom: 3rem;
+      width: 86.5%;
+   }
+   aside .sidebar li:nth-child(9) {
       position: absolute;
       width: 86.5%;
       bottom: 0rem;
@@ -319,12 +302,6 @@ aside .sidebar li.active {
       color: var(--midcol);
    }
 
-   aside .logo {
-      margin-left: 1rem;
-   }
-   aside .logo h2 {
-      display: inline;
-   }
    aside h3 {
       display: inline;
    }
@@ -342,33 +319,6 @@ aside .sidebar li.active {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-   aside.active {
-      position: fixed;
-      left: 0;
-      background: var(--white);
-      width: 18rem;
-      z-index: 3;
-      box-shadow: 1rem 3rem 4rem rgba(132, 139, 200, 0.18);
-      height: 100vh;
-      max-height: 100vh;
-      min-height: 100vh;
-      padding-right: 1.8rem;
-      display: block;
-   }
-   aside.notActive {
-      position: fixed;
-      left: -100%;
-      background: var(--white);
-      width: 18rem;
-      z-index: 3;
-      box-shadow: 1rem 3rem 4rem rgba(132, 139, 200, 0.18);
-      height: 100vh;
-      max-height: 100vh;
-      min-height: 100vh;
-      padding-right: 1.8rem;
-      display: none;
-      animation: showmenu 400ms ease-in-out forwards;
-   }
    @keyframes showmenu {
       to {
          left: 0;
@@ -405,6 +355,11 @@ aside .sidebar li.active {
 
    aside .sidebar li:nth-child(6) {
       position: absolute;
+      bottom: 3rem;
+      width: 86.5%;
+   }
+   aside .sidebar li:nth-child(9) {
+      position: absolute;
       width: 86.5%;
       bottom: 0rem;
    }
@@ -421,12 +376,6 @@ aside .sidebar li.active {
       color: var(--midcol);
    }
 
-   aside .logo {
-      margin-left: 1rem;
-   }
-   aside .logo h2 {
-      display: inline;
-   }
    aside h3 {
       display: inline;
    }
