@@ -6,6 +6,7 @@ import {
    updateProfile,
    updateHealthDetails,
    updateGuardianInfo,
+   setMessage
 } from '../../../Store/Actions.js';
 import axios from 'axios';
 
@@ -153,10 +154,24 @@ function Profile(props) {
          .then((response) => {
             const image_url = response.data.url;
             setUserImage(image_url);
-            setUploadBtn('Image Uploaded');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Image Uploaded.',
+                  state: 1,
+               })
+            );
+            setUploadBtn('Uploaded Another');
          })
          .catch((error) => {
-            setUploadBtn('Upload Failed. Upload Again.');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'LOL! e fail... 😂',
+                  state: 0,
+               })
+            );
+            setUploadBtn('Upload Again.');
             console.log("Cloudinary upload Error:", error);
          });
       }

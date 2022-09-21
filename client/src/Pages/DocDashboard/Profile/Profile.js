@@ -4,7 +4,7 @@ import { FaCheck } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setDoctorProfile } from '../../../Store/DoctorAction';
-// import { cloudinary } from '../../../utils/cloudinary';
+import { setMessage } from '../../../Store/Actions';
 
 const DocProfile = (props) => {
    const data = props.doctorProfile;
@@ -19,7 +19,7 @@ const DocProfile = (props) => {
       data?.date_of_birth !== ''
          ? `${new Date(data?.date_of_birth).getFullYear()}-${
               new Date(data?.date_of_birth).getMonth() + 1
-           }-${new Date(data?.date_of_birth).getDate() + 1}`
+           }-${new Date(data?.date_of_birth).getDate()}`
          : ''
    );
    const [person_image, setUserImage] = useState(data?.person_image);
@@ -96,10 +96,24 @@ const DocProfile = (props) => {
          .then((response) => {
             const image_url = response.data.url;
             setUserImage(image_url);
-            setUploadBtn('Image Uploaded');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Image Uploaded.',
+                  state: 1,
+               })
+            );
+            setUploadBtn('Uploaded Another');
          })
          .catch((error) => {
-            setUploadBtn('Upload Failed. Upload Again.');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'LOL! e fail... 😂',
+                  state: 0,
+               })
+            );
+            setUploadBtn('Upload Again.');
             console.log("Cloudinary upload Error:", error);
          });
       }
