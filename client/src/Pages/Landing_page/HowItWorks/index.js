@@ -125,13 +125,14 @@ const HowItWorks = () => {
                         >
                            <div className={styles.right__arrow}></div>
                            <div className={styles.right__card}>
-                              <IoIosClock className={styles.icon} />
+                              <MdVerified className={styles.icon} />
                               <p className={styles.heading}>
-                                 Pick a Date and Time
+                                 Book an appointment
+                        
                               </p>
                               <p className={styles.content}>
-                                 Select a date and time that would be convenient
-                                 for you.
+                                 Request for an appointment with your 
+                                 preferred Doctor.
                               </p>
                            </div>
                         </div>
@@ -146,10 +147,10 @@ const HowItWorks = () => {
                            className={styles.left_card}
                         >
                            <div className={styles.left__card}>
-                              <MdVerified className={styles.icon} />
-                              <p className={styles.heading}>Get Approved </p>
+                              <IoIosClock className={styles.icon}  />
+                              <p className={styles.heading}> Doctor picks a date and time</p>
                               <p className={styles.content}>
-                                 Wait for the selected doctor to approve your
+                                 Wait for the selected doctor to pick a date and time for your
                                  appointment.
                               </p>
                            </div>
@@ -171,10 +172,10 @@ const HowItWorks = () => {
                            <div className={styles.right__arrow}></div>
                            <div className={styles.right__card}>
                               <GiVideoConference className={styles.icon} />
-                              <p className={styles.heading}>Meet your Doctor</p>
+                              <p className={styles.heading}>Meet your doctor</p>
                               <p className={styles.content}>
                                  See your doctor in-person or online and get the
-                                 are you need
+                                 help you need
                               </p>
                            </div>
                         </div>
