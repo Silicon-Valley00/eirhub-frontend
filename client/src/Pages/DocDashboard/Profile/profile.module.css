@@ -8,9 +8,9 @@
    background-color: var(--gray);
 }
 
-.main::-webkit-scrollbar {
+/* .main::-webkit-scrollbar {
    display: none;
-}
+} */
 
 /* #profileBody {
    padding-top: 2rem;

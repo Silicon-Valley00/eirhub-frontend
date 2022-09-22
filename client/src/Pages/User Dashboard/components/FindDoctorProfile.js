@@ -33,7 +33,11 @@ function FindingDoctor(props) {
          {showProfile === true ? (
             <div className={styles.profileBody}>
                <div className={styles.profileImage}>
-                  <img src={profile.person_image} alt="doctor-profile" />
+                  <img
+                     className={styles.image}
+                     src={profile.person_image}
+                     alt="doctor-profile"
+                  />
                </div>
                <div className={styles.profileDetails}>
                   <h3>{`Dr. ${

@@ -114,7 +114,11 @@ function FindingDoctor(props) {
                   key={`${item.first_name} ${item.last_name}-${j}`}
                >
                   <div className={styles.doctorImage}>
-                     <img src={item.person_image} alt="doctor-profile" />
+                     <img
+                        className={styles.image}
+                        src={item.person_image}
+                        alt="doctor-profile"
+                     />
                   </div>
                   <div className={styles.doctorInfo}>
                      <div className={styles.doctorName}>
