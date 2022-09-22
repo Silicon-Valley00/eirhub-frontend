@@ -754,7 +754,7 @@ export async function fetchDoctorsByPatient(userID) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/patients/?id_patient=${userID}`,
+         url: `http://127.0.0.1:5000/appointmentcometp/${userID}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.

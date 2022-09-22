@@ -63,19 +63,18 @@ function Signup(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          //registers user into cometchat
-         // SignUpUser(
-         //    `${
-         //       feedback[1].first_name.charAt(0).toUpperCase() +
-         //       feedback[1].first_name.slice(1)
-         //    } ${
-         //       feedback[1].last_name.charAt(0).toUpperCase() +
-         //       feedback[1].last_name.slice(1)
-         //    }`,
-         //    `${feedback[1].first_name.toLowerCase()}${feedback[1].last_name.toLowerCase()}${
-         //       feedback[1].id_patient
-         //    }`
-         // );
-         // console.log('patient', feedback[1].id_patient);
+         SignUpUser(
+            `${
+               feedback[1].first_name.charAt(0).toUpperCase() +
+               feedback[1].first_name.slice(1)
+            } ${
+               feedback[1].last_name.charAt(0).toUpperCase() +
+               feedback[1].last_name.slice(1)
+            }
+         }`,
+            feedback[1].id_message.toLowerCase()
+         );
+         console.log('patient', feedback[1].id_message);
          dispatch(fetchProfileOnSignup(feedback[1].id_patient));
          dispatch(setLoading(true));
 
