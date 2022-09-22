@@ -189,6 +189,9 @@ const Reducers = (state = initialState, action) => {
       case CLEAR_APPOINTMENT_DOCTOR:
          return { ...state, doctorAppointment: {} };
 
+      // case CLEAR_DOCTOR_APPOINTMENT_INPUT_FIELDS:
+      //    return { ...state };
+
       case SET_CHAT_WITH_DOCTOR:
          return { ...state, doctorToChatWith: action.payload };
 

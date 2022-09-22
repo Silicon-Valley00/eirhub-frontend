@@ -92,9 +92,7 @@ const DoctorSchedule = (props) => {
          )
          // Filter out the appointment that was cancelled
          .then(() =>
-            setAllPendingAppointments(
-               allPendingAppointments.filter((_, i) => i !== index)
-            )
+            dispatch(getAllPendingAppointmentsForADoctor(data.id_doctor))
          )
          .catch((error) => console.log(error));
    };
@@ -137,7 +135,7 @@ const DoctorSchedule = (props) => {
                         onClick={() => displaySelectedPatientDetails(index)}
                         className={DSstyles.tdName}
                      >
-                        {data?.patient_info.first_name}
+                        {data?.patient_info.first_name}{' '}
                         {data?.patient_info.last_name}
                      </td>
                      <td
@@ -163,6 +161,11 @@ const DoctorSchedule = (props) => {
       );
    }
 
+   let displayFirstName = selectedAppointment?.patient_info?.first_name;
+   let displayLastName = selectedAppointment?.patient_info?.last_name;
+   let displayFullName = displayFirstName + ' ' + displayLastName;
+   let displayReason = selectedAppointment?.appointment_reason;
+
    return (
       <>
          <div className={DSstyles.DSContainer1}>
@@ -170,6 +173,10 @@ const DoctorSchedule = (props) => {
             <form
                onSubmit={(e) => {
                   e.preventDefault();
+                  // clear the form
+                  e.target.reset();
+                  displayFullName = '';
+                  displayReason = '';
                }}
                id="form"
             >
@@ -179,7 +186,14 @@ const DoctorSchedule = (props) => {
                      type="message"
                      id="name"
                      className={DSstyles.inputName}
-                     value={selectedAppointment?.patient_info?.first_name}
+                     value={
+                        displayFirstName === undefined ||
+                        displayFirstName === null ||
+                        displayLastName === undefined ||
+                        displayLastName === null
+                           ? ' '
+                           : displayFullName
+                     }
                      disabled
                   />
                   <label className={DSstyles.labelCondition}>Condition</label>
@@ -187,7 +201,11 @@ const DoctorSchedule = (props) => {
                      type="text"
                      id="condition"
                      className={DSstyles.inputCondition}
-                     value={selectedAppointment?.appointment_reason}
+                     value={
+                        displayReason === undefined || displayReason === null
+                           ? ' '
+                           : displayReason
+                     }
                      disabled
                   />
                </div>
