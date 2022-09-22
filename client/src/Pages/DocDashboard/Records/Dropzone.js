@@ -3,8 +3,14 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FaFileUpload } from 'react-icons/fa';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
-function Dropzone() {
+
+function Dropzone(props) {
+   // const patientID = useSelector((state) => state.profile.id_patient);
+   const doctorID = props.doctorProfile.id_doctor;
+
    const [selectedFiles, setSelectedFiles] = useState([]);
    const [isSelected, setIsSelected] = useState(false);
 
@@ -19,15 +25,27 @@ function Dropzone() {
    //    console.log(selectedFile)
    // };
 
-
    function postReport(report_url) {
       const reportData = {
          "report_type": "Lab report",
          "description": 'Lab report posted by Cloudinary',
-         "uploaddate": `${Date.now()}`,
-         "report_url": report_url
+         "upload_date": `${Date.now()}`,
+         "report_url": report_url,
+         "id_doctor": doctorID,
+         "id_patient": ""
       }
-      axios.post(`http://127.0.0.1:5000/report/`, reportData)
+      axios.post(`http://127.0.0.1:5000/report`,
+         reportData,
+         {
+            headers: {
+               'Content-Type': 'application/json',
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            }
+         }
+      )
          .then(() => {
             alert('Report Uploaded')
          })
@@ -128,4 +146,10 @@ function Dropzone() {
    );
 }
 
-export default Dropzone;
+const mapStateToProps = (state) => {
+   return {
+      doctorProfile: state.doctorProfile,
+   };
+};
+
+export default connect(mapStateToProps)(Dropzone);
