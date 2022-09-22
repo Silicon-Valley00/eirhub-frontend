@@ -68,7 +68,7 @@ function Dropzone(props) {
    //       formData.append('upload_preset', 'ji5ue4f9')
 
    //       axios
-   //          .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
+   //          .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/auto/upload', formData)
    //          .then((response) => {
    //             postReport(response.data.url)
    //          })
