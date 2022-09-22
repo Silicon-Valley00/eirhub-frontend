@@ -98,35 +98,38 @@ const FAQ = () => {
                </div>
 
                {/* lower section of FAQ */}
-
-               <section className={styles.lower_section}>
-                  <div className={styles.question__container}>
-                     {data.map((item, index) => {
-                        return (
-                           <div className={styles.question_and_answer}>
-                              <div
-                                 className={styles.question}
-                                 onClick={() => toggle(index)}
-                              >
-                                 <h1>{item.question}</h1>
-                                 <span className={styles.plusMinus}>
-                                    {selected === index ? '-' : '+'}
-                                 </span>
-                              </div>
-                              <div
-                                 className={
-                                    selected === index
-                                       ? `${styles.show}`
-                                       : `${styles.answer}`
-                                 }
-                              >
-                                 {item.answer}
-                              </div>
-                           </div>
-                        );
-                     })}
+               <div className={styles.container}>
+                  <div className={styles.wrapper}>
+                     <section className={styles.lower_section}>
+                        <div className={styles.question__container}>
+                           {data.map((item, index) => {
+                              return (
+                                 <div className={styles.question_and_answer}>
+                                    <div
+                                       className={styles.question}
+                                       onClick={() => toggle(index)}
+                                    >
+                                       <h1>{item.question}</h1>
+                                       <span className={styles.plusMinus}>
+                                          {selected === index ? '-' : '+'}
+                                       </span>
+                                    </div>
+                                    <div
+                                       className={
+                                          selected === index
+                                             ? `${styles.show}`
+                                             : `${styles.answer}`
+                                       }
+                                    >
+                                       {item.answer}
+                                    </div>
+                                 </div>
+                              );
+                           })}
+                        </div>
+                     </section>
                   </div>
-               </section>
+               </div>
             </main>
 
             <Footer handleModalSignup={handleModalSignup} />

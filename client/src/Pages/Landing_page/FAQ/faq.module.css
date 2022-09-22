@@ -10,6 +10,18 @@
    max-height: 100vh;
 }
 
+.container {
+   min-width: 100vw;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.wrapper {
+   max-width: 720px;
+}
+
 .main {
    padding-top: 5rem;
    padding-bottom: 3rem;
