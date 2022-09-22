@@ -148,6 +148,7 @@ const Reducers = (state = initialState, action) => {
             house_address: action.payload.house_address,
             id_patient: action.payload.id_patient,
             id_doctor: action.payload.id_doctor,
+            id_message: action.payload.id_message,
             id_guardian: action.payload.id_guardian,
             id_number: action.payload.id_number,
             last_name: action.payload.last_name,
@@ -225,6 +226,7 @@ const Reducers = (state = initialState, action) => {
             doctor_ratings: action.payload.doctor_ratings,
             person_image: action.payload.person_image,
             id_doctor: action.payload.id_doctor,
+            id_message: action.payload.id_message,
          };
          return { ...state, doctorProfile: doctor_profile_info };
 
