@@ -77,15 +77,6 @@ function Medication(props) {
                   state: 0,
                })
             );
-         } else if (drugDosage.trim().search(/^\d+\/\x+\d+$/) === -1) {
-            // checks if right dosage format has been entered
-            dispatch(
-               setMessage({
-                  show: true,
-                  msg: 'Use appropriate dosage format.',
-                  state: 0,
-               })
-            );
          } else {
             //prepares data for submition when no error is encountered
 
@@ -201,20 +192,23 @@ function Medication(props) {
                   <div className={styles.formBox}>
                      <label htmlFor="time"> Time Period</label>
                      <div className={styles.formBoxInputs}>
-                        <i>
-                           <TiTime />
-                        </i>
-                        <input
-                           name="time"
-                           type="text"
-                           id="time"
-                           placeholder="eg. Before Meal"
-                           onChange={(event) => {
-                              setDrugTime(event.target.value);
-                              setIsError(false);
-                           }}
-                           value={drugTime}
-                        />
+                        <div className={styles.select}>
+                           <select
+                              placeholder="eg. Before Meal"
+                              required
+                              value={drugTime}
+                              onChange={(event) => {
+                                 setDrugTime(event.target.value);
+                                 setIsError(false);
+                              }}
+                           >
+                              <option value={''}>Select Period</option>
+                              <option value={'Before Meals'}>
+                                 Before Meals
+                              </option>
+                              <option value={'After Meals'}>After Meals</option>
+                           </select>
+                        </div>
                      </div>
                   </div>
 

@@ -29,20 +29,12 @@ function FindingDoctor(props) {
    useEffect(() => {
       if (useEffectCount === 0) {
          setUseEffectCount(useEffectCount + 1);
+
          return;
       }
 
       handleDoctorSearch(enteredName);
    }, [specialty, hospital]);
-
-   // useEffect(() => {
-   //    console.log('called');
-   //    if (useEffectCountHpt === 0) {
-   //       setUseEffectCountHpt(useEffectCountHpt + 1);
-   //       return;
-   //    }
-   //    handleDoctorSearch(enteredName);
-   // }, [hospital]);
 
    // handles close of search for doctor's name
    function closeSearch() {
@@ -156,11 +148,7 @@ function FindingDoctor(props) {
                </div>
             );
          });
-      } else {
-         <p className={styles.emptyMessage}>No doctors found.</p>;
       }
-   } else {
-      <p className={styles.emptyMessage}>No doctors found.</p>;
    }
 
    return (
@@ -307,48 +295,14 @@ function FindingDoctor(props) {
                   </div>
                </form>
             </div>
-            <div className={styles.doctorsBox}>
-               {list}
-               {/* <div className={styles.doctorBox}>
-                  <div className={styles.doctorImage}>
-                     <img src={doctorProfileTwo} alt="doctor-profile" />
-                  </div>
-                  <div className={styles.doctorInfo}>
-                     <div className={styles.doctorName}>
-                        <h3>Gucci Delix, Pharm D</h3>
-                     </div>
-                     <div className={styles.doctorDetails}>
-                        <p>
-                           Clinical Pharmacy Specialist, Hermatology/Oncology
-                           Assistant Professor, Pharmacy Hermatology
-                        </p>
-                     </div>
-                     <div className={styles.doctorInfoLink}>
-                        <p>View Profile</p>
-                     </div>
-                  </div>
-               </div> */}
 
-               {/* <div className={styles.doctorBox}>
-                  <div className={styles.doctorImage}>
-                     <img src={doctorProfileThree} alt="doctor-profile" />
-                  </div>
-                  <div className={styles.doctorInfo}>
-                     <div className={styles.doctorName}>
-                        <h3>Gucci Delix, Pharm D</h3>
-                     </div>
-                     <div className={styles.doctorDetails}>
-                        <p>
-                           Clinical Pharmacy Specialist, Hermatology/Oncology
-                           Assistant Professor, Pharmacy Hermatology
-                        </p>
-                     </div>
-                     <div className={styles.doctorInfoLink}>
-                        <p>View Profile</p>
-                     </div>
-                  </div>
-               </div> */}
-            </div>
+            {searchResults.length !== 0 || searchResults === undefined ? (
+               <div className={styles.doctorsBox}>{list}</div>
+            ) : (
+               <div className={styles.emptyMessage}>
+                  <p>No results found.</p>
+               </div>
+            )}
          </div>
       </>
    );

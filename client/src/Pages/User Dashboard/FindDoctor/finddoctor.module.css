@@ -208,12 +208,16 @@ select::-ms-expand {
    padding-bottom: 2rem;
 }
 
-.doctorsBox .emptyMessage {
+.emptyMessage {
    color: var(--tablehead);
    font-weight: 400;
    font-family: 'Poppins';
    font-size: 1.2rem;
    text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 2rem;
 }
 
 .doctorBox {
