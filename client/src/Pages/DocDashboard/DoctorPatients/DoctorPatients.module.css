@@ -2,6 +2,7 @@
    /* display: none; */
    /* width: 15rem; */
    min-width: 250px;
+   width: 100%;
    height: calc(100vh - 5rem);
    max-height: 2000px;
 }
@@ -13,7 +14,7 @@
    border-radius: 1.25rem;
    height: 100%;
    padding-top: 2rem;
-   z-index: 10000;
+   z-index: 100;
 }
 
 .patientsSection::-webkit-scrollbar,
@@ -96,7 +97,7 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      z-index: 10000;
+      z-index: 99+*;
    }
    .patientsSection {
       margin: auto;

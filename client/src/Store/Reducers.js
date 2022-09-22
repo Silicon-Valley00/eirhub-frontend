@@ -18,10 +18,12 @@ import {
    SET_IS_LOADING,
    SET_DOCTOR_AND_PATIENT,
    SET_PATIENTS,
+   SET_IS_NEW_USER,
 } from './ActionTypes';
 
 const initialState = {
    isLoading: false,
+   isNewUser: false,
    //Patient Dashboard
    tempMedications: [],
    reloadMedications: false,
@@ -107,6 +109,9 @@ const Reducers = (state = initialState, action) => {
       case SET_IS_LOADING:
          return { ...state, isLoading: action.payload };
 
+      case SET_IS_NEW_USER:
+         return { ...state, isNewUser: action.payload };
+
       case SET_OK_TO_ROUTE:
          return { ...state, okToRoute: action.payload };
 
@@ -188,6 +193,9 @@ const Reducers = (state = initialState, action) => {
 
       case CLEAR_APPOINTMENT_DOCTOR:
          return { ...state, doctorAppointment: {} };
+
+      // case CLEAR_DOCTOR_APPOINTMENT_INPUT_FIELDS:
+      //    return { ...state };
 
       case SET_CHAT_WITH_DOCTOR:
          return { ...state, doctorToChatWith: action.payload };

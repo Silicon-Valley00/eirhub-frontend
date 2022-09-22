@@ -109,8 +109,8 @@
 .appointmentsBox h2 {
    margin-bottom: 0.2rem;
    color: var(--midcol);
-   font-weight: 500;
-   font-size: 1.2rem;
+   font-weight: 550;
+   font-size: 1.4rem;
 }
 .appointmentTable {
    width: 100%;
@@ -171,7 +171,6 @@
    max-width: 2.5rem;
 
    border-radius: 50%;
-   background-color: var(--deepcol);
    clip-path: circle();
 }
 .appointmentsBox table tbody td:nth-child(1) div img {
@@ -259,8 +258,30 @@
    .conditionDetails input[type='text'] {
       width: 80%;
    }
+   .appointmentsBox table tbody td:nth-child(1) div {
+      height: 2rem;
+      min-height: 2rem;
+      max-height: 2rem;
+
+      width: 2rem;
+      min-width: 2rem;
+      max-width: 2rem;
+   }
 }
+
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
+   .appointmentsBox table tbody td:nth-child(1) div {
+      height: 1.8rem;
+      min-height: 1.8rem;
+      max-height: 1.8rem;
+
+      width: 1.8rem;
+      min-width: 1.8rem;
+      max-width: 1.8rem;
+   }
+   .appointmentTable table {
+      width: 130%;
+   }
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    .doctorDetailsField h2 {
@@ -269,6 +290,18 @@
 
    .conditionDetails input[type='text'] {
       width: 70%;
+   }
+   .appointmentsBox table tbody td:nth-child(1) div {
+      height: 1.8rem;
+      min-height: 1.8rem;
+      max-height: 1.8rem;
+
+      width: 1.8rem;
+      min-width: 1.8rem;
+      max-width: 1.8rem;
+   }
+   .appointmentTable table {
+      width: 130%;
    }
 }
 @media only screen and (min-width: 320px) and (max-width: 480px) {
@@ -287,5 +320,17 @@
    }
    .appointmentsBox table {
       width: 200%;
+   }
+   .appointmentsBox table tbody td:nth-child(1) div {
+      height: 1.8rem;
+      min-height: 1.8rem;
+      max-height: 1.8rem;
+
+      width: 1.8rem;
+      min-width: 1.8rem;
+      max-width: 1.8rem;
+   }
+   .appointmentTable table {
+      width: 130%;
    }
 }

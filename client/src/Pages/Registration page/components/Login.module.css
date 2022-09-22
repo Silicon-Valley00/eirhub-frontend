@@ -416,7 +416,7 @@ input {
 }
 .rightSide > * {
    font-family: 'Comfortaa', cursive;
-   font-weight: 700;
+   font-weight: 500;
 }
 .rightSide > *:not(:first-child) {
    margin: auto;

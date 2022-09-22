@@ -3,11 +3,13 @@ import styles from './dashboard.module.css';
 import { IoIosPeople } from 'react-icons/io';
 import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { setIsANewUser, setMessage } from '../../../Store/Actions';
 
 const MidDashboard = (props) => {
    const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
+   const dispatch = useDispatch();
 
    // States to keep the counts of the number of patients, reports and appointments
    const [numOfdetails, setNumberofdetails] = useState(0);
@@ -64,6 +66,16 @@ const MidDashboard = (props) => {
          await fetchStats();
       };
       fetchDashboardData();
+      if (props.isNewUser === true) {
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Please complete your profile.',
+               state: 1,
+            })
+         );
+      }
+      dispatch(setIsANewUser(false));
    }, []);
 
    // Handles whether to display a text or display the actual data
