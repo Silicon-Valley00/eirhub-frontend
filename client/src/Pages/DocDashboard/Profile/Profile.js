@@ -63,9 +63,26 @@ const DocProfile = (props) => {
                'content-type': 'application/json',
             },
          })
-         .then((res) => dispatch(setDoctorProfile(res.data)))
-         .catch((error) => console.log('Put Error', error));
-      setUploadBtn('Upload Image')
+         .then((res) => {
+            dispatch(setDoctorProfile(res.data));
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Profile Updated Successfully 🎉',
+                  state: 1,
+               })
+            );
+         })
+         .catch((error) =>
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Unable to fetch Appointment, please make sure you are connected.',
+                  state: 0,
+               })
+            )
+         );
+      setUploadBtn('Upload Image');
    };
 
    // function handles image upload
@@ -87,36 +104,39 @@ const DocProfile = (props) => {
          //alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
-         const doctorImagePreset='n6r1o2rk'
+         const doctorImagePreset = 'n6r1o2rk';
          const formData = new FormData();
          formData.append('file', userimage);
          formData.append('upload_preset', doctorImagePreset);
          setUploadBtn('Uploading...');
          await axios
-         .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
-         .then((response) => {
-            const image_url = response.data.url;
-            setUserImage(image_url);
-            dispatch(
-               setMessage({
-                  show: true,
-                  msg: 'Image Uploaded.',
-                  state: 1,
-               })
-            );
-            setUploadBtn('Upload Another');
-         })
-         .catch((error) => {
-            dispatch(
-               setMessage({
-                  show: true,
-                  msg: 'LOL! e fail... 😂',
-                  state: 0,
-               })
-            );
-            setUploadBtn('Upload Again.');
-            console.log("Cloudinary upload Error:", error);
-         });
+            .post(
+               'https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload',
+               formData
+            )
+            .then((response) => {
+               const image_url = response.data.url;
+               setUserImage(image_url);
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Image Uploaded.',
+                     state: 1,
+                  })
+               );
+               setUploadBtn('Upload Another');
+            })
+            .catch((error) => {
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'LOL! e fail... 😂',
+                     state: 0,
+                  })
+               );
+               setUploadBtn('Upload Again.');
+               console.log('Cloudinary upload Error:', error);
+            });
       }
    }
    return (

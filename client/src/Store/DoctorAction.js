@@ -5,6 +5,7 @@ import {
    SET_DOCTOR_AND_PATIENT,
 } from './ActionTypes';
 import axios from 'axios';
+import { setMessage } from './Actions';
 
 import { setOkToRoute } from './Actions';
 
@@ -55,34 +56,45 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
          })
          .then((response) => {
             if (response.data.status === true) {
-               //returns response
-               // alert('doctor profile fetched');
                dispatch(setDoctorProfile(response.data.msg));
                dispatch(setOkToRoute(true));
             } else {
             }
          })
          .catch((error) => {
-            console.log(error);
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Unable to fetch doctor profile, please try again.',
+                  state: 0,
+               })
+            );
          });
    };
 };
 
 //Fectches patients by doctor id
 export async function fetchPatientsByDoctorId(id_doctor) {
-   await axios
-      .get(`${baseURL}/appointmentcometd/${id_doctor}`, {
-         headers,
-      })
-      .then((response) => {
-         //returns response
-         // alert('patients by doctor id worked fetch worked');
-         console.log('res', response.data.msg);
-         return response.data.msg;
-      })
-      .catch((error) => {
-         console.log(error);
-      });
+   return async (dispatch) => {
+      await axios
+         .get(`${baseURL}/doctors/?id_doctor=${id_doctor}`, {
+            headers,
+         })
+         .then((response) => {
+            if (response.data) {
+               return response.data.msg;
+            }
+         })
+         .catch((error) => {
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Failed to fetch patients.',
+                  state: 0,
+               })
+            );
+         });
+   };
 }
 
 // Action creator to get all
@@ -104,7 +116,13 @@ export const getAllPendingAppointmentsForADoctor = (id_doctor) => {
             return res.data.msg;
          })
          .catch((err) => {
-            console.log(err.message);
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Could not Fetch Pending Appointments.',
+                  state: 0,
+               })
+            );
          });
    };
 };

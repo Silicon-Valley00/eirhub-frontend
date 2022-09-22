@@ -8,6 +8,7 @@ import { fetchPatientsByDoctorId } from '../../../Store/DoctorAction';
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../../../Store/ReducerStore';
 import axios from 'axios';
+import { setMessage } from '../../../Store/Actions';
 
 function DoctorPatients() {
    const id_doctor = useSelector((state) => state.doctorProfile.id_doctor);
@@ -31,7 +32,13 @@ function DoctorPatients() {
                setPatients(res.data.msg);
             })
             .catch((err) => {
-               console.log(err);
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Unable to fetch Patients, please make sure you are connected.',
+                     state: 0,
+                  })
+               );
             });
          // const items = dispatch(fetchPatientsByDoctorId(doctorId));
       }

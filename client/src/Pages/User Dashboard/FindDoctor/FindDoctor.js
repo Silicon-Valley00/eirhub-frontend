@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styles from './finddoctor.module.css';
-import doctorProfileTwo from '../../../assets/docProfileImage4.svg';
-import doctorProfileThree from '../../../assets/docProfileImage1.svg';
 import { FaTimes } from 'react-icons/fa';
 import { fetchDoctors } from '../../../Store/Actions';
 
