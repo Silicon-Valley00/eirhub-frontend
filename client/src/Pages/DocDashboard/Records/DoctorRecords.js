@@ -5,11 +5,11 @@ import {
    fetchReports,
 } from '../../../Store/Actions';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
-const DoctorRecords = () => {
-   const patientID = useSelector((state) => state.profile.id_patient);
-   console.log(patientID)
+
+const DoctorRecords = (props) => {
+   const patientID = useSelector((state) => state.doctorRecordPatientId);
 
    const [reports, setReports] = useState([]);
 
@@ -17,7 +17,7 @@ const DoctorRecords = () => {
       async function fetchdata() {
          const items = await fetchReports(patientID);
          setReports([items]);
-         console.log(items, reports);
+         // console.log(items, reports);
 
       }
    }, [])
@@ -26,7 +26,7 @@ const DoctorRecords = () => {
 
       if (reports === undefined) {
          return <div className={styles.emptyMessageContainer}>
-               <p className={styles.emptyMessage}>Nothing to show here.</p>
+            <p className={styles.emptyMessage}>Nothing to show here.</p>
          </div>
       } else if (reports.length !== 0) {
          return (
@@ -84,4 +84,5 @@ const DoctorRecords = () => {
    );
 
 }
+
 export default DoctorRecords;

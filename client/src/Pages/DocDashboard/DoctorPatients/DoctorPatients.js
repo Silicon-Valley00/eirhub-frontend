@@ -8,6 +8,7 @@ import { fetchPatientsByDoctorId } from '../../../Store/DoctorAction';
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../../../Store/ReducerStore';
 import axios from 'axios';
+import { setDoctorRecordPatientId } from '../../../Store/Actions';
 
 function DoctorPatients() {
    const id_doctor = useSelector((state) => state.doctorProfile.id_doctor);
@@ -43,6 +44,9 @@ function DoctorPatients() {
    const showPeople = () => {
       setShow(!show);
    };
+   
+
+   
 
    return (
       <>
@@ -69,7 +73,7 @@ function DoctorPatients() {
                <ul>
                   {patients?.map((patient, index) => {
                      return (
-                        <div className={styles.imageDiv} key={index}>
+                        <div className={styles.imageDiv} onclick={()=>dispatch(setDoctorRecordPatientId(patient.id_patient))} key={index}>
                            <img
                               src={patient.person_image}
                               alt={patient.first_name}
