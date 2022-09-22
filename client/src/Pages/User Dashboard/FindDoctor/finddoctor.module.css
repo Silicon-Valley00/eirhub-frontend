@@ -127,6 +127,12 @@
    background-image: none;
    flex: 1;
    cursor: pointer;
+   -webkit-line-clamp: 1;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   word-break: break-word;
 }
 .selectOne {
    position: relative;
@@ -169,6 +175,13 @@
    background-image: none;
    flex: 1;
    cursor: pointer;
+
+   -webkit-line-clamp: 1;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   word-break: break-word;
 }
 select::-ms-expand {
    display: none;

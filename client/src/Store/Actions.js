@@ -728,6 +728,7 @@ export async function fetchDoctors() {
          if (response.data.status === true) {
             //returns response
             // alert('doctors fetch worked');
+            console.log(response.data.msg);
             return response.data.msg;
          }
       } else {
