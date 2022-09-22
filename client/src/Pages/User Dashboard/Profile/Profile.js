@@ -82,7 +82,7 @@ function Profile(props) {
       props.savedHealthDetails.last_visit !== ''
          ? `${new Date(props.savedHealthDetails.last_visit).getFullYear()}-${
               new Date(props.savedHealthDetails.last_visit).getMonth() + 1
-           }-${new Date(props.savedHealthDetails.last_visit).getDate() + 1}`
+           }-${new Date(props.savedHealthDetails.last_visit).getDate()}`
          : ''
    );
 
@@ -105,9 +105,7 @@ function Profile(props) {
               props.savedGuardianDetails.date_of_birth
            ).getFullYear()}-${
               new Date(props.savedGuardianDetails.date_of_birth).getMonth() + 1
-           }-${
-              new Date(props.savedGuardianDetails.date_of_birth).getDate() + 1
-           }`
+           }-${new Date(props.savedGuardianDetails.date_of_birth).getDate()}`
          : ''
    );
    const [guardianGender, setGuardianGender] = useState(
@@ -161,7 +159,7 @@ function Profile(props) {
                   state: 1,
                })
             );
-            setUploadBtn('Uploaded Another');
+            setUploadBtn('Upload Another.');
          })
          .catch((error) => {
             dispatch(
@@ -510,7 +508,7 @@ function Profile(props) {
                                  }
                               }}
                               onChange={(event) =>
-                                 setTemperature(Number.parseFloat(event.target.value))
+                                 setTemperature(event.target.value)
                               }
                               disabled={disableFormBtn}
                            />
@@ -598,7 +596,9 @@ function Profile(props) {
                                  }
                                  disabled={disableFormBtn}
                               >
-                                 <option value={'unknown'}>Select Blood Group</option>
+                                 <option value={'unknown'}>
+                                    Select Blood Group
+                                 </option>
                                  <option value={'A'}>A</option>
                                  <option value={'B'}>B</option>
                                  <option value={'AB'}>AB</option>

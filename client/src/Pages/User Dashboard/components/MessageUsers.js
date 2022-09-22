@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './messageusers.module.css';
-import avatarThree from '../../../assets/doc profile 1.png';
 import { useDispatch } from 'react-redux';
 import {
    fetchDoctorsByPatient,
@@ -60,7 +59,6 @@ function MessageUsers() {
             );
          });
       } else if (doctors.length === 0) {
-         // Sends message to be displayed when saved videos is empty
          myDoctors = <p>Nothing to show here.</p>;
       }
    }

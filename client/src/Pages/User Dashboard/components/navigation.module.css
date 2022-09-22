@@ -1,4 +1,7 @@
 /* ASIDE */
+.navbody{
+   overflow-y: scroll;
+}
 .navbody aside {
    height: 100%;
    min-height: 100%;
@@ -34,8 +37,7 @@ aside .sidebar {
    flex-direction: column;
    height: 86vh;
    position: relative;
-   min-height: 32rem;
-   overflow-y: scroll;
+   min-height: 39rem;
 }
 aside h3 {
    font-weight: 500;

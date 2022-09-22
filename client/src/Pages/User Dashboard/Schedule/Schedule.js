@@ -123,7 +123,7 @@ function Schedule() {
                      </div>
                   </td>
                   <td>{`Dr. ${item.doctor_info.first_name} ${item.doctor_info.last_name}`}</td>
-                  <td>Ridge Hospital</td>
+                  <td>{item.appointment_location}</td>
                   <td>{item.appointment_reason}</td>
                   <td>{item.appointment_status}</td>
                </tr>

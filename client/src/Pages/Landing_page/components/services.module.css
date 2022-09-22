@@ -199,19 +199,24 @@
       color: var(--lightcol);
       padding: 10px;
       width: 40%;
-      height: 3.5rem;
+      /* height: 3.5rem; */
       border-radius: 5px;
       background: var(--white);
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all;
+      transition-duration: 500ms;
    }
 
    .message_btn:hover {
-      background: var(--lightcol);
-      color: var(--white);
-      transition: all;
-      transition-duration: 500ms;
+      /* background: var(--lightcol); */
+      /* color: var(--white); */
+      /* transition: all;
+      transition-duration: 500ms; */
+      transform: translateY(-3px);
+      cursor: pointer;
+
    }
    .circle_1 {
       position: absolute;
@@ -269,5 +274,20 @@
    .message_btn {
       margin-top: 3rem;
       font-size: 20px;
+   }
+}
+
+/* made changes here */
+@media (min-width:1920px) {
+   .services_message_box{
+      height: 22rem;
+   }
+   .message_btn{
+      margin-top: 5px;
+   }
+}
+@media(max-width:1249px){
+   .message_btn{
+      width: 50%;
    }
 }

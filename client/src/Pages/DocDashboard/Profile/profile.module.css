@@ -5,6 +5,7 @@
    border: 1px solid var(--gray);
    border-radius: 10px;
    overflow-y: auto;
+   background-color: var(--gray);
 }
 
 .main::-webkit-scrollbar {
