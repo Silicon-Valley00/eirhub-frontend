@@ -487,7 +487,7 @@ function Signup(props) {
                               onClick={() => {
                                  setBtnValue('Creating Account');
                                  setBtnActive(true);
-                                 submitCredentialsFeedback();
+                                 submitHandler();
                               }}
                            >
                               <p>{btnValue}</p>
