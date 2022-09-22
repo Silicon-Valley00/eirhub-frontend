@@ -23,7 +23,7 @@ function Dropzone() {
    function postReport(report_url) {
       const reportData = {
          "report_type": "Lab report",
-         "description": `Lab report posted by Cloudinary`,
+         "description": 'Lab report posted by Cloudinary',
          "uploaddate": `${Date.now()}`,
          "report_url": report_url
       }
@@ -41,19 +41,19 @@ function Dropzone() {
 
    const handleSubmission = () => {
 
-      selectedFiles.map(file => {
+      // selectedFiles.map(file => {
 
-         const formData = new FormData();
-         formData.append('file', file);
-         formData.append('upload_preset', 'ji5ue4f9')
+      //    const formData = new FormData();
+      //    formData.append('file', file);
+      //    formData.append('upload_preset', 'ji5ue4f9')
 
-         axios
-            .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
-            .then((response) => {
-               postReport(response.data.url)
-            })
-            .catch((error) => console.log(error));
-      })
+      //    axios
+      //       .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
+      //       .then((response) => {
+      //          postReport(response.data.url)
+      //       })
+      //       .catch((error) => console.log(error));
+      // })
       setSelectedFiles([])
       setIsSelected(false)
       // console.log(isSelected,selectedFiles);
@@ -77,16 +77,6 @@ function Dropzone() {
       multiple: true,
       maxFiles: 3
    });
-   // useDropzone.on('maxfilesreached', function () {
-   //    useDropzone.removeEventListeners();
-   // });
-   // useDropzone.on('removedfile', function (file) {
-   //    useDropzone.setupEventListeners();
-   // });
-
-   // useEffect(() => {
-   //    console.log(isSelected, selectedFiles)
-   // }, [selectedFiles])
 
    return (
       <div className={styles.dropzone}>

@@ -14,7 +14,7 @@
    border-radius: 1.25rem;
    height: 100%;
    padding-top: 2rem;
-   z-index: 10000;
+   z-index: 100;
 }
 
 .patientsSection::-webkit-scrollbar,
@@ -97,7 +97,7 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      z-index: 10000;
+      z-index: 99;
    }
    .patientsSection {
       margin: auto;
