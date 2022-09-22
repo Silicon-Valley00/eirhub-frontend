@@ -44,9 +44,9 @@ function DoctorPatients() {
    const showPeople = () => {
       setShow(!show);
    };
-   
 
-   
+
+
 
    return (
       <>
@@ -73,7 +73,10 @@ function DoctorPatients() {
                <ul>
                   {patients?.map((patient, index) => {
                      return (
-                        <div className={styles.imageDiv} onclick={()=>dispatch(setDoctorRecordPatientId(patient.id_patient))} key={index}>
+                        <div className={styles.imageDiv} onClick={() => {
+                           dispatch(setDoctorRecordPatientId(patient.id_patient))
+                        }
+                        } key={index}>
                            <img
                               src={patient.person_image}
                               alt={patient.first_name}
