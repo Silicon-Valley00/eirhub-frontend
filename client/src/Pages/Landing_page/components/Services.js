@@ -12,8 +12,8 @@ const details = [
       profile_pic: docOne,
    },
    {
-      name: 'Dr. Micheal Asempa',
-      profession: 'Cardiac Surgeon',
+      name: 'Dr. Steven Strange',
+      profession: 'Witchcraft',
       profile_pic: docTwo,
    },
    {

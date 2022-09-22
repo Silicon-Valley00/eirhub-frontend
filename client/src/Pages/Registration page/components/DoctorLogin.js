@@ -267,7 +267,7 @@ function DoctorLogin(props) {
             </div>
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
-               <p>Health is an everyday thing</p>
+               <p>Welcome back to work. Hope you didn't forget what you learnt in med school.</p>
                <img id={loginStyles.loginImg} src={docLoginImage} alt="login" />
             </div>
          </div>
