@@ -44,11 +44,7 @@ function Login(props) {
          setBtnValue(feedback[2]);
          //logs user into cometchat
 
-         LoginUser(
-            `${feedback[1].first_name.toLowerCase()}${feedback[1].last_name.toLowerCase()}${
-               feedback[1].id_patient
-            }`
-         );
+         LoginUser(feedback[1].id_message);
 
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
