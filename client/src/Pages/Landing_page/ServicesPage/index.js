@@ -86,10 +86,10 @@ const ServicesPage = () => {
                      <div className={style.title}>Our Services</div>
                      <div>
                         <p className={style.p_text}>
-                           Across Eirhub,From Online appointment booking to
-                           medication tracking,we offer a wide range of services
+                           Across Eirhub, from online appointment booking to
+                           medication tracking, we offer a wide range of services
                            to meet you as a patient or provider at every point
-                           of your health care journey
+                           of your health care journey.
                         </p>
                      </div>
                      <div className={style.h_line}></div>
@@ -179,8 +179,8 @@ const ServicesPage = () => {
                               Get access to verified tips for a healthy living
                            </p>
                            <p className={style.with_text_content}>
-                              Find a doctor that can help you get a solution to
-                              your health problems
+                           Receive health tips that would help you make simple and easy tweaks to your 
+                           lifestyle that can make all the difference.
                            </p>
                         </div>
                      </div>

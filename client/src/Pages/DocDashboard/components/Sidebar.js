@@ -5,32 +5,11 @@ import { MdSpaceDashboard } from 'react-icons/md';
 import { BsFillFileEarmarkFill } from 'react-icons/bs';
 import { TiMessages } from 'react-icons/ti';
 import { ImExit } from 'react-icons/im';
-import { IoSettingsOutline } from 'react-icons/io5';
 import { FaUser } from 'react-icons/fa';
-import { CgPill } from 'react-icons/cg';
 import { TbCalendarTime } from 'react-icons/tb';
-import { GiLabCoat } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
-import { persistor } from '../../../Store/ReducerStore';
-import { useNavigate } from 'react-router-dom';
-import { Logout } from '../../../context/authcontext';
-import { useDispatch } from 'react-redux';
-import { setPatientAuth } from '../../../Store/Actions';
 
 const Sidebar = (props) => {
-   const navigate = useNavigate();
-   const dispatch = useDispatch();
-
-   function logout() {
-      try {
-         setTimeout(() => persistor.purge(), 200);
-         dispatch(setPatientAuth(false));
-         Logout();
-         navigate('/landing-page');
-      } catch (err) {
-         console.log(err);
-      }
-   }
    return (
       <>
          <div className={styles.navbody}>

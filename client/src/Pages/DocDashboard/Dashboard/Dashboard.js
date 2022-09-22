@@ -5,7 +5,11 @@ import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
 import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { setAppointmentDates, setIsANewUser, setMessage } from '../../../Store/Actions';
+import {
+   setAppointmentDates,
+   setIsANewUser,
+   setMessage,
+} from '../../../Store/Actions';
 
 const MidDashboard = (props) => {
    const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
@@ -39,7 +43,13 @@ const MidDashboard = (props) => {
             setAcceptedAppointment(res.data.msg);
          })
          .catch((err) => {
-            console.log(err.message);
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Unable to fetch Appointment, please make sure you are connected.',
+                  state: 0,
+               })
+            );
          });
    };
 
@@ -56,7 +66,13 @@ const MidDashboard = (props) => {
             setNumberofdetails(res.data.msg);
          })
          .catch((err) => {
-            console.log(err.message);
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: "Couldn't fetch stats. Make Sure you are connected.",
+                  state: 0,
+               })
+            );
          });
    };
 
@@ -77,7 +93,6 @@ const MidDashboard = (props) => {
       }
       dispatch(setIsANewUser(false));
    }, []);
-
 
    let appointment_dates = [];
    useEffect(() => {

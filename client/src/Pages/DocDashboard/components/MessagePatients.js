@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styles from './messagepatients.module.css';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import {
-   fetchPatientsByDoctorId,
-   setPatientToChatWith,
-} from '../../../Store/DoctorAction';
+import { setPatientToChatWith } from '../../../Store/DoctorAction';
 import axios from 'axios';
+import { setMessage } from '../../../Store/Actions';
 
 function MessagePatients() {
    const doctorID = useSelector((state) => state.doctorProfile.id_doctor);
@@ -31,14 +29,18 @@ function MessagePatients() {
             .then((response) => {
                //returns response
                // alert('patients by doctor id worked fetch worked');
-               console.log('res', response.data.msg);
                setPatients(response.data.msg);
             })
             .catch((error) => {
-               console.log(error);
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Could not Fetch Patients.',
+                     state: 0,
+                  })
+               );
             });
       }
-
       fetchdata();
    }, []);
 
