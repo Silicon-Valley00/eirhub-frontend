@@ -175,7 +175,7 @@ const HowItWorks = () => {
                               <p className={styles.heading}>Meet your doctor</p>
                               <p className={styles.content}>
                                  See your doctor in-person or online and get the
-                                 help you need
+                                 help you need.
                               </p>
                            </div>
                         </div>
