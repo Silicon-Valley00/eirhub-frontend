@@ -5,7 +5,7 @@ import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
 import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { setIsANewUser, setMessage } from '../../../Store/Actions';
+import { setAppointmentDates, setIsANewUser, setMessage } from '../../../Store/Actions';
 
 const MidDashboard = (props) => {
    const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
@@ -78,8 +78,30 @@ const MidDashboard = (props) => {
       dispatch(setIsANewUser(false));
    }, []);
 
+
+   let appointment_dates = [];
+   useEffect(() => {
+      if (getacceptedAppointment === undefined) return;
+      if (
+         getacceptedAppointment !== undefined ||
+         getacceptedAppointment !== null ||
+         getacceptedAppointment.length !== 0
+      ) {
+         for (let item of getacceptedAppointment) {
+            if (
+               new Date().getTime() <= new Date(item.appointment_date).getTime()
+            ) {
+               appointment_dates.push(
+                  new Date(item.appointment_date).getTime()
+               );
+            }
+         }
+      }
+      dispatch(setAppointmentDates(appointment_dates));
+   }, [getacceptedAppointment]);
    // Handles whether to display a text or display the actual data
    let displayData;
+
    // Displays a text if there are no Pending appointments
    if (getacceptedAppointment.length === 0) {
       displayData = (
