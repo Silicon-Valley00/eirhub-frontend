@@ -75,6 +75,10 @@
    color: var(--tablehead);
 }
 
+.image {
+   object-fit: contain;
+}
+
 .searchRegion button {
    width: 25%;
    height: 100%;
@@ -244,8 +248,8 @@ select::-ms-expand {
    height: 100%;
    border-radius: 0.4rem;
    float: left;
-   background-color: var(--midcol);
-   object-fit: cover;
+   background-color: var(--white);
+   /* object-fit: cover; */
 }
 .doctorImage img {
    width: 100%;
