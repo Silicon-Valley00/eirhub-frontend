@@ -22,10 +22,10 @@ export const LoginUser = async (UID) => {
          if (!user) {
             CometChat.login(UID, AUTH_KEY).then(
                (user) => {
-                  // alert('Login Successful:', { user });
+                  alert('Login Successful:', { user });
                },
                (error) => {
-                  // alert('Login failed with exception:', { error });
+                  alert('Login failed with exception:', { error });
                }
             );
          }

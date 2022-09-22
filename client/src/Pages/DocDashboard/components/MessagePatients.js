@@ -6,6 +6,7 @@ import {
    fetchPatientsByDoctorId,
    setPatientToChatWith,
 } from '../../../Store/DoctorAction';
+import axios from 'axios';
 
 function MessagePatients() {
    const doctorID = useSelector((state) => state.doctorProfile.id_doctor);
@@ -18,19 +19,37 @@ function MessagePatients() {
 
    useEffect(() => {
       async function fetchdata() {
-         const items = await fetchPatientsByDoctorId(doctorID);
-         setPatients([items]);
+         await axios
+            .get(`http://127.0.0.1:5000/appointmentcometd/${doctorID}}`, {
+               headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  //Helpful in some cases.
+                  'Access-Control-Allow-Headers': '*',
+                  'Access-Control-Allow-Methods': '*',
+               },
+            })
+            .then((response) => {
+               //returns response
+               // alert('patients by doctor id worked fetch worked');
+               console.log('res', response.data.msg);
+               setPatients(response.data.msg);
+            })
+            .catch((error) => {
+               console.log(error);
+            });
       }
+
       fetchdata();
    }, []);
 
    let myPatients;
    console.log(patients);
-   if (patients[0] === undefined) {
+   if (patients === undefined) {
       myPatients = <p className={styles.emptyMessage}>Nothing to show here.</p>;
    } else {
       if (patients.length !== 0) {
          myPatients = patients.map((item, j) => {
+            console.log('item', item);
             return (
                <div
                   className={
@@ -41,13 +60,7 @@ function MessagePatients() {
                   onClick={() => {
                      setActive(true);
                      setActiveIndex(`${item.id_patient}${j}`);
-                     dispatch(
-                        setPatientToChatWith(
-                           `${item.first_name.toLowerCase()}${item.last_name.toLowerCase()}${
-                              item.id_patient
-                           }`
-                        )
-                     );
+                     dispatch(setPatientToChatWith(item.id_message));
                   }}
                >
                   <div className={styles.userImage}>

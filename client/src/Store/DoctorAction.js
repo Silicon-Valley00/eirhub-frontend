@@ -71,15 +71,14 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
 //Fectches patients by doctor id
 export async function fetchPatientsByDoctorId(id_doctor) {
    await axios
-      .get(`${baseURL}/doctors/?id_doctor=${id_doctor}`, {
+      .get(`${baseURL}/appointmentcometd/${id_doctor}`, {
          headers,
       })
       .then((response) => {
-         if (response.data) {
-            //returns response
-            // alert('patients by doctor id worked fetch worked');
-            return response.data.msg;
-         }
+         //returns response
+         // alert('patients by doctor id worked fetch worked');
+         console.log('res', response.data.msg);
+         return response.data.msg;
       })
       .catch((error) => {
          console.log(error);
