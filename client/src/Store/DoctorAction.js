@@ -65,51 +65,26 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
          .catch((error) => {
             console.log(error);
          });
-
-      //       try {
-      //    const response = await axios({
-      //       method: 'GET',
-      //       url:,
-      //       headers: headers,
-      //    });
-      //    if (response.status === 200) {
-      //       //checks details of response
-      //       if (response.data.status === true) {
-      //          //returns response
-      //          // alert('doctor profile fetched');
-      //          dispatch(setDoctorProfile(response.data.msg));
-      //          dispatch(setOkToRoute(true));
-      //       }
-      //    } else {
-      //       //takes all statuses aside 200
-      //       // alert('Something went wrong. Try again');
-      //    }
-      // } catch (error) {
-      //    // alert('caughterror', error);
-      //    console.log(error);
-      // }
    };
 };
 
 //Fectches patients by doctor id
-export const fetchPatientsByDoctorId = (id_doctor) => {
-   return async function (dispatch) {
-      await axios
-         .get(`${baseURL}/doctors/?id_doctor=${id_doctor}`, {
-            headers: {
-               'Access-Control-Allow-Origin': '*',
-               'Access-Control-Allow-Headers': '*',
-               'Access-Control-Allow-Methods': '*',
-            },
-         })
-         .then((res) => {
-            return res.data.msg;
-         })
-         .catch((err) => {
-            console.log(err);
-         });
-   };
-};
+export async function fetchPatientsByDoctorId(id_doctor) {
+   await axios
+      .get(`${baseURL}/doctors/?id_doctor=${id_doctor}`, {
+         headers,
+      })
+      .then((response) => {
+         if (response.data) {
+            //returns response
+            // alert('patients by doctor id worked fetch worked');
+            return response.data.msg;
+         }
+      })
+      .catch((error) => {
+         console.log(error);
+      });
+}
 
 // Action creator to get all
 export const getAllPendingAppointmentsForADoctor = (id_doctor) => {

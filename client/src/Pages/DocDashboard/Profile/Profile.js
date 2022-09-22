@@ -65,6 +65,7 @@ const DocProfile = (props) => {
          })
          .then((res) => dispatch(setDoctorProfile(res.data)))
          .catch((error) => console.log('Put Error', error));
+      setUploadBtn('Upload Image')
    };
 
    // function handles image upload
@@ -103,7 +104,7 @@ const DocProfile = (props) => {
                   state: 1,
                })
             );
-            setUploadBtn('Uploaded Another');
+            setUploadBtn('Upload Another');
          })
          .catch((error) => {
             dispatch(
