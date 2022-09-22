@@ -18,10 +18,12 @@ import {
    SET_IS_LOADING,
    SET_DOCTOR_AND_PATIENT,
    SET_PATIENTS,
+   SET_DOCTOR_RECORD_PATIENT_ID,
    SET_IS_NEW_USER,
 } from './ActionTypes';
 
 const initialState = {
+   doctorRecordPatientId: null,
    isLoading: false,
    isNewUser: false,
    //Patient Dashboard
@@ -105,6 +107,8 @@ const Reducers = (state = initialState, action) => {
    switch (action.type) {
       case PURGE:
          return initialState;
+      case SET_DOCTOR_RECORD_PATIENT_ID:
+         return { ...state, doctorRecordPatientId: action.payload};
 
       case SET_IS_LOADING:
          return { ...state, isLoading: action.payload };

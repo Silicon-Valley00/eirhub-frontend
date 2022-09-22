@@ -16,9 +16,18 @@ import {
    SET_TEMP_MEDICATIONS,
    SET_IS_LOADING,
    SET_IS_NEW_USER,
+   SET_DOCTOR_RECORD_PATIENT_ID
 } from './ActionTypes';
 
 import axios from 'axios';
+
+// Sets doctors selected patient's records
+export const setDoctorRecordPatientId = (doctorRecordPatientId)=> {
+   return {
+      type:SET_DOCTOR_RECORD_PATIENT_ID,
+      payload: doctorRecordPatientId
+   }
+}
 
 // Sets profile details
 export const setProfileInfo = (profileData) => {

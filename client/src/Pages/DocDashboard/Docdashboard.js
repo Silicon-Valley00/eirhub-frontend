@@ -27,7 +27,7 @@ const DocDashboard = (props) => {
          new Date(
             `${new Date(patientDOB).getFullYear()}-${
                new Date(patientDOB).getMonth() + 1
-            }-${new Date(patientDOB).getDate() + 1}`
+            }-${new Date(patientDOB).getDate()}`
          ).getTime()
       ) {
          setBirthdayModal(true);

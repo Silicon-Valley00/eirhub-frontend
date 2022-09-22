@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import store from '../../../Store/ReducerStore';
 import axios from 'axios';
 import { setMessage } from '../../../Store/Actions';
+import { setDoctorRecordPatientId } from '../../../Store/Actions';
 
 function DoctorPatients() {
    const id_doctor = useSelector((state) => state.doctorProfile.id_doctor);
@@ -76,7 +77,15 @@ function DoctorPatients() {
                <ul>
                   {patients?.map((patient, index) => {
                      return (
-                        <div className={styles.imageDiv} key={index}>
+                        <div
+                           className={styles.imageDiv}
+                           onClick={() => {
+                              dispatch(
+                                 setDoctorRecordPatientId(patient.id_patient)
+                              );
+                           }}
+                           key={index}
+                        >
                            <img
                               src={patient.person_image}
                               alt={patient.first_name}

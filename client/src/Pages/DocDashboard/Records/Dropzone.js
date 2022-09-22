@@ -3,8 +3,14 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FaFileUpload } from 'react-icons/fa';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
-function Dropzone() {
+
+function Dropzone(props) {
+   // const patientID = useSelector((state) => state.profile.id_patient);
+   const doctorID = props.doctorProfile.id_doctor;
+
    const [selectedFiles, setSelectedFiles] = useState([]);
    const [isSelected, setIsSelected] = useState(false);
 
@@ -19,46 +25,60 @@ function Dropzone() {
    //    console.log(selectedFile)
    // };
 
+   // function postReport(report_url) {
+   //    const current_date = new Date(Date.now())
+   //    const upload_date = `${current_date.getFullYear()}-${current_date.getMonth() + 1}-${current_date.getDate()}`
+   //    const reportData = {
+   //       "report_type": "Lab report",
+   //       "description": 'Lab report posted by Cloudinary',
+   //       "upload_date": upload_date,
+   //       "report_url": report_url,
+   //       "id_doctor": doctorID,
+   //       "id_patient": props.patientID
+   //    }
+   //    axios.post(`http://127.0.0.1:5000/report`,
+   //       reportData,
+   //       {
+   //          headers: {
+   //             'Content-Type': 'application/json',
+   //             'Access-Control-Allow-Origin': '*',
+   //             //Helpful in some cases.
+   //             'Access-Control-Allow-Headers': '*',
+   //             'Access-Control-Allow-Methods': '*',
+   //          }
+   //       }
+   //    )
+   //       .then(() => {
+   //          alert('Report Uploaded')
+   //       })
+   //       .catch((error) => {
+   //          alert(`Failed: ${error}`)
+   //       })
+   // }
 
-   function postReport(report_url) {
-      const reportData = {
-         "report_type": "Lab report",
-         "description": 'Lab report posted by Cloudinary',
-         "uploaddate": `${Date.now()}`,
-         "report_url": report_url
-      }
-      axios.post(`http://127.0.0.1:5000/report/`, reportData)
-         .then(() => {
-            alert('Report Uploaded')
-         })
-         .catch((error) => {
-            alert(`Failed:${error}`)
-         })
-   }
 
 
 
+   // const handleSubmission = () => {
 
-   const handleSubmission = () => {
+   //    selectedFiles.map(file => {
 
-      // selectedFiles.map(file => {
+   //       const formData = new FormData();
+   //       formData.append('file', file);
+   //       formData.append('upload_preset', 'ji5ue4f9')
 
-      //    const formData = new FormData();
-      //    formData.append('file', file);
-      //    formData.append('upload_preset', 'ji5ue4f9')
+   //       axios
+   //          .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
+   //          .then((response) => {
+   //             postReport(response.data.url)
+   //          })
+   //          .catch((error) => console.log(error));
+   //    })
+   //    setSelectedFiles([])
+   //    setIsSelected(false)
+   //    // console.log(isSelected,selectedFiles);
 
-      //    axios
-      //       .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
-      //       .then((response) => {
-      //          postReport(response.data.url)
-      //       })
-      //       .catch((error) => console.log(error));
-      // })
-      setSelectedFiles([])
-      setIsSelected(false)
-      // console.log(isSelected,selectedFiles);
-
-   };
+   // };
 
    const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
       // Do something with the files'
@@ -123,9 +143,15 @@ function Dropzone() {
                   </div>
             }
          </div>
-         {isSelected && <button className={styles.btn} onClick={handleSubmission}>Submit</button>}
+         {/* {isSelected && <button className={styles.btn} onClick={handleSubmission}>Submit</button>} */}
       </div>
    );
 }
 
-export default Dropzone;
+const mapStateToProps = (state) => {
+   return {
+      doctorProfile: state.doctorProfile,
+   };
+};
+
+export default connect(mapStateToProps)(Dropzone);

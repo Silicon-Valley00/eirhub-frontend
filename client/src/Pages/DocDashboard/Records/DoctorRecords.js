@@ -5,28 +5,30 @@ import {
    fetchReports,
 } from '../../../Store/Actions';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
+
 
 const DoctorRecords = () => {
-   const patientID = useSelector((state) => state.profile.id_patient);
-   console.log(patientID)
+   const patientID = useSelector((state) => state.doctorRecordPatientId);
 
    const [reports, setReports] = useState([]);
 
    useState(() => {
       async function fetchdata() {
          const items = await fetchReports(patientID);
-         setReports([items]);
-         console.log(items, reports);
+         setReports(items);
+         console.log(items,reports)
+         // console.log(items, reports);
 
       }
-   }, [])
+      fetchdata();
+   }, [patientID])
 
    const myReports = () => {
 
       if (reports === undefined) {
          return <div className={styles.emptyMessageContainer}>
-               <p className={styles.emptyMessage}>Nothing to show here.</p>
+            <p className={styles.emptyMessage}>Nothing to show here.</p>
          </div>
       } else if (reports.length !== 0) {
          return (
@@ -36,21 +38,26 @@ const DoctorRecords = () => {
                      <th>Title</th>
                      <th>Type</th>
                      <th>Date Uploaded</th>
-                     <th>Actions</th>
+                     {/* <th>Actions</th> */}
                   </thead>
                   <tbody>
                      {reports?.map((report) => {
                         return (
-                           <tr>
-                              <td>Lab_Report</td>
-                              <td>Lab_Report</td>
-                              <td>07/10/2022</td>
-                              <td className={styles.docRecordsicons}>
-                                 <FaPencilAlt className={styles.docRecordspencil} />
-                                 <FaTrash className={styles.docRecordstrash} />
-                              </td>
+                           (report.id_patient === patientID) ?
 
-                           </tr>
+                              <tr>
+                                 <td><a href={report.report_url}>{report.description}</a></td>
+                                 <td>{report.report_type}</td>
+                                 <td>{report.upload_date}</td>
+                                 
+                                 {/* <td className={styles.docRecordsicons}>
+                                    <FaPencilAlt className={styles.docRecordspencil} />
+                                    <FaTrash className={styles.docRecordstrash} />
+                                 </td> */}
+
+                              </tr>
+                              : ""
+
                         )
                      })}
 
@@ -73,7 +80,7 @@ const DoctorRecords = () => {
          <div className={styles.docRecordsContainer1}>
             <h1>Upload Files</h1>
 
-            <Dropzone />
+            <Dropzone patientID={patientID} />
 
             <div className={styles.docRecordsFiles}>
                {myReports()}
@@ -84,4 +91,5 @@ const DoctorRecords = () => {
    );
 
 }
+
 export default DoctorRecords;
