@@ -46,10 +46,12 @@ const headers = {
    'Access-Control-Allow-Headers': '*',
    'Access-Control-Allow-Methods': '*',
 };
+
 const baseURL = 'http://127.0.0.1:5000';
+
 // Action creator: Fetch doctor profile info
 export const fetchDoctorsProfileInfo = (idDoctor) => {
-   return async function (dispatch) {
+   return async (dispatch) => {
       await axios
          .get(`${baseURL}/doctor/${idDoctor}`, {
             headers,
@@ -57,6 +59,7 @@ export const fetchDoctorsProfileInfo = (idDoctor) => {
          .then((response) => {
             if (response.data.status === true) {
                dispatch(setDoctorProfile(response.data.msg));
+               dispatch(getAllPendingAppointmentsForADoctor(idDoctor));
                dispatch(setOkToRoute(true));
             } else {
             }
@@ -112,8 +115,18 @@ export const getAllPendingAppointmentsForADoctor = (id_doctor) => {
             }
          )
          .then((res) => {
-            dispatch(setDoctorandPatient(res.data.msg));
-            return res.data.msg;
+            if (res.data.status === true) {
+               dispatch(setDoctorandPatient(res.data.msg));
+               return res.data.msg;
+            } else {
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Failed to fetch appointments.',
+                     state: 0,
+                  })
+               );
+            }
          })
          .catch((err) => {
             dispatch(

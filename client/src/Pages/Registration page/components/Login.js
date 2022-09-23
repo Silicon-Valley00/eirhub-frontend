@@ -7,10 +7,8 @@ import { IoIosMail } from 'react-icons/io';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BiLoaderAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
-   fetchGuardianInfo,
-   fetchHealthDetails,
    fetchProfile,
    setLoading,
    setMessage,
@@ -44,8 +42,6 @@ function Login(props) {
          setBtnValue(feedback[2]);
          //logs user into cometchat
 
-         LoginUser(feedback[1].id_message);
-
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
@@ -56,6 +52,7 @@ function Login(props) {
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/userdashboard');
+               LoginUser(feedback[1].id_message);
                dispatch(setLoading(false));
             } else {
                setTimeout(() => {
