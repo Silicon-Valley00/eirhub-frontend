@@ -6,6 +6,7 @@ import { data } from './FAQ_data';
 import { useState } from 'react';
 import Registration from '../../Registration page/Registration';
 import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
+import { Helmet } from 'react-helmet';
 
 const FAQ = () => {
    const [selected, setSelected] = useState(null);
@@ -65,6 +66,9 @@ const FAQ = () => {
    }
    return (
       <>
+         <Helmet>
+            <title>FAQ | Eirhub</title>
+         </Helmet>
          <div
             id={styles.blur}
             className={

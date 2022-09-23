@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import avatarOne from '../../../assets/Rectangle-1.png';
-import avatarTwo from '../../../assets/Rectangle-2.png';
-import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
-import avatarThree from '../../../assets/Rectangle.png';
 import glucometer from '../../../images/Glucometer.svg';
 import { ImDroplet } from 'react-icons/im';
 import { RiHeartPulseFill } from 'react-icons/ri';
@@ -12,15 +8,14 @@ import { connect, useDispatch } from 'react-redux';
 import {
    fetchAppointments,
    fetchMedications,
-   fetchProfile,
    setAppointmentDates,
    setIsANewUser,
-   setMedicationsTemp,
    setMessage,
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
 import store from '../../../Store/ReducerStore';
+import { Helmet } from 'react-helmet';
 
 const mapStateToProps = (state) => {
    return {
@@ -275,6 +270,10 @@ function Dashboard(props) {
 
    return (
       <>
+         <Helmet>
+            <title>Dashboard | Eirhub</title>
+            <meta name="description" content="Patient Dashboard" />
+         </Helmet>
          <main id={styles.midsection}>
             <div className={styles.vitalsBox}>
                <div className={styles.vitals}>

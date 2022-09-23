@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { getAllPendingAppointmentsForADoctor } from '../../../Store/DoctorAction';
+import { Helmet } from 'react-helmet';
 
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
@@ -168,6 +169,10 @@ const DoctorSchedule = (props) => {
 
    return (
       <>
+         <Helmet>
+            <title>Schedule An Appointment</title>
+            <meta name="description" description="Doctor Schedule" />
+         </Helmet>
          <div className={DSstyles.DSContainer1}>
             <h2>Appoinment Details</h2>
             <form

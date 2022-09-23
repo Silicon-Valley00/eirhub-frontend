@@ -8,6 +8,7 @@ import {
    setReloadMedications,
 } from '../../../Store/Actions';
 import { useSelector, connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 const mapStateToProps = (state) => {
    return {
@@ -171,6 +172,10 @@ function Medication(props) {
 
    return (
       <>
+         <Helmet>
+            <title>Medications | Eirhub</title>
+            <meta name="description" content="Medications for the patient" />
+         </Helmet>
          <div id={styles.medicationsBody}>
             <div className={styles.medicationsBoxContent}>{list}</div>
          </div>

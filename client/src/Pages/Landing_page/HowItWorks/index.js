@@ -8,6 +8,7 @@ import { GiLabCoat, GiVideoConference } from 'react-icons/gi';
 import { IoIosClock } from 'react-icons/io';
 import { MdVerified } from 'react-icons/md';
 import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
+import { Helmet } from 'react-helmet';
 
 const HowItWorks = () => {
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
@@ -57,6 +58,11 @@ const HowItWorks = () => {
    }
    return (
       <>
+         <Helmet>
+            <title>How It Works</title>
+            <meta name="description" content="How It Works" />
+         </Helmet>
+
          <div
             id={styles.blur}
             className={
@@ -128,11 +134,10 @@ const HowItWorks = () => {
                               <MdVerified className={styles.icon} />
                               <p className={styles.heading}>
                                  Book an appointment
-                        
                               </p>
                               <p className={styles.content}>
-                                 Request for an appointment with your 
-                                 preferred Doctor.
+                                 Request for an appointment with your preferred
+                                 Doctor.
                               </p>
                            </div>
                         </div>
@@ -147,11 +152,14 @@ const HowItWorks = () => {
                            className={styles.left_card}
                         >
                            <div className={styles.left__card}>
-                              <IoIosClock className={styles.icon}  />
-                              <p className={styles.heading}> Doctor picks a date and time</p>
+                              <IoIosClock className={styles.icon} />
+                              <p className={styles.heading}>
+                                 {' '}
+                                 Doctor picks a date and time
+                              </p>
                               <p className={styles.content}>
-                                 Wait for the selected doctor to pick a date and time for your
-                                 appointment.
+                                 Wait for the selected doctor to pick a date and
+                                 time for your appointment.
                               </p>
                            </div>
                            <div className={styles.left__arrow}></div>

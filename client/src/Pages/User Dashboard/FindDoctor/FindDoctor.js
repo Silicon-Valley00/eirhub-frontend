@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './finddoctor.module.css';
 import { FaTimes } from 'react-icons/fa';
 import { fetchDoctors } from '../../../Store/Actions';
+import { Helmet } from 'react-helmet';
 
 function FindingDoctor(props) {
    //handles state for all Doctor's fetched
@@ -158,6 +159,10 @@ function FindingDoctor(props) {
 
    return (
       <>
+         <Helmet>
+            <title>Find A Doctor | Eirhub</title>
+            <meta name="description" content="Find a doctor of you choice" />
+         </Helmet>
          <div id={styles.findDoctorBody}>
             <div className={styles.title}>
                <h1>Find a Doctor, Book an Appointment</h1>

@@ -1,12 +1,9 @@
 import styles from './DoctorRecords.module.css';
-import { FaTrash, FaPencilAlt } from 'react-icons/fa';
 import Dropzone from './Dropzone';
-import {
-   fetchReports,
-} from '../../../Store/Actions';
+import { fetchReports } from '../../../Store/Actions';
 import { useState } from 'react';
-import { connect, useSelector } from 'react-redux';
-
+import { useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 const DoctorRecords = () => {
    const patientID = useSelector((state) => state.doctorRecordPatientId);
@@ -17,19 +14,19 @@ const DoctorRecords = () => {
       async function fetchdata() {
          const items = await fetchReports(patientID);
          setReports(items);
-         console.log(items,reports)
+         console.log(items, reports);
          // console.log(items, reports);
-
       }
       fetchdata();
-   }, [patientID])
+   }, [patientID]);
 
    const myReports = () => {
-
       if (reports === undefined) {
-         return <div className={styles.emptyMessageContainer}>
-            <p className={styles.emptyMessage}>Nothing to show here.</p>
-         </div>
+         return (
+            <div className={styles.emptyMessageContainer}>
+               <p className={styles.emptyMessage}>Nothing to show here.</p>
+            </div>
+         );
       } else if (reports.length !== 0) {
          return (
             <>
@@ -42,54 +39,56 @@ const DoctorRecords = () => {
                   </thead>
                   <tbody>
                      {reports?.map((report) => {
-                        return (
-                           (report.id_patient === patientID) ?
+                        return report.id_patient === patientID ? (
+                           <tr>
+                              <td>
+                                 <a href={report.report_url}>
+                                    {report.description}
+                                 </a>
+                              </td>
+                              <td>{report.report_type}</td>
+                              <td>{report.upload_date}</td>
 
-                              <tr>
-                                 <td><a href={report.report_url}>{report.description}</a></td>
-                                 <td>{report.report_type}</td>
-                                 <td>{report.upload_date}</td>
-                                 
-                                 {/* <td className={styles.docRecordsicons}>
+                              {/* <td className={styles.docRecordsicons}>
                                     <FaPencilAlt className={styles.docRecordspencil} />
                                     <FaTrash className={styles.docRecordstrash} />
                                  </td> */}
-
-                              </tr>
-                              : ""
-
-                        )
+                           </tr>
+                        ) : (
+                           ''
+                        );
                      })}
-
                   </tbody>
                </table>
-            </>)
-
+            </>
+         );
       } else if (reports.length === 0) {
          // Sends message to be displayed when saved videos is empty
-         return <div className={styles.emptyMessageContainer}>
-
-            <p className={styles.emptyMessage}>Nothing to show here.</p>
-         </div>
+         return (
+            <div className={styles.emptyMessageContainer}>
+               <p className={styles.emptyMessage}>Nothing to show here.</p>
+            </div>
+         );
       }
-   }
+   };
 
    return (
       <>
+         <Helmet>
+            <title>Upload Reports | Eirhub</title>
+            <meta name="description" content="Upload Reports" />
+         </Helmet>
          {/* <div className={styles.docRecordsContainer}> */}
          <div className={styles.docRecordsContainer1}>
             <h1>Upload Files</h1>
 
             <Dropzone patientID={patientID} />
 
-            <div className={styles.docRecordsFiles}>
-               {myReports()}
-            </div>
+            <div className={styles.docRecordsFiles}>{myReports()}</div>
             {/* </div> */}
          </div>
       </>
    );
-
-}
+};
 
 export default DoctorRecords;

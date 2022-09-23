@@ -2,13 +2,9 @@ import React, { useState } from 'react';
 import styles from './profile.module.css';
 import avatarThree from '../../../assets/Rectangle.png';
 import { useDispatch, connect, useSelector } from 'react-redux';
-import {
-   updateProfile,
-   updateHealthDetails,
-   updateGuardianInfo,
-   setMessage
-} from '../../../Store/Actions.js';
+import { updateProfile, setMessage } from '../../../Store/Actions.js';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const mapStateToProps = (state) => {
    return {
@@ -142,36 +138,39 @@ function Profile(props) {
          // alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
-         const patientImagePreset='mcwvyjj5';
+         const patientImagePreset = 'mcwvyjj5';
          const formData = new FormData();
          formData.append('file', userimage);
          formData.append('upload_preset', patientImagePreset);
          setUploadBtn('Uploading...');
          await axios
-         .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
-         .then((response) => {
-            const image_url = response.data.url;
-            setUserImage(image_url);
-            dispatch(
-               setMessage({
-                  show: true,
-                  msg: 'Image Uploaded.',
-                  state: 1,
-               })
-            );
-            setUploadBtn('Upload Another.');
-         })
-         .catch((error) => {
-            dispatch(
-               setMessage({
-                  show: true,
-                  msg: 'LOL! e fail... 😂',
-                  state: 0,
-               })
-            );
-            setUploadBtn('Upload Again.');
-            console.log("Cloudinary upload Error:", error);
-         });
+            .post(
+               'https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload',
+               formData
+            )
+            .then((response) => {
+               const image_url = response.data.url;
+               setUserImage(image_url);
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Image Uploaded.',
+                     state: 1,
+                  })
+               );
+               setUploadBtn('Upload Another.');
+            })
+            .catch((error) => {
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'LOL! e fail... 😂',
+                     state: 0,
+                  })
+               );
+               setUploadBtn('Upload Again.');
+               console.log('Cloudinary upload Error:', error);
+            });
       }
    }
 
@@ -249,6 +248,11 @@ function Profile(props) {
    }
    return (
       <>
+         <Helmet>
+            <title>Profile | Eirhub</title>
+            <meta name="description" description="Eirhub Patient Profile" />
+         </Helmet>
+
          <div id={styles.profileBody}>
             <form
                onSubmit={(e) => {
@@ -678,180 +682,186 @@ function Profile(props) {
                      </div>
                   </div>
                </div>
-               { guardianID ? <div className={styles.guardianInfo}>
-                  <h2>Guardian Details(If applicable)</h2>
-                  <div className={styles.guardianInfoFormBox}>
-                     <div className={styles.guardianFormBox}>
-                        <h3>First Name</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianfirstname"
-                              type="text"
-                              id="guardianfirstname"
-                              placeholder="Enter first name"
-                              required
-                              value={guardianFirstName}
-                              onChange={(event) =>
-                                 setGuardianFirstName(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Middle Name(Optional)</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianmiddlename"
-                              type="text"
-                              id="guardianmiddlename"
-                              placeholder="Enter middle name"
-                              value={guardianMiddleName}
-                              onChange={(event) =>
-                                 setGuardianMiddleName(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Last Name</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianlastname"
-                              type="text"
-                              id="guardianlastname"
-                              placeholder="Enter last name"
-                              required
-                              value={guardianLastName}
-                              onChange={(event) =>
-                                 setGuardianLastName(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Email</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="email"
-                              type="email"
-                              id="email"
-                              placeholder="Someone@gmail.com"
-                              required
-                              value={guardianEmail}
-                              onChange={(event) =>
-                                 setGuardianEmail(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Date of Birth</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              type="text"
-                              name="guardiandate"
-                              id="guardiandate"
-                              placeholder="DD/MM/YYYY"
-                              required
-                              value={guardianDateOfBirth}
-                              onFocus={(event) => (event.target.type = 'date')}
-                              onBlur={(event) => {
-                                 if (!event.target.value) {
-                                    event.target.type = 'text';
-                                 }
-                              }}
-                              onChange={(event) =>
-                                 setGuardianDateOfBirth(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Gender</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <div className={styles.select}>
-                              <select
-                                 placeholder="Gender"
+               {guardianID ? (
+                  <div className={styles.guardianInfo}>
+                     <h2>Guardian Details(If applicable)</h2>
+                     <div className={styles.guardianInfoFormBox}>
+                        <div className={styles.guardianFormBox}>
+                           <h3>First Name</h3>
+                           <div className={styles.formBoxNameInputs}>
+                              <input
+                                 name="guardianfirstname"
+                                 type="text"
+                                 id="guardianfirstname"
+                                 placeholder="Enter first name"
                                  required
-                                 value={guardianGender}
+                                 value={guardianFirstName}
                                  onChange={(event) =>
-                                    setGuardianGender(event.target.value)
+                                    setGuardianFirstName(event.target.value)
                                  }
                                  disabled={disableFormBtn}
-                              >
-                                 <option value={''}>Select gender</option>
-                                 <option value={'Male'}>Male</option>
-                                 <option value={'Female'}>Female</option>
-                              </select>
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Middle Name(Optional)</h3>
+                           <div className={styles.formBoxNameInputs}>
+                              <input
+                                 name="guardianmiddlename"
+                                 type="text"
+                                 id="guardianmiddlename"
+                                 placeholder="Enter middle name"
+                                 value={guardianMiddleName}
+                                 onChange={(event) =>
+                                    setGuardianMiddleName(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Last Name</h3>
+                           <div className={styles.formBoxNameInputs}>
+                              <input
+                                 name="guardianlastname"
+                                 type="text"
+                                 id="guardianlastname"
+                                 placeholder="Enter last name"
+                                 required
+                                 value={guardianLastName}
+                                 onChange={(event) =>
+                                    setGuardianLastName(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Email</h3>
+                           <div className={styles.formBoxNameInputs}>
+                              <input
+                                 name="email"
+                                 type="email"
+                                 id="email"
+                                 placeholder="Someone@gmail.com"
+                                 required
+                                 value={guardianEmail}
+                                 onChange={(event) =>
+                                    setGuardianEmail(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Date of Birth</h3>
+                           <div className={styles.formBoxNameInputs}>
+                              <input
+                                 type="text"
+                                 name="guardiandate"
+                                 id="guardiandate"
+                                 placeholder="DD/MM/YYYY"
+                                 required
+                                 value={guardianDateOfBirth}
+                                 onFocus={(event) =>
+                                    (event.target.type = 'date')
+                                 }
+                                 onBlur={(event) => {
+                                    if (!event.target.value) {
+                                       event.target.type = 'text';
+                                    }
+                                 }}
+                                 onChange={(event) =>
+                                    setGuardianDateOfBirth(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Gender</h3>
+                           <div className={styles.formBoxNameInputs}>
+                              <div className={styles.select}>
+                                 <select
+                                    placeholder="Gender"
+                                    required
+                                    value={guardianGender}
+                                    onChange={(event) =>
+                                       setGuardianGender(event.target.value)
+                                    }
+                                    disabled={disableFormBtn}
+                                 >
+                                    <option value={''}>Select gender</option>
+                                    <option value={'Male'}>Male</option>
+                                    <option value={'Female'}>Female</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div className={styles.guardianFormBox}>
+                           <h3>ID Number</h3>
+                           <div className={styles.formBoxNameInputs}>
+                              <input
+                                 name="guardianidnumber"
+                                 type="text"
+                                 id="guardianidnumber"
+                                 placeholder="eg. GHA-08008238Hjj"
+                                 required
+                                 value={guardianIdNumber}
+                                 onChange={(event) =>
+                                    setGuardianIdNumber(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+
+                        <div className={styles.guardianFormBox}>
+                           <h3>Mobile Number</h3>
+                           <div className={styles.formBoxNameInputs}>
+                              <input
+                                 name="guardianmobilenumber"
+                                 type="tel"
+                                 id="guardianmobilenumber"
+                                 placeholder="Enter phone number"
+                                 required
+                                 value={guardianMobileNumber}
+                                 //Allows only numbers to be entered
+                                 onKeyPress={(event) => {
+                                    if (!/^\d*\.?\d*$/.test(event.key)) {
+                                       event.preventDefault();
+                                    }
+                                 }}
+                                 onChange={(event) =>
+                                    setGuardianMobileNumber(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>House Address</h3>
+                           <div className={styles.formBoxNameInputs}>
+                              <input
+                                 name="guardianaddress"
+                                 type="text"
+                                 id="guardianaddress"
+                                 placeholder="Enter house address"
+                                 required
+                                 value={guardianAddress}
+                                 onChange={(event) =>
+                                    setGuardianAddress(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
                            </div>
                         </div>
                      </div>
-
-                     <div className={styles.guardianFormBox}>
-                        <h3>ID Number</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianidnumber"
-                              type="text"
-                              id="guardianidnumber"
-                              placeholder="eg. GHA-08008238Hjj"
-                              required
-                              value={guardianIdNumber}
-                              onChange={(event) =>
-                                 setGuardianIdNumber(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-
-                     <div className={styles.guardianFormBox}>
-                        <h3>Mobile Number</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianmobilenumber"
-                              type="tel"
-                              id="guardianmobilenumber"
-                              placeholder="Enter phone number"
-                              required
-                              value={guardianMobileNumber}
-                              //Allows only numbers to be entered
-                              onKeyPress={(event) => {
-                                 if (!/^\d*\.?\d*$/.test(event.key)) {
-                                    event.preventDefault();
-                                 }
-                              }}
-                              onChange={(event) =>
-                                 setGuardianMobileNumber(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>House Address</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianaddress"
-                              type="text"
-                              id="guardianaddress"
-                              placeholder="Enter house address"
-                              required
-                              value={guardianAddress}
-                              onChange={(event) =>
-                                 setGuardianAddress(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
                   </div>
-               </div> : "" }
+               ) : (
+                  ''
+               )}
                <div className={styles.formButton}>
                   {disableFormBtn ? (
                      <button

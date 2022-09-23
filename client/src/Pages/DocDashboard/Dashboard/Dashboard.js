@@ -10,6 +10,7 @@ import {
    setIsANewUser,
    setMessage,
 } from '../../../Store/Actions';
+import { Helmet } from 'react-helmet';
 
 const MidDashboard = (props) => {
    const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
@@ -160,6 +161,10 @@ const MidDashboard = (props) => {
 
    return (
       <>
+         <Helmet>
+            <title>Dashboard | Eirhub</title>
+            <meta name="description" content="Dashboard of the doctor" />
+         </Helmet>
          <div className={styles.wrapper}>
             <main className={styles.main}>
                <section className={styles.section}>

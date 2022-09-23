@@ -38,6 +38,7 @@ import DoctorPatients from './Pages/DocDashboard/DoctorPatients/DoctorPatients';
 import DoctorSchedule from './Pages/DocDashboard/Schedule/DoctorSchedule';
 import DoctorRecords from './Pages/DocDashboard/Records/DoctorRecords';
 import DoctorMessage from './Pages/DocDashboard/DoctorMessage/DoctorMessage';
+import MessagePatients from './Pages/DocDashboard/components/MessagePatients';
 
 //Others
 import Loading from './Pages/Loading Page/loadingpage';
@@ -45,7 +46,6 @@ import TagManager from 'react-gtm-module';
 import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPatient';
 import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDoctor';
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
-import MessagePatients from './Pages/DocDashboard/components/MessagePatients';
 import ProtectedRoutesLoading from './Pages/Protected Routes/ProtectedRoutesLoading';
 
 AOS.init();
