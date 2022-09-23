@@ -3,18 +3,26 @@ import styles from './dashboard.module.css';
 import { IoIosPeople } from 'react-icons/io';
 import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { setAppointmentDates, setIsANewUser, setMessage } from '../../../Store/Actions';
 
 const MidDashboard = (props) => {
    const [getacceptedAppointment, setAcceptedAppointment] = useState([]);
+   const dispatch = useDispatch();
 
    // States to keep the counts of the number of patients, reports and appointments
    const [numOfdetails, setNumberofdetails] = useState(0);
    const data = props.doctorProfile;
+   console.log('data', data);
    const baseURL = 'http://127.0.0.1:5000';
 
    // TODO: add interceptors to catch errors
+   const currDate = new Date();
+   const currMonth = currDate.getMonth() + 1;
+   const currYear = currDate.getFullYear();
+   const currDay = currDate.getDate();
+
    const fetchAcceptedAppointments = async () => {
       await axios
          .get(
@@ -58,10 +66,42 @@ const MidDashboard = (props) => {
          await fetchStats();
       };
       fetchDashboardData();
+      if (props.isNewUser === true) {
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Please complete your profile.',
+               state: 1,
+            })
+         );
+      }
+      dispatch(setIsANewUser(false));
    }, []);
 
+
+   let appointment_dates = [];
+   useEffect(() => {
+      if (getacceptedAppointment === undefined) return;
+      if (
+         getacceptedAppointment !== undefined ||
+         getacceptedAppointment !== null ||
+         getacceptedAppointment.length !== 0
+      ) {
+         for (let item of getacceptedAppointment) {
+            if (
+               new Date().getTime() <= new Date(item.appointment_date).getTime()
+            ) {
+               appointment_dates.push(
+                  new Date(item.appointment_date).getTime()
+               );
+            }
+         }
+      }
+      dispatch(setAppointmentDates(appointment_dates));
+   }, [getacceptedAppointment]);
    // Handles whether to display a text or display the actual data
    let displayData;
+
    // Displays a text if there are no Pending appointments
    if (getacceptedAppointment.length === 0) {
       displayData = (

@@ -8,6 +8,8 @@ import { fetchDoctors } from '../../../Store/Actions';
 function FindingDoctor(props) {
    //handles state for all Doctor's fetched
    const [allDoctors, setAllDoctors] = useState([]);
+   const [allHospitals, setAllHospitals] = useState([]);
+   const [allSpecialties, setAllSpecialties] = useState([]);
 
    const [searchResults, setSearchResults] = useState([]); //handles state for Doctor's searched
    const [enteredName, setEnteredName] = useState(''); //handles state for Doctor's name to search
@@ -20,8 +22,10 @@ function FindingDoctor(props) {
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchDoctors();
-         setAllDoctors(items);
-         setSearchResults(items);
+         setAllDoctors(items.doctors);
+         setSearchResults(items.doctors);
+         setAllHospitals(items.hospitals);
+         setAllSpecialties(items.specialities);
       }
       fetchdata();
    }, []);
@@ -29,20 +33,12 @@ function FindingDoctor(props) {
    useEffect(() => {
       if (useEffectCount === 0) {
          setUseEffectCount(useEffectCount + 1);
+
          return;
       }
 
       handleDoctorSearch(enteredName);
    }, [specialty, hospital]);
-
-   // useEffect(() => {
-   //    console.log('called');
-   //    if (useEffectCountHpt === 0) {
-   //       setUseEffectCountHpt(useEffectCountHpt + 1);
-   //       return;
-   //    }
-   //    handleDoctorSearch(enteredName);
-   // }, [hospital]);
 
    // handles close of search for doctor's name
    function closeSearch() {
@@ -67,6 +63,7 @@ function FindingDoctor(props) {
                if (nameToSearch === '') {
                   return item;
                }
+
                return (
                   `${item.first_name} ${item.middle_name} ${item.last_name}`
                      .toLowerCase()
@@ -84,9 +81,7 @@ function FindingDoctor(props) {
                   ) {
                      return;
                   }
-                  var specialties = item.doctor_specialties
-                     .toLowerCase()
-                     .split(',');
+                  var specialties = item.doctor_specialties.toLowerCase();
                   return specialties.includes(spt);
                }
             })
@@ -156,11 +151,7 @@ function FindingDoctor(props) {
                </div>
             );
          });
-      } else {
-         <p className={styles.emptyMessage}>No doctors found.</p>;
       }
-   } else {
-      <p className={styles.emptyMessage}>No doctors found.</p>;
    }
 
    return (
@@ -210,70 +201,21 @@ function FindingDoctor(props) {
                            <option key={''} value={''}>
                               Speciality
                            </option>
-                           <option key={'ct scan'} value={'ct scan'}>
-                              CT Scan
-                           </option>
-                           <option key={'dentistry'} value={'dentistry'}>
-                              {' '}
-                              Dentistry
-                           </option>
-                           <option key={'dermatology'} value={'dermatology'}>
-                              Dermatology
-                           </option>
-                           <option
-                              key={'endocrinology'}
-                              value={'endocrinology'}
-                           >
-                              Endocrinology
-                           </option>
-                           <option
-                              key={'emergency medicine'}
-                              value={'emergency medicine'}
-                           >
-                              Emergency medicine
-                           </option>
-                           <option
-                              key={'general surgery'}
-                              value={'general surgery'}
-                           >
-                              General surgery
-                           </option>
-                           <option key={'laboratory'} value={'laboratory'}>
-                              Laboratory
-                           </option>
-                           <option key={'nephrology'} value={'nephrology'}>
-                              Nephrology
-                           </option>
-                           <option key={'gynaecology'} value={'gynaecology'}>
-                              Gynaecology
-                           </option>
-                           <option key={'obstetrics'} value={'obstetrics'}>
-                              Obstetrics
-                           </option>
-                           <option key={'orthopaedic'} value={'orthopaedic'}>
-                              Orthopaedic
-                           </option>
-                           <option key={'oncology'} value={'oncology'}>
-                              Oncology
-                           </option>
-                           <option key={'pediatrics'} value={'pediatrics'}>
-                              Pediatrics
-                           </option>
-                           <option
-                              key={'physician specialist'}
-                              value={'physician specialist'}
-                           >
-                              Physician specialist
-                           </option>
-                           <option
-                              key={'physiotherapy'}
-                              value={'physiotherapy'}
-                           >
-                              Physiotherapy
-                           </option>
-                           <option key={'x-ray'} value={'x-ray'}>
-                              X-Ray
-                           </option>
+                           {allSpecialties.length !== 0 ||
+                           allSpecialties === undefined ? (
+                              allSpecialties.map((item, j) => {
+                                 return (
+                                    <option
+                                       key={`${item}-${j}`}
+                                       value={item.toLowerCase()}
+                                    >
+                                       {item}
+                                    </option>
+                                 );
+                              })
+                           ) : (
+                              <option></option>
+                           )}
                         </select>
                      </div>
                      <div className={styles.selectTwo}>
@@ -284,71 +226,35 @@ function FindingDoctor(props) {
                            }}
                         >
                            <option value={''}>Hospital</option>
-                           <option value={'komfo anokye teaching hospital'}>
-                              Komfo Anokye Teaching Hospital
-                           </option>
-                           <option value={'knust university hospital'}>
-                              KNUST University Hospital
-                           </option>
-                           <option value={'ridge medical center'}>
-                              Ridge Medical Center
-                           </option>
-                           <option value={'north legon hospital'}>
-                              North Legon Hospital
-                           </option>
-                           <option value={'neptune medical hospital'}>
-                              Neptune Medical Center
-                           </option>
-                           <option value={'gbawe sda hospital'}>
-                              Gbawe SDA Hospital
-                           </option>
+                           {allHospitals.length !== 0 ||
+                           allHospitals === undefined ? (
+                              allHospitals.map((item, j) => {
+                                 console.log(item);
+                                 return (
+                                    <option
+                                       key={`${item}-${j}`}
+                                       value={item.toLowerCase()}
+                                    >
+                                       {item}
+                                    </option>
+                                 );
+                              })
+                           ) : (
+                              <option></option>
+                           )}
                         </select>
                      </div>
                   </div>
                </form>
             </div>
-            <div className={styles.doctorsBox}>
-               {list}
-               {/* <div className={styles.doctorBox}>
-                  <div className={styles.doctorImage}>
-                     <img src={doctorProfileTwo} alt="doctor-profile" />
-                  </div>
-                  <div className={styles.doctorInfo}>
-                     <div className={styles.doctorName}>
-                        <h3>Gucci Delix, Pharm D</h3>
-                     </div>
-                     <div className={styles.doctorDetails}>
-                        <p>
-                           Clinical Pharmacy Specialist, Hermatology/Oncology
-                           Assistant Professor, Pharmacy Hermatology
-                        </p>
-                     </div>
-                     <div className={styles.doctorInfoLink}>
-                        <p>View Profile</p>
-                     </div>
-                  </div>
-               </div> */}
 
-               {/* <div className={styles.doctorBox}>
-                  <div className={styles.doctorImage}>
-                     <img src={doctorProfileThree} alt="doctor-profile" />
-                  </div>
-                  <div className={styles.doctorInfo}>
-                     <div className={styles.doctorName}>
-                        <h3>Gucci Delix, Pharm D</h3>
-                     </div>
-                     <div className={styles.doctorDetails}>
-                        <p>
-                           Clinical Pharmacy Specialist, Hermatology/Oncology
-                           Assistant Professor, Pharmacy Hermatology
-                        </p>
-                     </div>
-                     <div className={styles.doctorInfoLink}>
-                        <p>View Profile</p>
-                     </div>
-                  </div>
-               </div> */}
-            </div>
+            {searchResults.length !== 0 || searchResults === undefined ? (
+               <div className={styles.doctorsBox}>{list}</div>
+            ) : (
+               <div className={styles.emptyMessage}>
+                  <p>No results found.</p>
+               </div>
+            )}
          </div>
       </>
    );

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './messageusers.module.css';
-import avatarThree from '../../../assets/doc profile 1.png';
 import { useDispatch } from 'react-redux';
 import {
    fetchDoctorsByPatient,
@@ -20,17 +19,18 @@ function MessageUsers() {
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchDoctorsByPatient(patientID);
-         setDoctors([items]);
+         setDoctors(items);
       }
       fetchdata();
    }, []);
 
    let myDoctors;
-   if (doctors[0] === undefined) {
+   if (doctors === undefined) {
       myDoctors = <p className={styles.emptyMessage}>Nothing to show here.</p>;
    } else {
       if (doctors.length !== 0) {
          myDoctors = doctors.map((item, j) => {
+            console.log(item.id_message);
             return (
                <div
                   className={
@@ -41,13 +41,7 @@ function MessageUsers() {
                   onClick={() => {
                      setActive(true);
                      setActiveIndex(`${item.id_doctor}${j}`);
-                     dispatch(
-                        setDoctorToChatWith(
-                           `${item.first_name.toLowerCase()}${item.last_name.toLowerCase()}${
-                              item.id_doctor
-                           }`
-                        )
-                     );
+                     dispatch(setDoctorToChatWith(item.id_message));
                   }}
                >
                   <div className={styles.userImage}>
@@ -60,7 +54,6 @@ function MessageUsers() {
             );
          });
       } else if (doctors.length === 0) {
-         // Sends message to be displayed when saved videos is empty
          myDoctors = <p>Nothing to show here.</p>;
       }
    }

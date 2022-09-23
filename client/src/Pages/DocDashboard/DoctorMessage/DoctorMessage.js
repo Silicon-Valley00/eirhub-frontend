@@ -8,17 +8,17 @@ const DoctorMessage = () => {
    const patientUID = useSelector((state) => state.patientToChatWith);
    return (
       <>
-         <div className={styles.wrapper}></div>
-         <main>
-            <div className={styles.middle_section}>
-               <div id={styles.messageBody}>
+         <>
+            <div id={styles.messageBody}>
+               {patientUID !== '' ? (
                   <CometChatMessages chatWithUser={patientUID} />
-               </div>
+               ) : (
+                  <div className={styles.messageDiv}>
+                     <p>Select patient to start messaging</p>
+                  </div>
+               )}
             </div>
-            {/* <div className={styles.right_pane}>
-               <MessagePatients />
-            </div> */}
-         </main>
+         </>
       </>
    );
 };

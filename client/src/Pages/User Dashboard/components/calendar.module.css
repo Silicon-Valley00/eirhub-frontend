@@ -93,23 +93,29 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   width: 50%;
 }
 .monthPicker:hover {
    background-color: #ebf8fd;
 }
-.year {
+#year {
    padding: 0 0.5rem;
    cursor: pointer;
+   width: 30%;
 }
 
 .monthChange {
    height: 1.5rem;
-   width: 1.5rem;
    display: grid;
    place-items: center;
-   margin: 0 10px;
    cursor: pointer;
    border-radius: 0.5rem;
+}
+#prevMonth {
+   width: 10%;
+}
+#nextMonth {
+   width: 10%;
 }
 .monthChange:hover {
    background-color: #ebf8fd;
@@ -159,7 +165,6 @@
 .calendarDays div:hover span:nth-child(4) {
    width: 100%;
 }
-
 
 .calendarDays div.empty span:nth-child(1),
 .calendarDays div.empty span:nth-child(3) {

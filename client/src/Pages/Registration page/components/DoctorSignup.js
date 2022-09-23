@@ -17,7 +17,7 @@ import {
 import { SignUpUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
-import { setLoading, setMessage } from '../../../Store/Actions';
+import { setIsANewUser, setLoading, setMessage } from '../../../Store/Actions';
 
 function DoctorSignup(props) {
    const navigate = useNavigate();
@@ -46,19 +46,17 @@ function DoctorSignup(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          //registers user into cometchat
-         //    SignUpUser(
-         //       `${
-         //          feedback[1].first_name.charAt(0).toUpperCase() +
-         //          feedback[1].first_name.slice(1)
-         //       } ${
-         //          feedback[1].last_name.charAt(0).toUpperCase() +
-         //          feedback[1].last_name.slice(1)
-         //       }
-         // }`,
-         //       `${feedback[1].first_name.toLowerCase()}${feedback[1].last_name.toLowerCase()}${
-         //          feedback[1].id_doctor
-         //       }`
-         //    );
+         SignUpUser(
+            `${
+               feedback[1].first_name.charAt(0).toUpperCase() +
+               feedback[1].first_name.slice(1)
+            } ${
+               feedback[1].last_name.charAt(0).toUpperCase() +
+               feedback[1].last_name.slice(1)
+            }
+         `,
+            feedback[1].id_message.toLowerCase()
+         );
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
          dispatch(setLoading(true));
 
@@ -68,6 +66,8 @@ function DoctorSignup(props) {
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/doctordashboard');
+               dispatch(setIsANewUser(true));
+
                dispatch(setLoading(false));
             } else {
                setTimeout(() => {
@@ -146,12 +146,11 @@ function DoctorSignup(props) {
                      </i>
                   </div>
                   <div className={styles.formSideContainer}>
-
                      <div className={styles.signupFormTitle}>
                         <h3>Create New Account</h3>
                         <p>Take control of your health today</p>
                      </div>
-                        <form ref={docSignUpFormRef} className={styles.signupForm}>
+                     <form ref={docSignUpFormRef} className={styles.signupForm}>
                         <div className={styles.signupFormBoxNames}>
                            <div className={styles.signupFormBoxName}>
                               <h3> Firstname</h3>
@@ -275,7 +274,9 @@ function DoctorSignup(props) {
                                  id="docSignupHospitalCode"
                                  placeholder="Enter hospital code"
                                  ref={props.signupHospitalCode}
-                                 onFocus={(event) => (event.target.type = 'text')}
+                                 onFocus={(event) =>
+                                    (event.target.type = 'text')
+                                 }
                                  // onBlur={(event) => {
                                  //     if (!event.target.value) {
                                  //         event.target.type = 'text';
@@ -333,8 +334,8 @@ function DoctorSignup(props) {
                                  {hidePasswordOne ? (
                                     <AiOutlineEye />
                                  ) : (
-                                       <AiOutlineEyeInvisible />
-                                    )}
+                                    <AiOutlineEyeInvisible />
+                                 )}
                               </i>
                            </div>
                         </div>
@@ -383,8 +384,8 @@ function DoctorSignup(props) {
                                  {hidePasswordTwo ? (
                                     <AiOutlineEye />
                                  ) : (
-                                       <AiOutlineEyeInvisible />
-                                    )}
+                                    <AiOutlineEyeInvisible />
+                                 )}
                               </i>
                            </div>
                         </div>
@@ -410,31 +411,38 @@ function DoctorSignup(props) {
                               // }
                               className={
                                  props.registerDoctorNameError === true ||
-                                    props.registerDoctorEmailError === true ||
-                                    props.registerHospitalCodeError === true ||
-                                    props.registerDoctorPasswordOneError === true ||
-                                    props.registerDoctorPasswordTwoError === true ||
-                                    props.registerDoctorNameError === null ||
-                                    props.registerDoctorEmailError === null ||
-                                    props.registerHospitalCodeError === null ||
-                                    props.registerDoctorPasswordOneError === null ||
-                                    props.registerDoctorPasswordTwoError === null
+                                 props.registerDoctorEmailError === true ||
+                                 props.registerHospitalCodeError === true ||
+                                 props.registerDoctorPasswordOneError ===
+                                    true ||
+                                 props.registerDoctorPasswordTwoError ===
+                                    true ||
+                                 props.registerDoctorNameError === null ||
+                                 props.registerDoctorEmailError === null ||
+                                 props.registerHospitalCodeError === null ||
+                                 props.registerDoctorPasswordOneError ===
+                                    null ||
+                                 props.registerDoctorPasswordTwoError === null
                                     ? styles.signupBtnInactive
                                     : btnActive
-                                       ? `${styles.signupBtn} ${styles.btnActive}`
-                                       : styles.signupBtn
+                                    ? `${styles.signupBtn} ${styles.btnActive}`
+                                    : styles.signupBtn
                               }
                               disabled={
                                  props.registerDoctorNameError === true ||
                                  props.registerDoctorEmailError === true ||
                                  props.registerHospitalCodeError === true ||
-                                 props.registerDoctorPasswordOneError === true ||
-                                 props.registerDoctorPasswordTwoError === true ||
+                                 props.registerDoctorPasswordOneError ===
+                                    true ||
+                                 props.registerDoctorPasswordTwoError ===
+                                    true ||
                                  props.registerDoctorNameError === null ||
                                  props.registerDoctorEmailError === null ||
                                  props.registerHospitalCodeError === null ||
-                                 props.registerDoctorPasswordOneError === null ||
-                                 props.registerDoctorPasswordTwoError === null ||
+                                 props.registerDoctorPasswordOneError ===
+                                    null ||
+                                 props.registerDoctorPasswordTwoError ===
+                                    null ||
                                  btnActive
                               }
                               onClick={() => {
@@ -471,12 +479,12 @@ function DoctorSignup(props) {
                               }}
                            >
                               Login
-                        </p>
+                           </p>
                         </div>
                      </form>
-                     </div>
-                     <div></div>
                   </div>
+                  <div></div>
+               </div>
             </div>
          </div>
       </div>

@@ -15,6 +15,7 @@ import {
    SET_MESSAGE,
    SET_TEMP_MEDICATIONS,
    SET_IS_LOADING,
+   SET_IS_NEW_USER,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -121,6 +122,14 @@ export const setMedicationsTemp = (medicationsObj) => {
 export const setLoading = (state) => {
    return {
       type: SET_IS_LOADING,
+      payload: state,
+   };
+};
+
+//Checks if a user signs up for the first time
+export const setIsANewUser = (state) => {
+   return {
+      type: SET_IS_NEW_USER,
       payload: state,
    };
 };
@@ -719,6 +728,7 @@ export async function fetchDoctors() {
          if (response.data.status === true) {
             //returns response
             // alert('doctors fetch worked');
+            console.log(response.data.msg);
             return response.data.msg;
          }
       } else {
@@ -735,7 +745,7 @@ export async function fetchDoctorsByPatient(userID) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/patients/?id_patient=${userID}`,
+         url: `http://127.0.0.1:5000/appointmentcometp/${userID}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -809,15 +819,36 @@ export const addAppointments = (data) => {
          if (response.status === 200) {
             //checks details of response
             if (response.data.status === true) {
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Appointment booked.',
+                     state: 1,
+                  })
+               );
                //returns response
                // alert('appointments post worked');
             }
          } else {
             //takes all statuses aside 200
             // alert('Something went wrong. Try again, post appments 1');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Booking unsuccessful.',
+                  state: 0,
+               })
+            );
          }
       } catch (error) {
          // alert(error, 'post appments 2');
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Booking unsuccessful.',
+               state: 0,
+            })
+         );
       }
    };
 };

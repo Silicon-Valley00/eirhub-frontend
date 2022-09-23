@@ -40,6 +40,7 @@ function DoctorLogin(props) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
+
          dispatch(getAllPendingAppointmentsForADoctor(feedback[1].id_doctor));
          dispatch(setLoading(true));
 
@@ -48,6 +49,8 @@ function DoctorLogin(props) {
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
+               LoginUser(feedback[1].id_message);
+
                navigate('/doctordashboard');
                dispatch(setLoading(false));
             } else {
@@ -267,7 +270,7 @@ function DoctorLogin(props) {
             </div>
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
-               <p>Health is an everyday thing</p>
+               <p>Let's save lives.</p>
                <img id={loginStyles.loginImg} src={docLoginImage} alt="login" />
             </div>
          </div>

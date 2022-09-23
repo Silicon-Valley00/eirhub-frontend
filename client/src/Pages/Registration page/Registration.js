@@ -256,7 +256,8 @@ function Registration(props) {
 
    function handleRegisterPassword() {
       let enteredSignUpPassword = signupPassword.current.value.trim();
-      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value.trim();
+      let enteredSignUpPasswordconfirm =
+         signupPasswordconfirm.current.value.trim();
 
       if (enteredSignUpPassword === '') {
          setRegisterPasswordOneErrorMessage('Password required');
@@ -307,7 +308,8 @@ function Registration(props) {
    }
 
    function handleRegisterPasswordConfirm() {
-      let enteredSignUpPasswordconfirm = signupPasswordconfirm.current.value.trim();
+      let enteredSignUpPasswordconfirm =
+         signupPasswordconfirm.current.value.trim();
       let enteredSignUpPassword = signupPassword.current.value.trim();
       if (enteredSignUpPasswordconfirm === '') {
          setRegisterPasswordTwoErrorMessage('Confirm password required');
@@ -334,7 +336,9 @@ function Registration(props) {
       ) {
          setRegisterDoctorNameError(false);
       } else {
-         setRegisterDoctorNameErrorMessage('Name must have only letters and hyphens');
+         setRegisterDoctorNameErrorMessage(
+            'Name must have only letters and hyphens'
+         );
 
          setRegisterDoctorNameError(true);
       }
@@ -445,10 +449,13 @@ function Registration(props) {
       let enteredSignUpEmail = signupEmail.current.value.trim();
       let enteredSignUpPassword = signupPassword.current.value.trim();
 
-      let enteredSignUpFirstnameDoctor = doctorSignupFirstname.current.value.trim();
-      let enteredSignUpLastnameDoctor = doctorSignupLastname.current.value.trim();
+      let enteredSignUpFirstnameDoctor =
+         doctorSignupFirstname.current.value.trim();
+      let enteredSignUpLastnameDoctor =
+         doctorSignupLastname.current.value.trim();
       let enteredSignUpEmailDoctor = doctorSignupEmail.current.value.trim();
-      let enteredSignUpPasswordDoctor = doctorSignupPassword.current.value.trim();
+      let enteredSignUpPasswordDoctor =
+         doctorSignupPassword.current.value.trim();
       let enteredSignupHospitalCode = signupHospitalCode.current.value.trim();
 
       // Below code checks which modal form is open to take user credentials
@@ -486,7 +493,7 @@ function Registration(props) {
             id_guardian: newGuardianId,
          };
 
-         console.log("New Guardian ID", signupPatientData)
+         console.log('New Guardian ID', signupPatientData);
          // makes api call with userdata
          const feedback = await submitCredentials(
             'patients/signup',
@@ -565,7 +572,7 @@ function Registration(props) {
             }
          } else {
             //takes all statuses aside 200
-            return [false, response.data.msg, 'Create Account'];
+            return [false, response.data.msg.message, 'Create Account'];
          }
       } catch (error) {
          // catches all errors
@@ -579,11 +586,11 @@ function Registration(props) {
                'Create Account',
             ];
          } else if (error.response) {
-            return [false,  error.response.data.msg.message, 'Create Account'];
+            return [false, error.response.data.msg.message, 'Create Account'];
          } else if (error.request) {
-            return [false,  error.response.data.msg.message, 'Create Account'];
+            return [false, error.response.data.msg.message, 'Create Account'];
          } else {
-            return [false,  error.response.data.msg.message, 'Create Account'];
+            return [false, error.response.data.msg.message, 'Create Account'];
          }
       }
    }

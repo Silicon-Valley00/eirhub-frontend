@@ -12,7 +12,7 @@ function Message() {
                <CometChatMessages chatWithUser={doctorUID} />
             ) : (
                <div className={styles.messageDiv}>
-                  <p>Select patient to start messaging</p>
+                  <p>Select doctor to start messaging</p>
                </div>
             )}
          </div>
