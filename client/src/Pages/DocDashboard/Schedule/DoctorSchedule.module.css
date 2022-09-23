@@ -224,7 +224,8 @@
 }
 .appointmentContainer th {
    color: #c2c9d1;
-   padding-top: 29px;
+   padding: 10px 0;
+   border-bottom: 1px solid var(--gray);
 }
 .appointmentContainer table td {
    padding-top: 21px;
@@ -485,7 +486,7 @@
       margin: auto;
       height: 800px;
    }
-   .DSContainer1 form input{
+   .DSContainer1 form input {
       max-width: 35rem;
       width: 100%;
    }
@@ -514,8 +515,8 @@
       width: 12.5rem;
    }
 }
-@media(max-width:768px){
-   .appointTime{
+@media (max-width: 768px) {
+   .appointTime {
       margin-left: 1rem;
    }
 }
