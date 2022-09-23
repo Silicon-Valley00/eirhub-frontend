@@ -77,24 +77,26 @@ function DoctorPatients() {
                <ul>
                   {patients?.map((patient, index) => {
                      return (
-                        <div
-                           className={styles.imageDiv}
-                           onClick={() => {
-                              dispatch(
-                                 setDoctorRecordPatientId(patient.id_patient)
-                              );
-                           }}
-                           key={index}
-                        >
-                           <img
-                              src={patient.person_image}
-                              alt={patient.first_name}
-                           ></img>
-                           <li>
-                              {patient.first_name} {patient.middle_name}{' '}
-                              {patient.last_name}
-                           </li>
-                        </div>
+                        <li>
+                           <div
+                              className={styles.imageDiv}
+                              onClick={() => {
+                                 dispatch(
+                                    setDoctorRecordPatientId(patient.id_patient)
+                                 );
+                              }}
+                              key={index}
+                           >
+                              <img
+                                 src={patient.person_image}
+                                 alt={patient.first_name}
+                              ></img>
+                              <div className={styles.name}>
+                                 {patient.first_name} {patient.middle_name}{' '}
+                                 {patient.last_name}
+                              </div>
+                           </div>
+                        </li>
                      );
                   })}
                </ul>
