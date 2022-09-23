@@ -5,13 +5,9 @@
    height: 100vh;
    padding-top: 5rem;
    background-color: var(#f6f6f9);
-   overflow: hidden; 
+   overflow: hidden;
    overflow-x: hidden;
    font-family: 'Poppins', sans-serif;
-}
-
-.container {
-   /* padding: 2rem 1rem; */
 }
 
 #blur.active {
@@ -56,10 +52,6 @@
 }
 
 @media (min-width: 768px) {
-   .userbody {
-      /* padding-top: 6.5rem; */
-   }
-
    .container {
       display: grid;
       width: 96%;
@@ -68,9 +60,8 @@
       max-height: 100vh;
       height: 10%;
       margin: 0 auto;
-      /* padding: 0 2rem; */
       gap: 1rem;
-      grid-template-columns: 14rem auto 18rem;
+      grid-template-columns: 14rem auto auto;
    }
 }
 
@@ -84,7 +75,7 @@
 @media only screen and (min-width: 1400px) and (max-width: 2000px) {
    .container {
       width: 98%;
-      grid-template-columns: 15rem auto 20rem;
+      grid-template-columns: 15rem auto auto;
    }
 }
 /* Made changes here Ama*/
@@ -98,7 +89,6 @@
    .container {
       width: 98%;
       grid-template-columns: 14rem auto /*20rem*/;
-
    }
 }
 
