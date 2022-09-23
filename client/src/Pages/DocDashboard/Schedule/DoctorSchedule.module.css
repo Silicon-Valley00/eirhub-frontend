@@ -5,6 +5,10 @@
    border-radius: 20px;
    padding: 20px;
    height: calc(100vh - 5rem);
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   gap: 4.5rem;
    justify-self: center;
    overflow-y: scroll;
 }
