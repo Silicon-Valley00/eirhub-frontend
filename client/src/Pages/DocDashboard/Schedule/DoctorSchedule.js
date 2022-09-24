@@ -71,7 +71,7 @@ const DoctorSchedule = (props) => {
    // Function to cancel an appointment
    const cancelAppointment = async (index) => {
       // console.log(selectedAppointment.id_appointment);
-      var indexedAppointment = allPendingAppointments[index];
+      const indexedAppointment = allPendingAppointments[index];
       // alert(selectedId)
       await axios
          .put(
