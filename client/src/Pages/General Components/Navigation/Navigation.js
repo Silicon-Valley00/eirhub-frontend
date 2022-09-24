@@ -1,8 +1,9 @@
 import styles from './navigation.module.css';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import { MdMenu } from 'react-icons/md';
-import avatarThree from '../../assets/Rectangle.png';
+// import avatarThree from '../../assets/Rectangle.png';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Navigation = ({ nav, openFunc }) => {
    const isPatientAuth = useSelector((state) => state.isPatientAuth);

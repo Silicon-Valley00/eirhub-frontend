@@ -5,10 +5,11 @@ import { BsArrowLeftCircle, BsDownload } from 'react-icons/bs';
 import { fetchReports } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 function Records(props) {
    const [reports, setReports] = useState([]);
-   const patientID = useSelector((state) => state.user.id_patient);
+   const patientID = useSelector((state) => state.profile.id_patient);
 
    //Handles state on page been viewed
    const [changePage, setChangePage] = useState(false);
@@ -37,11 +38,9 @@ function Records(props) {
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchReports(patientID);
-         console.log(items);
          setReports(items);
       }
       fetchdata();
-      console.log(reports);
    }, []);
 
    function handleChangePage() {
@@ -86,7 +85,13 @@ function Records(props) {
                            <FaClipboardList />
                         </i>
                         <i>
-                           <BsDownload />
+                           <BsDownload
+                              onClick={() => {
+                                 if (item.report_url) {
+                                    window.open(item.report_url, '_blank');
+                                 }
+                              }}
+                           />
                         </i>
                      </div>
                   </td>

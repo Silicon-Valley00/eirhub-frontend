@@ -16,18 +16,18 @@ import {
    SET_TEMP_MEDICATIONS,
    SET_IS_LOADING,
    SET_IS_NEW_USER,
-   SET_DOCTOR_RECORD_PATIENT_ID
+   SET_DOCTOR_RECORD_PATIENT_ID,
 } from './ActionTypes';
 
 import axios from 'axios';
 
 // Sets doctors selected patient's records
-export const setDoctorRecordPatientId = (doctorRecordPatientId)=> {
+export const setDoctorRecordPatientId = (doctorRecordPatientId) => {
    return {
-      type:SET_DOCTOR_RECORD_PATIENT_ID,
-      payload: doctorRecordPatientId
-   }
-}
+      type: SET_DOCTOR_RECORD_PATIENT_ID,
+      payload: doctorRecordPatientId,
+   };
+};
 
 // Sets profile details
 export const setProfileInfo = (profileData) => {
@@ -175,7 +175,6 @@ export const fetchProfile = (userID, guardianID) => {
       } catch (error) {
          // alert(error, 'pro');
       }
-      console.log('Fetches Done');
    };
 };
 
@@ -459,7 +458,6 @@ export const addNewGuardianInfo = (guardianData, profileData) => {
             if (response.data.status === true) {
                //returns response
                dispatch(setGuardianInfo(response.data.msg));
-               console.log(response.data.msg);
 
                const profile = {
                   user_email: profileData.user_email,
@@ -737,7 +735,6 @@ export async function fetchDoctors() {
          if (response.data.status === true) {
             //returns response
             // alert('doctors fetch worked');
-            console.log(response.data.msg);
             return response.data.msg;
          }
       } else {

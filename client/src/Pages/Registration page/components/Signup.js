@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../images/Patientsignup.svg';
 import { GuardianForm } from './GuardianForm';
-import { FaRegUser, FaTimes } from 'react-icons/fa';
+import { FaRegUser } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
    fetchProfileOnSignup,
-   setIsANewUser,
    setLoading,
    setMessage,
    setPatientAuth,
@@ -62,19 +61,8 @@ function Signup(props) {
       if (feedback[0] === true) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         //registers user into cometchat
-         SignUpUser(
-            `${
-               feedback[1].first_name.charAt(0).toUpperCase() +
-               feedback[1].first_name.slice(1)
-            } ${
-               feedback[1].last_name.charAt(0).toUpperCase() +
-               feedback[1].last_name.slice(1)
-            }
-         }`,
-            feedback[1].id_message.toLowerCase()
-         );
-         console.log('patient', feedback[1].id_message);
+
+         //fetches user profile
          dispatch(fetchProfileOnSignup(feedback[1].id_patient));
          dispatch(setLoading(true));
 
@@ -83,11 +71,26 @@ function Signup(props) {
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
+               //registers user into cometchat
+               SignUpUser(
+                  `${
+                     feedback[1].first_name.charAt(0).toUpperCase() +
+                     feedback[1].first_name.slice(1)
+                  } ${
+                     feedback[1].last_name.charAt(0).toUpperCase() +
+                     feedback[1].last_name.slice(1)
+                  }`,
+                  feedback[1].id_message
+               );
                navigate('/userdashboard');
                dispatch(setLoading(false));
-               dispatch(setIsANewUser(true));
-
-               console.log(store.getState());
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Please complete your profile.',
+                     state: 1,
+                  })
+               );
             } else {
                setTimeout(() => {
                   persistor.purge();
@@ -106,8 +109,6 @@ function Signup(props) {
                }, 2000);
 
                dispatch(setLoading(false));
-
-               console.log(store.getState());
             }
          }, 1.5 * 1000);
       } else {

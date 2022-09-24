@@ -20,11 +20,6 @@ function Profile(props) {
    const guardianID = useSelector((state) => state.profile.id_guardian);
 
    const dispatch = useDispatch();
-   // console.log(
-   //    props.savedProfile,
-   //    props.savedGuardianDetails,
-   //    props.savedGuardianDetails
-   // );
 
    // Handles values for input fields
    const [userImage, setUserImage] = useState(
@@ -135,7 +130,7 @@ function Profile(props) {
       const userimage = e.target.files[0];
       if (!/^image\//.test(userimage.type)) {
          //Checks for the image format
-         // alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
+
          return false;
       } else {
          const patientImagePreset = 'mcwvyjj5';
@@ -169,7 +164,6 @@ function Profile(props) {
                   })
                );
                setUploadBtn('Upload Again.');
-               console.log('Cloudinary upload Error:', error);
             });
       }
    }
@@ -221,7 +215,6 @@ function Profile(props) {
          house_address: guardianAddress,
          id_number: guardianIdNumber,
       };
-      // console.log(enteredProfileInfo);
       dispatch(
          updateProfile(
             patientID,
@@ -267,8 +260,14 @@ function Profile(props) {
                      <div className={styles.profileName}>
                         <h2>{`${props.savedProfile.first_name} ${props.savedProfile.last_name}`}</h2>
                      </div>
-                     <div className={styles.uploadImageBtn}>
+                     <div
+                        className={styles.uploadImageBtn}
+                        onClick={() => {
+                           displayMessage();
+                        }}
+                     >
                         <label htmlFor="file-upload-button">{uploadBtn}</label>
+
                         <input
                            id="file-upload-button"
                            type={'file'}

@@ -40,8 +40,7 @@ function Login(props) {
       if (feedback[0] === true) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         //logs user into cometchat
-
+         //fetches user profile
          dispatch(
             fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
          );
@@ -50,18 +49,21 @@ function Login(props) {
          dispatch(setPatientAuth(true));
 
          setTimeout(() => {
+            //navigates user to dashboard
             if (store.getState().okToRoute === true) {
                navigate('/userdashboard');
+               //logs user into cometchat
+
                LoginUser(feedback[1].id_message);
                dispatch(setLoading(false));
             } else {
+               //when something goes wrong
                setTimeout(() => {
                   persistor.purge();
                }, 200);
 
                dispatch(setPatientAuth(false));
                navigate('/landing-page');
-               console.log(store.getState());
                setTimeout(() => {
                   dispatch(
                      setMessage({

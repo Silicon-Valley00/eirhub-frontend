@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from './userdashboard.module.css';
-import Navigation from './components/Navigation';
+import Navigation from '../General Components/Navigation/Navigation';
 import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
 import LogoutModal from '../General Components/Logout Modal/LogoutModal';
-import NavBar from '../DocDashboard/Navigation';
+import NavBar from '../General Components/Navigation/Navigation';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 
 function UserDashboard(props) {
@@ -25,7 +25,7 @@ function UserDashboard(props) {
          new Date(
             `${new Date(patientDOB).getFullYear()}-${
                new Date(patientDOB).getMonth() + 1
-            }-${new Date(patientDOB).getDate() + 1}`
+            }-${new Date(patientDOB).getDate()}`
          ).getTime()
       ) {
          setBirthdayModal(true);
@@ -39,7 +39,6 @@ function UserDashboard(props) {
    function handleLogoutModal() {
       setLogoutModal(!logoutModal);
    }
-   // console.log(props.message.show);
    return (
       <>
          <AlertsMessageBox time={3000} />

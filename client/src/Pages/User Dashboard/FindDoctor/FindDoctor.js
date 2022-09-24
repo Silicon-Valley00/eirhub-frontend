@@ -236,7 +236,6 @@ function FindingDoctor(props) {
                            {allHospitals.length !== 0 ||
                            allHospitals === undefined ? (
                               allHospitals.map((item, j) => {
-                                 console.log(item);
                                  return (
                                     <option
                                        key={`${item}-${j}`}

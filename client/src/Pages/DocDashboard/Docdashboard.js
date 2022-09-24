@@ -3,7 +3,7 @@ import styles from './docdashboard.module.css';
 import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
 import Sidebar from './components/Sidebar';
-import Navigation from './Navigation';
+import Navigation from '../General Components/Navigation/Navigation';
 import LogoutModal from '../General Components/Logout Modal/LogoutModal';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 
