@@ -87,6 +87,8 @@
 @media (min-width: 1024px) {
    .nav {
       padding: 1rem 2rem;
+      max-width: 1900px;
+      margin: 0 auto;
    }
 
    .logo {

@@ -1,8 +1,7 @@
 import styles from './navigation.module.css';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import { MdMenu } from 'react-icons/md';
-import avatarThree from '../../assets/Rectangle.png';
+// import avatarThree from '../../assets/Rectangle.png';
 import { Link } from 'react-router-dom';
 
 const Navigation = ({ nav, openFunc }) => {

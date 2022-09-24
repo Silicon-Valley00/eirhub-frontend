@@ -5,9 +5,8 @@ import { FaRegUser, FaRegHospital } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
-import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
+import { IoWarning, IoCloseOutline } from 'react-icons/io5';
 import { BiLoaderAlt } from 'react-icons/bi';
-import hospital from '../../../assets/hospital.svg';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
@@ -17,7 +16,7 @@ import {
 import { SignUpUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
-import { setIsANewUser, setLoading, setMessage } from '../../../Store/Actions';
+import { setLoading, setMessage } from '../../../Store/Actions';
 
 function DoctorSignup(props) {
    const navigate = useNavigate();
@@ -63,8 +62,7 @@ function DoctorSignup(props) {
                   } ${
                      feedback[1].last_name.charAt(0).toUpperCase() +
                      feedback[1].last_name.slice(1)
-                  }
-         `,
+                  }`,
                   feedback[1].id_message
                );
                //navigates user to the doctor dashboard

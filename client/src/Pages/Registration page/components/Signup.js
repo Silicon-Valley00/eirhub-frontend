@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../images/Patientsignup.svg';
 import { GuardianForm } from './GuardianForm';
-import { FaRegUser, FaTimes } from 'react-icons/fa';
+import { FaRegUser } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
    fetchProfileOnSignup,
-   setIsANewUser,
    setLoading,
    setMessage,
    setPatientAuth,
@@ -80,8 +79,7 @@ function Signup(props) {
                   } ${
                      feedback[1].last_name.charAt(0).toUpperCase() +
                      feedback[1].last_name.slice(1)
-                  }
-         }`,
+                  }`,
                   feedback[1].id_message
                );
                navigate('/userdashboard');
