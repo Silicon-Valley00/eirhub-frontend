@@ -98,6 +98,7 @@
 .leftRegion h3 {
    font-size: 1.2rem;
    color: #ffffff;
+   font-family: var(--logofont);
 }
 .leftRegionInfoOne {
    position: relative;
@@ -109,6 +110,7 @@
    font-size: 1.2rem;
    color: #0d3f58;
    font-weight: 700;
+   font-family: var(--logofont);
 }
 .leftRegionInfoTwo {
    position: relative;
@@ -120,6 +122,7 @@
    font-size: 1.2rem;
    color: #0d3f58;
    font-weight: 700;
+   font-family: var(--logofont);
 }
 .leftRegionImage {
    width: 100%;
@@ -297,7 +300,7 @@
    width: 90%;
 }
 
-input{
+input {
    color: var(--text-color);
 }
 /* input::placeholder{

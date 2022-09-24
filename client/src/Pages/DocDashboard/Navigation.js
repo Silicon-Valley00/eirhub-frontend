@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { MdMenu } from 'react-icons/md';
 import avatarThree from '../../assets/Rectangle.png';
+import { Link } from 'react-router-dom';
 
 const Navigation = ({ nav, openFunc }) => {
    const isPatientAuth = useSelector((state) => state.isPatientAuth);
@@ -15,15 +16,16 @@ const Navigation = ({ nav, openFunc }) => {
 
    var nameToShow;
    var imageToShow;
+   var dashboard;
    if (isPatientAuth === true) {
       nameToShow = userPatient;
       imageToShow = patientImage;
+      dashboard = '/userdashboard';
    } else if (isDoctorAuth === true) {
       nameToShow = userDoctor;
       imageToShow = docImage;
+      dashboard = '/doctordashboard';
    }
-
-   const [openMenu, setOpenMenu] = useState(false);
 
    return (
       <nav className={styles.nav}>
@@ -37,7 +39,10 @@ const Navigation = ({ nav, openFunc }) => {
                   <MdMenu />
                </i>
             </div>
-            <p className={styles.logo}>Eirhub</p>
+
+            <Link to={dashboard}>
+               <p className={styles.logo}>Eirhub</p>
+            </Link>
 
             {/* Avatar with welcome message */}
             <div className={styles.avatar}>

@@ -9,7 +9,7 @@ import {
    fetchAppointments,
    fetchMedications,
    setAppointmentDates,
-   setIsANewUser,
+   setMedicationsTemp,
    setMessage,
    updatePrescriptions,
 } from '../../../Store/Actions.js';
@@ -21,7 +21,6 @@ const mapStateToProps = (state) => {
    return {
       savedHealthDetails: state.health,
       tempMeds: state.tempMedications,
-      isNewUser: state.isNewUser,
    };
 };
 
@@ -42,16 +41,19 @@ function Dashboard(props) {
       }
       fetchdata();
 
-      if (props.isNewUser === true) {
-         dispatch(
-            setMessage({
-               show: true,
-               msg: 'Please complete your profile.',
-               state: 1,
-            })
-         );
-         dispatch(setIsANewUser(false));
-      }
+      console.log('new out', props.isNewUser);
+
+      // if (store.getState().isNewUser === true) {
+      //    console.log('new in', props.isNewUser);
+      //    dispatch(
+      //       setMessage({
+      //          show: true,
+      //          msg: 'Please complete your profile.',
+      //          state: 1,
+      //       })
+      //    );
+      //    dispatch(setIsANewUser(false));
+      // }
    }, []);
 
    let appointment_dates = [];

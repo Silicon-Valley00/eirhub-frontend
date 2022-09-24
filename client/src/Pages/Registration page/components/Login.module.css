@@ -120,6 +120,7 @@ i.closeIcon {
    font-size: 0.7rem;
    font-weight: 400;
    margin: 0.7rem 0;
+   font-family: var(--logofont);
 }
 .loginForm h3 {
    color: #0d3f58;
@@ -127,6 +128,7 @@ i.closeIcon {
    font-size: 0.8rem;
    font-weight: 600;
    /* margin-top: 0.8rem; */
+   /* font-family: var(--logofont); */
 }
 .passwordReset {
    color: var(--light-blue);
@@ -479,11 +481,11 @@ input {
    }
 
    .loginForm {
-   margin: auto;
-   width: 100%;
-   /* height: 100%; */
-   /* overflow-y: scroll; */
-}
+      margin: auto;
+      width: 100%;
+      /* height: 100%; */
+      /* overflow-y: scroll; */
+   }
 
    .loader {
       width: 15%;
@@ -509,8 +511,8 @@ input {
       font-size: 20px;
    }
    .loginForm {
-   margin: 1rem auto;
-}
+      margin: 1rem auto;
+   }
    .loginForm .title {
       font-size: 2rem;
    }
