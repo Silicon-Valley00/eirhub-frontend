@@ -87,6 +87,7 @@ const LandingPage = () => {
 
             {/* Hero */}
             <div className={styles.back}>
+               <div className={styles.hero_overlay}></div>
                <div className={styles.inner_div}>
                   <Hero handleModalSignup={handleModalSignup} />
                </div>
