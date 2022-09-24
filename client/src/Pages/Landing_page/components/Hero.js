@@ -15,25 +15,29 @@ const Hero = (props) => {
                         Let's Help Connect You With The Best Doctors
                      </h1>
                   </div>
-                  <div className={heroStyles.content_info}>
-                     <p className={heroStyles.content__info}>
-                        <Typewriter
-                           options={{ loop: false, delay: 20 }}
-                           onInit={(typewriter) => {
-                              typewriter
-                                 .pauseFor(500)
-                                 .typeString('EirHub helps patients')
-                                 .pauseFor(300)
-                                 .deleteChars(8)
-                                 .typeString(
-                                    ' <Strong>patients</Strong> get quick access to experienced practitioners and helps increase the visibility of these practitioners'
-                                 )
-                                 .deleteChars(14)
-                                 .typeString(' <Strong>practitioners</Strong>')
-                                 .start();
-                           }}
-                        />
-                     </p>
+                  <div className={heroStyles.content_wrapper}>
+                     <div className={heroStyles.content_info}>
+                        <p className={heroStyles.content__info}>
+                           <Typewriter
+                              options={{ loop: false, delay: 20 }}
+                              onInit={(typewriter) => {
+                                 typewriter
+                                    .pauseFor(500)
+                                    .typeString('EirHub helps patients')
+                                    .pauseFor(300)
+                                    .deleteChars(8)
+                                    .typeString(
+                                       ' <Strong>patients</Strong> get quick access to experienced practitioners and helps increase the visibility of these practitioners'
+                                    )
+                                    .deleteChars(14)
+                                    .typeString(
+                                       ' <Strong>practitioners</Strong>'
+                                    )
+                                    .start();
+                              }}
+                           />
+                        </p>
+                     </div>
                   </div>
 
                   <div className={heroStyles.content_button}>
