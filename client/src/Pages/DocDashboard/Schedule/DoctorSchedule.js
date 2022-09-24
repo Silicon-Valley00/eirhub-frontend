@@ -1,4 +1,4 @@
-import DSstyles from './DoctorSchedule.module.css';
+import styles from './DoctorSchedule.module.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
@@ -110,8 +110,8 @@ const DoctorSchedule = (props) => {
    // Displays a text if there are no Pending appointments
    if (allPendingSchedules.length === 0) {
       displayData = (
-         <div className={DSstyles.emptyMessage}>
-            <p className={DSstyles.text}>Nothing to show here.</p>
+         <div className={styles.emptyMessage}>
+            <p className={styles.text}>Nothing to show here.</p>
          </div>
       );
       // If there are pending appointments, display the data
@@ -122,10 +122,10 @@ const DoctorSchedule = (props) => {
                return (
                   <tr key={index}>
                      <td
-                        className={DSstyles.imgSection}
+                        className={styles.imgSection}
                         onClick={() => displaySelectedPatientDetails(index)}
                      >
-                        <div className={DSstyles.profileImageDiv}>
+                        <div className={styles.profileImageDiv}>
                            <img
                               src={data?.patient_info.person_image}
                               alt={'img'}
@@ -134,20 +134,20 @@ const DoctorSchedule = (props) => {
                      </td>
                      <td
                         onClick={() => displaySelectedPatientDetails(index)}
-                        className={DSstyles.tdName}
+                        className={styles.tdName}
                      >
                         {data?.patient_info.first_name}{' '}
                         {data?.patient_info.last_name}
                      </td>
                      <td
-                        className={DSstyles.tdCondition}
+                        className={styles.tdCondition}
                         onClick={() => displaySelectedPatientDetails(index)}
                      >
                         {data?.appointment_reason}
                      </td>
                      {/* Cancel appointments */}
                      <td
-                        className={DSstyles.tdCancel}
+                        className={styles.tdCancel}
                         onClick={() => {
                            // displaySelectedPatientDetails(index);
                            cancelAppointment(index);
@@ -173,7 +173,7 @@ const DoctorSchedule = (props) => {
             <title>Schedule An Appointment</title>
             <meta name="description" description="Doctor Schedule" />
          </Helmet>
-         <div className={DSstyles.DSContainer1}>
+         <div className={styles.DSContainer1}>
             <div>
                <h2>Appoinment Details</h2>
                <form
@@ -186,12 +186,12 @@ const DoctorSchedule = (props) => {
                   }}
                   id="form"
                >
-                  <div className={DSstyles.patientContainer}>
-                     <label className={DSstyles.labelName}>Patient Name</label>
+                  <div className={styles.patientContainer}>
+                     <label className={styles.labelName}>Patient Name</label>
                      <input
                         type="message"
                         id="name"
-                        className={DSstyles.inputName}
+                        className={styles.inputName}
                         value={
                            displayFirstName === undefined ||
                            displayFirstName === null ||
@@ -202,13 +202,11 @@ const DoctorSchedule = (props) => {
                         }
                         disabled
                      />
-                     <label className={DSstyles.labelCondition}>
-                        Condition
-                     </label>
+                     <label className={styles.labelCondition}>Condition</label>
                      <input
                         type="text"
                         id="condition"
-                        className={DSstyles.inputCondition}
+                        className={styles.inputCondition}
                         value={
                            displayReason === undefined || displayReason === null
                               ? ' '
@@ -217,8 +215,8 @@ const DoctorSchedule = (props) => {
                         disabled
                      />
                   </div>
-                  <div className={DSstyles.appointTime}>
-                     <label className={DSstyles.labelDate}>
+                  <div className={styles.appointTime}>
+                     <label className={styles.labelDate}>
                         Appointment Date
                      </label>
                      <input
@@ -227,40 +225,40 @@ const DoctorSchedule = (props) => {
                         placeholder="DD/MM/YYYY"
                         onFocus={(e) => (e.target.type = 'date')}
                         onBlur={(e) => (e.target.type = 'text')}
-                        className={DSstyles.inputDate}
+                        className={styles.inputDate}
                         onChange={(e) => setAppointmentDate(e.target.value)}
                         required
                      />
-                     <label className={DSstyles.labelSTime}>Start Time</label>
+                     <label className={styles.labelSTime}>Start Time</label>
                      <input
                         type="text"
                         id="start time"
                         placeholder="HH:MM"
                         onFocus={(e) => (e.target.type = 'time')}
                         onBlur={(e) => (e.target.type = 'text')}
-                        className={DSstyles.inputStartTime}
+                        className={styles.inputStartTime}
                         onChange={(e) =>
                            setAppointmentStartTime(e.target.value)
                         }
                         required
                      />
-                     <label className={DSstyles.labelETime}>End Time</label>
+                     <label className={styles.labelETime}>End Time</label>
                      <input
                         type="text"
                         id="end time"
                         placeholder="HH:MM"
                         onFocus={(e) => (e.target.type = 'time')}
                         onBlur={(e) => (e.target.type = 'text')}
-                        className={DSstyles.inputEndTime}
+                        className={styles.inputEndTime}
                         onChange={(e) => setAppointmentEndTime(e.target.value)}
                         required
                      />
                   </div>
-                  <div className={DSstyles.DSbuttondiv}>
+                  <div className={styles.DSbuttondiv}>
                      <button
                         form="form"
                         type="submit"
-                        className={DSstyles.DSbutton}
+                        className={styles.DSbutton}
                         onClick={() => scheduleAppointment()}
                      >
                         Schedule Appointment
@@ -269,17 +267,17 @@ const DoctorSchedule = (props) => {
                </form>
             </div>
             <div>
-               <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
-               <div className={DSstyles.appointmentContainer}>
+               <h2 className={styles.DSh21}>Pending Appointments</h2>
+               <div className={styles.appointmentContainer}>
                   <table>
                      <thead>
-                        <th className={DSstyles.imgHeader}></th>
-                        <th className={DSstyles.tName}>Name</th>
-                        <th className={DSstyles.tCondition}>Condition</th>
-                        <th className={DSstyles.tAction}>Action</th>
+                        <th className={styles.imgHeader}></th>
+                        <th className={styles.tName}>Name</th>
+                        <th className={styles.tCondition}>Condition</th>
+                        <th className={styles.tAction}>Action</th>
                      </thead>
                      {/* Body of the table that contains all the Pending appointments */}
-                     <tbody className={DSstyles.tbody}>{displayData}</tbody>
+                     <tbody className={styles.tbody}>{displayData}</tbody>
                   </table>
                </div>
             </div>

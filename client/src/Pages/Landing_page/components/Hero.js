@@ -1,23 +1,23 @@
 import React from 'react';
 import landingpageImage from '../../../assets/landingpage.png';
-import heroStyles from './hero.module.css';
+import styles from './hero.module.css';
 import Typewriter from 'typewriter-effect';
 
 const Hero = (props) => {
    return (
-      <section id={heroStyles.hero_body}>
-         <div id={heroStyles.overlay}></div>
-         <div className={heroStyles.hero_container}>
-            <div className={heroStyles.hero_wrapper}>
-               <div className={heroStyles.hero_content}>
-                  <div className={heroStyles.content_title}>
-                     <h1 className={heroStyles.content__title}>
+      <section id={styles.hero_body}>
+         <div id={styles.overlay}></div>
+         <div className={styles.hero_container}>
+            <div className={styles.hero_wrapper}>
+               <div className={styles.hero_content}>
+                  <div className={styles.content_title}>
+                     <h1 className={styles.content__title}>
                         Let's Help Connect You With The Best Doctors
                      </h1>
                   </div>
-                  <div className={heroStyles.content_wrapper}>
-                     <div className={heroStyles.content_info}>
-                        <p className={heroStyles.content__info}>
+                  <div className={styles.content_wrapper}>
+                     <div className={styles.content_info}>
+                        <p className={styles.content__info}>
                            <Typewriter
                               options={{ loop: false, delay: 20 }}
                               onInit={(typewriter) => {
@@ -40,20 +40,20 @@ const Hero = (props) => {
                      </div>
                   </div>
 
-                  <div className={heroStyles.content_button}>
+                  <div className={styles.content_button}>
                      <button
-                        className={heroStyles.content__button}
+                        className={styles.content__button}
                         onClick={() => props.handleModalSignup()}
                      >
                         Book an appointment
                      </button>
                   </div>
                </div>
-               <div className={heroStyles.hero_image}>
+               <div className={styles.hero_image}>
                   <img
                      src={landingpageImage}
                      alt="Hero"
-                     className={heroStyles.hero__image}
+                     className={styles.hero__image}
                   />
                </div>
             </div>

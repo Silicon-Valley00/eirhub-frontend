@@ -67,15 +67,13 @@
 
 @media (min-width: 1200px) {
    .container {
-      grid-template-columns: 10rem auto auto;
-      border: 1px solid red;
+      grid-template-columns: 11rem auto 16rem;
    }
 }
 
-@media (min-width: 2001px) {
-   .userbody {
-      max-width: 2001px;
-      margin: 0 auto;
+@media (min-width: 1800px) {
+   .container {
+      /* grid-template-columns: 10rem auto 16rem; */
    }
 }
 
