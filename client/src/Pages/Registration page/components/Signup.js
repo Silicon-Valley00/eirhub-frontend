@@ -85,13 +85,8 @@ function Signup(props) {
             if (store.getState().okToRoute === true) {
                navigate('/userdashboard');
                dispatch(setLoading(false));
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Please complete your profile.',
-                     state: 1,
-                  })
-               );
+               dispatch(setIsANewUser(true));
+
                console.log(store.getState());
             } else {
                setTimeout(() => {

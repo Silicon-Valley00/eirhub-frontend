@@ -20,8 +20,8 @@
 }
 .doctorDetailsField h2 {
    color: var(--midcol);
-   font-size: 0.8rem;
-   font-weight: 600;
+   font-size: 1.2rem;
+   font-weight: 500;
    margin-bottom: 0.6rem;
 }
 .doctorDetailsField input[type='text'] {
@@ -47,8 +47,8 @@
 
 .conditionBox h2 {
    color: var(--midcol);
-   font-size: 0.8rem;
-   font-weight: 600;
+   font-size: 1.2rem;
+   font-weight: 500;
    margin-bottom: 0.6rem;
 }
 .conditionDetails {
@@ -109,8 +109,8 @@
 .appointmentsBox h2 {
    margin-bottom: 0.2rem;
    color: var(--midcol);
-   font-weight: 500;
-   font-size: 1.2rem;
+   font-weight: 550;
+   font-size: 1.4rem;
 }
 .appointmentTable {
    width: 100%;

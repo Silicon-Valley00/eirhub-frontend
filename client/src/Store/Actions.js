@@ -135,6 +135,14 @@ export const setLoading = (state) => {
    };
 };
 
+//Checks if a user signs up for the first time
+export const setIsANewUser = (state) => {
+   return {
+      type: SET_IS_NEW_USER,
+      payload: state,
+   };
+};
+
 //Fetches user profile details
 export const fetchProfile = (userID, guardianID) => {
    return async function (dispatch) {

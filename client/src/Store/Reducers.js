@@ -25,6 +25,7 @@ import {
 const initialState = {
    doctorRecordPatientId: null,
    isLoading: false,
+   isNewUser: false,
    //Patient Dashboard
    tempMedications: [],
    reloadMedications: false,
@@ -107,10 +108,13 @@ const Reducers = (state = initialState, action) => {
       case PURGE:
          return initialState;
       case SET_DOCTOR_RECORD_PATIENT_ID:
-         return { ...state, doctorRecordPatientId: action.payload };
+         return { ...state, doctorRecordPatientId: action.payload};
 
       case SET_IS_LOADING:
          return { ...state, isLoading: action.payload };
+
+      case SET_IS_NEW_USER:
+         return { ...state, isNewUser: action.payload };
 
       case SET_OK_TO_ROUTE:
          return { ...state, okToRoute: action.payload };

@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import styles from './profile.module.css';
 import avatarThree from '../../../assets/Rectangle.png';
 import { useDispatch, connect, useSelector } from 'react-redux';
-import {
-   updateProfile,
-   updateHealthDetails,
-   updateGuardianInfo,
-   setMessage,
-} from '../../../Store/Actions.js';
+import { updateProfile, setMessage } from '../../../Store/Actions.js';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 
@@ -23,8 +18,6 @@ function Profile(props) {
    // Handles dispatching of actions
    const patientID = useSelector((state) => state.profile.id_patient);
    const guardianID = useSelector((state) => state.profile.id_guardian);
-
-   const [showMessage, setShowMessage] = useState(false);
 
    const dispatch = useDispatch();
    // console.log(
@@ -238,22 +231,20 @@ function Profile(props) {
             enteredHealthInfo
          )
       );
-
+      // dispatch(updateProfile(props.savedProfile.idPatient, enteredProfileInfo));
+      // dispatch(
+      //    updateHealthDetails(props.savedProfile.idPatient, enteredHealthInfo)
+      // );
+      // dispatch(
+      //    updateGuardianInfo(
+      //       props.savedProfile.idGuardian,
+      //       enteredGuardianinfo,
+      //       props.savedProfile.idPatient,
+      //       enteredHealthInfo
+      //    )
+      // );
       setUploadBtn('Upload Image');
       setDisableFormBtn(true);
-   }
-
-   function displayMessage() {
-      if (disableFormBtn === true && showMessage === false) {
-         dispatch(
-            setMessage({
-               show: true,
-               msg: 'Click on Edit Profile Button first.',
-               state: 1,
-            })
-         );
-         setShowMessage(true);
-      }
    }
    return (
       <>
@@ -295,12 +286,7 @@ function Profile(props) {
                   <div className={styles.personalInfoFormBox}>
                      <div className={styles.profileFormBox}>
                         <h3>First Name</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="firstname"
                               type="text"
@@ -317,12 +303,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Middle Name(Optional)</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="middletname"
                               type="text"
@@ -338,12 +319,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Last Name</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="lastname"
                               type="text"
@@ -360,12 +336,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Email</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="email"
                               type="email"
@@ -380,12 +351,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Date of Birth</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               type="text"
                               name="date"
@@ -408,12 +374,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Gender</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <div className={styles.select}>
                               <select
                                  placeholder="Gender"
@@ -433,12 +394,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Nationality</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="nationality"
                               type="text"
@@ -455,12 +411,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Mobile Number</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="mobilenumber"
                               type="tel"
@@ -483,12 +434,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>House Address</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="address"
                               type="text"
@@ -505,12 +451,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>ID Number</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="idnumber"
                               type="text"
@@ -533,12 +474,7 @@ function Profile(props) {
                   <div className={styles.healthInfoFormBox}>
                      <div className={styles.healthFormBox}>
                         <h3>Heart Rate (bpm)</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="heartrate"
                               type="text"
@@ -561,12 +497,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Temperature (℃)</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="temperature"
                               type="text"
@@ -589,12 +520,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Blood Pressure </h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="bloodpressure"
                               type="text"
@@ -617,12 +543,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Blood Glucose (mg/dL)</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="bloodglucose"
                               type="text"
@@ -645,12 +566,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Respiratory Rate</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="respiratoryrate"
                               type="text"
@@ -673,12 +589,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Blood Group</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <div className={styles.select}>
                               <select
                                  placeholder="Blood Group"
@@ -702,12 +613,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Weight (kg)</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="weight"
                               type="text"
@@ -730,12 +636,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Height (cm)</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               name="height"
                               type="text"
@@ -758,12 +659,7 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Last Visit Date</h3>
-                        <div
-                           className={styles.formBoxNameInputs}
-                           onClick={() => {
-                              displayMessage();
-                           }}
-                        >
+                        <div className={styles.formBoxNameInputs}>
                            <input
                               type="text"
                               name="date"
@@ -792,12 +688,7 @@ function Profile(props) {
                      <div className={styles.guardianInfoFormBox}>
                         <div className={styles.guardianFormBox}>
                            <h3>First Name</h3>
-                           <div
-                              className={styles.formBoxNameInputs}
-                              onClick={() => {
-                                 displayMessage();
-                              }}
-                           >
+                           <div className={styles.formBoxNameInputs}>
                               <input
                                  name="guardianfirstname"
                                  type="text"
@@ -814,12 +705,7 @@ function Profile(props) {
                         </div>
                         <div className={styles.guardianFormBox}>
                            <h3>Middle Name(Optional)</h3>
-                           <div
-                              className={styles.formBoxNameInputs}
-                              onClick={() => {
-                                 displayMessage();
-                              }}
-                           >
+                           <div className={styles.formBoxNameInputs}>
                               <input
                                  name="guardianmiddlename"
                                  type="text"
@@ -835,12 +721,7 @@ function Profile(props) {
                         </div>
                         <div className={styles.guardianFormBox}>
                            <h3>Last Name</h3>
-                           <div
-                              className={styles.formBoxNameInputs}
-                              onClick={() => {
-                                 displayMessage();
-                              }}
-                           >
+                           <div className={styles.formBoxNameInputs}>
                               <input
                                  name="guardianlastname"
                                  type="text"
@@ -857,12 +738,7 @@ function Profile(props) {
                         </div>
                         <div className={styles.guardianFormBox}>
                            <h3>Email</h3>
-                           <div
-                              className={styles.formBoxNameInputs}
-                              onClick={() => {
-                                 displayMessage();
-                              }}
-                           >
+                           <div className={styles.formBoxNameInputs}>
                               <input
                                  name="email"
                                  type="email"
@@ -879,12 +755,7 @@ function Profile(props) {
                         </div>
                         <div className={styles.guardianFormBox}>
                            <h3>Date of Birth</h3>
-                           <div
-                              className={styles.formBoxNameInputs}
-                              onClick={() => {
-                                 displayMessage();
-                              }}
-                           >
+                           <div className={styles.formBoxNameInputs}>
                               <input
                                  type="text"
                                  name="guardiandate"
@@ -909,12 +780,7 @@ function Profile(props) {
                         </div>
                         <div className={styles.guardianFormBox}>
                            <h3>Gender</h3>
-                           <div
-                              className={styles.formBoxNameInputs}
-                              onClick={() => {
-                                 displayMessage();
-                              }}
-                           >
+                           <div className={styles.formBoxNameInputs}>
                               <div className={styles.select}>
                                  <select
                                     placeholder="Gender"
@@ -935,12 +801,7 @@ function Profile(props) {
 
                         <div className={styles.guardianFormBox}>
                            <h3>ID Number</h3>
-                           <div
-                              className={styles.formBoxNameInputs}
-                              onClick={() => {
-                                 displayMessage();
-                              }}
-                           >
+                           <div className={styles.formBoxNameInputs}>
                               <input
                                  name="guardianidnumber"
                                  type="text"
@@ -958,12 +819,7 @@ function Profile(props) {
 
                         <div className={styles.guardianFormBox}>
                            <h3>Mobile Number</h3>
-                           <div
-                              className={styles.formBoxNameInputs}
-                              onClick={() => {
-                                 displayMessage();
-                              }}
-                           >
+                           <div className={styles.formBoxNameInputs}>
                               <input
                                  name="guardianmobilenumber"
                                  type="tel"
@@ -986,12 +842,7 @@ function Profile(props) {
                         </div>
                         <div className={styles.guardianFormBox}>
                            <h3>House Address</h3>
-                           <div
-                              className={styles.formBoxNameInputs}
-                              onClick={() => {
-                                 displayMessage();
-                              }}
-                           >
+                           <div className={styles.formBoxNameInputs}>
                               <input
                                  name="guardianaddress"
                                  type="text"
@@ -1011,12 +862,7 @@ function Profile(props) {
                ) : (
                   ''
                )}
-               <div
-                  className={styles.formButton}
-                  onClick={() => {
-                     displayMessage();
-                  }}
-               >
+               <div className={styles.formButton}>
                   {disableFormBtn ? (
                      <button
                         className={styles.formBtn}
@@ -1035,7 +881,7 @@ function Profile(props) {
                         }}
                         disabled={!enableUpdateButton()}
                      >
-                        Update Profile
+                        Update
                      </button>
                   )}
                </div>

@@ -66,15 +66,9 @@ function DoctorSignup(props) {
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/doctordashboard');
+               dispatch(setIsANewUser(true));
 
                dispatch(setLoading(false));
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Please complete your profile.',
-                     state: 1,
-                  })
-               );
             } else {
                setTimeout(() => {
                   persistor.purge();

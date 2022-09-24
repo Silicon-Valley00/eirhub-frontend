@@ -5,7 +5,11 @@ import { AiFillFile } from 'react-icons/ai';
 import { CgCalendar } from 'react-icons/cg';
 import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { setAppointmentDates, setMessage } from '../../../Store/Actions';
+import {
+   setAppointmentDates,
+   setIsANewUser,
+   setMessage,
+} from '../../../Store/Actions';
 import { Helmet } from 'react-helmet';
 
 const MidDashboard = (props) => {
@@ -79,6 +83,16 @@ const MidDashboard = (props) => {
          await fetchStats();
       };
       fetchDashboardData();
+      if (props.isNewUser === true) {
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Please complete your profile.',
+               state: 1,
+            })
+         );
+      }
+      dispatch(setIsANewUser(false));
    }, []);
 
    let appointment_dates = [];
