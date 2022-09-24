@@ -18,14 +18,17 @@ function MessagePatients() {
    useEffect(() => {
       async function fetchdata() {
          await axios
-            .get(`http://127.0.0.1:5000/appointmentcometd/${doctorID}}`, {
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  //Helpful in some cases.
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
-            })
+            .get(
+               `http://127.0.0.1:5000/appointments/?id_doctor = ${doctorID}`,
+               {
+                  headers: {
+                     'Access-Control-Allow-Origin': '*',
+                     //Helpful in some cases.
+                     'Access-Control-Allow-Headers': '*',
+                     'Access-Control-Allow-Methods': '*',
+                  },
+               }
+            )
             .then((response) => {
                //returns response
                // alert('patients by doctor id worked fetch worked');
