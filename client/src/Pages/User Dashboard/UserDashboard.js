@@ -4,7 +4,7 @@ import Navigation from './components/Navigation';
 import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
 import LogoutModal from '../General Components/Logout Modal/LogoutModal';
-import NavBar from '../DocDashboard/Navigation';
+import Navbar from '../General Components/Navigation/Navbar';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 
 function UserDashboard(props) {
@@ -48,7 +48,7 @@ function UserDashboard(props) {
                className={birthdayModal || logoutModal ? styles.active : ''}
             >
                {' '}
-               <NavBar openFunc={openFunc} />
+               <Navbar openFunc={openFunc} />
                <div className={styles.userbody}>
                   <div className={styles.container}>
                      <Navigation

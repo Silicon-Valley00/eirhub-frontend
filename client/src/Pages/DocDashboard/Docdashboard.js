@@ -3,7 +3,7 @@ import styles from './docdashboard.module.css';
 import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
 import Sidebar from './components/Sidebar';
-import Navigation from './Navigation';
+import Navbar from '../General Components/Navigation/Navbar';
 import LogoutModal from '../General Components/Logout Modal/LogoutModal';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 
@@ -50,7 +50,7 @@ const DocDashboard = (props) => {
                id={styles.blur}
                className={birthdayModal || logoutModal ? styles.active : ''}
             >
-               <Navigation openFunc={openFunc} />
+               <Navbar openFunc={openFunc} />
                <div className={styles.userbody}>
                   <div className={styles.container}>
                      <Sidebar
