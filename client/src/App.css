@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* .max_div {
+   max-width: 1920px;
+   margin: auto;
+   overflow: none;
+} */
+
+* {
+   border: none;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+}
+
+input::placeholder {
+   font-weight: 400;
+   color: rgb(186, 183, 183);
+}

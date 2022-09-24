@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+footer {
+   background-color: #ecf3fe;
+   width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+   padding-top: 50px;
+   padding-bottom: 100px;
+}
+.logo {
+   width: 28%;
+   color: #0d3f58;
+   cursor: pointer;
+}
+.logo span {
+   font-family: 'Comfortaa', cursive;
+   font-style: normal;
+   font-weight: 700;
+   font-size: 40px;
+   line-height: 45px;
+   display: flex;
+   align-items: center;
+   text-align: center;
+   letter-spacing: -0.015em;
+
+   color: #05a6c2;
+}
+.logo p {
+   margin-top: 10px;
+   width: 80%;
+   font-weight: 500;
+   font-size: 1.05em;
+   color: #0d3f58;
+}
+.socialmedia {
+   display: flex;
+   justify-content: space-between;
+   width: 70%;
+   margin-top: 30px;
+}
+.fheader {
+   color: #0d3f58;
+   font-family: sans-serif;
+   margin-bottom: 25px;
+   font-size: 1.2em;
+   letter-spacing: -1px;
+}
+.flist:hover {
+   transition: all 0.1s ease-in;
+   transform: translate(2px, 0px);
+   color: #2b6777;
+   cursor: pointer;
+}
+.socialmedia span {
+   border-radius: 100px;
+   display: flex;
+   border: 1px solid #05a6c2;
+   padding: 11px 12px;
+   justify-content: center;
+   align-items: center;
+}
+.socialmedia span:hover {
+   background-color: #05a6c2;
+}
+.socialmedia span:hover .insta {
+   fill: #ecf3fe;
+}
+.socialmedia span:hover .twit {
+   fill: #ecf3fe;
+}
+.socialmedia span:hover .linked {
+   fill: #ecf3fe;
+}
+.insta {
+   fill: #05a6c2;
+   font-size: 25px;
+}
+.linked {
+   fill: #05a6c2;
+   font-size: 25px;
+}
+.twit {
+   fill: #05a6c2;
+   font-size: 25px;
+}
+.flist {
+   font-weight: 500;
+   color: #0d3f58;
+   list-style: none;
+}
+.fdropdown .flist {
+   line-height: 1.8;
+   margin: 0;
+}
+.fdropdown {
+   padding-left: 0;
+}
+.fcontact .flist {
+   margin-bottom: 20px;
+}
+
+/*responsive*/
+@media (max-width: 1112px) {
+   .fourservices{
+      align-self: flex-start;
+   }
+   footer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      gap: 70px;
+      justify-items: center;
+      padding-bottom: 30px;
+   }
+   .fcontact {
+      grid-column: 3/4;
+      grid-row: 1/2;
+   }
+   .logo {
+      grid-column: 2/3;
+      grid-row: 2/3;
+      width: 100%;
+      justify-self: center;
+      color: #0d3f58;
+   }
+   .logo p {
+      margin-top: 20px;
+      width: 95%;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #0d3f58;
+   }
+   span.logo {
+      justify-content: center;
+   }
+   .socialmedia {
+      margin: auto;
+      width: 90%;
+   }
+}
+/*All Mobile sizes*/
+@media (max-width: 768px) {
+   .fourservices {
+      width: 60%;
+   }
+   .fsupport {
+      width: 60%;
+   }
+
+   .fheader {
+      font-size: 1.7rem;
+      text-align: center;
+      align-self: center;
+      width: 50%;
+      margin: 30px auto;
+      display: flex;
+      justify-content: space-evenly;
+      cursor: pointer;
+   }
+   .fourservices .fheader {
+      width: 70%;
+   }
+   .fourservices .fdropdown {
+      width: 95%;
+      margin: 0 auto;
+      transition: all 700ms ease-in-out;
+   }
+   .fsupport .fdropdown {
+      width: 95%;
+      margin: 0 auto;
+   }
+   .fourservices ul li {
+      text-align: center;
+      width: 100%;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      border-bottom: #0d3f58 solid 1px;
+   }
+   .fsupport ul li {
+      text-align: center;
+      width: 100%;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      border-bottom: #0d3f58 solid 1px;
+   }
+   .fcontact ul li {
+      font-size: 1.1rem;
+      text-align: center;
+   }
+
+   footer {
+      display: grid;
+      grid-template-columns: repeat(1, 3fr);
+      gap: 50px 0px;
+   }
+   .fourservices {
+      grid-column: 2/3;
+      grid-row: 1/2;
+   }
+   .fsupport {
+      grid-column: 2/3;
+      grid-row: 2/3;
+   }
+   .fcontact {
+      grid-column: 2/3;
+      grid-row: 4/5;
+   }
+   .logo {
+      grid-column: 2/3;
+      grid-row: 3/4;
+   }
+   .logo p {
+      width: 50%;
+      margin: 30px auto;
+   }
+   .socialmedia {
+      width: 50%;
+   }
+}
+
+@media (max-width: 480px) {
+   .fheader {
+      width: 100%;
+      font-size: 1.4rem;
+   }
+   .fourservices .flist {
+      font-size: 1rem;
+      width: 100%;
+   }
+   .fsupport .fheader {
+      width: 60%;
+   }
+   .fourservices .fheader {
+      width: 90%;
+   }
+   .fsupport .flist {
+      font-size: 1rem;
+      width: 100%;
+   }
+   .logo span {
+      font-size: 1.8rem;
+   }
+   .logo p {
+      margin-top: 10px;
+      width: 77%;
+      font-weight: 500;
+      font-size: 1rem;
+   }
+   .fcontact .flist {
+      font-size: 1rem;
+   }
+   .socialmedia {
+      width: 80%;
+   }
+}
+@media (max-width: 320px) {
+   .fheader {
+      font-size: 1.3rem;
+   }
+   .fourservices {
+      width: 60%;
+   }
+   .fsupport {
+      width: 60%;
+   }
+   .fourservices .flist {
+      font-size: 0.9rem;
+      width: 100%;
+   }
+   .fsupport .flist {
+      font-size: 0.9rem;
+      width: 100%;
+   }
+   .logo span {
+      font-size: 1.6rem;
+   }
+   .logo p {
+      font-size: 0.9rem;
+   }
+   .fcontact .flist {
+      font-size: 0.9rem;
+   }
+   .socialmedia {
+      width: 70%;
+   }
+}
+
+@media (min-width: 1920px) {
+   .inner_div {
+      min-width: 1920px;
+   }
+
+   .back {
+      min-width: 100vw;
+      background: var(--gray);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+}

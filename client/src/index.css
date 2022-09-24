@@ -1,13 +1,56 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@400;600&display=swap');
+
+* {
+   margin: 0;
+   outline: 0;
+   appearance: 0;
+   border: 0;
+   text-decoration: none;
+   list-style: none;
+   box-sizing: border-box;
+   border: none;
+   font-family: var(--mainfont);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*::-webkit-scrollbar,
+*::-webkit-scrollbar {
+   width: 0.3rem;
+   height: 0.3rem;
+   cursor: pointer;
+}
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+   margin: 1.25rem;
+   cursor: pointer;
+   --webkit-box-shadow: inset 0 0 10px var(--white);
+}
+*::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+
+}
+:root {
+   --white: #ffffff;
+   --gray: #ecf3fe;
+   --lightcol: #05a6c2;
+   --midcol: #2b6777;
+   --deepcol: #0d3f58;
+   --tablehead: #c2c9d1;
+   --iconred: #dd7678;
+   --iconback: #f7eef0;
+   --successbold: #34ff01;
+   --successMild: #29b905;
+   --successMildHigh: #88ff6b;
+   --successMildLow: #98fc7f;
+   --successSoft: #aaff94;
+   --errorbold: #ff3401;
+   --errorMild: #b92905;
+   --errorMildHigh: #ff886b;
+   --errorMildLow: #fc987f;
+   --errorSoft: #ffaa94;
+   --mainfont: 'Poppins', sans-serif;
+   --logofont: 'Comfortaa', cursive;
 }

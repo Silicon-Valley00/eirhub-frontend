@@ -1,0 +1,225 @@
+.main {
+   padding: 5%;
+   background-color: var(--white);
+}
+.title {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding-bottom: 10px;
+   width: 100%;
+}
+
+.caption {
+   text-transform: capitalize;
+   font-weight: bold;
+   letter-spacing: 0.4px;
+   color: var(--deepcol);
+   font-size: 20px;
+   text-align: center;
+   font-family: var(--mainfont);
+}
+
+.cards {
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
+   gap: 3rem;
+   width: 100%;
+}
+
+.card {
+   background-color: var(--white);
+   box-shadow: 0 2px 15px 0 #bedded;
+   backdrop-filter: blur(16px) saturate(180%);
+   -webkit-backdrop-filter: blur(16px) saturate(180%);
+   background-color: rgba(248, 248, 250, 0.75);
+   border-radius: 12px;
+   border: 1px solid rgba(255, 255, 255, 0.125);
+   border-radius: 20px;
+   height: 16rem;
+   padding: 2rem;
+   padding-bottom: 4rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   color: var(--deepcol);
+}
+
+.setCol {
+   fill: var(--lightcol);
+   font-size: 2rem;
+}
+
+.heading {
+   font-weight: bold;
+   font-size: 15px;
+}
+
+.about {
+   font-size: 12px;
+}
+
+.join_us {
+   font-family: var(--mainfont);
+   padding-top: 5rem;
+}
+
+.groupdocpic {
+   display: none;
+}
+
+.firstp {
+   text-transform: uppercase;
+   color: var(--lightcol);
+}
+
+.secondp {
+   text-transform: capitalize;
+   font-family: var(--mainfont);
+   font-size: x-large;
+   font-weight: 600;
+   color: var(--deepcol);
+   width: 70%;
+}
+
+.left__div {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   justify-content: center;
+}
+
+.btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding-top: 1rem;
+}
+
+.contact__btn {
+   padding: 5px;
+   background-color: var(--lightcol);
+   width: 15rem;
+   color: var(--white);
+   border-radius: 5px;
+   font-size: 15px;
+   font-family: var(--mainfont);
+   transition: all;
+   transition-duration: 500ms;
+   cursor: pointer;
+}
+
+.contact__btn:hover {
+   transform: translateY(-3px);
+   background-color: #3fb3c7;
+}
+
+@media (min-width: 600px) {
+   .caption {
+      font-size: 30px;
+   }
+
+   .cards {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 5rem;
+   }
+
+   .card {
+      height: 17rem;
+   }
+
+   .title {
+      font-size: x-large;
+   }
+
+   .join_us {
+      display: flex;
+   }
+}
+
+@media (min-width: 900px) {
+   .main {
+      padding-top: 6rem;
+   }
+   .caption {
+      font-size: 35px;
+   }
+
+   .cards {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      padding: initial;
+   }
+
+   .card {
+      height: 15rem;
+   }
+
+   .title {
+      font-size: xx-large;
+      padding-bottom: 30px;
+   }
+}
+
+@media (min-width: 1024px) {
+   .groupdocpic {
+      display: block;
+      width: 60%;
+      pointer-events: none;
+   }
+
+   .card {
+      height: 17rem;
+   }
+
+   .setCol {
+      font-size: 30px;
+   }
+
+   .heading {
+      font-size: 24px;
+      font-weight: 800;
+   }
+
+   .about {
+      font-size: 16px;
+   }
+
+   .left__div {
+      width: 40%;
+   }
+
+   .secondp {
+      font-size: 35px;
+      font-family: var(--mainfont);
+   }
+
+   .groupdoc {
+      object-fit: fill;
+      width: 100%;
+      border-radius: 0 15px 15px 0;
+   }
+
+   .btn {
+      display: block;
+   }
+}
+
+@media (min-width: 1200px) {
+   .contact__btn {
+      width: 20rem;
+      height: 3rem;
+      font-size: 20px;
+   }
+
+   .setCol {
+      font-size: 3rem;
+   }
+}
+
+@media (min-width: 1400px) {
+   .card {
+      height: 20rem;
+   }
+}

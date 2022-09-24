@@ -1,0 +1,101 @@
+.messageUsersBody {
+   margin-top: 1rem;
+   background-color: var(--gray);
+   width: 100%;
+   height: 90%;
+   min-height: 90%;
+   max-height: 90%;
+   padding: 1.3rem 1.2rem 0 1.4rem;
+   border-top-left-radius: 2rem;
+   border-top-right-radius: 2rem;
+}
+
+.usersBox {
+   margin-top: 3rem;
+   height: 100%;
+}
+.usersBoxSection {
+   width: 100%;
+   height: 60%;
+   overflow-y: auto;
+}
+.usersBox h2 {
+   font-size: 1.25rem;
+   font-weight: 500;
+   text-align: center;
+   color: var(--midcol);
+   padding-bottom: 2rem;
+}
+
+.userBox {
+   width: 100%;
+   height: 2.5rem;
+   margin-bottom: 1.1rem;
+   padding: 0.1rem;
+   cursor: pointer;
+}
+.userBox.active {
+   width: 100%;
+   height: 2.5rem;
+   margin-bottom: 1.1rem;
+   border-radius: 0.5rem;
+   background-color: rgba(0, 0, 0, 0.03);
+}
+.userBox:hover {
+   width: 100%;
+   height: 2.5rem;
+   margin-bottom: 1.1rem;
+   border-radius: 0.5rem;
+   background-color: rgba(0, 0, 0, 0.03);
+}
+
+.userImage {
+   width: 2.5rem;
+   height: 100%;
+   float: left;
+   margin-right: 0.8rem;
+}
+.userImage img {
+   width: 100%;
+   height: 100%;
+   clip-path: circle();
+}
+.userName {
+   float: none;
+   overflow: hidden;
+   height: 100%;
+   display: flex;
+   align-items: center;
+}
+
+.userName h3 {
+   font-size: 0.9rem;
+   font-weight: 500;
+   color: var(--midcol);
+   vertical-align: middle;
+}
+
+.usersBoxSection p {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   color: var(--tablehead);
+   font-size: 1rem;
+}
+
+.usersBoxSection::-webkit-scrollbar {
+   width: 0.3rem;
+   height: 0.3rem;
+   cursor: pointer;
+}
+.usersBoxSection::-webkit-scrollbar-track {
+   margin: 20px;
+   cursor: pointer;
+   --webkit-box-shadow: inset 0 0 10px var(--white);
+}
+.usersBoxSection::-webkit-scrollbar-thumb {
+   background-color: var(--lightcol);
+   border-radius: 10%;
+   cursor: pointer;
+}

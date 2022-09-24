@@ -1,0 +1,263 @@
+#hero_body {
+   width: 100%;
+   height: 45rem;
+   padding-top: 6rem;
+   background-color: var(--gray);
+   padding-left: 1rem;
+   padding-right: 1rem;
+}
+
+.hero_container {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+}
+
+.hero_wrapper {
+   position: relative;
+   height: 100%;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.hero_content {
+   display: flex;
+   gap: 1rem;
+   height: 100%;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   color: var(--gray);
+}
+
+.content__title {
+   font-family: var(--mainfont);
+   color: var(--white);
+   font-size: 25px;
+   text-align: center;
+}
+
+.content_info {
+   max-height: 10rem;
+}
+
+.content__info {
+   font-size: 16px;
+   font-family: var(--mainfont);
+   color: var(--white);
+   width: 100%;
+}
+
+.content_button {
+   padding-top: 1.7rem;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.content__button {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 3rem;
+   padding: 10px;
+   font-weight: 500;
+   color: var(--white);
+   text-align: center;
+   background-color: var(--lightcol);
+   border: none;
+   border-radius: 4px;
+   outline: none;
+   cursor: pointer;
+   font-size: 16px;
+   font-family: var(--mainfont);
+   letter-spacing: 0.3px;
+   transition: all;
+   transition-duration: 500ms;
+}
+
+.content__button:hover {
+   transform: translateY(-3px);
+   background-color: #3fb3c7;
+}
+
+.hero_image {
+   width: 50%;
+   pointer-events: none;
+}
+
+.hero__image {
+   object-fit: cover;
+}
+
+/* ========================== covers the background image on mobile screens ========================= */
+@media (max-width: 368px) {
+   #hero_body {
+      background-image: url('../../../assets/maleDoctor.jpg');
+      background-repeat: no-repeat;
+      background-position: 40% 65px;
+      background-size: cover;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* padding-bottom: 10rem; */
+   }
+
+   #overlay {
+      position: absolute;
+      inset: 0;
+      background-color: black;
+      opacity: 85%;
+   }
+
+   .content__button {
+      width: 100%;
+   }
+
+   .hero_image {
+      display: none;
+   }
+}
+
+@media (min-width: 368px) and (max-width: 959px) {
+   #hero_body {
+      background-image: url('../../../assets/maleDoctor.jpg');
+      background-repeat: no-repeat;
+      background-position: 30% 65px;
+      background-size: cover;
+      width: 100%;
+      position: relative;
+   }
+
+   #overlay {
+      position: absolute;
+      inset: 0;
+      background-color: black;
+      opacity: 85%;
+   }
+
+   .hero_content {
+      position: absolute;
+      color: var(--gray);
+      width: 80%;
+      height: 70%;
+      right: 40px;
+      top: 100px;
+   }
+
+   .content__button {
+      width: fit-content;
+   }
+
+   .hero_image {
+      display: none;
+   }
+}
+
+@media (min-width: 600px) {
+   .hero_content {
+      position: absolute;
+      color: var(--gray);
+      width: 80%;
+      height: 70%;
+      right: 70px;
+      top: 120px;
+      display: flex;
+      flex-direction: column;
+   }
+
+   .content__title {
+      font-size: 30px;
+   }
+}
+
+@media (min-width: 960px) {
+   #hero_body {
+      padding: 2rem 3rem 0 3rem;
+      height: 30rem;
+      /* border: 1px solid red; */
+      background-color: transparent;
+      width: 100%;
+   }
+
+   .hero_container {
+      padding-top: 5rem;
+      height: 100%;
+   }
+
+   .hero_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      padding: 0;
+   }
+
+   .hero_content {
+      color: var(--midcol);
+      position: initial;
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+   }
+
+   .hero_image {
+      width: 40%;
+      height: 100%;
+   }
+
+   .hero__image {
+      width: 100%;
+      /* overflow: hidden; */
+      height: 100%;
+      object-fit: contain;
+   }
+
+   .content_title {
+      width: 100%;
+   }
+
+   .content__title {
+      color: var(--deepcol);
+      text-align: left;
+      font-size: 18pt;
+   }
+
+   .content_wrapper {
+      width: 100%;
+   }
+
+   .content_info {
+      height: 5rem;
+      width: 40rem;
+      max-width: 100%;
+      max-height: 8rem;
+   }
+
+   .content__info {
+      font-size: 10pt;
+      color: var(--deepcol);
+   }
+
+   .content_button {
+      justify-content: flex-start;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      /* justify-content: center; */
+   }
+
+   .content__button {
+      height: 2rem;
+      padding: 0 3rem;
+   }
+}
