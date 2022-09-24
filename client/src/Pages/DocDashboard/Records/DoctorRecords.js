@@ -78,14 +78,14 @@ const DoctorRecords = () => {
             <title>Upload Reports | Eirhub</title>
             <meta name="description" content="Upload Reports" />
          </Helmet>
-         {/* <div className={styles.docRecordsContainer}> */}
-         <div className={styles.docRecordsContainer1}>
-            <h1>Upload Files</h1>
+         <div className={styles.docRecordsContainer}>
+            <div className={styles.docRecordsContainer1}>
+               <h1>Upload Files</h1>
 
-            <Dropzone patientID={patientID} />
+               <Dropzone patientID={patientID} className={styles.dropzone} />
 
-            <div className={styles.docRecordsFiles}>{myReports()}</div>
-            {/* </div> */}
+               <div className={styles.docRecordsFiles}>{myReports()}</div>
+            </div>
          </div>
       </>
    );

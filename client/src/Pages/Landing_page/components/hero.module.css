@@ -250,4 +250,9 @@
       align-items: center;
       /* justify-content: center; */
    }
+
+   .content__button {
+      height: 2rem;
+      padding: 0 3rem;
+   }
 }

@@ -1,7 +1,7 @@
 .main {
    /* display: none; */
    /* width: 15rem; */
-   min-width: 250px;
+   /* min-width: 250px; */
    width: 100%;
    height: calc(100vh - 5rem);
    max-height: 2000px;
@@ -80,6 +80,13 @@
 @media (min-width: 920px) {
    .main {
       display: block;
+   }
+}
+
+@media (min-width: 1200px) {
+   .patientsSection {
+      display: block;
+      width: 100%;
    }
 }
 
