@@ -83,8 +83,10 @@ function Dropzone(props) {
    const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
       // Do something with the files'
       acceptedFiles.forEach(file => {
+
          setSelectedFiles(previous => [...previous, file])
       })
+      
       setIsSelected(true)
       // console.log(selectedFiles,acceptedFiles, rejectedFiles)
       // console.log(typeof selectedFiles,typeof acceptedFiles)
