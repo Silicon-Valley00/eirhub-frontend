@@ -13,17 +13,30 @@
    max-height: 100vh;
 }
 
-@media (min-width: 1920px) {
-   .inner_div {
-      max-width: 1920px;
+@media (min-width: 960px) {
+   .back {
+      background-image: url('../../images/hero_cover.jpg');
+      background-repeat: repeat-x;
+      position: relative;
    }
+   .hero_overlay {
+      position: absolute;
+      background: var(--gray);
+      opacity: 97%;
+      inset: 0;
+   }
+}
 
+@media (min-width: 1500px) {
    .back {
       min-width: 100vw;
-      background: var(--gray);
       display: flex;
       justify-content: center;
       align-items: center;
+   }
+
+   .inner_div {
+      max-width: 1820px;
    }
 
    .backwhite {

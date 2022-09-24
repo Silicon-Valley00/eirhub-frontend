@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { getAllPendingAppointmentsForADoctor } from '../../../Store/DoctorAction';
+import { Helmet } from 'react-helmet';
 
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
@@ -70,7 +71,7 @@ const DoctorSchedule = (props) => {
    // Function to cancel an appointment
    const cancelAppointment = async (index) => {
       // console.log(selectedAppointment.id_appointment);
-      var indexedAppointment = allPendingAppointments[index];
+      const indexedAppointment = allPendingAppointments[index];
       // alert(selectedId)
       await axios
          .put(
@@ -168,105 +169,119 @@ const DoctorSchedule = (props) => {
 
    return (
       <>
+         <Helmet>
+            <title>Schedule An Appointment</title>
+            <meta name="description" description="Doctor Schedule" />
+         </Helmet>
          <div className={DSstyles.DSContainer1}>
-            <h2>Appoinment Details</h2>
-            <form
-               onSubmit={(e) => {
-                  e.preventDefault();
-                  // clear the form
-                  e.target.reset();
-                  displayFullName = '';
-                  displayReason = '';
-               }}
-               id="form"
-            >
-               <div className={DSstyles.patientContainer}>
-                  <label className={DSstyles.labelName}>Patient Name</label>
-                  <input
-                     type="message"
-                     id="name"
-                     className={DSstyles.inputName}
-                     value={
-                        displayFirstName === undefined ||
-                        displayFirstName === null ||
-                        displayLastName === undefined ||
-                        displayLastName === null
-                           ? ' '
-                           : displayFullName
-                     }
-                     disabled
-                  />
-                  <label className={DSstyles.labelCondition}>Condition</label>
-                  <input
-                     type="text"
-                     id="condition"
-                     className={DSstyles.inputCondition}
-                     value={
-                        displayReason === undefined || displayReason === null
-                           ? ' '
-                           : displayReason
-                     }
-                     disabled
-                  />
+            <div>
+               <h2>Appoinment Details</h2>
+               <form
+                  onSubmit={(e) => {
+                     e.preventDefault();
+                     // clear the form
+                     e.target.reset();
+                     displayFullName = '';
+                     displayReason = '';
+                  }}
+                  id="form"
+               >
+                  <div className={DSstyles.patientContainer}>
+                     <label className={DSstyles.labelName}>Patient Name</label>
+                     <input
+                        type="message"
+                        id="name"
+                        className={DSstyles.inputName}
+                        value={
+                           displayFirstName === undefined ||
+                           displayFirstName === null ||
+                           displayLastName === undefined ||
+                           displayLastName === null
+                              ? ' '
+                              : displayFullName
+                        }
+                        disabled
+                     />
+                     <label className={DSstyles.labelCondition}>
+                        Condition
+                     </label>
+                     <input
+                        type="text"
+                        id="condition"
+                        className={DSstyles.inputCondition}
+                        value={
+                           displayReason === undefined || displayReason === null
+                              ? ' '
+                              : displayReason
+                        }
+                        disabled
+                     />
+                  </div>
+                  <div className={DSstyles.appointTime}>
+                     <label className={DSstyles.labelDate}>
+                        Appointment Date
+                     </label>
+                     <input
+                        type="text"
+                        id="date"
+                        placeholder="DD/MM/YYYY"
+                        onFocus={(e) => (e.target.type = 'date')}
+                        onBlur={(e) => (e.target.type = 'text')}
+                        className={DSstyles.inputDate}
+                        onChange={(e) => setAppointmentDate(e.target.value)}
+                        required
+                     />
+                     <label className={DSstyles.labelSTime}>Start Time</label>
+                     <input
+                        type="text"
+                        id="start time"
+                        placeholder="HH:MM"
+                        onFocus={(e) => (e.target.type = 'time')}
+                        onBlur={(e) => (e.target.type = 'text')}
+                        className={DSstyles.inputStartTime}
+                        onChange={(e) =>
+                           setAppointmentStartTime(e.target.value)
+                        }
+                        required
+                     />
+                     <label className={DSstyles.labelETime}>End Time</label>
+                     <input
+                        type="text"
+                        id="end time"
+                        placeholder="HH:MM"
+                        onFocus={(e) => (e.target.type = 'time')}
+                        onBlur={(e) => (e.target.type = 'text')}
+                        className={DSstyles.inputEndTime}
+                        onChange={(e) => setAppointmentEndTime(e.target.value)}
+                        required
+                     />
+                  </div>
+                  <div className={DSstyles.DSbuttondiv}>
+                     <button
+                        form="form"
+                        type="submit"
+                        className={DSstyles.DSbutton}
+                        onClick={() => scheduleAppointment()}
+                     >
+                        Schedule Appointment
+                     </button>
+                  </div>
+               </form>
+            </div>
+            <div>
+               <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
+               <div className={DSstyles.appointmentContainer}>
+                  <table>
+                     <thead>
+                        <th className={DSstyles.imgHeader}></th>
+                        <th className={DSstyles.tName}>Name</th>
+                        <th className={DSstyles.tCondition}>Condition</th>
+                        <th className={DSstyles.tAction}>Action</th>
+                     </thead>
+                     {/* Body of the table that contains all the Pending appointments */}
+                     <tbody className={DSstyles.tbody}>{displayData}</tbody>
+                  </table>
                </div>
-               <div className={DSstyles.appointTime}>
-                  <label className={DSstyles.labelDate}>Appointment Date</label>
-                  <input
-                     type="text"
-                     id="date"
-                     placeholder="DD/MM/YYYY"
-                     onFocus={(e) => (e.target.type = 'date')}
-                     onBlur={(e) => (e.target.type = 'text')}
-                     className={DSstyles.inputDate}
-                     onChange={(e) => setAppointmentDate(e.target.value)}
-                     required
-                  />
-                  <label className={DSstyles.labelSTime}>Start Time</label>
-                  <input
-                     type="text"
-                     id="start time"
-                     placeholder="HH:MM"
-                     onFocus={(e) => (e.target.type = 'time')}
-                     onBlur={(e) => (e.target.type = 'text')}
-                     className={DSstyles.inputStartTime}
-                     onChange={(e) => setAppointmentStartTime(e.target.value)}
-                     required
-                  />
-                  <label className={DSstyles.labelETime}>End Time</label>
-                  <input
-                     type="text"
-                     id="end time"
-                     placeholder="HH:MM"
-                     onFocus={(e) => (e.target.type = 'time')}
-                     onBlur={(e) => (e.target.type = 'text')}
-                     className={DSstyles.inputEndTime}
-                     onChange={(e) => setAppointmentEndTime(e.target.value)}
-                     required
-                  />
-               </div>
-               <div className={DSstyles.DSbuttondiv}>
-                  <button
-                     form="form"
-                     type="submit"
-                     className={DSstyles.DSbutton}
-                     onClick={() => scheduleAppointment()}
-                  >
-                     Schedule Appointment
-                  </button>
-               </div>
-            </form>
-            <h2 className={DSstyles.DSh21}>Pending Appointments</h2>
-            <div className={DSstyles.appointmentContainer}>
-               <table>
-                  <thead>
-                     <th className={DSstyles.imgHeader}></th>
-                     <th className={DSstyles.tName}>Name</th>
-                     <th className={DSstyles.tCondition}>Condition</th>
-                     <th className={DSstyles.tAction}>Action</th>
-                  </thead>
-                  {/* Body of the table that contains all the Pending appointments */}
-                  <tbody className={DSstyles.tbody}>{displayData}</tbody>
-               </table>
             </div>
          </div>
       </>

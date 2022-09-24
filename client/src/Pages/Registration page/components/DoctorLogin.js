@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
    fetchDoctorsProfileInfo,
-   getAllPendingAppointmentsForADoctor,
    setDoctorAuth,
 } from '../../../Store/DoctorAction.js';
 import store from '../../../Store/ReducerStore';
@@ -31,7 +30,6 @@ function DoctorLogin(props) {
    const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
 
-   // handles registeration flow based on feedback from database
    async function submitCredentialsFeedback() {
       const feedback = await props.submitUserCredentialsHandler();
 
@@ -39,48 +37,48 @@ function DoctorLogin(props) {
       if (feedback[0] === true) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
+
+         //  dispatches action to fetch doctor profile info
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
-
-         dispatch(getAllPendingAppointmentsForADoctor(feedback[1].id_doctor));
          dispatch(setLoading(true));
-
+         // navigates to loading page
          navigate('/loading', { state: { status: false } });
          dispatch(setDoctorAuth(true));
-
+         // navigation to dashboard
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
-               LoginUser(feedback[1].id_message);
-
                navigate('/doctordashboard');
+               LoginUser(feedback[1].id_message);
                dispatch(setLoading(false));
             } else {
                setTimeout(() => {
                   persistor.purge();
                }, 200);
-
+               // navigates to landing page if someting goes wrong
                dispatch(setDoctorAuth(false));
                navigate('/landing-page');
-
+               console.log(store.getState());
                setTimeout(() => {
+                  // dispatches action to set error message
                   dispatch(
                      setMessage({
                         show: true,
-                        msg: 'Fetching profile failed, try again.',
+                        msg: 'Fetching profile failed, trying again.',
                         state: 0,
                      })
                   );
-               }, 2000);
+               }, 1000);
                dispatch(setLoading(false));
             }
          }, 1.5 * 1000);
       } else {
-         // when account fails to login
          setBtnActive(feedback[0]);
          setBtnValue('Login');
          setErrorMessage(feedback[1]);
          setIsError(true);
       }
    }
+
    return (
       <section id={loginStyles.loginSection}>
          <div

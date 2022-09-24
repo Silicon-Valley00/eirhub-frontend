@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styles from './records.module.css';
 import { FaClipboardList } from 'react-icons/fa';
 import { BsArrowLeftCircle, BsDownload } from 'react-icons/bs';
-import { useDispatch, connect } from 'react-redux';
 import { fetchReports } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 function Records(props) {
-   const dispatch = useDispatch();
    const [reports, setReports] = useState([]);
    const patientID = useSelector((state) => state.user.id_patient);
 
@@ -116,6 +115,10 @@ function Records(props) {
 
    return (
       <>
+         <Helmet>
+            <title>Reports | Eirhub</title>
+            <meta name="description" content="Records page of the patient" />
+         </Helmet>
          <div id={styles.recordBody}>
             <div className={styles.recordContent}>
                <div className={styles.recordTable}>

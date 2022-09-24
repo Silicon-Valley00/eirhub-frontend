@@ -5,6 +5,7 @@ import { connect, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setDoctorProfile } from '../../../Store/DoctorAction';
 import { setMessage } from '../../../Store/Actions';
+import { Helmet } from 'react-helmet';
 
 const DocProfile = (props) => {
    const data = props.doctorProfile;
@@ -141,6 +142,10 @@ const DocProfile = (props) => {
    }
    return (
       <>
+         <Helmet>
+            <title>Profile | Eirhub</title>
+            <meta name="description" content="Eirhub Doctor Profile" />
+         </Helmet>
          <div className={styles.main}>
             <div id={styles.profileBody}>
                {/* Avatar with name and upload image button */}

@@ -113,7 +113,6 @@
 .contact__btn:hover {
    transform: translateY(-3px);
    background-color: #3fb3c7;
-
 }
 
 @media (min-width: 600px) {
@@ -149,12 +148,12 @@
 
    .cards {
       grid-template-columns: repeat(3, 1fr);
-      gap: 5rem;
+      gap: 3rem;
       padding: initial;
    }
 
    .card {
-      height: 18rem;
+      height: 15rem;
    }
 
    .title {
@@ -171,7 +170,7 @@
    }
 
    .card {
-      height: 25rem;
+      height: 17rem;
    }
 
    .setCol {

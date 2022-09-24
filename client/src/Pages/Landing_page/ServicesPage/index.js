@@ -9,6 +9,7 @@ import pic4 from '../../../assets/weightloss.jpg';
 import Registration from '../../Registration page/Registration';
 import styles from '../Landingpage.module.css';
 import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
+import { Helmet } from 'react-helmet';
 
 const ServicesPage = () => {
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
@@ -58,6 +59,13 @@ const ServicesPage = () => {
    }
    return (
       <>
+         <Helmet>
+            <title>Our Services</title>
+            <meta
+               name="description"
+               content="This page displays the services Eirhub provides"
+            />
+         </Helmet>
          {/* BUG: React does not recognize the `handleModalsClose` prop on a DOM element. */}
          <div
             id={styles.blur}
@@ -87,9 +95,9 @@ const ServicesPage = () => {
                      <div>
                         <p className={style.p_text}>
                            Across Eirhub, from online appointment booking to
-                           medication tracking, we offer a wide range of services
-                           to meet you as a patient or provider at every point
-                           of your health care journey.
+                           medication tracking, we offer a wide range of
+                           services to meet you as a patient or provider at
+                           every point of your health care journey.
                         </p>
                      </div>
                      <div className={style.h_line}></div>
@@ -179,8 +187,9 @@ const ServicesPage = () => {
                               Get access to verified tips for a healthy living
                            </p>
                            <p className={style.with_text_content}>
-                           Receive health tips that would help you make simple and easy tweaks to your 
-                           lifestyle that can make all the difference.
+                              Receive health tips that would help you make
+                              simple and easy tweaks to your lifestyle that can
+                              make all the difference.
                            </p>
                         </div>
                      </div>

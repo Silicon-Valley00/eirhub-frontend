@@ -6,9 +6,10 @@ import {
    updateProfile,
    updateHealthDetails,
    updateGuardianInfo,
-   setMessage
+   setMessage,
 } from '../../../Store/Actions.js';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const mapStateToProps = (state) => {
    return {
@@ -22,6 +23,8 @@ function Profile(props) {
    // Handles dispatching of actions
    const patientID = useSelector((state) => state.profile.id_patient);
    const guardianID = useSelector((state) => state.profile.id_guardian);
+
+   const [showMessage, setShowMessage] = useState(false);
 
    const dispatch = useDispatch();
    // console.log(
@@ -142,36 +145,39 @@ function Profile(props) {
          // alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
-         const patientImagePreset='mcwvyjj5';
+         const patientImagePreset = 'mcwvyjj5';
          const formData = new FormData();
          formData.append('file', userimage);
          formData.append('upload_preset', patientImagePreset);
          setUploadBtn('Uploading...');
          await axios
-         .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload', formData)
-         .then((response) => {
-            const image_url = response.data.url;
-            setUserImage(image_url);
-            dispatch(
-               setMessage({
-                  show: true,
-                  msg: 'Image Uploaded.',
-                  state: 1,
-               })
-            );
-            setUploadBtn('Upload Another.');
-         })
-         .catch((error) => {
-            dispatch(
-               setMessage({
-                  show: true,
-                  msg: 'LOL! e fail... 😂',
-                  state: 0,
-               })
-            );
-            setUploadBtn('Upload Again.');
-            console.log("Cloudinary upload Error:", error);
-         });
+            .post(
+               'https://api.cloudinary.com/v1_1/eirhub-siliconvalley/image/upload',
+               formData
+            )
+            .then((response) => {
+               const image_url = response.data.url;
+               setUserImage(image_url);
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Image Uploaded.',
+                     state: 1,
+                  })
+               );
+               setUploadBtn('Upload Another.');
+            })
+            .catch((error) => {
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'LOL! e fail... 😂',
+                     state: 0,
+                  })
+               );
+               setUploadBtn('Upload Again.');
+               console.log('Cloudinary upload Error:', error);
+            });
       }
    }
 
@@ -232,23 +238,30 @@ function Profile(props) {
             enteredHealthInfo
          )
       );
-      // dispatch(updateProfile(props.savedProfile.idPatient, enteredProfileInfo));
-      // dispatch(
-      //    updateHealthDetails(props.savedProfile.idPatient, enteredHealthInfo)
-      // );
-      // dispatch(
-      //    updateGuardianInfo(
-      //       props.savedProfile.idGuardian,
-      //       enteredGuardianinfo,
-      //       props.savedProfile.idPatient,
-      //       enteredHealthInfo
-      //    )
-      // );
+
       setUploadBtn('Upload Image');
       setDisableFormBtn(true);
    }
+
+   function displayMessage() {
+      if (disableFormBtn === true && showMessage === false) {
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Click on Edit Profile Button first.',
+               state: 1,
+            })
+         );
+         setShowMessage(true);
+      }
+   }
    return (
       <>
+         <Helmet>
+            <title>Profile | Eirhub</title>
+            <meta name="description" description="Eirhub Patient Profile" />
+         </Helmet>
+
          <div id={styles.profileBody}>
             <form
                onSubmit={(e) => {
@@ -282,7 +295,12 @@ function Profile(props) {
                   <div className={styles.personalInfoFormBox}>
                      <div className={styles.profileFormBox}>
                         <h3>First Name</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="firstname"
                               type="text"
@@ -299,7 +317,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Middle Name(Optional)</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="middletname"
                               type="text"
@@ -315,7 +338,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Last Name</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="lastname"
                               type="text"
@@ -332,7 +360,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Email</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="email"
                               type="email"
@@ -347,7 +380,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Date of Birth</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               type="text"
                               name="date"
@@ -370,7 +408,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Gender</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <div className={styles.select}>
                               <select
                                  placeholder="Gender"
@@ -390,7 +433,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Nationality</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="nationality"
                               type="text"
@@ -407,7 +455,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>Mobile Number</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="mobilenumber"
                               type="tel"
@@ -430,7 +483,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>House Address</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="address"
                               type="text"
@@ -447,7 +505,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.profileFormBox}>
                         <h3>ID Number</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="idnumber"
                               type="text"
@@ -470,7 +533,12 @@ function Profile(props) {
                   <div className={styles.healthInfoFormBox}>
                      <div className={styles.healthFormBox}>
                         <h3>Heart Rate (bpm)</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="heartrate"
                               type="text"
@@ -493,7 +561,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Temperature (℃)</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="temperature"
                               type="text"
@@ -516,7 +589,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Blood Pressure </h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="bloodpressure"
                               type="text"
@@ -539,7 +617,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Blood Glucose (mg/dL)</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="bloodglucose"
                               type="text"
@@ -562,7 +645,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Respiratory Rate</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="respiratoryrate"
                               type="text"
@@ -585,7 +673,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Blood Group</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <div className={styles.select}>
                               <select
                                  placeholder="Blood Group"
@@ -609,7 +702,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Weight (kg)</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="weight"
                               type="text"
@@ -632,7 +730,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Height (cm)</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               name="height"
                               type="text"
@@ -655,7 +758,12 @@ function Profile(props) {
                      </div>
                      <div className={styles.healthFormBox}>
                         <h3>Last Visit Date</h3>
-                        <div className={styles.formBoxNameInputs}>
+                        <div
+                           className={styles.formBoxNameInputs}
+                           onClick={() => {
+                              displayMessage();
+                           }}
+                        >
                            <input
                               type="text"
                               name="date"
@@ -678,181 +786,237 @@ function Profile(props) {
                      </div>
                   </div>
                </div>
-               { guardianID ? <div className={styles.guardianInfo}>
-                  <h2>Guardian Details(If applicable)</h2>
-                  <div className={styles.guardianInfoFormBox}>
-                     <div className={styles.guardianFormBox}>
-                        <h3>First Name</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianfirstname"
-                              type="text"
-                              id="guardianfirstname"
-                              placeholder="Enter first name"
-                              required
-                              value={guardianFirstName}
-                              onChange={(event) =>
-                                 setGuardianFirstName(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Middle Name(Optional)</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianmiddlename"
-                              type="text"
-                              id="guardianmiddlename"
-                              placeholder="Enter middle name"
-                              value={guardianMiddleName}
-                              onChange={(event) =>
-                                 setGuardianMiddleName(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Last Name</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianlastname"
-                              type="text"
-                              id="guardianlastname"
-                              placeholder="Enter last name"
-                              required
-                              value={guardianLastName}
-                              onChange={(event) =>
-                                 setGuardianLastName(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Email</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="email"
-                              type="email"
-                              id="email"
-                              placeholder="Someone@gmail.com"
-                              required
-                              value={guardianEmail}
-                              onChange={(event) =>
-                                 setGuardianEmail(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Date of Birth</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              type="text"
-                              name="guardiandate"
-                              id="guardiandate"
-                              placeholder="DD/MM/YYYY"
-                              required
-                              value={guardianDateOfBirth}
-                              onFocus={(event) => (event.target.type = 'date')}
-                              onBlur={(event) => {
-                                 if (!event.target.value) {
-                                    event.target.type = 'text';
-                                 }
+               {guardianID ? (
+                  <div className={styles.guardianInfo}>
+                     <h2>Guardian Details(If applicable)</h2>
+                     <div className={styles.guardianInfoFormBox}>
+                        <div className={styles.guardianFormBox}>
+                           <h3>First Name</h3>
+                           <div
+                              className={styles.formBoxNameInputs}
+                              onClick={() => {
+                                 displayMessage();
                               }}
-                              onChange={(event) =>
-                                 setGuardianDateOfBirth(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>Gender</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <div className={styles.select}>
-                              <select
-                                 placeholder="Gender"
+                           >
+                              <input
+                                 name="guardianfirstname"
+                                 type="text"
+                                 id="guardianfirstname"
+                                 placeholder="Enter first name"
                                  required
-                                 value={guardianGender}
+                                 value={guardianFirstName}
                                  onChange={(event) =>
-                                    setGuardianGender(event.target.value)
+                                    setGuardianFirstName(event.target.value)
                                  }
                                  disabled={disableFormBtn}
-                              >
-                                 <option value={''}>Select gender</option>
-                                 <option value={'Male'}>Male</option>
-                                 <option value={'Female'}>Female</option>
-                              </select>
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Middle Name(Optional)</h3>
+                           <div
+                              className={styles.formBoxNameInputs}
+                              onClick={() => {
+                                 displayMessage();
+                              }}
+                           >
+                              <input
+                                 name="guardianmiddlename"
+                                 type="text"
+                                 id="guardianmiddlename"
+                                 placeholder="Enter middle name"
+                                 value={guardianMiddleName}
+                                 onChange={(event) =>
+                                    setGuardianMiddleName(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Last Name</h3>
+                           <div
+                              className={styles.formBoxNameInputs}
+                              onClick={() => {
+                                 displayMessage();
+                              }}
+                           >
+                              <input
+                                 name="guardianlastname"
+                                 type="text"
+                                 id="guardianlastname"
+                                 placeholder="Enter last name"
+                                 required
+                                 value={guardianLastName}
+                                 onChange={(event) =>
+                                    setGuardianLastName(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Email</h3>
+                           <div
+                              className={styles.formBoxNameInputs}
+                              onClick={() => {
+                                 displayMessage();
+                              }}
+                           >
+                              <input
+                                 name="email"
+                                 type="email"
+                                 id="email"
+                                 placeholder="Someone@gmail.com"
+                                 required
+                                 value={guardianEmail}
+                                 onChange={(event) =>
+                                    setGuardianEmail(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Date of Birth</h3>
+                           <div
+                              className={styles.formBoxNameInputs}
+                              onClick={() => {
+                                 displayMessage();
+                              }}
+                           >
+                              <input
+                                 type="text"
+                                 name="guardiandate"
+                                 id="guardiandate"
+                                 placeholder="DD/MM/YYYY"
+                                 required
+                                 value={guardianDateOfBirth}
+                                 onFocus={(event) =>
+                                    (event.target.type = 'date')
+                                 }
+                                 onBlur={(event) => {
+                                    if (!event.target.value) {
+                                       event.target.type = 'text';
+                                    }
+                                 }}
+                                 onChange={(event) =>
+                                    setGuardianDateOfBirth(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>Gender</h3>
+                           <div
+                              className={styles.formBoxNameInputs}
+                              onClick={() => {
+                                 displayMessage();
+                              }}
+                           >
+                              <div className={styles.select}>
+                                 <select
+                                    placeholder="Gender"
+                                    required
+                                    value={guardianGender}
+                                    onChange={(event) =>
+                                       setGuardianGender(event.target.value)
+                                    }
+                                    disabled={disableFormBtn}
+                                 >
+                                    <option value={''}>Select gender</option>
+                                    <option value={'Male'}>Male</option>
+                                    <option value={'Female'}>Female</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div className={styles.guardianFormBox}>
+                           <h3>ID Number</h3>
+                           <div
+                              className={styles.formBoxNameInputs}
+                              onClick={() => {
+                                 displayMessage();
+                              }}
+                           >
+                              <input
+                                 name="guardianidnumber"
+                                 type="text"
+                                 id="guardianidnumber"
+                                 placeholder="eg. GHA-08008238Hjj"
+                                 required
+                                 value={guardianIdNumber}
+                                 onChange={(event) =>
+                                    setGuardianIdNumber(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+
+                        <div className={styles.guardianFormBox}>
+                           <h3>Mobile Number</h3>
+                           <div
+                              className={styles.formBoxNameInputs}
+                              onClick={() => {
+                                 displayMessage();
+                              }}
+                           >
+                              <input
+                                 name="guardianmobilenumber"
+                                 type="tel"
+                                 id="guardianmobilenumber"
+                                 placeholder="Enter phone number"
+                                 required
+                                 value={guardianMobileNumber}
+                                 //Allows only numbers to be entered
+                                 onKeyPress={(event) => {
+                                    if (!/^\d*\.?\d*$/.test(event.key)) {
+                                       event.preventDefault();
+                                    }
+                                 }}
+                                 onChange={(event) =>
+                                    setGuardianMobileNumber(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.guardianFormBox}>
+                           <h3>House Address</h3>
+                           <div
+                              className={styles.formBoxNameInputs}
+                              onClick={() => {
+                                 displayMessage();
+                              }}
+                           >
+                              <input
+                                 name="guardianaddress"
+                                 type="text"
+                                 id="guardianaddress"
+                                 placeholder="Enter house address"
+                                 required
+                                 value={guardianAddress}
+                                 onChange={(event) =>
+                                    setGuardianAddress(event.target.value)
+                                 }
+                                 disabled={disableFormBtn}
+                              />
                            </div>
                         </div>
                      </div>
-
-                     <div className={styles.guardianFormBox}>
-                        <h3>ID Number</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianidnumber"
-                              type="text"
-                              id="guardianidnumber"
-                              placeholder="eg. GHA-08008238Hjj"
-                              required
-                              value={guardianIdNumber}
-                              onChange={(event) =>
-                                 setGuardianIdNumber(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-
-                     <div className={styles.guardianFormBox}>
-                        <h3>Mobile Number</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianmobilenumber"
-                              type="tel"
-                              id="guardianmobilenumber"
-                              placeholder="Enter phone number"
-                              required
-                              value={guardianMobileNumber}
-                              //Allows only numbers to be entered
-                              onKeyPress={(event) => {
-                                 if (!/^\d*\.?\d*$/.test(event.key)) {
-                                    event.preventDefault();
-                                 }
-                              }}
-                              onChange={(event) =>
-                                 setGuardianMobileNumber(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
-                     <div className={styles.guardianFormBox}>
-                        <h3>House Address</h3>
-                        <div className={styles.formBoxNameInputs}>
-                           <input
-                              name="guardianaddress"
-                              type="text"
-                              id="guardianaddress"
-                              placeholder="Enter house address"
-                              required
-                              value={guardianAddress}
-                              onChange={(event) =>
-                                 setGuardianAddress(event.target.value)
-                              }
-                              disabled={disableFormBtn}
-                           />
-                        </div>
-                     </div>
                   </div>
-               </div> : "" }
-               <div className={styles.formButton}>
+               ) : (
+                  ''
+               )}
+               <div
+                  className={styles.formButton}
+                  onClick={() => {
+                     displayMessage();
+                  }}
+               >
                   {disableFormBtn ? (
                      <button
                         className={styles.formBtn}
@@ -871,7 +1035,7 @@ function Profile(props) {
                         }}
                         disabled={!enableUpdateButton()}
                      >
-                        Update
+                        Update Profile
                      </button>
                   )}
                </div>

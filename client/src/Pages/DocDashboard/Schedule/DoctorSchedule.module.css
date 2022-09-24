@@ -5,6 +5,10 @@
    border-radius: 20px;
    padding: 20px;
    height: calc(100vh - 5rem);
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   gap: 4.5rem;
    justify-self: center;
    overflow-y: scroll;
 }
@@ -224,7 +228,8 @@
 }
 .appointmentContainer th {
    color: #c2c9d1;
-   padding-top: 29px;
+   padding: 10px 0;
+   border-bottom: 1px solid var(--gray);
 }
 .appointmentContainer table td {
    padding-top: 21px;
@@ -485,7 +490,7 @@
       margin: auto;
       height: 800px;
    }
-   .DSContainer1 form input{
+   .DSContainer1 form input {
       max-width: 35rem;
       width: 100%;
    }
@@ -514,8 +519,8 @@
       width: 12.5rem;
    }
 }
-@media(max-width:768px){
-   .appointTime{
+@media (max-width: 768px) {
+   .appointTime {
       margin-left: 1rem;
    }
 }

@@ -1,14 +1,13 @@
 .main {
    /* display: none; */
    /* width: 15rem; */
-   min-width: 250px;
+   /* min-width: 250px; */
    width: 100%;
    height: calc(100vh - 5rem);
    max-height: 2000px;
 }
 
 .patientsSection {
-   
    min-width: 250px;
    width: 100%;
    background-color: #ecf3fc;
@@ -50,9 +49,9 @@
 .imageDiv {
    width: 90%;
    margin: 15px 0;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   padding: 0 2rem;
    width: 95%;
    cursor: pointer;
 }
@@ -61,6 +60,13 @@
    width: 40px;
    height: 40px;
    clip-path: circle();
+}
+
+.name {
+   text-align: left;
+   width: 100%;
+   display: flex;
+   align-items: center;
 }
 
 .menu {
@@ -74,6 +80,13 @@
 @media (min-width: 920px) {
    .main {
       display: block;
+   }
+}
+
+@media (min-width: 1200px) {
+   .patientsSection {
+      display: block;
+      width: 100%;
    }
 }
 
@@ -121,7 +134,7 @@
       padding: 0 2rem;
       justify-content: space-between;
    }
-   .logo_close h2{
+   .logo_close h2 {
       padding-left: 42.5%;
    }
 }
@@ -157,7 +170,6 @@
       border-radius: 10%;
       cursor: pointer;
    }
-   
 }
 @media (max-width: 800px) {
    .patientsSection {
@@ -173,7 +185,7 @@
       width: 50%;
       min-width: 300px;
    }
- 
+
    .logo_close {
       display: flex;
       align-items: center;
@@ -195,8 +207,8 @@
    }
 }
 /* made changes here */
-@media(max-width:425px){
-   .logo_close h2{
+@media (max-width: 425px) {
+   .logo_close h2 {
       padding-left: 30%;
    }
 }
@@ -220,8 +232,8 @@
       border-radius: 10%;
       cursor: pointer;
    }
-   .logo_close h2{
-      padding-left: 30%;/*made change here*/
+   .logo_close h2 {
+      padding-left: 30%; /*made change here*/
    }
 }
 @media (max-width: 320px) {

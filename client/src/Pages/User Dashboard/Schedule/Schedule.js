@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './schedule.module.css';
 import avatarOne from '../../../assets/Rectangle-1.png';
-import avatarTwo from '../../../assets/Rectangle-2.png';
-import avatarFour from '../../../assets/bruno-rodrigues-279xIHymPYY-unsplash 2.png';
-import avatarThree from '../../../assets/Rectangle.png';
 import { useSelector, useDispatch } from 'react-redux';
 import {
    addAppointments,
@@ -11,8 +8,7 @@ import {
    fetchAppointments,
    setMessage,
 } from '../../../Store/Actions.js';
-import store from '../../../Store/ReducerStore';
-import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
+import { Helmet } from 'react-helmet';
 
 function Schedule() {
    const dispatch = useDispatch();
@@ -150,6 +146,10 @@ function Schedule() {
    }
    return (
       <>
+         <Helmet>
+            <title>Book an Appointment | Eirhub</title>
+            <meta name="description" content="Schedule" />
+         </Helmet>
          <div id={styles.scheduleBody}>
             <div className={styles.doctorBox}>
                <div className={styles.doctorDetailsField}>

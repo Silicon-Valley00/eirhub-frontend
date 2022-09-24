@@ -2,13 +2,17 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './message.module.css';
 import { CometChatMessages } from '../../../Chat UI Kit/cometchat-pro-react-ui-kit/CometChatWorkspace/src';
-import MessagePatients from '../../DocDashboard/components/MessagePatients';
+import { Helmet } from 'react-helmet';
+
 
 const DoctorMessage = () => {
    const patientUID = useSelector((state) => state.patientToChatWith);
    return (
       <>
-         <>
+         <Helmet>
+            <title>Message Your Patients</title>
+            <meta name="description" content="Message your patients" />
+         </Helmet>
             <div id={styles.messageBody}>
                {patientUID !== '' ? (
                   <CometChatMessages chatWithUser={patientUID} />
@@ -19,7 +23,6 @@ const DoctorMessage = () => {
                )}
             </div>
          </>
-      </>
    );
 };
 export default DoctorMessage;

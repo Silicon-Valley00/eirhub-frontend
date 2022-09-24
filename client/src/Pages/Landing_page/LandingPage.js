@@ -7,6 +7,7 @@ import QuickSolution from './components/QuickSolution';
 import Services from './components/Services';
 import styles from './Landingpage.module.css';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
+import { Helmet } from 'react-helmet';
 
 const LandingPage = () => {
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
@@ -57,6 +58,10 @@ const LandingPage = () => {
    }
    return (
       <>
+         <Helmet>
+            <title>Eirhub | Homepage</title>
+            <meta name="description" content="Eirhub" />
+         </Helmet>
          <div
             id={styles.blur}
             className={
@@ -82,6 +87,7 @@ const LandingPage = () => {
 
             {/* Hero */}
             <div className={styles.back}>
+               <div className={styles.hero_overlay}></div>
                <div className={styles.inner_div}>
                   <Hero handleModalSignup={handleModalSignup} />
                </div>
