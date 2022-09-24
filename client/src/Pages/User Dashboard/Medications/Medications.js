@@ -182,5 +182,4 @@ function Medication(props) {
       </>
    );
 }
-// export default Medication;
 export default connect(mapStateToProps)(Medication);

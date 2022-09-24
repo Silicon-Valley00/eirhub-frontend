@@ -62,19 +62,8 @@ function Signup(props) {
       if (feedback[0] === true) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         //registers user into cometchat
-         SignUpUser(
-            `${
-               feedback[1].first_name.charAt(0).toUpperCase() +
-               feedback[1].first_name.slice(1)
-            } ${
-               feedback[1].last_name.charAt(0).toUpperCase() +
-               feedback[1].last_name.slice(1)
-            }
-         }`,
-            feedback[1].id_message.toLowerCase()
-         );
-         console.log('patient', feedback[1].id_message);
+
+         //fetches user profile
          dispatch(fetchProfileOnSignup(feedback[1].id_patient));
          dispatch(setLoading(true));
 
@@ -83,6 +72,18 @@ function Signup(props) {
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
+               //registers user into cometchat
+               SignUpUser(
+                  `${
+                     feedback[1].first_name.charAt(0).toUpperCase() +
+                     feedback[1].first_name.slice(1)
+                  } ${
+                     feedback[1].last_name.charAt(0).toUpperCase() +
+                     feedback[1].last_name.slice(1)
+                  }
+         }`,
+                  feedback[1].id_message
+               );
                navigate('/userdashboard');
                dispatch(setLoading(false));
                dispatch(
@@ -92,7 +93,6 @@ function Signup(props) {
                      state: 1,
                   })
                );
-               console.log(store.getState());
             } else {
                setTimeout(() => {
                   persistor.purge();
@@ -111,8 +111,6 @@ function Signup(props) {
                }, 2000);
 
                dispatch(setLoading(false));
-
-               console.log(store.getState());
             }
          }, 1.5 * 1000);
       } else {

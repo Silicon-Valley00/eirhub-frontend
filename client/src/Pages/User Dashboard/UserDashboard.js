@@ -25,7 +25,7 @@ function UserDashboard(props) {
          new Date(
             `${new Date(patientDOB).getFullYear()}-${
                new Date(patientDOB).getMonth() + 1
-            }-${new Date(patientDOB).getDate() + 1}`
+            }-${new Date(patientDOB).getDate()}`
          ).getTime()
       ) {
          setBirthdayModal(true);
@@ -39,7 +39,6 @@ function UserDashboard(props) {
    function handleLogoutModal() {
       setLogoutModal(!logoutModal);
    }
-   // console.log(props.message.show);
    return (
       <>
          <AlertsMessageBox time={3000} />

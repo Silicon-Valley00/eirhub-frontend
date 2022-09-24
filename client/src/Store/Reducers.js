@@ -121,8 +121,6 @@ const Reducers = (state = initialState, action) => {
       case SET_TEMP_MEDICATIONS:
          var obj = action.payload.map((item) => {
             if (action.tempData.includes(item) === false) {
-               console.log(item);
-
                return item;
             }
          });
