@@ -25,7 +25,6 @@ const mapStateToProps = (state) => {
 };
 
 function Dashboard(props) {
-   console.log(store.getState());
    const dispatch = useDispatch();
    const [medications, setMedications] = useState([]);
    const [appointments, setAppointments] = useState([]);
@@ -40,20 +39,6 @@ function Dashboard(props) {
          setAppointments(schedules);
       }
       fetchdata();
-
-      console.log('new out', props.isNewUser);
-
-      // if (store.getState().isNewUser === true) {
-      //    console.log('new in', props.isNewUser);
-      //    dispatch(
-      //       setMessage({
-      //          show: true,
-      //          msg: 'Please complete your profile.',
-      //          state: 1,
-      //       })
-      //    );
-      //    dispatch(setIsANewUser(false));
-      // }
    }, []);
 
    let appointment_dates = [];
@@ -237,7 +222,6 @@ function Dashboard(props) {
          );
       } else {
          //prevents checkbox from changing to false
-         console.log(props.tempMeds);
          var result = props.tempMeds.find(
             (item) => item.id_prescription === data.id_prescription
          );

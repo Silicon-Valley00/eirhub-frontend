@@ -45,26 +45,29 @@ function DoctorSignup(props) {
       if (feedback[0] === true) {
          setBtnActive(feedback[0]);
          setBtnValue(feedback[2]);
-         //registers user into cometchat
-         SignUpUser(
-            `${
-               feedback[1].first_name.charAt(0).toUpperCase() +
-               feedback[1].first_name.slice(1)
-            } ${
-               feedback[1].last_name.charAt(0).toUpperCase() +
-               feedback[1].last_name.slice(1)
-            }
-         `,
-            feedback[1].id_message.toLowerCase()
-         );
+
+         //Fetches doctor profile
          dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
          dispatch(setLoading(true));
-
+         //naviagates to the loading page
          navigate('/loading', { state: { status: false } });
          dispatch(setDoctorAuth(true));
 
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
+               //registers user into cometchat
+               SignUpUser(
+                  `${
+                     feedback[1].first_name.charAt(0).toUpperCase() +
+                     feedback[1].first_name.slice(1)
+                  } ${
+                     feedback[1].last_name.charAt(0).toUpperCase() +
+                     feedback[1].last_name.slice(1)
+                  }
+         `,
+                  feedback[1].id_message
+               );
+               //navigates user to the doctor dashboard
                navigate('/doctordashboard');
 
                dispatch(setLoading(false));
@@ -76,6 +79,7 @@ function DoctorSignup(props) {
                   })
                );
             } else {
+               //when something goes wrong
                setTimeout(() => {
                   persistor.purge();
                }, 200);

@@ -1,4 +1,4 @@
-import Styles from './services.module.css';
+import styles from './services.module.css';
 
 const Cards = ({ detail }) => {
    return (
@@ -6,14 +6,14 @@ const Cards = ({ detail }) => {
          data-aos="fade-down"
          data-aos-easing="linear"
          data-aos-duration="1500"
-         className={Styles.card}
+         className={styles.card}
       >
-         <div className={Styles.img}>
+         <div className={styles.img}>
             <img src={detail.profile_pic} alt="Doctor" />
          </div>
-         <div className={Styles.services_doctor_info}>
-            <h4 className={Styles.services_doctor_info_h4}>{detail.name}</h4>
-            <p className={Styles.services_doctor_info_p}>{detail.profession}</p>
+         <div className={styles.services_doctor_info}>
+            <h4 className={styles.services_doctor_info_h4}>{detail.name}</h4>
+            <p className={styles.services_doctor_info_p}>{detail.profession}</p>
          </div>
       </div>
    );

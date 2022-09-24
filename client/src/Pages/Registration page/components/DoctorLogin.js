@@ -48,6 +48,7 @@ function DoctorLogin(props) {
          setTimeout(() => {
             if (store.getState().okToRoute === true) {
                navigate('/doctordashboard');
+               //Logs user to cometchat
                LoginUser(feedback[1].id_message);
                dispatch(setLoading(false));
             } else {
@@ -57,7 +58,6 @@ function DoctorLogin(props) {
                // navigates to landing page if someting goes wrong
                dispatch(setDoctorAuth(false));
                navigate('/landing-page');
-               console.log(store.getState());
                setTimeout(() => {
                   // dispatches action to set error message
                   dispatch(
