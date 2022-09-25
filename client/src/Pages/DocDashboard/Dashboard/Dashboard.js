@@ -126,17 +126,22 @@ const MidDashboard = (props) => {
                               className={styles.table_img}
                            />
                         </td>
-                        {/* FIXME: Space name */}
+                        {/* display name */}
                         <td>
                            {`${data?.patient_info.first_name} ${data?.patient_info.last_name}`}
                         </td>
+                        {/* display reason for appointment */}
                         <td>{data?.appointment_reason}</td>
+                        {/* display appointment date */}
                         <td>
-                           {new Date(data?.appointment_date).getMonth() + 1}/
-                           {new Date(data?.appointment_date).getDate() + 1}/
+                           {new Date(data?.appointment_date).getMonth() + 1}-
+                           {new Date(data?.appointment_date).getDate() + 1}-
                            {new Date(data?.appointment_date).getFullYear()}
                         </td>
-                        <td>{data?.appointment_start_time}</td>
+                        <td>
+                           {data?.appointment_start_time}-
+                           {data?.appointment_end_time}
+                        </td>
                      </tr>
                   </>
                );
@@ -194,14 +199,16 @@ const MidDashboard = (props) => {
                            Upcoming appointments
                         </h1>
                         {/* Table for upcoming appointment */}
-                        <div className={styles.appointmentTable}>
+                        <div className={styles.appointmentContainer}>
                            <table>
                               <thead>
-                                 <th></th>
-                                 <th>Name</th>
-                                 <th>Condition</th>
-                                 <th>Date</th>
-                                 <th>Time</th>
+                                 <th className={styles.imgHeader}>Profile</th>
+                                 <th className={styles.tName}>Name</th>
+                                 <th className={styles.tCondition}>
+                                    Condition
+                                 </th>
+                                 <th className={styles.tDate}>Date</th>
+                                 <th className={styles.tTime}>Time</th>
                               </thead>
                               <tbody className={styles.tbody}>
                                  {displayData}

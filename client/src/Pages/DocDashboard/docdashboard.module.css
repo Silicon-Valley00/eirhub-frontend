@@ -68,6 +68,7 @@
 @media (min-width: 1200px) {
    .container {
       grid-template-columns: 11rem auto 16rem;
+      max-width: 1920px;
    }
 }
 
