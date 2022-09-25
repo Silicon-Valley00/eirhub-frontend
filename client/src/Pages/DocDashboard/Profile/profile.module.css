@@ -34,8 +34,9 @@
 }
 
 .profileName {
-   color: var(--midcol);
+   color: var(--deepcol);
    text-align: center;
+   text-transform: capitalize;
 }
 
 .uploadImageBtn label {
