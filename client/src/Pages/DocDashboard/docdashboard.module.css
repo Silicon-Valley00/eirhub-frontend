@@ -68,13 +68,13 @@
 @media (min-width: 1200px) {
    .container {
       grid-template-columns: 11rem auto 16rem;
-      max-width: 1920px;
+      max-width: 1200px;
    }
 }
 
 @media (min-width: 1800px) {
    .container {
-      /* grid-template-columns: 10rem auto 16rem; */
+      grid-template-columns: 11rem auto 18rem;
    }
 }
 
