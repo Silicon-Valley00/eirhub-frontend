@@ -13,7 +13,7 @@ const details = [
    },
    {
       name: 'Dr. Steven Strange',
-      profession: 'Witchcraft',
+      profession: 'Cardiac Surgeon',
       profile_pic: docTwo,
    },
    {
