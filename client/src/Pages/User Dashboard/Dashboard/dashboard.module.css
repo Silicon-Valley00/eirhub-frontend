@@ -649,7 +649,6 @@ main#midsection::-webkit-scrollbar-thumb {
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
    main#midsection {
-      margin-top: 4rem;
       border-radius: 0rem;
       /* padding: 0 1rem; */
    }
@@ -704,7 +703,6 @@ main#midsection::-webkit-scrollbar-thumb {
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
    main#midsection {
-      margin-top: 4rem;
       border-radius: 0rem;
       /* padding: 0 1rem; */
       overflow-y: auto;

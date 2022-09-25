@@ -212,6 +212,9 @@ select::-ms-expand {
    .formTitle h3 {
       font-size: 20px;
    }
+   .formBox {
+      margin-bottom: 2rem;
+   }
    .formBox label {
       display: inline-block;
       font-size: 18px;
@@ -234,6 +237,9 @@ select::-ms-expand {
    }
    .formTitle h3 {
       font-size: 1.2rem;
+   }
+   .formBox {
+      margin-bottom: 2rem;
    }
    .formBox label {
       font-size: 0.75rem;

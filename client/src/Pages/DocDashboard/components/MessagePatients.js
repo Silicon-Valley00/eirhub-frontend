@@ -19,7 +19,7 @@ function MessagePatients() {
       async function fetchdata() {
          await axios
             .get(
-               `http://127.0.0.1:5000/appointmentsdoctor/?id_doctor = ${doctorID}`,
+               `http://127.0.0.1:5000/appointmentsdoctors/?id_doctor=${doctorID}`,
                {
                   headers: {
                      'Access-Control-Allow-Origin': '*',

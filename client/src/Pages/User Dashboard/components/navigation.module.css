@@ -140,7 +140,7 @@ aside .sidebar li:hover span.icons {
       left: 0;
       background: var(--white);
       width: 15rem;
-      z-index: 3;
+      z-index: 999;
       box-shadow: 1rem 3rem 4rem rgba(132, 139, 200, 0.18);
       height: 100vh;
       max-height: 100vh;
