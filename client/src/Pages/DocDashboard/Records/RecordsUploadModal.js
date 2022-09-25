@@ -1,11 +1,17 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React from 'react';
 import styles from './recordsuploadmodal.module.css';
 
 
 const RecordsUploadModal = (props) => {
     const handleReportSubmit = (e) => {
         e.preventDefault()
-        
+        console.log(e)
+        // selectedfiles.forEach(file=> {
+            props.selectedFiles.type = e.target.reporttype.value
+            props.selectedFiles.description = e.target.description.value
+        // }
+
+        // )
 
     }
 
@@ -13,8 +19,7 @@ const RecordsUploadModal = (props) => {
 
 
     return <form className={styles.recordsuploadform} >
-        {props.selectedfiles.map((file)=> {
-
+        {/* {props.selectedfiles.map((file)=> { */}
             <label for="reporttype">Report Type</label>
             <select name="reporttype" placeholder="Choose Report Type" form="recorduploadform">
                 <option value="Laboratory">Laboratory</option>
@@ -29,7 +34,7 @@ const RecordsUploadModal = (props) => {
             <label htmlFor="description">Description</label>
             <textarea cols="50" rows="1" name="description" type="text" />
 
-        })}
+        {/* })} */}
         <button className={styles.btn} onClick={handleReportSubmit}>Submit</button>
             </form>
 }

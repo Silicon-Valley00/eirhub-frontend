@@ -82,11 +82,11 @@ function Dropzone(props) {
 
    const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
       // Do something with the files'
-      acceptedFiles.forEach(file => {
+      // acceptedFiles.forEach(file => {
 
-         setSelectedFiles(previous => [...previous, file])
-      })
-      
+      //    setSelectedFiles(previous => [...previous, file])
+      // })
+      setSelectedFiles(acceptedFiles)
       setIsSelected(true)
       // console.log(selectedFiles,acceptedFiles, rejectedFiles)
       // console.log(typeof selectedFiles,typeof acceptedFiles)
@@ -96,8 +96,8 @@ function Dropzone(props) {
    const { getRootProps, getInputProps, isDragActive } = useDropzone({
       onDrop,
       accept: { 'text/*': ['.txt', '.pdf', '.docx', '.doc'] },
-      multiple: true,
-      maxFiles: 3
+      multiple: false,
+      // maxFiles: 3
    });
 
    return (
@@ -115,7 +115,16 @@ function Dropzone(props) {
             {isSelected && (selectedFiles.length > 0) ?
                <div>
                   <ul /*className={styles.selectedFiles}*/>
-                     {selectedFiles.map((file, index) => <li key={index}>
+                     
+                     <li >
+                        <p>
+                           Filename: {selectedFiles.name}
+                           Filetype: {selectedFiles.type}
+                           Size: {(selectedFiles.size / 1024 / 1024).toString().slice(0, 4)}MB
+                     </p>
+                     </li>
+                     {/* {selectedFiles.map((file, index) => 
+                     <li key={index}>
                         <p>
                            Filename: {file.name}
                            Filetype: {file.type}
@@ -123,7 +132,7 @@ function Dropzone(props) {
                      </p>
                      </li>
                      )
-                     }
+                     } */}
                   </ul>
                </div>
                : isDragActive ?
