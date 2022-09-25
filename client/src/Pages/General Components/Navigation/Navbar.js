@@ -28,33 +28,37 @@ const Navigation = ({ nav, openFunc }) => {
    }
 
    return (
-      <nav className={styles.nav}>
-         <div className={styles.welcome_msg}>
-            <div className={styles.menu} id={styles.menuBtn}>
-               <i
-                  onClick={() => {
-                     openFunc();
-                  }}
-               >
-                  <MdMenu />
-               </i>
-            </div>
+      <div className={styles.wrapper}>
+         <nav className={styles.nav}>
+            <div className={styles.welcome_msg}>
+               <div className={styles.logo_menu}>
+                  <div className={styles.menu} id={styles.menuBtn}>
+                     <i
+                        onClick={() => {
+                           openFunc();
+                        }}
+                     >
+                        <MdMenu />
+                     </i>
+                  </div>
 
-            <Link to={dashboard}>
-               <p className={styles.logo}>Eirhub</p>
-            </Link>
+                  <Link to={dashboard}>
+                     <p className={styles.logo}>Eirhub</p>
+                  </Link>
+               </div>
 
-            {/* Avatar with welcome message */}
-            <div className={styles.avatar}>
-               <img
-                  src={imageToShow}
-                  alt="avatar"
-                  className={styles.avatar_img}
-               />
-               <p className={styles.hello_msg}>Hello, {nameToShow}</p>
+               {/* Avatar with welcome message */}
+               <div className={styles.avatar}>
+                  <img
+                     src={imageToShow}
+                     alt="avatar"
+                     className={styles.avatar_img}
+                  />
+                  <p className={styles.hello_msg}>Hello, {nameToShow}</p>
+               </div>
             </div>
-         </div>
-      </nav>
+         </nav>
+      </div>
    );
 };
 export default Navigation;

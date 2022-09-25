@@ -8,7 +8,7 @@
 }
 
 .patientsSection {
-   min-width: 250px;
+   /* min-width: 250px; */
    width: 100%;
    background-color: #ecf3fc;
    border-radius: 1.25rem;
@@ -46,20 +46,29 @@
    font-size: 1rem;
 }
 
+.patients_list {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   gap: 0.5rem;
+   overflow-y: scroll;
+   overflow-x: hidden;
+}
+
 .imageDiv {
-   width: 90%;
-   margin: 15px 0;
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   padding: 0 2rem;
-   width: 95%;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
    cursor: pointer;
 }
+
 .imageDiv img {
    margin: 0 20px;
-   width: 40px;
-   height: 40px;
-   clip-path: circle();
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   object-fit: coverp;
 }
 
 .name {
@@ -67,6 +76,7 @@
    width: 100%;
    display: flex;
    align-items: center;
+   white-space: nowrap;
 }
 
 .menu {

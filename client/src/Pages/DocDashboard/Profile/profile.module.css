@@ -341,3 +341,12 @@ select::-ms-expand {
       /* margin: auto; */
    }
 }
+/*Using this for scrollable component*/
+@media (max-height:725px) {
+   .main{
+      height: 90vh;
+   }
+   .btn_div{
+      padding-bottom: 5rem;
+   }
+}

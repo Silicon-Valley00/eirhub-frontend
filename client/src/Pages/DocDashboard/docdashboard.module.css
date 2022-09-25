@@ -65,25 +65,32 @@
    }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1920px) {
    .container {
       grid-template-columns: 11rem auto 16rem;
       max-width: 1920px;
+   }
+
+   .userbody {
+      display: flex;
+      width: 100vw;
+      /* align-items: center; */
+      justify-content: center;
    }
 }
 
 @media (min-width: 1800px) {
    .container {
-      /* grid-template-columns: 10rem auto 16rem; */
+      grid-template-columns: 11rem auto 18rem;
    }
 }
 
-@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+/* @media only screen and (min-width: 1400px) and (max-width: 2000px) {
    .container {
       width: 98%;
       grid-template-columns: 15rem auto auto;
    }
-}
+} */
 /* Made changes here Ama*/
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .userbody {
