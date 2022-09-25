@@ -65,10 +65,17 @@
    }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1920px) {
    .container {
       grid-template-columns: 11rem auto 16rem;
-      max-width: 1200px;
+      max-width: 1920px;
+   }
+
+   .userbody {
+      display: flex;
+      width: 100vw;
+      /* align-items: center; */
+      justify-content: center;
    }
 }
 
