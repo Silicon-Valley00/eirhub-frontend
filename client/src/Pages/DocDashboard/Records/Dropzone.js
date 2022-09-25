@@ -88,7 +88,7 @@ function Dropzone(props) {
             dispatch(
                setMessage({
                   show: true,
-                  msg: 'Unable to upload report, please make sure you are connected.',
+                  msg: 'Upload Failed, try again.',
                   state: 0,
                })
             )
