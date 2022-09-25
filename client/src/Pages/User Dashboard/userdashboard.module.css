@@ -92,13 +92,13 @@
    font-weight: 700;
    text-transform: capitalize;
 }
-@media (min-width: 1200px) {
+@media (min-width: 2001px) {
    /* .container {
       width: 98%;
       grid-template-columns: 15rem auto 20rem;
    } */
    .userbody {
-      max-width: 1200px;
+      max-width: 2001px;
       margin: 0 auto;
    }
    .info {
