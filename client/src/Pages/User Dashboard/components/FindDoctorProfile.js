@@ -49,28 +49,6 @@ function FindingDoctor(props) {
                   }`}</h3>
                </div>
                <div className={styles.profileInfo}>
-                  <div className={styles.profileRatings}>
-                     <h3>Ratings</h3>
-                     <div className={styles.profileRatingsContent}>
-                        {[
-                           ...Array(
-                              profile.doctor_ratings === null
-                                 ? 0
-                                 : profile.doctor_ratings
-                           ),
-                        ].map((e, i) => (
-                           <span className="busterCards" key={i}>
-                              <AiFillStar />
-                           </span>
-                        ))}
-
-                        <p>{`${
-                           profile.doctor_ratings === null
-                              ? 0
-                              : profile.doctor_ratings
-                        } out of 5`}</p>
-                     </div>
-                  </div>
                   <div className={styles.profileSpecialities}>
                      <h3>Specialities</h3>
                      {profile.doctor_specialties === null

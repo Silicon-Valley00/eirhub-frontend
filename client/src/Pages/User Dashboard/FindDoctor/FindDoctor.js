@@ -16,7 +16,6 @@ function FindingDoctor(props) {
    const [hospital, setHospital] = useState(''); //handles state for Doctor's hospital to search
 
    const [useEffectCount, setUseEffectCount] = useState(0);
-   const [useEffectCountHpt, setUseEffectCountHpt] = useState(0);
 
    useEffect(() => {
       async function fetchdata() {
