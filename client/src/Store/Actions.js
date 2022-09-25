@@ -141,7 +141,7 @@ export const fetchProfile = (userID, guardianID) => {
       try {
          const response = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:5000/patients/${userID}`,
+            url: `https://eirhub-backend.herokuapp.com/patients/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -176,7 +176,7 @@ export const fetchProfileOnSignup = (userID) => {
       try {
          const response = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:5000/patients/${userID}`,
+            url: `https://eirhub-backend.herokuapp.com/patients/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -207,7 +207,7 @@ export const fetchHealthDetails = (userID) => {
       try {
          const response = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:5000/healthdetails/${userID}`,
+            url: `https://eirhub-backend.herokuapp.com/healthdetails/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -238,7 +238,7 @@ export const fetchGuardianInfo = (userID, guardianID) => {
       try {
          const response = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:5000/guardian/${guardianID}`,
+            url: `https://eirhub-backend.herokuapp.com/guardian/${guardianID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -275,7 +275,7 @@ export const updateProfile = (
       try {
          const response = await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:5000/patients/${userID}`,
+            url: `https://eirhub-backend.herokuapp.com/patients/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -332,7 +332,7 @@ export const updateHealthDetails = (userID, data) => {
       try {
          const response = await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:5000/healthdetails/${userID}`,
+            url: `https://eirhub-backend.herokuapp.com/healthdetails/${userID}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -389,7 +389,7 @@ export const updateGuardianInfo = (
       try {
          const response = await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:5000/guardian/${guardianId}`,
+            url: `https://eirhub-backend.herokuapp.com/guardian/${guardianId}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -435,7 +435,7 @@ export const addNewGuardianInfo = (guardianData, profileData) => {
       try {
          const response = await axios({
             method: 'POST',
-            url: `http://127.0.0.1:5000/guardians`,
+            url: `https://eirhub-backend.herokuapp.com/guardians`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -483,17 +483,16 @@ export const addNewGuardianInfo = (guardianData, profileData) => {
 //Fetches user report details
 export async function fetchReports(userID) {
    if (userID) {
-
-      try {
-         const response = await axios({
-            method: 'GET',
-            url: `http://127.0.0.1:5000/report/${userID}`,
-            headers: {
-               'Access-Control-Allow-Origin': '*',
-               //Helpful in some cases.
-               'Access-Control-Allow-Headers': '*',
-               'Access-Control-Allow-Methods': '*',
-            },
+   try {
+      const response = await axios({
+         method: 'GET',
+         url: `https://eirhub-backend.herokuapp.com/report/${userID}`,
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            //Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
       });
       if (response.status === 200) {
          //checks details of response
@@ -516,7 +515,7 @@ export async function fetchMedications(userID) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/prescription/${userID}`,
+         url: `https://eirhub-backend.herokuapp.com/prescription/${userID}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -547,7 +546,7 @@ export const updatePrescriptions = (Id, data) => {
       try {
          const response = await axios({
             method: 'PUT',
-            url: `http://127.0.0.1:5000/prescription/${Id}`,
+            url: `https://eirhub-backend.herokuapp.com/prescription/${Id}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -600,7 +599,7 @@ export const addPrescriptions = (data) => {
       try {
          const response = await axios({
             method: 'POST',
-            url: `http://127.0.0.1:5000/prescription`,
+            url: `https://eirhub-backend.herokuapp.com/prescription`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -666,7 +665,7 @@ export const deletePrescriptions = (id) => {
       try {
          const response = await axios({
             method: 'DELETE',
-            url: `http://127.0.0.1:5000/prescription/${id}`,
+            url: `https://eirhub-backend.herokuapp.com/prescription/${id}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -717,7 +716,7 @@ export async function fetchDoctors() {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/doctors`,
+         url: `https://eirhub-backend.herokuapp.com/doctors`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -746,7 +745,7 @@ export async function fetchDoctorsByPatient(userID) {
    try {
       const response = await axios({
          method: 'GET',
-         url: `http://127.0.0.1:5000/appointmentspatients/?id_patient=${userID}`,
+         url: `https://eirhub-backend.herokuapp.com/appointmentspatients/?id_patient=${userID}`,
          headers: {
             'Access-Control-Allow-Origin': '*',
             //Helpful in some cases.
@@ -777,7 +776,7 @@ export async function fetchAppointments(userID, status) {
       try {
          const response = await axios({
             method: 'GET',
-            url: `http://127.0.0.1:5000/appointments/?id_patient=${userID}&accepted=${status}`,
+            url: `https://eirhub-backend.herokuapp.com/appointments/?id_patient=${userID}&accepted=${status}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
@@ -809,7 +808,7 @@ export const addAppointments = (data) => {
       try {
          const response = await axios({
             method: 'POST',
-            url: `http://127.0.0.1:5000/appointments/`,
+            url: `https://eirhub-backend.herokuapp.com/appointments/`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.

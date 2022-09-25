@@ -300,9 +300,35 @@
       padding-right: 10px;
    }
 }
+/*made changes here Ama*/
 @media (max-width: 720px) {
    .middle_section {
       padding: 2rem;
+      height: 100vh;
+   overflow-x: hidden;
+   }
+}
+@media(max-width:568px){
+.appointmentContainer{
+   overflow-x: scroll;
+   margin-bottom: 3rem;
+   width: 88%;
+  }
+}
+@media (max-width:425px) {
+   .appointmentContainer{
+      width: 75%;
+   }
+}
+@media (max-width:375px) {
+   .appointmentContainer{
+      width: 67%;
+   }
+   
+}
+@media(max-width:320px){
+   .appointmentContainer{
+      width: 55%;
    }
 }
 
