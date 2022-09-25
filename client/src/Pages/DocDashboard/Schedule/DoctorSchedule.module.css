@@ -11,6 +11,7 @@
    gap: 4.5rem;
    justify-self: center;
    overflow-y: scroll;
+   overflow-x: hidden;
 }
 
 .formContainer {
@@ -530,6 +531,16 @@
    }
 }
 /*Mobile screens*/
+@media (max-width:480px) {
+   .appointmentContainer{
+      width: 70%;
+      margin-bottom: 6rem;
+      overflow-x: scroll;
+      /* padding-bottom: 100px; */
+   }
+  
+   
+}
 @media (max-width: 425px) {
    .DSContainer1 {
       width: 100%;
@@ -619,7 +630,7 @@
 }
 
 /*small mobile screens*/
-@media (max-width: 375px) {
+@media (max-width: 380px) {
    .DSContainer1 {
       width: 100%;
       background-color: white;
@@ -646,6 +657,7 @@
    }
    .appointmentContainer {
       height: 21.875rem;
+      width: 60%;
    }
    .DSContainer2 ul {
       text-align: center;
@@ -678,6 +690,7 @@
    .appointmentContainer table td {
       padding-left: 20px;
    }
+
 }
 @media (max-width: 320px) {
    .DSContainer1 form {
@@ -685,11 +698,12 @@
       width: 100%;
    }
    .appointmentContainer {
-      width: 15rem;
-      margin: auto;
-      text-align: center;
-      display: flex;
-      justify-content: center;
+      width: 47%;
+      margin: 0 auto 5rem auto;
+      /* text-align: center;
+      display: flex; */
+      /* justify-content: center; */
+      overflow-x: scroll;
    }
    .appointmentContainer table {
       width: 100%;

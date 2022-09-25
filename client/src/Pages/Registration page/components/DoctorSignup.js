@@ -476,7 +476,7 @@ function DoctorSignup(props) {
                            </button>
                         </div>
                         <div className={styles.signupFormMessage}>
-                           <p>Already have an account?</p>
+                           <p>Already have an account? </p>
                            <p
                               id={styles.signupFormMessageP}
                               onClick={() => {

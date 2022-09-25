@@ -65,11 +65,11 @@ const DocProfile = (props) => {
             },
          })
          .then((res) => {
-            dispatch(setDoctorProfile(res.data));
+            dispatch(setDoctorProfile(res.data.msg));
             dispatch(
                setMessage({
                   show: true,
-                  msg: 'Profile Updated Successfully 🎉',
+                  msg: 'Profile updated.',
                   state: 1,
                })
             );
@@ -78,7 +78,7 @@ const DocProfile = (props) => {
             dispatch(
                setMessage({
                   show: true,
-                  msg: 'Unable to fetch Appointment, please make sure you are connected.',
+                  msg: 'Update failed.',
                   state: 0,
                })
             )
@@ -125,18 +125,17 @@ const DocProfile = (props) => {
                      state: 1,
                   })
                );
-               setUploadBtn('Upload Another');
+               setUploadBtn('Image Uploaded');
             })
             .catch((error) => {
                dispatch(
                   setMessage({
                      show: true,
-                     msg: 'LOL! e fail... 😂',
+                     msg: 'Upload Failed',
                      state: 0,
                   })
                );
-               setUploadBtn('Upload Again.');
-               console.log('Cloudinary upload Error:', error);
+               setUploadBtn('Upload Image');
             });
       }
    }
