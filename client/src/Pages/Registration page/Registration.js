@@ -7,7 +7,7 @@ import axios from 'axios';
 
 // Database configuration
 const api = axios.create({
-   baseURL: 'http://127.0.0.1:5000/',
+   baseURL: 'https://eirhub-backend.herokuapp.com/',
 });
 
 function Registration(props) {
@@ -544,7 +544,7 @@ function Registration(props) {
       try {
          const response = await axios({
             method: 'POST',
-            url: `http://127.0.0.1:5000/${path}`,
+            url: `https://eirhub-backend.herokuapp.com/${path}`,
             headers: {
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.

@@ -34,7 +34,7 @@ const DocProfile = (props) => {
 
    // State to toggle between disabling the text inputs or not.
    const [disableBtn, setDisableBtn] = useState(true);
-      // handles state of input fields disability
+   // handles state of input fields disability
    const [showMessage, setShowMessage] = useState(false);
 
    let doctorEditedProfile = {
@@ -52,7 +52,7 @@ const DocProfile = (props) => {
    };
 
    // endpoint for updating doctor profile
-   const endpoint = `http://127.0.0.1:5000/doctor/${data?.id_doctor}`;
+   const endpoint = `https://eirhub-backend.herokuapp.com/doctor/${data?.id_doctor}`;
 
    const dispatch = useDispatch();
 
@@ -178,10 +178,12 @@ const DocProfile = (props) => {
                            {data?.first_name} {data?.last_name}
                         </h2>
                      </div>
-                     <div className={styles.uploadImageBtn}  
-                          onClick={() => {
+                     <div
+                        className={styles.uploadImageBtn}
+                        onClick={() => {
                            displayMessage();
-                        }}>
+                        }}
+                     >
                         <label htmlFor="file-upload-button">{uploadBtn}</label>
                         <input
                            id="file-upload-button"
@@ -214,9 +216,12 @@ const DocProfile = (props) => {
                         <div className={styles.forFirst}>
                            <div className={styles.profileFormBox}>
                               <h3>First Name</h3>
-                              <div className={styles.formBoxNameInputs} onClick={() => {
-                              displayMessage();
-                           }}>
+                              <div
+                                 className={styles.formBoxNameInputs}
+                                 onClick={() => {
+                                    displayMessage();
+                                 }}
+                              >
                                  <input
                                     name="firstName"
                                     className={styles.input_box}
@@ -234,9 +239,12 @@ const DocProfile = (props) => {
                            </div>
                            <div className={styles.profileFormBox}>
                               <h3>Middle Name(Optional)</h3>
-                              <div className={styles.formBoxNameInputs} onClick={() => {
-                              displayMessage();
-                           }}>
+                              <div
+                                 className={styles.formBoxNameInputs}
+                                 onClick={() => {
+                                    displayMessage();
+                                 }}
+                              >
                                  <input
                                     name="middleName"
                                     className={styles.input_box}
@@ -253,9 +261,12 @@ const DocProfile = (props) => {
                            </div>
                            <div className={styles.profileFormBox}>
                               <h3>Last Name</h3>
-                              <div className={styles.formBoxNameInputs} onClick={() => {
-                              displayMessage();
-                           }}>
+                              <div
+                                 className={styles.formBoxNameInputs}
+                                 onClick={() => {
+                                    displayMessage();
+                                 }}
+                              >
                                  <input
                                     name="lastName"
                                     className={styles.input_box}
@@ -276,9 +287,12 @@ const DocProfile = (props) => {
                         <div className={styles.forSecond}>
                            <div className={styles.profileFormBox}>
                               <h3>Email</h3>
-                              <div className={styles.formBoxNameInputs} onClick={() => {
-                              displayMessage();
-                           }}>
+                              <div
+                                 className={styles.formBoxNameInputs}
+                                 onClick={() => {
+                                    displayMessage();
+                                 }}
+                              >
                                  <input
                                     name="email"
                                     className={styles.input_box}
@@ -294,9 +308,12 @@ const DocProfile = (props) => {
                            </div>{' '}
                            <div className={styles.profileFormBox}>
                               <h3>Date of Birth</h3>
-                              <div className={styles.formBoxNameInputs} onClick={() => {
-                              displayMessage();
-                           }}>
+                              <div
+                                 className={styles.formBoxNameInputs}
+                                 onClick={() => {
+                                    displayMessage();
+                                 }}
+                              >
                                  <input
                                     type="text"
                                     className={styles.input_box}
@@ -323,9 +340,12 @@ const DocProfile = (props) => {
                            <div className={styles.profileFormBox}>
                               <h3>Gender</h3>
                               <div className={styles.formBoxNameInputs}>
-                                 <div className={styles.select} onClick={() => {
-                              displayMessage();
-                           }}>
+                                 <div
+                                    className={styles.select}
+                                    onClick={() => {
+                                       displayMessage();
+                                    }}
+                                 >
                                     <select
                                        name="gender"
                                        placeholder="Gender"
@@ -348,9 +368,12 @@ const DocProfile = (props) => {
                         <div className={styles.forThird}>
                            <div className={styles.profileFormBox}>
                               <h3>House Address</h3>
-                              <div className={styles.formBoxNameInputs} onClick={() => {
-                              displayMessage();
-                           }}>
+                              <div
+                                 className={styles.formBoxNameInputs}
+                                 onClick={() => {
+                                    displayMessage();
+                                 }}
+                              >
                                  <input
                                     name="address"
                                     className={styles.input_box}
@@ -383,9 +406,12 @@ const DocProfile = (props) => {
                            {/* license number */}
                            <div className={styles.profileFormBox}>
                               <h3>License Number</h3>
-                              <div className={styles.formBoxNameInputs} onClick={() => {
-                              displayMessage();
-                           }}>
+                              <div
+                                 className={styles.formBoxNameInputs}
+                                 onClick={() => {
+                                    displayMessage();
+                                 }}
+                              >
                                  <input
                                     name="licenseNum"
                                     className={styles.input_box}
@@ -404,9 +430,12 @@ const DocProfile = (props) => {
                            {/* Specialty */}
                            <div className={styles.profileFormBox}>
                               <h3>Specialty</h3>
-                              <div className={styles.formBoxNameInputs} onClick={() => {
-                              displayMessage();
-                           }}>
+                              <div
+                                 className={styles.formBoxNameInputs}
+                                 onClick={() => {
+                                    displayMessage();
+                                 }}
+                              >
                                  <input
                                     name="specialty"
                                     className={styles.input_box}
@@ -425,9 +454,12 @@ const DocProfile = (props) => {
                            {/* Hospital code */}
                            <div className={styles.profileFormBox}>
                               <h3>Hospital Code</h3>
-                              <div className={styles.formBoxNameInputs} onClick={() => {
-                              displayMessage();
-                           }}>
+                              <div
+                                 className={styles.formBoxNameInputs}
+                                 onClick={() => {
+                                    displayMessage();
+                                 }}
+                              >
                                  <input
                                     name="hospitalCode"
                                     className={styles.input_box}

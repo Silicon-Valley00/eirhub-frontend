@@ -6,9 +6,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { connect, useDispatch } from 'react-redux';
 import { setMessage } from '../../../Store/Actions';
-import RecordsUploadModal from './RecordsUploadModal'
-
-
+import RecordsUploadModal from './RecordsUploadModal';
 
 function Dropzone(props) {
    const doctorID = props.doctorProfile.id_doctor;
@@ -16,7 +14,7 @@ function Dropzone(props) {
 
    const [selectedFiles, setSelectedFiles] = useState();
    const [isSelected, setIsSelected] = useState(false);
-   const [modalOpen, setModalOpen] = useState(false)
+   const [modalOpen, setModalOpen] = useState(false);
 
    const docRecordsUploadRef = useRef();
 
@@ -30,74 +28,72 @@ function Dropzone(props) {
    // };
 
    function postReport(report_url) {
-      const current_date = new Date(Date.now())
-      const upload_date = `${current_date.getFullYear()}-${current_date.getMonth() + 1}-${current_date.getDate()}`
+      const current_date = new Date(Date.now());
+      const upload_date = `${current_date.getFullYear()}-${
+         current_date.getMonth() + 1
+      }-${current_date.getDate()}`;
       const reportData = {
-         "report_type": selectedFiles.type,
-         "description": selectedFiles.description,
-         "upload_date": upload_date,
-         "report_url": report_url,
-         "id_doctor": doctorID,
-         "id_patient": props.patientID
-      }
-      axios.post(`http://127.0.0.1:5000/report`,
-         reportData,
-         {
+         report_type: selectedFiles.type,
+         description: selectedFiles.description,
+         upload_date: upload_date,
+         report_url: report_url,
+         id_doctor: doctorID,
+         id_patient: props.patientID,
+      };
+      axios
+         .post(`https://eirhub-backend.herokuapp.com/report`, reportData, {
             headers: {
                'Content-Type': 'application/json',
                'Access-Control-Allow-Origin': '*',
                //Helpful in some cases.
                'Access-Control-Allow-Headers': '*',
                'Access-Control-Allow-Methods': '*',
-            }
-         }
-      )
+            },
+         })
          .then(() => {
-            alert('Report Uploaded')
+            alert('Report Uploaded');
          })
          .catch((error) => {
-            alert(`Failed: ${error}`)
-         })
+            alert(`Failed: ${error}`);
+         });
    }
 
-
-
-
    const handleSubmission = () => {
-
       // selectedFiles.map(file => {
 
       const formData = new FormData();
       formData.append('file', selectedFiles);
-      formData.append('upload_preset', 'ji5ue4f9')
+      formData.append('upload_preset', 'ji5ue4f9');
 
       axios
-         .post('https://api.cloudinary.com/v1_1/eirhub-siliconvalley/auto/upload', formData)
+         .post(
+            'https://api.cloudinary.com/v1_1/eirhub-siliconvalley/auto/upload',
+            formData
+         )
          .then((response) => {
-            postReport(response.data.url)
+            postReport(response.data.url);
             dispatch(
                setMessage({
                   show: true,
                   msg: 'Report Uploaded Successfully 🎉',
                   state: 1,
                })
-            )
+            );
          })
          .catch((error) => {
-            console.log(error)
+            console.log(error);
             dispatch(
                setMessage({
                   show: true,
                   msg: 'Upload Failed, try again.',
                   state: 0,
                })
-            )
-            });
+            );
+         });
       // })
-      setSelectedFiles()
-      setIsSelected(false)
+      setSelectedFiles();
+      setIsSelected(false);
       // console.log(isSelected,selectedFiles);
-
    };
 
    const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
@@ -106,18 +102,16 @@ function Dropzone(props) {
 
       //    setSelectedFiles(previous => [...previous, file])
       // })
-      setSelectedFiles(acceptedFiles)
-      setIsSelected(true)
-      setModalOpen(true)
+      setSelectedFiles(acceptedFiles);
+      setIsSelected(true);
+      setModalOpen(true);
       // console.log(typeof selectedFiles,typeof acceptedFiles)
       // console.log(e)
       // e.preventDefault()
    }, []);
    useEffect(() => {
-      console.log(selectedFiles, isSelected)
-
-   }, [selectedFiles])
-
+      console.log(selectedFiles, isSelected);
+   }, [selectedFiles]);
 
    const { getRootProps, getInputProps, isDragActive } = useDropzone({
       onDrop,
@@ -125,7 +119,6 @@ function Dropzone(props) {
       multiple: false,
       // maxFiles: 3
    });
-
 
    return (
       <div className={styles.dropzone}>
@@ -139,15 +132,19 @@ function Dropzone(props) {
                name="file"
                disabled
             />
-            {isSelected && (selectedFiles.length > 0) ?
+            {isSelected && selectedFiles.length > 0 ? (
                <div>
                   <ul /*className={styles.selectedFiles}*/>
-
-                     <li >
-
+                     <li>
                         <p>Description: {selectedFiles.description}</p>
                         <p>Report Type: {selectedFiles.type} Report</p>
-                        <p>Size: {(selectedFiles[0].size / 1024 / 1024).toString().slice(0, 4)}MB</p>
+                        <p>
+                           Size:{' '}
+                           {(selectedFiles[0].size / 1024 / 1024)
+                              .toString()
+                              .slice(0, 4)}
+                           MB
+                        </p>
                      </li>
                      {/* {selectedFiles.map((file, index) => 
                      <li key={index}>
@@ -161,27 +158,33 @@ function Dropzone(props) {
                      } */}
                   </ul>
                </div>
-               : isDragActive ?
-                  <h2>Drop files here</h2>
-                  : <div>
-                     <FaFileUpload
-                        className={styles.docRecordsUploadimg}
-                     />
-                     <h2 className={styles.docRecordsSheader}>
-                        Drag and drop file or{' '}
-                        <span className={styles.docRecordsButtonLink} >
-                           browse
-            </span>
-                        {/* Drag and drop file or{' '}
+            ) : isDragActive ? (
+               <h2>Drop files here</h2>
+            ) : (
+               <div>
+                  <FaFileUpload className={styles.docRecordsUploadimg} />
+                  <h2 className={styles.docRecordsSheader}>
+                     Drag and drop file or{' '}
+                     <span className={styles.docRecordsButtonLink}>browse</span>
+                     {/* Drag and drop file or{' '}
             <Link to="/" className={styles.docRecordsButtonLink}>
             browse
          </Link> */}
-                     </h2>
-                  </div>
-            }
+                  </h2>
+               </div>
+            )}
          </div>
-         {isSelected && <button className={styles.btn} onClick={handleSubmission}>Submit</button>}
-         {modalOpen && <RecordsUploadModal setModalOpen={setModalOpen} selectedFiles={selectedFiles} />}
+         {isSelected && (
+            <button className={styles.btn} onClick={handleSubmission}>
+               Submit
+            </button>
+         )}
+         {modalOpen && (
+            <RecordsUploadModal
+               setModalOpen={setModalOpen}
+               selectedFiles={selectedFiles}
+            />
+         )}
       </div>
    );
 }
