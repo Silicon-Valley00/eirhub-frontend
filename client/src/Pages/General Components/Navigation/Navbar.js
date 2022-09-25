@@ -2,10 +2,12 @@ import styles from './navbar.module.css';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { MdMenu } from 'react-icons/md';
+import { IoCloseOutline } from 'react-icons/io5';
 // import avatarThree from '../../assets/Rectangle.png';
 import { Link } from 'react-router-dom';
 
-const Navigation = ({ nav, openFunc }) => {
+const Navigation = ({ nav, openFunc, openMenu }) => {
+   const [show, setShow] = useState(false);
    const isPatientAuth = useSelector((state) => state.isPatientAuth);
    const isDoctorAuth = useSelector((state) => state.isDoctorAuth);
 
@@ -36,9 +38,10 @@ const Navigation = ({ nav, openFunc }) => {
                      <i
                         onClick={() => {
                            openFunc();
+                           setShow(!show);
                         }}
                      >
-                        <MdMenu />
+                        {!show ? <MdMenu /> : <IoCloseOutline />}
                      </i>
                   </div>
 
