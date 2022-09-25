@@ -61,7 +61,7 @@
       height: 10%;
       margin: 0 auto;
       gap: 1rem;
-      grid-template-columns: 14rem auto auto;
+      grid-template-columns: 14rem auto 20rem;
    }
 }
 
