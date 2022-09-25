@@ -236,7 +236,6 @@ p.emptyMessage {
 @media (min-width: 1300px) {
    .docRecordsContainer {
       width: 100%;
-      background: red;
    }
 }
 

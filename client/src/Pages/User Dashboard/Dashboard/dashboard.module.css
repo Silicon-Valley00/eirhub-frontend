@@ -392,6 +392,76 @@ main#midsection::-webkit-scrollbar-thumb {
    border-radius: 10%;
    cursor: pointer;
 }
+@media (min-width: 2001px) {
+   main .vitalsBox {
+      display: grid;
+      grid-template-columns: 21% 21% 21% 21%;
+      gap: 2.5rem;
+      align-content: space-between;
+      justify-content: space-around;
+   }
+   main .vitalsBox .vitals {
+      height: 200px;
+      min-height: 200px;
+   }
+   .vitalsInfo {
+      font-size: 12.8px;
+   }
+   /* MEDICATIONS */
+   .medicationBox {
+      margin-top: 40px;
+   }
+   .medicationBox h2 {
+      margin-bottom: 10px;
+      font-size: 25px;
+   }
+   .medicationTable {
+      height: calc(100vh - 75vh);
+      /* min-height: 13rem; */
+   }
+   .appointmentsBox {
+      margin-top: 40px;
+   }
+   .appointmentsBox h2 {
+      margin-bottom: 10px;
+      font-size: 25px;
+   }
+   .appointmentTable {
+      height: calc(100vh - 71vh);
+   }
+}
+/* Media Queries */
+@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+   main .vitalsBox {
+      display: grid;
+      grid-template-columns: 22% 22% 22% 22%;
+      gap: 2rem;
+      align-content: space-between;
+      justify-content: space-around;
+   }
+   /* MEDICATIONS */
+   .medicationBox {
+      margin-top: 1rem;
+   }
+   .medicationBox h2 {
+      margin-bottom: 0.2rem;
+      font-size: 1.4rem;
+   }
+   .medicationTable {
+      height: calc(100vh - 75vh);
+      /* min-height: 13rem; */
+   }
+   .appointmentsBox {
+      margin-top: 0.8rem;
+   }
+   .appointmentsBox h2 {
+      margin-bottom: 0.2rem;
+      font-size: 1.4rem;
+   }
+   .appointmentTable {
+      height: calc(100vh - 71vh);
+   }
+}
 
 @media only screen and (min-width: 1024px) and (max-width: 1399px) {
    main#midsection {
@@ -709,76 +779,3 @@ main#midsection::-webkit-scrollbar-thumb {
       border-radius: 50%;
    }
 }
-
-/* Check and delete if it won't be used. */
-
-/* @media (min-width: 2001px) {
-   main .vitalsBox {
-      display: grid;
-      grid-template-columns: 21% 21% 21% 21%;
-      gap: 2.5rem;
-      align-content: space-between;
-      justify-content: space-around;
-   }
-   main .vitalsBox .vitals {
-      height: 200px;
-      min-height: 200px;
-   }
-   .vitalsInfo {
-      font-size: 12.8px;
-   } */
-/* MEDICATIONS */
-/* .medicationBox {
-      margin-top: 40px;
-   }
-   .medicationBox h2 {
-      margin-bottom: 10px;
-      font-size: 25px;
-   } */
-/* .medicationTable {
-      height: calc(100vh - 75vh); */
-/* min-height: 13rem; */
-/* }
-   .appointmentsBox {
-      margin-top: 40px;
-   }
-   .appointmentsBox h2 {
-      margin-bottom: 10px;
-      font-size: 25px;
-   }
-   .appointmentTable {
-      height: calc(100vh - 71vh);
-   }
-} */
-/* Media Queries */
-/* @media only screen and (min-width: 1400px) and (max-width: 2000px) {
-   main .vitalsBox {
-      display: grid;
-      grid-template-columns: 22% 22% 22% 22%;
-      gap: 2rem;
-      align-content: space-between;
-      justify-content: space-around;
-   } */
-/* MEDICATIONS */
-/* .medicationBox {
-      margin-top: 1rem;
-   }
-   .medicationBox h2 {
-      margin-bottom: 0.2rem;
-      font-size: 1.4rem;
-   }
-   .medicationTable {
-      height: calc(100vh - 75vh);
-      /* min-height: 13rem; */
-/* }
-   .appointmentsBox {
-      margin-top: 0.8rem;
-   }
-   .appointmentsBox h2 {
-      margin-bottom: 0.2rem;
-      font-size: 1.4rem;
-   }
-   .appointmentTable {
-      height: calc(100vh - 71vh);
-   }
-} */
