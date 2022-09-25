@@ -133,7 +133,7 @@ const MidDashboard = (props) => {
                         <td>{data?.appointment_reason}</td>
                         <td>
                            {new Date(data?.appointment_date).getMonth() + 1}/
-                           {new Date(data?.appointment_date).getDate() + 1}/
+                           {new Date(data?.appointment_date).getDate()}/
                            {new Date(data?.appointment_date).getFullYear()}
                         </td>
                         <td>{data?.appointment_start_time}</td>
