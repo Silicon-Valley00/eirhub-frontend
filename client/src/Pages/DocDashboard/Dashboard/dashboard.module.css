@@ -179,7 +179,7 @@
    flex-direction: column;
    align-items: center;
    justify-content: space-between;
-   height: 15rem;
+   height: 11rem;
    width: 100%;
    color: var(--midcol);
    padding: 2rem 2rem;
@@ -198,8 +198,8 @@
 }
 
 .icon {
-   height: 4rem;
-   width: 4rem;
+   height: 3rem;
+   width: 3rem;
    color: var(--deepcol);
 }
 

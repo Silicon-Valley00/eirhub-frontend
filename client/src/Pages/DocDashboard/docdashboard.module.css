@@ -61,13 +61,13 @@
       height: 10%;
       margin: 0 auto;
       gap: 1rem;
-      grid-template-columns: 14rem auto auto;
+      grid-template-columns: 14rem auto 20rem;
    }
 }
 
 @media (min-width: 1920px) {
    .container {
-      grid-template-columns: 11rem auto 16rem;
+      grid-template-columns: 11rem auto 20rem;
       max-width: 1920px;
    }
 
@@ -81,7 +81,7 @@
 
 @media (min-width: 1800px) {
    .container {
-      grid-template-columns: 11rem auto 18rem;
+      grid-template-columns: 11rem auto 24rem;
    }
 }
 
