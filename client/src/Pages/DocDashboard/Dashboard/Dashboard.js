@@ -164,29 +164,35 @@ const MidDashboard = (props) => {
                      <div className={styles.doctor_display}>
                         {/* Each display make into a card and joined together on large screens */}
                         <div className={styles.card} id={styles.first_card}>
-                           <IoIosPeople className={styles.icon} />
-                           <div>
-                              <p className={styles.digits}>
-                                 {numOfdetails?.number_of_patients}
-                              </p>
+                           <div className={styles.icon_div}>
+                              <IoIosPeople className={styles.icon} />
+                           </div>
+                           <p className={styles.digits}>
+                              {numOfdetails?.number_of_patients}
+                           </p>
+                           <div className={styles.details}>
                               <p className={styles.text}>Patients</p>
                            </div>
                         </div>
                         <div className={styles.card} id={styles.second_card}>
-                           <AiFillFile className={styles.icon} />
-                           <div>
-                              <p className={styles.digits}>
-                                 {numOfdetails?.number_of_reports}
-                              </p>
+                           <div className={styles.icon_div}>
+                              <AiFillFile className={styles.icon} />
+                           </div>{' '}
+                           <p className={styles.digits}>
+                              {numOfdetails?.number_of_reports}
+                           </p>
+                           <div className={styles.details}>
                               <p className={styles.text}>reports</p>
                            </div>
                         </div>
                         <div className={styles.card} id={styles.third_card}>
-                           <CgCalendar className={styles.icon} />
-                           <div>
-                              <p className={styles.digits}>
-                                 {numOfdetails?.number_of_appointments}
-                              </p>
+                           <div className={styles.icon_div}>
+                              <CgCalendar className={styles.icon} />
+                           </div>
+                           <p className={styles.digits}>
+                              {numOfdetails?.number_of_appointments}
+                           </p>
+                           <div className={styles.details}>
                               <p className={styles.text}>appointments</p>
                            </div>
                         </div>
