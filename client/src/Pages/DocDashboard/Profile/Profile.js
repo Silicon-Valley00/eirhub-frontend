@@ -213,6 +213,7 @@ const DocProfile = (props) => {
                         id="form"
                      >
                         {/* Firstname, middlename and lastname */}
+                        <div className={styles.inputMainDiv}>
                         <div className={styles.forFirst}>
                            <div className={styles.profileFormBox}>
                               <h3>First Name</h3>
@@ -387,6 +388,7 @@ const DocProfile = (props) => {
                                  />
                               </div>
                            </div>
+                        </div>
                         </div>
                      </form>
                   </div>
