@@ -131,7 +131,7 @@ const DocProfile = (props) => {
                dispatch(
                   setMessage({
                      show: true,
-                     msg: 'LOL! e fail... 😂',
+                     msg: 'Upload Failed',
                      state: 0,
                   })
                );
