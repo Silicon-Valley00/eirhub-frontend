@@ -275,6 +275,11 @@
       height: 2.8rem;
       padding: 0 3rem;
    }
+
+   .content__info {
+      font-size: 13pt;
+      color: var(--deepcol);
+   }
 }
 
 @media (min-width: 1500px) {
@@ -292,6 +297,6 @@
    }
 
    .hero_image {
-      width: 55%;
+      width: 56%;
    }
 }
