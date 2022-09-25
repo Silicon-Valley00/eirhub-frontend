@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const put = axios.create({
-   baseURL: 'http://127.0.0.1:5000',
+   baseURL: 'https://eirhub-backend.herokuapp.com',
    timeout: 1000,
    headers: {
       'Access-Control-Allow-Origin': '*',

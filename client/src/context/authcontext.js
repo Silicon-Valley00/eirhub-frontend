@@ -39,10 +39,10 @@ export const LoginUser = async (UID) => {
 export const Logout = () => {
    CometChat.logout().then(
       () => {
-         // alert('Logout completed successfully');
+         console.log('Logout completed successfully');
       },
       (error) => {
-         // alert('Logout failed with exception:', { error });
+         console.log('Logout failed with exception:', { error });
       }
    );
 };

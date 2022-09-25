@@ -16,7 +16,7 @@ const MidDashboard = (props) => {
    const [numOfdetails, setNumberofdetails] = useState(0);
    const data = props.doctorProfile;
    console.log('data', data);
-   const baseURL = 'http://127.0.0.1:5000';
+   const baseURL = 'https://eirhub-backend.herokuapp.com';
 
    // TODO: add interceptors to catch errors
    const currDate = new Date();
@@ -135,7 +135,7 @@ const MidDashboard = (props) => {
                         {/* display appointment date */}
                         <td>
                            {new Date(data?.appointment_date).getMonth() + 1}-
-                           {new Date(data?.appointment_date).getDate() + 1}-
+                           {new Date(data?.appointment_date).getDate()}-
                            {new Date(data?.appointment_date).getFullYear()}
                         </td>
                         <td>
