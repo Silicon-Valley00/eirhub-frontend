@@ -160,7 +160,7 @@ function Profile(props) {
                      state: 1,
                   })
                );
-               setUploadBtn('Upload Another.');
+               setUploadBtn('Image Uploaded');
             })
             .catch((error) => {
                dispatch(
@@ -170,7 +170,7 @@ function Profile(props) {
                      state: 0,
                   })
                );
-               setUploadBtn('Upload Again.');
+               setUploadBtn('Upload Image');
             });
       }
    }
