@@ -9,11 +9,13 @@ const RecordsUploadModal = (props) => {
     const handleReportSubmit = (e) => {
         e.preventDefault()
         // console.log(e)
-        // selectedfiles.forEach(file=> {
+        // selectedFile.forEach(file=> {
             console.log(props)
-            props.selectedFiles.type = reporttype.current.value
-            props.selectedFiles.description = description.current.value
+        console.log(reporttype.current.value)
+            props.selectedFile.type = reporttype.current.value
+            props.selectedFile.description = description.current.value
             props.setModalOpen(false)
+            
         // }
 
         // )
@@ -24,7 +26,7 @@ const RecordsUploadModal = (props) => {
 
 
     return <form className={styles.recordsuploadform} >
-        {/* {props.selectedfiles.map((file)=> { */}
+        {/* {props.selectedFile.map((file)=> { */}
             <label for="reporttype">Report Type</label>
             <select ref={reporttype} name="reporttype" placeholder="Choose Report Type" form="recorduploadform">
                 <option value="Laboratory">Laboratory</option>
@@ -40,7 +42,7 @@ const RecordsUploadModal = (props) => {
             <textarea ref={description} cols="50" rows="1" name="description" type="text" />
 
         {/* })} */}
-        <button className={styles.btn} onClick={handleReportSubmit}>Submit</button>
+        <button className={styles.btn} onClick={handleReportSubmit}>Save</button>
             </form>
 }
 

@@ -14,7 +14,7 @@ function Dropzone(props) {
    const doctorID = props.doctorProfile.id_doctor;
    const dispatch = useDispatch();
 
-   const [selectedFiles, setSelectedFiles] = useState();
+   const [selectedFile, setSelectedFile] = useState();
    const [isSelected, setIsSelected] = useState(false);
    const [modalOpen, setModalOpen] = useState(false)
 
@@ -30,11 +30,12 @@ function Dropzone(props) {
    // };
 
    function postReport(report_url) {
-      const current_date = new Date(Date.now())
+      const current_date = new Date()
+   
       const upload_date = `${current_date.getFullYear()}-${current_date.getMonth() + 1}-${current_date.getDate()}`
       const reportData = {
-         "report_type": selectedFiles.type,
-         "description": selectedFiles.description,
+         "report_type": selectedFile.type,
+         "description": selectedFile.description,
          "upload_date": upload_date,
          "report_url": report_url,
          "id_doctor": doctorID,
@@ -65,10 +66,11 @@ function Dropzone(props) {
 
    const handleSubmission = () => {
 
-      // selectedFiles.map(file => {
+      // selectedFile.map(file => {
+      const file = selectedFile[0]
 
       const formData = new FormData();
-      formData.append('file', selectedFiles);
+      formData.append('file', file);
       formData.append('upload_preset', 'ji5ue4f9')
 
       axios
@@ -94,9 +96,9 @@ function Dropzone(props) {
             )
             });
       // })
-      setSelectedFiles()
+      setSelectedFile()
       setIsSelected(false)
-      // console.log(isSelected,selectedFiles);
+      // console.log(isSelected,selectedFile);
 
    };
 
@@ -104,19 +106,20 @@ function Dropzone(props) {
       // Do something with the files'
       // acceptedFiles.forEach(file => {
 
-      //    setSelectedFiles(previous => [...previous, file])
+      //    setSelectedFile(previous => [...previous, file])
       // })
-      setSelectedFiles(acceptedFiles)
+      setSelectedFile(acceptedFiles)
       setIsSelected(true)
       setModalOpen(true)
-      // console.log(typeof selectedFiles,typeof acceptedFiles)
+      // console.log(typeof selectedFile,typeof acceptedFiles)
       // console.log(e)
       // e.preventDefault()
    }, []);
    useEffect(() => {
-      console.log(selectedFiles, isSelected)
+      console.log(selectedFile, isSelected)
+      console.log(modalOpen)
 
-   }, [selectedFiles])
+   }, [selectedFile])
 
 
    const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -139,17 +142,17 @@ function Dropzone(props) {
                name="file"
                disabled
             />
-            {isSelected && (selectedFiles.length > 0) ?
+            {isSelected && (selectedFile.length > 0) ?
                <div>
-                  <ul /*className={styles.selectedFiles}*/>
+                  <ul /*className={styles.selectedFile}*/>
 
                      <li >
 
-                        <p>Description: {selectedFiles.description}</p>
-                        <p>Report Type: {selectedFiles.type} Report</p>
-                        <p>Size: {(selectedFiles[0].size / 1024 / 1024).toString().slice(0, 4)}MB</p>
+                        <p>Description: {selectedFile.description}</p>
+                        <p>Report Type: {selectedFile.type} Report</p>
+                        <p>Size: {(selectedFile[0].size / 1024 / 1024).toString().slice(0, 4)}MB</p>
                      </li>
-                     {/* {selectedFiles.map((file, index) => 
+                     {/* {selectedFile.map((file, index) => 
                      <li key={index}>
                         <p>
                            Filename: {file.name}
@@ -181,7 +184,7 @@ function Dropzone(props) {
             }
          </div>
          {isSelected && <button className={styles.btn} onClick={handleSubmission}>Submit</button>}
-         {modalOpen && <RecordsUploadModal setModalOpen={setModalOpen} selectedFiles={selectedFiles} />}
+         {modalOpen && <RecordsUploadModal setModalOpen={setModalOpen} selectedFile={selectedFile} />}
       </div>
    );
 }

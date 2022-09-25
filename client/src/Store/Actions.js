@@ -482,16 +482,18 @@ export const addNewGuardianInfo = (guardianData, profileData) => {
 
 //Fetches user report details
 export async function fetchReports(userID) {
-   try {
-      const response = await axios({
-         method: 'GET',
-         url: `http://127.0.0.1:5000/report/${userID}`,
-         headers: {
-            'Access-Control-Allow-Origin': '*',
-            //Helpful in some cases.
-            'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Methods': '*',
-         },
+   if (userID) {
+
+      try {
+         const response = await axios({
+            method: 'GET',
+            url: `http://127.0.0.1:5000/report/${userID}`,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               //Helpful in some cases.
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
       });
       if (response.status === 200) {
          //checks details of response
@@ -507,6 +509,7 @@ export async function fetchReports(userID) {
    } catch (error) {
       // alert(error, 'pro');
    }
+}
 }
 //Fetches user medications
 export async function fetchMedications(userID) {
