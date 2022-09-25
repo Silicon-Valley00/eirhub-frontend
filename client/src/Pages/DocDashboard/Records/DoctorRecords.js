@@ -55,8 +55,8 @@ const DoctorRecords = () => {
                                  </td> */}
                            </tr>
                         ) : (
-                           ''
-                        );
+                              ''
+                           );
                      })}
                   </tbody>
                </table>
@@ -85,6 +85,7 @@ const DoctorRecords = () => {
                <Dropzone patientID={patientID} className={styles.dropzone} />
 
                <div className={styles.docRecordsFiles}>{myReports()}</div>
+               
             </div>
          </div>
       </>

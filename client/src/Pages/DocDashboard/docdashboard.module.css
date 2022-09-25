@@ -61,28 +61,36 @@
       height: 10%;
       margin: 0 auto;
       gap: 1rem;
-      grid-template-columns: 14rem auto auto;
+      grid-template-columns: 14rem auto 20rem;
    }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1920px) {
    .container {
-      grid-template-columns: 11rem auto 16rem;
+      grid-template-columns: 11rem auto 20rem;
+      max-width: 1920px;
+   }
+
+   .userbody {
+      display: flex;
+      width: 100vw;
+      /* align-items: center; */
+      justify-content: center;
    }
 }
 
 @media (min-width: 1800px) {
    .container {
-      /* grid-template-columns: 10rem auto 16rem; */
+      grid-template-columns: 11rem auto 24rem;
    }
 }
 
-@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+/* @media only screen and (min-width: 1400px) and (max-width: 2000px) {
    .container {
       width: 98%;
       grid-template-columns: 15rem auto auto;
    }
-}
+} */
 /* Made changes here Ama*/
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .userbody {
@@ -133,7 +141,7 @@
       overflow-x: hidden;
       width: 100vw;
       height: 100vh;
-      overflow-y: auto;
+      overflow-y: hidden;
    }
    .container {
       width: 100%;

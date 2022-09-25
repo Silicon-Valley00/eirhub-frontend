@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
    const allPendingSchedules = props.allPendingAppointments;
-   const baseURL = 'http://127.0.0.1:5000';
+   const baseURL = 'https://eirhub-backend.herokuapp.com';
    const headers = {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
@@ -174,7 +174,7 @@ const DoctorSchedule = (props) => {
             <meta name="description" description="Doctor Schedule" />
          </Helmet>
          <div className={styles.DSContainer1}>
-            <div>
+            <div className={styles.formContainer}>
                <h2>Appoinment Details</h2>
                <form
                   onSubmit={(e) => {

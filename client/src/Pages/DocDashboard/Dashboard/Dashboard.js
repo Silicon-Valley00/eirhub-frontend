@@ -16,7 +16,7 @@ const MidDashboard = (props) => {
    const [numOfdetails, setNumberofdetails] = useState(0);
    const data = props.doctorProfile;
    console.log('data', data);
-   const baseURL = 'http://127.0.0.1:5000';
+   const baseURL = 'https://eirhub-backend.herokuapp.com';
 
    // TODO: add interceptors to catch errors
    const currDate = new Date();
@@ -126,17 +126,22 @@ const MidDashboard = (props) => {
                               className={styles.table_img}
                            />
                         </td>
-                        {/* FIXME: Space name */}
+                        {/* display name */}
                         <td>
                            {`${data?.patient_info.first_name} ${data?.patient_info.last_name}`}
                         </td>
+                        {/* display reason for appointment */}
                         <td>{data?.appointment_reason}</td>
+                        {/* display appointment date */}
                         <td>
-                           {new Date(data?.appointment_date).getMonth() + 1}/
-                           {new Date(data?.appointment_date).getDate()}/
+                           {new Date(data?.appointment_date).getMonth() + 1}-
+                           {new Date(data?.appointment_date).getDate()}-
                            {new Date(data?.appointment_date).getFullYear()}
                         </td>
-                        <td>{data?.appointment_start_time}</td>
+                        <td>
+                           {data?.appointment_start_time}-
+                           {data?.appointment_end_time}
+                        </td>
                      </tr>
                   </>
                );
@@ -159,29 +164,35 @@ const MidDashboard = (props) => {
                      <div className={styles.doctor_display}>
                         {/* Each display make into a card and joined together on large screens */}
                         <div className={styles.card} id={styles.first_card}>
-                           <IoIosPeople className={styles.icon} />
-                           <div>
-                              <p className={styles.digits}>
-                                 {numOfdetails?.number_of_patients}
-                              </p>
+                           <div className={styles.icon_div}>
+                              <IoIosPeople className={styles.icon} />
+                           </div>
+                           <p className={styles.digits}>
+                              {numOfdetails?.number_of_patients}
+                           </p>
+                           <div className={styles.details}>
                               <p className={styles.text}>Patients</p>
                            </div>
                         </div>
                         <div className={styles.card} id={styles.second_card}>
-                           <AiFillFile className={styles.icon} />
-                           <div>
-                              <p className={styles.digits}>
-                                 {numOfdetails?.number_of_reports}
-                              </p>
+                           <div className={styles.icon_div}>
+                              <AiFillFile className={styles.icon} />
+                           </div>{' '}
+                           <p className={styles.digits}>
+                              {numOfdetails?.number_of_reports}
+                           </p>
+                           <div className={styles.details}>
                               <p className={styles.text}>reports</p>
                            </div>
                         </div>
                         <div className={styles.card} id={styles.third_card}>
-                           <CgCalendar className={styles.icon} />
-                           <div>
-                              <p className={styles.digits}>
-                                 {numOfdetails?.number_of_appointments}
-                              </p>
+                           <div className={styles.icon_div}>
+                              <CgCalendar className={styles.icon} />
+                           </div>
+                           <p className={styles.digits}>
+                              {numOfdetails?.number_of_appointments}
+                           </p>
+                           <div className={styles.details}>
                               <p className={styles.text}>appointments</p>
                            </div>
                         </div>
@@ -194,14 +205,16 @@ const MidDashboard = (props) => {
                            Upcoming appointments
                         </h1>
                         {/* Table for upcoming appointment */}
-                        <div className={styles.appointmentTable}>
+                        <div className={styles.appointmentContainer}>
                            <table>
                               <thead>
-                                 <th></th>
-                                 <th>Name</th>
-                                 <th>Condition</th>
-                                 <th>Date</th>
-                                 <th>Time</th>
+                                 <th className={styles.imgHeader}>Profile</th>
+                                 <th className={styles.tName}>Name</th>
+                                 <th className={styles.tCondition}>
+                                    Condition
+                                 </th>
+                                 <th className={styles.tDate}>Date</th>
+                                 <th className={styles.tTime}>Time</th>
                               </thead>
                               <tbody className={styles.tbody}>
                                  {displayData}

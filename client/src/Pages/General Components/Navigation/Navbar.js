@@ -2,10 +2,12 @@ import styles from './navbar.module.css';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { MdMenu } from 'react-icons/md';
+import { IoCloseOutline } from 'react-icons/io5';
 // import avatarThree from '../../assets/Rectangle.png';
 import { Link } from 'react-router-dom';
 
-const Navigation = ({ nav, openFunc }) => {
+const Navigation = ({ nav, openFunc, openMenu }) => {
+   const [show, setShow] = useState(false);
    const isPatientAuth = useSelector((state) => state.isPatientAuth);
    const isDoctorAuth = useSelector((state) => state.isDoctorAuth);
 
@@ -28,33 +30,38 @@ const Navigation = ({ nav, openFunc }) => {
    }
 
    return (
-      <nav className={styles.nav}>
-         <div className={styles.welcome_msg}>
-            <div className={styles.menu} id={styles.menuBtn}>
-               <i
-                  onClick={() => {
-                     openFunc();
-                  }}
-               >
-                  <MdMenu />
-               </i>
-            </div>
+      <div className={styles.wrapper}>
+         <nav className={styles.nav}>
+            <div className={styles.welcome_msg}>
+               <div className={styles.logo_menu}>
+                  <div className={styles.menu} id={styles.menuBtn}>
+                     <i
+                        onClick={() => {
+                           openFunc();
+                           setShow(!show);
+                        }}
+                     >
+                        {!show ? <MdMenu /> : <IoCloseOutline />}
+                     </i>
+                  </div>
 
-            <Link to={dashboard}>
-               <p className={styles.logo}>Eirhub</p>
-            </Link>
+                  <Link to={dashboard}>
+                     <p className={styles.logo}>Eirhub</p>
+                  </Link>
+               </div>
 
-            {/* Avatar with welcome message */}
-            <div className={styles.avatar}>
-               <img
-                  src={imageToShow}
-                  alt="avatar"
-                  className={styles.avatar_img}
-               />
-               <p className={styles.hello_msg}>Hello, {nameToShow}</p>
+               {/* Avatar with welcome message */}
+               <div className={styles.avatar}>
+                  <img
+                     src={imageToShow}
+                     alt="avatar"
+                     className={styles.avatar_img}
+                  />
+                  <p className={styles.hello_msg}>Hello, {nameToShow}</p>
+               </div>
             </div>
-         </div>
-      </nav>
+         </nav>
+      </div>
    );
 };
 export default Navigation;

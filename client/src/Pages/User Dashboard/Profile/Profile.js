@@ -160,17 +160,17 @@ function Profile(props) {
                      state: 1,
                   })
                );
-               setUploadBtn('Upload Another.');
+               setUploadBtn('Image Uploaded');
             })
             .catch((error) => {
                dispatch(
                   setMessage({
                      show: true,
-                     msg: 'LOL! e fail... 😂',
+                     msg: 'Upload Failed',
                      state: 0,
                   })
                );
-               setUploadBtn('Upload Again.');
+               setUploadBtn('Upload Image');
             });
       }
    }

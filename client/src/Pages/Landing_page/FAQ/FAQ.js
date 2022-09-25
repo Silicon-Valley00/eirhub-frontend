@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import styles from './faq.module.css';
@@ -7,9 +7,11 @@ import { useState } from 'react';
 import Registration from '../../Registration page/Registration';
 import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
+import { persistor } from '../../../Store/ReducerStore';
 
 const FAQ = () => {
    const [selected, setSelected] = useState(null);
+   useEffect(() => setTimeout(() => persistor.purge(), 200), []);
 
    const toggle = (index) => {
       if (selected === index) {

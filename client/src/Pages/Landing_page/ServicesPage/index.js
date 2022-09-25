@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import style from './style.module.css';
@@ -10,6 +10,7 @@ import Registration from '../../Registration page/Registration';
 import styles from '../Landingpage.module.css';
 import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
+import { persistor } from '../../../Store/ReducerStore';
 
 const ServicesPage = () => {
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
@@ -17,6 +18,8 @@ const ServicesPage = () => {
    const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
    const [modalLogin, setModalLogin] = useState(false);
    const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
+
+   useEffect(() => setTimeout(() => persistor.purge(), 200), []);
 
    // Function opens the patients' signup form modal
    function handleModalSignup() {

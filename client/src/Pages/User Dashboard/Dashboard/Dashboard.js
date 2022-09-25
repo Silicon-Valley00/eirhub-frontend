@@ -384,7 +384,7 @@ function Dashboard(props) {
                         <tr>
                            <th></th>
                            <th>Name</th>
-                           <th>Location</th>
+                           <th>Hospital</th>
                            <th>Date</th>
                            <th>Time</th>
                         </tr>
