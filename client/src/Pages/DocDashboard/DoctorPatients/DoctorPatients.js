@@ -8,8 +8,8 @@ import { fetchPatientsByDoctorId } from '../../../Store/DoctorAction';
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../../../Store/ReducerStore';
 import axios from 'axios';
-import { setMessage } from '../../../Store/Actions';
-import { setDoctorRecordPatientId } from '../../../Store/Actions';
+import { setMessage, setDoctorRecordPatientId } from '../../../Store/Actions';
+
 
 function DoctorPatients() {
    const id_doctor = useSelector((state) => state.doctorProfile.id_doctor);
@@ -41,7 +41,7 @@ function DoctorPatients() {
                   })
                );
             });
-         // const items = dispatch(fetchPatientsByDoctorId(doctorId));
+         const items = dispatch(fetchPatientsByDoctorId(id_doctor));
       }
       fetchPatients();
    }, []);
@@ -79,7 +79,8 @@ function DoctorPatients() {
                      return (
                         <li>
                            <div
-                              className={styles.imageDiv}
+                           className={`${styles.imageDiv} ${styles.active}`}
+                              // className={patient.id_patient === doctorRecordPatientId ? `${styles.imageDiv} ${styles.active}`:`${styles.imageDiv}`}
                               onClick={() => {
                                  dispatch(
                                     setDoctorRecordPatientId(patient.id_patient)
@@ -87,12 +88,10 @@ function DoctorPatients() {
                               }}
                               key={index}
                            >
-                              <div>
                                  <img
                                     src={patient.person_image}
                                     alt={patient.first_name}
                                  />
-                              </div>
 
                               <div className={styles.name}>
                                  {patient.first_name} {patient.middle_name}{' '}
