@@ -33,8 +33,8 @@ function Dropzone(props) {
          current_date.getMonth() + 1
       }-${current_date.getDate()}`;
       const reportData = {
-         report_type: selectedFiles.type,
-         description: selectedFiles.description,
+         report_type: selectedFile.type,
+         description: selectedFile.description,
          upload_date: upload_date,
          report_url: report_url,
          id_doctor: doctorID,
@@ -138,7 +138,7 @@ function Dropzone(props) {
                name="file"
                disabled
             />
-            {isSelected && (selectedFile.length > 0) ?
+            {isSelected && (selectedFile.length > 0) ? (
                <div>
                   <ul /*className={styles.selectedFile}*/>
 
