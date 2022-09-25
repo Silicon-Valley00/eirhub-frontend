@@ -174,7 +174,7 @@ const DoctorSchedule = (props) => {
             <meta name="description" description="Doctor Schedule" />
          </Helmet>
          <div className={styles.DSContainer1}>
-            <div>
+            <div className={styles.formContainer}>
                <h2>Appoinment Details</h2>
                <form
                   onSubmit={(e) => {
