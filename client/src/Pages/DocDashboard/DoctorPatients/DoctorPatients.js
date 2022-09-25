@@ -74,7 +74,7 @@ function DoctorPatients() {
                      onClick={() => showPeople()}
                   />
                </div>
-               <ul>
+               <ul className={styles.patients_list}>
                   {patients?.map((patient, index) => {
                      return (
                         <li>
@@ -87,10 +87,13 @@ function DoctorPatients() {
                               }}
                               key={index}
                            >
-                              <img
-                                 src={patient.person_image}
-                                 alt={patient.first_name}
-                              ></img>
+                              <div>
+                                 <img
+                                    src={patient.person_image}
+                                    alt={patient.first_name}
+                                 />
+                              </div>
+
                               <div className={styles.name}>
                                  {patient.first_name} {patient.middle_name}{' '}
                                  {patient.last_name}

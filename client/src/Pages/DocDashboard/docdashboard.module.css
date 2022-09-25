@@ -78,12 +78,12 @@
    }
 }
 
-@media only screen and (min-width: 1400px) and (max-width: 2000px) {
+/* @media only screen and (min-width: 1400px) and (max-width: 2000px) {
    .container {
       width: 98%;
       grid-template-columns: 15rem auto auto;
    }
-}
+} */
 /* Made changes here Ama*/
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
    .userbody {
