@@ -1,6 +1,5 @@
 import styles from './DoctorRecords.module.css';
 import Dropzone from './Dropzone';
-import RecordsUploadModal from './RecordsUploadModal'
 import { fetchReports } from '../../../Store/Actions';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -56,8 +55,8 @@ const DoctorRecords = () => {
                                  </td> */}
                            </tr>
                         ) : (
-                           ''
-                        );
+                              ''
+                           );
                      })}
                   </tbody>
                </table>
@@ -85,8 +84,8 @@ const DoctorRecords = () => {
 
                <Dropzone patientID={patientID} className={styles.dropzone} />
 
-               {/* <div className={styles.docRecordsFiles}>{myReports()}</div> */}
-               <RecordsUploadModal/>
+               <div className={styles.docRecordsFiles}>{myReports()}</div>
+               
             </div>
          </div>
       </>
