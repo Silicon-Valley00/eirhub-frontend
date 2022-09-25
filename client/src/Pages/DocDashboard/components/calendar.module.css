@@ -235,7 +235,6 @@
 
 @media (min-width: 1920px) {
    .main {
-      background-color: red;
       padding: 0.4rem;
    }
    .calendarHeader {
