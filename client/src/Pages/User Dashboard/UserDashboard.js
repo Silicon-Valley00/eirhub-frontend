@@ -4,9 +4,8 @@ import Navigation from './components/Navigation';
 import { useSelector } from 'react-redux';
 import BirthdayCard from '../Birthday Card/BirthdayCard';
 import LogoutModal from '../General Components/Logout Modal/LogoutModal';
-import Navbar from '../General Components/Navigation/Navbar';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
-
+import Navbar from '../General Components/Navigation/Navbar';
 function UserDashboard(props) {
    const patientDOB = useSelector((state) => state.profile.date_of_birth);
 
@@ -48,7 +47,7 @@ function UserDashboard(props) {
                className={birthdayModal || logoutModal ? styles.active : ''}
             >
                {' '}
-               <Navbar openFunc={openFunc} />
+               <Navbar openFunc={openFunc} openMenu={openMenu} />
                <div className={styles.userbody}>
                   <div className={styles.container}>
                      <Navigation

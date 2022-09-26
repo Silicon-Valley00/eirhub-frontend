@@ -41,7 +41,7 @@ const Navigation = ({ openFunc }) => {
                            setShow(!show);
                         }}
                      >
-                        {!show ? <MdMenu /> : <IoCloseOutline />}
+                        {!openMenu ? <MdMenu /> : <IoCloseOutline />}
                      </i>
                   </div>
 
