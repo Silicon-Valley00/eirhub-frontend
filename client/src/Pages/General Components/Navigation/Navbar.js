@@ -6,7 +6,7 @@ import { IoCloseOutline } from 'react-icons/io5';
 // import avatarThree from '../../assets/Rectangle.png';
 import { Link } from 'react-router-dom';
 
-const Navigation = ({ nav, openFunc, openMenu }) => {
+const Navigation = ({ openFunc, openMenu }) => {
    const [show, setShow] = useState(false);
    const isPatientAuth = useSelector((state) => state.isPatientAuth);
    const isDoctorAuth = useSelector((state) => state.isDoctorAuth);
@@ -41,7 +41,7 @@ const Navigation = ({ nav, openFunc, openMenu }) => {
                            setShow(!show);
                         }}
                      >
-                        {!show ? <MdMenu /> : <IoCloseOutline />}
+                        {!openMenu ? <MdMenu /> : <IoCloseOutline />}
                      </i>
                   </div>
 
