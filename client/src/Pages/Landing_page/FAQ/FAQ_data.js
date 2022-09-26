@@ -44,7 +44,7 @@ export const data = [
    {
       question: "Why can't I contact all Eirhub doctors?",
       answer:
-         'Eirhub requires that a patient have an established relationship(appointments) with doctors before messages can be sent. If such a relationship is not set, patients cannot sent messages to the doctor or physician.',
+         'Eirhub requires that a patient have an established relationship(appointments) with doctors before messages can be sent. If such a relationship is not set, patients cannot send messages to the doctor or physician.',
    },
    {
       question: 'When can I expect reply to messages',

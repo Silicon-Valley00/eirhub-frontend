@@ -203,9 +203,9 @@ function Login(props) {
                      </i>
                      <p>{props.loginPasswordErrorMessage}</p>
                   </div>
-                  <div className={loginStyles.passwordReset}>
+                  {/* <div className={loginStyles.passwordReset}>
                      <p className={loginStyles.link}>Forgot password?</p>
-                  </div>
+                  </div> */}
                   <div className={loginStyles.submit}>
                      <button
                         id={loginStyles.loginSubmit}
