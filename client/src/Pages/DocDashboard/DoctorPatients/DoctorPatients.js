@@ -1,6 +1,4 @@
 import styles from './DoctorPatients.module.css';
-// import maleProfile from '../../../assets/Rectangle-1.png';
-// import femaleProfile from '../../../assets/Rectangle.png';
 import { GrClose } from 'react-icons/gr';
 import { useState, useEffect } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
@@ -39,9 +37,9 @@ function DoctorPatients() {
                   })
                );
             });
-         }
-         fetchPatients();
-      }, []);
+      }
+      fetchPatients();
+   }, []);
 
    const [show, setShow] = useState(false);
 
@@ -51,11 +49,10 @@ function DoctorPatients() {
 
    return (
       <>
-         <FaUserCircle
-            color="#05a6c2"
-            className={styles.menu}
-            onClick={() => showPeople()}
-         />
+         <div className={styles.menu}>
+            <FaUserCircle onClick={() => showPeople()} />
+         </div>
+
          <main className={styles.main}>
             <div
                className={
@@ -76,11 +73,15 @@ function DoctorPatients() {
                      return (
                         <li>
                            <div
-                              className={patient.id_patient === patientID ? `${styles.imageDiv} ${styles.active}`:`${styles.imageDiv}`}
+                              className={
+                                 patient.id_patient === patientID
+                                    ? `${styles.imageDiv} ${styles.active}`
+                                    : `${styles.imageDiv}`
+                              }
                               onClick={() => {
                                  dispatch(
                                     setDoctorRecordPatientId(patient.id_patient)
-                                    );
+                                 );
                               }}
                               key={index}
                            >

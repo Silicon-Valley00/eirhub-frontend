@@ -142,6 +142,7 @@ const DoctorSchedule = (props) => {
                            <img
                               src={data?.patient_info.person_image}
                               alt={'img'}
+                              className={styles.profileImage}
                            />
                         </div>
                      </td>
