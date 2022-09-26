@@ -76,7 +76,7 @@ main .vitalsBox .vitals:hover {
    display: -webkit-box;
    -webkit-box-orient: vertical;
    overflow: hidden;
-   font-size: 0.6rem;
+   font-size: 0.8rem;
    padding-top: 0.3rem;
    color: var(--midcol);
    font-weight: 400;
@@ -497,7 +497,7 @@ main#midsection::-webkit-scrollbar-thumb {
    }
    .vitalsInfo {
       -webkit-line-clamp: 4;
-      font-size: 45%;
+      font-size: 55%;
    }
 
    main#midsection
