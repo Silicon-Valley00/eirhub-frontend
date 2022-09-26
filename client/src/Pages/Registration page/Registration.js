@@ -144,6 +144,7 @@ function Registration(props) {
       setDoctorLoginPasswordErrorMessage('');
    }
 
+
    const pattern = /^[a-zA-Z-]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
@@ -403,7 +404,7 @@ function Registration(props) {
          setRegisterDoctorPasswordOneError(true);
       } else if (
          enteredSignUpPassword !== enteredSignUpPasswordconfirm &&
-         enteredSignUpPasswordconfirm !== ''
+         enteredSignUpPasswordconfirm !== null
       ) {
          setRegisterDoctorPasswordTwoErrorMessage('Passwords do not match');
          setRegisterDoctorPasswordTwoError(true);
@@ -411,7 +412,7 @@ function Registration(props) {
          enteredSignUpPassword === enteredSignUpPasswordconfirm &&
          enteredSignUpPasswordconfirm !== ''
       ) {
-         setRegisterDoctorPasswordTwoError(false);
+         setRegisterDoctorPasswordOneError(false);
          setRegisterDoctorPasswordTwoError(false);
       } else {
          setRegisterDoctorPasswordOneError(false);
