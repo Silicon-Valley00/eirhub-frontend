@@ -247,6 +247,7 @@
    max-height: max-content;
    display: flex;
    justify-content: space-between;
+   gap: 1.5rem;
 }
 .signupFormBoxName {
    width: 49%;
@@ -299,6 +300,12 @@
    /* color: #678696; */
    width: 90%;
 }
+
+.signupFormBox .signupFormBoxInputs input[type="date"]{
+   -webkit-appearance: textfield;
+   -moz-appearance: textfield;
+}
+
 
 input {
    color: var(--text-color);
