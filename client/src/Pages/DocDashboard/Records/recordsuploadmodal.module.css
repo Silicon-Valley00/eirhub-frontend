@@ -19,6 +19,14 @@
     padding: 0.5rem;
 }
 
+.formClose {
+    font-size: 40px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 
 .btn {
    margin: 1rem;

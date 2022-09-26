@@ -31,15 +31,16 @@ function Dropzone(props) {
       const current_date = new Date(Date.now());
       const upload_date = `${current_date.getFullYear()}-${
          current_date.getMonth() + 1
-      }-${current_date.getDate()}`;
+         }-${current_date.getDate()} ${current_date.getHours()}:${current_date.getMinutes()}:${current_date.getSeconds()}`;
       const reportData = {
          report_type: selectedFile.type,
          description: selectedFile.description,
          upload_date: upload_date,
          report_url: report_url,
-         id_doctor: doctorID,
          id_patient: props.patientID,
+         id_doctor: doctorID,
       };
+      console.log(reportData)
       axios
          .post(`https://eirhub-backend.herokuapp.com/report`, reportData, {
             headers: {
@@ -61,41 +62,54 @@ function Dropzone(props) {
    const handleSubmission = () => {
 
       // selectedFile.map(file => {
-      const file = selectedFile[0]
 
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('upload_preset', 'ji5ue4f9')
+      // if the patients id is not null do what's below
+      if (props.patientID) {
 
-      axios
-         .post(
-            'https://api.cloudinary.com/v1_1/eirhub-siliconvalley/auto/upload',
-            formData
-         )
-         .then((response) => {
-            postReport(response.data.url);
-            dispatch(
-               setMessage({
-                  show: true,
-                  msg: 'Report Uploaded Successfully 🎉',
-                  state: 1,
-               })
-            );
-         })
-         .catch((error) => {
-            console.log(error);
-            dispatch(
-               setMessage({
-                  show: true,
-                  msg: 'Upload Failed, try again.',
-                  state: 0,
-               })
-            );
-         });
+         const file = selectedFile[0]
+
+         const formData = new FormData();
+         formData.append('file', file);
+         formData.append('upload_preset', 'ji5ue4f9')
+
+         axios
+            .post(
+               'https://api.cloudinary.com/v1_1/eirhub-siliconvalley/auto/upload',
+               formData
+            )
+            .then((response) => {
+               postReport(response.data.url);
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Report Uploaded Successfully 🎉',
+                     state: 1,
+                  })
+               );
+            })
+            .catch((error) => {
+               console.log(error);
+               dispatch(
+                  setMessage({
+                     show: true,
+                     msg: 'Upload Failed, try again.',
+                     state: 0,
+                  })
+               );
+            });
+      } else {
+         dispatch(
+            setMessage({
+               show: true,
+               msg: 'Upload Failed, no patient selected.',
+               state: 0,
+            })
+         );
+      }
       // })
       setSelectedFile()
       setIsSelected(false)
-      // console.log(isSelected,selectedFile);
+      console.log(isSelected, selectedFile);
 
    };
 
@@ -131,12 +145,12 @@ function Dropzone(props) {
          <div {...getRootProps()} className={styles.docRecordsUpload}>
             <input
                {...getInputProps()}
-               ref={docRecordsUploadRef}
-               style={{ display: 'none' }}
-               type="file"
-               accept=".doc,.docx,.pdf,.txt"
-               name="file"
-               disabled
+            // ref={docRecordsUploadRef}
+            // style={{ display: 'none' }}
+            // type="file"
+            // accept=".doc,.docx,.pdf,.txt"
+            // name="file"
+            // disabled
             />
             {isSelected && (selectedFile.length > 0) ? (
                <div>
@@ -163,18 +177,18 @@ function Dropzone(props) {
             ) : isDragActive ? (
                <h2>Drop files here</h2>
             ) : (
-               <div>
-                  <FaFileUpload className={styles.docRecordsUploadimg} />
-                  <h2 className={styles.docRecordsSheader}>
-                     Drag and drop file or{' '}
-                     <span className={styles.docRecordsButtonLink}>browse</span>
-                     {/* Drag and drop file or{' '}
+                     <div>
+                        <FaFileUpload className={styles.docRecordsUploadimg} />
+                        <h2 className={styles.docRecordsSheader}>
+                           Drag and drop file or{' '}
+                           <span className={styles.docRecordsButtonLink}>browse</span>
+                           {/* Drag and drop file or{' '}
             <Link to="/" className={styles.docRecordsButtonLink}>
             browse
          </Link> */}
-                  </h2>
-               </div>
-            )}
+                        </h2>
+                     </div>
+                  )}
          </div>
          {isSelected && (
             <button className={styles.btn} onClick={handleSubmission}>
@@ -185,6 +199,8 @@ function Dropzone(props) {
             <RecordsUploadModal
                setModalOpen={setModalOpen}
                selectedFile={selectedFile}
+               setIsSelected={setIsSelected}
+               setSelectedFile={setSelectedFile}
             />
          )}
       </div>
