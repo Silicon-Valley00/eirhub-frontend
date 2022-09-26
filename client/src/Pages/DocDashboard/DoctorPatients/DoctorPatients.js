@@ -1,22 +1,21 @@
 import styles from './DoctorPatients.module.css';
-import maleProfile from '../../../assets/Rectangle-1.png';
-import femaleProfile from '../../../assets/Rectangle.png';
+// import maleProfile from '../../../assets/Rectangle-1.png';
+// import femaleProfile from '../../../assets/Rectangle.png';
 import { GrClose } from 'react-icons/gr';
 import { useState, useEffect } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
-import { fetchPatientsByDoctorId } from '../../../Store/DoctorAction';
 import { useDispatch, useSelector } from 'react-redux';
-import store from '../../../Store/ReducerStore';
+// import store from '../../../Store/ReducerStore';
 import axios from 'axios';
 import { setMessage, setDoctorRecordPatientId } from '../../../Store/Actions';
 
 function DoctorPatients() {
    const id_doctor = useSelector((state) => state.doctorProfile.id_doctor);
    const [patients, setPatients] = useState();
-   console.log(patients);
    const baseURL = 'https://eirhub-backend.herokuapp.com';
 
    const dispatch = useDispatch();
+   const patientID = useSelector((state) => state.doctorRecordPatientId);
 
    useEffect(() => {
       async function fetchPatients() {
@@ -35,15 +34,14 @@ function DoctorPatients() {
                dispatch(
                   setMessage({
                      show: true,
-                     msg: 'Unable to fetch Patients, please make sure you are connected.',
+                     msg: 'Failed to fetch patients.',
                      state: 0,
                   })
                );
             });
-         const items = dispatch(fetchPatientsByDoctorId(id_doctor));
-      }
-      fetchPatients();
-   }, []);
+         }
+         fetchPatients();
+      }, []);
 
    const [show, setShow] = useState(false);
 
@@ -78,12 +76,11 @@ function DoctorPatients() {
                      return (
                         <li>
                            <div
-                              className={`${styles.imageDiv} ${styles.active}`}
-                              // className={patient.id_patient === doctorRecordPatientId ? `${styles.imageDiv} ${styles.active}`:`${styles.imageDiv}`}
+                              className={patient.id_patient === patientID ? `${styles.imageDiv} ${styles.active}`:`${styles.imageDiv}`}
                               onClick={() => {
                                  dispatch(
                                     setDoctorRecordPatientId(patient.id_patient)
-                                 );
+                                    );
                               }}
                               key={index}
                            >
