@@ -510,6 +510,7 @@ export async function fetchReports(userID) {
    }
 }
 }
+
 //Fetches user medications
 export async function fetchMedications(userID) {
    try {

@@ -4,7 +4,7 @@ import { fetchReports } from '../../../Store/Actions';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FaTrash, FaPencilAlt } from 'react-icons/fa'
+import { FaTrash } from 'react-icons/fa'
 
 const DoctorRecords = () => {
    const patientID = useSelector((state) => state.doctorRecordPatientId);
