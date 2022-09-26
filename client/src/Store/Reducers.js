@@ -20,6 +20,7 @@ import {
    SET_PATIENTS,
    SET_DOCTOR_RECORD_PATIENT_ID,
    SET_IS_NEW_USER,
+   SET_MESSAGE_STATE,
 } from './ActionTypes';
 
 const initialState = {
@@ -100,6 +101,7 @@ const initialState = {
    },
    patientToChatWith: '',
    allPendingAppointments: [],
+   messagePatientState: false,
 };
 
 const Reducers = (state = initialState, action) => {
@@ -236,6 +238,12 @@ const Reducers = (state = initialState, action) => {
 
       case SET_PATIENT_TO_CHAT_WITH:
          return { ...state, patientToChatWith: action.payload };
+
+      case SET_MESSAGE_STATE:
+         return {
+            ...state,
+            messagePatientState: action.payload,
+         };
 
       default:
          return state;

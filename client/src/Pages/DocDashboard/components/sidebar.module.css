@@ -1,5 +1,5 @@
 /* ASIDE */
-.navbody{
+.navbody {
    overflow-y: scroll;
 }
 .navbody aside {
@@ -29,6 +29,8 @@ aside .sidebar {
    position: relative;
    min-height: 32rem;
    overflow: scroll;
+   transition: all;
+   transition-duration: 500ms;
 }
 aside h3 {
    font-weight: 500;
@@ -107,11 +109,10 @@ aside .sidebar li:nth-child(9) {
 aside .sidebar li.active {
    background-color: var(--gray);
 }
-@media (max-height:540px){
-aside .sidebar{
-   overflow-y: scroll;
-}
-
+@media (max-height: 540px) {
+   aside .sidebar {
+      overflow-y: scroll;
+   }
 }
 @media only screen and (min-width: 1400px) and (max-width: 2000px) {
    aside h3 {
@@ -220,7 +221,7 @@ aside .sidebar{
       padding: 1rem 3rem;
       display: block;
       transition: all;
-      transition-duration: 0.5s;
+      transition-duration: 500ms;
    }
    aside.notActive {
       position: fixed;

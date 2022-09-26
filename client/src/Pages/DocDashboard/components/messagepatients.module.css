@@ -99,3 +99,37 @@
    border-radius: 10%;
    cursor: pointer;
 }
+
+@media (max-width: 1200px) {
+   .messageUsersBody {
+      position: absolute;
+      width: 100%;
+   }
+
+   .hide {
+      position: absolute;
+      display: none;
+   }
+
+   .active {
+      right: 0;
+      top: 2rem;
+      display: block;
+   }
+
+   .closeBtn {
+      display: block;
+      position: absolute;
+      left: 2rem;
+      top: 2.6rem;
+      color: var(--lightcol);
+      cursor: pointer;
+      font-size: 1.6rem;
+   }
+}
+
+@media (min-width: 1200px) {
+   .closeBtn {
+      display: none;
+   }
+}

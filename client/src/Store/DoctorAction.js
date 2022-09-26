@@ -3,11 +3,13 @@ import {
    SET_PATIENT_TO_CHAT_WITH,
    SET_DOCTOR_AUTH,
    SET_DOCTOR_AND_PATIENT,
+   SET_MESSAGE_STATE,
 } from './ActionTypes';
 import axios from 'axios';
 import { setMessage } from './Actions';
 
 import { setOkToRoute } from './Actions';
+import { useState } from 'react';
 
 // Action: Sets the profile details for doctors
 export const setDoctorProfile = (doctorProfile) => {
@@ -37,6 +39,13 @@ export const setDoctorAuth = (auth) => {
    return {
       type: SET_DOCTOR_AUTH,
       payload: auth,
+   };
+};
+
+export const setMessageState = (state) => {
+   return {
+      type: SET_MESSAGE_STATE,
+      payload: state,
    };
 };
 
@@ -137,5 +146,12 @@ export const getAllPendingAppointmentsForADoctor = (id_doctor) => {
                })
             );
          });
+   };
+};
+
+export const setMessageStateFunc = (state) => {
+   // const [show, setShow] = useState(true);
+   return function (dispatch) {
+      dispatch(setMessageState(state));
    };
 };
