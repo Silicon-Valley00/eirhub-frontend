@@ -57,13 +57,13 @@ function App() {
    const isDoctorAuth = useSelector((state) => state.isDoctorAuth);
    const isLoading = useSelector((state) => state.isLoading);
 
-   function logoutOnTabClose() {
-      setTimeout(() => persistor.purge(), 200);
-      Logout();
-   }
-   useEffect(() => {
-      window.addEventListener('beforeunload', logoutOnTabClose());
-   }, []);
+   // function logoutOnTabClose() {
+   //    setTimeout(() => persistor.purge(), 200);
+   //    Logout();
+   // }
+   // useEffect(() => {
+   //    window.addEventListener('beforeunload', logoutOnTabClose());
+   // }, []);
    return (
       <>
          <Routes>
