@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styles from './messagepatients.module.css';
+import { GrClose } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { setPatientToChatWith } from '../../../Store/DoctorAction';
+import {
+   setPatientToChatWith,
+   setMessageStateFunc,
+} from '../../../Store/DoctorAction';
 import axios from 'axios';
 import { setMessage } from '../../../Store/Actions';
+import store from '../../../Store/ReducerStore';
 
 function MessagePatients() {
    const doctorID = useSelector((state) => state.doctorProfile.id_doctor);
+   const IconState = useSelector((state) => state.messagePatientState);
 
    const dispatch = useDispatch();
 
@@ -48,13 +54,11 @@ function MessagePatients() {
    }, []);
 
    let myPatients;
-   console.log(patients);
    if (patients === undefined) {
       myPatients = <p className={styles.emptyMessage}>Nothing to show here.</p>;
    } else {
       if (patients.length !== 0) {
          myPatients = patients.map((item, j) => {
-            console.log('item', item);
             return (
                <div
                   className={
@@ -85,8 +89,19 @@ function MessagePatients() {
 
    return (
       <>
-         <div className={styles.messageUsersBody}>
+         <div
+            className={
+               IconState
+                  ? `${styles.messageUsersBody} ${styles.active}`
+                  : `${styles.messageUsersBody} ${styles.hide}`
+            }
+         >
             <div className={styles.usersBox}>
+               <div className={styles.closeBtn}>
+                  <GrClose
+                     onClick={() => store.dispatch(setMessageStateFunc(false))}
+                  />
+               </div>
                <h2>Patients</h2>
                <div className={styles.usersBoxSection}>{myPatients}</div>
             </div>

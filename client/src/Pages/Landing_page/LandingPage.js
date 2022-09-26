@@ -17,7 +17,7 @@ const LandingPage = () => {
    const [modalLogin, setModalLogin] = useState(false);
    const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
 
-   useEffect(() => setTimeout(() => persistor.purge(), 200), []);
+   useEffect(() => localStorage.clear(), []);
 
    // Function opens the patients' signup form modal
    function handleModalSignup() {

@@ -57,22 +57,35 @@ function App() {
    const isDoctorAuth = useSelector((state) => state.isDoctorAuth);
    const isLoading = useSelector((state) => state.isLoading);
 
-   function logoutOnTabClose() {
-      setTimeout(() => persistor.purge(), 200);
-      Logout();
-   }
-   useEffect(() => {
-      window.addEventListener('beforeunload', logoutOnTabClose());
-   }, []);
+   // function logoutOnTabClose() {
+   //    setTimeout(() => persistor.purge(), 200);
+   //    Logout();
+   // }
+   // useEffect(() => {
+   //    window.addEventListener('beforeunload', logoutOnTabClose());
+   // }, []);
+
+   // useEffect(() => {
+   //    window.addEventListener('beforeunload', (ev) => {
+   //       ev.preventDefault();
+   //       return (ev.returnValue = 'Are you sure you want to close?');
+   //    });
+   //    window.addEventListener('unload', () => {
+   //       localStorage.clear();
+   //    });
+   // });
+
+
    return (
       <>
          <Routes>
             <Route path="*" exact element={<PageNotFound />} />
+            <Route path="/" exact element={<LandingPage />} />
             <Route element={<ProtectedRoutesLoading isLoading={isLoading} />}>
                <Route path="/loading" exact element={<Loading />} />
             </Route>
             {/* Route for landing page and it's sub-pages */}
-            <Route
+            {/* <Route
                element={
                   <ProtectedRoutesLanding
                      isDoctorAuth={isDoctorAuth}
@@ -85,7 +98,7 @@ function App() {
                   exact
                   element={<Navigate replace to={'/landing-page'} />}
                />
-            </Route>
+            </Route> */}
             <Route
                element={
                   <ProtectedRoutesLanding
