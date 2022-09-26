@@ -113,7 +113,7 @@
 
 .docRecordsFiles {
    text-align: center;
-   display: flex;
+   /* display: flex; */
    justify-content: space-between;
    margin-top: 4.5rem;
    /* margin-bottom: 2rem; */
@@ -180,6 +180,7 @@
 
 .emptyMessageContainer {
    width: 100%;
+   height: 100%;
    display: flex;
    justify-content: center;
    align-items: center;

@@ -24,3 +24,17 @@
    font-weight: 500;
    color: var(--lightcol);
 }
+
+@media (max-width: 1200px) {
+   #messageBody {
+      position: relative;
+   }
+
+   .messageIcon {
+      position: absolute;
+      bottom: 2rem;
+      right: 1rem;
+      font-size: 5rem;
+      color: var(--lightcol);
+   }
+}

@@ -4,12 +4,13 @@ import { fetchReports } from '../../../Store/Actions';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { FaTrash } from 'react-icons/fa'
 
 const DoctorRecords = () => {
    const patientID = useSelector((state) => state.doctorRecordPatientId);
 
    const [reports, setReports] = useState([]);
-
+   
    useState(() => {
       async function fetchdata() {
          const items = await fetchReports(patientID);
@@ -19,7 +20,7 @@ const DoctorRecords = () => {
       }
       fetchdata();
    }, [patientID]);
-
+   
    const myReports = () => {
       if (reports === undefined) {
          return (
@@ -35,10 +36,15 @@ const DoctorRecords = () => {
                      <th>Title</th>
                      <th>Type</th>
                      <th>Date Uploaded</th>
-                     {/* <th>Actions</th> */}
+                     <th>Actions</th>
                   </thead>
                   <tbody>
                      {reports?.map((report) => {
+                        const removeReport = (reportId)=>{
+                           console.log(reportId)
+                           setReports(reports.filter((report)=>report.id_report !== reportId))
+                           console.log(reports)
+                        }
                         return report.id_patient === patientID ? (
                            <tr>
                               <td>
@@ -49,10 +55,10 @@ const DoctorRecords = () => {
                               <td>{report.report_type}</td>
                               <td>{report.upload_date}</td>
 
-                              {/* <td className={styles.docRecordsicons}>
-                                    <FaPencilAlt className={styles.docRecordspencil} />
-                                    <FaTrash className={styles.docRecordstrash} />
-                                 </td> */}
+                              <td className={styles.docRecordsicons}>
+                                    {/* <FaPencilAlt className={styles.docRecordspencil} /> */}
+                                 <FaTrash className={styles.docRecordstrash} onClick={() =>  removeReport(report.id_report)} />
+                                 </td>
                            </tr>
                         ) : (
                               ''

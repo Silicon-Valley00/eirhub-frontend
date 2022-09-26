@@ -299,7 +299,7 @@ function Registration(props) {
          enteredSignUpPassword === enteredSignUpPasswordconfirm &&
          enteredSignUpPasswordconfirm !== ''
       ) {
-         setRegisterPasswordTwoError(false);
+         setRegisterPasswordOneError(false);
          setRegisterPasswordTwoError(false);
       } else {
          setRegisterPasswordOneError(false);

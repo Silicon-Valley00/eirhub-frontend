@@ -15,7 +15,6 @@ const MidDashboard = (props) => {
    // States to keep the counts of the number of patients, reports and appointments
    const [numOfdetails, setNumberofdetails] = useState(0);
    const data = props.doctorProfile;
-   console.log('data', data);
    const baseURL = 'https://eirhub-backend.herokuapp.com';
 
    // TODO: add interceptors to catch errors

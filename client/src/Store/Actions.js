@@ -482,6 +482,7 @@ export const addNewGuardianInfo = (guardianData, profileData) => {
 
 //Fetches user report details
 export async function fetchReports(userID) {
+   if (userID) {
    try {
       const response = await axios({
          method: 'GET',
@@ -508,6 +509,8 @@ export async function fetchReports(userID) {
       // alert(error, 'pro');
    }
 }
+}
+
 //Fetches user medications
 export async function fetchMedications(userID) {
    try {
