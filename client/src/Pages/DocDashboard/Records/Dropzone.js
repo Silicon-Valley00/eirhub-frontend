@@ -49,9 +49,8 @@ function Dropzone(props) {
    }
 
    const handleSubmission = () => {
+      // if the patients id is not null upload the report for that particular patient
 
-
-      // if the patients id is not null do what's below
       if (props.patientID) {
 
          const file = selectedFile[0]

@@ -61,9 +61,19 @@ const DoctorSchedule = (props) => {
          )
          .then(() => {
             dispatch(getAllPendingAppointmentsForADoctor(data.id_doctor));
-            console.log('dispatched');
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Appointment scheduled',
+                  state: 1,
+               })
+            );
          })
-         .catch((error) => console.log(error));
+         .catch((error) =>
+            dispatch(
+               setMessage({ show: true, msg: 'Scheduling Failed', state: 0 })
+            )
+         );
    };
 
    // Function to cancel an appointment
