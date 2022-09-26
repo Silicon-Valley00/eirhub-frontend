@@ -20,7 +20,7 @@ function useClickOutside(Handler) {
       return () => {
          document.removeEventListener('mousedown', secondHandler, true);
       };
-   },[menuRef]);
+   }, [menuRef]);
    return menuRef;
 }
 
@@ -32,7 +32,6 @@ const Navbar = (props) => {
    const showSidebar = () => setSidebar(!sidebar);
    const handleSignUpClick = () => {
       setSignUpClick(!signUpClick);
-      console.log(signUpClick);
       setLoginClick(false);
    };
    const handleLoginClick = () => {
@@ -45,15 +44,15 @@ const Navbar = (props) => {
       setSignUpClick(false);
    });
 
-   function handleHeaderClick(event){
+   function handleHeaderClick(event) {
       event.stopPropagation();
    }
 
    return (
-      <div className={styles.nav_background} >
+      <div className={styles.nav_background}>
          <main className={styles.main} onClick={handleHeaderClick}>
             <div className={styles.back}>
-               <nav id={styles.nav}  ref={menuRef}>
+               <nav id={styles.nav} ref={menuRef}>
                   {/* Logo */}
                   <Link to="/" id={styles.img}>
                      <img

@@ -9,9 +9,6 @@ import { setMessageStateFunc } from '../../../Store/DoctorAction';
 
 const DoctorMessage = () => {
    const patientUID = useSelector((state) => state.patientToChatWith);
-   const Iconstate = useSelector((state) => state.messagePatientState);
-   console.log('icon', Iconstate);
-   console.log(store.getState());
 
    return (
       <>

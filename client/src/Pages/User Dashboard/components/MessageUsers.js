@@ -30,7 +30,6 @@ function MessageUsers() {
    } else {
       if (doctors.length !== 0) {
          myDoctors = doctors.map((item, j) => {
-            console.log(item.id_message);
             return (
                <div
                   className={

@@ -10,20 +10,12 @@ function Loading(props) {
    const patientID = useSelector((state) => state.profile.id_patient);
 
    useEffect(() => {
-      console.log(' to run');
-      console.log(patientID);
-      console.log('outside', store.getState());
-
       setTimeout(() => {
          if (store.getState().profile.id_patient !== '') {
-            console.log('running');
-            console.log('inside', store.getState().profile.id_patient);
-
             async function fetchdata() {
                const items = await fetchMedications(
                   store.getState().profile.id_patient
                );
-               console.log(items);
                dispatch(setMedicationsTemp(items));
             }
 

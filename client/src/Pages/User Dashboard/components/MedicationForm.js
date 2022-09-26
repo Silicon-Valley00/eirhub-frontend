@@ -21,7 +21,6 @@ function Medication(props) {
    const [editMedication, setEditMedication] = useState({});
    // This transfers the setProfile function outside of this function's scope
    pullData = setEditMedication;
-   // console.log(editMedication);
 
    // Handles error messages
    const [isError, setIsError] = useState(false);
