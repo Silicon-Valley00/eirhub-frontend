@@ -16,9 +16,6 @@ const DoctorSchedule = (props) => {
       'Access-Control-Allow-Methods': '*',
    };
 
-   // FIXME: Refresh the page after deleting a schedule.
-   // FIXME: Don't display the details of the schedule when the doctor clicks on cancel.
-
    // States that would be used as data for the PUT method
    const [allPendingAppointments, setAllPendingAppointments] = useState([]);
    console.log('states', allPendingAppointments);
