@@ -29,7 +29,7 @@ aside .sidebar {
    flex-direction: column;
    height: 86vh;
    position: relative;
-   top: 1rem;
+   top: 0rem;
 }
 aside h3 {
    font-weight: 500;
@@ -197,7 +197,7 @@ aside .sidebar li:hover span.icons {
    }
    aside .sidebar li:nth-child(8) {
       position: absolute;
-      bottom: 0;
+      bottom: 2rem;
       width: 86.5%;
    }
 
@@ -308,7 +308,7 @@ aside .sidebar li:hover span.icons {
    }
    aside .sidebar li:nth-child(8) {
       position: absolute;
-      bottom: 0;
+      bottom: 2.5rem;
       width: 86.5%;
    }
 
