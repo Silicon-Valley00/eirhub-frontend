@@ -358,3 +358,12 @@ select::-ms-expand {
       padding-bottom: 5rem;
    }
 }
+
+@media(max-width:600px) /*and (max-height:900px)*/{
+   .main{
+      height: 95vh;
+   }
+   .btn_div{
+      padding-bottom: 5rem;
+   }
+}

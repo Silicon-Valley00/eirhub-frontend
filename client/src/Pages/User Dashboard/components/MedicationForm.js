@@ -26,6 +26,9 @@ function Medication(props) {
    // Handles error messages
    const [isError, setIsError] = useState(false);
 
+   //Change color of select input
+   const[fontColor, setFontColor]=useState(' #c2c9d1')
+
    // Handles user inputs for medication form
    const [drugName, setDrugName] = useState('');
    const [drugDosage, setDrugDosage] = useState('');
@@ -201,6 +204,9 @@ function Medication(props) {
                                  setDrugTime(event.target.value);
                                  setIsError(false);
                               }}
+
+                              style={{color: fontColor}}
+                              onClick={()=>setFontColor('#0d3f58')}
                            >
                               <option value={''}>Select Period</option>
                               <option value={'Before Meals'}>

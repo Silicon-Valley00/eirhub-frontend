@@ -90,7 +90,11 @@ export async function fetchPatientsByDoctorId(id_doctor) {
    return async (dispatch) => {
       await axios
          .get(`${baseURL}/doctors/?id_doctor=${id_doctor}`, {
-            headers,
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+            },
          })
          .then((response) => {
             if (response.data) {
