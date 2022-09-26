@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { getAllPendingAppointmentsForADoctor } from '../../../Store/DoctorAction';
 import { Helmet } from 'react-helmet';
+import { setMessage } from '../../../Store/Actions';
 
 const DoctorSchedule = (props) => {
    const data = props.doctorProfile;
@@ -92,10 +93,25 @@ const DoctorSchedule = (props) => {
             }
          )
          // Filter out the appointment that was cancelled
-         .then(() =>
-            dispatch(getAllPendingAppointmentsForADoctor(data.id_doctor))
-         )
-         .catch((error) => console.log(error));
+         .then(() => {
+            dispatch(getAllPendingAppointmentsForADoctor(data.id_doctor));
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Scheduling Successful',
+                  state: 1,
+               })
+            );
+         })
+         .catch((error) =>
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Scheduling failed',
+                  state: 0,
+               })
+            )
+         );
    };
 
    // Function to display the details of the appointment that was clicked.
