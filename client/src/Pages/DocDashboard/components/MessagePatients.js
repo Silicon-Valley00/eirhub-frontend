@@ -36,8 +36,6 @@ function MessagePatients() {
                }
             )
             .then((response) => {
-               //returns response
-               // alert('patients by doctor id worked fetch worked');
                setPatients(response.data.msg);
             })
             .catch((error) => {

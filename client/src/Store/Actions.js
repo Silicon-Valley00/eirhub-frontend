@@ -502,8 +502,7 @@ export async function fetchReports(userID) {
                return response.data.msg;
             }
          } else {
-            //takes all statuses aside 200
-            // alert('Something went wrong. Try again');
+            store.dispatch(setMessage({ show: true, msg: 'Error', state: 0 }));
          }
       } catch (error) {
          // alert(error, 'pro');

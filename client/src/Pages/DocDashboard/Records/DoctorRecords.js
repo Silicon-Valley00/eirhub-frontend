@@ -9,6 +9,7 @@ import { FaTrash } from 'react-icons/fa';
 import axios from 'axios';
 // import { connect, useDispatch } from 'react-redux';
 import { setMessage } from '../../../Store/Actions';
+import store from '../../../Store/ReducerStore';
 
 const DoctorRecords = () => {
    // const dispatch = useDispatch();
@@ -16,55 +17,36 @@ const DoctorRecords = () => {
 
    const [reports, setReports] = useState([]);
 
-   const deleteReport = (reportId) => {
-      return async function (dispatch) {
-         try {
-            const response = await axios({
-               method: 'DELETE',
-               url: `https://eirhub-backend.herokuapp.com/reports/${reportId}`,
-               headers: {
-                  'Access-Control-Allow-Origin': '*',
-                  //Helpful in some cases.
-                  'Access-Control-Allow-Headers': '*',
-                  'Access-Control-Allow-Methods': '*',
-               },
-            });
-            if (response.status === 200) {
-               //checks details of response
-               if (response.data.status === true) {
-                  //returns response
-                  // alert('med delete worked');
-                  // dispatch(setReloadMedications(true));
-                  dispatch(
-                     setMessage({
-                        show: true,
-                        msg: 'Report deleted.',
-                        state: 0,
-                     })
-                  );
-               }
-            } else {
-               //takes all statuses aside 200
-               // alert('Could not make update, try again med delete 1');
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Delete unsuccessful.',
-                     state: 1,
-                  })
-               );
-            }
-         } catch (error) {
-            // alert('Could not make update, try again med delete 2');
-            dispatch(
+   const deleteReport = async (reportId, patientID) => {
+      axios
+         .delete(`https://eirhub-backend.herokuapp.com/report/${reportId}`, {
+            headers: {
+               'Access-Control-Allow-Origin': '*',
+               'Access-Control-Allow-Headers': '*',
+               'Access-Control-Allow-Methods': '*',
+               Authorization: 'Bearer my-token',
+               'Content-Type': 'application/json',
+            },
+         })
+         .then(() => {
+            store.dispatch(fetchReports(patientID));
+            store.dispatch(
                setMessage({
                   show: true,
-                  msg: 'Delete unsuccessful.',
+                  msg: 'Report deleted.',
                   state: 1,
                })
             );
-         }
-      };
+         })
+         .catch(() =>
+            store.dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Delete unsuccessful.',
+                  state: 0,
+               })
+            )
+         );
    };
 
    useEffect(() => {
@@ -74,7 +56,7 @@ const DoctorRecords = () => {
          console.log(items, reports);
       }
       fetchdata();
-   }, [patientID, reports]);
+   }, [patientID]);
 
    const myReports = () => {
       if (reports === undefined) {
@@ -95,16 +77,16 @@ const DoctorRecords = () => {
                   </thead>
                   <tbody>
                      {reports?.map((report) => {
-                        const removeReport = (reportId) => {
-                           console.log(reportId);
-                           deleteReport(reportId);
-                           setReports(
-                              reports.filter(
-                                 (report) => report.id_report !== reportId
-                              )
-                           );
-                           console.log(reports);
-                        };
+                        // const removeReport = (reportId) => {
+                        //    console.log(reportId);
+                        //    deleteReport(reportId);
+                        //    setReports(
+                        //       reports.filter(
+                        //          (report) => report.id_report !== reportId
+                        //       )
+                        //    );
+                        //    console.log(reports);
+                        // };
                         return report.id_patient === patientID ? (
                            <tr>
                               <td>
@@ -120,7 +102,7 @@ const DoctorRecords = () => {
                                  <FaTrash
                                     className={styles.docRecordstrash}
                                     onClick={() =>
-                                       removeReport(report.id_report)
+                                       deleteReport(report.id_report)
                                     }
                                  />
                               </td>
