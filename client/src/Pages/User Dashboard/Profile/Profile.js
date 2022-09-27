@@ -180,23 +180,24 @@ function Profile(props) {
    }
 
    function handleProfileUpdate() {
+      console.log("sdfghjkl;'", props.savedProfile);
       /*
          Function updates user profile, health and guardian details
          Args: None 
          Return: None      
       */
       let enteredProfileInfo = {
-         first_name: firstName,
-         middle_name: middleName,
-         last_name: lastName,
-         user_email: email,
-         date_of_birth: dateOfBirth,
-         gender: gender,
-         nationality: nationality,
-         phone_number: mobileNumber,
-         house_address: address,
-         id_number: idNumber,
-         person_image: userImage,
+         first_name: firstName ? firstName : null,
+         middle_name: middleName ? middleName : null,
+         last_name: lastName ? lastName : null,
+         user_email: email ? email : null,
+         date_of_birth: dateOfBirth ? dateOfBirth : null,
+         gender: gender ? gender : null,
+         nationality: nationality ? nationality : null,
+         phone_number: mobileNumber ? mobileNumber : null,
+         house_address: address ? address : null,
+         id_number: idNumber ? idNumber : null,
+         person_image: userImage ? userImage : null,
          id_doctor: props.savedProfile.id_doctor,
          id_guardian: props.savedProfile.id_guardian,
       };
