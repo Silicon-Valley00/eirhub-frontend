@@ -33,8 +33,20 @@
    .messageIcon {
       position: absolute;
       bottom: 2rem;
-      right: 1rem;
-      font-size: 5rem;
+      font-size: 3.5rem;
       color: var(--lightcol);
+      z-index: 100;
+   }
+}
+
+@media (max-width: 800px) {
+   .messageIcon {
+      right: 1rem;
+   }
+}
+
+@media (min-width: 800px) {
+   .messageIcon {
+      right: 0rem;
    }
 }

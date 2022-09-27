@@ -482,37 +482,55 @@ export const addNewGuardianInfo = (guardianData, profileData) => {
    };
 };
 
-//Fetches user report details
-export async function fetchReports(userID) {
-   if (userID) {
-      try {
-         const response = await axios({
-            method: 'GET',
-            url: `https://eirhub-backend.herokuapp.com/report/${userID}`,
-            headers: {
-               'Access-Control-Allow-Origin': '*',
-               //Helpful in some cases.
-               'Access-Control-Allow-Headers': '*',
-               'Access-Control-Allow-Methods': '*',
-            },
-         });
-         if (response.status === 200) {
-            //checks details of response
-            if (response.data) {
-               //returns response
-               // alert('report fetched worked');
-               return response.data.msg;
-            }
-         } else {
-            store.dispatch(setMessage({ show: true, msg: 'Error', state: 0 }));
-            //takes all statuses aside 200
-            // alert('Something went wrong. Try again');
-         }
-      } catch (error) {
-         // alert(error, 'pro');
-      }
-   }
-}
+// //Fetches user report details
+// export async function fetchReports(userID) {
+//    if (userID) {
+//       try {
+//          const response = await axios({
+//             method: 'GET',
+//             url: `https://eirhub-backend.herokuapp.com/report/${userID}`,
+//             headers: {
+//                'Access-Control-Allow-Origin': '*',
+//                //Helpful in some cases.
+//                'Access-Control-Allow-Headers': '*',
+//                'Access-Control-Allow-Methods': '*',
+//             },
+//          });
+//          if (response.status === 200) {
+//             //checks details of response
+//             if (response.data) {
+//                //returns response
+//                // alert('report fetched worked');
+//                return response.data.msg;
+//             }
+//          } else {
+//             store.dispatch(setMessage({ show: true, msg: 'Error', state: 0 }));
+//             //takes all statuses aside 200
+//             // alert('Something went wrong. Try again');
+//          }
+//       } catch (error) {
+//          // alert(error, 'pro');
+//       }
+//    }
+// }
+
+export const fetchReports = async (userID) => {
+   axios
+      .get(`https://eirhub-backend.herokuapp.com/report/${userID}`, {
+         headers: {
+            'Access-Control-Allow-Origin': '*',
+            // Helpful in some cases.
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': '*',
+         },
+      })
+      .then((response) => {
+         return response.data.msg;
+      })
+      .catch(() =>
+         store.dispatch(setMessage({ show: true, msg: 'Error', state: 0 }))
+      );
+};
 
 //Fetches user medications
 export async function fetchMedications(userID) {

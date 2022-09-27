@@ -8,17 +8,17 @@ const items = [
    {
       icon: <GiLabCoat className={styles.setCol} />,
       heading: 'Find a Doctor',
-      about: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia soluta sunt voluptates!',
+      about: 'Choose from a wide variety of highly-qualified doctors near you.',
    },
    {
       icon: <BsFillCalendar2CheckFill className={styles.setCol} />,
       heading: 'Schedule Appointment',
-      about: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. sunt voluptates!',
+      about: 'Request for an appointments with Doctors that can help.',
    },
    {
       icon: <BsFillStarFill className={styles.setCol} />,
       heading: 'Get a Solution',
-      about: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia soluta sunt voluptates!',
+      about: 'Get treatment for any ailment.',
    },
 ];
 const QuickSolution = () => {
@@ -55,9 +55,14 @@ const QuickSolution = () => {
                   Would you like to join our team of healthcare providers?
                </p>
                <div className={styles.btn}>
-                  <button className={styles.contact__btn}
-                     onClick={ () => window.open('mailto:eirhub@gmail.com', '_self') }
-                  >Contact us</button>
+                  <button
+                     className={styles.contact__btn}
+                     onClick={() =>
+                        window.open('mailto:eirhub@gmail.com', '_self')
+                     }
+                  >
+                     Contact us
+                  </button>
                </div>
             </div>
 

@@ -175,7 +175,10 @@
    height: 5rem;
    color: #0d3f58;
    font-weight: 600;
-   font-size: 0.9375rem;
+   font-size: 1rem;
+}
+.docRecordsFiles td p{
+   color: #0d3f58;
 }
 
 .emptyMessageContainer {
