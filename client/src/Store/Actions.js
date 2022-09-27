@@ -504,6 +504,7 @@ export async function fetchReports(userID) {
                return response.data.msg;
             }
          } else {
+            store.dispatch(setMessage({ show: true, msg: 'Error', state: 0 }));
             //takes all statuses aside 200
             // alert('Something went wrong. Try again');
          }
@@ -761,7 +762,6 @@ export async function fetchDoctorsByPatient(userID) {
          if (response.data.status === true) {
             //returns response
             // alert('doctors by patient id worked fetch worked');
-            console.log(response.data.msg);
             return response.data.msg;
          }
       } else {

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './logoutmodal.module.css';
 import { persistor } from '../../../Store/ReducerStore';
 import { Logout } from '../../../context/authcontext';
-import { setPatientAuth } from '../../../Store/Actions';
+import { setMessage, setPatientAuth } from '../../../Store/Actions';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setDoctorAuth } from '../../../Store/DoctorAction';
@@ -19,7 +19,9 @@ function LogoutModal(props) {
          Logout();
          navigate('/landing-page');
       } catch (err) {
-         console.log(err);
+         dispatch(
+            setMessage({ show: true, msg: 'Failed to logout.', state: 0 })
+         );
       }
    }
    return (

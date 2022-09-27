@@ -3,25 +3,26 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FaFileUpload } from 'react-icons/fa';
 import axios from 'axios';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { connect, useDispatch } from 'react-redux';
-import { setMessage } from '../../../Store/Actions';
+import { fetchReports, setMessage } from '../../../Store/Actions';
 import RecordsUploadModal from './RecordsUploadModal';
 
 function Dropzone(props) {
    const doctorID = props.doctorProfile.id_doctor;
+   const patientID = useSelector((state) => state.doctorRecordPatientId);
+
    const dispatch = useDispatch();
 
    const [selectedFile, setSelectedFile] = useState();
    const [isSelected, setIsSelected] = useState(false);
    const [modalOpen, setModalOpen] = useState(false);
 
-
    function postReport(report_url) {
       const current_date = new Date(Date.now());
       const upload_date = `${current_date.getFullYear()}-${
          current_date.getMonth() + 1
-         }-${current_date.getDate()} ${current_date.getHours()}:${current_date.getMinutes()}:${current_date.getSeconds()}`;
+      }-${current_date.getDate()} ${current_date.getHours()}:${current_date.getMinutes()}:${current_date.getSeconds()}`;
       const reportData = {
          report_type: selectedFile.type,
          description: selectedFile.description,
@@ -41,10 +42,18 @@ function Dropzone(props) {
             },
          })
          .then(() => {
-            alert('Report Uploaded');
+            dispatch(fetchReports(patientID));
+            dispatch(
+               setMessage({
+                  show: true,
+                  msg: 'Report uploaded.',
+                  state: 1,
+               })
+            );
+            // setModalOpen(false);
          })
          .catch((error) => {
-            alert(`Failed: ${error}`);
+            dispatch(setMessage({ show: true, msg: error, state: 0 }));
          });
    }
 
@@ -52,12 +61,11 @@ function Dropzone(props) {
       // if the patients id is not null upload the report for that particular patient
 
       if (props.patientID) {
-
-         const file = selectedFile[0]
+         const file = selectedFile[0];
 
          const formData = new FormData();
          formData.append('file', file);
-         formData.append('upload_preset', 'ji5ue4f9')
+         formData.append('upload_preset', 'ji5ue4f9');
 
          axios
             .post(
@@ -93,18 +101,16 @@ function Dropzone(props) {
          );
       }
       // })
-      setSelectedFile()
-      setIsSelected(false)
-
+      setSelectedFile();
+      setIsSelected(false);
    };
 
    const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
       // Do something with the files'
-      setSelectedFile(acceptedFiles)
-      setIsSelected(true)
-      setModalOpen(true)
+      setSelectedFile(acceptedFiles);
+      setIsSelected(true);
+      setModalOpen(true);
    }, []);
-
 
    const { getRootProps, getInputProps, isDragActive } = useDropzone({
       onDrop,
@@ -115,32 +121,34 @@ function Dropzone(props) {
    return (
       <div className={styles.dropzone}>
          <div {...getRootProps()} className={styles.docRecordsUpload}>
-            <input
-               {...getInputProps()}
-            />
-            {isSelected && (selectedFile.length > 0) ? (
+            <input {...getInputProps()} />
+            {isSelected && selectedFile.length > 0 ? (
                <div>
                   <ul /*className={styles.selectedFile}*/>
-
-                     <li >
-
+                     <li>
                         <p>Description: {selectedFile.description}</p>
                         <p>Report Type: {selectedFile.type} Report</p>
-                        <p>Size: {(selectedFile[0].size / 1024 / 1024).toString().slice(0, 4)}MB</p>
+                        <p>
+                           Size:{' '}
+                           {(selectedFile[0].size / 1024 / 1024)
+                              .toString()
+                              .slice(0, 4)}
+                           MB
+                        </p>
                      </li>
                   </ul>
                </div>
             ) : isDragActive ? (
                <h2>Drop files here</h2>
             ) : (
-                     <div>
-                        <FaFileUpload className={styles.docRecordsUploadimg} />
-                        <h2 className={styles.docRecordsSheader}>
-                           Drag and drop file or{' '}
-                           <span className={styles.docRecordsButtonLink}>browse</span>
-                        </h2>
-                     </div>
-                  )}
+               <div>
+                  <FaFileUpload className={styles.docRecordsUploadimg} />
+                  <h2 className={styles.docRecordsSheader}>
+                     Drag and drop file or{' '}
+                     <span className={styles.docRecordsButtonLink}>browse</span>
+                  </h2>
+               </div>
+            )}
          </div>
          {isSelected && (
             <button className={styles.btn} onClick={handleSubmission}>

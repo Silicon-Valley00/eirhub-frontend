@@ -26,7 +26,6 @@ function FindingDoctor(props) {
    function submitDoctorProfile() {
       dispatch(setDoctorForAppointment(profile));
       navigate('/scheduling');
-      console.log('Submitted doctor profile');
    }
    return (
       <>

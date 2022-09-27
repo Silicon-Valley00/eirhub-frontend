@@ -103,8 +103,6 @@ const DocProfile = (props) => {
       if (e.target.files.length === 0) return false; //Breaks out of function when no file is selected
       const userimage = e.target.files[0];
       if (!/^image\//.test(userimage.type)) {
-         //Checks for the image format
-         //alert(`${userimage.name} is not accepted`); //User alerted of wrong selected file
          return false;
       } else {
          const doctorImagePreset = 'n6r1o2rk';
@@ -214,181 +212,189 @@ const DocProfile = (props) => {
                      >
                         {/* Firstname, middlename and lastname */}
                         <div className={styles.inputMainDiv}>
-                        <div className={styles.forFirst}>
-                           <div className={styles.profileFormBox}>
-                              <h3>First Name</h3>
-                              <div
-                                 className={styles.formBoxNameInputs}
-                                 onClick={() => {
-                                    displayMessage();
-                                 }}
-                              >
-                                 <input
-                                    name="firstName"
-                                    className={styles.input_box}
-                                    type="text"
-                                    id="firstname"
-                                    placeholder="Enter first name"
-                                    required={true}
-                                    onChange={(e) =>
-                                       setFirstName(e.target.value)
-                                    }
-                                    value={first_name}
-                                    disabled={disableBtn}
-                                 />
-                              </div>
-                           </div>
-                           <div className={styles.profileFormBox}>
-                              <h3>Middle Name(Optional)</h3>
-                              <div
-                                 className={styles.formBoxNameInputs}
-                                 onClick={() => {
-                                    displayMessage();
-                                 }}
-                              >
-                                 <input
-                                    name="middleName"
-                                    className={styles.input_box}
-                                    type="text"
-                                    id="middlename"
-                                    placeholder="Enter middle name"
-                                    onChange={(e) =>
-                                       setMiddleName(e.target.value)
-                                    }
-                                    value={middle_name}
-                                    disabled={disableBtn}
-                                 />
-                              </div>
-                           </div>
-                           <div className={styles.profileFormBox}>
-                              <h3>Last Name</h3>
-                              <div
-                                 className={styles.formBoxNameInputs}
-                                 onClick={() => {
-                                    displayMessage();
-                                 }}
-                              >
-                                 <input
-                                    name="lastName"
-                                    className={styles.input_box}
-                                    type="text"
-                                    id="lastname"
-                                    placeholder="Enter last name"
-                                    required={true}
-                                    onChange={(e) =>
-                                       setLastName(e.target.value)
-                                    }
-                                    value={last_name}
-                                    disabled={disableBtn}
-                                 />
-                              </div>
-                           </div>
-                        </div>
-                        {/* Email, date of birth and Gender */}
-                        <div className={styles.forSecond}>
-                           <div className={styles.profileFormBox}>
-                              <h3>Email</h3>
-                              <div
-                                 className={styles.formBoxNameInputs}
-                                 onClick={() => {
-                                    displayMessage();
-                                 }}
-                              >
-                                 <input
-                                    name="email"
-                                    className={styles.input_box}
-                                    type="email"
-                                    id="email"
-                                    placeholder="Someone@gmail.com"
-                                    required={true}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    value={user_email}
-                                    disabled={disableBtn}
-                                 />
-                              </div>
-                           </div>{' '}
-                           <div className={styles.profileFormBox}>
-                              <h3>Date of Birth</h3>
-                              <div
-                                 className={styles.formBoxNameInputs}
-                                 onClick={() => {
-                                    displayMessage();
-                                 }}
-                              >
-                                 <input
-                                    type="text"
-                                    className={styles.input_box}
-                                    name="dateOfBirth"
-                                    id="date"
-                                    placeholder="DD/MM/YYYY"
-                                    required={true}
-                                    onFocus={(event) =>
-                                       (event.target.type = 'date')
-                                    }
-                                    onBlur={(event) => {
-                                       if (!event.target.value) {
-                                          event.target.type = 'text';
-                                       }
-                                    }}
-                                    onChange={(e) =>
-                                       setDateOfBirth(e.target.value)
-                                    }
-                                    value={date_of_birth}
-                                    disabled={disableBtn}
-                                 />
-                              </div>
-                           </div>
-                           <div className={styles.profileFormBox}>
-                              <h3>Gender</h3>
-                              <div className={styles.formBoxNameInputs}>
+                           <div className={styles.forFirst}>
+                              <div className={styles.profileFormBox}>
+                                 <h3>First Name</h3>
                                  <div
-                                    className={styles.select}
+                                    className={styles.formBoxNameInputs}
                                     onClick={() => {
                                        displayMessage();
                                     }}
                                  >
-                                    <select
-                                       name="gender"
-                                       placeholder="Gender"
-                                       required
+                                    <input
+                                       name="firstName"
+                                       className={styles.input_box}
+                                       type="text"
+                                       id="firstname"
+                                       placeholder="Enter first name"
+                                       required={true}
                                        onChange={(e) =>
-                                          setGender(e.target.value)
+                                          setFirstName(e.target.value)
                                        }
-                                       value={gender}
+                                       value={first_name}
                                        disabled={disableBtn}
-                                    >
-                                       <option value={''}>Select gender</option>
-                                       <option value={'Male'}>Male</option>
-                                       <option value={'Female'}>Female</option>
-                                    </select>
+                                    />
+                                 </div>
+                              </div>
+                              <div className={styles.profileFormBox}>
+                                 <h3>Middle Name(Optional)</h3>
+                                 <div
+                                    className={styles.formBoxNameInputs}
+                                    onClick={() => {
+                                       displayMessage();
+                                    }}
+                                 >
+                                    <input
+                                       name="middleName"
+                                       className={styles.input_box}
+                                       type="text"
+                                       id="middlename"
+                                       placeholder="Enter middle name"
+                                       onChange={(e) =>
+                                          setMiddleName(e.target.value)
+                                       }
+                                       value={middle_name}
+                                       disabled={disableBtn}
+                                    />
+                                 </div>
+                              </div>
+                              <div className={styles.profileFormBox}>
+                                 <h3>Last Name</h3>
+                                 <div
+                                    className={styles.formBoxNameInputs}
+                                    onClick={() => {
+                                       displayMessage();
+                                    }}
+                                 >
+                                    <input
+                                       name="lastName"
+                                       className={styles.input_box}
+                                       type="text"
+                                       id="lastname"
+                                       placeholder="Enter last name"
+                                       required={true}
+                                       onChange={(e) =>
+                                          setLastName(e.target.value)
+                                       }
+                                       value={last_name}
+                                       disabled={disableBtn}
+                                    />
                                  </div>
                               </div>
                            </div>
-                        </div>
-                        {/* House address */}
-                        <div className={styles.forThird}>
-                           <div className={styles.profileFormBox}>
-                              <h3>House Address</h3>
-                              <div
-                                 className={styles.formBoxNameInputs}
-                                 onClick={() => {
-                                    displayMessage();
-                                 }}
-                              >
-                                 <input
-                                    name="address"
-                                    className={styles.input_box}
-                                    type="text"
-                                    id="address"
-                                    placeholder="Enter house address"
-                                    required={true}
-                                    onChange={(e) => setAddress(e.target.value)}
-                                    value={house_address}
-                                    disabled={disableBtn}
-                                 />
+                           {/* Email, date of birth and Gender */}
+                           <div className={styles.forSecond}>
+                              <div className={styles.profileFormBox}>
+                                 <h3>Email</h3>
+                                 <div
+                                    className={styles.formBoxNameInputs}
+                                    onClick={() => {
+                                       displayMessage();
+                                    }}
+                                 >
+                                    <input
+                                       name="email"
+                                       className={styles.input_box}
+                                       type="email"
+                                       id="email"
+                                       placeholder="Someone@gmail.com"
+                                       required={true}
+                                       onChange={(e) =>
+                                          setEmail(e.target.value)
+                                       }
+                                       value={user_email}
+                                       disabled={disableBtn}
+                                    />
+                                 </div>
+                              </div>{' '}
+                              <div className={styles.profileFormBox}>
+                                 <h3>Date of Birth</h3>
+                                 <div
+                                    className={styles.formBoxNameInputs}
+                                    onClick={() => {
+                                       displayMessage();
+                                    }}
+                                 >
+                                    <input
+                                       type="text"
+                                       className={styles.input_box}
+                                       name="dateOfBirth"
+                                       id="date"
+                                       placeholder="DD/MM/YYYY"
+                                       required={true}
+                                       onFocus={(event) =>
+                                          (event.target.type = 'date')
+                                       }
+                                       onBlur={(event) => {
+                                          if (!event.target.value) {
+                                             event.target.type = 'text';
+                                          }
+                                       }}
+                                       onChange={(e) =>
+                                          setDateOfBirth(e.target.value)
+                                       }
+                                       value={date_of_birth}
+                                       disabled={disableBtn}
+                                    />
+                                 </div>
+                              </div>
+                              <div className={styles.profileFormBox}>
+                                 <h3>Gender</h3>
+                                 <div className={styles.formBoxNameInputs}>
+                                    <div
+                                       className={styles.select}
+                                       onClick={() => {
+                                          displayMessage();
+                                       }}
+                                    >
+                                       <select
+                                          name="gender"
+                                          placeholder="Gender"
+                                          required
+                                          onChange={(e) =>
+                                             setGender(e.target.value)
+                                          }
+                                          value={gender}
+                                          disabled={disableBtn}
+                                       >
+                                          <option value={''}>
+                                             Select gender
+                                          </option>
+                                          <option value={'Male'}>Male</option>
+                                          <option value={'Female'}>
+                                             Female
+                                          </option>
+                                       </select>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
-                        </div>
+                           {/* House address */}
+                           <div className={styles.forThird}>
+                              <div className={styles.profileFormBox}>
+                                 <h3>House Address</h3>
+                                 <div
+                                    className={styles.formBoxNameInputs}
+                                    onClick={() => {
+                                       displayMessage();
+                                    }}
+                                 >
+                                    <input
+                                       name="address"
+                                       className={styles.input_box}
+                                       type="text"
+                                       id="address"
+                                       placeholder="Enter house address"
+                                       required={true}
+                                       onChange={(e) =>
+                                          setAddress(e.target.value)
+                                       }
+                                       value={house_address}
+                                       disabled={disableBtn}
+                                    />
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </form>
                   </div>

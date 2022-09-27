@@ -142,7 +142,6 @@ const Calendar = (props) => {
       } else if (selectedMonth <= 11) {
          setSelectedMonth(selectedMonth - 1);
       }
-      console.log(selectedMonth);
    }
    function handleMonthGoForward() {
       /*
