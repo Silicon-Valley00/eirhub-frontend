@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './records.module.css';
-import { FaClipboardList } from 'react-icons/fa';
+import { AiFillInfoCircle } from 'react-icons/ai';
 import { BsArrowLeftCircle, BsDownload } from 'react-icons/bs';
 import { fetchReports } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
@@ -82,7 +82,7 @@ function Records(props) {
                               handleChangePage();
                            }}
                         >
-                           <FaClipboardList />
+                           <AiFillInfoCircle />
                         </i>
                         <i>
                            <BsDownload

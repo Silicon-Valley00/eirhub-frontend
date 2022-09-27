@@ -55,6 +55,7 @@ function Login(props) {
                //logs user into cometchat
 
                LoginUser(feedback[1].id_message);
+               console.log(feedback[1].id_message);
                dispatch(setLoading(false));
             } else {
                //when something goes wrong
@@ -75,7 +76,7 @@ function Login(props) {
                }, 1000);
                dispatch(setLoading(false));
             }
-         }, 1.5 * 1000);
+         }, 2 * 1000);
       } else {
          setBtnActive(feedback[0]);
          setBtnValue('Login');
