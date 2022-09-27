@@ -55,7 +55,6 @@ function Login(props) {
                //logs user into cometchat
 
                LoginUser(feedback[1].id_message);
-               console.log(feedback[1].id_message);
                dispatch(setLoading(false));
             } else {
                //when something goes wrong
