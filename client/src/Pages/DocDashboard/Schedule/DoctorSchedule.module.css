@@ -94,14 +94,14 @@
 }
 .inputName {
    width: 80%;
-   height: 40px;
+   height: 2.5rem;
    grid-column: 1/2;
    grid-row: 2/3;
 }
 
 .inputCondition {
    width: 87%;
-   height: 40px;
+   height: 2.5rem;
 }
 .appointTime {
    display: grid;
@@ -298,6 +298,9 @@
    .appointmentContainer {
       min-height: 25rem;
       height: 35rem;
+   }
+   .formContainer input{
+      height: 2.5rem;
    }
 }
 /*Responsive*/
