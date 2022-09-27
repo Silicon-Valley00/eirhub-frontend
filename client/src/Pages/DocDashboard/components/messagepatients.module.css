@@ -115,6 +115,7 @@
       right: 0;
       top: 2rem;
       display: block;
+      z-index: 100;
    }
 
    .closeBtn {

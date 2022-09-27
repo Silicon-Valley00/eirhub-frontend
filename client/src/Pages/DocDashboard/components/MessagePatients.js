@@ -68,6 +68,7 @@ function MessagePatients() {
                      setActive(true);
                      setActiveIndex(`${item.id_patient}${j}`);
                      dispatch(setPatientToChatWith(item.id_message));
+                     dispatch(setMessageStateFunc(false));
                   }}
                >
                   <div className={styles.userImage}>
