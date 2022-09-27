@@ -158,24 +158,21 @@
    padding: 0.3rem 0.9rem;
    font-size: 0.8rem;
 }
+
 .appointmentsBox table tbody td:nth-child(1) div {
    display: flex;
    justify-content: center;
-   align-items: center;
-   height: 2.5rem;
-   min-height: 2.5rem;
-   max-height: 2.5rem;
-
-   width: 2.5rem;
-   min-width: 2.5rem;
-   max-width: 2.5rem;
-
-   border-radius: 50%;
-   clip-path: circle();
+   height: 2.8rem;
+   min-height: 2.8rem;
+   max-height: 2.8rem;
+   width: 2.8rem;
+   min-width: 2.8rem;
+   max-width: 2.8rem;
 }
 .appointmentsBox table tbody td:nth-child(1) div img {
    height: 100%;
    width: 100%;
+   clip-path: circle();
 }
 
 .appointmentsBox table tbody td:nth-child(3) {

@@ -76,7 +76,7 @@ main .vitalsBox .vitals:hover {
    display: -webkit-box;
    -webkit-box-orient: vertical;
    overflow: hidden;
-   font-size: 0.8rem;
+   font-size: 0.6rem;
    padding-top: 0.3rem;
    color: var(--midcol);
    font-weight: 400;
@@ -307,18 +307,18 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 .appointmentsBox table tbody td:nth-child(1) div {
    display: flex;
    justify-content: center;
-   align-items: center;
    height: 2.8rem;
    min-height: 2.8rem;
    max-height: 2.8rem;
-   width: 100%;
-   border-radius: 50%;
-   clip-path: circle();
+   width: 2.8rem;
+   min-width: 2.8rem;
+   max-width: 2.8rem;
 }
-/* .appointmentsBox table tbody td:nth-child(1) div img {
+.appointmentsBox table tbody td:nth-child(1) div img {
    height: 100%;
    width: 100%;
-} */
+   clip-path: circle();
+}
 
 .appointmentsBox table tbody td:nth-child(3) {
    text-align: center;
@@ -438,6 +438,10 @@ main#midsection::-webkit-scrollbar-thumb {
       gap: 2rem;
       align-content: space-between;
       justify-content: space-around;
+   }
+   .vitalsInfo {
+      -webkit-line-clamp: 3;
+      font-size: 55%;
    }
    /* MEDICATIONS */
    .medicationBox {

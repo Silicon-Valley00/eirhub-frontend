@@ -170,36 +170,36 @@ export const fetchProfile = (userID, guardianID) => {
    };
 };
 
-//Fetches user profile details
-export const fetchProfileOnSignup = (userID) => {
-   return async function (dispatch) {
-      try {
-         const response = await axios({
-            method: 'GET',
-            url: `https://eirhub-backend.herokuapp.com/patients/${userID}`,
-            headers: {
-               'Access-Control-Allow-Origin': '*',
-               //Helpful in some cases.
-               'Access-Control-Allow-Headers': '*',
-               'Access-Control-Allow-Methods': '*',
-            },
-         });
-         if (response.status === 200) {
-            //checks details of response
-            if (response.data.status === true) {
-               //returns response
-               dispatch(setProfileInfo(response.data.msg));
-               dispatch(fetchHealthDetails(userID));
-            }
-         } else {
-            //takes all statuses aside 200
-            // alert('Something went wrong. Try again');
-         }
-      } catch (error) {
-         // alert(error, 'pro');
-      }
-   };
-};
+// //Fetches user profile details
+// export const fetchProfileOnSignup = (userID) => {
+//    return async function (dispatch) {
+//       try {
+//          const response = await axios({
+//             method: 'GET',
+//             url: `https://eirhub-backend.herokuapp.com/patients/${userID}`,
+//             headers: {
+//                'Access-Control-Allow-Origin': '*',
+//                //Helpful in some cases.
+//                'Access-Control-Allow-Headers': '*',
+//                'Access-Control-Allow-Methods': '*',
+//             },
+//          });
+//          if (response.status === 200) {
+//             //checks details of response
+//             if (response.data.status === true) {
+//                //returns response
+//                dispatch(setProfileInfo(response.data.msg));
+//                dispatch(fetchHealthDetails(userID));
+//             }
+//          } else {
+//             //takes all statuses aside 200
+//             // alert('Something went wrong. Try again');
+//          }
+//       } catch (error) {
+//          // alert(error, 'pro');
+//       }
+//    };
+// };
 
 //Fetches user health details
 export const fetchHealthDetails = (userID) => {
@@ -225,6 +225,7 @@ export const fetchHealthDetails = (userID) => {
          } else {
             //takes all statuses aside 200
             // alert('Something went wrong. Try again');
+            dispatch(fetchHealthDetails(userID));
          }
       } catch (error) {
          // alert(error, 'hel');
@@ -272,6 +273,7 @@ export const updateProfile = (
    healthData
 ) => {
    return async function (dispatch) {
+      console.log(userData);
       try {
          const response = await axios({
             method: 'PUT',
@@ -503,6 +505,8 @@ export async function fetchReports(userID) {
             }
          } else {
             store.dispatch(setMessage({ show: true, msg: 'Error', state: 0 }));
+            //takes all statuses aside 200
+            // alert('Something went wrong. Try again');
          }
       } catch (error) {
          // alert(error, 'pro');

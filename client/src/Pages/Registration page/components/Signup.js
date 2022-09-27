@@ -12,10 +12,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
    fetchProfileOnSignup,
-   setIsANewUser,
+   setProfileInfo,
    setLoading,
    setMessage,
    setPatientAuth,
+   fetchHealthDetails,
 } from '../../../Store/Actions.js';
 import { SignUpUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
@@ -64,7 +65,9 @@ function Signup(props) {
          setBtnValue(feedback[2]);
 
          //fetches user profile
-         dispatch(fetchProfileOnSignup(feedback[1].id_patient));
+         dispatch(setProfileInfo(feedback[1]));
+
+         dispatch(fetchHealthDetails(feedback[1].id_patient));
          dispatch(setLoading(true));
 
          navigate('/loading', { state: { status: true } });
