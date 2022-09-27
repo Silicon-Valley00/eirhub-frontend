@@ -12,6 +12,7 @@ export const SignUpUser = async (name, UID) => {
       },
       (error) => {
          // alert('error', error);
+         SignUpUser(name, UID);
       }
    );
 };
@@ -26,6 +27,7 @@ export const LoginUser = async (UID) => {
                },
                (error) => {
                   // alert('Login failed with exception:', { error });
+                  LoginUser(UID);
                }
             );
          }
@@ -39,10 +41,10 @@ export const LoginUser = async (UID) => {
 export const Logout = () => {
    CometChat.logout().then(
       () => {
-         console.log('Logout completed successfully');
+         // console.log('Logout completed successfully');
       },
       (error) => {
-         console.log('Logout failed with exception:', { error });
+         // console.log('Logout failed with exception:', { error });
       }
    );
 };
