@@ -545,9 +545,9 @@ div.guardianInfoFormBox {
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
    #profileBody {
       padding: 1rem 1rem 0 01rem;
-      width: 137%;
-      min-width: 137%;
-      max-width: 137%;
+      width: 130%;
+      min-width: 130%;
+      max-width: 130%;
    }
    .upperContent {
       width: 90%;

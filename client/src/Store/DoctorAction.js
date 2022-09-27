@@ -130,6 +130,7 @@ export const getAllPendingAppointmentsForADoctor = (id_doctor) => {
          .then((res) => {
             if (res.data.status === true) {
                dispatch(setDoctorandPatient(res.data.msg));
+
                return res.data.msg;
             } else {
                dispatch(
