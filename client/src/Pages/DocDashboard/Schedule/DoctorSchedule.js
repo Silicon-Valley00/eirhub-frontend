@@ -143,7 +143,7 @@ const DoctorSchedule = (props) => {
    //             <p className={styles.text}>Nothing to show here.</p>
    //          </div>
    //       );
-   //       // If there are pending appointments, display the data
+
    //    } else {
    //       displayData = (
    //          <>

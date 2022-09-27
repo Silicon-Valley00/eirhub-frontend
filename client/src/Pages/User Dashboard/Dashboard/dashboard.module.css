@@ -307,12 +307,12 @@ main#midsection .vitalsBox .vitals:nth-child(2) .vitalsDetails .vitalsIcon i {
 .appointmentsBox table tbody td:nth-child(1) div {
    display: flex;
    justify-content: center;
-   height: 2.8rem;
-   min-height: 2.8rem;
-   max-height: 2.8rem;
-   width: 2.8rem;
-   min-width: 2.8rem;
-   max-width: 2.8rem;
+   height: 2.5rem;
+   min-height: 2.5rem;
+   max-height: 2.5rem;
+   width: 2.5rem;
+   min-width: 2.5rem;
+   max-width: 2.5rem;
 }
 .appointmentsBox table tbody td:nth-child(1) div img {
    height: 100%;

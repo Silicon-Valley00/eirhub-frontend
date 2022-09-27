@@ -74,7 +74,7 @@ function MessagePatients() {
                      <img src={item?.person_image} alt="avatar" />
                   </div>
                   <div className={styles.userName}>
-                     <h3>{`${item.first_name} ${item.last_name}`}</h3>
+                     <h3>{`${item?.first_name} ${item?.last_name}`}</h3>
                   </div>
                </div>
             );
