@@ -494,7 +494,6 @@ function Registration(props) {
             id_guardian: newGuardianId,
          };
 
-         console.log('New Guardian ID', signupPatientData);
          // makes api call with userdata
          const feedback = await submitCredentials(
             'patients/signup',

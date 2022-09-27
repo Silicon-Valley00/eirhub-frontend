@@ -91,7 +91,7 @@ const initialState = {
       user_email: '',
       date_of_birth: '',
       gender: '',
-      house_number: '',
+      house_address: '',
       license_number: '',
       doctor_specialties: '',
       hospital_code: '',

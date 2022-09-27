@@ -12,12 +12,19 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
    fetchDoctorsProfileInfo,
+   getAllPendingAppointmentsForADoctor,
    setDoctorAuth,
+   setDoctorProfile,
 } from '../../../Store/DoctorAction.js';
 import { SignUpUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
-import { setIsANewUser, setLoading, setMessage } from '../../../Store/Actions';
+import {
+   setIsANewUser,
+   setLoading,
+   setMessage,
+   setOkToRoute,
+} from '../../../Store/Actions';
 
 function DoctorSignup(props) {
    const navigate = useNavigate();
@@ -47,7 +54,9 @@ function DoctorSignup(props) {
          setBtnValue(feedback[2]);
 
          //Fetches doctor profile
-         dispatch(fetchDoctorsProfileInfo(feedback[1].id_doctor));
+         dispatch(setDoctorProfile(feedback[1]));
+         dispatch(setOkToRoute(true));
+         dispatch(getAllPendingAppointmentsForADoctor(feedback[1].id_doctor));
          dispatch(setLoading(true));
          //naviagates to the loading page
          navigate('/loading', { state: { status: false } });

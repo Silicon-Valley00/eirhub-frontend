@@ -18,9 +18,7 @@ const DoctorSchedule = (props) => {
 
    // States that would be used as data for the PUT method
    const [allPendingAppointments, setAllPendingAppointments] = useState([]);
-   console.log('states', allPendingAppointments);
    const [selectedAppointment, setSelectedAppointment] = useState([]);
-   console.log('selected one', selectedAppointment);
    const [appointment_date, setAppointmentDate] = useState('');
    const [appointment_start_time, setAppointmentStartTime] = useState('');
    const [appointment_end_time, setAppointmentEndTime] = useState('');
@@ -42,7 +40,6 @@ const DoctorSchedule = (props) => {
       id_patient: selectedAppointment?.id_patient,
       appointment_reason: selectedAppointment?.appointment_reason,
    };
-   console.log('scheduled one', scheduledAppointment);
 
    // endpoint for updating doctor profile
 
@@ -78,9 +75,7 @@ const DoctorSchedule = (props) => {
 
    // Function to cancel an appointment
    const cancelAppointment = async (index) => {
-      // console.log(selectedAppointment.id_appointment);
       const indexedAppointment = allPendingAppointments[index];
-      // alert(selectedId)
       await axios
          .put(
             `${baseURL}/appointments/?id_appointment=${indexedAppointment.id_appointment}`,
@@ -123,7 +118,6 @@ const DoctorSchedule = (props) => {
 
    // Function to display the details of the appointment that was clicked.
    const displaySelectedPatientDetails = (patientKeyNum) => {
-      console.log('patient: ', patientKeyNum);
       const selectedPatient = allPendingSchedules[patientKeyNum];
       setSelectedAppointment(selectedPatient);
    };
