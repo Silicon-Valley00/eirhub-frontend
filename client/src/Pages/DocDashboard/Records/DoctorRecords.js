@@ -56,7 +56,7 @@ const DoctorRecords = () => {
          console.log(items, reports);
       }
       fetchdata();
-   }, [patientID]);
+   }, []);
 
    const myReports = () => {
       if (reports === undefined) {
