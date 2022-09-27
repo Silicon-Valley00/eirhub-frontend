@@ -77,7 +77,7 @@ const DoctorRecords = () => {
          console.log(items, reports);
       }
       fetchdata();
-   }, [patientID, reports]);
+   }, [patientID]);
 
    const myReports = () => {
       if (reports === undefined) {
@@ -110,7 +110,7 @@ const DoctorRecords = () => {
                            <tr>
                               <td>
                                  <Link to={report.report_url}>
-                                    {report.description}
+                                    <p>{report.description}</p>
                                  </Link>
                               </td>
                               <td>{report.report_type}</td>
