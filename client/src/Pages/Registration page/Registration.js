@@ -146,7 +146,7 @@ function Registration(props) {
 
 
    const pattern = /^[a-zA-Z-]+$/;
-   const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+   const emailPattern = /^[^ ]+@[^ ]+\.[a-zA-Z]{2,3}$/;
 
    // Functions below check user credentials in login form input
    function handleLoginEmail() {

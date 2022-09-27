@@ -28,7 +28,7 @@ const DoctorRecords = () => {
                'Content-Type': 'application/json',
             },
          })
-         .then(() => {
+         .then((response) => {
             store.dispatch(fetchReports(patientID));
             store.dispatch(
                setMessage({
@@ -38,21 +38,23 @@ const DoctorRecords = () => {
                })
             );
          })
-         .catch(() =>
+         .catch((error) => {
             store.dispatch(
                setMessage({
                   show: true,
                   msg: 'Delete unsuccessful.',
                   state: 0,
                })
-            )
+               )
+            }
          );
    };
 
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchReports(patientID);
-         setReports(items.reverse());
+         items.reverse()
+         setReports(items);
          console.log(items, reports);
       }
       fetchdata();
@@ -94,7 +96,7 @@ const DoctorRecords = () => {
                                     <p>{report.description}</p>
                                  </Link>
                               </td>
-                              <td>{report.report_type}</td>
+                              <td>{report.report_type} Report</td>
                               <td>{report.upload_date}</td>
 
                               <td className={styles.docRecordsicons}>
