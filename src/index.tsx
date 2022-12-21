@@ -18,19 +18,20 @@ let appSetting = new CometChat.AppSettingsBuilder()
    .autoEstablishSocketConnection(true)
    .build();
 
-CometChat.init(APP_ID, appSetting).then(
-   () => {
-      ReactDOM.render(
-         <BrowserRouter>
-            <ScrollToTop />
-            <Provider store={store}>
-               <PersistGate persistor={persistor}>
-                  <App />
-               </PersistGate>
-            </Provider>
-         </BrowserRouter>,
-         document.getElementById('root')
-      );
-   },
-   (error) => {}
+// CometChat.init(APP_ID, appSetting).then(
+//    () => {
+ReactDOM.render(
+   <BrowserRouter>
+      <ScrollToTop />
+      <Provider store={store}>
+         <PersistGate persistor={persistor}>
+            <App />
+         </PersistGate>
+      </Provider>
+   </BrowserRouter>,
+   document.getElementById('root')
 );
+//    }
+//    ,
+//    (error) => {}
+// );
