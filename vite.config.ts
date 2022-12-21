@@ -7,4 +7,7 @@ import pluginRewriteAll from 'vite-plugin-rewrite-all';
 // https://vitejs.dev/config/
 export default defineConfig({
    plugins: [react(), viteTsconfigPaths(), pluginRewriteAll(), svgrPlugin()],
+   server: {
+      port: 3000,
+   },
 });
