@@ -18,7 +18,7 @@ import {
    setPatientAuth,
    fetchHealthDetails,
 } from '../../../Store/Actions.js';
-import { SignUpUser } from '../../../context/authcontext';
+// import { SignUpUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
 

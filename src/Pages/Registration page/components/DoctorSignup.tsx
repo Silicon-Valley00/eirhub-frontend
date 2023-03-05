@@ -16,7 +16,7 @@ import {
    setDoctorAuth,
    setDoctorProfile,
 } from '../../../Store/DoctorAction.js';
-import { SignUpUser } from '../../../context/authcontext';
+// import { SignUpUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
 import {
