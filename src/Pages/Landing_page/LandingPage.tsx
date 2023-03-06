@@ -8,7 +8,6 @@ import Services from './components/Services';
 import styles from './Landingpage.module.css';
 import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
-import { persistor } from '../../Store/ReducerStore';
 
 const LandingPage = () => {
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection

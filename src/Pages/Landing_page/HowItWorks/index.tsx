@@ -18,7 +18,7 @@ const HowItWorks = () => {
    const [modalLogin, setModalLogin] = useState(false);
    const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
 
-   useEffect(() => setTimeout(() => persistor.purge(), 200), []);
+   // useEffect(() => setTimeout(() => persistor.purge(), 200), []);
 
    // Function opens the patients' signup form modal
    function handleModalSignup() {

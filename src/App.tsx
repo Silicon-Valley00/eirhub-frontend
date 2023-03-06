@@ -15,32 +15,6 @@ import FAQ from './Pages/Landing_page/FAQ/FAQ';
 //Imports for PageNotFound
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 
-// Imports for user-dashboard
-import UserDashboard from './Pages/User Dashboard/UserDashboard';
-import Profile from './Pages/User Dashboard/Profile/Profile';
-import Dashboard from './Pages/User Dashboard/Dashboard/Dashboard.js';
-import DashboardNotificationAlerts from './Pages/User Dashboard/components/DashBoardNotificationAlerts.js';
-import FindDoctor from './Pages/User Dashboard/FindDoctor/FindDoctor';
-import FindDoctorProfile from './Pages/User Dashboard/components/FindDoctorProfile.js';
-import Medications from './Pages/User Dashboard/Medications/Medications';
-import MedicationForm from './Pages/User Dashboard/components/MedicationForm';
-import Records from './Pages/User Dashboard/Records/Records';
-import RecordChild from './Pages/User Dashboard/components/RecordsChild';
-import Schedule from './Pages/User Dashboard/Schedule/Schedule';
-import Message from './Pages/User Dashboard/Message/Message';
-import MessageUsers from './Pages/User Dashboard/components/MessageUsers';
-
-// imports for doctor's dashboard
-import MidDashboard from './Pages/DocDashboard/Dashboard/Dashboard';
-import DoctorCalendar from './Pages/DocDashboard/components/Calendar';
-import DocDashboard from './Pages/DocDashboard/Docdashboard';
-import DocProfile from './Pages/DocDashboard/Profile/Profile';
-import DoctorPatients from './Pages/DocDashboard/DoctorPatients/DoctorPatients';
-import DoctorSchedule from './Pages/DocDashboard/Schedule/DoctorSchedule';
-import DoctorRecords from './Pages/DocDashboard/Records/DoctorRecords';
-import DoctorMessage from './Pages/DocDashboard/DoctorMessage/DoctorMessage';
-import MessagePatients from './Pages/DocDashboard/components/MessagePatients';
-
 //Others
 import Loading from './Pages/Loading Page/loadingpage';
 import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPatient';

@@ -7,23 +7,6 @@ import { Link, NavLink } from 'react-router-dom';
 import LoginDropdown from './LoginDropdown';
 import SignUpDropdown from './SignUpDropdown';
 
-// Function to use when the user clicks outside of the dropdown.
-// function useClickOutside(Handler) {
-//    let menuRef = useRef();
-//    useEffect(() => {
-//       let secondHandler = (event) => {
-//          if (menuRef && !menuRef.current.contains(event.target)) {
-//             Handler();
-//          }
-//       };
-//       document.addEventListener('mousedown', secondHandler, true);
-//       return () => {
-//          document.removeEventListener('mousedown', secondHandler, true);
-//       };
-//    }, [menuRef]);
-//    return menuRef;
-// }
-
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
    const [loginClick, setLoginClick] = useState(false);
@@ -38,15 +21,6 @@ const Navbar = (props) => {
       setLoginClick(!loginClick);
       setSignUpClick(false);
    };
-
-   // let menuRef = useClickOutside(() => {
-   //    setLoginClick(false);
-   //    setSignUpClick(false);
-   // });
-
-   // function handleHeaderClick(event) {
-   //    event.stopPropagation();
-   // }
 
    return (
       <div className={styles.nav_background}>

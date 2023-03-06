@@ -4,6 +4,7 @@ import FAQ from './Pages/Landing_page/FAQ/FAQ';
 import HowItWorks from './Pages/Landing_page/HowItWorks';
 import LandingPage from './Pages/Landing_page/LandingPage';
 import ServicesPage from './Pages/Landing_page/ServicesPage';
+import UserDashboard from './Pages/User Dashboard/UserDashboard';
 
 const routePaths = Constants.ROUTES;
 
@@ -32,7 +33,12 @@ const appRoutes: routing = {
          element: <FAQ />,
       },
    ],
-   user: [],
+   user: [
+      {
+         path: routePaths.userDashboard,
+         element: <UserDashboard />,
+      },
+   ],
    doctor: [],
 };
 
