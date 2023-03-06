@@ -1,11 +1,7 @@
 import React from 'react';
 import styles from './dropdown.module.css';
 
-const LoginDropdown = ({
-   clicked,
-   handleModalLogin,
-   handleModalLoginDoctor,
-}) => {
+const LoginDropdown = ({ handleModalLogin, handleModalLoginDoctor }) => {
    return (
       <>
          <div className={styles.main}>

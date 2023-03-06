@@ -10,7 +10,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { APP_ID, APP_REGION } from './constants/constants';
 import store, { persistor } from './Store/ReducerStore';
 import ScrollToTop from './utils/scrollToTop';
-import { allRoutes } from './Pages/routes';
+import { allRoutes } from './routes';
+import Aos from 'aos';
+
+Aos.init();
 
 ReactDOM.render(
    <Provider store={store}>

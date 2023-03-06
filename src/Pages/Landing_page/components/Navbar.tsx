@@ -1,28 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import logo from '../../../assets/images/logo.svg';
+import logo from '../../../assets/landingPage/logo.svg';
 import styles from './navbar.module.css';
-import { ReactComponent as close } from '../../../assets/images/close.svg';
-import menu from '../../../assets/images/menu.svg';
-import { Link } from 'react-router-dom';
+import close from '../../../assets/landingPage/close.svg';
+import menu from '../../../assets/landingPage/menu.svg';
+import { Link, NavLink } from 'react-router-dom';
 import LoginDropdown from './LoginDropdown';
 import SignUpDropdown from './SignUpDropdown';
 
 // Function to use when the user clicks outside of the dropdown.
-function useClickOutside(Handler) {
-   let menuRef = useRef();
-   useEffect(() => {
-      let secondHandler = (event) => {
-         if (menuRef && !menuRef.current.contains(event.target)) {
-            Handler();
-         }
-      };
-      document.addEventListener('mousedown', secondHandler, true);
-      return () => {
-         document.removeEventListener('mousedown', secondHandler, true);
-      };
-   }, [menuRef]);
-   return menuRef;
-}
+// function useClickOutside(Handler) {
+//    let menuRef = useRef();
+//    useEffect(() => {
+//       let secondHandler = (event) => {
+//          if (menuRef && !menuRef.current.contains(event.target)) {
+//             Handler();
+//          }
+//       };
+//       document.addEventListener('mousedown', secondHandler, true);
+//       return () => {
+//          document.removeEventListener('mousedown', secondHandler, true);
+//       };
+//    }, [menuRef]);
+//    return menuRef;
+// }
 
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
@@ -39,24 +39,24 @@ const Navbar = (props) => {
       setSignUpClick(false);
    };
 
-   let menuRef = useClickOutside(() => {
-      setLoginClick(false);
-      setSignUpClick(false);
-   });
+   // let menuRef = useClickOutside(() => {
+   //    setLoginClick(false);
+   //    setSignUpClick(false);
+   // });
 
-   function handleHeaderClick(event) {
-      event.stopPropagation();
-   }
+   // function handleHeaderClick(event) {
+   //    event.stopPropagation();
+   // }
 
    return (
       <div className={styles.nav_background}>
-         <main className={styles.main} onClick={handleHeaderClick}>
+         <main className={styles.main}>
             <div className={styles.back}>
-               <nav id={styles.nav} ref={menuRef}>
+               <nav id={styles.nav}>
                   {/* Logo */}
                   <Link to="/" id={styles.img}>
                      <img
-                        // src={logo}
+                        src={logo}
                         className={styles.logo_img}
                         alt=""
                         height={50}
@@ -83,36 +83,36 @@ const Navbar = (props) => {
                      </div>
                      <div className={styles.left}>
                         <ul id={styles.nav_links}>
-                           <Link
+                           <NavLink
                               to="/"
-                              className={
-                                 props.indicator === 1
+                              className={({ isActive }) =>
+                                 isActive
                                     ? `${styles.active} ${styles.each}`
                                     : styles.each
                               }
                            >
                               Home
-                           </Link>
-                           <Link
+                           </NavLink>
+                           <NavLink
                               to="/our-services"
-                              className={
-                                 props.indicator === 2
+                              className={({ isActive }) =>
+                                 isActive
                                     ? `${styles.active} ${styles.each}`
                                     : styles.each
                               }
                            >
                               Our Services
-                           </Link>
-                           <Link
+                           </NavLink>
+                           <NavLink
                               to="/how-it-works"
-                              className={
-                                 props.indicator === 3
+                              className={({ isActive }) =>
+                                 isActive
                                     ? `${styles.active} ${styles.each}`
                                     : styles.each
                               }
                            >
                               How it Works
-                           </Link>
+                           </NavLink>
                         </ul>
                         <div id={styles.signup}>
                            <ul className={styles.signup_list}>

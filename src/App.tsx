@@ -47,15 +47,15 @@ import ProtectedRoutesPatient from './Pages/Protected Routes/ProtectedRoutesPati
 import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDoctor';
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
 import ProtectedRoutesLoading from './Pages/Protected Routes/ProtectedRoutesLoading';
-import { Logout } from './context/authcontext';
+// import { Logout } from './context/authcontext';
 import { persistor } from './Store/ReducerStore';
 
 AOS.init();
 
 function App() {
-   const isPatientAuth = useSelector((state) => state.isPatientAuth);
-   const isDoctorAuth = useSelector((state) => state.isDoctorAuth);
-   const isLoading = useSelector((state) => state.isLoading);
+   // const isPatientAuth = useSelector((state) => state.isPatientAuth);
+   // const isDoctorAuth = useSelector((state) => state.isDoctorAuth);
+   // const isLoading = useSelector((state) => state.isLoading);
 
    // function logoutOnTabClose() {
    //    setTimeout(() => persistor.purge(), 200);
@@ -346,7 +346,7 @@ function App() {
       //       {/* End of route for doctor-dashboard */}
       //    </Routes>
       // </>
-      
+      <></>
    );
 }
 
