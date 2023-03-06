@@ -9,5 +9,6 @@ export default defineConfig({
    plugins: [react(), viteTsconfigPaths(), pluginRewriteAll(), svgrPlugin()],
    server: {
       port: 3000,
+      open: true,
    },
 });
