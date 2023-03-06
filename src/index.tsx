@@ -19,7 +19,7 @@ ReactDOM.render(
    <Provider store={store}>
       {/* <ScrollToTop /> */}
       {/* <PersistGate persistor={persistor}> */}
-      <RouterProvider router={allRoutes} />
+      <App />
       {/* </PersistGate> */}
    </Provider>,
    document.getElementById('root')

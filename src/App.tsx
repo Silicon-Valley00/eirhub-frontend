@@ -1,6 +1,6 @@
 // General import
 import './App.css';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, RouterProvider } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AOS from 'aos';
 import { useEffect } from 'react';
@@ -49,6 +49,7 @@ import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLand
 import ProtectedRoutesLoading from './Pages/Protected Routes/ProtectedRoutesLoading';
 // import { Logout } from './context/authcontext';
 import { persistor } from './Store/ReducerStore';
+import { allRoutes } from './routes';
 
 AOS.init();
 
@@ -346,7 +347,9 @@ function App() {
       //       {/* End of route for doctor-dashboard */}
       //    </Routes>
       // </>
-      <></>
+      <>
+         <RouterProvider router={allRoutes} />
+      </>
    );
 }
 
