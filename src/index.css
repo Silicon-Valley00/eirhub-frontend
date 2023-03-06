@@ -1,5 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@400;600&display=swap');
+@font-face {
+   font-family: Comfortaa;
+   src: url(/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+@font-face {
+   font-family: Poppins;
+   src: url(/public/fonts/Poppins/Poppins-Medium.ttf);
+}
 
 * {
    margin: 0;
@@ -19,6 +25,7 @@
    height: 0.3rem;
    cursor: pointer;
 }
+
 *::-webkit-scrollbar-track,
 *::-webkit-scrollbar-track {
    margin: 1.25rem;
@@ -30,8 +37,8 @@
    background-color: var(--lightcol);
    border-radius: 10%;
    cursor: pointer;
-
 }
+
 :root {
    --white: #ffffff;
    --gray: #ecf3fe;
