@@ -17,20 +17,98 @@ import {
 // import { LoginUser } from '../../../context/authcontext';
 import store from '../../../Store/ReducerStore';
 import { persistor } from '../../../Store/ReducerStore';
+import {
+   Box,
+   Button,
+   Container,
+   Dialog,
+   IconButton,
+   Input,
+   InputAdornment,
+   Modal,
+   OutlinedInput,
+   TextField,
+   Typography,
+} from '@mui/material';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { makeStyles } from '@material-ui/styles';
+import {
+   MdAccountCircle,
+   MdOutlineVisibility,
+   MdOutlineVisibilityOff,
+} from 'react-icons/md';
+
+const style = {
+   position: 'absolute' as 'absolute',
+   top: '50%',
+   left: '50%',
+   transform: 'translate(-50%, -50%)',
+   width: '400',
+   bgcolor: 'background.paper',
+   border: '2px solid #000',
+   boxShadow: '24px',
+   pt: 2,
+   px: 4,
+   pb: 3,
+};
+
+const useStyles = makeStyles({
+   dialog: {
+      '& .MuiDialog-root': {
+         '& fieldset': {
+            height: '40rem',
+            backgroud: 'red',
+         },
+      },
+   },
+   inputField: {
+      '& .MuiOutlinedInput-root': {
+         '& fieldset': {
+            borderRadius: '8px',
+         },
+         '&:hover fieldset': {
+            borderColor: 'blue', // Change border color on hover
+         },
+         '&.Mui-focused fieldset': {
+            borderColor: 'green', // Change border color on focus
+         },
+      },
+   },
+
+   button: {
+      '& .MuiButton-root': {
+         backgroundColor: 'red',
+         color: 'var(--white)',
+         borderRadius: '8px',
+         '&:hover': {
+            backgroundColor: 'var(--primary)',
+            color: 'var(--white)',
+         },
+      },
+   },
+});
 
 function Login(props) {
    const loginFormRef = useRef();
-
+   const classes = useStyles();
    const navigate = useNavigate();
    const dispatch = useDispatch();
-   // handles button changes
    const [btnValue, setBtnValue] = useState('login');
    const [btnActive, setBtnActive] = useState(false);
-
-   /* Code below handles user inputs, checks and form submissions */
    const [hidePassword, setHidePassword] = useState(true);
    const [isError, setIsError] = useState(false);
    const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
+   const [showPassword, setShowPassword] = useState(false);
+
+   const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+   const handleMouseDownPassword = (
+      event: React.MouseEvent<HTMLButtonElement>
+   ) => {
+      event.preventDefault();
+   };
 
    // handles registeration flow based on feedback from database
    async function submitCredentialsFeedback() {
@@ -83,42 +161,127 @@ function Login(props) {
          setIsError(true);
       }
    }
+   const schema = z.object({
+      email: z.string().email(),
+      password: z.string().min(6),
+   });
+   const { control, handleSubmit, formState } = useForm({
+      resolver: zodResolver(schema),
+      mode: 'onChange',
+   });
    return (
-      <section id={loginStyles.loginSection}>
-         <div
-            id={loginStyles.loginContainer}
-            className={props.modalLogin ? loginStyles.active : ''}
-         >
-            <div
-               className={loginStyles.closeModal}
-               onClick={() => {
-                  props.handleModalsClose();
-                  loginFormRef.current.reset();
-                  props.reset();
-                  setIsError(false);
-                  setBtnActive(false);
-                  setBtnValue('Login');
-               }}
-            >
-               <i>
-                  <IoCloseOutline />
-               </i>
+      <Dialog
+         open={props.show}
+         onClose={props.handleClose}
+         aria-labelledby="modal-modal-title"
+         aria-describedby="modal-modal-description"
+         style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+         }}
+         maxWidth="lg"
+      >
+         <div className={loginStyles.loginSection}>
+            <div className={loginStyles.rightSide}>
+               <h1>Eirhub</h1>
+               <p>Health is an everyday thing</p>
+               <img id={loginStyles.loginImg} src={loginImage} alt="login" />
             </div>
-            <div className={loginStyles.loginBody}>
-               <div
-                  className={isError ? loginStyles.error : loginStyles.noerror}
-               >
-                  <p>{errorMessage}</p>
-                  <i
-                     className={loginStyles.closeIcon}
-                     onClick={() => {
-                        setIsError(false);
-                     }}
-                  >
-                     <IoCloseOutline />
-                  </i>
-               </div>
+            <div style={{ padding: '3rem', width: '50%' }}>
+               <form className={loginStyles.loginForm}>
+                  <h1 className={loginStyles.title}>Welcome Back</h1>
+                  <p className={loginStyles.info}>Please enter your details</p>
+                  <label>Username</label>
+                  <Controller
+                     name="username"
+                     control={control}
+                     defaultValue=""
+                     render={({ field }) => (
+                        <TextField
+                           {...field}
+                           label="Username"
+                           variant="outlined"
+                           margin="normal"
+                           fullWidth
+                           autoFocus
+                           required
+                           error={!!formState.errors.username}
+                           size="small"
+                           // helperText={formState.errors.username?.message}
+                           className={classes.inputField}
+                        />
+                     )}
+                  />
+                  <label htmlFor="email">Email</label>
+                  <Controller
+                     name="email"
+                     control={control}
+                     defaultValue=""
+                     render={({ field }) => (
+                        <TextField
+                           {...field}
+                           label="Email"
+                           variant="outlined"
+                           margin="normal"
+                           fullWidth
+                           autoFocus
+                           required
+                           error={!!formState.errors.email}
+                           size="small"
+                           // helperText={formState.errors.email?.message}
+                           className={classes.inputField}
+                        />
+                     )}
+                  />
+                  <label htmlFor="password">Password</label>
+                  <Controller
+                     name="password"
+                     control={control}
+                     defaultValue=""
+                     render={({ field }) => (
+                        <OutlinedInput
+                           id="outlined-adornment-password"
+                           type={showPassword ? 'text' : 'password'}
+                           endAdornment={
+                              <InputAdornment position="end">
+                                 <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                 >
+                                    {showPassword ? (
+                                       <MdOutlineVisibilityOff />
+                                    ) : (
+                                       <MdOutlineVisibility />
+                                    )}
+                                 </IconButton>
+                              </InputAdornment>
+                           }
+                           label="Password"
+                           size="small"
+                           className={classes.inputField}
+                        />
+                     )}
+                  />
 
+                  <Button
+                     type="submit"
+                     variant="contained"
+                     className={classes.button}
+                     // disabled={!formState.isValid}
+                     disabled={false}
+                     startIcon={<MdAccountCircle />}
+                  >
+                     Submit
+                  </Button>
+               </form>
+            </div>
+         </div>
+
+         {/* <section id={loginStyles.loginSection} style={style}>
+            <div id={loginStyles.loginContainer} className={loginStyles.active}>
                <form
                   ref={loginFormRef}
                   onSubmit={(e) => {
@@ -206,7 +369,7 @@ function Login(props) {
                   {/* <div className={loginStyles.passwordReset}>
                      <p className={loginStyles.link}>Forgot password?</p>
                   </div> */}
-                  <div className={loginStyles.submit}>
+         {/* <div className={loginStyles.submit}>
                      <button
                         id={loginStyles.loginSubmit}
                         className={
@@ -266,16 +429,16 @@ function Login(props) {
                            </p>
                         </div>
                      </div>
-                  </div>
-               </form>
+                  </div> */}
+         {/* </form>
             </div>
             <div className={loginStyles.rightSide}>
                <h1>Eirhub</h1>
                <p>Health is an everyday thing</p>
                <img id={loginStyles.loginImg} src={loginImage} alt="login" />
             </div>
-         </div>
-      </section>
+         </section> */}
+      </Dialog>
    );
 }
 

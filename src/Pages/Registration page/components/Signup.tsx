@@ -123,7 +123,7 @@ function Signup(props) {
       }
    }
    return (
-      <div className={styles.signupBody}>
+      <form className={styles.signupBody}>
          <div
             id={styles.signupContent}
             className={props.modalSignup ? styles.active : ''}
@@ -537,7 +537,7 @@ function Signup(props) {
                />
             </div>
          </div>
-      </div>
+      </form>
    );
 }
 

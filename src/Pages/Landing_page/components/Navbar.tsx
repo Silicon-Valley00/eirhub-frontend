@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import logo from '../../../assets/landingPage/logo.svg';
 import styles from './navbar.module.css';
 import close from '../../../assets/landingPage/close.svg';
@@ -6,11 +6,33 @@ import menu from '../../../assets/landingPage/menu.svg';
 import { Link, NavLink } from 'react-router-dom';
 import LoginDropdown from './LoginDropdown';
 import SignUpDropdown from './SignUpDropdown';
+import { Box, Button, Modal } from '@mui/material';
+
+const style = {
+   position: 'absolute',
+   height: '20rem',
+   width: '200px',
+   color: 'var(--white)',
+   top: '3rem',
+   right: '5rem',
+   bottom: 0,
+   borderRadius: '20px',
+   paddingRight: '20px',
+   paddingLeft: '20px',
+   /* padding-top: 15px; */
+   paddingBottom: '15px',
+};
 
 const Navbar = (props) => {
    const [sidebar, setSidebar] = useState(false);
    const [loginClick, setLoginClick] = useState(false);
    const [signUpClick, setSignUpClick] = useState(false);
+   const [open, setOpen] = React.useState(false);
+
+   const handleClose = () => {
+      setLoginClick(false);
+      setSignUpClick(false);
+   };
 
    const showSidebar = () => setSidebar(!sidebar);
    const handleSignUpClick = () => {
@@ -88,7 +110,7 @@ const Navbar = (props) => {
                               How it Works
                            </NavLink>
                         </ul>
-                        <div id={styles.signup}>
+                        <div>
                            <ul className={styles.signup_list}>
                               <li
                                  className={styles.signup_item}
@@ -104,22 +126,38 @@ const Navbar = (props) => {
                                  Login
                               </li>
                            </ul>
-                           {loginClick && (
-                              <LoginDropdown
-                                 handleModalLogin={props.handleModalLogin}
-                                 handleModalLoginDoctor={
-                                    props.handleModalLoginDoctor
-                                 }
-                              />
-                           )}
-                           {signUpClick && (
-                              <SignUpDropdown
-                                 handleModalSignup={props.handleModalSignup}
-                                 handleModalSignupDoctor={
-                                    props.handleModalSignupDoctor
-                                 }
-                              />
-                           )}
+                           <Modal
+                              open={loginClick}
+                              onClose={handleClose}
+                              aria-labelledby="parent-modal-title"
+                              aria-describedby="parent-modal-description"
+                           >
+                              <Box sx={{ ...style, width: 200 }}>
+                                 <LoginDropdown
+                                    handleModalLogin={props.handleModalLogin}
+                                    handleModalLoginDoctor={
+                                       props.handleModalLoginDoctor
+                                    }
+                                 />
+                                 {/* <ChildModal /> */}
+                              </Box>
+                           </Modal>
+                           <Modal
+                              open={signUpClick}
+                              onClose={handleClose}
+                              aria-labelledby="parent-modal-title"
+                              aria-describedby="parent-modal-description"
+                           >
+                              <Box sx={{ ...style, width: 200 }}>
+                                 <SignUpDropdown
+                                    handleModalSignup={props.handleModalSignup}
+                                    handleModalSignupDoctor={
+                                       props.handleModalSignupDoctor
+                                    }
+                                 />
+                                 {/* <ChildModal /> */}
+                              </Box>
+                           </Modal>
                         </div>
                      </div>
                   </div>

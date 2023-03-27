@@ -61,3 +61,9 @@
    --mainfont: 'Poppins', sans-serif;
    --logofont: 'Comfortaa', cursive;
 }
+
+.MuiButton-root {
+   background-color: red;
+   color: 'var(--white)';
+   border-radius: '8px';
+}
