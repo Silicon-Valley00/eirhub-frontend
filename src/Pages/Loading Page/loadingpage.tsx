@@ -5,7 +5,7 @@ import { useDispatch, connect, useSelector } from 'react-redux';
 import { fetchMedications, setMedicationsTemp } from '../../Store/Actions';
 import store from '../../Store/ReducerStore';
 
-function Loading(props) {
+function Loading() {
    const dispatch = useDispatch();
    const patientID = useSelector((state) => state.profile.id_patient);
 
