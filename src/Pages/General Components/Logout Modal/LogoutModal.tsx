@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './logoutmodal.module.css';
-import { persistor } from '../../../Store/ReducerStore';
+import { persistor } from '../../../Store/store';
 import { setMessage, setPatientAuth } from '../../../Store/Actions';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';

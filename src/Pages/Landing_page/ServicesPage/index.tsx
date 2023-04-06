@@ -10,7 +10,7 @@ import Registration from '../../Registration page/Registration';
 import styles from '../Landingpage.module.css';
 import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
-import { persistor } from '../../../Store/ReducerStore';
+import { persistor } from '../../../Store/store';
 
 const ServicesPage = () => {
    // Handles the states of the modals that show the different registration pages to users based on gtheir selection
@@ -19,47 +19,6 @@ const ServicesPage = () => {
    const [modalLogin, setModalLogin] = useState(false);
    const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
 
-   useEffect(() => setTimeout(() => persistor.purge(), 200), []);
-
-   // Function opens the patients' signup form modal
-   function handleModalSignup() {
-      setModalLogin(false);
-      setModalSignup(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the patients' login form modal
-   function handleModalLogin() {
-      setModalSignup(false);
-      setModalLogin(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the doctors' signup form modal
-   function handleModalSignupDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(true);
-   }
-
-   // Function opens the doctors' login form modal
-   function handleModalLoginDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(true);
-      setModalSignupDoctor(false);
-   }
-
-   // Handles close of all form modals
-   function handleModalsClose() {
-      setModalSignup(false);
-      setModalLogin(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
    return (
       <>
          <Helmet>
@@ -69,27 +28,9 @@ const ServicesPage = () => {
                content="This page displays the services Eirhub provides"
             />
          </Helmet>
-         {/* BUG: React does not recognize the `handleModalsClose` prop on a DOM element. */}
-         <div
-            id={styles.blur}
-            className={
-               modalLogin ||
-               modalSignup ||
-               modalLoginDoctor ||
-               modalSignupDoctor
-                  ? styles.active
-                  : ''
-            }
-            handleModalsClose={handleModalsClose}
-         >
+         <div className={styles.active}>
             <AlertsMessageBox time={5000} />
-            <Navbar
-               handleModalLogin={handleModalLogin}
-               handleModalSignup={handleModalSignup}
-               handleModalLoginDoctor={handleModalLoginDoctor}
-               handleModalSignupDoctor={handleModalSignupDoctor}
-               indicator={2}
-            />{' '}
+            <Navbar indicator={2} />
             <main className={style.main}>
                <div className={style.wrapper}>
                   {/* upper section */}
@@ -199,19 +140,8 @@ const ServicesPage = () => {
                   </section>
                </div>
             </main>
-            <Footer handleModalSignup={handleModalSignup} />
+            <Footer />
          </div>
-         <Registration
-            modalLogin={modalLogin}
-            modalSignup={modalSignup}
-            modalLoginDoctor={modalLoginDoctor}
-            modalSignupDoctor={modalSignupDoctor}
-            handleModalsClose={handleModalsClose}
-            handleModalLogin={handleModalLogin}
-            handleModalSignup={handleModalSignup}
-            handleModalLoginDoctor={handleModalLoginDoctor}
-            handleModalSignupDoctor={handleModalSignupDoctor}
-         />
       </>
    );
 };

@@ -11,8 +11,8 @@ import {
    setPatientAuth,
 } from '../../../Store/Actions.js';
 // import { LoginUser } from '../../../context/authcontext';
-import store from '../../../Store/ReducerStore';
-import { persistor } from '../../../Store/ReducerStore';
+import store from '../../../Store/store';
+import { persistor } from '../../../Store/store';
 import {
    Box,
    Button,

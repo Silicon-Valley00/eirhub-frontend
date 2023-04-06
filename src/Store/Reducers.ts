@@ -1,3 +1,4 @@
+import initialState from './initialStore';
 import { PURGE } from 'redux-persist';
 import {
    SET_PROFILE_INFO,
@@ -20,7 +21,6 @@ import {
    SET_DOCTOR_RECORD_PATIENT_ID,
    SET_MESSAGE_STATE,
 } from './ActionTypes';
-import initialState from './initialStore';
 
 const Reducers = (state = initialState, action) => {
    switch (action.type) {

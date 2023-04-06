@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import store from '../../../Store/ReducerStore';
+import store from '../../../Store/store';
 import { setMessage } from '../../../Store/Actions';
 
 const DoctorSchedule = (props) => {

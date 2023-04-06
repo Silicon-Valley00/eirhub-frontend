@@ -3,7 +3,7 @@ import styles from './loading.module.css';
 import spinner from '../../assets/loading-gif.gif';
 import { useDispatch, connect, useSelector } from 'react-redux';
 import { fetchMedications, setMedicationsTemp } from '../../Store/Actions';
-import store from '../../Store/ReducerStore';
+import store from '../../Store/store';
 
 function Loading() {
    const dispatch = useDispatch();

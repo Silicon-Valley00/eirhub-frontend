@@ -1,4 +1,4 @@
-import store from './ReducerStore';
+import store from './store';
 
 import {
    SET_PROFILE_INFO,

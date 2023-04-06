@@ -1,4 +1,4 @@
-const initialState = {
+const initialStates = {
    doctorRecordPatientId: null,
    isLoading: false,
    //Patient Dashboard
@@ -79,4 +79,4 @@ const initialState = {
    messagePatientState: false,
 };
 
-export default initialState;
+export default initialStates;

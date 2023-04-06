@@ -19,8 +19,8 @@ import {
    fetchHealthDetails,
 } from '../../../Store/Actions.js';
 // import { SignUpUser } from '../../../context/authcontext';
-import store from '../../../Store/ReducerStore';
-import { persistor } from '../../../Store/ReducerStore';
+import store from '../../../Store/store';
+import { persistor } from '../../../Store/store';
 
 function Signup(props) {
    const navigate = useNavigate();

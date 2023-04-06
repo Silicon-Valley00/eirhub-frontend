@@ -9,56 +9,12 @@ import { IoIosClock } from 'react-icons/io';
 import { MdVerified } from 'react-icons/md';
 import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
-import { persistor } from '../../../Store/ReducerStore';
 
-const HowItWorks = () => {
-   // Handles the states of the modals that show the different registration pages to users based on gtheir selection
-   const [modalSignup, setModalSignup] = useState(false);
-   const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
-   const [modalLogin, setModalLogin] = useState(false);
-   const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
-
-   // useEffect(() => setTimeout(() => persistor.purge(), 200), []);
-
-   // Function opens the patients' signup form modal
-   function handleModalSignup() {
-      setModalLogin(false);
-      setModalSignup(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the patients' login form modal
-   function handleModalLogin() {
-      setModalSignup(false);
-      setModalLogin(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the doctors' signup form modal
-   function handleModalSignupDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(true);
-   }
-
-   // Function opens the doctors' login form modal
-   function handleModalLoginDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(true);
-      setModalSignupDoctor(false);
-   }
-
-   // Handles close of all form modals
-   function handleModalsClose() {
-      setModalSignup(false);
-      setModalLogin(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
+interface MyDivProps extends React.HTMLAttributes<HTMLDivElement> {
+   'data-aos': string;
+   duration: string;
+}
+const HowItWorks = (props: MyDivProps) => {
    return (
       <>
          <Helmet>
@@ -66,25 +22,9 @@ const HowItWorks = () => {
             <meta name="description" content="How It Works" />
          </Helmet>
 
-         <div
-            id={styles.blur}
-            className={
-               modalLogin ||
-               modalSignup ||
-               modalLoginDoctor ||
-               modalSignupDoctor
-                  ? styles.active
-                  : ''
-            }
-            handleModalsClose={handleModalsClose}
-         >
+         <div className={styles.active}>
             <AlertsMessageBox time={5000} />
-            <Navbar
-               handleModalLogin={handleModalLogin}
-               handleModalSignup={handleModalSignup}
-               handleModalLoginDoctor={handleModalLoginDoctor}
-               handleModalSignupDoctor={handleModalSignupDoctor}
-            />
+            <Navbar />
             <main className={styles.main}>
                {/* upper section */}
                <div className={styles.upper_part}>
@@ -107,8 +47,9 @@ const HowItWorks = () => {
                         <p className={styles.circle__num}>1</p>
                         {/* first card on the left */}
                         <div
+                           {...props}
                            data-aos="zoom-out-up"
-                           duration="4000"
+                           duration={'4000'}
                            className={styles.left_card}
                         >
                            <div className={styles.left__card}>
@@ -193,19 +134,8 @@ const HowItWorks = () => {
                   </div>
                </section>
             </main>
-            <Footer handleModalSignup={handleModalSignup} />
+            <Footer />
          </div>
-         <Registration
-            modalLogin={modalLogin}
-            modalSignup={modalSignup}
-            modalLoginDoctor={modalLoginDoctor}
-            modalSignupDoctor={modalSignupDoctor}
-            handleModalsClose={handleModalsClose}
-            handleModalLogin={handleModalLogin}
-            handleModalSignup={handleModalSignup}
-            handleModalLoginDoctor={handleModalLoginDoctor}
-            handleModalSignupDoctor={handleModalSignupDoctor}
-         />
       </>
    );
 };

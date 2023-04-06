@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { APP_ID, APP_REGION } from './constants/constants';
-import store, { persistor } from './Store/ReducerStore';
+import store, { persistor } from './Store/store';
 import ScrollToTop from './utils/scrollToTop';
 import { allRoutes } from './routes';
 import { StyledEngineProvider } from '@mui/material';

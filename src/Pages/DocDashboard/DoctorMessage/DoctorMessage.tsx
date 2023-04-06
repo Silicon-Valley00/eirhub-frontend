@@ -4,7 +4,7 @@ import styles from './message.module.css';
 // import { CometChatMessages } from '../../../Chat UI Kit/cometchat-pro-react-ui-kit/CometChatWorkspace/src';
 import { Helmet } from 'react-helmet';
 import { RiMessage3Fill } from 'react-icons/ri';
-import store from '../../../Store/ReducerStore';
+import store from '../../../Store/store';
 import { setMessageStateFunc } from '../../../Store/DoctorAction';
 
 const DoctorMessage = () => {

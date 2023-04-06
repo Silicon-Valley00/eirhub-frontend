@@ -14,7 +14,7 @@ import {
    updatePrescriptions,
 } from '../../../Store/Actions.js';
 import { useSelector } from 'react-redux';
-import store from '../../../Store/ReducerStore';
+import store from '../../../Store/store';
 import { Helmet } from 'react-helmet';
 
 const mapStateToProps = (state) => {

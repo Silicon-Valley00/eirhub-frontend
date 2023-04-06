@@ -22,7 +22,7 @@ import ProtectedRoutesDoctor from './Pages/Protected Routes/ProtectedRoutesDocto
 import ProtectedRoutesLanding from './Pages/Protected Routes/ProtectedRoutesLanding';
 import ProtectedRoutesLoading from './Pages/Protected Routes/ProtectedRoutesLoading';
 // import { Logout } from './context/authcontext';
-import { persistor } from './Store/ReducerStore';
+import { persistor } from './Store/store';
 import { allRoutes } from './routes';
 
 AOS.init();

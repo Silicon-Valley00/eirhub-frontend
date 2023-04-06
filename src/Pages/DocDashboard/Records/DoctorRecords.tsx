@@ -9,7 +9,7 @@ import { FaTrash } from 'react-icons/fa';
 import axios from 'axios';
 // import { connect, useDispatch } from 'react-redux';
 import { setMessage } from '../../../Store/Actions';
-import store from '../../../Store/ReducerStore';
+import store from '../../../Store/store';
 
 const DoctorRecords = () => {
    // const dispatch = useDispatch();
@@ -45,15 +45,14 @@ const DoctorRecords = () => {
                   msg: 'Delete unsuccessful.',
                   state: 0,
                })
-               )
-            }
-         );
+            );
+         });
    };
 
    useEffect(() => {
       async function fetchdata() {
          const items = await fetchReports(patientID);
-         items.reverse()
+         items.reverse();
          setReports(items);
          console.log(items, reports);
       }

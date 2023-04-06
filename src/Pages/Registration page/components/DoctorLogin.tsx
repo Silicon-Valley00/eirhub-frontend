@@ -13,8 +13,8 @@ import {
    fetchDoctorsProfileInfo,
    setDoctorAuth,
 } from '../../../Store/DoctorAction.js';
-import store from '../../../Store/ReducerStore';
-import { persistor } from '../../../Store/ReducerStore';
+import store from '../../../Store/store';
+import { persistor } from '../../../Store/store';
 import { setLoading, setMessage } from '../../../Store/Actions';
 
 function DoctorLogin(props) {

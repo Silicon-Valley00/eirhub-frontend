@@ -9,7 +9,7 @@ import {
 } from '../../../Store/DoctorAction';
 import axios from 'axios';
 import { setMessage } from '../../../Store/Actions';
-import store from '../../../Store/ReducerStore';
+import store from '../../../Store/store';
 
 function MessagePatients() {
    const doctorID = useSelector((state) => state.doctorProfile.id_doctor);
