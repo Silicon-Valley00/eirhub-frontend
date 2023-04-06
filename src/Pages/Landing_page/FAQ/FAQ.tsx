@@ -7,13 +7,12 @@ import { useState } from 'react';
 import Registration from '../../Registration page/Registration';
 import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
-import { persistor } from '../../../Store/ReducerStore';
+import { persistor } from '../../../Store/store';
 
 const FAQ = () => {
-   const [selected, setSelected] = useState(null);
-   useEffect(() => setTimeout(() => persistor.purge(), 200), []);
+   const [selected, setSelected] = useState<number | null>(null);
 
-   const toggle = (index) => {
+   const toggle = (index: number) => {
       if (selected === index) {
          return setSelected(null);
       }
@@ -21,76 +20,15 @@ const FAQ = () => {
       setSelected(index);
    };
 
-   // Handles the states of the modals that show the different registration pages to users based on gtheir selection
-   const [modalSignup, setModalSignup] = useState(false);
-   const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
-   const [modalLogin, setModalLogin] = useState(false);
-   const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
-
-   // Function opens the patients' signup form modal
-   function handleModalSignup() {
-      setModalLogin(false);
-      setModalSignup(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the patients' login form modal
-   function handleModalLogin() {
-      setModalSignup(false);
-      setModalLogin(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the doctors' signup form modal
-   function handleModalSignupDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(true);
-   }
-
-   // Function opens the doctors' login form modal
-   function handleModalLoginDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(true);
-      setModalSignupDoctor(false);
-   }
-
-   // Handles close of all form modals
-   function handleModalsClose() {
-      setModalSignup(false);
-      setModalLogin(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
    return (
       <>
          <Helmet>
             <title>FAQ | Eirhub</title>
          </Helmet>
-         <div
-            id={styles.blur}
-            className={
-               modalLogin ||
-               modalSignup ||
-               modalLoginDoctor ||
-               modalSignupDoctor
-                  ? styles.active
-                  : ''
-            }
-            handleModalsClose={handleModalsClose}
-         >
+         <div className={styles.active}>
             <AlertsMessageBox time={5000} />
 
-            <Navbar
-               handleModalLogin={handleModalLogin}
-               handleModalSignup={handleModalSignup}
-               handleModalLoginDoctor={handleModalLoginDoctor}
-               handleModalSignupDoctor={handleModalSignupDoctor}
-            />
+            <Navbar />
             <main className={styles.main}>
                <div className={styles.upper_part}>
                   <div className={styles.title}>FAQ</div>
@@ -138,19 +76,8 @@ const FAQ = () => {
                </div>
             </main>
 
-            <Footer handleModalSignup={handleModalSignup} />
+            <Footer />
          </div>
-         <Registration
-            modalLogin={modalLogin}
-            modalSignup={modalSignup}
-            modalLoginDoctor={modalLoginDoctor}
-            modalSignupDoctor={modalSignupDoctor}
-            handleModalsClose={handleModalsClose}
-            handleModalLogin={handleModalLogin}
-            handleModalSignup={handleModalSignup}
-            handleModalLoginDoctor={handleModalLoginDoctor}
-            handleModalSignupDoctor={handleModalSignupDoctor}
-         />
       </>
    );
 };
