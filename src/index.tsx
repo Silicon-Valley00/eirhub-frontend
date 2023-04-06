@@ -10,12 +10,15 @@ import { APP_ID, APP_REGION } from './constants/constants';
 import store, { persistor } from './Store/ReducerStore';
 import ScrollToTop from './utils/scrollToTop';
 import { allRoutes } from './routes';
+import { StyledEngineProvider } from '@mui/material';
 
 ReactDOM.render(
    <Provider store={store}>
       {/* <ScrollToTop /> */}
       {/* <PersistGate persistor={persistor}> */}
-      <App />
+      <StyledEngineProvider>
+         <App />
+      </StyledEngineProvider>
       {/* </PersistGate> */}
    </Provider>,
    document.getElementById('root')
