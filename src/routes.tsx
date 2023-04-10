@@ -26,7 +26,7 @@ const appRoutes: routing = {
       },
       {
          path: routePaths.howItWorks,
-         element: <HowItWorks />,
+         element: <HowItWorks data-aos="zoom-out-up" duration="4000" />,
       },
       {
          path: routePaths.FAQ,

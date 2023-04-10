@@ -46,12 +46,7 @@ const HowItWorks = (props: MyDivProps) => {
                      <div className={styles.circle_1}>
                         <p className={styles.circle__num}>1</p>
                         {/* first card on the left */}
-                        <div
-                           {...props}
-                           data-aos="zoom-out-up"
-                           duration={'4000'}
-                           className={styles.left_card}
-                        >
+                        <div {...props} className={styles.left_card}>
                            <div className={styles.left__card}>
                               <GiLabCoat className={styles.icon} />
                               <p className={styles.heading}>Find a doctor</p>
@@ -67,11 +62,7 @@ const HowItWorks = (props: MyDivProps) => {
                      <div className={styles.circle_2}>
                         <p className={styles.circle__num}>2</p>
                         {/* first card on the right */}
-                        <div
-                           data-aos="zoom-out-up"
-                           duration="4000"
-                           className={styles.right_card}
-                        >
+                        <div {...props} className={styles.right_card}>
                            <div className={styles.right__arrow}></div>
                            <div className={styles.right__card}>
                               <MdVerified className={styles.icon} />
@@ -89,11 +80,7 @@ const HowItWorks = (props: MyDivProps) => {
                      <div className={styles.circle_3}>
                         <p className={styles.circle__num}>3</p>
                         {/* Second card on the left */}
-                        <div
-                           data-aos="zoom-out-up"
-                           duration="4000"
-                           className={styles.left_card}
-                        >
+                        <div {...props} className={styles.left_card}>
                            <div className={styles.left__card}>
                               <IoIosClock className={styles.icon} />
                               <p className={styles.heading}>
@@ -116,8 +103,8 @@ const HowItWorks = (props: MyDivProps) => {
 
                         {/* Second card on the right */}
                         <div
+                           {...props}
                            data-aos="zoom-out-up"
-                           duration="4000"
                            className={styles.right_card}
                         >
                            <div className={styles.right__arrow}></div>

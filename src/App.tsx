@@ -1,6 +1,6 @@
 // General import
 import './App.css';
-import { Routes, Route, Navigate, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AOS from 'aos';
 import { useEffect } from 'react';
