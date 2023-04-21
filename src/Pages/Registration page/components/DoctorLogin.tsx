@@ -19,7 +19,12 @@ function DoctorLogin({
    handleClose: () => void;
 }) {
    return (
-      <Dialog open={show} onClose={handleClose}></Dialog>
+      <Dialog
+         open={show}
+         onClose={handleClose}
+         aria-labelledby="modal-modal-title"
+         aria-describedby="modal-modal-description"
+      ></Dialog>
       // <section id={loginStyles.loginSection}>
       //    <div
       //       id={loginStyles.loginContainer}
