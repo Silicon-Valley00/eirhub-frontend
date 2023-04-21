@@ -84,13 +84,13 @@ function PatientLogin({
                <p>Health is an everyday thing</p>
                <img id={loginStyles.loginImg} src={loginImage} alt="login" />
             </div>
-            {/* REVIEW: space between label and input except for password. */}
+
             <div style={{ padding: '20px', width: '100%' }}>
                <form className={loginStyles.loginForm}>
                   <h1 className={loginStyles.title}>Welcome Back</h1>
                   <p className={loginStyles.info}>Please enter your details</p>
-                  <div>
-                     <label>Username</label>
+                  <div className={loginStyles.inputField}>
+                     <label htmlFor="Username">Username</label>
                      <Controller
                         name="username"
                         control={control}
