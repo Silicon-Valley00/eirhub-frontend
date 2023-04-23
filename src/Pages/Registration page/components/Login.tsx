@@ -38,24 +38,15 @@ import {
 import { useStyles } from './dialogStyles';
 import { theme } from '../../../utils/theme/theme';
 
-function Login({
+function PatientLogin({
    show,
    handleClose,
 }: {
    show: boolean;
    handleClose: () => void;
 }) {
-   const loginFormRef = useRef();
    const classes = useStyles();
-   const navigate = useNavigate();
-   const dispatch = useDispatch();
-   const [btnValue, setBtnValue] = useState('login');
-   const [btnActive, setBtnActive] = useState(false);
-   const [hidePassword, setHidePassword] = useState(true);
-   const [isError, setIsError] = useState(false);
-   const [errorMessage, setErrorMessage] = useState('Login failed. Try again.');
    const [showPassword, setShowPassword] = useState(false);
-
    const handleClickShowPassword = () => setShowPassword((show) => !show);
 
    const handleMouseDownPassword = (
@@ -63,58 +54,6 @@ function Login({
    ) => {
       event.preventDefault();
    };
-
-   // handles registeration flow based on feedback from database
-   async function submitCredentialsFeedback() {
-      const feedback = await props.submitUserCredentialsHandler();
-
-      // checks if account is to be logged in
-      if (feedback[0] === true) {
-         setBtnActive(feedback[0]);
-         setBtnValue(feedback[2]);
-         //fetches user profile
-         dispatch(
-            fetchProfile(feedback[1].id_patient, feedback[1].id_guardian)
-         );
-         dispatch(setLoading(true));
-         navigate('/loading', { state: { status: false } });
-         dispatch(setPatientAuth(true));
-
-         setTimeout(() => {
-            //navigates user to dashboard
-            if (store.getState().okToRoute === true) {
-               navigate('/userdashboard');
-               //logs user into cometchat
-
-               LoginUser(feedback[1].id_message);
-               dispatch(setLoading(false));
-            } else {
-               //when something goes wrong
-               setTimeout(() => {
-                  persistor.purge();
-               }, 200);
-
-               dispatch(setPatientAuth(false));
-               navigate('/landing-page');
-               setTimeout(() => {
-                  dispatch(
-                     setMessage({
-                        show: true,
-                        msg: 'Fetching profile failed, trying again.',
-                        state: 0,
-                     })
-                  );
-               }, 1000);
-               dispatch(setLoading(false));
-            }
-         }, 2 * 1000);
-      } else {
-         setBtnActive(feedback[0]);
-         setBtnValue('Login');
-         setErrorMessage(feedback[1]);
-         setIsError(true);
-      }
-   }
 
    const schema = z.object({
       email: z.string().email(),
@@ -250,4 +189,4 @@ function Login({
    );
 }
 
-export default Login;
+export default PatientLogin;

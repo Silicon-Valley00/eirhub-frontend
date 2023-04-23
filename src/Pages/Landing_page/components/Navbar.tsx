@@ -133,12 +133,7 @@ const Navbar = (props) => {
                               aria-describedby="parent-modal-description"
                            >
                               <Box sx={{ ...style, width: 200 }}>
-                                 <LoginDropdown
-                                    handleModalLogin={props.handleModalLogin}
-                                    handleModalLoginDoctor={
-                                       props.handleModalLoginDoctor
-                                    }
-                                 />
+                                 <LoginDropdown />
                                  {/* <ChildModal /> */}
                               </Box>
                            </Modal>
