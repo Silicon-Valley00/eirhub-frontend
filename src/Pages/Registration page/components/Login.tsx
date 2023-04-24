@@ -56,7 +56,7 @@ function PatientLogin({
    };
 
    const schema = z.object({
-      email: z.string().email(),
+      username: z.string().min(3),
       password: z.string().min(6),
    });
 
@@ -89,6 +89,7 @@ function PatientLogin({
                <form className={loginStyles.loginForm}>
                   <h1 className={loginStyles.title}>Welcome Back</h1>
                   <p className={loginStyles.info}>Please enter your details</p>
+                  {/* REVIEW: Don't really understand why username is used in login */}
                   <div className={loginStyles.inputField}>
                      <label htmlFor="Username">Username</label>
                      <Controller
@@ -102,35 +103,11 @@ function PatientLogin({
                               variant="outlined"
                               margin="normal"
                               fullWidth
-                              autoFocus
                               required
+                              autoFocus
                               error={!!formState.errors.username}
                               size="small"
                               // helperText={formState.errors.username?.message}
-                              className={classes.inputField}
-                           />
-                        )}
-                     />
-                  </div>
-
-                  <div className={loginStyles.inputField}>
-                     <label htmlFor="email">Email</label>
-                     <Controller
-                        name="email"
-                        control={control}
-                        defaultValue=""
-                        render={({ field }) => (
-                           <TextField
-                              {...field}
-                              label="Email"
-                              variant="outlined"
-                              margin="normal"
-                              fullWidth
-                              autoFocus
-                              required
-                              error={!!formState.errors.email}
-                              size="small"
-                              // helperText={formState.errors.email?.message}
                               className={classes.inputField}
                            />
                         )}
@@ -182,6 +159,14 @@ function PatientLogin({
                         Submit
                      </Button>
                   </ThemeProvider>
+                  <div className={loginStyles.signupToggle}>
+                     <div>
+                        New Here ?{' '}
+                        <p className={loginStyles.link} onClick={() => {}}>
+                           Sign up
+                        </p>
+                     </div>
+                  </div>
                </form>
             </div>
          </div>
