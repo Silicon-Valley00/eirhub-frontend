@@ -1,31 +1,15 @@
 import { useState, useRef } from 'react';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import loginStyles from './Login.module.css';
 import loginImage from '../../../assets/images/loginimage.svg';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+
 import {
-   fetchProfile,
-   setLoading,
-   setMessage,
-   setPatientAuth,
-} from '../../../Store/Actions.js';
-// import { LoginUser } from '../../../context/authcontext';
-import store from '../../../Store/store';
-import { persistor } from '../../../Store/store';
-import {
-   Box,
    Button,
-   Container,
    Dialog,
    IconButton,
-   Input,
    InputAdornment,
-   Modal,
    OutlinedInput,
    TextField,
    ThemeProvider,
-   Typography,
 } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';

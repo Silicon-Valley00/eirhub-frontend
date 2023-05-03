@@ -23,11 +23,10 @@ const style = {
    paddingBottom: '15px',
 };
 
-const Navbar = (props) => {
+const Navbar = () => {
    const [sidebar, setSidebar] = useState(false);
    const [loginClick, setLoginClick] = useState(false);
    const [signUpClick, setSignUpClick] = useState(false);
-   const [open, setOpen] = React.useState(false);
 
    const handleClose = () => {
       setLoginClick(false);
@@ -144,12 +143,7 @@ const Navbar = (props) => {
                               aria-describedby="parent-modal-description"
                            >
                               <Box sx={{ ...style, width: 200 }}>
-                                 <SignUpDropdown
-                                    handleModalSignup={props.handleModalSignup}
-                                    handleModalSignupDoctor={
-                                       props.handleModalSignupDoctor
-                                    }
-                                 />
+                                 <SignUpDropdown />
                                  {/* <ChildModal /> */}
                               </Box>
                            </Modal>

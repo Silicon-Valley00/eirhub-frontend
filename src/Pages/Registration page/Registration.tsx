@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import Signup from './components/Signup';
-import Login from './components/Login';
+import Signup from './components/PatientSignup';
+import Login from './components/PatientLogin';
 import DoctorSignup from './components/DoctorSignup.js';
 import DoctorLogin from './components/DoctorLogin';
 import axios from 'axios';
@@ -143,7 +143,6 @@ function Registration(props) {
       setDoctorLoginEmailErrorMessage('');
       setDoctorLoginPasswordErrorMessage('');
    }
-
 
    const pattern = /^[a-zA-Z-]+$/;
    const emailPattern = /^[^ ]+@[^ ]+\.[a-zA-Z]{2,3}$/;

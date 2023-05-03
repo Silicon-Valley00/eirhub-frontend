@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './dropdown.module.css';
 import { Box, Modal, Typography } from '@mui/material';
-import PatientLogin from '../../Registration page/components/Login';
+import PatientLogin from '../../Registration page/components/PatientLogin';
 import DoctorLogin from '../../Registration page/components/DoctorLogin';
 
 const LoginDropdown = () => {
