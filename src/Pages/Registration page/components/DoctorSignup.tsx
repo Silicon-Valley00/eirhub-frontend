@@ -46,95 +46,10 @@ function DoctorSignup({
       'Email already in use. Want to login?'
    );
 
-   // handles registeration flow based on feedback from database
-   async function submitCredentialsFeedback() {
-      const feedback = await props.submitUserCredentialsHandler();
-
-      // checks if user signup was successful
-      if (feedback[0] === true) {
-         setBtnActive(feedback[0]);
-         setBtnValue(feedback[2]);
-
-         //Fetches doctor profile
-         dispatch(setDoctorProfile(feedback[1]));
-         dispatch(setOkToRoute(true));
-         dispatch(getAllPendingAppointmentsForADoctor(feedback[1].id_doctor));
-         dispatch(setLoading(true));
-         //naviagates to the loading page
-         navigate('/loading', { state: { status: false } });
-         dispatch(setDoctorAuth(true));
-
-         setTimeout(() => {
-            if (store.getState().okToRoute === true) {
-               //registers user into cometchat
-               SignUpUser(
-                  `${
-                     feedback[1].first_name.charAt(0).toUpperCase() +
-                     feedback[1].first_name.slice(1)
-                  } ${
-                     feedback[1].last_name.charAt(0).toUpperCase() +
-                     feedback[1].last_name.slice(1)
-                  }
-         `,
-                  feedback[1].id_message
-               );
-               //navigates user to the doctor dashboard
-               navigate('/doctordashboard');
-
-               dispatch(setLoading(false));
-               dispatch(
-                  setMessage({
-                     show: true,
-                     msg: 'Please complete your profile.',
-                     state: 1,
-                  })
-               );
-            } else {
-               //when something goes wrong
-               setTimeout(() => {
-                  persistor.purge();
-               }, 200);
-
-               dispatch(setDoctorAuth(false));
-               navigate('/landing-page');
-
-               setTimeout(() => {
-                  dispatch(
-                     setMessage({
-                        show: true,
-                        msg: 'Fetching profile failed, log in.',
-                        state: 0,
-                     })
-                  );
-               }, 2000);
-               dispatch(setLoading(false));
-            }
-         }, 1.5 * 1000);
-      } else {
-         // when signup was unsuccessful
-         setBtnActive(feedback[0]);
-         setBtnValue('Create Account');
-         setErrorMessage(feedback[1]);
-         setIsError(true);
-      }
-   }
-
    return (
       <Dialog open={show} onClose={handleClose}>
          <div className={styles.signupBody}>
             <div id={styles.signupContent} className={styles.active}>
-               <div
-                  className={styles.closeModal}
-                  onClick={() => {
-                     setIsError(false);
-                     setBtnActive(false);
-                     setBtnValue('Create Account');
-                  }}
-               >
-                  <i>
-                     <IoCloseOutline />
-                  </i>
-               </div>
                <div className={styles.signupContainer}>
                   <div className={styles.leftRegion}>
                      <h3>Eirhub</h3>

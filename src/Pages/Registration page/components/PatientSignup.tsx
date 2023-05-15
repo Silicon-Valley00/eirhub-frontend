@@ -1,25 +1,11 @@
 import React, { useState, useRef } from 'react';
 import styles from './signup.module.css';
 import signUp from '../../../assets/images/Patientsignup.svg';
-import { GuardianForm } from './GuardianForm';
-import { FaRegUser, FaTimes } from 'react-icons/fa';
+
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoIosMail } from 'react-icons/io';
 import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
-import { BiLoaderAlt } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import {
-   setProfileInfo,
-   setLoading,
-   setMessage,
-   setPatientAuth,
-   fetchHealthDetails,
-} from '../../../Store/Actions.js';
-// import { SignUpUser } from '../../../context/authcontext';
-import store from '../../../Store/store';
-import { persistor } from '../../../Store/store';
 import { Button, Dialog, TextField, ThemeProvider } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -35,18 +21,13 @@ function PatientSignup({
    show: boolean;
    handleClose: () => void;
 }) {
-   // handles button changes
-   const [btnValue, setBtnValue] = useState('Create Account');
    const [btnActive, setBtnActive] = useState(false);
-   // btnActive is for when button can  be clicked to create account. This would be set to false when an error occurs
+
    // Handles password visibility
    const [hidePasswordOne, setHidePasswordOne] = useState(true);
    const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
    // Handles server error
    const [isError, setIsError] = useState(false);
-   const [errorMessage, setErrorMessage] = useState(
-      'Email already in use. Want to login?'
-   );
 
    // handles if patient needs a guardian
    const [needGuardian, setNeedGuardian] = useState(false);
@@ -68,7 +49,18 @@ function PatientSignup({
    });
 
    return (
-      <Dialog open={show} onClose={handleClose}>
+      <Dialog
+         open={show}
+         onClose={handleClose}
+         aria-label={'Patient-sign-up-modal'}
+         aria-describedby="A modal with forms for patient sign up"
+         style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+         }}
+         maxWidth="lg"
+      >
          <form
             className={styles.signupBody}
             onSubmit={(e) => {
@@ -90,6 +82,7 @@ function PatientSignup({
                         <img src={signUp} alt="Sign-up" />
                      </div>
                   </div>
+
                   <div
                      className={
                         needGuardian
@@ -97,26 +90,14 @@ function PatientSignup({
                            : `${styles.rightRegion}`
                      }
                   >
-                     <div className={isError ? styles.error : styles.noerror}>
-                        <p>{errorMessage}</p>
-                        <i
-                           className={styles.closeIcon}
-                           onClick={() => {
-                              setIsError(false);
-                           }}
-                        >
-                           <IoCloseOutline />
-                        </i>
-                     </div>
                      <div className={styles.formSideContainer}>
                         <div className={styles.signupFormTitle}>
                            <h3>Create New Account</h3>
                            <p>Take control of your health today</p>
                         </div>
                         <div className={styles.signupForm}>
-                           <div className={styles.signupFormBoxNames}>
-                              <div className={styles.signupFormBoxName}>
-                                 {/* <label htmlFor="firstname"> Firstname</label> */}
+                           <div className={styles.firstAndLastname}>
+                              <div className={styles.signupFormBoxInputs}>
                                  <label htmlFor="firstname">Firstname</label>
                                  <Controller
                                     name="firstname"
@@ -145,131 +126,127 @@ function PatientSignup({
                                     )}
                                  />
                               </div>
-                              <div className={styles.signupFormBoxName}>
-                                 {/* <label htmlFor="lastname"> Lastname</label> */}
-                                 <label htmlFor="lastname">Lastname</label>
-                                 <Controller
-                                    name="lastname"
-                                    control={control}
-                                    rules={{
-                                       required: {
-                                          value: true,
-                                          message: 'Lastname is required',
-                                       },
-                                    }}
-                                    render={({ field }) => (
-                                       <TextField
-                                          {...field}
-                                          id="lastname"
-                                          placeholder="Enter Lastname"
-                                          variant="outlined"
-                                          error={Boolean(
-                                             formState.errors.lastname
-                                          )}
-                                          required
-                                          fullWidth
-                                          size="small"
-                                          className={classes.inputField}
-                                       />
-                                    )}
-                                 />
-                              </div>
-                           </div>
-                           <div className={styles.noErrorMessageBox}>
-                              <i>
-                                 <IoWarning />
-                              </i>
-                           </div>
-                           <div className={styles.signupFormBox}>
-                              {/* <label htmlFor="date"> Date of Birth</label> */}
-                              <h3>Date of Birth</h3>
 
-                              <div className={styles.signupFormBoxInputs}>
-                                 <i>
-                                    <IoCalendar />
-                                 </i>
-                                 <input
-                                    type="text"
-                                    name="date"
-                                    id="date"
-                                    placeholder="DD/MM/YYYY"
-                                    onFocus={(event) =>
-                                       (event.target.type = 'date')
+                              {/* <label htmlFor="lastname"> Lastname</label> */}
+                              <label htmlFor="lastname">Lastname</label>
+                              <Controller
+                                 name="lastname"
+                                 control={control}
+                                 rules={{
+                                    required: {
+                                       value: true,
+                                       message: 'Lastname is required',
+                                    },
+                                 }}
+                                 render={({ field }) => (
+                                    <TextField
+                                       {...field}
+                                       id="lastname"
+                                       placeholder="Enter Lastname"
+                                       variant="outlined"
+                                       error={Boolean(
+                                          formState.errors.lastname
+                                       )}
+                                       required
+                                       fullWidth
+                                       size="small"
+                                       className={classes.inputField}
+                                    />
+                                 )}
+                              />
+                           </div>
+                        </div>
+
+                        <div className={styles.signupFormBox}>
+                           {/* <label htmlFor="date"> Date of Birth</label> */}
+                           <h3>Date of Birth</h3>
+
+                           <div className={styles.signupFormBoxInputs}>
+                              <i>
+                                 <IoCalendar />
+                              </i>
+                              <input
+                                 type="text"
+                                 name="date"
+                                 id="date"
+                                 placeholder="DD/MM/YYYY"
+                                 onFocus={(event) =>
+                                    (event.target.type = 'date')
+                                 }
+                                 onBlur={(event) => {
+                                    if (!event.target.value) {
+                                       event.target.type = 'text';
                                     }
-                                    onBlur={(event) => {
-                                       if (!event.target.value) {
-                                          event.target.type = 'text';
-                                       }
-                                    }}
-                                    onChange={() => {
-                                       setIsError(false);
-                                    }}
-                                    disabled={btnActive}
-                                 />
-                              </div>
+                                 }}
+                                 onChange={() => {
+                                    setIsError(false);
+                                 }}
+                                 disabled={btnActive}
+                              />
                            </div>
-                           <div className={styles.noErrorMessageBox}>
+                        </div>
+                        <div className={styles.noErrorMessageBox}>
+                           <i>
+                              <IoWarning />
+                           </i>
+                        </div>
+                        <div className={styles.signupFormBox}>
+                           {/* <label htmlFor="email"> Email</label> */}
+                           <h3>Email</h3>
+
+                           <div className={styles.signupFormBoxInputs}>
                               <i>
-                                 <IoWarning />
+                                 <IoIosMail />
+                              </i>
+                              <input
+                                 name="email"
+                                 type="email"
+                                 id="email"
+                                 placeholder="someone@example.com"
+                                 onChange={() => {
+                                    setIsError(false);
+                                 }}
+                                 disabled={btnActive}
+                              />
+                           </div>
+                        </div>
+                        <div className={styles.noErrorMessageBox}>
+                           <i>
+                              <IoWarning />
+                           </i>
+                        </div>
+                        <div className={styles.signupFormBox}>
+                           {/* <label htmlFor="passwordone"> Password</label> */}
+                           <h3>Password</h3>
+
+                           <div className={styles.signupFormBoxInputs}>
+                              <i>
+                                 <RiLockPasswordFill />
+                              </i>
+                              <input
+                                 type={hidePasswordOne ? 'password' : 'text'}
+                                 name="password"
+                                 id="password1"
+                                 placeholder="Enter a password"
+                                 onChange={() => {
+                                    setIsError(false);
+                                 }}
+                                 disabled={btnActive}
+                              />
+                              <i
+                                 onClick={() =>
+                                    setHidePasswordOne(!hidePasswordOne)
+                                 }
+                              >
+                                 {hidePasswordOne ? (
+                                    <AiOutlineEye />
+                                 ) : (
+                                    <AiOutlineEyeInvisible />
+                                 )}
                               </i>
                            </div>
-                           <div className={styles.signupFormBox}>
-                              {/* <label htmlFor="email"> Email</label> */}
-                              <h3>Email</h3>
-
-                              <div className={styles.signupFormBoxInputs}>
-                                 <i>
-                                    <IoIosMail />
-                                 </i>
-                                 <input
-                                    name="email"
-                                    type="email"
-                                    id="email"
-                                    placeholder="someone@example.com"
-                                    onChange={() => {
-                                       setIsError(false);
-                                    }}
-                                    disabled={btnActive}
-                                 />
-                              </div>
-                           </div>
-                           <div className={styles.noErrorMessageBox}>
-                              <i>
-                                 <IoWarning />
-                              </i>
-                           </div>
-                           <div className={styles.signupFormBox}>
-                              {/* <label htmlFor="passwordone"> Password</label> */}
-                              <h3>Password</h3>
-
-                              <div className={styles.signupFormBoxInputs}>
-                                 <i>
-                                    <RiLockPasswordFill />
-                                 </i>
-                                 <input
-                                    type={hidePasswordOne ? 'password' : 'text'}
-                                    name="password"
-                                    id="password1"
-                                    placeholder="Enter a password"
-                                    onChange={() => {
-                                       setIsError(false);
-                                    }}
-                                    disabled={btnActive}
-                                 />
-                                 <i
-                                    onClick={() =>
-                                       setHidePasswordOne(!hidePasswordOne)
-                                    }
-                                 >
-                                    {hidePasswordOne ? (
-                                       <AiOutlineEye />
-                                    ) : (
-                                       <AiOutlineEyeInvisible />
-                                    )}
-                                 </i>
-                              </div>
-                           </div>
-                           {/* <div
+                        </div>
+                        {/* <div
                               className={
                                  props.registerPasswordOneError
                                     ? styles.errorMessageBox
@@ -282,51 +259,51 @@ function PatientSignup({
                               <p>{props.registerPasswordOneErrorMessage}</p>
                            </div> */}
 
-                           <div className={styles.signupFormBox}>
-                              {/* <label htmlFor="passwordconfirm">
+                        <div className={styles.signupFormBox}>
+                           {/* <label htmlFor="passwordconfirm">
                            Confirm Password
                         </label> */}
-                              <h3>Confirm Password</h3>
+                           <h3>Confirm Password</h3>
 
-                              <div className={styles.signupFormBoxInputs}>
-                                 <i>
-                                    <RiLockPasswordFill />
-                                 </i>
-                                 <input
-                                    name="passwordconfirm"
-                                    type={hidePasswordTwo ? 'password' : 'text'}
-                                    id="password2"
-                                    placeholder="Confirm your password"
-                                    onChange={() => {
-                                       setIsError(false);
-                                    }}
-                                    disabled={btnActive}
-                                 />
-                                 <i
-                                    onClick={() =>
-                                       setHidePasswordTwo(!hidePasswordTwo)
-                                    }
-                                 >
-                                    {hidePasswordTwo ? (
-                                       <AiOutlineEye />
-                                    ) : (
-                                       <AiOutlineEyeInvisible />
-                                    )}
-                                 </i>
-                              </div>
-                           </div>
-                           <ThemeProvider theme={theme}>
-                              <Button
-                                 type="submit"
-                                 variant="contained"
-                                 // disabled={!formState.isValid}
-                                 disabled={false}
-                                 startIcon={<MdAccountCircle />}
+                           <div className={styles.signupFormBoxInputs}>
+                              <i>
+                                 <RiLockPasswordFill />
+                              </i>
+                              <input
+                                 name="passwordconfirm"
+                                 type={hidePasswordTwo ? 'password' : 'text'}
+                                 id="password2"
+                                 placeholder="Confirm your password"
+                                 onChange={() => {
+                                    setIsError(false);
+                                 }}
+                                 disabled={btnActive}
+                              />
+                              <i
+                                 onClick={() =>
+                                    setHidePasswordTwo(!hidePasswordTwo)
+                                 }
                               >
-                                 Submit
-                              </Button>
-                           </ThemeProvider>
-                           {/* <div
+                                 {hidePasswordTwo ? (
+                                    <AiOutlineEye />
+                                 ) : (
+                                    <AiOutlineEyeInvisible />
+                                 )}
+                              </i>
+                           </div>
+                        </div>
+                        <ThemeProvider theme={theme}>
+                           <Button
+                              type="submit"
+                              variant="contained"
+                              // disabled={!formState.isValid}
+                              disabled={false}
+                              startIcon={<MdAccountCircle />}
+                           >
+                              Submit
+                           </Button>
+                        </ThemeProvider>
+                        {/* <div
                               className={
                                  props.registerPasswordTwoError
                                     ? styles.errorMessageBox
@@ -338,7 +315,7 @@ function PatientSignup({
                               </i>
                               <p>{props.registerPasswordTwoErrorMessage}</p>
                            </div> */}
-                           {/* <div className={styles.signupFormButton}>
+                        {/* <div className={styles.signupFormButton}>
                               <button
                                  id="submit-btn"
                                  // className={
@@ -395,7 +372,7 @@ function PatientSignup({
                                  </div>
                               </button>
                            </div> */}
-                           {/* <div className={styles.signupFormMessage}>
+                        {/* <div className={styles.signupFormMessage}>
                               <p>Already have an account? </p>
                               <p
                                  id={styles.signupFormMessageP}
@@ -412,17 +389,16 @@ function PatientSignup({
                                  Login
                               </p>
                            </div> */}
-                        </div>
                      </div>
-                     <div></div>
                   </div>
-                  {/* <GuardianForm
+                  <div></div>
+               </div>
+               {/* <GuardianForm
                      setNewGuardianId={props.setNewGuardianId}
                      newGuardianId={props.newGuardianId}
                      submitCredentialsFeedback={submitCredentialsFeedback}
                      needGuardian={needGuardian}
                   /> */}
-               </div>
             </div>
          </form>
       </Dialog>

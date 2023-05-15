@@ -14,6 +14,7 @@ export const useStyles = makeStyles({
          '& fieldset': {
             borderRadius: '8px',
             width: '100%',
+            height: '30px',
          },
          '&:hover fieldset': {
             borderColor: 'blue', // Change border color on hover
