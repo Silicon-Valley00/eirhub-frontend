@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './dropdown.module.css';
 import { Box, Modal, Typography } from '@mui/material';
-import PatientLogin from '../../Registration page/components/PatientLogin';
-import DoctorLogin from '../../Registration page/components/DoctorLogin';
+import PatientLogin from '../../registrationPage/components/PatientLogin';
+import DoctorLogin from '../../registrationPage/components/DoctorLogin';
 
 const LoginDropdown = () => {
    const [patientOpen, setPatientOpen] = React.useState(false);

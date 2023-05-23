@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './dropdown.module.css';
 import { Link } from 'react-router-dom';
-import PatientSignup from '../../Registration page/components/PatientSignup';
-import DoctorSignup from '../../Registration page/components/DoctorSignup';
+import PatientSignup from '../../registrationPage/components/PatientSignup';
+import DoctorSignup from '../../registrationPage/components/DoctorSignup';
 
 const SignUpDropdown = () => {
    const [patientOpen, setPatientOpen] = React.useState(false);

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import Registration from '../../Registration page/Registration';
 import styles from './styles.module.css';
 import { HiCheck } from 'react-icons/hi';
 import { GiLabCoat, GiVideoConference } from 'react-icons/gi';
 import { IoIosClock } from 'react-icons/io';
 import { MdVerified } from 'react-icons/md';
-import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
+import AlertsMessageBox from '../../GeneralComponents/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
 
 interface MyDivProps extends React.HTMLAttributes<HTMLDivElement> {

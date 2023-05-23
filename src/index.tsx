@@ -10,15 +10,22 @@ import { APP_ID, APP_REGION } from './constants/constants';
 import store, { persistor } from './Store/store';
 import ScrollToTop from './utils/scrollToTop';
 import { allRoutes } from './routes';
-import { StyledEngineProvider } from '@mui/material';
+import { StyledEngineProvider, ThemeProvider } from '@mui/material';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { theme } from './utils/theme/theme';
 
 ReactDOM.render(
    <Provider store={store}>
       {/* <ScrollToTop /> */}
       {/* <PersistGate persistor={persistor}> */}
-      <StyledEngineProvider>
-         <App />
-      </StyledEngineProvider>
+      <ThemeProvider theme={theme}>
+         <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <StyledEngineProvider>
+               <App />
+            </StyledEngineProvider>
+         </LocalizationProvider>
+      </ThemeProvider>
       {/* </PersistGate> */}
    </Provider>,
    document.getElementById('root')

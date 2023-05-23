@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import QuickSolution from './components/QuickSolution';
 import Services from './components/Services';
 import styles from './Landingpage.module.css';
-import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
+import AlertsMessageBox from '../GeneralComponents/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
 
 const LandingPage = () => {

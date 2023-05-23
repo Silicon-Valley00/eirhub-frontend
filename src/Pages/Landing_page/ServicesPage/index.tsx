@@ -6,9 +6,8 @@ import pic1 from '../../../assets/OnlineConsultation5.jpg';
 import pic2 from '../../../assets/findadoctor.png';
 import pic3 from '../../../assets/prescription-drug-coverage-1-1x1.jpg';
 import pic4 from '../../../assets/weightloss.jpg';
-import Registration from '../../Registration page/Registration';
 import styles from '../Landingpage.module.css';
-import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
+import AlertsMessageBox from '../../GeneralComponents/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
 import { persistor } from '../../../Store/store';
 

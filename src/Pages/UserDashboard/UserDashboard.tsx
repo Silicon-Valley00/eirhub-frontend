@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styles from './userdashboard.module.css';
 import Navigation from './components/Navigation';
 import { useSelector } from 'react-redux';
-import BirthdayCard from '../Birthday Card/BirthdayCard';
-import LogoutModal from '../General Components/Logout Modal/LogoutModal';
-import AlertsMessageBox from '../General Components/Alert/AlertsMessageBox';
-import Navbar from '../General Components/Navigation/Navbar';
+import BirthdayCard from '../birthdayCard/BirthdayCard';
+import LogoutModal from '../GeneralComponents/Logout Modal/LogoutModal';
+import AlertsMessageBox from '../GeneralComponents/Alert/AlertsMessageBox';
+import Navbar from '../GeneralComponents/Navigation/Navbar';
+
 function UserDashboard(props) {
    const patientDOB = useSelector((state) => state.profile.date_of_birth);
 

@@ -4,8 +4,8 @@ import Footer from '../components/Footer';
 import styles from './faq.module.css';
 import { data } from './FAQ_data';
 import { useState } from 'react';
-import Registration from '../../Registration page/Registration';
-import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
+import Registration from '../../registrationPage/Registration';
+import AlertsMessageBox from '../../GeneralComponents/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
 import { persistor } from '../../../Store/store';
 
