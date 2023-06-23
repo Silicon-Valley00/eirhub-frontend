@@ -3,7 +3,7 @@ import styles from './birthdaycard.module.css';
 import birthdaySVG from '../../assets/birthday.svg';
 import { IoCloseOutline } from 'react-icons/io5';
 
-function BirthdayCard(props) {
+function BirthdayCard(props: any) {
    return (
       <>
          <div className={styles.birthdayBody}>

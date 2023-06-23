@@ -2,26 +2,7 @@ import { useState, useRef } from 'react';
 import loginStyles from '../styles/Login.module.css';
 import loginImage from '../../../assets/images/loginimage.svg';
 
-import {
-   Button,
-   Dialog,
-   DialogContent,
-   IconButton,
-   InputAdornment,
-   OutlinedInput,
-   TextField,
-   ThemeProvider,
-} from '@mui/material';
-import { Controller, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import {
-   MdAccountCircle,
-   MdOutlineVisibility,
-   MdOutlineVisibilityOff,
-} from 'react-icons/md';
-import { useStyles } from '../dialogStyles';
-import { theme } from '../../../utils/theme/theme';
+import { Dialog, DialogContent } from '@mui/material';
 import LoginForms from '../forms/LoginForms';
 
 function PatientLogin({
