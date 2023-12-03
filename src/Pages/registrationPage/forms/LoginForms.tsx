@@ -1,26 +1,16 @@
-import { Controller, useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import loginStyles from '../styles/Login.module.css';
-import {
-   Button,
-   IconButton,
-   InputAdornment,
-   OutlinedInput,
-   TextField,
-   ThemeProvider,
-} from '@mui/material';
 import { z } from 'zod';
-import { useStyles } from '../dialogStyles';
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-   MdAccountCircle,
-   MdOutlineVisibility,
-   MdOutlineVisibilityOff,
-} from 'react-icons/md';
-import { theme } from '../../../utils/theme/theme';
+import { BiMailSend } from 'react-icons/bi';
+import { GenericButton, GenericInput } from '../../_shared';
+import { useStyles } from '../../../appTheme';
+import { useNavigate } from 'react-router-dom';
+import Constants from '../../../utils/constants';
 
 const LoginForms = () => {
-   const classes = useStyles();
+   const navigate = useNavigate();
    const [showPassword, setShowPassword] = useState(false);
    const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -35,86 +25,50 @@ const LoginForms = () => {
       password: z.string().min(6),
    });
 
-   const { control, handleSubmit, formState } = useForm({
+   const methods = useForm({
       resolver: zodResolver(schema),
       mode: 'onChange',
    });
+
+   const classes = useStyles();
    return (
-      <div>
+      <FormProvider {...methods}>
          <form className={loginStyles.loginForm}>
             <h1 className={loginStyles.title}>Welcome Back</h1>
             <p className={loginStyles.info}>Please enter your details</p>
             {/* REVIEW: Don't really understand why username is used in login */}
             <div className={loginStyles.inputField}>
-               <label htmlFor="email">Email</label>
-               <Controller
+               <GenericInput
+                  label="Email"
                   name="email"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                     <TextField
-                        {...field}
-                        label="Email"
-                        variant="outlined"
-                        margin="normal"
-                        fullWidth
-                        autoFocus
-                        required
-                        error={!!formState.errors.email}
-                        size="small"
-                        // helperText={formState.errors.email?.message}
-                        className={classes.inputField}
-                     />
-                  )}
+                  placeholder="Someone@gmail.com"
+                  icons={<BiMailSend />}
                />
             </div>
 
             {/* REVIEW:Edge browser seem to show the eye icon when password is being entered */}
             <div className={loginStyles.inputField}>
-               <label htmlFor="password">Password</label>
-               <Controller
+               <GenericInput
+                  label="Password"
                   name="password"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                     <OutlinedInput
-                        id="outlined-adornment-password"
-                        type={showPassword ? 'text' : 'password'}
-                        endAdornment={
-                           <InputAdornment position="end">
-                              <IconButton
-                                 aria-label="toggle password visibility"
-                                 onClick={handleClickShowPassword}
-                                 onMouseDown={handleMouseDownPassword}
-                                 edge="end"
-                              >
-                                 {showPassword ? (
-                                    <MdOutlineVisibilityOff />
-                                 ) : (
-                                    <MdOutlineVisibility />
-                                 )}
-                              </IconButton>
-                           </InputAdornment>
-                        }
-                        label="Password"
-                        size="small"
-                        className={classes.inputField}
-                     />
-                  )}
+                  placeholder="Enter password"
+                  type="password"
                />
             </div>
 
             {/* FIXME: disabled prop not working */}
-            <ThemeProvider theme={theme}>
-               <Button
-                  type="submit"
-                  variant="contained"
-                  // disabled={!formState.isValid}
-                  startIcon={<MdAccountCircle />}
-               >
-                  Submit
-               </Button>
-            </ThemeProvider>
+            <GenericButton
+               type="submit"
+               variant="contained"
+               onClick={() => navigate(Constants.ROUTES.doctorDashborad)}
+               text="Login"
+               sx={{
+                  width: '60%',
+                  fontSize: '.9rem',
+                  height: '40px',
+                  borderRadius: '8px',
+               }}
+            />
             <div className={loginStyles.signupToggle}>
                <div>
                   New Here ?{' '}
@@ -124,7 +78,7 @@ const LoginForms = () => {
                </div>
             </div>
          </form>
-      </div>
+      </FormProvider>
    );
 };
 

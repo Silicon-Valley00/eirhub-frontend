@@ -29,3 +29,10 @@ label {
    align-items: center;
    justify-content: center;
 }
+
+.already_have_an_account {
+   display: flex;
+   justify-content: center;
+   margin-top: 1rem;
+   width: 100%;
+}

@@ -6,7 +6,7 @@ import { HiCheck } from 'react-icons/hi';
 import { GiLabCoat, GiVideoConference } from 'react-icons/gi';
 import { IoIosClock } from 'react-icons/io';
 import { MdVerified } from 'react-icons/md';
-import AlertsMessageBox from '../../GeneralComponents/Alert/AlertsMessageBox';
+
 import { Helmet } from 'react-helmet';
 
 interface MyDivProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -22,7 +22,6 @@ const HowItWorks = (props: MyDivProps) => {
          </Helmet>
 
          <div className={styles.active}>
-            <AlertsMessageBox time={5000} />
             <Navbar />
             <main className={styles.main}>
                {/* upper section */}

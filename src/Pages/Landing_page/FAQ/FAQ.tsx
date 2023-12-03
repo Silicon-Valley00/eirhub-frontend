@@ -4,10 +4,7 @@ import Footer from '../components/Footer';
 import styles from './faq.module.css';
 import { data } from './FAQ_data';
 import { useState } from 'react';
-import Registration from '../../registrationPage/Registration';
-import AlertsMessageBox from '../../GeneralComponents/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
-import { persistor } from '../../../Store/store';
 
 const FAQ = () => {
    const [selected, setSelected] = useState<number | null>(null);
@@ -26,8 +23,6 @@ const FAQ = () => {
             <title>FAQ | Eirhub</title>
          </Helmet>
          <div className={styles.active}>
-            <AlertsMessageBox time={5000} />
-
             <Navbar />
             <main className={styles.main}>
                <div className={styles.upper_part}>

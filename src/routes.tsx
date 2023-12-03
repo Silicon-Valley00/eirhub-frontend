@@ -4,7 +4,7 @@ import FAQ from './Pages/Landing_page/FAQ/FAQ';
 import HowItWorks from './Pages/Landing_page/HowItWorks';
 import LandingPage from './Pages/Landing_page/LandingPage';
 import ServicesPage from './Pages/Landing_page/ServicesPage';
-import UserDashboard from './Pages/UserDashboard/UserDashboard';
+import UserDashboard from './Pages/Patient/Dashboard/Dashboard';
 
 const routePaths = Constants.ROUTES;
 
@@ -39,7 +39,12 @@ const appRoutes: routing = {
          element: <UserDashboard />,
       },
    ],
-   doctor: [],
+   doctor: [
+      {
+         path: routePaths.doctorDashborad,
+         // element: <DocDashboard />,
+      },
+   ],
 };
 
 export const allRoutes = createBrowserRouter([

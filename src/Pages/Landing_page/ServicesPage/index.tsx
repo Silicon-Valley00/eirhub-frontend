@@ -7,17 +7,9 @@ import pic2 from '../../../assets/findadoctor.png';
 import pic3 from '../../../assets/prescription-drug-coverage-1-1x1.jpg';
 import pic4 from '../../../assets/weightloss.jpg';
 import styles from '../Landingpage.module.css';
-import AlertsMessageBox from '../../GeneralComponents/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
-import { persistor } from '../../../Store/store';
 
 const ServicesPage = () => {
-   // Handles the states of the modals that show the different registration pages to users based on gtheir selection
-   const [modalSignup, setModalSignup] = useState(false);
-   const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
-   const [modalLogin, setModalLogin] = useState(false);
-   const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
-
    return (
       <>
          <Helmet>
@@ -28,8 +20,7 @@ const ServicesPage = () => {
             />
          </Helmet>
          <div className={styles.active}>
-            <AlertsMessageBox time={5000} />
-            <Navbar indicator={2} />
+            <Navbar />
             <main className={style.main}>
                <div className={style.wrapper}>
                   {/* upper section */}

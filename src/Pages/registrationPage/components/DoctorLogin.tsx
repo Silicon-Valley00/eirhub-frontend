@@ -21,7 +21,6 @@ import {
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useStyles } from '../dialogStyles';
 import {
    MdAccountCircle,
    MdOutlineVisibility,
@@ -29,6 +28,7 @@ import {
 } from 'react-icons/md';
 import { theme } from '../../../utils/theme/theme';
 import LoginForms from '../forms/LoginForms';
+import { useStyles } from '../../../appTheme';
 
 function DoctorLogin({
    show,
