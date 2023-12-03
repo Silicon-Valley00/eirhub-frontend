@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './quickSolution.module.css';
-import groupdoc from '../../../assets/TeamOfDoctors.png';
+import groupdoc from '../../../../assets/TeamOfDoctors.png';
 import { GiLabCoat } from 'react-icons/gi';
 import { BsFillCalendar2CheckFill, BsFillStarFill } from 'react-icons/bs';
 

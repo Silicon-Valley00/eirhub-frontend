@@ -1,32 +1,10 @@
-import { useState, useRef } from 'react';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useState } from 'react';
 import loginStyles from '../styles/Login.module.css';
 import docLoginImage from '../../../assets/images/doctor login.svg';
-import { IoWarning, IoCloseOutline } from 'react-icons/io5';
-import { IoIosMail } from 'react-icons/io';
-import { RiLockPasswordFill } from 'react-icons/ri';
-import { BiLoaderAlt } from 'react-icons/bi';
-// import { LoginUser } from '../../../context/authcontext';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import {
-   Button,
-   Dialog,
-   IconButton,
-   InputAdornment,
-   OutlinedInput,
-   TextField,
-   ThemeProvider,
-} from '@mui/material';
+import { Dialog } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import {
-   MdAccountCircle,
-   MdOutlineVisibility,
-   MdOutlineVisibilityOff,
-} from 'react-icons/md';
-import { theme } from '../../../utils/theme/theme';
 import LoginForms from '../forms/LoginForms';
 import { useStyles } from '../../../appTheme';
 

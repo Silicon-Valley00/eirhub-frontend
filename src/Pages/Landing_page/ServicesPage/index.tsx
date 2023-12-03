@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Footer from '../components/footer/Footer';
+import Navbar from '../components/navbar/Navbar';
 import style from './style.module.css';
 import pic1 from '../../../assets/OnlineConsultation5.jpg';
 import pic2 from '../../../assets/findadoctor.png';

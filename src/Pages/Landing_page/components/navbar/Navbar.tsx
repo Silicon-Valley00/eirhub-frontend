@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import logo from '../../../assets/landingPage/logo.svg';
+import { useState } from 'react';
+import logo from '../../../../assets/landingPage/logo.svg';
 import styles from './navbar.module.css';
-import close from '../../../assets/landingPage/close.svg';
-import menu from '../../../assets/landingPage/menu.svg';
+import close from '../../../../assets/landingPage/close.svg';
+import menu from '../../../../assets/landingPage/menu.svg';
 import { Link, NavLink } from 'react-router-dom';
-import LoginDropdown from './LoginDropdown';
-import SignUpDropdown from './SignUpDropdown';
-import { Box, Button, Modal } from '@mui/material';
+import LoginDropdown from '../LoginDropdown';
+import SignUpDropdown from '../SignUpDropdown';
+import { Box, Modal } from '@mui/material';
 
 const style = {
    position: 'absolute',

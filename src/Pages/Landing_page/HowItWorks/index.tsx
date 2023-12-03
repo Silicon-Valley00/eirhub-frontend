@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Footer from '../components/footer/Footer';
+import Navbar from '../components/navbar/Navbar';
 import styles from './styles.module.css';
 import { HiCheck } from 'react-icons/hi';
 import { GiLabCoat, GiVideoConference } from 'react-icons/gi';

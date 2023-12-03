@@ -1,25 +1,5 @@
-import React, { useState, useRef } from 'react';
 import styles from '../styles/signup.module.css';
 import signUp from '../../../assets/images/signupimage.svg';
-import { FaRegUser, FaRegHospital } from 'react-icons/fa';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import { RiLockPasswordFill } from 'react-icons/ri';
-import { IoIosMail } from 'react-icons/io';
-import { IoCalendar, IoWarning, IoCloseOutline } from 'react-icons/io5';
-import { BiLoaderAlt } from 'react-icons/bi';
-import hospital from '../../../assets/hospital.svg';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import {
-   fetchDoctorsProfileInfo,
-   getAllPendingAppointmentsForADoctor,
-   setDoctorAuth,
-   setDoctorProfile,
-} from '../../../Store/DoctorAction.js';
-// import { SignUpUser } from '../../../context/authcontext';
-import store from '../../../Store/store';
-import { persistor } from '../../../Store/store';
-import { setLoading, setMessage, setOkToRoute } from '../../../Store/Actions';
 import { Dialog, DialogContent } from '@mui/material';
 import SignupForms from '../forms/SignupForms';
 
@@ -30,23 +10,6 @@ function DoctorSignup({
    show: boolean;
    handleClose: () => void;
 }) {
-   const navigate = useNavigate();
-   const dispatch = useDispatch();
-   const docSignUpFormRef = useRef();
-
-   // handles button changes
-   const [btnValue, setBtnValue] = useState('Create Account');
-   const [btnActive, setBtnActive] = useState(false);
-   // btnActive is for when button can  be clicked to create account. This would be set to false when an error occurs
-   // Handles password visibility
-   const [hidePasswordOne, setHidePasswordOne] = useState(true);
-   const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
-   // Handles server error
-   const [isError, setIsError] = useState(false);
-   const [errorMessage, setErrorMessage] = useState(
-      'Email already in use. Want to login?'
-   );
-
    return (
       <Dialog
          open={show}

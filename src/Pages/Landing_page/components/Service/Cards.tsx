@@ -1,6 +1,14 @@
 import styles from './services.module.css';
 
-const Cards = ({ detail }) => {
+const Cards = ({
+   detail,
+}: {
+   detail: {
+      name: string;
+      profession: string;
+      profile_pic: string;
+   };
+}) => {
    return (
       <div
          data-aos="fade-down"

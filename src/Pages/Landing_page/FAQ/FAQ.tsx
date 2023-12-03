@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/navbar/Navbar';
+import Footer from '../components/footer/Footer';
 import styles from './faq.module.css';
 import { data } from './FAQ_data';
 import { useState } from 'react';

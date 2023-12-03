@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './services.module.css';
-import docOne from '../../../assets/docProfileImage3.svg';
-import docTwo from '../../../assets/docProfileImage4.svg';
-import docThree from '../../../assets/docProfileImage1.svg';
+import docOne from '../../../../assets/docProfileImage3.svg';
+import docTwo from '../../../../assets/docProfileImage4.svg';
+import docThree from '../../../../assets/docProfileImage1.svg';
 import Cards from './Cards';
 
 const details = [
@@ -23,7 +23,7 @@ const details = [
    },
 ];
 
-const Services = (props) => {
+const Services = () => {
    return (
       <section id={styles.services_body}>
          <div className={styles.services_container} data-aos={'slide up'}>
@@ -45,7 +45,7 @@ const Services = (props) => {
             {/* Button beneath the cards */}
             <div
                className={styles.services_button}
-               onClick={() => props.handleModalSignup()}
+               // onClick={() => props.handleModalSignup()}
             >
                <input
                   value={'Find A Doctor'}
@@ -64,7 +64,7 @@ const Services = (props) => {
                      {/* A button that is used to book an appointment.  */}
                      <button
                         className={styles.message_btn}
-                        onClick={() => props.handleModalSignup()}
+                        // onClick={() => props.handleModalSignup()}
                      >
                         Book an Appointment
                      </button>

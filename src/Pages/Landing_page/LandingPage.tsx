@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import Footer from './components/Footer';
+import Footer from './components/footer/Footer';
 import Hero from './components/Hero';
-import Navbar from './components/Navbar';
-import QuickSolution from './components/QuickSolution';
-import Services from './components/Services';
+import Navbar from './components/navbar/Navbar';
+import QuickSolution from './components/quick-solutions/QuickSolution';
+import Services from './components/Service/Services';
 import styles from './Landingpage.module.css';
 import { Helmet } from 'react-helmet';
 
