@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
+import { useEffect } from 'react';
 import Footer from './components/footer/Footer';
 import Hero from './components/Hero';
 import Navbar from './components/navbar/Navbar';

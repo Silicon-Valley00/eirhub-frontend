@@ -6,7 +6,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import LoginForms from '../forms/LoginForms';
-import { useStyles } from '../../../appTheme';
 
 function DoctorLogin({
    show,
@@ -15,8 +14,6 @@ function DoctorLogin({
    show: boolean;
    handleClose: () => void;
 }) {
-   const classes = useStyles();
-
    const [showPassword, setShowPassword] = useState(false);
    const handleClickShowPassword = () => setShowPassword((show) => !show);
 

@@ -7,7 +7,6 @@ import {
 } from '@mui/material';
 import { Controller, useFormContext } from 'react-hook-form';
 import { BsPersonCircle } from 'react-icons/bs';
-import { useStyles } from '../../../../appTheme';
 import { useState } from 'react';
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md';
 
@@ -38,7 +37,6 @@ const GeneralInput = ({
       event.preventDefault();
    };
 
-   const classes = useStyles();
    const { control, formState } = useFormContext();
    return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -64,7 +62,7 @@ const GeneralInput = ({
                      fullWidth
                      sx={{ ...sx }}
                      size="small"
-                     className={classes.inputField}
+                     className={''}
                      InputProps={{
                         startAdornment: (
                            <InputAdornment position="start">
@@ -95,7 +93,7 @@ const GeneralInput = ({
                      }
                      label="Password"
                      size="small"
-                     className={classes.inputField}
+                     className={''}
                   />
                )
             }

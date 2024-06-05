@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { BiMailSend } from 'react-icons/bi';
 import { GenericButton, GenericInput } from '../../_shared';
-import { useStyles } from '../../../appTheme';
 import { useNavigate } from 'react-router-dom';
 import Constants from '../../../utils/constants';
 
@@ -30,7 +29,6 @@ const LoginForms = () => {
       mode: 'onChange',
    });
 
-   const classes = useStyles();
    return (
       <FormProvider {...methods}>
          <form className={loginStyles.loginForm}>

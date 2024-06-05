@@ -2,7 +2,7 @@ import styles from './hero.module.css';
 import Typewriter from 'typewriter-effect';
 import landingpageImage from '../../../assets/landingPage/landingpage.png';
 
-const Hero = (props) => {
+const Hero = () => {
    return (
       <section id={styles.hero_body}>
          <div id={styles.overlay}></div>
@@ -42,7 +42,7 @@ const Hero = (props) => {
                   <div className={styles.content_button}>
                      <button
                         className={styles.content__button}
-                        onClick={() => props.handleModalSignup()}
+                        // onClick={() => props.handleModalSignup()}
                      >
                         Book an appointment
                      </button>
