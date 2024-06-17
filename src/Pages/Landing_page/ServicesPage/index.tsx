@@ -1,65 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import Footer from '../components/footer/Footer';
+import Navbar from '../components/navbar/Navbar';
 import style from './style.module.css';
 import pic1 from '../../../assets/OnlineConsultation5.jpg';
 import pic2 from '../../../assets/findadoctor.png';
 import pic3 from '../../../assets/prescription-drug-coverage-1-1x1.jpg';
 import pic4 from '../../../assets/weightloss.jpg';
-import Registration from '../../Registration page/Registration';
 import styles from '../Landingpage.module.css';
-import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
 import { Helmet } from 'react-helmet';
-import { persistor } from '../../../Store/ReducerStore';
 
 const ServicesPage = () => {
-   // Handles the states of the modals that show the different registration pages to users based on gtheir selection
-   const [modalSignup, setModalSignup] = useState(false);
-   const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
-   const [modalLogin, setModalLogin] = useState(false);
-   const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
-
-   useEffect(() => setTimeout(() => persistor.purge(), 200), []);
-
-   // Function opens the patients' signup form modal
-   function handleModalSignup() {
-      setModalLogin(false);
-      setModalSignup(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the patients' login form modal
-   function handleModalLogin() {
-      setModalSignup(false);
-      setModalLogin(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the doctors' signup form modal
-   function handleModalSignupDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(true);
-   }
-
-   // Function opens the doctors' login form modal
-   function handleModalLoginDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(true);
-      setModalSignupDoctor(false);
-   }
-
-   // Handles close of all form modals
-   function handleModalsClose() {
-      setModalSignup(false);
-      setModalLogin(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
    return (
       <>
          <Helmet>
@@ -69,27 +19,8 @@ const ServicesPage = () => {
                content="This page displays the services Eirhub provides"
             />
          </Helmet>
-         {/* BUG: React does not recognize the `handleModalsClose` prop on a DOM element. */}
-         <div
-            id={styles.blur}
-            className={
-               modalLogin ||
-               modalSignup ||
-               modalLoginDoctor ||
-               modalSignupDoctor
-                  ? styles.active
-                  : ''
-            }
-            handleModalsClose={handleModalsClose}
-         >
-            <AlertsMessageBox time={5000} />
-            <Navbar
-               handleModalLogin={handleModalLogin}
-               handleModalSignup={handleModalSignup}
-               handleModalLoginDoctor={handleModalLoginDoctor}
-               handleModalSignupDoctor={handleModalSignupDoctor}
-               indicator={2}
-            />{' '}
+         <div className={styles.active}>
+            <Navbar />
             <main className={style.main}>
                <div className={style.wrapper}>
                   {/* upper section */}
@@ -199,19 +130,8 @@ const ServicesPage = () => {
                   </section>
                </div>
             </main>
-            <Footer handleModalSignup={handleModalSignup} />
+            <Footer />
          </div>
-         <Registration
-            modalLogin={modalLogin}
-            modalSignup={modalSignup}
-            modalLoginDoctor={modalLoginDoctor}
-            modalSignupDoctor={modalSignupDoctor}
-            handleModalsClose={handleModalsClose}
-            handleModalLogin={handleModalLogin}
-            handleModalSignup={handleModalSignup}
-            handleModalLoginDoctor={handleModalLoginDoctor}
-            handleModalSignupDoctor={handleModalSignupDoctor}
-         />
       </>
    );
 };

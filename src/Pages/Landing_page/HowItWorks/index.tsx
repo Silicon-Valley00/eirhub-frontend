@@ -1,64 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
-import Registration from '../../Registration page/Registration';
+import Footer from '../components/footer/Footer';
+import Navbar from '../components/navbar/Navbar';
 import styles from './styles.module.css';
 import { HiCheck } from 'react-icons/hi';
 import { GiLabCoat, GiVideoConference } from 'react-icons/gi';
 import { IoIosClock } from 'react-icons/io';
 import { MdVerified } from 'react-icons/md';
-import AlertsMessageBox from '../../General Components/Alert/AlertsMessageBox';
+
 import { Helmet } from 'react-helmet';
-import { persistor } from '../../../Store/ReducerStore';
 
-const HowItWorks = () => {
-   // Handles the states of the modals that show the different registration pages to users based on gtheir selection
-   const [modalSignup, setModalSignup] = useState(false);
-   const [modalSignupDoctor, setModalSignupDoctor] = useState(false);
-   const [modalLogin, setModalLogin] = useState(false);
-   const [modalLoginDoctor, setModalLoginDoctor] = useState(false);
-
-   useEffect(() => setTimeout(() => persistor.purge(), 200), []);
-
-   // Function opens the patients' signup form modal
-   function handleModalSignup() {
-      setModalLogin(false);
-      setModalSignup(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the patients' login form modal
-   function handleModalLogin() {
-      setModalSignup(false);
-      setModalLogin(true);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
-
-   // Function opens the doctors' signup form modal
-   function handleModalSignupDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(true);
-   }
-
-   // Function opens the doctors' login form modal
-   function handleModalLoginDoctor() {
-      setModalLogin(false);
-      setModalSignup(false);
-      setModalLoginDoctor(true);
-      setModalSignupDoctor(false);
-   }
-
-   // Handles close of all form modals
-   function handleModalsClose() {
-      setModalSignup(false);
-      setModalLogin(false);
-      setModalLoginDoctor(false);
-      setModalSignupDoctor(false);
-   }
+interface MyDivProps extends React.HTMLAttributes<HTMLDivElement> {
+   'data-aos': string;
+   duration: string;
+}
+const HowItWorks = (props: MyDivProps) => {
    return (
       <>
          <Helmet>
@@ -66,26 +21,8 @@ const HowItWorks = () => {
             <meta name="description" content="How It Works" />
          </Helmet>
 
-         <div
-            id={styles.blur}
-            className={
-               modalLogin ||
-               modalSignup ||
-               modalLoginDoctor ||
-               modalSignupDoctor
-                  ? styles.active
-                  : ''
-            }
-            handleModalsClose={handleModalsClose}
-         >
-            <AlertsMessageBox time={5000} />
-            <Navbar
-               handleModalLogin={handleModalLogin}
-               handleModalSignup={handleModalSignup}
-               handleModalLoginDoctor={handleModalLoginDoctor}
-               handleModalSignupDoctor={handleModalSignupDoctor}
-               indicator={3}
-            />
+         <div className={styles.active}>
+            <Navbar />
             <main className={styles.main}>
                {/* upper section */}
                <div className={styles.upper_part}>
@@ -107,11 +44,7 @@ const HowItWorks = () => {
                      <div className={styles.circle_1}>
                         <p className={styles.circle__num}>1</p>
                         {/* first card on the left */}
-                        <div
-                           data-aos="zoom-out-up"
-                           duration="4000"
-                           className={styles.left_card}
-                        >
+                        <div {...props} className={styles.left_card}>
                            <div className={styles.left__card}>
                               <GiLabCoat className={styles.icon} />
                               <p className={styles.heading}>Find a doctor</p>
@@ -127,11 +60,7 @@ const HowItWorks = () => {
                      <div className={styles.circle_2}>
                         <p className={styles.circle__num}>2</p>
                         {/* first card on the right */}
-                        <div
-                           data-aos="zoom-out-up"
-                           duration="4000"
-                           className={styles.right_card}
-                        >
+                        <div {...props} className={styles.right_card}>
                            <div className={styles.right__arrow}></div>
                            <div className={styles.right__card}>
                               <MdVerified className={styles.icon} />
@@ -149,11 +78,7 @@ const HowItWorks = () => {
                      <div className={styles.circle_3}>
                         <p className={styles.circle__num}>3</p>
                         {/* Second card on the left */}
-                        <div
-                           data-aos="zoom-out-up"
-                           duration="4000"
-                           className={styles.left_card}
-                        >
+                        <div {...props} className={styles.left_card}>
                            <div className={styles.left__card}>
                               <IoIosClock className={styles.icon} />
                               <p className={styles.heading}>
@@ -176,8 +101,8 @@ const HowItWorks = () => {
 
                         {/* Second card on the right */}
                         <div
+                           {...props}
                            data-aos="zoom-out-up"
-                           duration="4000"
                            className={styles.right_card}
                         >
                            <div className={styles.right__arrow}></div>
@@ -194,19 +119,8 @@ const HowItWorks = () => {
                   </div>
                </section>
             </main>
-            <Footer handleModalSignup={handleModalSignup} />
+            <Footer />
          </div>
-         <Registration
-            modalLogin={modalLogin}
-            modalSignup={modalSignup}
-            modalLoginDoctor={modalLoginDoctor}
-            modalSignupDoctor={modalSignupDoctor}
-            handleModalsClose={handleModalsClose}
-            handleModalLogin={handleModalLogin}
-            handleModalSignup={handleModalSignup}
-            handleModalLoginDoctor={handleModalLoginDoctor}
-            handleModalSignupDoctor={handleModalSignupDoctor}
-         />
       </>
    );
 };

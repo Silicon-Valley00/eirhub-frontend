@@ -6,6 +6,12 @@
             "dom.iterable",
             "esnext"
         ],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
         "types": [
             "vite/client",
             "vite-plugin-svgr/client"
