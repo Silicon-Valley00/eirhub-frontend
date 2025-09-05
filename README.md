@@ -1,6 +1,7 @@
 # Eirhub
 
 Frontend repository for Eirhub (Software Engineering project)
+A video demo of the application can be found here: [Video Demo](https://www.linkedin.com/posts/jerry-agbesi_softwareengineering-telemedicine-python-activity-6983107324257185793-1Pvd/?rcm=ACoAAC12SVUBwfoBigNeta0giu0AD1zw0LNid60)
 
 Document to track Decision Making : [Silicon Valley - EirHub Decision Document](https://docs.google.com/document/d/1_Skgoi0TOdXuyFRiUJWxwfKSewkepBe6-_71LRvHhEc/edit)
 
